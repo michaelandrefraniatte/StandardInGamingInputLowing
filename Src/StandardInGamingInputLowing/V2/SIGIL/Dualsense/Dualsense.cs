@@ -6,6 +6,7 @@ using System.Reactive.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Numerics;
+using Dualsense;
 
 namespace DualSenseAPI
 {
@@ -53,11 +54,19 @@ namespace DualSenseAPI
         public Vector3 acc_gPS5 = new Vector3();
         public Vector3 InitDirectAnglesPS5, DirectAnglesPS5;
         public bool running;
+        public Form1 form1 = new Form1();
         public DualSense()
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
             running = true;
+        }
+        public void ViewData()
+        {
+            if (!form1.Visible)
+            {
+                form1.SetVisible();
+            }
         }
         public void Close()
         {
@@ -177,6 +186,10 @@ namespace DualSenseAPI
                 var readBuffer = trezorDevice.WriteAndReadAsync(GetOutputDataBytes());
                 readBuffer.Wait();
                 dsdata = (await readBuffer).Data.Skip(1).ToArray();
+                if (form1.Visible)
+                {
+                    form1.SetLabel2(PS5ControllerLeftStickX.ToString());
+                }
             }
         }
         public void BeginPolling()

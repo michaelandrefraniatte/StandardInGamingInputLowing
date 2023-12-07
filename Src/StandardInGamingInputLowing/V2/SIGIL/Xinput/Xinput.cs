@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Xinput;
 
 namespace XInputAPI
 {
@@ -19,11 +20,19 @@ namespace XInputAPI
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private static bool running;
+        public Form1 form1 = new Form1();
         public XInput()
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
             running = true;
+        }
+        public void ViewData()
+        {
+            if (!form1.Visible)
+            {
+                form1.SetVisible();
+            }
         }
         public void Close()
         {
@@ -37,6 +46,10 @@ namespace XInputAPI
                     break;
                 ControllerProcess();
                 System.Threading.Thread.Sleep(1);
+                if (form1.Visible)
+                {
+                    form1.SetLabel1(Controller1ButtonAPressed.ToString());
+                }
             }
         }
         public void BeginPolling()

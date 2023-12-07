@@ -5,6 +5,14 @@ namespace controllersvjoy
     public class VJoyController
     {
         public static VirtualJoystick joystick1;
+        public Form1 form1 = new Form1();
+        public void ViewData()
+        {
+            if (!form1.Visible)
+            {
+                form1.SetVisible();
+            }
+        }
         public void Connect()
         {
             joystick1 = new VirtualJoystick(1);
@@ -39,6 +47,10 @@ namespace controllersvjoy
             joystick1.SetJoystickHat((int)Controller1VJoy_Send_HatExt2, Hats.HatExt2);
             joystick1.SetJoystickHat((int)Controller1VJoy_Send_HatExt3, Hats.HatExt3);
             joystick1.Update();
+            if (form1.Visible)
+            {
+                form1.SetLabel1(Controller1VJoy_Send_1.ToString());
+            }
         }
     }
 }

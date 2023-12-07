@@ -6,6 +6,7 @@ using System.Reactive.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Numerics;
+using Dualshock4;
 
 namespace DualShock4API
 {
@@ -49,11 +50,19 @@ namespace DualShock4API
         public Vector3 acc_gPS4 = new Vector3();
         public Vector3 InitDirectAnglesPS4, DirectAnglesPS4;
         public bool running;
+        public Form1 form1 = new Form1();
         public DualShock4()
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
             running = true;
+        }
+        public void ViewData()
+        {
+            if (!form1.Visible)
+            {
+                form1.SetVisible();
+            }
         }
         public void Close()
         {
@@ -165,6 +174,10 @@ namespace DualShock4API
                 var readBuffer = trezorDevice.WriteAndReadAsync(GetOutputDataBytes());
                 readBuffer.Wait();
                 ds4data = (await readBuffer).Data.Skip(1).ToArray();
+                if (form1.Visible)
+                {
+                    form1.SetLabel1(PS4ControllerLeftStickX.ToString());
+                }
             }
         }
         public void BeginPolling()

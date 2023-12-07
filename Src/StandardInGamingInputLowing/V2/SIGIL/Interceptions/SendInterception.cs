@@ -29,6 +29,14 @@ namespace Interceptions
         [DllImport("user32.dll")]
         public static extern void SetCursorPos(int X, int Y);
         public static Valuechanges ValueChange = new Valuechanges();
+        public Form1 form1 = new Form1();
+        public void ViewData()
+        {
+            if (!form1.Visible)
+            {
+                form1.SetVisible();
+            }
+        }
         public void UnLoadKM(Input input, int keyboard_1_id, int mouse_1_id)
         {
             SetKM(0, 0, input, keyboard_1_id, mouse_1_id, 0, 0, 0, 0, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
@@ -1015,6 +1023,10 @@ namespace Interceptions
                 keyboardkey(input, Keys.NumpadMinus, keyboard_id);
             if (Valuechanges._ValueChange[195] < 0f)
                 keyboardkeyF(input, Keys.NumpadMinus, keyboard_id);
+            if (form1.Visible)
+            {
+                form1.SetLabel1(MouseDesktopX.ToString());
+            }
         }
         public static void mouseclickleft(Input input, int mouse_id)
         {

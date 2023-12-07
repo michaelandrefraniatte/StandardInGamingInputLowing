@@ -27,6 +27,14 @@ namespace controllers
         private static ScpBus scpBus;
         private static X360Controller controller;
         public static Valuechanges ValueChange = new Valuechanges();
+        public Form1 form1 = new Form1();
+        public void ViewData()
+        {
+            if (!form1.Visible)
+            {
+                form1.SetVisible();
+            }
+        }
         public void LoadController()
         {
             scpBus = new ScpBus();
@@ -123,6 +131,10 @@ namespace controllers
             controller.LeftTrigger = (byte)lefttriggerposition;
             controller.RightTrigger = (byte)righttriggerposition;
             scpBus.Report(controller.GetReport());
+            if (form1.Visible)
+            {
+                form1.SetLabel1(back.ToString());
+            }
         }
         private const string SCP_BUS_CLASS_GUID = "{F679F562-3164-42CE-A4DB-E7DDBE723909}";
         private readonly SafeFileHandle _deviceHandle;

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
+using Joyconcharginggrip;
 
 namespace JoyconChargingGripAPI
 {
@@ -85,11 +86,19 @@ namespace JoyconChargingGripAPI
         public bool JoyconRightButtonSHOULDER_1, JoyconRightButtonSHOULDER_2, JoyconRightButtonSR, JoyconRightButtonSL, JoyconRightButtonDPAD_DOWN, JoyconRightButtonDPAD_RIGHT, JoyconRightButtonDPAD_UP, JoyconRightButtonDPAD_LEFT, JoyconRightButtonPLUS, JoyconRightButtonSTICK, JoyconRightButtonHOME;
         public float acc_gcalibrationRightX, acc_gcalibrationRightY, acc_gcalibrationRightZ;
         public bool ISLEFT, ISRIGHT, running;
+        public Form1 form1 = new Form1();
         public JoyconChargingGrip()
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
             running = true;
+        }
+        public void ViewData()
+        {
+            if (!form1.Visible)
+            {
+                form1.SetVisible();
+            }
         }
         public void Close()
         {
@@ -111,6 +120,10 @@ namespace JoyconChargingGripAPI
                 try
                 {
                     Lhid_read_timeout(handleLeft, report_bufLeft, (UIntPtr)report_lenLeft);
+                    if (form1.Visible)
+                    {
+                        form1.SetLabel1(JoyconLeftButtonSHOULDER_1.ToString());
+                    }
                 }
                 catch { }
             }
@@ -122,6 +135,10 @@ namespace JoyconChargingGripAPI
                 try
                 {
                     Rhid_read_timeout(handleRight, report_bufRight, (UIntPtr)report_lenRight);
+                    if (form1.Visible)
+                    {
+                        form1.SetLabel2(JoyconRightButtonSHOULDER_1.ToString());
+                    }
                 }
                 catch { }
             }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
+using Joyconright;
 
 namespace JoyconRightAPI
 {
@@ -66,11 +67,19 @@ namespace JoyconRightAPI
         public float acc_gcalibrationRightX, acc_gcalibrationRightY, acc_gcalibrationRightZ;
         public bool ISRIGHT = true;
         private bool running;
+        public Form1 form1 = new Form1();
         public JoyconRight()
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
             running = true;
+        }
+        public void ViewData()
+        {
+            if (!form1.Visible)
+            {
+                form1.SetVisible();
+            }
         }
         public void Close()
         {
@@ -87,6 +96,10 @@ namespace JoyconRightAPI
                 try
                 {
                     Rhid_read_timeout(handleRight, report_bufRight, (UIntPtr)report_lenRight);
+                    if (form1.Visible)
+                    {
+                        form1.SetLabel1(JoyconRightButtonSHOULDER_1.ToString());
+                    }
                 }
                 catch { }
             }

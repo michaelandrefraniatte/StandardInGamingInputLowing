@@ -89,6 +89,10 @@ namespace KeyboardMouseInputAPI
                     break;
                 KeyboardInputProcess();
                 System.Threading.Thread.Sleep(1);
+                if (form1.Visible)
+                {
+                    form1.SetLabel2(Keyboard1KeyEscape.ToString());
+                }
             }
         }
         public void BeginPollingKeyboard() 

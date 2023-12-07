@@ -7,3 +7,12 @@ C:\Users\micha\Documents\github\ciine\Src\ciine-gp-xc\V2\ciine\Xinput\obj\Releas
 C:\Users\micha\Documents\github\ciine\Src\ciine-gp-xc\V2\ciine\Xinput\bin\Release\SharpDX.dll
 C:\Users\micha\Documents\github\ciine\Src\ciine-gp-xc\V2\ciine\Xinput\bin\Release\SharpDX.XInput.dll
 C:\Users\micha\Documents\github\ciine\Src\ciine-gp-xc\V2\ciine\Xinput\obj\Release\Xinput.csproj.CopyComplete
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\Xinput\bin\Release\Xinput.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\Xinput\bin\Release\Xinput.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\Xinput\obj\Release\Xinput.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\Xinput\obj\Release\Xinput.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\Xinput\obj\Release\Xinput.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\Xinput\obj\Release\Xinput.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\Xinput\obj\Release\Xinput.csproj.CopyComplete
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\Xinput\obj\Release\Xinput.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\Xinput\obj\Release\Xinput.pdb

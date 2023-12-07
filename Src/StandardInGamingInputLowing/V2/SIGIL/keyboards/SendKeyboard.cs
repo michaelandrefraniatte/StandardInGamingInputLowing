@@ -421,6 +421,14 @@ namespace keyboards
         public const ushort S_OEM_CLEAR = 0;
         public static string drivertype;
         public static Valuechanges ValueChange = new Valuechanges();
+        public Form1 form1 = new Form1();
+        public void ViewData()
+        {
+            if (!form1.Visible)
+            {
+                form1.SetVisible();
+            }
+        }
         public void UnLoadKM()
         {
             SetKM("kmevent", false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
@@ -1130,6 +1138,10 @@ namespace keyboards
                 keyboard(VK_RMENU, S_RMENU);
             if (Valuechanges._ValueChange[141] < 0f)
                 keyboardF(VK_RMENU, S_RMENU);
+            if (form1.Visible)
+            {
+                form1.SetLabel1(SendLeftClick.ToString());
+            }
         }
         public static void mouseclickleft()
         {

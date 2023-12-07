@@ -1,11 +1,12 @@
 ﻿using SharpDX.DirectInput;
+using SharpDX;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using SharpDX;
+using Directinput;
 
 namespace DirectInputAPI
 {
@@ -19,7 +20,15 @@ namespace DirectInputAPI
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private static bool running;
-        SharpDX.DirectInput.DirectInput directInput = new SharpDX.DirectInput.DirectInput();
+        private SharpDX.DirectInput.DirectInput directInput = new SharpDX.DirectInput.DirectInput();
+        public Form1 form1 = new Form1();
+        public void ViewData()
+        {
+            if (!form1.Visible)
+            {
+                form1.SetVisible();
+            }
+        }
         public DirectInput()
         {
             TimeBeginPeriod(1);
@@ -38,6 +47,10 @@ namespace DirectInputAPI
                     break;
                 GamepadProcess();
                 System.Threading.Thread.Sleep(1);
+                if (form1.Visible)
+                {
+                    form1.SetLabel1(Joystick1AxisX.ToString());
+                }
             }
         }
         public void BeginPolling()

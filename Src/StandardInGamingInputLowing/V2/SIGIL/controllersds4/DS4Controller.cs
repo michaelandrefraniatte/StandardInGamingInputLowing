@@ -7,8 +7,16 @@ namespace controllersds4
 {
     public class DS4Controller
     {
+        public Form1 form1 = new Form1();
         public static IDualShock4Controller Controller1 { get; set; }
         private static ViGEmClient client1 = new ViGEmClient();
+        public void ViewData()
+        {
+            if (!form1.Visible)
+            {
+                form1.SetVisible();
+            }
+        }
         public void Connect()
         {
             Controller1 = client1.CreateDualShock4Controller();
@@ -80,6 +88,10 @@ namespace controllersds4
             Controller1.SetButtonState(DualShock4Button.TriggerRight, Controller1DS4_Send_RightTrigger);
             Controller1.SetSliderValue(DualShock4Slider.RightTrigger, (byte)Controller1DS4_Send_RightTriggerPosition);
             Controller1.SubmitReport();
+            if (form1.Visible)
+            {
+                form1.SetLabel1(Controller1DS4_Send_Options.ToString());
+            }
         }
     }
 }
