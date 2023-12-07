@@ -625,9 +625,8 @@ namespace SIGIL
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Windows.Forms.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Drawing.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Runtime.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\SharpDX.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\SharpDX.DirectInput.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllers.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\KeyboardMouseinput.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Valuechanges.dll");
         }
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
