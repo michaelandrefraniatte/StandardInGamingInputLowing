@@ -202,17 +202,37 @@
       <Project>{8bde6140-ee1c-4fd9-85e8-7f0dfd14ce94}</Project>
       <Name>controllers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Directinput\Directinput.csproj">
+      <Project>{a7930c91-022c-4017-9b78-795c26e0b2a6}</Project>
+      <Name>Directinput</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dualsense\Dualsense.csproj">
-      <Project>{36d556fe-5a82-4929-87fa-97d5f0a45665}</Project>
+      <Project>{b2e94d04-b936-4a8e-a0b2-2a8a3b20a807}</Project>
       <Name>Dualsense</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dualshock4\Dualshock4.csproj">
-      <Project>{febaad46-13f4-4b24-98c1-f14231bd1311}</Project>
+      <Project>{70861a78-63e8-4b89-98e8-618780b9edc0}</Project>
       <Name>Dualshock4</Name>
     </ProjectReference>
     <ProjectReference Include="..\Interceptions\Interceptions.csproj">
       <Project>{c8a72023-3693-4c30-a5ed-9502fe0c10af}</Project>
       <Name>Interceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Joyconcharginggrip\Joyconcharginggrip.csproj">
+      <Project>{4505eac8-c05a-4ea0-b48c-9973fa61de22}</Project>
+      <Name>Joyconcharginggrip</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Joyconleft\Joyconleft.csproj">
+      <Project>{338b155d-661d-4851-a5c0-449e07aff13c}</Project>
+      <Name>Joyconleft</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Joyconright\Joyconright.csproj">
+      <Project>{a81591a0-370d-463e-83cf-cf0323d6c892}</Project>
+      <Name>Joyconright</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KeyboardMouseinput\KeyboardMouseinput.csproj">
+      <Project>{b95b249f-c364-43b8-a942-3df5e926edda}</Project>
+      <Name>KeyboardMouseinput</Name>
     </ProjectReference>
     <ProjectReference Include="..\keyboards\keyboards.csproj">
       <Project>{3a819ecf-c03a-49fb-b3f5-4e7a5563fb42}</Project>
@@ -222,9 +242,21 @@
       <Project>{53849bec-e4f5-4043-bfd3-6b87cfc1c1ff}</Project>
       <Name>mouses</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Switchprocontroller\Switchprocontroller.csproj">
+      <Project>{84fcc24d-1231-484b-9900-3aa6bd8cc2c5}</Project>
+      <Name>Switchprocontroller</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Valuechanges\Valuechanges.csproj">
       <Project>{211d48a2-f49f-41ac-bfdb-5d92ac6043dc}</Project>
       <Name>Valuechanges</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wiimote\Wiimote.csproj">
+      <Project>{1fa4503b-17a2-4de6-9c7e-dd1e5568e4f4}</Project>
+      <Name>Wiimote</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xinput\Xinput.csproj">
+      <Project>{7ab6bc74-d70b-4547-bee7-97e81647a958}</Project>
+      <Name>Xinput</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

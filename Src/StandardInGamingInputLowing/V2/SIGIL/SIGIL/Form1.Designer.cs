@@ -44,6 +44,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runProcessAtLaunchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startProgramAtBootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,28 +53,6 @@
             this.minimizeToSystrayAtBootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.associateFileExtensionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeFileAssociationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vendorIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbdsvendorid = new System.Windows.Forms.ToolStripTextBox();
-            this.productIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbdsproductid = new System.Windows.Forms.ToolStripTextBox();
-            this.labelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbdslabel = new System.Windows.Forms.ToolStripTextBox();
-            this.dS4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vendorIDToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbds4vendorid = new System.Windows.Forms.ToolStripTextBox();
-            this.productIDToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbds4productid = new System.Windows.Forms.ToolStripTextBox();
-            this.labelToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbds4label = new System.Windows.Forms.ToolStripTextBox();
-            this.intToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.keyboardIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbintkeyboardid = new System.Windows.Forms.ToolStripTextBox();
-            this.mouseIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbintmouseid = new System.Windows.Forms.ToolStripTextBox();
-            this.typeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,8 +61,6 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autocompleteMenu1 = new AutocompleteMenuNS.AutocompleteMenu();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -111,6 +89,7 @@
             this.fastColoredTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.CSharp;
             this.fastColoredTextBox1.LeftBracket = '(';
@@ -136,9 +115,6 @@
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.optionToolStripMenuItem,
-            this.pSToolStripMenuItem,
-            this.intToolStripMenuItem,
-            this.typeToolStripMenuItem,
             this.processToolStripMenuItem,
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -208,7 +184,7 @@
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
@@ -216,7 +192,7 @@
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -224,20 +200,20 @@
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(176, 6);
             // 
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.undoToolStripMenuItem.Text = "Undo";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
@@ -245,9 +221,21 @@
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
             this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.redoToolStripMenuItem.Text = "Redo";
             this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(176, 6);
+            // 
+            // replaceToolStripMenuItem
+            // 
+            this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
+            this.replaceToolStripMenuItem.Text = "Replace";
+            this.replaceToolStripMenuItem.Click += new System.EventHandler(this.replaceToolStripMenuItem_Click);
             // 
             // optionToolStripMenuItem
             // 
@@ -313,264 +301,6 @@
             this.removeFileAssociationToolStripMenuItem.Text = "Remove file association";
             this.removeFileAssociationToolStripMenuItem.Click += new System.EventHandler(this.removeFileAssociationToolStripMenuItem_Click);
             // 
-            // pSToolStripMenuItem
-            // 
-            this.pSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dSToolStripMenuItem,
-            this.dS4ToolStripMenuItem});
-            this.pSToolStripMenuItem.Name = "pSToolStripMenuItem";
-            this.pSToolStripMenuItem.Size = new System.Drawing.Size(39, 24);
-            this.pSToolStripMenuItem.Text = "PS";
-            // 
-            // dSToolStripMenuItem
-            // 
-            this.dSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.vendorIDToolStripMenuItem,
-            this.productIDToolStripMenuItem,
-            this.labelToolStripMenuItem});
-            this.dSToolStripMenuItem.Name = "dSToolStripMenuItem";
-            this.dSToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
-            this.dSToolStripMenuItem.Text = "DS";
-            // 
-            // vendorIDToolStripMenuItem
-            // 
-            this.vendorIDToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tbdsvendorid});
-            this.vendorIDToolStripMenuItem.Name = "vendorIDToolStripMenuItem";
-            this.vendorIDToolStripMenuItem.Size = new System.Drawing.Size(162, 26);
-            this.vendorIDToolStripMenuItem.Text = "Vendor ID";
-            // 
-            // tbdsvendorid
-            // 
-            this.tbdsvendorid.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tbdsvendorid.Name = "tbdsvendorid";
-            this.tbdsvendorid.Size = new System.Drawing.Size(100, 27);
-            this.tbdsvendorid.Text = "54C";
-            // 
-            // productIDToolStripMenuItem
-            // 
-            this.productIDToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tbdsproductid});
-            this.productIDToolStripMenuItem.Name = "productIDToolStripMenuItem";
-            this.productIDToolStripMenuItem.Size = new System.Drawing.Size(162, 26);
-            this.productIDToolStripMenuItem.Text = "Product ID";
-            // 
-            // tbdsproductid
-            // 
-            this.tbdsproductid.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tbdsproductid.Name = "tbdsproductid";
-            this.tbdsproductid.Size = new System.Drawing.Size(100, 27);
-            this.tbdsproductid.Text = "CE6";
-            // 
-            // labelToolStripMenuItem
-            // 
-            this.labelToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tbdslabel});
-            this.labelToolStripMenuItem.Name = "labelToolStripMenuItem";
-            this.labelToolStripMenuItem.Size = new System.Drawing.Size(162, 26);
-            this.labelToolStripMenuItem.Text = "Label";
-            // 
-            // tbdslabel
-            // 
-            this.tbdslabel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tbdslabel.Name = "tbdslabel";
-            this.tbdslabel.Size = new System.Drawing.Size(100, 27);
-            this.tbdslabel.Text = "DualSense";
-            // 
-            // dS4ToolStripMenuItem
-            // 
-            this.dS4ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.vendorIDToolStripMenuItem1,
-            this.productIDToolStripMenuItem1,
-            this.labelToolStripMenuItem1});
-            this.dS4ToolStripMenuItem.Name = "dS4ToolStripMenuItem";
-            this.dS4ToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
-            this.dS4ToolStripMenuItem.Text = "DS4";
-            // 
-            // vendorIDToolStripMenuItem1
-            // 
-            this.vendorIDToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tbds4vendorid});
-            this.vendorIDToolStripMenuItem1.Name = "vendorIDToolStripMenuItem1";
-            this.vendorIDToolStripMenuItem1.Size = new System.Drawing.Size(162, 26);
-            this.vendorIDToolStripMenuItem1.Text = "Vendor ID";
-            // 
-            // tbds4vendorid
-            // 
-            this.tbds4vendorid.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tbds4vendorid.Name = "tbds4vendorid";
-            this.tbds4vendorid.Size = new System.Drawing.Size(100, 27);
-            this.tbds4vendorid.Text = "54C";
-            // 
-            // productIDToolStripMenuItem1
-            // 
-            this.productIDToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tbds4productid});
-            this.productIDToolStripMenuItem1.Name = "productIDToolStripMenuItem1";
-            this.productIDToolStripMenuItem1.Size = new System.Drawing.Size(162, 26);
-            this.productIDToolStripMenuItem1.Text = "Product ID";
-            // 
-            // tbds4productid
-            // 
-            this.tbds4productid.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tbds4productid.Name = "tbds4productid";
-            this.tbds4productid.Size = new System.Drawing.Size(100, 27);
-            this.tbds4productid.Text = "9CC";
-            // 
-            // labelToolStripMenuItem1
-            // 
-            this.labelToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tbds4label});
-            this.labelToolStripMenuItem1.Name = "labelToolStripMenuItem1";
-            this.labelToolStripMenuItem1.Size = new System.Drawing.Size(162, 26);
-            this.labelToolStripMenuItem1.Text = "Label";
-            // 
-            // tbds4label
-            // 
-            this.tbds4label.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tbds4label.Name = "tbds4label";
-            this.tbds4label.Size = new System.Drawing.Size(100, 27);
-            this.tbds4label.Text = "Wireless Controller";
-            // 
-            // intToolStripMenuItem
-            // 
-            this.intToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.keyboardIDToolStripMenuItem,
-            this.mouseIDToolStripMenuItem});
-            this.intToolStripMenuItem.Name = "intToolStripMenuItem";
-            this.intToolStripMenuItem.Size = new System.Drawing.Size(40, 24);
-            this.intToolStripMenuItem.Text = "Int";
-            // 
-            // keyboardIDToolStripMenuItem
-            // 
-            this.keyboardIDToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tbintkeyboardid});
-            this.keyboardIDToolStripMenuItem.Name = "keyboardIDToolStripMenuItem";
-            this.keyboardIDToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
-            this.keyboardIDToolStripMenuItem.Text = "Keyboard ID";
-            // 
-            // tbintkeyboardid
-            // 
-            this.tbintkeyboardid.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tbintkeyboardid.Name = "tbintkeyboardid";
-            this.tbintkeyboardid.Size = new System.Drawing.Size(100, 27);
-            this.tbintkeyboardid.Text = "2";
-            // 
-            // mouseIDToolStripMenuItem
-            // 
-            this.mouseIDToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tbintmouseid});
-            this.mouseIDToolStripMenuItem.Name = "mouseIDToolStripMenuItem";
-            this.mouseIDToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
-            this.mouseIDToolStripMenuItem.Text = "Mouse ID";
-            // 
-            // tbintmouseid
-            // 
-            this.tbintmouseid.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tbintmouseid.Name = "tbintmouseid";
-            this.tbintmouseid.Size = new System.Drawing.Size(100, 27);
-            this.tbintmouseid.Text = "12";
-            // 
-            // typeToolStripMenuItem
-            // 
-            this.typeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripComboBox1});
-            this.typeToolStripMenuItem.Name = "typeToolStripMenuItem";
-            this.typeToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
-            this.typeToolStripMenuItem.Text = "Type";
-            // 
-            // toolStripComboBox1
-            // 
-            this.toolStripComboBox1.Items.AddRange(new object[] {
-            "WiiJoyL-XC",
-            "WiiJoyR-XC",
-            "Wii-XC",
-            "Joys-XC",
-            "JoyL-XC",
-            "JoyR-XC",
-            "SPC-XC",
-            "JCG-XC",
-            "DIC-XC",
-            "DICM-XC",
-            "DS-XC",
-            "DS4-XC",
-            "KM-XC",
-            "XC-XC",
-            "XCM-XC",
-            "MJoyL-XC",
-            "MJoyR-XC",
-            "WiiJoyL-KM",
-            "WiiJoyR-KM",
-            "Wii-KM",
-            "Joys-KM",
-            "JoyL-KM",
-            "JoyR-KM",
-            "SPC-KM",
-            "JCG-KM",
-            "DIC-KM",
-            "DICM-KM",
-            "DS-KM",
-            "DS4-KM",
-            "KM-KM",
-            "XC-KM",
-            "XCM-KM",
-            "MJoyL-KM",
-            "MJoyR-KM",
-            "WiiJoyL-Int",
-            "WiiJoyR-Int",
-            "Wii-Int",
-            "Joys-Int",
-            "JoyL-Int",
-            "JoyR-Int",
-            "SPC-Int",
-            "JCG-Int",
-            "DIC-Int",
-            "DICM-Int",
-            "DS-Int",
-            "DS4-Int",
-            "KM-Int",
-            "XC-Int",
-            "XCM-Int",
-            "MJoyL-Int",
-            "MJoyR-Int",
-            "WiiJoyL-DS4",
-            "WiiJoyR-DS4",
-            "Wii-DS4",
-            "Joys-DS4",
-            "JoyL-DS4",
-            "JoyR-DS4",
-            "SPC-DS4",
-            "JCG-DS4",
-            "DIC-DS4",
-            "DICM-DS4",
-            "DS-DS4",
-            "DS4-DS4",
-            "KM-DS4",
-            "XC-DS4",
-            "XCM-DS4",
-            "MJoyL-DS4",
-            "MJoyR-DS4",
-            "WiiJoyL-VJoy",
-            "WiiJoyR-VJoy",
-            "Wii-VJoy",
-            "Joys-VJoy",
-            "JoyL-VJoy",
-            "JoyR-VJoy",
-            "SPC-VJoy",
-            "JCG-VJoy",
-            "DIC-VJoy",
-            "DICM-VJoy",
-            "DS-VJoy",
-            "DS4-VJoy",
-            "KM-VJoy",
-            "XC-VJoy",
-            "XCM-VJoy",
-            "MJoyL-VJoy",
-            "MJoyR-VJoy"});
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 28);
-            this.toolStripComboBox1.TextChanged += new System.EventHandler(this.toolStripComboBox1_TextChanged);
-            // 
             // processToolStripMenuItem
             // 
             this.processToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -584,7 +314,7 @@
             // 
             this.runToolStripMenuItem.Name = "runToolStripMenuItem";
             this.runToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.runToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.runToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.runToolStripMenuItem.Text = "Run";
             this.runToolStripMenuItem.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
             // 
@@ -592,7 +322,7 @@
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
             this.testToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.K)));
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.testToolStripMenuItem.Text = "Test";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
@@ -635,18 +365,6 @@
             this.notifyIcon1.Text = "SIGIL";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
-            // 
-            // replaceToolStripMenuItem
-            // 
-            this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.replaceToolStripMenuItem.Text = "Replace";
-            this.replaceToolStripMenuItem.Click += new System.EventHandler(this.replaceToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
             // 
             // Form1
             // 
@@ -693,34 +411,12 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem typeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
-        private System.Windows.Forms.ToolStripMenuItem pSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem vendorIDToolStripMenuItem;
-        private System.Windows.Forms.ToolStripTextBox tbdsvendorid;
-        private System.Windows.Forms.ToolStripMenuItem productIDToolStripMenuItem;
-        private System.Windows.Forms.ToolStripTextBox tbdsproductid;
-        private System.Windows.Forms.ToolStripMenuItem labelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripTextBox tbdslabel;
-        private System.Windows.Forms.ToolStripMenuItem dS4ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem vendorIDToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripTextBox tbds4vendorid;
-        private System.Windows.Forms.ToolStripMenuItem productIDToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripTextBox tbds4productid;
-        private System.Windows.Forms.ToolStripMenuItem labelToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripTextBox tbds4label;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem runProcessAtLaunchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startProgramAtBootToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem minimizeToSystrayAtCloseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem minimizeToSystrayAtBootToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem intToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem keyboardIDToolStripMenuItem;
-        private System.Windows.Forms.ToolStripTextBox tbintkeyboardid;
-        private System.Windows.Forms.ToolStripMenuItem mouseIDToolStripMenuItem;
-        private System.Windows.Forms.ToolStripTextBox tbintmouseid;
         private System.Windows.Forms.ToolStripMenuItem associateFileExtensionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeFileAssociationToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
