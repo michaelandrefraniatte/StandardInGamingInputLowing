@@ -64,7 +64,6 @@ namespace WiiMoteAPI
             mStream.Dispose();
             handle.Close();
             handle.Dispose();
-            wiimotedisconnect();
         }
         public void BeginPolling()
         {

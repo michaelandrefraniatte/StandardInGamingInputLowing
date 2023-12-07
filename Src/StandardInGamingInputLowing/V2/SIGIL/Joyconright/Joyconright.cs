@@ -79,7 +79,6 @@ namespace JoyconRightAPI
             Rhid_close(handleRight);
             handleRight.Close();
             handleRight.Dispose();
-            joyconrightdisconnect();
         }
         private void taskDRight()
         {

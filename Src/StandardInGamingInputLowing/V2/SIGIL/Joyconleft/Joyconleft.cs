@@ -79,7 +79,6 @@ namespace JoyconLeftAPI
             Lhid_close(handleLeft);
             handleLeft.Close();
             handleLeft.Dispose();
-            joyconleftdisconnect();
         }
         private void taskDLeft()
         {

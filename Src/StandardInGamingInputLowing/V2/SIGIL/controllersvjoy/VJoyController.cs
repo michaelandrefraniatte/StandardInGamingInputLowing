@@ -5,16 +5,16 @@ namespace controllersvjoy
     public class VJoyController
     {
         public static VirtualJoystick joystick1;
-        public static void Connect()
+        public void Connect()
         {
             joystick1 = new VirtualJoystick(1);
             joystick1.Aquire();
         }
-        public static void Disconnect()
+        public void Disconnect()
         {
             joystick1.Dispose();
         }
-        public static void SubmitReport1(bool Controller1VJoy_Send_1, bool Controller1VJoy_Send_2, bool Controller1VJoy_Send_3, bool Controller1VJoy_Send_4, bool Controller1VJoy_Send_5, bool Controller1VJoy_Send_6, bool Controller1VJoy_Send_7, bool Controller1VJoy_Send_8, double Controller1VJoy_Send_X, double Controller1VJoy_Send_Y, double Controller1VJoy_Send_Z, double Controller1VJoy_Send_WHL, double Controller1VJoy_Send_SL0, double Controller1VJoy_Send_SL1, double Controller1VJoy_Send_RX, double Controller1VJoy_Send_RY, double Controller1VJoy_Send_RZ, double Controller1VJoy_Send_POV, double Controller1VJoy_Send_Hat, double Controller1VJoy_Send_HatExt1, double Controller1VJoy_Send_HatExt2, double Controller1VJoy_Send_HatExt3)
+        public void SubmitReport1(bool Controller1VJoy_Send_1, bool Controller1VJoy_Send_2, bool Controller1VJoy_Send_3, bool Controller1VJoy_Send_4, bool Controller1VJoy_Send_5, bool Controller1VJoy_Send_6, bool Controller1VJoy_Send_7, bool Controller1VJoy_Send_8, double Controller1VJoy_Send_X, double Controller1VJoy_Send_Y, double Controller1VJoy_Send_Z, double Controller1VJoy_Send_WHL, double Controller1VJoy_Send_SL0, double Controller1VJoy_Send_SL1, double Controller1VJoy_Send_RX, double Controller1VJoy_Send_RY, double Controller1VJoy_Send_RZ, double Controller1VJoy_Send_POV, double Controller1VJoy_Send_Hat, double Controller1VJoy_Send_HatExt1, double Controller1VJoy_Send_HatExt2, double Controller1VJoy_Send_HatExt3)
         {
             joystick1.SetJoystickButton(Controller1VJoy_Send_1, 1);
             joystick1.SetJoystickButton(Controller1VJoy_Send_2, 2);

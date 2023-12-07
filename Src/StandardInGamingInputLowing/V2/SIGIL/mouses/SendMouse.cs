@@ -19,7 +19,12 @@ namespace mouses
         [DllImport("user32.dll")]
         public static extern void SetCursorPos(int X, int Y);
         public static string drivertype;
-        public static void SetKM(string KeyboardMouseDriverType, double MouseMoveX, double MouseMoveY, double MouseAbsX, double MouseAbsY, double MouseDesktopX, double MouseDesktopY)
+        public void UnLoadKM()
+        {
+            SetKM("kmevent", 0, 0, 0, 0, 0, 0);
+            SetKM("sendinput", 0, 0, 0, 0, 0, 0);
+        }
+        public void SetKM(string KeyboardMouseDriverType, double MouseMoveX, double MouseMoveY, double MouseAbsX, double MouseAbsY, double MouseDesktopX, double MouseDesktopY)
         {
             drivertype = KeyboardMouseDriverType;
             if (MouseMoveX != 0f | MouseMoveY != 0f)

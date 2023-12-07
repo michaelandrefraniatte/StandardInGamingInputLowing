@@ -9,17 +9,17 @@ namespace controllersds4
     {
         public static IDualShock4Controller Controller1 { get; set; }
         private static ViGEmClient client1 = new ViGEmClient();
-        public static void Connect()
+        public void Connect()
         {
             Controller1 = client1.CreateDualShock4Controller();
             Controller1.Connect();
         }
-        public static void Disconnect()
+        public void Disconnect()
         {
             Controller1.Disconnect();
             client1.Dispose();
         }
-        public static void SubmitReport1(bool Controller1DS4_Send_Options, bool Controller1DS4_Send_Option, bool Controller1DS4_Send_ThumbLeft, bool Controller1DS4_Send_ThumbRight, bool Controller1DS4_Send_ShoulderLeft, bool Controller1DS4_Send_ShoulderRight, bool Controller1DS4_Send_Cross, bool Controller1DS4_Send_Circle, bool Controller1DS4_Send_Square, bool Controller1DS4_Send_Triangle, bool Controller1DS4_Send_Ps, bool Controller1DS4_Send_Touchpad, bool Controller1DS4_Send_Share, bool Controller1DS4_Send_DPadUp, bool Controller1DS4_Send_DPadDown, bool Controller1DS4_Send_DPadLeft, bool Controller1DS4_Send_DPadRight, double Controller1DS4_Send_LeftThumbX, double Controller1DS4_Send_RightThumbX, double Controller1DS4_Send_LeftThumbY, double Controller1DS4_Send_RightThumbY, bool Controller1DS4_Send_LeftTrigger, bool Controller1DS4_Send_RightTrigger, double Controller1DS4_Send_LeftTriggerPosition, double Controller1DS4_Send_RightTriggerPosition)
+        public void SubmitReport1(bool Controller1DS4_Send_Options, bool Controller1DS4_Send_Option, bool Controller1DS4_Send_ThumbLeft, bool Controller1DS4_Send_ThumbRight, bool Controller1DS4_Send_ShoulderLeft, bool Controller1DS4_Send_ShoulderRight, bool Controller1DS4_Send_Cross, bool Controller1DS4_Send_Circle, bool Controller1DS4_Send_Square, bool Controller1DS4_Send_Triangle, bool Controller1DS4_Send_Ps, bool Controller1DS4_Send_Touchpad, bool Controller1DS4_Send_Share, bool Controller1DS4_Send_DPadUp, bool Controller1DS4_Send_DPadDown, bool Controller1DS4_Send_DPadLeft, bool Controller1DS4_Send_DPadRight, double Controller1DS4_Send_LeftThumbX, double Controller1DS4_Send_RightThumbX, double Controller1DS4_Send_LeftThumbY, double Controller1DS4_Send_RightThumbY, bool Controller1DS4_Send_LeftTrigger, bool Controller1DS4_Send_RightTrigger, double Controller1DS4_Send_LeftTriggerPosition, double Controller1DS4_Send_RightTriggerPosition)
         {
             Controller1.SetButtonState(DualShock4Button.Options, Controller1DS4_Send_Options);
             Controller1.SetButtonState(DualShock4SpecialButton.Options, Controller1DS4_Send_Option);

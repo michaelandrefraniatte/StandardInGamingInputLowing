@@ -50,15 +50,11 @@ namespace KeyboardMouseInputAPI
             NtSetTimerResolution(1, true, ref CurrentResolution);
             running = true;
         }
-        public void ViewData(bool viewdata)
+        public void ViewData()
         {
-            if (!form1.Visible & viewdata)
+            if (!form1.Visible)
             {
                 form1.SetVisible();
-            }
-            if (form1.Visible & !viewdata)
-            {
-                form1.SetUnvisible();
             }
         }
         public void Close()
