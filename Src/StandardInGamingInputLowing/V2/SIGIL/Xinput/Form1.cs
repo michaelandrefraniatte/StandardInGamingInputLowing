@@ -20,10 +20,6 @@ namespace Xinput
         {
             this.label1.Text = str;
         }
-        public void SetLabel2(string str)
-        {
-            this.label2.Text = str;
-        }
         public void SetVisible()
         {
             this.ShowDialog();

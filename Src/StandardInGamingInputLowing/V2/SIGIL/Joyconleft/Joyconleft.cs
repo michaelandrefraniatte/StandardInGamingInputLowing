@@ -98,7 +98,29 @@ namespace JoyconLeftAPI
                     Lhid_read_timeout(handleLeft, report_bufLeft, (UIntPtr)report_lenLeft);
                     if (form1.Visible)
                     {
-                        form1.SetLabel1(JoyconLeftButtonSHOULDER_1.ToString());
+                        string str = "JoyconLeftStickX : " + JoyconLeftStickX + Environment.NewLine;
+                        str += "JoyconLeftStickY : " + JoyconLeftStickY + Environment.NewLine;
+                        str += "JoyconLeftButtonSHOULDER_1 : " + JoyconLeftButtonSHOULDER_1 + Environment.NewLine;
+                        str += "JoyconLeftButtonSHOULDER_2 : " + JoyconLeftButtonSHOULDER_2 + Environment.NewLine;
+                        str += "JoyconLeftButtonSR : " + JoyconLeftButtonSR + Environment.NewLine;
+                        str += "JoyconLeftButtonSL : " + JoyconLeftButtonSL + Environment.NewLine;
+                        str += "JoyconLeftButtonDPAD_DOWN : " + JoyconLeftButtonDPAD_DOWN + Environment.NewLine;
+                        str += "JoyconLeftButtonDPAD_RIGHT : " + JoyconLeftButtonDPAD_RIGHT + Environment.NewLine;
+                        str += "JoyconLeftButtonDPAD_UP : " + JoyconLeftButtonDPAD_UP + Environment.NewLine;
+                        str += "JoyconLeftButtonDPAD_LEFT : " + JoyconLeftButtonDPAD_LEFT + Environment.NewLine;
+                        str += "JoyconLeftButtonMINUS : " + JoyconLeftButtonMINUS + Environment.NewLine;
+                        str += "JoyconLeftButtonCAPTURE : " + JoyconLeftButtonCAPTURE + Environment.NewLine;
+                        str += "JoyconLeftButtonSTICK : " + JoyconLeftButtonSTICK + Environment.NewLine;
+                        str += "JoyconLeftButtonACC : " + JoyconLeftButtonACC + Environment.NewLine;
+                        str += "JoyconLeftButtonSMA : " + JoyconLeftButtonSMA + Environment.NewLine;
+                        str += "JoyconLeftRollLeft : " + JoyconLeftRollLeft + Environment.NewLine;
+                        str += "JoyconLeftRollRight : " + JoyconLeftRollRight + Environment.NewLine;
+                        str += "JoyconLeftAccelX : " + JoyconLeftAccelX + Environment.NewLine;
+                        str += "JoyconLeftAccelY : " + JoyconLeftAccelY + Environment.NewLine;
+                        str += "JoyconLeftGyroX : " + JoyconLeftGyroX + Environment.NewLine;
+                        str += "JoyconLeftGyroY : " + JoyconLeftGyroY + Environment.NewLine;
+                        str += Environment.NewLine;
+                        form1.SetLabel1(str);
                     }
                 }
                 catch { }

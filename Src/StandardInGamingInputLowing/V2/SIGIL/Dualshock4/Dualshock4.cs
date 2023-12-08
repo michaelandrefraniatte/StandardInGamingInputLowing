@@ -176,7 +176,40 @@ namespace DualShock4API
                 ds4data = (await readBuffer).Data.Skip(1).ToArray();
                 if (form1.Visible)
                 {
-                    form1.SetLabel1(PS4ControllerLeftStickX.ToString());
+                    string str = "PS4ControllerLeftStickX : " + PS4ControllerLeftStickX + Environment.NewLine;
+                    str += "PS4ControllerLeftStickY : " + PS4ControllerLeftStickY + Environment.NewLine;
+                    str += "PS4ControllerRightStickX : " + PS4ControllerRightStickX + Environment.NewLine;
+                    str += "PS4ControllerRightStickY : " + PS4ControllerRightStickY + Environment.NewLine;
+                    str += "PS4ControllerLeftTriggerPosition : " + PS4ControllerLeftTriggerPosition + Environment.NewLine;
+                    str += "PS4ControllerRightTriggerPosition : " + PS4ControllerRightTriggerPosition + Environment.NewLine;
+                    str += "PS4ControllerTouchX : " + PS4ControllerTouchX + Environment.NewLine;
+                    str += "PS4ControllerTouchY : " + PS4ControllerTouchY + Environment.NewLine;
+                    str += "PS4ControllerTouchOn : " + PS4ControllerTouchOn + Environment.NewLine;
+                    str += "PS4ControllerGyroX : " + PS4ControllerGyroX + Environment.NewLine;
+                    str += "PS4ControllerGyroY : " + PS4ControllerGyroY + Environment.NewLine;
+                    str += "PS4ControllerAccelX : " + PS4ControllerAccelX + Environment.NewLine;
+                    str += "PS4ControllerAccelY : " + PS4ControllerAccelY + Environment.NewLine;
+                    str += "PS4ControllerButtonCrossPressed : " + PS4ControllerButtonCrossPressed + Environment.NewLine;
+                    str += "PS4ControllerButtonCirclePressed : " + PS4ControllerButtonCirclePressed + Environment.NewLine;
+                    str += "PS4ControllerButtonSquarePressed : " + PS4ControllerButtonSquarePressed + Environment.NewLine;
+                    str += "PS4ControllerButtonTrianglePressed : " + PS4ControllerButtonTrianglePressed + Environment.NewLine;
+                    str += "PS4ControllerButtonDPadUpPressed : " + PS4ControllerButtonDPadUpPressed + Environment.NewLine;
+                    str += "PS4ControllerButtonDPadRightPressed : " + PS4ControllerButtonDPadRightPressed + Environment.NewLine;
+                    str += "PS4ControllerButtonDPadDownPressed : " + PS4ControllerButtonDPadDownPressed + Environment.NewLine;
+                    str += "PS4ControllerButtonDPadLeftPressed : " + PS4ControllerButtonDPadLeftPressed + Environment.NewLine;
+                    str += "PS4ControllerButtonL1Pressed : " + PS4ControllerButtonL1Pressed + Environment.NewLine;
+                    str += "PS4ControllerButtonR1Pressed : " + PS4ControllerButtonR1Pressed + Environment.NewLine;
+                    str += "PS4ControllerButtonL2Pressed : " + PS4ControllerButtonL2Pressed + Environment.NewLine;
+                    str += "PS4ControllerButtonR2Pressed : " + PS4ControllerButtonR2Pressed + Environment.NewLine;
+                    str += "PS4ControllerButtonL3Pressed : " + PS4ControllerButtonL3Pressed + Environment.NewLine;
+                    str += "PS4ControllerButtonR3Pressed : " + PS4ControllerButtonR3Pressed + Environment.NewLine;
+                    str += "PS4ControllerButtonCreatePressed : " + PS4ControllerButtonCreatePressed + Environment.NewLine;
+                    str += "PS4ControllerButtonMenuPressed : " + PS4ControllerButtonMenuPressed + Environment.NewLine;
+                    str += "PS4ControllerButtonLogoPressed : " + PS4ControllerButtonLogoPressed + Environment.NewLine;
+                    str += "PS4ControllerButtonTouchpadPressed : " + PS4ControllerButtonTouchpadPressed + Environment.NewLine;
+                    str += "PS4ControllerButtonMicPressed : " + PS4ControllerButtonMicPressed + Environment.NewLine;
+                    str += Environment.NewLine;
+                    form1.SetLabel1(str);
                 }
             }
         }

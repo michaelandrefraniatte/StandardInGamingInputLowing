@@ -91,7 +91,30 @@ namespace WiiMoteAPI
                     reconnectingwiimotebool = false;
                     if (form1.Visible)
                     {
-                        form1.SetLabel1(WiimoteButtonStateA.ToString());
+                        string str = "irx : " + irx + Environment.NewLine;
+                        str += "iry : " + iry + Environment.NewLine;
+                        str += "WiimoteButtonStateA : " + WiimoteButtonStateA + Environment.NewLine;
+                        str += "WiimoteButtonStateB : " + WiimoteButtonStateB + Environment.NewLine;
+                        str += "WiimoteButtonStateMinus : " + WiimoteButtonStateMinus + Environment.NewLine;
+                        str += "WiimoteButtonStateHome : " + WiimoteButtonStateHome + Environment.NewLine;
+                        str += "WiimoteButtonStatePlus : " + WiimoteButtonStatePlus + Environment.NewLine;
+                        str += "WiimoteButtonStateOne : " + WiimoteButtonStateOne + Environment.NewLine;
+                        str += "WiimoteButtonStateTwo : " + WiimoteButtonStateTwo + Environment.NewLine;
+                        str += "WiimoteButtonStateUp : " + WiimoteButtonStateUp + Environment.NewLine;
+                        str += "WiimoteButtonStateDown : " + WiimoteButtonStateDown + Environment.NewLine;
+                        str += "WiimoteButtonStateLeft : " + WiimoteButtonStateLeft + Environment.NewLine;
+                        str += "WiimoteButtonStateRight : " + WiimoteButtonStateRight + Environment.NewLine;
+                        str += "WiimoteRawValuesX : " + WiimoteRawValuesX + Environment.NewLine;
+                        str += "WiimoteRawValuesY : " + WiimoteRawValuesY + Environment.NewLine;
+                        str += "WiimoteRawValuesZ : " + WiimoteRawValuesZ + Environment.NewLine;
+                        str += "WiimoteNunchuckStateRawJoystickX : " + WiimoteNunchuckStateRawJoystickX + Environment.NewLine;
+                        str += "WiimoteNunchuckStateRawJoystickY : " + WiimoteNunchuckStateRawJoystickY + Environment.NewLine;
+                        str += "WiimoteNunchuckStateRawValuesX : " + WiimoteNunchuckStateRawValuesX + Environment.NewLine;
+                        str += "WiimoteNunchuckStateRawValuesY : " + WiimoteNunchuckStateRawValuesY + Environment.NewLine;
+                        str += "WiimoteNunchuckStateRawValuesZ : " + WiimoteNunchuckStateRawValuesZ + Environment.NewLine;
+                        str += "WiimoteNunchuckStateC : " + WiimoteNunchuckStateC + Environment.NewLine;
+                        str += "WiimoteNunchuckStateZ : " + WiimoteNunchuckStateZ + Environment.NewLine;
+                        form1.SetLabel1(str);
                     }
                 }
                 catch { }

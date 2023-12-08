@@ -188,7 +188,44 @@ namespace DualSenseAPI
                 dsdata = (await readBuffer).Data.Skip(1).ToArray();
                 if (form1.Visible)
                 {
-                    form1.SetLabel2(PS5ControllerLeftStickX.ToString());
+                    string str = "PS5ControllerLeftStickX : " + PS5ControllerLeftStickX + Environment.NewLine;
+                    str += "PS5ControllerLeftStickY : " + PS5ControllerLeftStickY + Environment.NewLine;
+                    str += "PS5ControllerRightStickX : " + PS5ControllerRightStickX + Environment.NewLine;
+                    str += "PS5ControllerRightStickY : " + PS5ControllerRightStickY + Environment.NewLine;
+                    str += "PS5ControllerLeftTriggerPosition : " + PS5ControllerLeftTriggerPosition + Environment.NewLine;
+                    str += "PS5ControllerRightTriggerPosition : " + PS5ControllerRightTriggerPosition + Environment.NewLine;
+                    str += "PS5ControllerTouchX : " + PS5ControllerTouchX + Environment.NewLine;
+                    str += "PS5ControllerTouchY : " + PS5ControllerTouchY + Environment.NewLine;
+                    str += "PS5ControllerTouchOn : " + PS5ControllerTouchOn + Environment.NewLine;
+                    str += "PS5ControllerGyroX : " + PS5ControllerGyroX + Environment.NewLine;
+                    str += "PS5ControllerGyroY : " + PS5ControllerGyroY + Environment.NewLine;
+                    str += "PS5ControllerAccelX : " + PS5ControllerAccelX + Environment.NewLine;
+                    str += "PS5ControllerAccelY : " + PS5ControllerAccelY + Environment.NewLine;
+                    str += "PS5ControllerButtonCrossPressed : " + PS5ControllerButtonCrossPressed + Environment.NewLine;
+                    str += "PS5ControllerButtonCirclePressed : " + PS5ControllerButtonCirclePressed + Environment.NewLine;
+                    str += "PS5ControllerButtonSquarePressed : " + PS5ControllerButtonSquarePressed + Environment.NewLine;
+                    str += "PS5ControllerButtonTrianglePressed : " + PS5ControllerButtonTrianglePressed + Environment.NewLine;
+                    str += "PS5ControllerButtonDPadUpPressed : " + PS5ControllerButtonDPadUpPressed + Environment.NewLine;
+                    str += "PS5ControllerButtonDPadRightPressed : " + PS5ControllerButtonDPadRightPressed + Environment.NewLine;
+                    str += "PS5ControllerButtonDPadDownPressed : " + PS5ControllerButtonDPadDownPressed + Environment.NewLine;
+                    str += "PS5ControllerButtonDPadLeftPressed : " + PS5ControllerButtonDPadLeftPressed + Environment.NewLine;
+                    str += "PS5ControllerButtonL1Pressed : " + PS5ControllerButtonL1Pressed + Environment.NewLine;
+                    str += "PS5ControllerButtonR1Pressed : " + PS5ControllerButtonR1Pressed + Environment.NewLine;
+                    str += "PS5ControllerButtonL2Pressed : " + PS5ControllerButtonL2Pressed + Environment.NewLine;
+                    str += "PS5ControllerButtonR2Pressed : " + PS5ControllerButtonR2Pressed + Environment.NewLine;
+                    str += "PS5ControllerButtonL3Pressed : " + PS5ControllerButtonL3Pressed + Environment.NewLine;
+                    str += "PS5ControllerButtonR3Pressed : " + PS5ControllerButtonR3Pressed + Environment.NewLine;
+                    str += "PS5ControllerButtonCreatePressed : " + PS5ControllerButtonCreatePressed + Environment.NewLine;
+                    str += "PS5ControllerButtonMenuPressed : " + PS5ControllerButtonMenuPressed + Environment.NewLine;
+                    str += "PS5ControllerButtonLogoPressed : " + PS5ControllerButtonLogoPressed + Environment.NewLine;
+                    str += "PS5ControllerButtonTouchpadPressed : " + PS5ControllerButtonTouchpadPressed + Environment.NewLine;
+                    str += "PS5ControllerButtonFnLPressed : " + PS5ControllerButtonFnLPressed + Environment.NewLine;
+                    str += "PS5ControllerButtonFnRPressed : " + PS5ControllerButtonFnRPressed + Environment.NewLine;
+                    str += "PS5ControllerButtonBLPPressed : " + PS5ControllerButtonBLPPressed + Environment.NewLine;
+                    str += "PS5ControllerButtonBRPPressed : " + PS5ControllerButtonBRPPressed + Environment.NewLine;
+                    str += "PS5ControllerButtonMicPressed : " + PS5ControllerButtonMicPressed + Environment.NewLine;
+                    str += Environment.NewLine;
+                    form1.SetLabel1(str);
                 }
             }
         }

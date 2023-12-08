@@ -1,4 +1,7 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Drawing;
+using System.Net;
+using System;
+using System.Runtime.InteropServices;
 
 namespace mouses
 {
@@ -48,7 +51,15 @@ namespace mouses
             }
             if (form1.Visible)
             {
-                form1.SetLabel1(MouseMoveX.ToString());
+                string str = "KeyboardMouseDriverType : " + KeyboardMouseDriverType + Environment.NewLine;
+                str += "MouseMoveX : " + MouseMoveX + Environment.NewLine;
+                str += "MouseMoveY : " + MouseMoveY + Environment.NewLine;
+                str += "MouseAbsX : " + MouseAbsX + Environment.NewLine;
+                str += "MouseAbsY : " + MouseAbsY + Environment.NewLine;
+                str += "MouseDesktopX : " + MouseDesktopX + Environment.NewLine;
+                str += "MouseDesktopY : " + MouseDesktopY + Environment.NewLine;
+                str += Environment.NewLine;
+                form1.SetLabel1(str);
             }
         }
         public static void mousebrink(int x, int y)
