@@ -111,6 +111,13 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"Close"));
                 range.SetStyle(StyleMethod, new Regex(@"BeginPolling"));
                 range.SetStyle(StyleMethod, new Regex(@"BeginAsyncPolling"));
+                range.SetStyle(StyleMethod, new Regex(@"Connect"));
+                range.SetStyle(StyleMethod, new Regex(@"Disconnect"));
+                range.SetStyle(StyleMethod, new Regex(@"SubmitReport1"));
+                range.SetStyle(StyleMethod, new Regex(@"EnumerateControllers"));
+                range.SetStyle(StyleMethod, new Regex(@"ProcessStateLogic"));
+                range.SetStyle(StyleMethod, new Regex(@"UnLoadKM"));
+                range.SetStyle(StyleMethod, new Regex(@"SetKM"));
                 range.SetStyle(StyleLibrary, new Regex(@"Valuechanges"));
                 range.SetStyle(StyleClass, new Regex(@"Valuechange"));
                 range.SetStyle(StyleObject, new Regex(@"ValueChange"));
@@ -125,6 +132,83 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"XInput"));
                 range.SetStyle(StyleObject, new Regex(@"xi"));
                 range.SetStyle(StyleMethod, new Regex(@"XInputHookConnect"));
+                range.SetStyle(StyleLibrary, new Regex(@"controllersds4"));
+                range.SetStyle(StyleClass, new Regex(@"DS4Controller"));
+                range.SetStyle(StyleObject, new Regex(@"DS4"));
+                range.SetStyle(StyleLibrary, new Regex(@"controllersvjoy"));
+                range.SetStyle(StyleClass, new Regex(@"VJoyController"));
+                range.SetStyle(StyleObject, new Regex(@"VJoy"));
+                range.SetStyle(StyleLibrary, new Regex(@"Directinput"));
+                range.SetStyle(StyleClass, new Regex(@"DirectInput"));
+                range.SetStyle(StyleObject, new Regex(@"di"));
+                range.SetStyle(StyleMethod, new Regex(@"DirectInputHookConnect"));
+                range.SetStyle(StyleLibrary, new Regex(@"Dualsense"));
+                range.SetStyle(StyleClass, new Regex(@"DualSense"));
+                range.SetStyle(StyleObject, new Regex(@"ds"));
+                range.SetStyle(StyleMethod, new Regex(@"InitDualSenseAccel"));
+                range.SetStyle(StyleLibrary, new Regex(@"Dualshock4"));
+                range.SetStyle(StyleClass, new Regex(@"DualShock4"));
+                range.SetStyle(StyleObject, new Regex(@"ds4"));
+                range.SetStyle(StyleMethod, new Regex(@"InitDualShock4Accel"));
+                range.SetStyle(StyleLibrary, new Regex(@"Interceptions"));
+                range.SetStyle(StyleClass, new Regex(@"SendInterception"));
+                range.SetStyle(StyleClass, new Regex(@"Input"));
+                range.SetStyle(StyleObject, new Regex(@"Int"));
+                range.SetStyle(StyleObject, new Regex(@"input"));
+                range.SetStyle(StyleMethod, new Regex(@"KeyboardFilterMode"));
+                range.SetStyle(StyleMethod, new Regex(@"KeyboardFilterMode.All"));
+                range.SetStyle(StyleMethod, new Regex(@"MouseFilterMode"));
+                range.SetStyle(StyleMethod, new Regex(@"MouseFilterMode.All"));
+                range.SetStyle(StyleMethod, new Regex(@"Load"));
+                range.SetStyle(StyleLibrary, new Regex(@"Wiimote"));
+                range.SetStyle(StyleClass, new Regex(@"WiiMote"));
+                range.SetStyle(StyleObject, new Regex(@"wm"));
+                range.SetStyle(StyleMethod, new Regex(@"Init"));
+                range.SetStyle(StyleLibrary, new Regex(@"Switchprocontroller"));
+                range.SetStyle(StyleClass, new Regex(@"SwitchProController"));
+                range.SetStyle(StyleObject, new Regex(@"spc"));
+                range.SetStyle(StyleMethod, new Regex(@"InitProController"));
+                range.SetStyle(StyleMethod, new Regex(@"ProcessButtonsAndSticksPro"));
+                range.SetStyle(StyleMethod, new Regex(@"InitProControllerAccel"));
+                range.SetStyle(StyleMethod, new Regex(@"InitProControllerStick"));
+                range.SetStyle(StyleLibrary, new Regex(@"Joyconcharginggrip"));
+                range.SetStyle(StyleClass, new Regex(@"JoyconChargingGrip"));
+                range.SetStyle(StyleObject, new Regex(@"jcg"));
+                range.SetStyle(StyleMethod, new Regex(@"BeginAsyncPollingLeft"));
+                range.SetStyle(StyleMethod, new Regex(@"BeginAsyncPollingRight"));
+                range.SetStyle(StyleMethod, new Regex(@"InitLeftJoycon"));
+                range.SetStyle(StyleMethod, new Regex(@"ProcessButtonsLeftJoycon"));
+                range.SetStyle(StyleMethod, new Regex(@"InitRightJoycon"));
+                range.SetStyle(StyleMethod, new Regex(@"ProcessButtonsRightJoycon"));
+                range.SetStyle(StyleMethod, new Regex(@"InitJoyconChargingGripAccel"));
+                range.SetStyle(StyleMethod, new Regex(@"InitJoyconChargingGripStick"));
+                range.SetStyle(StyleLibrary, new Regex(@"Joyconleft"));
+                range.SetStyle(StyleClass, new Regex(@"JoyconLeft"));
+                range.SetStyle(StyleObject, new Regex(@"jl"));
+                range.SetStyle(StyleMethod, new Regex(@"InitLeftJoycon"));
+                range.SetStyle(StyleMethod, new Regex(@"ProcessButtonsLeftJoycon"));
+                range.SetStyle(StyleMethod, new Regex(@"InitLeftJoyconAccel"));
+                range.SetStyle(StyleMethod, new Regex(@"InitLeftJoyconStick"));
+                range.SetStyle(StyleLibrary, new Regex(@"Joyconright"));
+                range.SetStyle(StyleClass, new Regex(@"JoyconRight"));
+                range.SetStyle(StyleObject, new Regex(@"jr"));
+                range.SetStyle(StyleMethod, new Regex(@"InitRightJoycon"));
+                range.SetStyle(StyleMethod, new Regex(@"ProcessButtonsRightJoycon"));
+                range.SetStyle(StyleMethod, new Regex(@"InitRightJoyconAccel"));
+                range.SetStyle(StyleMethod, new Regex(@"InitRightJoyconStick"));
+                range.SetStyle(StyleLibrary, new Regex(@"KeyboardMouseinput"));
+                range.SetStyle(StyleClass, new Regex(@"KeyboardMouseInput"));
+                range.SetStyle(StyleObject, new Regex(@"kmi"));
+                range.SetStyle(StyleMethod, new Regex(@"BeginPollingMouse"));
+                range.SetStyle(StyleMethod, new Regex(@"BeginPollingKeyboard"));
+                range.SetStyle(StyleMethod, new Regex(@"MouseInputHookConnect"));
+                range.SetStyle(StyleMethod, new Regex(@"KeyboardInputHookConnect"));
+                range.SetStyle(StyleLibrary, new Regex(@"keyboards"));
+                range.SetStyle(StyleClass, new Regex(@"SendKeyboard"));
+                range.SetStyle(StyleObject, new Regex(@"sk"));
+                range.SetStyle(StyleLibrary, new Regex(@"mouses"));
+                range.SetStyle(StyleClass, new Regex(@"SendMouse"));
+                range.SetStyle(StyleObject, new Regex(@"sm"));
                 range.SetStyle(StyleInput, new Regex(@"getstate"));
                 range.SetStyle(StyleInput, new Regex(@"System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width"));
                 range.SetStyle(StyleInput, new Regex(@"System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height"));
@@ -196,6 +280,13 @@ namespace SIGIL
                 "Close",
                 "BeginPolling",
                 "BeginAsyncPolling",
+                "Connect",
+                "Disconnect",
+                "SubmitReport1",
+                "EnumerateControllers",
+                "ProcessStateLogic",
+                "UnLoadKM",
+                "SetKM",
                 "Valuechanges",
                 "Valuechange",
                 "ValueChange",
@@ -210,6 +301,83 @@ namespace SIGIL
                 "XInput",
                 "xi",
                 "XInputHookConnect",
+                "controllersds4",
+                "DS4Controller",
+                "DS4",
+                "controllersvjoy",
+                "VJoyController",
+                "VJoy",
+                "Directinput",
+                "DirectInput",
+                "di",
+                "DirectInputHookConnect",
+                "Dualsense",
+                "DualSense",
+                "ds",
+                "InitDualSenseAccel",
+                "Dualshock4",
+                "DualShock4",
+                "ds4",
+                "InitDualShock4Accel",
+                "Interceptions",
+                "SendInterception",
+                "Input",
+                "Int",
+                "input",
+                "KeyboardFilterMode",
+                "KeyboardFilterMode.All",
+                "MouseFilterMode",
+                "MouseFilterMode.All",
+                "Load",
+                "Wiimote",
+                "WiiMote",
+                "wm",
+                "Init",
+                "Switchprocontroller",
+                "SwitchProController",
+                "spc",
+                "InitProController",
+                "ProcessButtonsAndSticksPro",
+                "InitProControllerAccel",
+                "InitProControllerStick",
+                "Joyconcharginggrip",
+                "JoyconChargingGrip",
+                "jcg",
+                "BeginAsyncPollingLeft",
+                "BeginAsyncPollingRight",
+                "InitLeftJoycon",
+                "ProcessButtonsLeftJoycon",
+                "InitRightJoycon",
+                "ProcessButtonsRightJoycon",
+                "InitJoyconChargingGripAccel",
+                "InitJoyconChargingGripStick",
+                "Joyconleft",
+                "JoyconLeft",
+                "jl",
+                "InitLeftJoycon",
+                "ProcessButtonsLeftJoycon",
+                "InitLeftJoyconAccel",
+                "InitLeftJoyconStick",
+                "Joyconright",
+                "JoyconRight",
+                "jr",
+                "InitRightJoycon",
+                "ProcessButtonsRightJoycon",
+                "InitRightJoyconAccel",
+                "InitRightJoyconStick",
+                "KeyboardMouseinput",
+                "KeyboardMouseInput",
+                "kmi",
+                "BeginPollingMouse",
+                "BeginPollingKeyboard",
+                "MouseInputHookConnect",
+                "KeyboardInputHookConnect",
+                "keyboards",
+                "SendKeyboard",
+                "sk",
+                "mouses",
+                "SendMouse",
+                "sm",
                 "getstate",
                 "System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width",
                 "System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height",
