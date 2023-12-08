@@ -48,7 +48,28 @@ namespace XInputAPI
                 System.Threading.Thread.Sleep(1);
                 if (form1.Visible)
                 {
-                    form1.SetLabel1(Controller1ButtonAPressed.ToString());
+                    string str = "Controller1ButtonAPressed : " + Controller1ButtonAPressed + Environment.NewLine;
+                    str += "Controller1ButtonBPressed : " + Controller1ButtonBPressed + Environment.NewLine;
+                    str += "Controller1ButtonXPressed : " + Controller1ButtonXPressed + Environment.NewLine;
+                    str += "Controller1ButtonYPressed : " + Controller1ButtonYPressed + Environment.NewLine;
+                    str += "Controller1ButtonStartPressed : " + Controller1ButtonStartPressed + Environment.NewLine;
+                    str += "Controller1ButtonBackPressed : " + Controller1ButtonBackPressed + Environment.NewLine;
+                    str += "Controller1ButtonDownPressed : " + Controller1ButtonDownPressed + Environment.NewLine;
+                    str += "Controller1ButtonUpPressed : " + Controller1ButtonUpPressed + Environment.NewLine;
+                    str += "Controller1ButtonLeftPressed : " + Controller1ButtonLeftPressed + Environment.NewLine;
+                    str += "Controller1ButtonRightPressed : " + Controller1ButtonRightPressed + Environment.NewLine;
+                    str += "Controller1ButtonShoulderLeftPressed : " + Controller1ButtonShoulderLeftPressed + Environment.NewLine;
+                    str += "Controller1ButtonShoulderRightPressed : " + Controller1ButtonShoulderRightPressed + Environment.NewLine;
+                    str += "Controller1ThumbpadLeftPressed : " + Controller1ThumbpadLeftPressed + Environment.NewLine;
+                    str += "Controller1ThumbpadRightPressed : " + Controller1ThumbpadRightPressed + Environment.NewLine;
+                    str += "Controller1TriggerLeftPosition : " + Controller1TriggerLeftPosition + Environment.NewLine;
+                    str += "Controller1TriggerRightPosition : " + Controller1TriggerRightPosition + Environment.NewLine;
+                    str += "Controller1ThumbLeftX : " + Controller1ThumbLeftX + Environment.NewLine;
+                    str += "Controller1ThumbLeftY : " + Controller1ThumbLeftY + Environment.NewLine;
+                    str += "Controller1ThumbRightX : " + Controller1ThumbRightX + Environment.NewLine;
+                    str += "Controller1ThumbRightY : " + Controller1ThumbRightY + Environment.NewLine;
+                    str += Environment.NewLine;
+                    form1.SetLabel1(str);
                 }
             }
         }
