@@ -27,14 +27,6 @@ namespace controllers
         private static ScpBus scpBus;
         private static X360Controller controller;
         public static Valuechanges ValueChange = new Valuechanges();
-        public Form1 form1 = new Form1();
-        public void ViewData()
-        {
-            if (!form1.Visible)
-            {
-                form1.SetVisible();
-            }
-        }
         public void LoadController()
         {
             scpBus = new ScpBus();
@@ -131,32 +123,6 @@ namespace controllers
             controller.LeftTrigger = (byte)lefttriggerposition;
             controller.RightTrigger = (byte)righttriggerposition;
             scpBus.Report(controller.GetReport());
-            if (form1.Visible)
-            {
-                string str = "controller1_send_xbox : " + xbox + Environment.NewLine;
-                str += "controller1_send_back : " + back + Environment.NewLine;
-                str += "controller1_send_start : " + start + Environment.NewLine;
-                str += "controller1_send_A : " + A + Environment.NewLine;
-                str += "controller1_send_B : " + B + Environment.NewLine;
-                str += "controller1_send_X : " + X + Environment.NewLine;
-                str += "controller1_send_Y : " + Y + Environment.NewLine;
-                str += "controller1_send_up : " + up + Environment.NewLine;
-                str += "controller1_send_left : " + left + Environment.NewLine;
-                str += "controller1_send_down : " + down + Environment.NewLine;
-                str += "controller1_send_right : " + right + Environment.NewLine;
-                str += "controller1_send_leftstick : " + leftstick + Environment.NewLine;
-                str += "controller1_send_rightstick : " + rightstick + Environment.NewLine;
-                str += "controller1_send_leftbumper : " + leftbumper + Environment.NewLine;
-                str += "controller1_send_rightbumper : " + rightbumper + Environment.NewLine;
-                str += "controller1_send_leftstickx : " + leftstickx + Environment.NewLine;
-                str += "controller1_send_leftsticky : " + leftsticky + Environment.NewLine;
-                str += "controller1_send_rightstickx : " + rightstickx + Environment.NewLine;
-                str += "controller1_send_rightsticky : " + rightsticky + Environment.NewLine;
-                str += "controller1_send_lefttriggerposition : " + lefttriggerposition + Environment.NewLine;
-                str += "controller1_send_righttriggerposition : " + righttriggerposition + Environment.NewLine;
-                str += Environment.NewLine;
-                form1.SetLabel1(str);
-            }
         }
         private const string SCP_BUS_CLASS_GUID = "{F679F562-3164-42CE-A4DB-E7DDBE723909}";
         private readonly SafeFileHandle _deviceHandle;

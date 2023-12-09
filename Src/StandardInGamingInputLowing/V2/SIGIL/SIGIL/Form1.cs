@@ -108,6 +108,7 @@ namespace SIGIL
             {
                 range = (sender as FastColoredTextBox).Range;
                 range.SetStyle(StyleNamespace, new Regex(@"task"));
+                range.SetStyle(StyleNamespace, new Regex(@"sleeptime"));
                 range.SetStyle(StyleSpecial, new Regex(@"Task"));
                 range.SetStyle(StyleSpecial, new Regex(@"Thread"));
                 range.SetStyle(StyleSpecial, new Regex(@"Sleep"));
@@ -295,8 +296,8 @@ namespace SIGIL
                 range.SetStyle(StyleOutput, new Regex(@"controller1_send_rightstick"));
                 range.SetStyle(StyleOutput, new Regex(@"controller1_send_leftbumper"));
                 range.SetStyle(StyleOutput, new Regex(@"controller1_send_rightbumper"));
-                range.SetStyle(StyleOutput, new Regex(@"controller1_send_lefttrigger"));
-                range.SetStyle(StyleOutput, new Regex(@"controller1_send_righttrigger"));
+                range.SetStyle(StyleOutput, new Regex(@"controller1_send_lefttriggerposition"));
+                range.SetStyle(StyleOutput, new Regex(@"controller1_send_righttriggerposition"));
                 range.SetStyle(StyleOutput, new Regex(@"controller1_send_leftstickx"));
                 range.SetStyle(StyleOutput, new Regex(@"controller1_send_leftsticky"));
                 range.SetStyle(StyleOutput, new Regex(@"controller1_send_rightstickx"));
@@ -1183,6 +1184,7 @@ namespace SIGIL
         private void FillAutocompletion()
         {
             this.autocompleteMenu1.Items = new string[] {
+                "sleeptime",
                 "task",
                 "Task",
                 "Thread",
@@ -1372,8 +1374,8 @@ namespace SIGIL
                 "controller1_send_rightstick",
                 "controller1_send_leftbumper",
                 "controller1_send_rightbumper",
-                "controller1_send_lefttrigger",
-                "controller1_send_righttrigger",
+                "controller1_send_lefttriggerposition",
+                "controller1_send_righttriggerposition",
                 "controller1_send_leftstickx",
                 "controller1_send_leftsticky",
                 "controller1_send_rightstickx",

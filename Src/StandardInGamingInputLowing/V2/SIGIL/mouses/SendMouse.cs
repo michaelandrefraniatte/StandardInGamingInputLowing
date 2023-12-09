@@ -22,14 +22,6 @@ namespace mouses
         [DllImport("user32.dll")]
         public static extern void SetCursorPos(int X, int Y);
         public static string drivertype;
-        public Form1 form1 = new Form1();
-        public void ViewData()
-        {
-            if (!form1.Visible)
-            {
-                form1.SetVisible();
-            }
-        }
         public void UnLoadKM()
         {
             SetKM("kmevent", 0, 0, 0, 0, 0, 0);
@@ -48,18 +40,6 @@ namespace mouses
                 SetPhysicalCursorPos((int)(MouseDesktopX), (int)(MouseDesktopY));
                 SetCaretPos((int)(MouseDesktopX), (int)(MouseDesktopY));
                 SetCursorPos((int)(MouseDesktopX), (int)(MouseDesktopY));
-            }
-            if (form1.Visible)
-            {
-                string str = "KeyboardMouseDriverType : " + KeyboardMouseDriverType + Environment.NewLine;
-                str += "MouseMoveX : " + MouseMoveX + Environment.NewLine;
-                str += "MouseMoveY : " + MouseMoveY + Environment.NewLine;
-                str += "MouseAbsX : " + MouseAbsX + Environment.NewLine;
-                str += "MouseAbsY : " + MouseAbsY + Environment.NewLine;
-                str += "MouseDesktopX : " + MouseDesktopX + Environment.NewLine;
-                str += "MouseDesktopY : " + MouseDesktopY + Environment.NewLine;
-                str += Environment.NewLine;
-                form1.SetLabel1(str);
             }
         }
         public static void mousebrink(int x, int y)
