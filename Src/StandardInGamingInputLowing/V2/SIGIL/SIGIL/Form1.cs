@@ -107,6 +107,11 @@ namespace SIGIL
             try
             {
                 range = (sender as FastColoredTextBox).Range;
+                range.SetStyle(StyleMethod, new Regex(@"ScanGrip"));
+                range.SetStyle(StyleMethod, new Regex(@"ScanLeft"));
+                range.SetStyle(StyleMethod, new Regex(@"ScanRight"));
+                range.SetStyle(StyleMethod, new Regex(@"ScanPro"));
+                range.SetStyle(StyleMethod, new Regex(@"ScanWiimote"));
                 range.SetStyle(StyleExtra, new Regex(@"CurrentResolution"));
                 range.SetStyle(StyleExtra, new Regex(@"running"));
                 range.SetStyle(StyleExtra, new Regex(@"statex"));
@@ -1198,6 +1203,11 @@ namespace SIGIL
         private void FillAutocompletion()
         {
             this.autocompleteMenu1.Items = new string[] {
+                "ScanGrip",
+                "ScanLeft",
+                "ScanRight",
+                "ScanPro",
+                "ScanWiimote",
                 "CurrentResolution",
                 "running",
                 "statex",
