@@ -2612,6 +2612,8 @@ namespace SIGIL
             parameters = new System.CodeDom.Compiler.CompilerParameters();
             parameters.GenerateExecutable = false;
             parameters.GenerateInMemory = true;
+            parameters.IncludeDebugInformation = false;
+            parameters.CompilerOptions = "/optimize";
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Windows.Forms.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Drawing.dll");
