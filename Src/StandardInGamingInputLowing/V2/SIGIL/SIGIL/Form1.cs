@@ -107,6 +107,8 @@ namespace SIGIL
             try
             {
                 range = (sender as FastColoredTextBox).Range;
+                range.SetStyle(StyleMethod, new Regex(@"TimeBeginPeriod"));
+                range.SetStyle(StyleMethod, new Regex(@"NtSetTimerResolution"));
                 range.SetStyle(StyleMethod, new Regex(@"ScanGrip"));
                 range.SetStyle(StyleMethod, new Regex(@"ScanLeft"));
                 range.SetStyle(StyleMethod, new Regex(@"ScanRight"));
@@ -114,7 +116,7 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"ScanWiimote"));
                 range.SetStyle(StyleExtra, new Regex(@"CurrentResolution"));
                 range.SetStyle(StyleExtra, new Regex(@"running"));
-                range.SetStyle(StyleExtra, new Regex(@"Start"));
+                range.SetStyle(StyleMethod, new Regex(@"Start"));
                 range.SetStyle(StyleExtra, new Regex(@"statex"));
                 range.SetStyle(StyleExtra, new Regex(@"statey"));
                 range.SetStyle(StyleExtra, new Regex(@"mousex"));
@@ -133,9 +135,10 @@ namespace SIGIL
                 range.SetStyle(StyleExtra, new Regex(@"viewpower3y"));
                 range.SetStyle(StyleExtra, new Regex(@"viewpower05x"));
                 range.SetStyle(StyleExtra, new Regex(@"viewpower05y"));
-                range.SetStyle(StyleExtra, new Regex(@"task"));
+                range.SetStyle(StyleMethod, new Regex(@"task"));
                 range.SetStyle(StyleExtra, new Regex(@"sleeptime"));
-                range.SetStyle(StyleSpecial, new Regex(@"Task"));
+                range.SetStyle(StyleLibrary, new Regex(@"Task"));
+                range.SetStyle(StyleLibrary, new Regex(@"Run"));
                 range.SetStyle(StyleSpecial, new Regex(@"Thread"));
                 range.SetStyle(StyleSpecial, new Regex(@"Sleep"));
                 range.SetStyle(StyleExtra, new Regex(@"StringToCode"));
@@ -275,9 +278,9 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"Math.Max"));
                 range.SetStyle(StyleInput, new Regex(@"Math.Floor"));
                 range.SetStyle(StyleInput, new Regex(@"Math.Truncate"));
-                range.SetStyle(StyleInput, new Regex(@"wd"));
-                range.SetStyle(StyleInput, new Regex(@"wu"));
-                range.SetStyle(StyleInput, new Regex(@"valchanged"));
+                range.SetStyle(StyleMethod, new Regex(@"wd"));
+                range.SetStyle(StyleMethod, new Regex(@"wu"));
+                range.SetStyle(StyleMethod, new Regex(@"valchanged"));
                 range.SetStyle(StyleInput, new Regex(@"Scale"));
                 range.SetStyle(StyleInput, new Regex(@"width"));
                 range.SetStyle(StyleInput, new Regex(@"height"));
@@ -1204,6 +1207,8 @@ namespace SIGIL
         private void FillAutocompletion()
         {
             this.autocompleteMenu1.Items = new string[] {
+                "TimeBeginPeriod",
+                "NtSetTimerResolution",
                 "ScanGrip",
                 "ScanLeft",
                 "ScanRight",
@@ -1233,6 +1238,7 @@ namespace SIGIL
                 "sleeptime",
                 "task",
                 "Task",
+                "Run",
                 "Thread",
                 "Sleep",
                 "StringToCode",
