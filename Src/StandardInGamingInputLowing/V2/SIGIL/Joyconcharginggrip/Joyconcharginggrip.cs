@@ -120,6 +120,7 @@ namespace JoyconChargingGripAPI
                 try
                 {
                     Lhid_read_timeout(handleLeft, report_bufLeft, (UIntPtr)report_lenLeft);
+                    ProcessButtonsLeftJoycon();
                     if (form1.Visible)
                     {
                         string str = "JoyconLeftStickX : " + JoyconLeftStickX + Environment.NewLine;
@@ -157,6 +158,7 @@ namespace JoyconChargingGripAPI
                 try
                 {
                     Rhid_read_timeout(handleRight, report_bufRight, (UIntPtr)report_lenRight);
+                    ProcessButtonsRightJoycon();
                     if (form1.Visible)
                     {
                         string str = "JoyconRightStickX : " + JoyconRightStickX + Environment.NewLine;

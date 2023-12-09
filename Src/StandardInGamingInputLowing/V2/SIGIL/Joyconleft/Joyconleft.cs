@@ -96,6 +96,7 @@ namespace JoyconLeftAPI
                 try
                 {
                     Lhid_read_timeout(handleLeft, report_bufLeft, (UIntPtr)report_lenLeft);
+                    ProcessButtonsLeftJoycon();
                     if (form1.Visible)
                     {
                         string str = "JoyconLeftStickX : " + JoyconLeftStickX + Environment.NewLine;

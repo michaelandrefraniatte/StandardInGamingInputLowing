@@ -174,6 +174,7 @@ namespace DualShock4API
                 var readBuffer = trezorDevice.WriteAndReadAsync(GetOutputDataBytes());
                 readBuffer.Wait();
                 ds4data = (await readBuffer).Data.Skip(1).ToArray();
+                ProcessStateLogic();
                 if (form1.Visible)
                 {
                     string str = "PS4ControllerLeftStickX : " + PS4ControllerLeftStickX + Environment.NewLine;

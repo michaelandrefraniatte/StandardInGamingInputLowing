@@ -167,7 +167,6 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"Disconnect"));
                 range.SetStyle(StyleMethod, new Regex(@"SubmitReport1"));
                 range.SetStyle(StyleMethod, new Regex(@"EnumerateControllers"));
-                range.SetStyle(StyleMethod, new Regex(@"ProcessStateLogic"));
                 range.SetStyle(StyleMethod, new Regex(@"UnLoadKM"));
                 range.SetStyle(StyleMethod, new Regex(@"SetKM"));
                 range.SetStyle(StyleLibrary, new Regex(@"Valuechanges"));
@@ -220,7 +219,6 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"SwitchProController"));
                 range.SetStyle(StyleObject, new Regex(@"spc"));
                 range.SetStyle(StyleMethod, new Regex(@"InitProController"));
-                range.SetStyle(StyleMethod, new Regex(@"ProcessButtonsAndSticksPro"));
                 range.SetStyle(StyleMethod, new Regex(@"InitProControllerAccel"));
                 range.SetStyle(StyleMethod, new Regex(@"InitProControllerStick"));
                 range.SetStyle(StyleLibrary, new Regex(@"JoyconChargingGripAPI"));
@@ -229,23 +227,19 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"BeginAsyncPollingLeft"));
                 range.SetStyle(StyleMethod, new Regex(@"BeginAsyncPollingRight"));
                 range.SetStyle(StyleMethod, new Regex(@"InitLeftJoycon"));
-                range.SetStyle(StyleMethod, new Regex(@"ProcessButtonsLeftJoycon"));
                 range.SetStyle(StyleMethod, new Regex(@"InitRightJoycon"));
-                range.SetStyle(StyleMethod, new Regex(@"ProcessButtonsRightJoycon"));
                 range.SetStyle(StyleMethod, new Regex(@"InitJoyconChargingGripAccel"));
                 range.SetStyle(StyleMethod, new Regex(@"InitJoyconChargingGripStick"));
                 range.SetStyle(StyleLibrary, new Regex(@"JoyconLeftAPI"));
                 range.SetStyle(StyleClass, new Regex(@"JoyconLeft"));
                 range.SetStyle(StyleObject, new Regex(@"jl"));
                 range.SetStyle(StyleMethod, new Regex(@"InitLeftJoycon"));
-                range.SetStyle(StyleMethod, new Regex(@"ProcessButtonsLeftJoycon"));
                 range.SetStyle(StyleMethod, new Regex(@"InitLeftJoyconAccel"));
                 range.SetStyle(StyleMethod, new Regex(@"InitLeftJoyconStick"));
                 range.SetStyle(StyleLibrary, new Regex(@"JoyconRightAPI"));
                 range.SetStyle(StyleClass, new Regex(@"JoyconRight"));
                 range.SetStyle(StyleObject, new Regex(@"jr"));
                 range.SetStyle(StyleMethod, new Regex(@"InitRightJoycon"));
-                range.SetStyle(StyleMethod, new Regex(@"ProcessButtonsRightJoycon"));
                 range.SetStyle(StyleMethod, new Regex(@"InitRightJoyconAccel"));
                 range.SetStyle(StyleMethod, new Regex(@"InitRightJoyconStick"));
                 range.SetStyle(StyleLibrary, new Regex(@"KeyboardMouseInputAPI"));
@@ -1265,7 +1259,6 @@ namespace SIGIL
                 "Disconnect",
                 "SubmitReport1",
                 "EnumerateControllers",
-                "ProcessStateLogic",
                 "UnLoadKM",
                 "SetKM",
                 "Valuechanges",
@@ -1318,7 +1311,6 @@ namespace SIGIL
                 "SwitchProController",
                 "spc",
                 "InitProController",
-                "ProcessButtonsAndSticksPro",
                 "InitProControllerAccel",
                 "InitProControllerStick",
                 "JoyconChargingGripAPI",
@@ -1327,23 +1319,19 @@ namespace SIGIL
                 "BeginAsyncPollingLeft",
                 "BeginAsyncPollingRight",
                 "InitLeftJoycon",
-                "ProcessButtonsLeftJoycon",
                 "InitRightJoycon",
-                "ProcessButtonsRightJoycon",
                 "InitJoyconChargingGripAccel",
                 "InitJoyconChargingGripStick",
                 "JoyconLeftAPI",
                 "JoyconLeft",
                 "jl",
                 "InitLeftJoycon",
-                "ProcessButtonsLeftJoycon",
                 "InitLeftJoyconAccel",
                 "InitLeftJoyconStick",
                 "JoyconRightAPI",
                 "JoyconRight",
                 "jr",
                 "InitRightJoycon",
-                "ProcessButtonsRightJoycon",
                 "InitRightJoyconAccel",
                 "InitRightJoyconStick",
                 "KeyboardMouseInputAPI",

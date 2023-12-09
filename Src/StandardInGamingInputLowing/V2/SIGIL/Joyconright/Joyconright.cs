@@ -96,6 +96,7 @@ namespace JoyconRightAPI
                 try
                 {
                     Rhid_read_timeout(handleRight, report_bufRight, (UIntPtr)report_lenRight);
+                    ProcessButtonsRightJoycon();
                     if (form1.Visible)
                     {
                         string str = "JoyconRightStickX : " + JoyconRightStickX + Environment.NewLine;

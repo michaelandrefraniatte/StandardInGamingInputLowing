@@ -186,6 +186,7 @@ namespace DualSenseAPI
                 var readBuffer = trezorDevice.WriteAndReadAsync(GetOutputDataBytes());
                 readBuffer.Wait();
                 dsdata = (await readBuffer).Data.Skip(1).ToArray();
+                ProcessStateLogic();
                 if (form1.Visible)
                 {
                     string str = "PS5ControllerLeftStickX : " + PS5ControllerLeftStickX + Environment.NewLine;

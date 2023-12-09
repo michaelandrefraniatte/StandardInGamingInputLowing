@@ -4,6 +4,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Wiimote;
 
 namespace WiiMoteAPI
@@ -89,6 +90,7 @@ namespace WiiMoteAPI
                 {
                     mStream.Read(aBuffer, 0, 22);
                     reconnectingwiimotebool = false;
+                    ProcessStateLogic(2);
                     if (form1.Visible)
                     {
                         string str = "irx : " + irx + Environment.NewLine;

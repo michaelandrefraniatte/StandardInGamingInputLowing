@@ -93,6 +93,7 @@ namespace SwitchProControllerAPI
                 try
                 {
                     Prohid_read_timeout(handlePro, report_bufPro, (UIntPtr)report_lenPro);
+                    ProcessButtonsAndSticksPro();
                     if (form1.Visible)
                     {
                         string str = "ProControllerLeftStickX : " + ProControllerLeftStickX + Environment.NewLine;
