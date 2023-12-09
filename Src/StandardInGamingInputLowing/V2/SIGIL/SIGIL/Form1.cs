@@ -107,10 +107,14 @@ namespace SIGIL
             try
             {
                 range = (sender as FastColoredTextBox).Range;
+                range.SetStyle(StyleExtra, new Regex(@"CurrentResolution"));
+                range.SetStyle(StyleExtra, new Regex(@"running"));
                 range.SetStyle(StyleExtra, new Regex(@"statex"));
                 range.SetStyle(StyleExtra, new Regex(@"statey"));
                 range.SetStyle(StyleExtra, new Regex(@"mousex"));
                 range.SetStyle(StyleExtra, new Regex(@"mousey"));
+                range.SetStyle(StyleExtra, new Regex(@"mousexp"));
+                range.SetStyle(StyleExtra, new Regex(@"mouseyp"));
                 range.SetStyle(StyleExtra, new Regex(@"mousestatex"));
                 range.SetStyle(StyleExtra, new Regex(@"mousestatey"));
                 range.SetStyle(StyleExtra, new Regex(@"dzx"));
@@ -201,7 +205,7 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"Interceptions"));
                 range.SetStyle(StyleClass, new Regex(@"SendInterception"));
                 range.SetStyle(StyleClass, new Regex(@"Input"));
-                range.SetStyle(StyleObject, new Regex(@"Int"));
+                range.SetStyle(StyleObject, new Regex(@"si"));
                 range.SetStyle(StyleObject, new Regex(@"input"));
                 range.SetStyle(StyleMethod, new Regex(@"KeyboardFilterMode"));
                 range.SetStyle(StyleMethod, new Regex(@"KeyboardFilterMode.All"));
@@ -1200,10 +1204,14 @@ namespace SIGIL
         private void FillAutocompletion()
         {
             this.autocompleteMenu1.Items = new string[] {
+                "CurrentResolution",
+                "running",
                 "statex",
                 "statey",
                 "mousex",
                 "mousey",
+                "mousexp",
+                "mouseyp",
                 "mousestatex",
                 "mousestatey",
                 "dzx",
@@ -1295,7 +1303,7 @@ namespace SIGIL
                 "Interceptions",
                 "SendInterception",
                 "Input",
-                "Int",
+                "si",
                 "input",
                 "KeyboardFilterMode",
                 "KeyboardFilterMode.All",
