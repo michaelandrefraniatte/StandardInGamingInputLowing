@@ -42,7 +42,7 @@ namespace SIGIL
         public static ReplaceForm replaceform;
         public static bool runstopbool = false;
         private static Range range;
-        private static Style StyleInput = new TextStyle(Brushes.Blue, null, System.Drawing.FontStyle.Regular), StyleOutput = new TextStyle(Brushes.Orange, null, System.Drawing.FontStyle.Regular), StyleLibrary = new TextStyle(Brushes.BlueViolet, null, System.Drawing.FontStyle.Regular), StyleClass = new TextStyle(Brushes.DodgerBlue, null, System.Drawing.FontStyle.Regular), StyleMethod = new TextStyle(Brushes.Magenta, null, System.Drawing.FontStyle.Regular), StyleObject = new TextStyle(Brushes.DarkOrange, null, System.Drawing.FontStyle.Regular), StyleNamespace = new TextStyle(Brushes.Red, null, System.Drawing.FontStyle.Regular), StyleSpecial = new TextStyle(Brushes.DarkCyan, null, System.Drawing.FontStyle.Regular);
+        private static Style StyleInput = new TextStyle(Brushes.Blue, null, System.Drawing.FontStyle.Regular), StyleOutput = new TextStyle(Brushes.Orange, null, System.Drawing.FontStyle.Regular), StyleLibrary = new TextStyle(Brushes.BlueViolet, null, System.Drawing.FontStyle.Regular), StyleClass = new TextStyle(Brushes.DodgerBlue, null, System.Drawing.FontStyle.Regular), StyleMethod = new TextStyle(Brushes.Magenta, null, System.Drawing.FontStyle.Regular), StyleObject = new TextStyle(Brushes.DarkOrange, null, System.Drawing.FontStyle.Regular), StyleExtra = new TextStyle(Brushes.Red, null, System.Drawing.FontStyle.Regular), StyleSpecial = new TextStyle(Brushes.DarkCyan, null, System.Drawing.FontStyle.Regular);
         private Type program;
         private object obj;
         private Assembly assembly;
@@ -107,12 +107,28 @@ namespace SIGIL
             try
             {
                 range = (sender as FastColoredTextBox).Range;
-                range.SetStyle(StyleNamespace, new Regex(@"task"));
-                range.SetStyle(StyleNamespace, new Regex(@"sleeptime"));
+                range.SetStyle(StyleExtra, new Regex(@"statex"));
+                range.SetStyle(StyleExtra, new Regex(@"statey"));
+                range.SetStyle(StyleExtra, new Regex(@"mousex"));
+                range.SetStyle(StyleExtra, new Regex(@"mousey"));
+                range.SetStyle(StyleExtra, new Regex(@"mousestatex"));
+                range.SetStyle(StyleExtra, new Regex(@"mousestatey"));
+                range.SetStyle(StyleExtra, new Regex(@"dzx"));
+                range.SetStyle(StyleExtra, new Regex(@"dzy"));
+                range.SetStyle(StyleExtra, new Regex(@"viewpower1x"));
+                range.SetStyle(StyleExtra, new Regex(@"viewpower2x"));
+                range.SetStyle(StyleExtra, new Regex(@"viewpower3x"));
+                range.SetStyle(StyleExtra, new Regex(@"viewpower1y"));
+                range.SetStyle(StyleExtra, new Regex(@"viewpower2y"));
+                range.SetStyle(StyleExtra, new Regex(@"viewpower3y"));
+                range.SetStyle(StyleExtra, new Regex(@"viewpower05x"));
+                range.SetStyle(StyleExtra, new Regex(@"viewpower05y"));
+                range.SetStyle(StyleExtra, new Regex(@"task"));
+                range.SetStyle(StyleExtra, new Regex(@"sleeptime"));
                 range.SetStyle(StyleSpecial, new Regex(@"Task"));
                 range.SetStyle(StyleSpecial, new Regex(@"Thread"));
                 range.SetStyle(StyleSpecial, new Regex(@"Sleep"));
-                range.SetStyle(StyleNamespace, new Regex(@"StringToCode"));
+                range.SetStyle(StyleExtra, new Regex(@"StringToCode"));
                 range.SetStyle(StyleSpecial, new Regex(@"FooClass"));
                 range.SetStyle(StyleSpecial, new Regex(@"DllImport"));
                 range.SetStyle(StyleLibrary, new Regex(@"Globalization"));
@@ -1184,6 +1200,22 @@ namespace SIGIL
         private void FillAutocompletion()
         {
             this.autocompleteMenu1.Items = new string[] {
+                "statex",
+                "statey",
+                "mousex",
+                "mousey",
+                "mousestatex",
+                "mousestatey",
+                "dzx",
+                "dzy",
+                "viewpower1x",
+                "viewpower2x",
+                "viewpower3x",
+                "viewpower1y",
+                "viewpower2y",
+                "viewpower3y",
+                "viewpower05x",
+                "viewpower05y",
                 "sleeptime",
                 "task",
                 "Task",
