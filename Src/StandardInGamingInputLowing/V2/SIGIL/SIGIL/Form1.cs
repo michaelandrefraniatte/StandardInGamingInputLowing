@@ -114,6 +114,7 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"ScanWiimote"));
                 range.SetStyle(StyleExtra, new Regex(@"CurrentResolution"));
                 range.SetStyle(StyleExtra, new Regex(@"running"));
+                range.SetStyle(StyleExtra, new Regex(@"Start"));
                 range.SetStyle(StyleExtra, new Regex(@"statex"));
                 range.SetStyle(StyleExtra, new Regex(@"statey"));
                 range.SetStyle(StyleExtra, new Regex(@"mousex"));
@@ -1210,6 +1211,7 @@ namespace SIGIL
                 "ScanWiimote",
                 "CurrentResolution",
                 "running",
+                "Start",
                 "statex",
                 "statey",
                 "mousex",
