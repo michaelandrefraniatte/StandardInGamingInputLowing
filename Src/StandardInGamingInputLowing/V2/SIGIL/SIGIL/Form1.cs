@@ -42,7 +42,7 @@ namespace SIGIL
         public static ReplaceForm replaceform;
         public static bool runstopbool = false;
         private static Range range;
-        private static Style StyleInput = new TextStyle(Brushes.Blue, null, System.Drawing.FontStyle.Regular), StyleOutput = new TextStyle(Brushes.Orange, null, System.Drawing.FontStyle.Regular), StyleLibrary = new TextStyle(Brushes.BlueViolet, null, System.Drawing.FontStyle.Regular), StyleClass = new TextStyle(Brushes.DodgerBlue, null, System.Drawing.FontStyle.Regular), StyleMethod = new TextStyle(Brushes.Magenta, null, System.Drawing.FontStyle.Regular), StyleObject = new TextStyle(Brushes.DarkOrange, null, System.Drawing.FontStyle.Regular);
+        private static Style StyleInput = new TextStyle(Brushes.Blue, null, System.Drawing.FontStyle.Regular), StyleOutput = new TextStyle(Brushes.Orange, null, System.Drawing.FontStyle.Regular), StyleLibrary = new TextStyle(Brushes.BlueViolet, null, System.Drawing.FontStyle.Regular), StyleClass = new TextStyle(Brushes.DodgerBlue, null, System.Drawing.FontStyle.Regular), StyleMethod = new TextStyle(Brushes.Magenta, null, System.Drawing.FontStyle.Regular), StyleObject = new TextStyle(Brushes.DarkOrange, null, System.Drawing.FontStyle.Regular), StyleNamespace = new TextStyle(Brushes.Red, null, System.Drawing.FontStyle.Regular), StyleSpecial = new TextStyle(Brushes.DarkCyan, null, System.Drawing.FontStyle.Regular);
         private Type program;
         private object obj;
         private Assembly assembly;
@@ -107,6 +107,37 @@ namespace SIGIL
             try
             {
                 range = (sender as FastColoredTextBox).Range;
+                range.SetStyle(StyleNamespace, new Regex(@"task"));
+                range.SetStyle(StyleSpecial, new Regex(@"Task"));
+                range.SetStyle(StyleSpecial, new Regex(@"Thread"));
+                range.SetStyle(StyleSpecial, new Regex(@"Sleep"));
+                range.SetStyle(StyleNamespace, new Regex(@"StringToCode"));
+                range.SetStyle(StyleSpecial, new Regex(@"FooClass"));
+                range.SetStyle(StyleSpecial, new Regex(@"DllImport"));
+                range.SetStyle(StyleLibrary, new Regex(@"Globalization"));
+                range.SetStyle(StyleLibrary, new Regex(@"IO"));
+                range.SetStyle(StyleLibrary, new Regex(@"Numerics"));
+                range.SetStyle(StyleLibrary, new Regex(@"Runtime"));
+                range.SetStyle(StyleLibrary, new Regex(@"InteropServices"));
+                range.SetStyle(StyleLibrary, new Regex(@"Threading"));
+                range.SetStyle(StyleLibrary, new Regex(@"Tasks"));
+                range.SetStyle(StyleLibrary, new Regex(@"Windows"));
+                range.SetStyle(StyleLibrary, new Regex(@"Forms"));
+                range.SetStyle(StyleLibrary, new Regex(@"Reflection"));
+                range.SetStyle(StyleLibrary, new Regex(@"Diagnostics"));
+                range.SetStyle(StyleLibrary, new Regex(@"Collections"));
+                range.SetStyle(StyleLibrary, new Regex(@"Generic"));
+                range.SetStyle(StyleLibrary, new Regex(@"Linq"));
+                range.SetStyle(StyleInput, new Regex(@"valListX.Count"));
+                range.SetStyle(StyleInput, new Regex(@"valListX.Clear"));
+                range.SetStyle(StyleInput, new Regex(@"valListX.RemoveAt"));
+                range.SetStyle(StyleInput, new Regex(@"valListX.Add"));
+                range.SetStyle(StyleInput, new Regex(@"valListX.Average"));
+                range.SetStyle(StyleInput, new Regex(@"valListY.Count"));
+                range.SetStyle(StyleInput, new Regex(@"valListY.Clear"));
+                range.SetStyle(StyleInput, new Regex(@"valListY.RemoveAt"));
+                range.SetStyle(StyleInput, new Regex(@"valListY.Add"));
+                range.SetStyle(StyleInput, new Regex(@"valListY.Average"));
                 range.SetStyle(StyleMethod, new Regex(@"ViewData"));
                 range.SetStyle(StyleMethod, new Regex(@"Close"));
                 range.SetStyle(StyleMethod, new Regex(@"BeginPolling"));
@@ -138,15 +169,15 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"controllersvjoy"));
                 range.SetStyle(StyleClass, new Regex(@"VJoyController"));
                 range.SetStyle(StyleObject, new Regex(@"VJoy"));
-                range.SetStyle(StyleLibrary, new Regex(@"Directinput"));
+                range.SetStyle(StyleLibrary, new Regex(@"DirectInputAPI"));
                 range.SetStyle(StyleClass, new Regex(@"DirectInput"));
                 range.SetStyle(StyleObject, new Regex(@"di"));
                 range.SetStyle(StyleMethod, new Regex(@"DirectInputHookConnect"));
-                range.SetStyle(StyleLibrary, new Regex(@"Dualsense"));
+                range.SetStyle(StyleLibrary, new Regex(@"DualSenseAPI"));
                 range.SetStyle(StyleClass, new Regex(@"DualSense"));
                 range.SetStyle(StyleObject, new Regex(@"ds"));
                 range.SetStyle(StyleMethod, new Regex(@"InitDualSenseAccel"));
-                range.SetStyle(StyleLibrary, new Regex(@"Dualshock4"));
+                range.SetStyle(StyleLibrary, new Regex(@"DualShock4API"));
                 range.SetStyle(StyleClass, new Regex(@"DualShock4"));
                 range.SetStyle(StyleObject, new Regex(@"ds4"));
                 range.SetStyle(StyleMethod, new Regex(@"InitDualShock4Accel"));
@@ -160,18 +191,18 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"MouseFilterMode"));
                 range.SetStyle(StyleMethod, new Regex(@"MouseFilterMode.All"));
                 range.SetStyle(StyleMethod, new Regex(@"Load"));
-                range.SetStyle(StyleLibrary, new Regex(@"Wiimote"));
+                range.SetStyle(StyleLibrary, new Regex(@"WiiMoteAPI"));
                 range.SetStyle(StyleClass, new Regex(@"WiiMote"));
                 range.SetStyle(StyleObject, new Regex(@"wm"));
                 range.SetStyle(StyleMethod, new Regex(@"Init"));
-                range.SetStyle(StyleLibrary, new Regex(@"Switchprocontroller"));
+                range.SetStyle(StyleLibrary, new Regex(@"SwitchProControllerAPI"));
                 range.SetStyle(StyleClass, new Regex(@"SwitchProController"));
                 range.SetStyle(StyleObject, new Regex(@"spc"));
                 range.SetStyle(StyleMethod, new Regex(@"InitProController"));
                 range.SetStyle(StyleMethod, new Regex(@"ProcessButtonsAndSticksPro"));
                 range.SetStyle(StyleMethod, new Regex(@"InitProControllerAccel"));
                 range.SetStyle(StyleMethod, new Regex(@"InitProControllerStick"));
-                range.SetStyle(StyleLibrary, new Regex(@"Joyconcharginggrip"));
+                range.SetStyle(StyleLibrary, new Regex(@"JoyconChargingGripAPI"));
                 range.SetStyle(StyleClass, new Regex(@"JoyconChargingGrip"));
                 range.SetStyle(StyleObject, new Regex(@"jcg"));
                 range.SetStyle(StyleMethod, new Regex(@"BeginAsyncPollingLeft"));
@@ -182,21 +213,21 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"ProcessButtonsRightJoycon"));
                 range.SetStyle(StyleMethod, new Regex(@"InitJoyconChargingGripAccel"));
                 range.SetStyle(StyleMethod, new Regex(@"InitJoyconChargingGripStick"));
-                range.SetStyle(StyleLibrary, new Regex(@"Joyconleft"));
+                range.SetStyle(StyleLibrary, new Regex(@"JoyconLeftAPI"));
                 range.SetStyle(StyleClass, new Regex(@"JoyconLeft"));
                 range.SetStyle(StyleObject, new Regex(@"jl"));
                 range.SetStyle(StyleMethod, new Regex(@"InitLeftJoycon"));
                 range.SetStyle(StyleMethod, new Regex(@"ProcessButtonsLeftJoycon"));
                 range.SetStyle(StyleMethod, new Regex(@"InitLeftJoyconAccel"));
                 range.SetStyle(StyleMethod, new Regex(@"InitLeftJoyconStick"));
-                range.SetStyle(StyleLibrary, new Regex(@"Joyconright"));
+                range.SetStyle(StyleLibrary, new Regex(@"JoyconRightAPI"));
                 range.SetStyle(StyleClass, new Regex(@"JoyconRight"));
                 range.SetStyle(StyleObject, new Regex(@"jr"));
                 range.SetStyle(StyleMethod, new Regex(@"InitRightJoycon"));
                 range.SetStyle(StyleMethod, new Regex(@"ProcessButtonsRightJoycon"));
                 range.SetStyle(StyleMethod, new Regex(@"InitRightJoyconAccel"));
                 range.SetStyle(StyleMethod, new Regex(@"InitRightJoyconStick"));
-                range.SetStyle(StyleLibrary, new Regex(@"KeyboardMouseinput"));
+                range.SetStyle(StyleLibrary, new Regex(@"KeyboardMouseInputAPI"));
                 range.SetStyle(StyleClass, new Regex(@"KeyboardMouseInput"));
                 range.SetStyle(StyleObject, new Regex(@"kmi"));
                 range.SetStyle(StyleMethod, new Regex(@"BeginPollingMouse"));
@@ -1152,6 +1183,38 @@ namespace SIGIL
         private void FillAutocompletion()
         {
             this.autocompleteMenu1.Items = new string[] {
+                "task",
+                "Task",
+                "Thread",
+                "Sleep",
+                "StringToCode",
+                "FooClass",
+                "DllImport",
+                "System",
+                "Globalization",
+                "IO",
+                "Numerics",
+                "Runtime",
+                "InteropServices",
+                "Threading",
+                "Tasks",
+                "Windows",
+                "Forms",
+                "Reflection",
+                "Diagnostics",
+                "Collections",
+                "Generic",
+                "Linq",
+                "valListX.Count",
+                "valListX.Clear",
+                "valListX.RemoveAt",
+                "valListX.Add",
+                "valListX.Average",
+                "valListY.Count",
+                "valListY.Clear",
+                "valListY.RemoveAt",
+                "valListY.Add",
+                "valListY.Average",
                 "ViewData",
                 "Close",
                 "BeginPolling",
@@ -1183,15 +1246,15 @@ namespace SIGIL
                 "controllersvjoy",
                 "VJoyController",
                 "VJoy",
-                "Directinput",
+                "DirectInputAPI",
                 "DirectInput",
                 "di",
                 "DirectInputHookConnect",
-                "Dualsense",
+                "DualSenseAPI",
                 "DualSense",
                 "ds",
                 "InitDualSenseAccel",
-                "Dualshock4",
+                "DualShock4API",
                 "DualShock4",
                 "ds4",
                 "InitDualShock4Accel",
@@ -1205,18 +1268,18 @@ namespace SIGIL
                 "MouseFilterMode",
                 "MouseFilterMode.All",
                 "Load",
-                "Wiimote",
+                "WiiMoteAPI",
                 "WiiMote",
                 "wm",
                 "Init",
-                "Switchprocontroller",
+                "SwitchProControllerAPI",
                 "SwitchProController",
                 "spc",
                 "InitProController",
                 "ProcessButtonsAndSticksPro",
                 "InitProControllerAccel",
                 "InitProControllerStick",
-                "Joyconcharginggrip",
+                "JoyconChargingGripAPI",
                 "JoyconChargingGrip",
                 "jcg",
                 "BeginAsyncPollingLeft",
@@ -1227,21 +1290,21 @@ namespace SIGIL
                 "ProcessButtonsRightJoycon",
                 "InitJoyconChargingGripAccel",
                 "InitJoyconChargingGripStick",
-                "Joyconleft",
+                "JoyconLeftAPI",
                 "JoyconLeft",
                 "jl",
                 "InitLeftJoycon",
                 "ProcessButtonsLeftJoycon",
                 "InitLeftJoyconAccel",
                 "InitLeftJoyconStick",
-                "Joyconright",
+                "JoyconRightAPI",
                 "JoyconRight",
                 "jr",
                 "InitRightJoycon",
                 "ProcessButtonsRightJoycon",
                 "InitRightJoyconAccel",
                 "InitRightJoyconStick",
-                "KeyboardMouseinput",
+                "KeyboardMouseInputAPI",
                 "KeyboardMouseInput",
                 "kmi",
                 "BeginPollingMouse",
