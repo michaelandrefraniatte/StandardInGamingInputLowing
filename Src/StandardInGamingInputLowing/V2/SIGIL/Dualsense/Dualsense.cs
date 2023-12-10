@@ -54,7 +54,7 @@ namespace DualSenseAPI
         public Vector3 acc_gPS5 = new Vector3();
         public Vector3 InitDirectAnglesPS5, DirectAnglesPS5;
         private Task<TransferResult> readBuffer;
-        public bool running;
+        public bool running, formvisible;
         public Form1 form1 = new Form1();
         public DualSense()
         {
@@ -66,6 +66,7 @@ namespace DualSenseAPI
         {
             if (!form1.Visible)
             {
+                formvisible = true;
                 form1.SetVisible();
             }
         }
@@ -188,7 +189,7 @@ namespace DualSenseAPI
                 readBuffer.Wait();
                 dsdata = (await readBuffer).Data.Skip(1).ToArray();
                 ProcessStateLogic();
-                if (form1.Visible)
+                if (formvisible)
                 {
                     string str = "PS5ControllerLeftStickX : " + PS5ControllerLeftStickX + Environment.NewLine;
                     str += "PS5ControllerLeftStickY : " + PS5ControllerLeftStickY + Environment.NewLine;

@@ -66,7 +66,7 @@ namespace JoyconLeftAPI
         public bool JoyconLeftButtonSHOULDER_1, JoyconLeftButtonSHOULDER_2, JoyconLeftButtonSR, JoyconLeftButtonSL, JoyconLeftButtonDPAD_DOWN, JoyconLeftButtonDPAD_RIGHT, JoyconLeftButtonDPAD_UP, JoyconLeftButtonDPAD_LEFT, JoyconLeftButtonMINUS, JoyconLeftButtonSTICK, JoyconLeftButtonCAPTURE;
         public float acc_gcalibrationLeftX, acc_gcalibrationLeftY, acc_gcalibrationLeftZ;
         public bool ISLEFT = true;
-        private bool running;
+        private bool running, formvisible;
         public Form1 form1 = new Form1();
         public JoyconLeft()
         {
@@ -78,6 +78,7 @@ namespace JoyconLeftAPI
         {
             if (!form1.Visible)
             {
+                formvisible = true;
                 form1.SetVisible();
             }
         }
@@ -97,7 +98,7 @@ namespace JoyconLeftAPI
                 {
                     Lhid_read_timeout(handleLeft, report_bufLeft, (UIntPtr)report_lenLeft);
                     ProcessButtonsLeftJoycon();
-                    if (form1.Visible)
+                    if (formvisible)
                     {
                         string str = "JoyconLeftStickX : " + JoyconLeftStickX + Environment.NewLine;
                         str += "JoyconLeftStickY : " + JoyconLeftStickY + Environment.NewLine;

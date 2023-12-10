@@ -85,7 +85,7 @@ namespace JoyconChargingGripAPI
         public Vector3 InitDirectAnglesRight, DirectAnglesRight;
         public bool JoyconRightButtonSHOULDER_1, JoyconRightButtonSHOULDER_2, JoyconRightButtonSR, JoyconRightButtonSL, JoyconRightButtonDPAD_DOWN, JoyconRightButtonDPAD_RIGHT, JoyconRightButtonDPAD_UP, JoyconRightButtonDPAD_LEFT, JoyconRightButtonPLUS, JoyconRightButtonSTICK, JoyconRightButtonHOME;
         public float acc_gcalibrationRightX, acc_gcalibrationRightY, acc_gcalibrationRightZ;
-        public bool ISLEFT, ISRIGHT, running;
+        public bool ISLEFT, ISRIGHT, running, formvisible;
         public Form1 form1 = new Form1();
         public JoyconChargingGrip()
         {
@@ -97,6 +97,7 @@ namespace JoyconChargingGripAPI
         {
             if (!form1.Visible)
             {
+                formvisible = true;
                 form1.SetVisible();
             }
         }
@@ -121,7 +122,7 @@ namespace JoyconChargingGripAPI
                 {
                     Lhid_read_timeout(handleLeft, report_bufLeft, (UIntPtr)report_lenLeft);
                     ProcessButtonsLeftJoycon();
-                    if (form1.Visible)
+                    if (formvisible)
                     {
                         string str = "JoyconLeftStickX : " + JoyconLeftStickX + Environment.NewLine;
                         str += "JoyconLeftStickY : " + JoyconLeftStickY + Environment.NewLine;
@@ -159,7 +160,7 @@ namespace JoyconChargingGripAPI
                 {
                     Rhid_read_timeout(handleRight, report_bufRight, (UIntPtr)report_lenRight);
                     ProcessButtonsRightJoycon();
-                    if (form1.Visible)
+                    if (formvisible)
                     {
                         string str = "JoyconRightStickX : " + JoyconRightStickX + Environment.NewLine;
                         str += "JoyconRightStickY : " + JoyconRightStickY + Environment.NewLine;

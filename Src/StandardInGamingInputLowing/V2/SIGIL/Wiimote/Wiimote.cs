@@ -46,7 +46,7 @@ namespace WiiMoteAPI
         private static SafeFileHandle handle = null, handleunshared = null;
         public bool reconnectingwiimotebool;
         public double reconnectingwiimotecount;
-        public bool running;
+        public bool running, formvisible;
         public double irxc, iryc, irx0, iry0, irx1, iry1, irx2, iry2, irx3, iry3, irx, iry, tempirx, tempiry, WiimoteIRSensors0X, WiimoteIRSensors0Y, WiimoteIRSensors1X, WiimoteIRSensors1Y, WiimoteRawValuesX, WiimoteRawValuesY, WiimoteRawValuesZ, calibrationinit, WiimoteIRSensors0Xcam, WiimoteIRSensors0Ycam, WiimoteIRSensors1Xcam, WiimoteIRSensors1Ycam, WiimoteIRSensorsXcam, WiimoteIRSensorsYcam;
         public bool WiimoteIR0foundcam, WiimoteIR1foundcam, WiimoteIRswitch, WiimoteIR1found, WiimoteIR0found, WiimoteButtonStateA, WiimoteButtonStateB, WiimoteButtonStateMinus, WiimoteButtonStateHome, WiimoteButtonStatePlus, WiimoteButtonStateOne, WiimoteButtonStateTwo, WiimoteButtonStateUp, WiimoteButtonStateDown, WiimoteButtonStateLeft, WiimoteButtonStateRight, WiimoteNunchuckStateC, WiimoteNunchuckStateZ;
         public double WiimoteIR0notfound, stickviewxinit, stickviewyinit, WiimoteNunchuckStateRawValuesX, WiimoteNunchuckStateRawValuesY, WiimoteNunchuckStateRawValuesZ, WiimoteNunchuckStateRawJoystickX, WiimoteNunchuckStateRawJoystickY, centery = 80f;
@@ -61,6 +61,7 @@ namespace WiiMoteAPI
         {
             if (!form1.Visible)
             {
+                formvisible = true;
                 form1.SetVisible();
             }
         }
@@ -91,7 +92,7 @@ namespace WiiMoteAPI
                     mStream.Read(aBuffer, 0, 22);
                     reconnectingwiimotebool = false;
                     ProcessStateLogic(2);
-                    if (form1.Visible)
+                    if (formvisible)
                     {
                         string str = "irx : " + irx + Environment.NewLine;
                         str += "iry : " + iry + Environment.NewLine;

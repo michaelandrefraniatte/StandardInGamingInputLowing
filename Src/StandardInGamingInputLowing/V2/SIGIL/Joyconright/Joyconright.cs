@@ -66,7 +66,7 @@ namespace JoyconRightAPI
         public bool JoyconRightButtonSHOULDER_1, JoyconRightButtonSHOULDER_2, JoyconRightButtonSR, JoyconRightButtonSL, JoyconRightButtonDPAD_DOWN, JoyconRightButtonDPAD_RIGHT, JoyconRightButtonDPAD_UP, JoyconRightButtonDPAD_LEFT, JoyconRightButtonPLUS, JoyconRightButtonSTICK, JoyconRightButtonHOME;
         public float acc_gcalibrationRightX, acc_gcalibrationRightY, acc_gcalibrationRightZ;
         public bool ISRIGHT = true;
-        private bool running;
+        private bool running, formvisible;
         public Form1 form1 = new Form1();
         public JoyconRight()
         {
@@ -78,6 +78,7 @@ namespace JoyconRightAPI
         {
             if (!form1.Visible)
             {
+                formvisible = true;
                 form1.SetVisible();
             }
         }
@@ -97,7 +98,7 @@ namespace JoyconRightAPI
                 {
                     Rhid_read_timeout(handleRight, report_bufRight, (UIntPtr)report_lenRight);
                     ProcessButtonsRightJoycon();
-                    if (form1.Visible)
+                    if (formvisible)
                     {
                         string str = "JoyconRightStickX : " + JoyconRightStickX + Environment.NewLine;
                         str += "JoyconRightStickY : " + JoyconRightStickY + Environment.NewLine;

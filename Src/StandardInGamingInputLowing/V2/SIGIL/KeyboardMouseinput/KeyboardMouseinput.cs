@@ -20,7 +20,7 @@ namespace KeyboardMouseInputAPI
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        private static bool running;
+        private static bool running, formvisible;
         static DirectInput directInput = new DirectInput();
         public Form1 form1 = new Form1();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
@@ -54,6 +54,7 @@ namespace KeyboardMouseInputAPI
         {
             if (!form1.Visible)
             {
+                formvisible = true;
                 form1.SetVisible();
             }
         }
@@ -71,7 +72,7 @@ namespace KeyboardMouseInputAPI
                 System.Threading.Thread.Sleep(1);
                 if (Mouse1AxisZ != 0)
                     Task.Run(() => InitMouse());
-                if (form1.Visible)
+                if (formvisible)
                 {
                     string str = "Mouse1AxisX : " + Mouse1AxisX + Environment.NewLine;
                     str += "Mouse1AxisY : " + Mouse1AxisY + Environment.NewLine;
@@ -101,7 +102,7 @@ namespace KeyboardMouseInputAPI
                     break;
                 KeyboardInputProcess();
                 System.Threading.Thread.Sleep(1);
-                if (form1.Visible)
+                if (formvisible)
                 {
                     string str = "Keyboard1KeyA : " + Keyboard1KeyA + Environment.NewLine;
                     str += "Keyboard1KeyB : " + Keyboard1KeyB + Environment.NewLine;

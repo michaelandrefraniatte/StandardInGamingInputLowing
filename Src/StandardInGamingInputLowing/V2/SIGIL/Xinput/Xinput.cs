@@ -19,7 +19,7 @@ namespace XInputAPI
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        private static bool running;
+        private static bool running, formvisible;
         public Form1 form1 = new Form1();
         public XInput()
         {
@@ -31,6 +31,7 @@ namespace XInputAPI
         {
             if (!form1.Visible)
             {
+                formvisible = true;
                 form1.SetVisible();
             }
         }
@@ -46,7 +47,7 @@ namespace XInputAPI
                     break;
                 ControllerProcess();
                 System.Threading.Thread.Sleep(1);
-                if (form1.Visible)
+                if (formvisible)
                 {
                     string str = "Controller1ButtonAPressed : " + Controller1ButtonAPressed + Environment.NewLine;
                     str += "Controller1ButtonBPressed : " + Controller1ButtonBPressed + Environment.NewLine;

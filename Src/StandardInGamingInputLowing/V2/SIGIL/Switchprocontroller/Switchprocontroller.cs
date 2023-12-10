@@ -62,7 +62,7 @@ namespace SwitchProControllerAPI
         public Vector3 InitDirectAnglesPro, DirectAnglesPro;
         public bool ProControllerButtonSHOULDER_Left_1, ProControllerButtonSHOULDER_Left_2, ProControllerButtonSHOULDER_Right_1, ProControllerButtonSHOULDER_Right_2, ProControllerButtonDPAD_DOWN, ProControllerButtonDPAD_RIGHT, ProControllerButtonDPAD_UP, ProControllerButtonDPAD_LEFT, ProControllerButtonA, ProControllerButtonB, ProControllerButtonX, ProControllerButtonY, ProControllerButtonMINUS, ProControllerButtonPLUS, ProControllerButtonSTICK_Left, ProControllerButtonSTICK_Right, ProControllerButtonCAPTURE, ProControllerButtonHOME;
         public float acc_gcalibrationProX, acc_gcalibrationProY, acc_gcalibrationProZ;
-        public bool running;
+        public bool running, formvisible;
         public Form1 form1 = new Form1();
         public SwitchProController()
         {
@@ -74,6 +74,7 @@ namespace SwitchProControllerAPI
         {
             if (!form1.Visible)
             {
+                formvisible = true;
                 form1.SetVisible();
             }
         }
@@ -94,7 +95,7 @@ namespace SwitchProControllerAPI
                 {
                     Prohid_read_timeout(handlePro, report_bufPro, (UIntPtr)report_lenPro);
                     ProcessButtonsAndSticksPro();
-                    if (form1.Visible)
+                    if (formvisible)
                     {
                         string str = "ProControllerLeftStickX : " + ProControllerLeftStickX + Environment.NewLine;
                         str += "ProControllerLeftStickY : " + ProControllerLeftStickY + Environment.NewLine;

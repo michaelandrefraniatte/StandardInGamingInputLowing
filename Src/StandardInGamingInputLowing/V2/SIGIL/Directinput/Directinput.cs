@@ -19,13 +19,14 @@ namespace DirectInputAPI
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        private static bool running;
+        private static bool running, formvisible;
         private SharpDX.DirectInput.DirectInput directInput = new SharpDX.DirectInput.DirectInput();
         public Form1 form1 = new Form1();
         public void ViewData()
         {
             if (!form1.Visible)
             {
+                formvisible = true;
                 form1.SetVisible();
             }
         }
@@ -47,7 +48,7 @@ namespace DirectInputAPI
                     break;
                 GamepadProcess();
                 System.Threading.Thread.Sleep(1);
-                if (form1.Visible)
+                if (formvisible)
                 {
                     string str = "Joystick1AxisX : " + Joystick1AxisX + Environment.NewLine;
                     str += "Joystick1AxisY : " + Joystick1AxisY + Environment.NewLine;

@@ -50,7 +50,7 @@ namespace DualShock4API
         public Vector3 acc_gPS4 = new Vector3();
         public Vector3 InitDirectAnglesPS4, DirectAnglesPS4;
         private Task<TransferResult> readBuffer;
-        public bool running;
+        public bool running, formvisible;
         public Form1 form1 = new Form1();
         public DualShock4()
         {
@@ -62,6 +62,7 @@ namespace DualShock4API
         {
             if (!form1.Visible)
             {
+                formvisible = true;
                 form1.SetVisible();
             }
         }
@@ -176,7 +177,7 @@ namespace DualShock4API
                 readBuffer.Wait();
                 ds4data = (await readBuffer).Data.Skip(1).ToArray();
                 ProcessStateLogic();
-                if (form1.Visible)
+                if (formvisible)
                 {
                     string str = "PS4ControllerLeftStickX : " + PS4ControllerLeftStickX + Environment.NewLine;
                     str += "PS4ControllerLeftStickY : " + PS4ControllerLeftStickY + Environment.NewLine;
