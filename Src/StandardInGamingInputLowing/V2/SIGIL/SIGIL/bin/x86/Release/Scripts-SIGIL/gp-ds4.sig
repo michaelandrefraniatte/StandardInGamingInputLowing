@@ -52,7 +52,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            ds4.EnumerateControllers("54C", "9CC", "Wireless Controller");
+            ds4.ScanDualshock4("54C", "9CC", "Wireless Controller");
             Thread.Sleep(2000);
             ds4.BeginPolling();
             XBC.Connect();

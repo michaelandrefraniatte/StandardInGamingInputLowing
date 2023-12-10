@@ -52,7 +52,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            ds.EnumerateControllers("54C", "CE6", "DualSense");
+            ds.ScanDualsense("54C", "CE6", "DualSense");
             Thread.Sleep(2000);
             ds.BeginPolling();
             XBC.Connect();

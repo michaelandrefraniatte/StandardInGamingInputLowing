@@ -179,7 +179,8 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"\bConnect\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bDisconnect\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bSetController\b"));
-                range.SetStyle(StyleMethod, new Regex(@"\bEnumerateControllers\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bScanDualsense\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bScanDualshock4\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bSetKM\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bValuechanges\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bValuechange\b"));
@@ -1275,7 +1276,8 @@ namespace SIGIL
                 "Connect",
                 "Disconnect",
                 "SetController",
-                "EnumerateControllers",
+                "ScanDualsense",
+                "ScanDualshock4",
                 "SetKM",
                 "Valuechanges",
                 "Valuechange",

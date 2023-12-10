@@ -70,7 +70,7 @@ namespace DualShock4API
         {
             running = false;
         }
-        public async void EnumerateControllers(string vendor_id, string product_id, string label_id)
+        public async void ScanDualshock4(string vendor_id, string product_id, string label_id)
         {
             var hidFactory = new FilterDeviceDefinition((uint)int.Parse(vendor_id, System.Globalization.NumberStyles.HexNumber), (uint)int.Parse(product_id, System.Globalization.NumberStyles.HexNumber), label: label_id).CreateWindowsHidDeviceFactory();
             var factories = hidFactory;
