@@ -52,7 +52,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            wm.ScanWiimote();
+            wm.ScanWiimote(2);
             wm.BeginPolling();
             Thread.Sleep(1000);
             wm.InitWiimote();

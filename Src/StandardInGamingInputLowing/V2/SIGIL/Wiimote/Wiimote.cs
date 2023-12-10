@@ -47,6 +47,7 @@ namespace WiiMoteAPI
         public bool reconnectingwiimotebool;
         public double reconnectingwiimotecount;
         public bool running, formvisible;
+        private int irmode;
         public double irxc, iryc, irx0, iry0, irx1, iry1, irx2, iry2, irx3, iry3, irx, iry, tempirx, tempiry, WiimoteIRSensors0X, WiimoteIRSensors0Y, WiimoteIRSensors1X, WiimoteIRSensors1Y, WiimoteRawValuesX, WiimoteRawValuesY, WiimoteRawValuesZ, calibrationinit, WiimoteIRSensors0Xcam, WiimoteIRSensors0Ycam, WiimoteIRSensors1Xcam, WiimoteIRSensors1Ycam, WiimoteIRSensorsXcam, WiimoteIRSensorsYcam;
         public bool WiimoteIR0foundcam, WiimoteIR1foundcam, WiimoteIRswitch, WiimoteIR1found, WiimoteIR0found, WiimoteButtonStateA, WiimoteButtonStateB, WiimoteButtonStateMinus, WiimoteButtonStateHome, WiimoteButtonStatePlus, WiimoteButtonStateOne, WiimoteButtonStateTwo, WiimoteButtonStateUp, WiimoteButtonStateDown, WiimoteButtonStateLeft, WiimoteButtonStateRight, WiimoteNunchuckStateC, WiimoteNunchuckStateZ;
         public double WiimoteIR0notfound, stickviewxinit, stickviewyinit, WiimoteNunchuckStateRawValuesX, WiimoteNunchuckStateRawValuesY, WiimoteNunchuckStateRawValuesZ, WiimoteNunchuckStateRawJoystickX, WiimoteNunchuckStateRawJoystickY, centery = 80f;
@@ -91,7 +92,7 @@ namespace WiiMoteAPI
                 {
                     mStream.Read(aBuffer, 0, 22);
                     reconnectingwiimotebool = false;
-                    ProcessStateLogic(2);
+                    ProcessStateLogic();
                     if (formvisible)
                     {
                         string str = "irx : " + irx + Environment.NewLine;
@@ -129,9 +130,9 @@ namespace WiiMoteAPI
             stickviewxinit = -aBuffer[16] + 125f;
             stickviewyinit = -aBuffer[17] + 125f;
         }
-        public void ProcessStateLogic(int irmode)
+        public void ProcessStateLogic()
         {
-            if (irmode == 1)
+            if (this.irmode == 1)
             {
                 WiimoteIRSensors0X = aBuffer[6] | ((aBuffer[8] >> 4) & 0x03) << 8;
                 WiimoteIRSensors0Y = aBuffer[7] | ((aBuffer[8] >> 6) & 0x03) << 8;
@@ -167,7 +168,7 @@ namespace WiiMoteAPI
                 irxc = irx0 + irx1;
                 iryc = iry0 + iry1;
             }
-            else if (irmode == 2)
+            else if (this.irmode == 2)
             {
                 WiimoteIR0found = (aBuffer[6] | ((aBuffer[8] >> 4) & 0x03) << 8) > 1 & (aBuffer[6] | ((aBuffer[8] >> 4) & 0x03) << 8) < 1023;
                 WiimoteIR1found = (aBuffer[9] | ((aBuffer[8] >> 0) & 0x03) << 8) > 1 & (aBuffer[9] | ((aBuffer[8] >> 0) & 0x03) << 8) < 1023;
@@ -243,7 +244,7 @@ namespace WiiMoteAPI
                 irxc = irx2 + irx3;
                 iryc = iry2 + iry3;
             }
-            else if (irmode == 3)
+            else if (this.irmode == 3)
             {
                 WiimoteIR0found = (aBuffer[6] | ((aBuffer[8] >> 4) & 0x03) << 8) > 1 & (aBuffer[6] | ((aBuffer[8] >> 4) & 0x03) << 8) < 1023;
                 WiimoteIR1found = (aBuffer[9] | ((aBuffer[8] >> 0) & 0x03) << 8) > 1 & (aBuffer[9] | ((aBuffer[8] >> 0) & 0x03) << 8) < 1023;
@@ -341,8 +342,9 @@ namespace WiiMoteAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool ScanWiimote()
+        public bool ScanWiimote(int irmode)
         {
+            this.irmode = irmode;
             do
                 Thread.Sleep(1);
             while (!wiimoteconnect());
