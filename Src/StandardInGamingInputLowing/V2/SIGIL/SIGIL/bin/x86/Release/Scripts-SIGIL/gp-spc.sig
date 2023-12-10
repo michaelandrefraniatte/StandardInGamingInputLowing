@@ -53,7 +53,7 @@ namespace StringToCode
         {
             running = true;
             spc.ScanPro();
-            spc.BeginAsyncPolling();
+            spc.BeginPolling();
             Thread.Sleep(1000);
             spc.InitProController();
             scp.LoadController();

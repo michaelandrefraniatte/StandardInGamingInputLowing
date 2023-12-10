@@ -171,7 +171,6 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"ViewData"));
                 range.SetStyle(StyleMethod, new Regex(@"Close"));
                 range.SetStyle(StyleMethod, new Regex(@"BeginPolling"));
-                range.SetStyle(StyleMethod, new Regex(@"BeginAsyncPolling"));
                 range.SetStyle(StyleMethod, new Regex(@"Connect"));
                 range.SetStyle(StyleMethod, new Regex(@"Disconnect"));
                 range.SetStyle(StyleMethod, new Regex(@"SubmitReport1"));
@@ -233,10 +232,7 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"JoyconChargingGripAPI"));
                 range.SetStyle(StyleClass, new Regex(@"JoyconChargingGrip"));
                 range.SetStyle(StyleObject, new Regex(@"jcg"));
-                range.SetStyle(StyleMethod, new Regex(@"BeginAsyncPollingLeft"));
-                range.SetStyle(StyleMethod, new Regex(@"BeginAsyncPollingRight"));
-                range.SetStyle(StyleMethod, new Regex(@"InitLeftJoycon"));
-                range.SetStyle(StyleMethod, new Regex(@"InitRightJoycon"));
+                range.SetStyle(StyleMethod, new Regex(@"InitJoyconChargingGrip"));
                 range.SetStyle(StyleMethod, new Regex(@"InitJoyconChargingGripAccel"));
                 range.SetStyle(StyleMethod, new Regex(@"InitJoyconChargingGripStick"));
                 range.SetStyle(StyleLibrary, new Regex(@"JoyconLeftAPI"));
@@ -1272,7 +1268,6 @@ namespace SIGIL
                 "ViewData",
                 "Close",
                 "BeginPolling",
-                "BeginAsyncPolling",
                 "Connect",
                 "Disconnect",
                 "SubmitReport1",
@@ -1334,10 +1329,7 @@ namespace SIGIL
                 "JoyconChargingGripAPI",
                 "JoyconChargingGrip",
                 "jcg",
-                "BeginAsyncPollingLeft",
-                "BeginAsyncPollingRight",
-                "InitLeftJoycon",
-                "InitRightJoycon",
+                "InitJoyconChargingGrip",
                 "InitJoyconChargingGripAccel",
                 "InitJoyconChargingGripStick",
                 "JoyconLeftAPI",

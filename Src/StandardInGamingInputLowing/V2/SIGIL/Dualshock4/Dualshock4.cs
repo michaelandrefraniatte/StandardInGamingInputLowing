@@ -49,6 +49,7 @@ namespace DualShock4API
         public Vector3 gyr_gPS4 = new Vector3();
         public Vector3 acc_gPS4 = new Vector3();
         public Vector3 InitDirectAnglesPS4, DirectAnglesPS4;
+        private Task<TransferResult> readBuffer;
         public bool running;
         public Form1 form1 = new Form1();
         public DualShock4()
@@ -171,7 +172,7 @@ namespace DualShock4API
             {
                 if (!running)
                     break;
-                var readBuffer = trezorDevice.WriteAndReadAsync(GetOutputDataBytes());
+                readBuffer = trezorDevice.WriteAndReadAsync(GetOutputDataBytes());
                 readBuffer.Wait();
                 ds4data = (await readBuffer).Data.Skip(1).ToArray();
                 ProcessStateLogic();

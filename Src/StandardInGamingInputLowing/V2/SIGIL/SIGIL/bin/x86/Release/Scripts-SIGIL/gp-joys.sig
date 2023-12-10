@@ -57,8 +57,8 @@ namespace StringToCode
             running = true;
             jl.ScanLeft();
             jr.ScanRight();
-            jl.BeginAsyncPolling();
-            jr.BeginAsyncPolling();
+            jl.BeginPolling();
+            jr.BeginPolling();
             Thread.Sleep(1000);
             jl.InitLeftJoycon();
             jr.InitRightJoycon();

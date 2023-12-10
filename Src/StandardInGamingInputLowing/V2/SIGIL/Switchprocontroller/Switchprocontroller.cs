@@ -129,7 +129,7 @@ namespace SwitchProControllerAPI
                 catch { }
             }
         }
-        public void BeginAsyncPolling()
+        public void BeginPolling()
         {
             Task.Run(() => taskDPro());
         }

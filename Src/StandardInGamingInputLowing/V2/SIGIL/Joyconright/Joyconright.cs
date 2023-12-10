@@ -127,7 +127,7 @@ namespace JoyconRightAPI
                 catch { }
             }
         }
-        public void BeginAsyncPolling()
+        public void BeginPolling()
         {
             Task.Run(() => taskDRight());
         }
@@ -217,7 +217,10 @@ namespace JoyconRightAPI
         }
         public bool ScanRight()
         {
-            joyconrightconnect();
+
+            do
+                Thread.Sleep(1);
+            while (!joyconrightconnect());
             int index = 0;
             System.Guid guid;
             HidD_GetHidGuid(out guid);

@@ -53,11 +53,9 @@ namespace StringToCode
         {
             running = true;
             jcg.ScanGrip();
-            jcg.BeginAsyncPollingLeft();
-            jcg.BeginAsyncPollingRight();
+            jcg.BeginPolling();
             Thread.Sleep(1000);
-            jcg.InitLeftJoycon();
-            jcg.InitRightJoycon();
+            jcg.InitJoyconChargingGrip();
             scp.LoadController();
             Task.Run(() => taskX());
         }
