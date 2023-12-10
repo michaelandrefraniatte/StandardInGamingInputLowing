@@ -213,11 +213,6 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"SendInterception"));
                 range.SetStyle(StyleClass, new Regex(@"Input"));
                 range.SetStyle(StyleObject, new Regex(@"si"));
-                range.SetStyle(StyleObject, new Regex(@"input"));
-                range.SetStyle(StyleMethod, new Regex(@"KeyboardFilterMode"));
-                range.SetStyle(StyleMethod, new Regex(@"KeyboardFilterMode.All"));
-                range.SetStyle(StyleMethod, new Regex(@"MouseFilterMode"));
-                range.SetStyle(StyleMethod, new Regex(@"MouseFilterMode.All"));
                 range.SetStyle(StyleMethod, new Regex(@"Load"));
                 range.SetStyle(StyleLibrary, new Regex(@"WiiMoteAPI"));
                 range.SetStyle(StyleClass, new Regex(@"WiiMote"));
@@ -1310,11 +1305,6 @@ namespace SIGIL
                 "SendInterception",
                 "Input",
                 "si",
-                "input",
-                "KeyboardFilterMode",
-                "KeyboardFilterMode.All",
-                "MouseFilterMode",
-                "MouseFilterMode.All",
                 "Load",
                 "WiiMoteAPI",
                 "WiiMote",
