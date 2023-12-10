@@ -65,6 +65,8 @@ namespace StringToCode
             {
                 if (!running)
                     break;
+                if (ds.PS5ControllerButtonMenuPressed)
+                    ds.InitDualSenseAccel();
                 statex = ds.PS5ControllerGyroX * 15f;
                 statey = ds.PS5ControllerGyroY * 15f;
                 if (statex > 0f)

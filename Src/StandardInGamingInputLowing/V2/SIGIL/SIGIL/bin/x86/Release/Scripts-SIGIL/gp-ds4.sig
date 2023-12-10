@@ -65,6 +65,8 @@ namespace StringToCode
             {
                 if (!running)
                     break;
+                if (ds4.PS4ControllerButtonMenuPressed)
+                    ds4.InitDualShock4Accel();
                 statex = ds4.PS4ControllerGyroX * 15f;
                 statey = ds4.PS4ControllerGyroY * 15f;
                 if (statex > 0f)
