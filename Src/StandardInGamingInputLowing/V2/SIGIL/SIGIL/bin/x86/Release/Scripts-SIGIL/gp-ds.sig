@@ -57,7 +57,6 @@ namespace StringToCode
             Thread.Sleep(2000);
             ds.BeginPolling();
             XBC.Connect();
-            Thread.Sleep(2000);
             Task.Run(() => task());
         }
         private void task()

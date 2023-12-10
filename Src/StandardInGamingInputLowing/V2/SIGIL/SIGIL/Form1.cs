@@ -300,7 +300,7 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"\bController1ButtonStartPressed\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bController1ButtonBackPressed\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bController1ButtonDownPressed\b"));
-                range.SetStyle(StyleInput, new Regex(@"\bController1ButtonUpPresse\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bController1ButtonUpPressed\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bController1ButtonLeftPressed\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bController1ButtonRightPressed\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bController1ButtonShoulderLeftPressed\b"));
@@ -1398,7 +1398,7 @@ namespace SIGIL
                 "Controller1ButtonStartPressed",
                 "Controller1ButtonBackPressed",
                 "Controller1ButtonDownPressed",
-                "Controller1ButtonUpPresse",
+                "Controller1ButtonUpPressed",
                 "Controller1ButtonLeftPressed",
                 "Controller1ButtonRightPressed",
                 "Controller1ButtonShoulderLeftPressed",
