@@ -107,6 +107,7 @@ namespace SIGIL
             try
             {
                 range = (sender as FastColoredTextBox).Range;
+                range.SetStyle(StyleClass, new Regex(@"List"));
                 range.SetStyle(StyleMethod, new Regex(@"TimeBeginPeriod"));
                 range.SetStyle(StyleMethod, new Regex(@"NtSetTimerResolution"));
                 range.SetStyle(StyleMethod, new Regex(@"ScanGrip"));
@@ -1197,6 +1198,7 @@ namespace SIGIL
         private void FillAutocompletion()
         {
             this.autocompleteMenu1.Items = new string[] {
+                "List",
                 "TimeBeginPeriod",
                 "NtSetTimerResolution",
                 "ScanGrip",
