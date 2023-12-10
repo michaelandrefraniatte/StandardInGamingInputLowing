@@ -55,8 +55,8 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            jl.ScanLeft();
-            jr.ScanRight();
+            jl.ScanLeftJoycon();
+            jr.ScanRightJoycon();
             jl.BeginPolling();
             jr.BeginPolling();
             Thread.Sleep(1000);

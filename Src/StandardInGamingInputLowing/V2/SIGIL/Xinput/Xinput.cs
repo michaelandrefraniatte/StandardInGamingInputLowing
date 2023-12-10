@@ -101,7 +101,7 @@ namespace XInputAPI
         public double Controller1ThumbLeftY;
         public double Controller1ThumbRightX;
         public double Controller1ThumbRightY;
-        public bool XInputHookConnect()
+        public bool ScanXInput()
         {
             try
             {

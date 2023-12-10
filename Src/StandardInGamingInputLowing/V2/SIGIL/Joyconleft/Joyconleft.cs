@@ -216,7 +216,7 @@ namespace JoyconLeftAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool ScanLeft()
+        public bool ScanLeftJoycon()
         {
 
             do

@@ -53,7 +53,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            xi.XInputHookConnect();
+            xi.ScanXInput();
             xi.BeginPolling();
             DS4.Connect();
             Task.Run(() => task());

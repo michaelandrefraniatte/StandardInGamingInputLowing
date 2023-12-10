@@ -277,7 +277,7 @@ namespace KeyboardMouseInputAPI
         public int Mouse1AxisX;
         public int Mouse1AxisY;
         public int Mouse1AxisZ;
-        public bool MouseInputHookConnect()
+        public bool ScanMouse()
         {
             try
             {
@@ -506,7 +506,7 @@ namespace KeyboardMouseInputAPI
         public bool Keyboard1KeyMail;
         public bool Keyboard1KeyMediaSelect;
         public bool Keyboard1KeyUnknown;
-        public bool KeyboardInputHookConnect()
+        public bool ScanKeyboard()
         {
             try
             {

@@ -112,8 +112,8 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"\bNtSetTimerResolution\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bList\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bScanGrip\b"));
-                range.SetStyle(StyleMethod, new Regex(@"\bScanLeft\b"));
-                range.SetStyle(StyleMethod, new Regex(@"\bScanRight\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bScanLeftJoycon\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bScanRightJoycon\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bScanPro\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bScanWiimote\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bCurrentResolution\b"));
@@ -192,7 +192,7 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"\bXInputAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bXInput\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bxi\b"));
-                range.SetStyle(StyleMethod, new Regex(@"\bXInputHookConnect\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bScanXInput\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bcontrollersds4\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bDS4Controller\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bDS4\b"));
@@ -202,7 +202,7 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"\bDirectInputAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bDirectInput\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bdi\b"));
-                range.SetStyle(StyleMethod, new Regex(@"\bDirectInputHookConnect\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bScanDirectInput\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bDualSenseAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bDualSense\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bds\b"));
@@ -249,8 +249,8 @@ namespace SIGIL
                 range.SetStyle(StyleObject, new Regex(@"\bkmi\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bBeginPollingMouse\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bBeginPollingKeyboard\b"));
-                range.SetStyle(StyleMethod, new Regex(@"\bMouseInputHookConnect\b"));
-                range.SetStyle(StyleMethod, new Regex(@"\bKeyboardInputHookConnect\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bScanMouse\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bScanKeyboard\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bkeyboards\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bSendKeyboard\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bsk\b"));
@@ -1211,8 +1211,8 @@ namespace SIGIL
                 "NtSetTimerResolution",
                 "List",
                 "ScanGrip",
-                "ScanLeft",
-                "ScanRight",
+                "ScanLeftJoycon",
+                "ScanRightJoycon",
                 "ScanPro",
                 "ScanWiimote",
                 "CurrentResolution",
@@ -1289,7 +1289,7 @@ namespace SIGIL
                 "XInputAPI",
                 "XInput",
                 "xi",
-                "XInputHookConnect",
+                "ScanXInput",
                 "controllersds4",
                 "DS4Controller",
                 "DS4",
@@ -1299,7 +1299,7 @@ namespace SIGIL
                 "DirectInputAPI",
                 "DirectInput",
                 "di",
-                "DirectInputHookConnect",
+                "ScanDirectInput",
                 "DualSenseAPI",
                 "DualSense",
                 "ds",
@@ -1346,8 +1346,8 @@ namespace SIGIL
                 "kmi",
                 "BeginPollingMouse",
                 "BeginPollingKeyboard",
-                "MouseInputHookConnect",
-                "KeyboardInputHookConnect",
+                "ScanMouse",
+                "ScanKeyboard",
                 "keyboards",
                 "SendKeyboard",
                 "sk",

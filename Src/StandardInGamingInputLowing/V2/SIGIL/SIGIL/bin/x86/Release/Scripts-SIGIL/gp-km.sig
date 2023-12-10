@@ -71,8 +71,8 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            kmi.MouseInputHookConnect();
-            kmi.KeyboardInputHookConnect();
+            kmi.ScanMouse();
+            kmi.ScanKeyboard();
             kmi.BeginPollingMouse();
             kmi.BeginPollingKeyboard();
             XBC.Connect();

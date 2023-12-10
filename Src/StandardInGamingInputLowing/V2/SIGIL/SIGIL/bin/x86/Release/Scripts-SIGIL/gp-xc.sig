@@ -52,7 +52,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            xi.XInputHookConnect();
+            xi.ScanXInput();
             xi.BeginPolling();
             XBC.Connect();
             Task.Run(() => task());
