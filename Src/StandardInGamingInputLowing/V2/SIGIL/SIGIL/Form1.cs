@@ -182,11 +182,8 @@ namespace SIGIL
                 range.SetStyle(StyleObject, new Regex(@"ValueChange"));
                 range.SetStyle(StyleMethod, new Regex(@"_ValueChange"));
                 range.SetStyle(StyleLibrary, new Regex(@"controllers"));
-                range.SetStyle(StyleClass, new Regex(@"ScpBus"));
-                range.SetStyle(StyleObject, new Regex(@"scp"));
-                range.SetStyle(StyleMethod, new Regex(@"LoadController"));
-                range.SetStyle(StyleMethod, new Regex(@"UnLoadController"));
-                range.SetStyle(StyleMethod, new Regex(@"SetController"));
+                range.SetStyle(StyleClass, new Regex(@"XBoxController"));
+                range.SetStyle(StyleObject, new Regex(@"XBC"));
                 range.SetStyle(StyleLibrary, new Regex(@"XInputAPI"));
                 range.SetStyle(StyleClass, new Regex(@"XInput"));
                 range.SetStyle(StyleObject, new Regex(@"xi"));
@@ -1274,11 +1271,8 @@ namespace SIGIL
                 "ValueChange",
                 "_ValueChange",
                 "controllers",
-                "ScpBus",
-                "scp",
-                "LoadController",
-                "UnLoadController",
-                "SetController",
+                "XBoxController",
+                "XBC",
                 "XInputAPI",
                 "XInput",
                 "xi",

@@ -29,7 +29,7 @@ namespace StringToCode
         private static double statex = 0f, statey = 0f, mousex = 0f, mousey = 0f, mousestatex = 0f, mousestatey = 0f, dzx = 0.0f, dzy = 0.0f, viewpower1x = 0f, viewpower2x = 1f, viewpower3x = 0f, viewpower1y = 0.25f, viewpower2y = 0.75f, viewpower3y = 0f, viewpower05x = 0f, viewpower05y = 0f;
         private static bool getstate;
         private static int sleeptime = 1;
-        private ScpBus scp = new ScpBus();
+        private XBoxController XBC = new XBoxController();
         public DualShock4 ds4 = new DualShock4();
         public static Valuechange ValueChange = new Valuechange();
         public void Close()
@@ -39,7 +39,7 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 ds4.Close();
-                scp.UnLoadController();
+                XBC.Disconnect();
             }
             catch { }
         }
@@ -55,7 +55,7 @@ namespace StringToCode
             ds4.EnumerateControllers("54C", "9CC", "Wireless Controller");
             Thread.Sleep(2000);
             ds4.BeginPolling();
-            scp.LoadController();
+            XBC.Connect();
             Thread.Sleep(2000);
             Task.Run(() => task());
         }
@@ -101,7 +101,7 @@ namespace StringToCode
                 controller1_send_rightbumper = ds4.PS4ControllerButtonR1Pressed;
                 controller1_send_back = ds4.PS4ControllerButtonLogoPressed;
                 controller1_send_start = ds4.PS4ControllerButtonTouchpadPressed;
-                scp.SetController(controller1_send_back, controller1_send_start, controller1_send_A, controller1_send_B, controller1_send_X, controller1_send_Y, controller1_send_up, controller1_send_left, controller1_send_down, controller1_send_right, controller1_send_leftstick, controller1_send_rightstick, controller1_send_leftbumper, controller1_send_rightbumper, controller1_send_leftstickx, controller1_send_leftsticky, controller1_send_rightstickx, controller1_send_rightsticky, controller1_send_lefttriggerposition, controller1_send_righttriggerposition, controller1_send_xbox);
+                XBC.SubmitReport1(controller1_send_back, controller1_send_start, controller1_send_A, controller1_send_B, controller1_send_X, controller1_send_Y, controller1_send_up, controller1_send_left, controller1_send_down, controller1_send_right, controller1_send_leftstick, controller1_send_rightstick, controller1_send_leftbumper, controller1_send_rightbumper, controller1_send_leftstickx, controller1_send_leftsticky, controller1_send_rightstickx, controller1_send_rightsticky, controller1_send_lefttriggerposition, controller1_send_righttriggerposition, controller1_send_xbox);
                 /*ds4.ViewData();*/
                 Thread.Sleep(sleeptime);
             }

@@ -30,7 +30,7 @@ namespace StringToCode
         private static double statex = 0f, statey = 0f, mousex = 0f, mousey = 0f, mousestatex = 0f, mousestatey = 0f, dzx = 0.0f, dzy = 0.0f, viewpower1x = 0f, viewpower2x = 1f, viewpower3x = 0f, viewpower1y = 0.25f, viewpower2y = 0.75f, viewpower3y = 0f, viewpower05x = 0f, viewpower05y = 0f;
         private static bool getstate;
         private static int sleeptime = 1;
-        private DS4Controller ds4 = new DS4Controller();
+        private DS4Controller DS4 = new DS4Controller();
         private XInput xi = new XInput();
         public static Valuechange ValueChange = new Valuechange();
         public void Close()
@@ -40,7 +40,7 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 xi.Close();
-                ds4.Disconnect();
+                DS4.Disconnect();
             }
             catch { }
         }
@@ -55,7 +55,7 @@ namespace StringToCode
             running = true;
             xi.XInputHookConnect();
             xi.BeginPolling();
-            ds4.Connect();
+            DS4.Connect();
             Task.Run(() => task());
         }
         private void task()
@@ -90,7 +90,7 @@ namespace StringToCode
                 Controller1DS4_Send_ThumbLeft            = xi.Controller1ThumbpadRightPressed;
                 Controller1DS4_Send_LeftTriggerPosition  = xi.Controller1TriggerLeftPosition;
                 Controller1DS4_Send_RightTriggerPosition = xi.Controller1TriggerRightPosition;
-                ds4.SubmitReport1(Controller1DS4_Send_Options, Controller1DS4_Send_Option, Controller1DS4_Send_ThumbLeft, Controller1DS4_Send_ThumbRight, Controller1DS4_Send_ShoulderLeft, Controller1DS4_Send_ShoulderRight, Controller1DS4_Send_Cross, Controller1DS4_Send_Circle, Controller1DS4_Send_Square, Controller1DS4_Send_Triangle, Controller1DS4_Send_Ps, Controller1DS4_Send_Touchpad, Controller1DS4_Send_Share, Controller1DS4_Send_DPadUp, Controller1DS4_Send_DPadDown, Controller1DS4_Send_DPadLeft, Controller1DS4_Send_DPadRight, Controller1DS4_Send_LeftThumbX, Controller1DS4_Send_RightThumbX, Controller1DS4_Send_LeftThumbY, Controller1DS4_Send_RightThumbY, Controller1DS4_Send_LeftTrigger, Controller1DS4_Send_RightTrigger, Controller1DS4_Send_LeftTriggerPosition, Controller1DS4_Send_RightTriggerPosition);
+                DS4.SubmitReport1(Controller1DS4_Send_Options, Controller1DS4_Send_Option, Controller1DS4_Send_ThumbLeft, Controller1DS4_Send_ThumbRight, Controller1DS4_Send_ShoulderLeft, Controller1DS4_Send_ShoulderRight, Controller1DS4_Send_Cross, Controller1DS4_Send_Circle, Controller1DS4_Send_Square, Controller1DS4_Send_Triangle, Controller1DS4_Send_Ps, Controller1DS4_Send_Touchpad, Controller1DS4_Send_Share, Controller1DS4_Send_DPadUp, Controller1DS4_Send_DPadDown, Controller1DS4_Send_DPadLeft, Controller1DS4_Send_DPadRight, Controller1DS4_Send_LeftThumbX, Controller1DS4_Send_RightThumbX, Controller1DS4_Send_LeftThumbY, Controller1DS4_Send_RightThumbY, Controller1DS4_Send_LeftTrigger, Controller1DS4_Send_RightTrigger, Controller1DS4_Send_LeftTriggerPosition, Controller1DS4_Send_RightTriggerPosition);
                 /*xi.ViewData();*/
                 Thread.Sleep(sleeptime);
             }

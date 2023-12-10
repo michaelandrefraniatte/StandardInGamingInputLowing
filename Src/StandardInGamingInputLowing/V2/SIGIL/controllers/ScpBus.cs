@@ -22,24 +22,24 @@ namespace controllers
             }
         }
     }
-    public class ScpBus : IDisposable
+    public class XBoxController : IDisposable
     {
-        private static ScpBus scpBus;
+        private static XBoxController scpBus;
         private static X360Controller controller;
         public static Valuechanges ValueChange = new Valuechanges();
-        public void LoadController()
+        public void Connect()
         {
-            scpBus = new ScpBus();
+            scpBus = new XBoxController();
             scpBus.PlugIn(1);
             controller = new X360Controller();
         }
-        public void UnLoadController()
+        public void Disconnect()
         {
-            SetController(false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0, 0, false);
+            SubmitReport1(false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0, 0, false);
             Thread.Sleep(100);
             scpBus.Unplug(1);
         }
-        public void SetController(bool back, bool start, bool A, bool B, bool X, bool Y, bool up, bool left, bool down, bool right, bool leftstick, bool rightstick, bool leftbumper, bool rightbumper, double leftstickx, double leftsticky, double rightstickx, double rightsticky, double lefttriggerposition, double righttriggerposition, bool xbox)
+        public void SubmitReport1(bool back, bool start, bool A, bool B, bool X, bool Y, bool up, bool left, bool down, bool right, bool leftstick, bool rightstick, bool leftbumper, bool rightbumper, double leftstickx, double leftsticky, double rightstickx, double rightsticky, double lefttriggerposition, double righttriggerposition, bool xbox)
         {
             ValueChange[0] = back ? 1 : 0;
             if (Valuechanges._ValueChange[0] > 0f)
@@ -126,8 +126,8 @@ namespace controllers
         }
         private const string SCP_BUS_CLASS_GUID = "{F679F562-3164-42CE-A4DB-E7DDBE723909}";
         private readonly SafeFileHandle _deviceHandle;
-        public ScpBus() : this(0) { }
-        public ScpBus(int instance)
+        public XBoxController() : this(0) { }
+        public XBoxController(int instance)
         {
             string devicePath = "";
             if (Find(new Guid(SCP_BUS_CLASS_GUID), ref devicePath, instance))
@@ -135,7 +135,7 @@ namespace controllers
                 _deviceHandle = GetHandle(devicePath);
             }
         }
-        public ScpBus(string devicePath)
+        public XBoxController(string devicePath)
         {
             _deviceHandle = GetHandle(devicePath);
         }
