@@ -270,6 +270,9 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"\bminScale\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bmaxScale\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bvalue\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bval\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bn\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bscaled\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bSystem.Windows.Forms.Screen.PrimaryScreen.Bounds.Width\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bSystem.Windows.Forms.Screen.PrimaryScreen.Bounds.Height\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bMath\b"));
