@@ -77,10 +77,10 @@ namespace StringToCode
             wm.ScanWiimote();
             wm.BeginPolling();
             Thread.Sleep(1000);
-            wm.Init();
-            Task.Run(() => taskX());
+            wm.InitWiimote();
+            Task.Run(() => task());
         }
-        private void taskX()
+        private void task()
         {
             for (; ; )
             {

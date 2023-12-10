@@ -63,9 +63,9 @@ namespace StringToCode
             jl.InitLeftJoycon();
             jr.InitRightJoycon();
             scp.LoadController();
-            Task.Run(() => taskX());
+            Task.Run(() => task());
         }
-        private void taskX()
+        private void task()
         {
             for (; ; )
             {

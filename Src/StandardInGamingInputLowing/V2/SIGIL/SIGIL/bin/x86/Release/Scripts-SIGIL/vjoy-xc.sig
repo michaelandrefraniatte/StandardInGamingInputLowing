@@ -55,9 +55,9 @@ namespace StringToCode
             xi.XInputHookConnect();
             xi.BeginPolling();
             VJoy.Connect();
-            Task.Run(() => taskX());
+            Task.Run(() => task());
         }
-        private void taskX()
+        private void task()
         {
             for (; ; )
             {

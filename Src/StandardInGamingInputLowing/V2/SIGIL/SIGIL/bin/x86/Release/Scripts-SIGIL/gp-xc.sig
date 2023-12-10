@@ -55,9 +55,9 @@ namespace StringToCode
             xi.XInputHookConnect();
             xi.BeginPolling();
             scp.LoadController();
-            Task.Run(() => taskX());
+            Task.Run(() => task());
         }
-        private void taskX()
+        private void task()
         {
             for (; ; )
             {

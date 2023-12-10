@@ -57,9 +57,9 @@ namespace StringToCode
             ds.BeginPolling();
             scp.LoadController();
             Thread.Sleep(2000);
-            Task.Run(() => taskX());
+            Task.Run(() => task());
         }
-        private void taskX()
+        private void task()
         {
             for (; ; )
             {

@@ -56,9 +56,9 @@ namespace StringToCode
             xi.XInputHookConnect();
             xi.BeginPolling();
             ds4.Connect();
-            Task.Run(() => taskX());
+            Task.Run(() => task());
         }
-        private void taskX()
+        private void task()
         {
             for (; ; )
             {

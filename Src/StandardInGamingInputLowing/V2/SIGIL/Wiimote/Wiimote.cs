@@ -122,7 +122,7 @@ namespace WiiMoteAPI
                 catch { }
             }
         }
-        public void Init() 
+        public void InitWiimote() 
         {
             calibrationinit = -aBuffer[4] + 135f;
             stickviewxinit = -aBuffer[16] + 125f;

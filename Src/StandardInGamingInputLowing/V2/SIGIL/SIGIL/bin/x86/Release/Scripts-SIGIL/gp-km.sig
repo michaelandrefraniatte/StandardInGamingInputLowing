@@ -76,9 +76,9 @@ namespace StringToCode
             kmi.BeginPollingMouse();
             kmi.BeginPollingKeyboard();
             scp.LoadController();
-            Task.Run(() => taskX());
+            Task.Run(() => task());
         }
-        private void taskX()
+        private void task()
         {
             for (; ; )
             {

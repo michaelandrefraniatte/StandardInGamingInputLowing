@@ -217,7 +217,7 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"WiiMoteAPI"));
                 range.SetStyle(StyleClass, new Regex(@"WiiMote"));
                 range.SetStyle(StyleObject, new Regex(@"wm"));
-                range.SetStyle(StyleMethod, new Regex(@"Init"));
+                range.SetStyle(StyleMethod, new Regex(@"InitWiimote"));
                 range.SetStyle(StyleLibrary, new Regex(@"SwitchProControllerAPI"));
                 range.SetStyle(StyleClass, new Regex(@"SwitchProController"));
                 range.SetStyle(StyleObject, new Regex(@"spc"));
@@ -1309,7 +1309,7 @@ namespace SIGIL
                 "WiiMoteAPI",
                 "WiiMote",
                 "wm",
-                "Init",
+                "InitWiimote",
                 "SwitchProControllerAPI",
                 "SwitchProController",
                 "spc",

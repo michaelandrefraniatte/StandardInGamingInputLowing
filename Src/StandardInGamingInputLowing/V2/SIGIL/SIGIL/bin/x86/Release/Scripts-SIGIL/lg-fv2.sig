@@ -76,9 +76,9 @@ namespace StringToCode
             running = true;
             di.DirectInputHookConnect();
             di.BeginPolling();
-            Task.Run(() => taskX());
+            Task.Run(() => task());
         }
-        private void taskX()
+        private void task()
         {
             for (; ; )
             {
