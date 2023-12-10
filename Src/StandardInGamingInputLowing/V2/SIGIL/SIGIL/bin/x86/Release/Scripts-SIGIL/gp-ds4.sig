@@ -29,6 +29,7 @@ namespace StringToCode
         private static double statex = 0f, statey = 0f, mousex = 0f, mousey = 0f, mousestatex = 0f, mousestatey = 0f, dzx = 0.0f, dzy = 0.0f, viewpower1x = 0f, viewpower2x = 1f, viewpower3x = 0f, viewpower1y = 0.25f, viewpower2y = 0.75f, viewpower3y = 0f, viewpower05x = 0f, viewpower05y = 0f;
         private static bool getstate;
         private static int sleeptime = 1;
+        private static string vendor_ds4_id = "54C", product_ds4_id = "9CC", product_ds4_label = "Wireless Controller";
         private XBoxController XBC = new XBoxController();
         public DualShock4 ds4 = new DualShock4();
         public static Valuechange ValueChange = new Valuechange();
@@ -52,7 +53,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            ds4.ScanDualshock4("54C", "9CC", "Wireless Controller");
+            ds4.ScanDualshock4(vendor_ds4_id, product_ds4_id, product_ds4_label);
             Thread.Sleep(2000);
             ds4.BeginPolling();
             XBC.Connect();

@@ -118,6 +118,13 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"\bScanWiimote\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bCurrentResolution\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\brunning\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\birmode\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bvendor_ds_id\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bproduct_ds_id\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bproduct_ds_label\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bvendor_ds4_id\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bproduct_ds4_id\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bproduct_ds4_label\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bStart\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bstatex\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bstatey\b"));
@@ -1209,6 +1216,13 @@ namespace SIGIL
                 "TimeBeginPeriod",
                 "TimeEndPeriod",
                 "NtSetTimerResolution",
+                "irmode",
+                "vendor_ds_id",
+                "product_ds_id",
+                "product_ds_label",
+                "vendor_ds4_id",
+                "product_ds4_id",
+                "product_ds4_label",
                 "List",
                 "ScanGrip",
                 "ScanLeftJoycon",

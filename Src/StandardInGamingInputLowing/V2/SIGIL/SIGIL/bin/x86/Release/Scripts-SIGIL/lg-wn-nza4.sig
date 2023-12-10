@@ -30,6 +30,7 @@ namespace StringToCode
         private static double statex = 0f, statey = 0f, mousex = 0f, mousey = 0f, mousexp = 0f, mouseyp = 0f, mousestatex = 0f, mousestatey = 0f, dzx = 0.0f, dzy = 0.0f, viewpower1x = 0f, viewpower2x = 1f, viewpower3x = 0f, viewpower1y = 0.25f, viewpower2y = 0.75f, viewpower3y = 0f, viewpower05x = 0f, viewpower05y = 0f;
         private static bool[] getstate = new bool[12];
         private static int sleeptime = 1;
+        private static int irmode = 2;
         public static Valuechange ValueChange = new Valuechange();
         private WiiMote wm = new WiiMote();
         public static SendInterception si = new SendInterception();
@@ -74,7 +75,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            wm.ScanWiimote(2);
+            wm.ScanWiimote(irmode);
             wm.BeginPolling();
             Thread.Sleep(1000);
             wm.InitWiimote();
