@@ -62,8 +62,8 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 di.Close();
-                sk.UnLoadKM();
-                sm.UnLoadKM();
+                sk.Disconnect();
+                sm.Disconnect();
             }
             catch { }
         }

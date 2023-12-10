@@ -173,9 +173,8 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"BeginPolling"));
                 range.SetStyle(StyleMethod, new Regex(@"Connect"));
                 range.SetStyle(StyleMethod, new Regex(@"Disconnect"));
-                range.SetStyle(StyleMethod, new Regex(@"SubmitReport1"));
+                range.SetStyle(StyleMethod, new Regex(@"SetController"));
                 range.SetStyle(StyleMethod, new Regex(@"EnumerateControllers"));
-                range.SetStyle(StyleMethod, new Regex(@"UnLoadKM"));
                 range.SetStyle(StyleMethod, new Regex(@"SetKM"));
                 range.SetStyle(StyleLibrary, new Regex(@"Valuechanges"));
                 range.SetStyle(StyleClass, new Regex(@"Valuechange"));
@@ -1262,9 +1261,8 @@ namespace SIGIL
                 "BeginPolling",
                 "Connect",
                 "Disconnect",
-                "SubmitReport1",
+                "SetController",
                 "EnumerateControllers",
-                "UnLoadKM",
                 "SetKM",
                 "Valuechanges",
                 "Valuechange",

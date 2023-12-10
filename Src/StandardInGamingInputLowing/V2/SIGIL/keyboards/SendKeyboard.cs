@@ -419,16 +419,15 @@ namespace keyboards
         public const ushort S_NONAME = 0;
         public const ushort S_PA1 = 0;
         public const ushort S_OEM_CLEAR = 0;
-        public static string drivertype;
+        public string drivertype;
         public static Valuechanges ValueChange = new Valuechanges();
-        public void UnLoadKM()
+        public void Disconnect()
         {
-            SetKM("kmevent", false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
-            SetKM("sendinput", false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+            SetKM(this.drivertype, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
         }
         public void SetKM(string KeyboardMouseDriverType, bool SendLeftClick, bool SendRightClick, bool SendMiddleClick, bool SendWheelUp, bool SendWheelDown, bool SendLeft, bool SendRight, bool SendUp, bool SendDown, bool SendLButton, bool SendRButton, bool SendCancel, bool SendMBUTTON, bool SendXBUTTON1, bool SendXBUTTON2, bool SendBack, bool SendTab, bool SendClear, bool SendReturn, bool SendSHIFT, bool SendCONTROL, bool SendMENU, bool SendPAUSE, bool SendCAPITAL, bool SendKANA, bool SendHANGEUL, bool SendHANGUL, bool SendJUNJA, bool SendFINAL, bool SendHANJA, bool SendKANJI, bool SendEscape, bool SendCONVERT, bool SendNONCONVERT, bool SendACCEPT, bool SendMODECHANGE, bool SendSpace, bool SendPRIOR, bool SendNEXT, bool SendEND, bool SendHOME, bool SendLEFT, bool SendUP, bool SendRIGHT, bool SendDOWN, bool SendSELECT, bool SendPRINT, bool SendEXECUTE, bool SendSNAPSHOT, bool SendINSERT, bool SendDELETE, bool SendHELP, bool SendAPOSTROPHE, bool Send0, bool Send1, bool Send2, bool Send3, bool Send4, bool Send5, bool Send6, bool Send7, bool Send8, bool Send9, bool SendA, bool SendB, bool SendC, bool SendD, bool SendE, bool SendF, bool SendG, bool SendH, bool SendI, bool SendJ, bool SendK, bool SendL, bool SendM, bool SendN, bool SendO, bool SendP, bool SendQ, bool SendR, bool SendS, bool SendT, bool SendU, bool SendV, bool SendW, bool SendX, bool SendY, bool SendZ, bool SendLWIN, bool SendRWIN, bool SendAPPS, bool SendSLEEP, bool SendNUMPAD0, bool SendNUMPAD1, bool SendNUMPAD2, bool SendNUMPAD3, bool SendNUMPAD4, bool SendNUMPAD5, bool SendNUMPAD6, bool SendNUMPAD7, bool SendNUMPAD8, bool SendNUMPAD9, bool SendMULTIPLY, bool SendADD, bool SendSEPARATOR, bool SendSUBTRACT, bool SendDECIMAL, bool SendDIVIDE, bool SendF1, bool SendF2, bool SendF3, bool SendF4, bool SendF5, bool SendF6, bool SendF7, bool SendF8, bool SendF9, bool SendF10, bool SendF11, bool SendF12, bool SendF13, bool SendF14, bool SendF15, bool SendF16, bool SendF17, bool SendF18, bool SendF19, bool SendF20, bool SendF21, bool SendF22, bool SendF23, bool SendF24, bool SendNUMLOCK, bool SendSCROLL, bool SendLeftShift, bool SendRightShift, bool SendLeftControl, bool SendRightControl, bool SendLMENU, bool SendRMENU)
         {
-            drivertype = KeyboardMouseDriverType;
+            this.drivertype = KeyboardMouseDriverType;
             ValueChange[1] = SendLeftClick ? 1 : 0;
             if (Valuechanges._ValueChange[1] > 0f)
                 mouseclickleft();
@@ -1131,84 +1130,84 @@ namespace keyboards
             if (Valuechanges._ValueChange[141] < 0f)
                 keyboardF(VK_RMENU, S_RMENU);
         }
-        public static void mouseclickleft()
+        public void mouseclickleft()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonLeft());
             else
                 Task.Run(() => LeftClick());
         }
-        public static void mouseclickleftF()
+        public void mouseclickleftF()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonLeftF());
             else
                 Task.Run(() => LeftClickF());
         }
-        public static void mouseclickright()
+        public void mouseclickright()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonRight());
             else
                 Task.Run(() => RightClick());
         }
-        public static void mouseclickrightF()
+        public void mouseclickrightF()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonRightF());
             else
                 Task.Run(() => RightClickF());
         }
-        public static void mouseclickmiddle()
+        public void mouseclickmiddle()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonMiddle());
             else
                 Task.Run(() => MiddleClick());
         }
-        public static void mouseclickmiddleF()
+        public void mouseclickmiddleF()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonMiddleF());
             else
                 Task.Run(() => MiddleClickF());
         }
-        public static void mousewheelup()
+        public void mousewheelup()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonWheelUp());
             else
                 Task.Run(() => WheelUpF());
         }
-        public static void mousewheeldown()
+        public void mousewheeldown()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonWheelDown());
             else
                 Task.Run(() => WheelDownF());
         }
-        public static void keyboard(UInt16 bVk, UInt16 bScan)
+        public void keyboard(UInt16 bVk, UInt16 bScan)
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendKey(bVk, bScan));
             else
                 Task.Run(() => SimulateKeyDown(bVk, bScan));
         }
-        public static void keyboardF(UInt16 bVk, UInt16 bScan)
+        public void keyboardF(UInt16 bVk, UInt16 bScan)
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendKeyF(bVk, bScan));
             else
                 Task.Run(() => SimulateKeyUp(bVk, bScan));
         }
-        public static void keyboardArrows(UInt16 bVk, UInt16 bScan)
+        public void keyboardArrows(UInt16 bVk, UInt16 bScan)
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendKeyArrows(bVk, bScan));
             else
                 Task.Run(() => SimulateKeyDownArrows(bVk, bScan));
         }
-        public static void keyboardArrowsF(UInt16 bVk, UInt16 bScan)
+        public void keyboardArrowsF(UInt16 bVk, UInt16 bScan)
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendKeyArrowsF(bVk, bScan));

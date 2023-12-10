@@ -21,15 +21,14 @@ namespace mouses
         public static extern void SetCaretPos(int X, int Y);
         [DllImport("user32.dll")]
         public static extern void SetCursorPos(int X, int Y);
-        public static string drivertype;
-        public void UnLoadKM()
+        public string drivertype;
+        public void Disconnect()
         {
-            SetKM("kmevent", 0, 0, 0, 0, 0, 0);
-            SetKM("sendinput", 0, 0, 0, 0, 0, 0);
+            SetKM(this.drivertype, 0, 0, 0, 0, 0, 0);
         }
         public void SetKM(string KeyboardMouseDriverType, double MouseMoveX, double MouseMoveY, double MouseAbsX, double MouseAbsY, double MouseDesktopX, double MouseDesktopY)
         {
-            drivertype = KeyboardMouseDriverType;
+            this.drivertype = KeyboardMouseDriverType;
             if (MouseMoveX != 0f | MouseMoveY != 0f)
                 mousebrink((int)(MouseMoveX), (int)(MouseMoveY));
             if (MouseAbsX != 0f | MouseAbsY != 0f)
@@ -42,14 +41,14 @@ namespace mouses
                 SetCursorPos((int)(MouseDesktopX), (int)(MouseDesktopY));
             }
         }
-        public static void mousebrink(int x, int y)
+        public void mousebrink(int x, int y)
         {
             if (drivertype == "sendinput")
                 MoveMouseBy(x, y);
             else
                 MouseBrink(x, y);
         }
-        public static void mousemw3(int x, int y)
+        public void mousemw3(int x, int y)
         {
             if (drivertype == "sendinput")
                 MoveMouseTo(x, y);

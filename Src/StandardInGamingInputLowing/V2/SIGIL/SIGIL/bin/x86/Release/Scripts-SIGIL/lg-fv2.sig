@@ -61,7 +61,7 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 di.Close();
-                si.UnLoadKM(keyboard_1_id, mouse_1_id);
+                si.Disconnect();
             }
             catch { }
         }
