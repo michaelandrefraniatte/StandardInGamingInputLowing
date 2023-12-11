@@ -31,6 +31,7 @@ namespace StringToCode
         private static bool[] getstate = new bool[12];
         private static int sleeptime = 1;
         private static int irmode = 2;
+        private static double centery = 80f;
         public static Valuechange ValueChange = new Valuechange();
         private WiiMote wm = new WiiMote();
         public static SendInterception si = new SendInterception();
@@ -75,7 +76,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            wm.ScanWiimote(irmode);
+            wm.ScanWiimote(irmode, centery);
             wm.BeginPolling();
             Thread.Sleep(1000);
             wm.InitWiimote();

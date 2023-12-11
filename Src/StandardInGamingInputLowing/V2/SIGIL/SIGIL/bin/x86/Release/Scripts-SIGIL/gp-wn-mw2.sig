@@ -30,6 +30,7 @@ namespace StringToCode
         private static bool getstate;
         private static int sleeptime = 1;
         private static int irmode = 2;
+        private static double centery = 80f;
         private XBoxController XBC = new XBoxController();
         private WiiMote wm = new WiiMote();
         public static Valuechange ValueChange = new Valuechange();
@@ -53,7 +54,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            wm.ScanWiimote(irmode);
+            wm.ScanWiimote(irmode, centery);
             wm.BeginPolling();
             Thread.Sleep(1000);
             wm.InitWiimote();
