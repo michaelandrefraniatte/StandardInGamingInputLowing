@@ -190,6 +190,10 @@
     <Content Include="ciine.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\controllerds4\controllerds4.csproj">
+      <Project>{45d70334-d981-4971-8d23-bbf07912c86c}</Project>
+      <Name>controllerds4</Name>
+    </ProjectReference>
     <ProjectReference Include="..\controllersds4\controllersds4.csproj">
       <Project>{1c365d1f-b40b-416a-bf40-3782ec480e8f}</Project>
       <Name>controllersds4</Name>
@@ -201,6 +205,14 @@
     <ProjectReference Include="..\controllers\controllers.csproj">
       <Project>{8bde6140-ee1c-4fd9-85e8-7f0dfd14ce94}</Project>
       <Name>controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\controllervjoy\controllervjoy.csproj">
+      <Project>{d770d569-316c-4ae5-bffd-1a386d1e619e}</Project>
+      <Name>controllervjoy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\controller\controller.csproj">
+      <Project>{b1d3a446-ef07-4781-bbd6-4814f8a40e07}</Project>
+      <Name>controller</Name>
     </ProjectReference>
     <ProjectReference Include="..\Directinput\Directinput.csproj">
       <Project>{a7930c91-022c-4017-9b78-795c26e0b2a6}</Project>

@@ -195,6 +195,7 @@ namespace SIGIL
                 range.SetStyle(StyleObject, new Regex(@"\bValueChange\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\b_ValueChange\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bcontrollers\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bcontroller\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bXBoxController\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bXBC\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bXInputAPI\b"));
@@ -202,9 +203,11 @@ namespace SIGIL
                 range.SetStyle(StyleObject, new Regex(@"\bxi\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bScanXInput\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bcontrollersds4\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bcontrollerds4\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bDS4Controller\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bDS4\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bcontrollersvjoy\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bcontrollervjoy\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bVJoyController\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bVJoy\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bDirectInputAPI\b"));
@@ -1303,6 +1306,7 @@ namespace SIGIL
                 "ValueChange",
                 "_ValueChange",
                 "controllers",
+                "controller",
                 "XBoxController",
                 "XBC",
                 "XInputAPI",
@@ -1310,9 +1314,11 @@ namespace SIGIL
                 "xi",
                 "ScanXInput",
                 "controllersds4",
+                "controllerds4",
                 "DS4Controller",
                 "DS4",
                 "controllersvjoy",
+                "controllervjoy",
                 "VJoyController",
                 "VJoy",
                 "DirectInputAPI",
@@ -2646,9 +2652,9 @@ namespace SIGIL
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Numerics.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Core.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\netstandard.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllers.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllersds4.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllersvjoy.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controller.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllerds4.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllervjoy.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\keyboards.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\mouses.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Interceptions.dll");
