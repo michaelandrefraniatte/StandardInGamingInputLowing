@@ -42,7 +42,7 @@ namespace SIGIL
         public static ReplaceForm replaceform;
         public static bool runstopbool = false;
         private static Range range;
-        private static Style StyleInput = new TextStyle(Brushes.Blue, null, System.Drawing.FontStyle.Regular), StyleOutput = new TextStyle(Brushes.Orange, null, System.Drawing.FontStyle.Regular), StyleLibrary = new TextStyle(Brushes.BlueViolet, null, System.Drawing.FontStyle.Regular), StyleClass = new TextStyle(Brushes.DodgerBlue, null, System.Drawing.FontStyle.Regular), StyleMethod = new TextStyle(Brushes.Magenta, null, System.Drawing.FontStyle.Regular), StyleObject = new TextStyle(Brushes.DarkOrange, null, System.Drawing.FontStyle.Regular), StyleExtra = new TextStyle(Brushes.Red, null, System.Drawing.FontStyle.Regular), StyleSpecial = new TextStyle(Brushes.DarkCyan, null, System.Drawing.FontStyle.Regular);
+        private static Style StyleInput = new TextStyle(Brushes.Blue, null, System.Drawing.FontStyle.Regular), StyleOutput = new TextStyle(Brushes.Orange, null, System.Drawing.FontStyle.Regular), StyleLibrary = new TextStyle(Brushes.BlueViolet, null, System.Drawing.FontStyle.Regular), StyleClass = new TextStyle(Brushes.DodgerBlue, null, System.Drawing.FontStyle.Regular), StyleMethod = new TextStyle(Brushes.Magenta, null, System.Drawing.FontStyle.Regular), StyleObject = new TextStyle(Brushes.DarkOrange, null, System.Drawing.FontStyle.Regular), StyleExtra = new TextStyle(Brushes.Red, null, System.Drawing.FontStyle.Regular), StyleSpecial = new TextStyle(Brushes.DarkCyan, null, System.Drawing.FontStyle.Regular), StyleNone = new TextStyle(Brushes.Black, null, System.Drawing.FontStyle.Regular);
         private Type program;
         private object obj;
         private Assembly assembly;
@@ -1214,6 +1214,7 @@ namespace SIGIL
                 range.SetStyle(StyleOutput, new Regex(@"\bSendRightControl\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bSendLMENU\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bSendRMENU\b"));
+                range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
         }
@@ -2655,6 +2656,9 @@ namespace SIGIL
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controller.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllerds4.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllervjoy.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllers.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllersds4.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllersvjoy.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\keyboards.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\mouses.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Interceptions.dll");
