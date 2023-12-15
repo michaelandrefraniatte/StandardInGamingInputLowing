@@ -97,35 +97,35 @@ namespace JoyconRightAPI
                 try
                 {
                     Rhid_read_timeout(handleRight, report_bufRight, (UIntPtr)report_lenRight);
-                    ProcessButtonsRightJoycon();
-                    if (formvisible)
-                    {
-                        string str = "JoyconRightStickX : " + JoyconRightStickX + Environment.NewLine;
-                        str += "JoyconRightStickY : " + JoyconRightStickY + Environment.NewLine;
-                        str += "JoyconRightButtonSHOULDER_1 : " + JoyconRightButtonSHOULDER_1 + Environment.NewLine;
-                        str += "JoyconRightButtonSHOULDER_2 : " + JoyconRightButtonSHOULDER_2 + Environment.NewLine;
-                        str += "JoyconRightButtonSR : " + JoyconRightButtonSR + Environment.NewLine;
-                        str += "JoyconRightButtonSL : " + JoyconRightButtonSL + Environment.NewLine;
-                        str += "JoyconRightButtonDPAD_DOWN : " + JoyconRightButtonDPAD_DOWN + Environment.NewLine;
-                        str += "JoyconRightButtonDPAD_RIGHT : " + JoyconRightButtonDPAD_RIGHT + Environment.NewLine;
-                        str += "JoyconRightButtonDPAD_UP : " + JoyconRightButtonDPAD_UP + Environment.NewLine;
-                        str += "JoyconRightButtonDPAD_LEFT : " + JoyconRightButtonDPAD_LEFT + Environment.NewLine;
-                        str += "JoyconRightButtonPLUS : " + JoyconRightButtonPLUS + Environment.NewLine;
-                        str += "JoyconRightButtonHOME : " + JoyconRightButtonHOME + Environment.NewLine;
-                        str += "JoyconRightButtonSTICK : " + JoyconRightButtonSTICK + Environment.NewLine;
-                        str += "JoyconRightButtonACC : " + JoyconRightButtonACC + Environment.NewLine;
-                        str += "JoyconRightButtonSPA : " + JoyconRightButtonSPA + Environment.NewLine;
-                        str += "JoyconRightRollLeft : " + JoyconRightRollLeft + Environment.NewLine;
-                        str += "JoyconRightRollRight : " + JoyconRightRollRight + Environment.NewLine;
-                        str += "JoyconRightAccelX : " + JoyconRightAccelX + Environment.NewLine;
-                        str += "JoyconRightAccelY : " + JoyconRightAccelY + Environment.NewLine;
-                        str += "JoyconRightGyroX : " + JoyconRightGyroX + Environment.NewLine;
-                        str += "JoyconRightGyroY : " + JoyconRightGyroY + Environment.NewLine;
-                        str += Environment.NewLine;
-                        form1.SetLabel1(str);
-                    }
                 }
                 catch { }
+                ProcessButtonsRightJoycon();
+                if (formvisible)
+                {
+                    string str = "JoyconRightStickX : " + JoyconRightStickX + Environment.NewLine;
+                    str += "JoyconRightStickY : " + JoyconRightStickY + Environment.NewLine;
+                    str += "JoyconRightButtonSHOULDER_1 : " + JoyconRightButtonSHOULDER_1 + Environment.NewLine;
+                    str += "JoyconRightButtonSHOULDER_2 : " + JoyconRightButtonSHOULDER_2 + Environment.NewLine;
+                    str += "JoyconRightButtonSR : " + JoyconRightButtonSR + Environment.NewLine;
+                    str += "JoyconRightButtonSL : " + JoyconRightButtonSL + Environment.NewLine;
+                    str += "JoyconRightButtonDPAD_DOWN : " + JoyconRightButtonDPAD_DOWN + Environment.NewLine;
+                    str += "JoyconRightButtonDPAD_RIGHT : " + JoyconRightButtonDPAD_RIGHT + Environment.NewLine;
+                    str += "JoyconRightButtonDPAD_UP : " + JoyconRightButtonDPAD_UP + Environment.NewLine;
+                    str += "JoyconRightButtonDPAD_LEFT : " + JoyconRightButtonDPAD_LEFT + Environment.NewLine;
+                    str += "JoyconRightButtonPLUS : " + JoyconRightButtonPLUS + Environment.NewLine;
+                    str += "JoyconRightButtonHOME : " + JoyconRightButtonHOME + Environment.NewLine;
+                    str += "JoyconRightButtonSTICK : " + JoyconRightButtonSTICK + Environment.NewLine;
+                    str += "JoyconRightButtonACC : " + JoyconRightButtonACC + Environment.NewLine;
+                    str += "JoyconRightButtonSPA : " + JoyconRightButtonSPA + Environment.NewLine;
+                    str += "JoyconRightRollLeft : " + JoyconRightRollLeft + Environment.NewLine;
+                    str += "JoyconRightRollRight : " + JoyconRightRollRight + Environment.NewLine;
+                    str += "JoyconRightAccelX : " + JoyconRightAccelX + Environment.NewLine;
+                    str += "JoyconRightAccelY : " + JoyconRightAccelY + Environment.NewLine;
+                    str += "JoyconRightGyroX : " + JoyconRightGyroX + Environment.NewLine;
+                    str += "JoyconRightGyroY : " + JoyconRightGyroY + Environment.NewLine;
+                    str += Environment.NewLine;
+                    form1.SetLabel1(str);
+                }
             }
         }
         public void BeginPolling()

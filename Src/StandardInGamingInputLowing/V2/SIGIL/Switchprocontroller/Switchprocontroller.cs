@@ -94,40 +94,40 @@ namespace SwitchProControllerAPI
                 try
                 {
                     Prohid_read_timeout(handlePro, report_bufPro, (UIntPtr)report_lenPro);
-                    ProcessButtonsAndSticksPro();
-                    if (formvisible)
-                    {
-                        string str = "ProControllerLeftStickX : " + ProControllerLeftStickX + Environment.NewLine;
-                        str += "ProControllerLeftStickY : " + ProControllerLeftStickY + Environment.NewLine;
-                        str += "ProControllerRightStickX : " + ProControllerRightStickX + Environment.NewLine;
-                        str += "ProControllerRightStickY : " + ProControllerRightStickY + Environment.NewLine;
-                        str += "ProControllerButtonSHOULDER_Left_1 : " + ProControllerButtonSHOULDER_Left_1 + Environment.NewLine;
-                        str += "ProControllerButtonSHOULDER_Left_2 : " + ProControllerButtonSHOULDER_Left_2 + Environment.NewLine;
-                        str += "ProControllerButtonDPAD_DOWN : " + ProControllerButtonDPAD_DOWN + Environment.NewLine;
-                        str += "ProControllerButtonDPAD_RIGHT : " + ProControllerButtonDPAD_RIGHT + Environment.NewLine;
-                        str += "ProControllerButtonDPAD_UP : " + ProControllerButtonDPAD_UP + Environment.NewLine;
-                        str += "ProControllerButtonDPAD_LEFT : " + ProControllerButtonDPAD_LEFT + Environment.NewLine;
-                        str += "ProControllerButtonMINUS : " + ProControllerButtonMINUS + Environment.NewLine;
-                        str += "ProControllerButtonCAPTURE : " + ProControllerButtonCAPTURE + Environment.NewLine;
-                        str += "ProControllerButtonSTICK_Left : " + ProControllerButtonSTICK_Left + Environment.NewLine;
-                        str += "ProControllerButtonSHOULDER_Right_1 : " + ProControllerButtonSHOULDER_Right_1 + Environment.NewLine;
-                        str += "ProControllerButtonSHOULDER_Right_2 : " + ProControllerButtonSHOULDER_Right_2 + Environment.NewLine;
-                        str += "ProControllerButtonA : " + ProControllerButtonA + Environment.NewLine;
-                        str += "ProControllerButtonB : " + ProControllerButtonB + Environment.NewLine;
-                        str += "ProControllerButtonX : " + ProControllerButtonX + Environment.NewLine;
-                        str += "ProControllerButtonY : " + ProControllerButtonY + Environment.NewLine;
-                        str += "ProControllerButtonPLUS : " + ProControllerButtonPLUS + Environment.NewLine;
-                        str += "ProControllerButtonHOME : " + ProControllerButtonHOME + Environment.NewLine;
-                        str += "ProControllerButtonSTICK_Right : " + ProControllerButtonSTICK_Right + Environment.NewLine;
-                        str += "ProControllerAccelX : " + ProControllerAccelX + Environment.NewLine;
-                        str += "ProControllerAccelY : " + ProControllerAccelY + Environment.NewLine;
-                        str += "ProControllerGyroX : " + ProControllerGyroX + Environment.NewLine;
-                        str += "ProControllerGyroY : " + ProControllerGyroY + Environment.NewLine;
-                        str += Environment.NewLine;
-                        form1.SetLabel1(str);
-                    }
                 }
                 catch { }
+                ProcessButtonsAndSticksPro();
+                if (formvisible)
+                {
+                    string str = "ProControllerLeftStickX : " + ProControllerLeftStickX + Environment.NewLine;
+                    str += "ProControllerLeftStickY : " + ProControllerLeftStickY + Environment.NewLine;
+                    str += "ProControllerRightStickX : " + ProControllerRightStickX + Environment.NewLine;
+                    str += "ProControllerRightStickY : " + ProControllerRightStickY + Environment.NewLine;
+                    str += "ProControllerButtonSHOULDER_Left_1 : " + ProControllerButtonSHOULDER_Left_1 + Environment.NewLine;
+                    str += "ProControllerButtonSHOULDER_Left_2 : " + ProControllerButtonSHOULDER_Left_2 + Environment.NewLine;
+                    str += "ProControllerButtonDPAD_DOWN : " + ProControllerButtonDPAD_DOWN + Environment.NewLine;
+                    str += "ProControllerButtonDPAD_RIGHT : " + ProControllerButtonDPAD_RIGHT + Environment.NewLine;
+                    str += "ProControllerButtonDPAD_UP : " + ProControllerButtonDPAD_UP + Environment.NewLine;
+                    str += "ProControllerButtonDPAD_LEFT : " + ProControllerButtonDPAD_LEFT + Environment.NewLine;
+                    str += "ProControllerButtonMINUS : " + ProControllerButtonMINUS + Environment.NewLine;
+                    str += "ProControllerButtonCAPTURE : " + ProControllerButtonCAPTURE + Environment.NewLine;
+                    str += "ProControllerButtonSTICK_Left : " + ProControllerButtonSTICK_Left + Environment.NewLine;
+                    str += "ProControllerButtonSHOULDER_Right_1 : " + ProControllerButtonSHOULDER_Right_1 + Environment.NewLine;
+                    str += "ProControllerButtonSHOULDER_Right_2 : " + ProControllerButtonSHOULDER_Right_2 + Environment.NewLine;
+                    str += "ProControllerButtonA : " + ProControllerButtonA + Environment.NewLine;
+                    str += "ProControllerButtonB : " + ProControllerButtonB + Environment.NewLine;
+                    str += "ProControllerButtonX : " + ProControllerButtonX + Environment.NewLine;
+                    str += "ProControllerButtonY : " + ProControllerButtonY + Environment.NewLine;
+                    str += "ProControllerButtonPLUS : " + ProControllerButtonPLUS + Environment.NewLine;
+                    str += "ProControllerButtonHOME : " + ProControllerButtonHOME + Environment.NewLine;
+                    str += "ProControllerButtonSTICK_Right : " + ProControllerButtonSTICK_Right + Environment.NewLine;
+                    str += "ProControllerAccelX : " + ProControllerAccelX + Environment.NewLine;
+                    str += "ProControllerAccelY : " + ProControllerAccelY + Environment.NewLine;
+                    str += "ProControllerGyroX : " + ProControllerGyroX + Environment.NewLine;
+                    str += "ProControllerGyroY : " + ProControllerGyroY + Environment.NewLine;
+                    str += Environment.NewLine;
+                    form1.SetLabel1(str);
+                }
             }
         }
         public void BeginPolling()
