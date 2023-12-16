@@ -1765,6 +1765,52 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonLogoPressed\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonTouchpadPressed\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonMicPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bir1x\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bir1y\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1ButtonStateA\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1ButtonStateB\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1ButtonStateMinus\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1ButtonStateHome\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1ButtonStatePlus\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1ButtonStateOne\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1ButtonStateTwo\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1ButtonStateUp\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1ButtonStateDown\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1ButtonStateLeft\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1ButtonStateRight\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1RawValuesX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1RawValuesY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1RawValuesZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1NunchuckStateRawJoystickX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1NunchuckStateRawJoystickY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1NunchuckStateRawValuesX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1NunchuckStateRawValuesY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1NunchuckStateRawValuesZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1NunchuckStateC\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote1NunchuckStateZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bir2x\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bir2y\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2ButtonStateA\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2ButtonStateB\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2ButtonStateMinus\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2ButtonStateHome\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2ButtonStatePlus\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2ButtonStateOne\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2ButtonStateTwo\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2ButtonStateUp\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2ButtonStateDown\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2ButtonStateLeft\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2ButtonStateRight\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2RawValuesX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2RawValuesY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2RawValuesZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2NunchuckStateRawJoystickX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2NunchuckStateRawJoystickY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2NunchuckStateRawValuesX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2NunchuckStateRawValuesY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2NunchuckStateRawValuesZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2NunchuckStateC\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimote2NunchuckStateZ\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -3419,7 +3465,53 @@ namespace SIGIL
                 "PS4Controller2ButtonMenuPressed",
                 "PS4Controller2ButtonLogoPressed",
                 "PS4Controller2ButtonTouchpadPressed",
-                "PS4Controller2ButtonMicPressed"
+                "PS4Controller2ButtonMicPressed",
+                "ir1x",
+                "ir1y",
+                "Wiimote1ButtonStateA",
+                "Wiimote1ButtonStateB",
+                "Wiimote1ButtonStateMinus",
+                "Wiimote1ButtonStateHome",
+                "Wiimote1ButtonStatePlus",
+                "Wiimote1ButtonStateOne",
+                "Wiimote1ButtonStateTwo",
+                "Wiimote1ButtonStateUp",
+                "Wiimote1ButtonStateDown",
+                "Wiimote1ButtonStateLeft",
+                "Wiimote1ButtonStateRight",
+                "Wiimote1RawValuesX",
+                "Wiimote1RawValuesY",
+                "Wiimote1RawValuesZ",
+                "Wiimote1NunchuckStateRawJoystickX",
+                "Wiimote1NunchuckStateRawJoystickY",
+                "Wiimote1NunchuckStateRawValuesX",
+                "Wiimote1NunchuckStateRawValuesY",
+                "Wiimote1NunchuckStateRawValuesZ",
+                "Wiimote1NunchuckStateC",
+                "Wiimote1NunchuckStateZ",
+                "ir2x",
+                "ir2y",
+                "Wiimote2ButtonStateA",
+                "Wiimote2ButtonStateB",
+                "Wiimote2ButtonStateMinus",
+                "Wiimote2ButtonStateHome",
+                "Wiimote2ButtonStatePlus",
+                "Wiimote2ButtonStateOne",
+                "Wiimote2ButtonStateTwo",
+                "Wiimote2ButtonStateUp",
+                "Wiimote2ButtonStateDown",
+                "Wiimote2ButtonStateLeft",
+                "Wiimote2ButtonStateRight",
+                "Wiimote2RawValuesX",
+                "Wiimote2RawValuesY",
+                "Wiimote2RawValuesZ",
+                "Wiimote2NunchuckStateRawJoystickX",
+                "Wiimote2NunchuckStateRawJoystickY",
+                "Wiimote2NunchuckStateRawValuesX",
+                "Wiimote2NunchuckStateRawValuesY",
+                "Wiimote2NunchuckStateRawValuesZ",
+                "Wiimote2NunchuckStateC",
+                "Wiimote2NunchuckStateZ"
             };
         }
         private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
@@ -3892,6 +3984,18 @@ namespace SIGIL
                         public static extern bool joyconleftdisconnect();
                         [DllImport(""MotionInputPairing.dll"", EntryPoint = ""wiimotedisconnect"")]
                         public static extern bool wiimotedisconnect();
+                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""wiimotesconnect"")]
+                        public static extern bool wiimotesconnect();
+                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""wiimotesdisconnect"")]
+                        public static extern bool wiimotesdisconnect();
+                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""joyconsleftconnect"")]
+                        public static extern bool joyconsleftconnect();
+                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""joyconsleftdisconnect"")]
+                        public static extern bool joyconsleftdisconnect();
+                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""joyconsrightconnect"")]
+                        public static extern bool joyconsrightconnect();
+                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""joyconsrightdisconnect"")]
+                        public static extern bool joyconsrightdisconnect();
                         public void Disconnect()
                         {
                             try
@@ -3910,6 +4014,24 @@ namespace SIGIL
                             {
                                 wiimoteconnect();
                                 wiimotedisconnect();
+                            }
+                            catch { }
+                            try
+                            {
+                                wiimotesconnect();
+                                wiimotesdisconnect();
+                            }
+                            catch { }
+                            try
+                            {
+                                joyconsleftconnect();
+                                joyconsleftdisconnect();
+                            }
+                            catch { }
+                            try
+                            {
+                                joyconsrightconnect();
+                                joyconsrightdisconnect();
                             }
                             catch { }
                         }
