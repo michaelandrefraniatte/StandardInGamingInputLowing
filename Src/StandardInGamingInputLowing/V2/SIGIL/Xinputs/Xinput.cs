@@ -1,0 +1,207 @@
+﻿using SharpDX.XInput;
+using SharpDX;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using Xinputs;
+
+namespace XInputsAPI
+{
+    public class XInput
+    {
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
+        private static bool running, formvisible;
+        public Form1 form1 = new Form1();
+        public XInput()
+        {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
+            running = true;
+        }
+        public void ViewData()
+        {
+            if (!form1.Visible)
+            {
+                formvisible = true;
+                form1.SetVisible();
+            }
+        }
+        public void Close()
+        {
+            running = false;
+        }
+        public void taskD()
+        {
+            for (; ; )
+            {
+                if (!running)
+                    break;
+                ControllerProcess();
+                System.Threading.Thread.Sleep(1);
+                if (formvisible)
+                {
+                    string str = "Controller1ButtonAPressed : " + Controller1ButtonAPressed + Environment.NewLine;
+                    str += "Controller1ButtonBPressed : " + Controller1ButtonBPressed + Environment.NewLine;
+                    str += "Controller1ButtonXPressed : " + Controller1ButtonXPressed + Environment.NewLine;
+                    str += "Controller1ButtonYPressed : " + Controller1ButtonYPressed + Environment.NewLine;
+                    str += "Controller1ButtonStartPressed : " + Controller1ButtonStartPressed + Environment.NewLine;
+                    str += "Controller1ButtonBackPressed : " + Controller1ButtonBackPressed + Environment.NewLine;
+                    str += "Controller1ButtonDownPressed : " + Controller1ButtonDownPressed + Environment.NewLine;
+                    str += "Controller1ButtonUpPressed : " + Controller1ButtonUpPressed + Environment.NewLine;
+                    str += "Controller1ButtonLeftPressed : " + Controller1ButtonLeftPressed + Environment.NewLine;
+                    str += "Controller1ButtonRightPressed : " + Controller1ButtonRightPressed + Environment.NewLine;
+                    str += "Controller1ButtonShoulderLeftPressed : " + Controller1ButtonShoulderLeftPressed + Environment.NewLine;
+                    str += "Controller1ButtonShoulderRightPressed : " + Controller1ButtonShoulderRightPressed + Environment.NewLine;
+                    str += "Controller1ThumbpadLeftPressed : " + Controller1ThumbpadLeftPressed + Environment.NewLine;
+                    str += "Controller1ThumbpadRightPressed : " + Controller1ThumbpadRightPressed + Environment.NewLine;
+                    str += "Controller1TriggerLeftPosition : " + Controller1TriggerLeftPosition + Environment.NewLine;
+                    str += "Controller1TriggerRightPosition : " + Controller1TriggerRightPosition + Environment.NewLine;
+                    str += "Controller1ThumbLeftX : " + Controller1ThumbLeftX + Environment.NewLine;
+                    str += "Controller1ThumbLeftY : " + Controller1ThumbLeftY + Environment.NewLine;
+                    str += "Controller1ThumbRightX : " + Controller1ThumbRightX + Environment.NewLine;
+                    str += "Controller1ThumbRightY : " + Controller1ThumbRightY + Environment.NewLine;
+                    str += Environment.NewLine;
+                    form1.SetLabel1(str);
+                }
+            }
+        }
+        public void BeginPolling()
+        {
+            Task.Run(() => taskD());
+        }
+        private static Controller[] controller = new Controller[] { null };
+        private static SharpDX.XInput.State xistate;
+        private static int xinum = 0;
+        public bool Controller1ButtonAPressed;
+        public bool Controller1ButtonBPressed;
+        public bool Controller1ButtonXPressed;
+        public bool Controller1ButtonYPressed;
+        public bool Controller1ButtonStartPressed;
+        public bool Controller1ButtonBackPressed;
+        public bool Controller1ButtonDownPressed;
+        public bool Controller1ButtonUpPressed;
+        public bool Controller1ButtonLeftPressed;
+        public bool Controller1ButtonRightPressed;
+        public bool Controller1ButtonShoulderLeftPressed;
+        public bool Controller1ButtonShoulderRightPressed;
+        public bool Controller1ThumbpadLeftPressed;
+        public bool Controller1ThumbpadRightPressed;
+        public double Controller1TriggerLeftPosition;
+        public double Controller1TriggerRightPosition;
+        public double Controller1ThumbLeftX;
+        public double Controller1ThumbLeftY;
+        public double Controller1ThumbRightX;
+        public double Controller1ThumbRightY;
+        public bool ScanXInput()
+        {
+            try
+            {
+                controller = new Controller[] { null };
+                xinum = 0;
+                var controllers = new[] { new Controller(UserIndex.One) };
+                foreach (var selectControler in controllers)
+                {
+                    if (selectControler.IsConnected)
+                    {
+                        controller[xinum] = selectControler;
+                        xinum++;
+                        if (xinum >= 1)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            catch { }
+            if (controller[0] == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private void ControllerProcess()
+        {
+            for (int inc = 0; inc < xinum; inc++)
+            {
+                xistate = controller[inc].GetState();
+                if (inc == 0)
+                {
+                    if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.A))
+                        Controller1ButtonAPressed = true;
+                    else
+                        Controller1ButtonAPressed = false;
+                    if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.B))
+                        Controller1ButtonBPressed = true;
+                    else
+                        Controller1ButtonBPressed = false;
+                    if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.X))
+                        Controller1ButtonXPressed = true;
+                    else
+                        Controller1ButtonXPressed = false;
+                    if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.Y))
+                        Controller1ButtonYPressed = true;
+                    else
+                        Controller1ButtonYPressed = false;
+                    if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.Start))
+                        Controller1ButtonStartPressed = true;
+                    else
+                        Controller1ButtonStartPressed = false;
+                    if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.Back))
+                        Controller1ButtonBackPressed = true;
+                    else
+                        Controller1ButtonBackPressed = false;
+                    if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.DPadDown))
+                        Controller1ButtonDownPressed = true;
+                    else
+                        Controller1ButtonDownPressed = false;
+                    if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.DPadUp))
+                        Controller1ButtonUpPressed = true;
+                    else
+                        Controller1ButtonUpPressed = false;
+                    if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.DPadLeft))
+                        Controller1ButtonLeftPressed = true;
+                    else
+                        Controller1ButtonLeftPressed = false;
+                    if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.DPadRight))
+                        Controller1ButtonRightPressed = true;
+                    else
+                        Controller1ButtonRightPressed = false;
+                    if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.LeftShoulder))
+                        Controller1ButtonShoulderLeftPressed = true;
+                    else
+                        Controller1ButtonShoulderLeftPressed = false;
+                    if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.RightShoulder))
+                        Controller1ButtonShoulderRightPressed = true;
+                    else
+                        Controller1ButtonShoulderRightPressed = false;
+                    if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.LeftThumb))
+                        Controller1ThumbpadLeftPressed = true;
+                    else
+                        Controller1ThumbpadLeftPressed = false;
+                    if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.RightThumb))
+                        Controller1ThumbpadRightPressed = true;
+                    else
+                        Controller1ThumbpadRightPressed = false;
+                    Controller1TriggerLeftPosition = xistate.Gamepad.LeftTrigger;
+                    Controller1TriggerRightPosition = xistate.Gamepad.RightTrigger;
+                    Controller1ThumbLeftX = xistate.Gamepad.LeftThumbX;
+                    Controller1ThumbLeftY = xistate.Gamepad.LeftThumbY;
+                    Controller1ThumbRightX = xistate.Gamepad.RightThumbX;
+                    Controller1ThumbRightY = xistate.Gamepad.RightThumbY;
+                }
+            }
+        }
+    }
+}

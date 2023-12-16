@@ -214,6 +214,10 @@
       <Project>{b1d3a446-ef07-4781-bbd6-4814f8a40e07}</Project>
       <Name>controller</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Directinputs\Directinputs.csproj">
+      <Project>{6ba6817c-47bb-44de-a4ee-f23b04a29750}</Project>
+      <Name>Directinputs</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Directinput\Directinput.csproj">
       <Project>{a7930c91-022c-4017-9b78-795c26e0b2a6}</Project>
       <Name>Directinput</Name>
@@ -246,6 +250,10 @@
       <Project>{b95b249f-c364-43b8-a942-3df5e926edda}</Project>
       <Name>KeyboardMouseinput</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KeyboardsMousesinput\KeyboardsMousesinput.csproj">
+      <Project>{91abae66-5012-4f1f-b8c2-2ff78bb3fb37}</Project>
+      <Name>KeyboardsMousesinput</Name>
+    </ProjectReference>
     <ProjectReference Include="..\keyboards\keyboards.csproj">
       <Project>{3a819ecf-c03a-49fb-b3f5-4e7a5563fb42}</Project>
       <Name>keyboards</Name>
@@ -265,6 +273,10 @@
     <ProjectReference Include="..\Wiimote\Wiimote.csproj">
       <Project>{1fa4503b-17a2-4de6-9c7e-dd1e5568e4f4}</Project>
       <Name>Wiimote</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xinputs\Xinputs.csproj">
+      <Project>{134c0cab-c0b8-4ef8-923b-d31324bf02d0}</Project>
+      <Name>Xinputs</Name>
     </ProjectReference>
     <ProjectReference Include="..\Xinput\Xinput.csproj">
       <Project>{7ab6bc74-d70b-4547-bee7-97e81647a958}</Project>

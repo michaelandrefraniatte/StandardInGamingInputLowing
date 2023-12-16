@@ -199,6 +199,7 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"\bXBoxController\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bXBC\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bXInputAPI\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bXInputsAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bXInput\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bxi\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bScanXInput\b"));
@@ -211,6 +212,7 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"\bVJoyController\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bVJoy\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bDirectInputAPI\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bDirectInputsAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bDirectInput\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bdi\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bScanDirectInput\b"));
@@ -256,6 +258,7 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"\bInitRightJoyconAccel\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitRightJoyconStick\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bKeyboardMouseInputAPI\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bKeyboardsMousesInputAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bKeyboardMouseInput\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bkmi\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bBeginPollingMouse\b"));
@@ -1311,6 +1314,7 @@ namespace SIGIL
                 "XBoxController",
                 "XBC",
                 "XInputAPI",
+                "XInputsAPI",
                 "XInput",
                 "xi",
                 "ScanXInput",
@@ -1323,6 +1327,7 @@ namespace SIGIL
                 "VJoyController",
                 "VJoy",
                 "DirectInputAPI",
+                "DirectInputsAPI",
                 "DirectInput",
                 "di",
                 "ScanDirectInput",
@@ -1368,6 +1373,7 @@ namespace SIGIL
                 "InitRightJoyconAccel",
                 "InitRightJoyconStick",
                 "KeyboardMouseInputAPI",
+                "KeyboardsMousesInputAPI",
                 "KeyboardMouseInput",
                 "kmi",
                 "BeginPollingMouse",
@@ -2664,15 +2670,18 @@ namespace SIGIL
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Interceptions.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Valuechanges.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\KeyboardMouseinput.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\KeyboardsMousesinput.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Dualsense.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Dualshock4.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Directinput.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Directinputs.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconcharginggrip.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconleft.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconright.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Switchprocontroller.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Wiimote.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Xinput.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Xinputs.dll");
         }
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
