@@ -1217,6 +1217,414 @@ namespace SIGIL
                 range.SetStyle(StyleOutput, new Regex(@"\bSendRightControl\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bSendLMENU\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bSendRMENU\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ButtonAPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ButtonBPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ButtonXPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ButtonYPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ButtonStartPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ButtonBackPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ButtonDownPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ButtonUpPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ButtonLeftPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ButtonRightPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ButtonShoulderLeftPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ButtonShoulderRightPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ThumbpadLeftPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ThumbpadRightPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2TriggerLeftPosition\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2TriggerRightPosition\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ThumbLeftX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ThumbLeftY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ThumbRightX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\b,Controller2ThumbRightY\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_xbox\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_back\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_start\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_A\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_B\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_X\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_Y\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_up\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_left\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_down\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_right\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_leftstick\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_rightstick\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_leftbumper\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_rightbumper\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_lefttriggerposition\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_righttriggerposition\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_leftstickx\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_leftsticky\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_rightstickx\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2_send_rightsticky\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_Options\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_Option\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_ThumbLeft\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_ThumbRight\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_ShoulderLeft\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_ShoulderRight\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_Cross\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_Circle\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_Square\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_Triangle\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_Ps\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_Touchpad\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_Share\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_DPadUp\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_DPadDown\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_DPadLeft\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_DPadRight\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_LeftTrigger\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_RightTrigger\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_LeftTriggerPosition\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_RightTriggerPosition\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_LeftThumbX\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_RightThumbX\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_LeftThumbY\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2DS4_Send_RightThumbY\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_1\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_2\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_3\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_4\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_5\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_6\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_7\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_8\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_X\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_Y\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_Z\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_WHL\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_SL0\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_SL1\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_RX\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_RY\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_RZ\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_POV\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_Hat\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_HatExt1\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_HatExt2\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\b,Controller2VJoy_Send_HatExt3\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2AxisX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2AxisY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2AxisZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2RotationX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2RotationY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2RotationZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Sliders0\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Sliders1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2PointOfViewControllers0\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2PointOfViewControllers1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2PointOfViewControllers2\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2PointOfViewControllers3\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2VelocityX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2VelocityY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2VelocityZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2AngularVelocityX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2AngularVelocityY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2AngularVelocityZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2VelocitySliders0\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2VelocitySliders1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2AccelerationX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2AccelerationY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2AccelerationZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2AngularAccelerationX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2AngularAccelerationY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2AngularAccelerationZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2AccelerationSliders0\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2AccelerationSliders1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2ForceX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2ForceY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2ForceZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2TorqueX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2TorqueY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2TorqueZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2ForceSliders0\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2ForceSliders1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons0\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons2\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons3\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons4\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons5\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons6\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons7\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons8\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons9\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons10\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons11\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons12\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons13\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons14\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons15\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons16\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons17\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons18\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons19\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons20\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons21\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons22\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons23\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons24\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons25\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons26\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons27\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons28\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons29\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons30\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons31\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons32\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons33\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons34\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons35\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons36\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons37\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons38\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons39\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons40\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons41\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons42\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons43\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons44\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons45\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons46\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons47\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons48\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons49\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons50\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons51\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons52\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons53\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons54\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons55\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons56\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons57\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons58\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons59\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons60\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons61\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons62\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons63\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons64\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons65\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons66\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons67\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons68\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons69\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons70\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons71\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons72\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons73\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons74\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons75\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons76\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons77\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons78\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons79\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons80\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons81\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons82\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons83\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons84\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons85\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons86\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons87\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons88\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons89\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons90\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons91\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons92\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons93\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons94\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons95\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons96\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons97\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons98\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons99\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons100\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons101\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons102\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons103\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons104\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons105\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons106\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons107\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons108\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons109\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons110\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons111\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons112\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons113\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons114\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons115\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons116\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons117\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons118\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons119\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons120\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons121\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons122\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons123\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons124\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons125\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons126\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bJoystick2Buttons127\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouse2Buttons0\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouse2Buttons1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouse2Buttons2\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouse2Buttons3\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouse2Buttons4\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouse2Buttons5\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouse2Buttons6\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouse2Buttons7\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouse2AxisX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouse2AxisY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouse2AxisZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyEscape\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyD1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyD2\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyD3\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyD4\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyD5\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyD6\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyD7\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyD8\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyD9\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyD0\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyMinus\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyEquals\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyBack\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyTab\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyQ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyW\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyE\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyR\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyU\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyI\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyO\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyP\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyLeftBracket\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyRightBracket\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyReturn\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyLeftControl\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyA\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyS\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyD\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyG\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyH\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyJ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyK\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeySemicolon\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyApostrophe\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyGrave\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyLeftShift\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyBackslash\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyC\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyV\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyB\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyN\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyM\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyComma\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyPeriod\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeySlash\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyRightShift\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyMultiply\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyLeftAlt\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeySpace\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyCapital\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF2\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF3\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF4\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF5\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF6\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF7\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF8\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF9\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF10\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNumberLock\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyScrollLock\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNumberPad7\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNumberPad8\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNumberPad9\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeySubtract\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNumberPad4\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNumberPad5\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNumberPad6\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyAdd\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNumberPad1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNumberPad2\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNumberPad3\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNumberPad0\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyDecimal\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyOem102\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF11\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF12\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF13\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF14\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyF15\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyKana\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyAbntC1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyConvert\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNoConvert\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyYen\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyAbntC2\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNumberPadEquals\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyPreviousTrack\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyAT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyColon\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyUnderline\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyKanji\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyStop\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyAX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyUnlabeled\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNextTrack\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNumberPadEnter\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyRightControl\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyMute\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyCalculator\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyPlayPause\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyMediaStop\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyVolumeDown\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyVolumeUp\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyWebHome\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyNumberPadComma\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyDivide\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyPrintScreen\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyRightAlt\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyPause\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyHome\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyUp\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyPageUp\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyLeft\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyRight\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyEnd\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyDown\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyPageDown\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyInsert\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyDelete\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyLeftWindowsKey\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyRightWindowsKey\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyApplications\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyPower\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeySleep\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyWake\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyWebSearch\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyWebFavorites\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyWebRefresh\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyWebStop\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyWebForward\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyWebBack\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyMyComputer\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyMail\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyMediaSelect\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyUnknown\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2322,7 +2730,415 @@ namespace SIGIL
                 "SendLeftControl",
                 "SendRightControl",
                 "SendLMENU",
-                "SendRMENU"
+                "SendRMENU",
+                ",Controller2ButtonAPressed",
+                ",Controller2ButtonBPressed",
+                ",Controller2ButtonXPressed",
+                ",Controller2ButtonYPressed",
+                ",Controller2ButtonStartPressed",
+                ",Controller2ButtonBackPressed",
+                ",Controller2ButtonDownPressed",
+                ",Controller2ButtonUpPressed",
+                ",Controller2ButtonLeftPressed",
+                ",Controller2ButtonRightPressed",
+                ",Controller2ButtonShoulderLeftPressed",
+                ",Controller2ButtonShoulderRightPressed",
+                ",Controller2ThumbpadLeftPressed",
+                ",Controller2ThumbpadRightPressed",
+                ",Controller2TriggerLeftPosition",
+                ",Controller2TriggerRightPosition",
+                ",Controller2ThumbLeftX",
+                ",Controller2ThumbLeftY",
+                ",Controller2ThumbRightX",
+                ",Controller2ThumbRightY",
+                ",Controller2_send_xbox",
+                ",Controller2_send_back",
+                ",Controller2_send_start",
+                ",Controller2_send_A",
+                ",Controller2_send_B",
+                ",Controller2_send_X",
+                ",Controller2_send_Y",
+                ",Controller2_send_up",
+                ",Controller2_send_left",
+                ",Controller2_send_down",
+                ",Controller2_send_right",
+                ",Controller2_send_leftstick",
+                ",Controller2_send_rightstick",
+                ",Controller2_send_leftbumper",
+                ",Controller2_send_rightbumper",
+                ",Controller2_send_lefttriggerposition",
+                ",Controller2_send_righttriggerposition",
+                ",Controller2_send_leftstickx",
+                ",Controller2_send_leftsticky",
+                ",Controller2_send_rightstickx",
+                ",Controller2_send_rightsticky",
+                ",Controller2DS4_Send_Options",
+                ",Controller2DS4_Send_Option",
+                ",Controller2DS4_Send_ThumbLeft",
+                ",Controller2DS4_Send_ThumbRight",
+                ",Controller2DS4_Send_ShoulderLeft",
+                ",Controller2DS4_Send_ShoulderRight",
+                ",Controller2DS4_Send_Cross",
+                ",Controller2DS4_Send_Circle",
+                ",Controller2DS4_Send_Square",
+                ",Controller2DS4_Send_Triangle",
+                ",Controller2DS4_Send_Ps",
+                ",Controller2DS4_Send_Touchpad",
+                ",Controller2DS4_Send_Share",
+                ",Controller2DS4_Send_DPadUp",
+                ",Controller2DS4_Send_DPadDown",
+                ",Controller2DS4_Send_DPadLeft",
+                ",Controller2DS4_Send_DPadRight",
+                ",Controller2DS4_Send_LeftTrigger",
+                ",Controller2DS4_Send_RightTrigger",
+                ",Controller2DS4_Send_LeftTriggerPosition",
+                ",Controller2DS4_Send_RightTriggerPosition",
+                ",Controller2DS4_Send_LeftThumbX",
+                ",Controller2DS4_Send_RightThumbX",
+                ",Controller2DS4_Send_LeftThumbY",
+                ",Controller2DS4_Send_RightThumbY",
+                ",Controller2VJoy_Send_1",
+                ",Controller2VJoy_Send_2",
+                ",Controller2VJoy_Send_3",
+                ",Controller2VJoy_Send_4",
+                ",Controller2VJoy_Send_5",
+                ",Controller2VJoy_Send_6",
+                ",Controller2VJoy_Send_7",
+                ",Controller2VJoy_Send_8",
+                ",Controller2VJoy_Send_X",
+                ",Controller2VJoy_Send_Y",
+                ",Controller2VJoy_Send_Z",
+                ",Controller2VJoy_Send_WHL",
+                ",Controller2VJoy_Send_SL0",
+                ",Controller2VJoy_Send_SL1",
+                ",Controller2VJoy_Send_RX",
+                ",Controller2VJoy_Send_RY",
+                ",Controller2VJoy_Send_RZ",
+                ",Controller2VJoy_Send_POV",
+                ",Controller2VJoy_Send_Hat",
+                ",Controller2VJoy_Send_HatExt1",
+                ",Controller2VJoy_Send_HatExt2",
+                ",Controller2VJoy_Send_HatExt3",
+                "Joystick2AxisX",
+                "Joystick2AxisY",
+                "Joystick2AxisZ",
+                "Joystick2RotationX",
+                "Joystick2RotationY",
+                "Joystick2RotationZ",
+                "Joystick2Sliders0",
+                "Joystick2Sliders1",
+                "Joystick2PointOfViewControllers0",
+                "Joystick2PointOfViewControllers1",
+                "Joystick2PointOfViewControllers2",
+                "Joystick2PointOfViewControllers3",
+                "Joystick2VelocityX",
+                "Joystick2VelocityY",
+                "Joystick2VelocityZ",
+                "Joystick2AngularVelocityX",
+                "Joystick2AngularVelocityY",
+                "Joystick2AngularVelocityZ",
+                "Joystick2VelocitySliders0",
+                "Joystick2VelocitySliders1",
+                "Joystick2AccelerationX",
+                "Joystick2AccelerationY",
+                "Joystick2AccelerationZ",
+                "Joystick2AngularAccelerationX",
+                "Joystick2AngularAccelerationY",
+                "Joystick2AngularAccelerationZ",
+                "Joystick2AccelerationSliders0",
+                "Joystick2AccelerationSliders1",
+                "Joystick2ForceX",
+                "Joystick2ForceY",
+                "Joystick2ForceZ",
+                "Joystick2TorqueX",
+                "Joystick2TorqueY",
+                "Joystick2TorqueZ",
+                "Joystick2ForceSliders0",
+                "Joystick2ForceSliders1",
+                "Joystick2Buttons0",
+                "Joystick2Buttons1",
+                "Joystick2Buttons2",
+                "Joystick2Buttons3",
+                "Joystick2Buttons4",
+                "Joystick2Buttons5",
+                "Joystick2Buttons6",
+                "Joystick2Buttons7",
+                "Joystick2Buttons8",
+                "Joystick2Buttons9",
+                "Joystick2Buttons10",
+                "Joystick2Buttons11",
+                "Joystick2Buttons12",
+                "Joystick2Buttons13",
+                "Joystick2Buttons14",
+                "Joystick2Buttons15",
+                "Joystick2Buttons16",
+                "Joystick2Buttons17",
+                "Joystick2Buttons18",
+                "Joystick2Buttons19",
+                "Joystick2Buttons20",
+                "Joystick2Buttons21",
+                "Joystick2Buttons22",
+                "Joystick2Buttons23",
+                "Joystick2Buttons24",
+                "Joystick2Buttons25",
+                "Joystick2Buttons26",
+                "Joystick2Buttons27",
+                "Joystick2Buttons28",
+                "Joystick2Buttons29",
+                "Joystick2Buttons30",
+                "Joystick2Buttons31",
+                "Joystick2Buttons32",
+                "Joystick2Buttons33",
+                "Joystick2Buttons34",
+                "Joystick2Buttons35",
+                "Joystick2Buttons36",
+                "Joystick2Buttons37",
+                "Joystick2Buttons38",
+                "Joystick2Buttons39",
+                "Joystick2Buttons40",
+                "Joystick2Buttons41",
+                "Joystick2Buttons42",
+                "Joystick2Buttons43",
+                "Joystick2Buttons44",
+                "Joystick2Buttons45",
+                "Joystick2Buttons46",
+                "Joystick2Buttons47",
+                "Joystick2Buttons48",
+                "Joystick2Buttons49",
+                "Joystick2Buttons50",
+                "Joystick2Buttons51",
+                "Joystick2Buttons52",
+                "Joystick2Buttons53",
+                "Joystick2Buttons54",
+                "Joystick2Buttons55",
+                "Joystick2Buttons56",
+                "Joystick2Buttons57",
+                "Joystick2Buttons58",
+                "Joystick2Buttons59",
+                "Joystick2Buttons60",
+                "Joystick2Buttons61",
+                "Joystick2Buttons62",
+                "Joystick2Buttons63",
+                "Joystick2Buttons64",
+                "Joystick2Buttons65",
+                "Joystick2Buttons66",
+                "Joystick2Buttons67",
+                "Joystick2Buttons68",
+                "Joystick2Buttons69",
+                "Joystick2Buttons70",
+                "Joystick2Buttons71",
+                "Joystick2Buttons72",
+                "Joystick2Buttons73",
+                "Joystick2Buttons74",
+                "Joystick2Buttons75",
+                "Joystick2Buttons76",
+                "Joystick2Buttons77",
+                "Joystick2Buttons78",
+                "Joystick2Buttons79",
+                "Joystick2Buttons80",
+                "Joystick2Buttons81",
+                "Joystick2Buttons82",
+                "Joystick2Buttons83",
+                "Joystick2Buttons84",
+                "Joystick2Buttons85",
+                "Joystick2Buttons86",
+                "Joystick2Buttons87",
+                "Joystick2Buttons88",
+                "Joystick2Buttons89",
+                "Joystick2Buttons90",
+                "Joystick2Buttons91",
+                "Joystick2Buttons92",
+                "Joystick2Buttons93",
+                "Joystick2Buttons94",
+                "Joystick2Buttons95",
+                "Joystick2Buttons96",
+                "Joystick2Buttons97",
+                "Joystick2Buttons98",
+                "Joystick2Buttons99",
+                "Joystick2Buttons100",
+                "Joystick2Buttons101",
+                "Joystick2Buttons102",
+                "Joystick2Buttons103",
+                "Joystick2Buttons104",
+                "Joystick2Buttons105",
+                "Joystick2Buttons106",
+                "Joystick2Buttons107",
+                "Joystick2Buttons108",
+                "Joystick2Buttons109",
+                "Joystick2Buttons110",
+                "Joystick2Buttons111",
+                "Joystick2Buttons112",
+                "Joystick2Buttons113",
+                "Joystick2Buttons114",
+                "Joystick2Buttons115",
+                "Joystick2Buttons116",
+                "Joystick2Buttons117",
+                "Joystick2Buttons118",
+                "Joystick2Buttons119",
+                "Joystick2Buttons120",
+                "Joystick2Buttons121",
+                "Joystick2Buttons122",
+                "Joystick2Buttons123",
+                "Joystick2Buttons124",
+                "Joystick2Buttons125",
+                "Joystick2Buttons126",
+                "Joystick2Buttons127",
+                "Mouse2Buttons0",
+                "Mouse2Buttons1",
+                "Mouse2Buttons2",
+                "Mouse2Buttons3",
+                "Mouse2Buttons4",
+                "Mouse2Buttons5",
+                "Mouse2Buttons6",
+                "Mouse2Buttons7",
+                "Mouse2AxisX",
+                "Mouse2AxisY",
+                "Mouse2AxisZ",
+                "Keyboard2KeyEscape",
+                "Keyboard2KeyD1",
+                "Keyboard2KeyD2",
+                "Keyboard2KeyD3",
+                "Keyboard2KeyD4",
+                "Keyboard2KeyD5",
+                "Keyboard2KeyD6",
+                "Keyboard2KeyD7",
+                "Keyboard2KeyD8",
+                "Keyboard2KeyD9",
+                "Keyboard2KeyD0",
+                "Keyboard2KeyMinus",
+                "Keyboard2KeyEquals",
+                "Keyboard2KeyBack",
+                "Keyboard2KeyTab",
+                "Keyboard2KeyQ",
+                "Keyboard2KeyW",
+                "Keyboard2KeyE",
+                "Keyboard2KeyR",
+                "Keyboard2KeyT",
+                "Keyboard2KeyY",
+                "Keyboard2KeyU",
+                "Keyboard2KeyI",
+                "Keyboard2KeyO",
+                "Keyboard2KeyP",
+                "Keyboard2KeyLeftBracket",
+                "Keyboard2KeyRightBracket",
+                "Keyboard2KeyReturn",
+                "Keyboard2KeyLeftControl",
+                "Keyboard2KeyA",
+                "Keyboard2KeyS",
+                "Keyboard2KeyD",
+                "Keyboard2KeyF",
+                "Keyboard2KeyG",
+                "Keyboard2KeyH",
+                "Keyboard2KeyJ",
+                "Keyboard2KeyK",
+                "Keyboard2KeyL",
+                "Keyboard2KeySemicolon",
+                "Keyboard2KeyApostrophe",
+                "Keyboard2KeyGrave",
+                "Keyboard2KeyLeftShift",
+                "Keyboard2KeyBackslash",
+                "Keyboard2KeyZ",
+                "Keyboard2KeyX",
+                "Keyboard2KeyC",
+                "Keyboard2KeyV",
+                "Keyboard2KeyB",
+                "Keyboard2KeyN",
+                "Keyboard2KeyM",
+                "Keyboard2KeyComma",
+                "Keyboard2KeyPeriod",
+                "Keyboard2KeySlash",
+                "Keyboard2KeyRightShift",
+                "Keyboard2KeyMultiply",
+                "Keyboard2KeyLeftAlt",
+                "Keyboard2KeySpace",
+                "Keyboard2KeyCapital",
+                "Keyboard2KeyF1",
+                "Keyboard2KeyF2",
+                "Keyboard2KeyF3",
+                "Keyboard2KeyF4",
+                "Keyboard2KeyF5",
+                "Keyboard2KeyF6",
+                "Keyboard2KeyF7",
+                "Keyboard2KeyF8",
+                "Keyboard2KeyF9",
+                "Keyboard2KeyF10",
+                "Keyboard2KeyNumberLock",
+                "Keyboard2KeyScrollLock",
+                "Keyboard2KeyNumberPad7",
+                "Keyboard2KeyNumberPad8",
+                "Keyboard2KeyNumberPad9",
+                "Keyboard2KeySubtract",
+                "Keyboard2KeyNumberPad4",
+                "Keyboard2KeyNumberPad5",
+                "Keyboard2KeyNumberPad6",
+                "Keyboard2KeyAdd",
+                "Keyboard2KeyNumberPad1",
+                "Keyboard2KeyNumberPad2",
+                "Keyboard2KeyNumberPad3",
+                "Keyboard2KeyNumberPad0",
+                "Keyboard2KeyDecimal",
+                "Keyboard2KeyOem102",
+                "Keyboard2KeyF11",
+                "Keyboard2KeyF12",
+                "Keyboard2KeyF13",
+                "Keyboard2KeyF14",
+                "Keyboard2KeyF15",
+                "Keyboard2KeyKana",
+                "Keyboard2KeyAbntC1",
+                "Keyboard2KeyConvert",
+                "Keyboard2KeyNoConvert",
+                "Keyboard2KeyYen",
+                "Keyboard2KeyAbntC2",
+                "Keyboard2KeyNumberPadEquals",
+                "Keyboard2KeyPreviousTrack",
+                "Keyboard2KeyAT",
+                "Keyboard2KeyColon",
+                "Keyboard2KeyUnderline",
+                "Keyboard2KeyKanji",
+                "Keyboard2KeyStop",
+                "Keyboard2KeyAX",
+                "Keyboard2KeyUnlabeled",
+                "Keyboard2KeyNextTrack",
+                "Keyboard2KeyNumberPadEnter",
+                "Keyboard2KeyRightControl",
+                "Keyboard2KeyMute",
+                "Keyboard2KeyCalculator",
+                "Keyboard2KeyPlayPause",
+                "Keyboard2KeyMediaStop",
+                "Keyboard2KeyVolumeDown",
+                "Keyboard2KeyVolumeUp",
+                "Keyboard2KeyWebHome",
+                "Keyboard2KeyNumberPadComma",
+                "Keyboard2KeyDivide",
+                "Keyboard2KeyPrintScreen",
+                "Keyboard2KeyRightAlt",
+                "Keyboard2KeyPause",
+                "Keyboard2KeyHome",
+                "Keyboard2KeyUp",
+                "Keyboard2KeyPageUp",
+                "Keyboard2KeyLeft",
+                "Keyboard2KeyRight",
+                "Keyboard2KeyEnd",
+                "Keyboard2KeyDown",
+                "Keyboard2KeyPageDown",
+                "Keyboard2KeyInsert",
+                "Keyboard2KeyDelete",
+                "Keyboard2KeyLeftWindowsKey",
+                "Keyboard2KeyRightWindowsKey",
+                "Keyboard2KeyApplications",
+                "Keyboard2KeyPower",
+                "Keyboard2KeySleep",
+                "Keyboard2KeyWake",
+                "Keyboard2KeyWebSearch",
+                "Keyboard2KeyWebFavorites",
+                "Keyboard2KeyWebRefresh",
+                "Keyboard2KeyWebStop",
+                "Keyboard2KeyWebForward",
+                "Keyboard2KeyWebBack",
+                "Keyboard2KeyMyComputer",
+                "Keyboard2KeyMail",
+                "Keyboard2KeyMediaSelect",
+                "Keyboard2KeyUnknown"
             };
         }
         private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)

@@ -84,7 +84,18 @@ namespace KeyboardsMousesInputAPI
                     str += "Mouse1Buttons4 : " + Mouse1Buttons4 + Environment.NewLine;
                     str += "Mouse1Buttons5 : " + Mouse1Buttons5 + Environment.NewLine;
                     str += "Mouse1Buttons6 : " + Mouse1Buttons6 + Environment.NewLine;
-                    str += "Mouse1Buttons7 : " + Mouse1Buttons7 + Environment.NewLine;
+                    str += "Mouse1Buttons7 : " + Mouse1Buttons7 + Environment.NewLine; 
+                    str += "Mouse2AxisX : " + Mouse2AxisX + Environment.NewLine;
+                    str += "Mouse2AxisY : " + Mouse2AxisY + Environment.NewLine;
+                    str += "Mouse2AxisZ : " + Mouse2AxisZ + Environment.NewLine;
+                    str += "Mouse2Buttons0 : " + Mouse2Buttons0 + Environment.NewLine;
+                    str += "Mouse2Buttons1 : " + Mouse2Buttons1 + Environment.NewLine;
+                    str += "Mouse2Buttons2 : " + Mouse2Buttons2 + Environment.NewLine;
+                    str += "Mouse2Buttons3 : " + Mouse2Buttons3 + Environment.NewLine;
+                    str += "Mouse2Buttons4 : " + Mouse2Buttons4 + Environment.NewLine;
+                    str += "Mouse2Buttons5 : " + Mouse2Buttons5 + Environment.NewLine;
+                    str += "Mouse2Buttons6 : " + Mouse2Buttons6 + Environment.NewLine;
+                    str += "Mouse2Buttons7 : " + Mouse2Buttons7 + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }
@@ -249,6 +260,151 @@ namespace KeyboardsMousesInputAPI
                     str += "Keyboard1KeyMail : " + Keyboard1KeyMail + Environment.NewLine;
                     str += "Keyboard1KeyMediaSelect : " + Keyboard1KeyMediaSelect + Environment.NewLine;
                     str += "Keyboard1KeyUnknown : " + Keyboard1KeyUnknown + Environment.NewLine;
+                    str += "Keyboard2KeyA : " + Keyboard2KeyA + Environment.NewLine;
+                    str += "Keyboard2KeyB : " + Keyboard2KeyB + Environment.NewLine;
+                    str += "Keyboard2KeyC : " + Keyboard2KeyC + Environment.NewLine;
+                    str += "Keyboard2KeyD : " + Keyboard2KeyD + Environment.NewLine;
+                    str += "Keyboard2KeyE : " + Keyboard2KeyE + Environment.NewLine;
+                    str += "Keyboard2KeyF : " + Keyboard2KeyF + Environment.NewLine;
+                    str += "Keyboard2KeyG : " + Keyboard2KeyG + Environment.NewLine;
+                    str += "Keyboard2KeyH : " + Keyboard2KeyH + Environment.NewLine;
+                    str += "Keyboard2KeyI : " + Keyboard2KeyI + Environment.NewLine;
+                    str += "Keyboard2KeyJ : " + Keyboard2KeyJ + Environment.NewLine;
+                    str += "Keyboard2KeyK : " + Keyboard2KeyK + Environment.NewLine;
+                    str += "Keyboard2KeyL : " + Keyboard2KeyL + Environment.NewLine;
+                    str += "Keyboard2KeyM : " + Keyboard2KeyM + Environment.NewLine;
+                    str += "Keyboard2KeyN : " + Keyboard2KeyN + Environment.NewLine;
+                    str += "Keyboard2KeyO : " + Keyboard2KeyO + Environment.NewLine;
+                    str += "Keyboard2KeyP : " + Keyboard2KeyP + Environment.NewLine;
+                    str += "Keyboard2KeyQ : " + Keyboard2KeyQ + Environment.NewLine;
+                    str += "Keyboard2KeyR : " + Keyboard2KeyR + Environment.NewLine;
+                    str += "Keyboard2KeyS : " + Keyboard2KeyS + Environment.NewLine;
+                    str += "Keyboard2KeyT : " + Keyboard2KeyT + Environment.NewLine;
+                    str += "Keyboard2KeyU : " + Keyboard2KeyU + Environment.NewLine;
+                    str += "Keyboard2KeyV : " + Keyboard2KeyV + Environment.NewLine;
+                    str += "Keyboard2KeyW : " + Keyboard2KeyW + Environment.NewLine;
+                    str += "Keyboard2KeyX : " + Keyboard2KeyX + Environment.NewLine;
+                    str += "Keyboard2KeyY : " + Keyboard2KeyY + Environment.NewLine;
+                    str += "Keyboard2KeyZ : " + Keyboard2KeyZ + Environment.NewLine;
+                    str += "Keyboard2KeyEscape : " + Keyboard2KeyEscape + Environment.NewLine;
+                    str += "Keyboard2KeyD1 : " + Keyboard2KeyD1 + Environment.NewLine;
+                    str += "Keyboard2KeyD2 : " + Keyboard2KeyD2 + Environment.NewLine;
+                    str += "Keyboard2KeyD3 : " + Keyboard2KeyD3 + Environment.NewLine;
+                    str += "Keyboard2KeyD4 : " + Keyboard2KeyD4 + Environment.NewLine;
+                    str += "Keyboard2KeyD5 : " + Keyboard2KeyD5 + Environment.NewLine;
+                    str += "Keyboard2KeyD6 : " + Keyboard2KeyD6 + Environment.NewLine;
+                    str += "Keyboard2KeyD7 : " + Keyboard2KeyD7 + Environment.NewLine;
+                    str += "Keyboard2KeyD8 : " + Keyboard2KeyD8 + Environment.NewLine;
+                    str += "Keyboard2KeyD9 : " + Keyboard2KeyD9 + Environment.NewLine;
+                    str += "Keyboard2KeyD0 : " + Keyboard2KeyD0 + Environment.NewLine;
+                    str += "Keyboard2KeyMinus : " + Keyboard2KeyMinus + Environment.NewLine;
+                    str += "Keyboard2KeyEquals : " + Keyboard2KeyEquals + Environment.NewLine;
+                    str += "Keyboard2KeyBack : " + Keyboard2KeyBack + Environment.NewLine;
+                    str += "Keyboard2KeyTab : " + Keyboard2KeyTab + Environment.NewLine;
+                    str += "Keyboard2KeyLeftBracket : " + Keyboard2KeyLeftBracket + Environment.NewLine;
+                    str += "Keyboard2KeyRightBracket : " + Keyboard2KeyRightBracket + Environment.NewLine;
+                    str += "Keyboard2KeyReturn : " + Keyboard2KeyReturn + Environment.NewLine;
+                    str += "Keyboard2KeyLeftControl : " + Keyboard2KeyLeftControl + Environment.NewLine;
+                    str += "Keyboard2KeySemicolon : " + Keyboard2KeySemicolon + Environment.NewLine;
+                    str += "Keyboard2KeyApostrophe : " + Keyboard2KeyApostrophe + Environment.NewLine;
+                    str += "Keyboard2KeyGrave : " + Keyboard2KeyGrave + Environment.NewLine;
+                    str += "Keyboard2KeyLeftShift : " + Keyboard2KeyLeftShift + Environment.NewLine;
+                    str += "Keyboard2KeyBackslash : " + Keyboard2KeyBackslash + Environment.NewLine;
+                    str += "Keyboard2KeyComma : " + Keyboard2KeyComma + Environment.NewLine;
+                    str += "Keyboard2KeyPeriod : " + Keyboard2KeyPeriod + Environment.NewLine;
+                    str += "Keyboard2KeySlash : " + Keyboard2KeySlash + Environment.NewLine;
+                    str += "Keyboard2KeyRightShift : " + Keyboard2KeyRightShift + Environment.NewLine;
+                    str += "Keyboard2KeyMultiply : " + Keyboard2KeyMultiply + Environment.NewLine;
+                    str += "Keyboard2KeyLeftAlt : " + Keyboard2KeyLeftAlt + Environment.NewLine;
+                    str += "Keyboard2KeySpace : " + Keyboard2KeySpace + Environment.NewLine;
+                    str += "Keyboard2KeyCapital : " + Keyboard2KeyCapital + Environment.NewLine;
+                    str += "Keyboard2KeyF1 : " + Keyboard2KeyF1 + Environment.NewLine;
+                    str += "Keyboard2KeyF2 : " + Keyboard2KeyF2 + Environment.NewLine;
+                    str += "Keyboard2KeyF3 : " + Keyboard2KeyF3 + Environment.NewLine;
+                    str += "Keyboard2KeyF4 : " + Keyboard2KeyF4 + Environment.NewLine;
+                    str += "Keyboard2KeyF5 : " + Keyboard2KeyF5 + Environment.NewLine;
+                    str += "Keyboard2KeyF6 : " + Keyboard2KeyF6 + Environment.NewLine;
+                    str += "Keyboard2KeyF7 : " + Keyboard2KeyF7 + Environment.NewLine;
+                    str += "Keyboard2KeyF8 : " + Keyboard2KeyF8 + Environment.NewLine;
+                    str += "Keyboard2KeyF9 : " + Keyboard2KeyF9 + Environment.NewLine;
+                    str += "Keyboard2KeyF10 : " + Keyboard2KeyF10 + Environment.NewLine;
+                    str += "Keyboard2KeyF11 : " + Keyboard2KeyF11 + Environment.NewLine;
+                    str += "Keyboard2KeyF12 : " + Keyboard2KeyF12 + Environment.NewLine;
+                    str += "Keyboard2KeyF13 : " + Keyboard2KeyF13 + Environment.NewLine;
+                    str += "Keyboard2KeyF14 : " + Keyboard2KeyF14 + Environment.NewLine;
+                    str += "Keyboard2KeyF15 : " + Keyboard2KeyF15 + Environment.NewLine;
+                    str += "Keyboard2KeyNumberLock : " + Keyboard2KeyNumberLock + Environment.NewLine;
+                    str += "Keyboard2KeyScrollLock : " + Keyboard2KeyScrollLock + Environment.NewLine;
+                    str += "Keyboard2KeyNumberPad0 : " + Keyboard2KeyNumberPad0 + Environment.NewLine;
+                    str += "Keyboard2KeyNumberPad1 : " + Keyboard2KeyNumberPad1 + Environment.NewLine;
+                    str += "Keyboard2KeyNumberPad2 : " + Keyboard2KeyNumberPad2 + Environment.NewLine;
+                    str += "Keyboard2KeyNumberPad3 : " + Keyboard2KeyNumberPad3 + Environment.NewLine;
+                    str += "Keyboard2KeyNumberPad4 : " + Keyboard2KeyNumberPad4 + Environment.NewLine;
+                    str += "Keyboard2KeyNumberPad5 : " + Keyboard2KeyNumberPad5 + Environment.NewLine;
+                    str += "Keyboard2KeyNumberPad6 : " + Keyboard2KeyNumberPad6 + Environment.NewLine;
+                    str += "Keyboard2KeyNumberPad7 : " + Keyboard2KeyNumberPad7 + Environment.NewLine;
+                    str += "Keyboard2KeyNumberPad8 : " + Keyboard2KeyNumberPad8 + Environment.NewLine;
+                    str += "Keyboard2KeyNumberPad9 : " + Keyboard2KeyNumberPad9 + Environment.NewLine;
+                    str += "Keyboard2KeySubtract : " + Keyboard2KeySubtract + Environment.NewLine;
+                    str += "Keyboard2KeyAdd : " + Keyboard2KeyAdd + Environment.NewLine;
+                    str += "Keyboard2KeyDecimal : " + Keyboard2KeyDecimal + Environment.NewLine;
+                    str += "Keyboard2KeyOem102 : " + Keyboard2KeyOem102 + Environment.NewLine;
+                    str += "Keyboard2KeyKana : " + Keyboard2KeyKana + Environment.NewLine;
+                    str += "Keyboard2KeyAbntC1 : " + Keyboard2KeyAbntC1 + Environment.NewLine;
+                    str += "Keyboard2KeyConvert : " + Keyboard2KeyConvert + Environment.NewLine;
+                    str += "Keyboard2KeyNoConvert : " + Keyboard2KeyNoConvert + Environment.NewLine;
+                    str += "Keyboard2KeyYen : " + Keyboard2KeyYen + Environment.NewLine;
+                    str += "Keyboard2KeyAbntC2 : " + Keyboard2KeyAbntC2 + Environment.NewLine;
+                    str += "Keyboard2KeyNumberPadEquals : " + Keyboard2KeyNumberPadEquals + Environment.NewLine;
+                    str += "Keyboard2KeyPreviousTrack : " + Keyboard2KeyPreviousTrack + Environment.NewLine;
+                    str += "Keyboard2KeyAT : " + Keyboard2KeyAT + Environment.NewLine;
+                    str += "Keyboard2KeyColon : " + Keyboard2KeyColon + Environment.NewLine;
+                    str += "Keyboard2KeyUnderline : " + Keyboard2KeyUnderline + Environment.NewLine;
+                    str += "Keyboard2KeyKanji : " + Keyboard2KeyKanji + Environment.NewLine;
+                    str += "Keyboard2KeyStop : " + Keyboard2KeyStop + Environment.NewLine;
+                    str += "Keyboard2KeyAX : " + Keyboard2KeyAX + Environment.NewLine;
+                    str += "Keyboard2KeyUnlabeled : " + Keyboard2KeyUnlabeled + Environment.NewLine;
+                    str += "Keyboard2KeyNextTrack : " + Keyboard2KeyNextTrack + Environment.NewLine;
+                    str += "Keyboard2KeyNumberPadEnter : " + Keyboard2KeyNumberPadEnter + Environment.NewLine;
+                    str += "Keyboard2KeyRightControl : " + Keyboard2KeyRightControl + Environment.NewLine;
+                    str += "Keyboard2KeyMute : " + Keyboard2KeyMute + Environment.NewLine;
+                    str += "Keyboard2KeyCalculator : " + Keyboard2KeyCalculator + Environment.NewLine;
+                    str += "Keyboard2KeyPlayPause : " + Keyboard2KeyPlayPause + Environment.NewLine;
+                    str += "Keyboard2KeyMediaStop : " + Keyboard2KeyMediaStop + Environment.NewLine;
+                    str += "Keyboard2KeyVolumeDown : " + Keyboard2KeyVolumeDown + Environment.NewLine;
+                    str += "Keyboard2KeyVolumeUp : " + Keyboard2KeyVolumeUp + Environment.NewLine;
+                    str += "Keyboard2KeyWebHome : " + Keyboard2KeyWebHome + Environment.NewLine;
+                    str += "Keyboard2KeyNumberPadComma : " + Keyboard2KeyNumberPadComma + Environment.NewLine;
+                    str += "Keyboard2KeyDivide : " + Keyboard2KeyDivide + Environment.NewLine;
+                    str += "Keyboard2KeyPrintScreen : " + Keyboard2KeyPrintScreen + Environment.NewLine;
+                    str += "Keyboard2KeyRightAlt : " + Keyboard2KeyRightAlt + Environment.NewLine;
+                    str += "Keyboard2KeyPause : " + Keyboard2KeyPause + Environment.NewLine;
+                    str += "Keyboard2KeyHome : " + Keyboard2KeyHome + Environment.NewLine;
+                    str += "Keyboard2KeyUp : " + Keyboard2KeyUp + Environment.NewLine;
+                    str += "Keyboard2KeyPageUp : " + Keyboard2KeyPageUp + Environment.NewLine;
+                    str += "Keyboard2KeyLeft : " + Keyboard2KeyLeft + Environment.NewLine;
+                    str += "Keyboard2KeyRight : " + Keyboard2KeyRight + Environment.NewLine;
+                    str += "Keyboard2KeyEnd : " + Keyboard2KeyEnd + Environment.NewLine;
+                    str += "Keyboard2KeyDown : " + Keyboard2KeyDown + Environment.NewLine;
+                    str += "Keyboard2KeyPageDown : " + Keyboard2KeyPageDown + Environment.NewLine;
+                    str += "Keyboard2KeyInsert : " + Keyboard2KeyInsert + Environment.NewLine;
+                    str += "Keyboard2KeyDelete : " + Keyboard2KeyDelete + Environment.NewLine;
+                    str += "Keyboard2KeyLeftWindowsKey : " + Keyboard2KeyLeftWindowsKey + Environment.NewLine;
+                    str += "Keyboard2KeyRightWindowsKey : " + Keyboard2KeyRightWindowsKey + Environment.NewLine;
+                    str += "Keyboard2KeyApplications : " + Keyboard2KeyApplications + Environment.NewLine;
+                    str += "Keyboard2KeyPower : " + Keyboard2KeyPower + Environment.NewLine;
+                    str += "Keyboard2KeySleep : " + Keyboard2KeySleep + Environment.NewLine;
+                    str += "Keyboard2KeyWake : " + Keyboard2KeyWake + Environment.NewLine;
+                    str += "Keyboard2KeyWebSearch : " + Keyboard2KeyWebSearch + Environment.NewLine;
+                    str += "Keyboard2KeyWebFavorites : " + Keyboard2KeyWebFavorites + Environment.NewLine;
+                    str += "Keyboard2KeyWebRefresh : " + Keyboard2KeyWebRefresh + Environment.NewLine;
+                    str += "Keyboard2KeyWebStop : " + Keyboard2KeyWebStop + Environment.NewLine;
+                    str += "Keyboard2KeyWebForward : " + Keyboard2KeyWebForward + Environment.NewLine;
+                    str += "Keyboard2KeyWebBack : " + Keyboard2KeyWebBack + Environment.NewLine;
+                    str += "Keyboard2KeyMyComputer : " + Keyboard2KeyMyComputer + Environment.NewLine;
+                    str += "Keyboard2KeyMail : " + Keyboard2KeyMail + Environment.NewLine;
+                    str += "Keyboard2KeyMediaSelect : " + Keyboard2KeyMediaSelect + Environment.NewLine;
+                    str += "Keyboard2KeyUnknown : " + Keyboard2KeyUnknown + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel2(str);
                 }
@@ -277,19 +433,30 @@ namespace KeyboardsMousesInputAPI
         public int Mouse1AxisX;
         public int Mouse1AxisY;
         public int Mouse1AxisZ;
+        public static bool Mouse2Buttons0;
+        public static bool Mouse2Buttons1;
+        public static bool Mouse2Buttons2;
+        public static bool Mouse2Buttons3;
+        public static bool Mouse2Buttons4;
+        public static bool Mouse2Buttons5;
+        public static bool Mouse2Buttons6;
+        public static bool Mouse2Buttons7;
+        public static int Mouse2AxisX;
+        public static int Mouse2AxisY;
+        public static int Mouse2AxisZ;
         public bool ScanMouse()
         {
             try
             {
                 directInput = new DirectInput();
-                mouse = new Mouse[] { null };
-                mouseGuid = new Guid[] { Guid.Empty };
+                mouse = new Mouse[] { null, null };
+                mouseGuid = new Guid[] { Guid.Empty, Guid.Empty };
                 mnum = 0;
                 foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Mouse, DeviceEnumerationFlags.AllDevices))
                 {
                     mouseGuid[mnum] = deviceInstance.InstanceGuid;
                     mnum++;
-                    if (mnum >= 1)
+                    if (mnum >= 2)
                         break;
                 }
             }
@@ -355,6 +522,44 @@ namespace KeyboardsMousesInputAPI
                         Mouse1Buttons7 = true;
                     if (inc == 0 & state.Offset == MouseOffset.Buttons7 & state.Value == 0)
                         Mouse1Buttons7 = false;
+                    if (inc == 1 & state.Offset == MouseOffset.X)
+                        Mouse2AxisX = state.Value;
+                    if (inc == 1 & state.Offset == MouseOffset.Y)
+                        Mouse2AxisY = state.Value;
+                    if (inc == 1 & state.Offset == MouseOffset.Z)
+                        Mouse2AxisZ = state.Value;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons0 & state.Value == 128)
+                        Mouse2Buttons0 = true;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons0 & state.Value == 0)
+                        Mouse2Buttons0 = false;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons1 & state.Value == 128)
+                        Mouse2Buttons1 = true;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons1 & state.Value == 0)
+                        Mouse2Buttons1 = false;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons2 & state.Value == 128)
+                        Mouse2Buttons2 = true;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons2 & state.Value == 0)
+                        Mouse2Buttons2 = false;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons3 & state.Value == 128)
+                        Mouse2Buttons3 = true;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons3 & state.Value == 0)
+                        Mouse2Buttons3 = false;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons4 & state.Value == 128)
+                        Mouse2Buttons4 = true;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons4 & state.Value == 0)
+                        Mouse2Buttons4 = false;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons5 & state.Value == 128)
+                        Mouse2Buttons5 = true;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons5 & state.Value == 0)
+                        Mouse2Buttons5 = false;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons6 & state.Value == 128)
+                        Mouse2Buttons6 = true;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons6 & state.Value == 0)
+                        Mouse2Buttons6 = false;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons7 & state.Value == 128)
+                        Mouse2Buttons7 = true;
+                    if (inc == 1 & state.Offset == MouseOffset.Buttons7 & state.Value == 0)
+                        Mouse2Buttons7 = false;
                 }
             }
         }
@@ -506,19 +711,164 @@ namespace KeyboardsMousesInputAPI
         public bool Keyboard1KeyMail;
         public bool Keyboard1KeyMediaSelect;
         public bool Keyboard1KeyUnknown;
+        public static bool Keyboard2KeyEscape;
+        public static bool Keyboard2KeyD1;
+        public static bool Keyboard2KeyD2;
+        public static bool Keyboard2KeyD3;
+        public static bool Keyboard2KeyD4;
+        public static bool Keyboard2KeyD5;
+        public static bool Keyboard2KeyD6;
+        public static bool Keyboard2KeyD7;
+        public static bool Keyboard2KeyD8;
+        public static bool Keyboard2KeyD9;
+        public static bool Keyboard2KeyD0;
+        public static bool Keyboard2KeyMinus;
+        public static bool Keyboard2KeyEquals;
+        public static bool Keyboard2KeyBack;
+        public static bool Keyboard2KeyTab;
+        public static bool Keyboard2KeyQ;
+        public static bool Keyboard2KeyW;
+        public static bool Keyboard2KeyE;
+        public static bool Keyboard2KeyR;
+        public static bool Keyboard2KeyT;
+        public static bool Keyboard2KeyY;
+        public static bool Keyboard2KeyU;
+        public static bool Keyboard2KeyI;
+        public static bool Keyboard2KeyO;
+        public static bool Keyboard2KeyP;
+        public static bool Keyboard2KeyLeftBracket;
+        public static bool Keyboard2KeyRightBracket;
+        public static bool Keyboard2KeyReturn;
+        public static bool Keyboard2KeyLeftControl;
+        public static bool Keyboard2KeyA;
+        public static bool Keyboard2KeyS;
+        public static bool Keyboard2KeyD;
+        public static bool Keyboard2KeyF;
+        public static bool Keyboard2KeyG;
+        public static bool Keyboard2KeyH;
+        public static bool Keyboard2KeyJ;
+        public static bool Keyboard2KeyK;
+        public static bool Keyboard2KeyL;
+        public static bool Keyboard2KeySemicolon;
+        public static bool Keyboard2KeyApostrophe;
+        public static bool Keyboard2KeyGrave;
+        public static bool Keyboard2KeyLeftShift;
+        public static bool Keyboard2KeyBackslash;
+        public static bool Keyboard2KeyZ;
+        public static bool Keyboard2KeyX;
+        public static bool Keyboard2KeyC;
+        public static bool Keyboard2KeyV;
+        public static bool Keyboard2KeyB;
+        public static bool Keyboard2KeyN;
+        public static bool Keyboard2KeyM;
+        public static bool Keyboard2KeyComma;
+        public static bool Keyboard2KeyPeriod;
+        public static bool Keyboard2KeySlash;
+        public static bool Keyboard2KeyRightShift;
+        public static bool Keyboard2KeyMultiply;
+        public static bool Keyboard2KeyLeftAlt;
+        public static bool Keyboard2KeySpace;
+        public static bool Keyboard2KeyCapital;
+        public static bool Keyboard2KeyF1;
+        public static bool Keyboard2KeyF2;
+        public static bool Keyboard2KeyF3;
+        public static bool Keyboard2KeyF4;
+        public static bool Keyboard2KeyF5;
+        public static bool Keyboard2KeyF6;
+        public static bool Keyboard2KeyF7;
+        public static bool Keyboard2KeyF8;
+        public static bool Keyboard2KeyF9;
+        public static bool Keyboard2KeyF10;
+        public static bool Keyboard2KeyNumberLock;
+        public static bool Keyboard2KeyScrollLock;
+        public static bool Keyboard2KeyNumberPad7;
+        public static bool Keyboard2KeyNumberPad8;
+        public static bool Keyboard2KeyNumberPad9;
+        public static bool Keyboard2KeySubtract;
+        public static bool Keyboard2KeyNumberPad4;
+        public static bool Keyboard2KeyNumberPad5;
+        public static bool Keyboard2KeyNumberPad6;
+        public static bool Keyboard2KeyAdd;
+        public static bool Keyboard2KeyNumberPad1;
+        public static bool Keyboard2KeyNumberPad2;
+        public static bool Keyboard2KeyNumberPad3;
+        public static bool Keyboard2KeyNumberPad0;
+        public static bool Keyboard2KeyDecimal;
+        public static bool Keyboard2KeyOem102;
+        public static bool Keyboard2KeyF11;
+        public static bool Keyboard2KeyF12;
+        public static bool Keyboard2KeyF13;
+        public static bool Keyboard2KeyF14;
+        public static bool Keyboard2KeyF15;
+        public static bool Keyboard2KeyKana;
+        public static bool Keyboard2KeyAbntC1;
+        public static bool Keyboard2KeyConvert;
+        public static bool Keyboard2KeyNoConvert;
+        public static bool Keyboard2KeyYen;
+        public static bool Keyboard2KeyAbntC2;
+        public static bool Keyboard2KeyNumberPadEquals;
+        public static bool Keyboard2KeyPreviousTrack;
+        public static bool Keyboard2KeyAT;
+        public static bool Keyboard2KeyColon;
+        public static bool Keyboard2KeyUnderline;
+        public static bool Keyboard2KeyKanji;
+        public static bool Keyboard2KeyStop;
+        public static bool Keyboard2KeyAX;
+        public static bool Keyboard2KeyUnlabeled;
+        public static bool Keyboard2KeyNextTrack;
+        public static bool Keyboard2KeyNumberPadEnter;
+        public static bool Keyboard2KeyRightControl;
+        public static bool Keyboard2KeyMute;
+        public static bool Keyboard2KeyCalculator;
+        public static bool Keyboard2KeyPlayPause;
+        public static bool Keyboard2KeyMediaStop;
+        public static bool Keyboard2KeyVolumeDown;
+        public static bool Keyboard2KeyVolumeUp;
+        public static bool Keyboard2KeyWebHome;
+        public static bool Keyboard2KeyNumberPadComma;
+        public static bool Keyboard2KeyDivide;
+        public static bool Keyboard2KeyPrintScreen;
+        public static bool Keyboard2KeyRightAlt;
+        public static bool Keyboard2KeyPause;
+        public static bool Keyboard2KeyHome;
+        public static bool Keyboard2KeyUp;
+        public static bool Keyboard2KeyPageUp;
+        public static bool Keyboard2KeyLeft;
+        public static bool Keyboard2KeyRight;
+        public static bool Keyboard2KeyEnd;
+        public static bool Keyboard2KeyDown;
+        public static bool Keyboard2KeyPageDown;
+        public static bool Keyboard2KeyInsert;
+        public static bool Keyboard2KeyDelete;
+        public static bool Keyboard2KeyLeftWindowsKey;
+        public static bool Keyboard2KeyRightWindowsKey;
+        public static bool Keyboard2KeyApplications;
+        public static bool Keyboard2KeyPower;
+        public static bool Keyboard2KeySleep;
+        public static bool Keyboard2KeyWake;
+        public static bool Keyboard2KeyWebSearch;
+        public static bool Keyboard2KeyWebFavorites;
+        public static bool Keyboard2KeyWebRefresh;
+        public static bool Keyboard2KeyWebStop;
+        public static bool Keyboard2KeyWebForward;
+        public static bool Keyboard2KeyWebBack;
+        public static bool Keyboard2KeyMyComputer;
+        public static bool Keyboard2KeyMail;
+        public static bool Keyboard2KeyMediaSelect;
+        public static bool Keyboard2KeyUnknown;
         public bool ScanKeyboard()
         {
             try
             {
                 directInput = new DirectInput();
-                keyboard = new Keyboard[] { null };
-                keyboardGuid = new Guid[] { Guid.Empty };
+                keyboard = new Keyboard[] { null, null };
+                keyboardGuid = new Guid[] { Guid.Empty, Guid.Empty };
                 knum = 0;
                 foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Keyboard, DeviceEnumerationFlags.AllDevices))
                 {
                     keyboardGuid[knum] = deviceInstance.InstanceGuid;
                     knum++;
-                    if (knum >= 1)
+                    if (knum >= 2)
                         break;
                 }
             }
@@ -1126,6 +1476,586 @@ namespace KeyboardsMousesInputAPI
                         Keyboard1KeyUnknown = true;
                     if (inc == 0 & state.IsReleased & state.Key == Key.Unknown)
                         Keyboard1KeyUnknown = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Escape)
+                        Keyboard2KeyEscape = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Escape)
+                        Keyboard2KeyEscape = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.D1)
+                        Keyboard2KeyD1 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.D1)
+                        Keyboard2KeyD1 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.D2)
+                        Keyboard2KeyD2 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.D2)
+                        Keyboard2KeyD2 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.D3)
+                        Keyboard2KeyD3 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.D3)
+                        Keyboard2KeyD3 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.D4)
+                        Keyboard2KeyD4 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.D4)
+                        Keyboard2KeyD4 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.D5)
+                        Keyboard2KeyD5 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.D5)
+                        Keyboard2KeyD5 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.D6)
+                        Keyboard2KeyD6 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.D6)
+                        Keyboard2KeyD6 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.D7)
+                        Keyboard2KeyD7 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.D7)
+                        Keyboard2KeyD7 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.D8)
+                        Keyboard2KeyD8 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.D8)
+                        Keyboard2KeyD8 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.D9)
+                        Keyboard2KeyD9 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.D9)
+                        Keyboard2KeyD9 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.D0)
+                        Keyboard2KeyD0 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.D0)
+                        Keyboard2KeyD0 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Minus)
+                        Keyboard2KeyMinus = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Minus)
+                        Keyboard2KeyMinus = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Equals)
+                        Keyboard2KeyEquals = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Equals)
+                        Keyboard2KeyEquals = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Back)
+                        Keyboard2KeyBack = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Back)
+                        Keyboard2KeyBack = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Tab)
+                        Keyboard2KeyTab = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Tab)
+                        Keyboard2KeyTab = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Q)
+                        Keyboard2KeyQ = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Q)
+                        Keyboard2KeyQ = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.W)
+                        Keyboard2KeyW = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.W)
+                        Keyboard2KeyW = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.E)
+                        Keyboard2KeyE = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.E)
+                        Keyboard2KeyE = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.R)
+                        Keyboard2KeyR = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.R)
+                        Keyboard2KeyR = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.T)
+                        Keyboard2KeyT = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.T)
+                        Keyboard2KeyT = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Y)
+                        Keyboard2KeyY = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Y)
+                        Keyboard2KeyY = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.U)
+                        Keyboard2KeyU = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.U)
+                        Keyboard2KeyU = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.I)
+                        Keyboard2KeyI = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.I)
+                        Keyboard2KeyI = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.O)
+                        Keyboard2KeyO = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.O)
+                        Keyboard2KeyO = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.P)
+                        Keyboard2KeyP = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.P)
+                        Keyboard2KeyP = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.LeftBracket)
+                        Keyboard2KeyLeftBracket = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.LeftBracket)
+                        Keyboard2KeyLeftBracket = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.RightBracket)
+                        Keyboard2KeyRightBracket = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.RightBracket)
+                        Keyboard2KeyRightBracket = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Return)
+                        Keyboard2KeyReturn = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Return)
+                        Keyboard2KeyReturn = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.LeftControl)
+                        Keyboard2KeyLeftControl = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.LeftControl)
+                        Keyboard2KeyLeftControl = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.A)
+                        Keyboard2KeyA = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.A)
+                        Keyboard2KeyA = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.S)
+                        Keyboard2KeyS = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.S)
+                        Keyboard2KeyS = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.D)
+                        Keyboard2KeyD = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.D)
+                        Keyboard2KeyD = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F)
+                        Keyboard2KeyF = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F)
+                        Keyboard2KeyF = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.G)
+                        Keyboard2KeyG = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.G)
+                        Keyboard2KeyG = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.H)
+                        Keyboard2KeyH = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.H)
+                        Keyboard2KeyH = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.J)
+                        Keyboard2KeyJ = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.J)
+                        Keyboard2KeyJ = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.K)
+                        Keyboard2KeyK = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.K)
+                        Keyboard2KeyK = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.L)
+                        Keyboard2KeyL = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.L)
+                        Keyboard2KeyL = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Semicolon)
+                        Keyboard2KeySemicolon = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Semicolon)
+                        Keyboard2KeySemicolon = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Apostrophe)
+                        Keyboard2KeyApostrophe = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Apostrophe)
+                        Keyboard2KeyApostrophe = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Grave)
+                        Keyboard2KeyGrave = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Grave)
+                        Keyboard2KeyGrave = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.LeftShift)
+                        Keyboard2KeyLeftShift = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.LeftShift)
+                        Keyboard2KeyLeftShift = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Backslash)
+                        Keyboard2KeyBackslash = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Backslash)
+                        Keyboard2KeyBackslash = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Z)
+                        Keyboard2KeyZ = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Z)
+                        Keyboard2KeyZ = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.X)
+                        Keyboard2KeyX = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.X)
+                        Keyboard2KeyX = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.C)
+                        Keyboard2KeyC = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.C)
+                        Keyboard2KeyC = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.V)
+                        Keyboard2KeyV = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.V)
+                        Keyboard2KeyV = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.B)
+                        Keyboard2KeyB = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.B)
+                        Keyboard2KeyB = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.N)
+                        Keyboard2KeyN = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.N)
+                        Keyboard2KeyN = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.M)
+                        Keyboard2KeyM = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.M)
+                        Keyboard2KeyM = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Comma)
+                        Keyboard2KeyComma = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Comma)
+                        Keyboard2KeyComma = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Period)
+                        Keyboard2KeyPeriod = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Period)
+                        Keyboard2KeyPeriod = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Slash)
+                        Keyboard2KeySlash = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Slash)
+                        Keyboard2KeySlash = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.RightShift)
+                        Keyboard2KeyRightShift = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.RightShift)
+                        Keyboard2KeyRightShift = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Multiply)
+                        Keyboard2KeyMultiply = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Multiply)
+                        Keyboard2KeyMultiply = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.LeftAlt)
+                        Keyboard2KeyLeftAlt = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.LeftAlt)
+                        Keyboard2KeyLeftAlt = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Space)
+                        Keyboard2KeySpace = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Space)
+                        Keyboard2KeySpace = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Capital)
+                        Keyboard2KeyCapital = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Capital)
+                        Keyboard2KeyCapital = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F1)
+                        Keyboard2KeyF1 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F1)
+                        Keyboard2KeyF1 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F2)
+                        Keyboard2KeyF2 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F2)
+                        Keyboard2KeyF2 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F3)
+                        Keyboard2KeyF3 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F3)
+                        Keyboard2KeyF3 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F4)
+                        Keyboard2KeyF4 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F4)
+                        Keyboard2KeyF4 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F5)
+                        Keyboard2KeyF5 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F5)
+                        Keyboard2KeyF5 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F6)
+                        Keyboard2KeyF6 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F6)
+                        Keyboard2KeyF6 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F7)
+                        Keyboard2KeyF7 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F7)
+                        Keyboard2KeyF7 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F8)
+                        Keyboard2KeyF8 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F8)
+                        Keyboard2KeyF8 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F9)
+                        Keyboard2KeyF9 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F9)
+                        Keyboard2KeyF9 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F10)
+                        Keyboard2KeyF10 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F10)
+                        Keyboard2KeyF10 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NumberLock)
+                        Keyboard2KeyNumberLock = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NumberLock)
+                        Keyboard2KeyNumberLock = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.ScrollLock)
+                        Keyboard2KeyScrollLock = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.ScrollLock)
+                        Keyboard2KeyScrollLock = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NumberPad7)
+                        Keyboard2KeyNumberPad7 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NumberPad7)
+                        Keyboard2KeyNumberPad7 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NumberPad8)
+                        Keyboard2KeyNumberPad8 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NumberPad8)
+                        Keyboard2KeyNumberPad8 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NumberPad9)
+                        Keyboard2KeyNumberPad9 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NumberPad9)
+                        Keyboard2KeyNumberPad9 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Subtract)
+                        Keyboard2KeySubtract = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Subtract)
+                        Keyboard2KeySubtract = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NumberPad4)
+                        Keyboard2KeyNumberPad4 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NumberPad4)
+                        Keyboard2KeyNumberPad4 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NumberPad5)
+                        Keyboard2KeyNumberPad5 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NumberPad5)
+                        Keyboard2KeyNumberPad5 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NumberPad6)
+                        Keyboard2KeyNumberPad6 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NumberPad6)
+                        Keyboard2KeyNumberPad6 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Add)
+                        Keyboard2KeyAdd = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Add)
+                        Keyboard2KeyAdd = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NumberPad1)
+                        Keyboard2KeyNumberPad1 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NumberPad1)
+                        Keyboard2KeyNumberPad1 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NumberPad2)
+                        Keyboard2KeyNumberPad2 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NumberPad2)
+                        Keyboard2KeyNumberPad2 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NumberPad3)
+                        Keyboard2KeyNumberPad3 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NumberPad3)
+                        Keyboard2KeyNumberPad3 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NumberPad0)
+                        Keyboard2KeyNumberPad0 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NumberPad0)
+                        Keyboard2KeyNumberPad0 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Decimal)
+                        Keyboard2KeyDecimal = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Decimal)
+                        Keyboard2KeyDecimal = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Oem102)
+                        Keyboard2KeyOem102 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Oem102)
+                        Keyboard2KeyOem102 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F11)
+                        Keyboard2KeyF11 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F11)
+                        Keyboard2KeyF11 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F12)
+                        Keyboard2KeyF12 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F12)
+                        Keyboard2KeyF12 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F13)
+                        Keyboard2KeyF13 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F13)
+                        Keyboard2KeyF13 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F14)
+                        Keyboard2KeyF14 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F14)
+                        Keyboard2KeyF14 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.F15)
+                        Keyboard2KeyF15 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.F15)
+                        Keyboard2KeyF15 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Kana)
+                        Keyboard2KeyKana = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Kana)
+                        Keyboard2KeyKana = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.AbntC1)
+                        Keyboard2KeyAbntC1 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.AbntC1)
+                        Keyboard2KeyAbntC1 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Convert)
+                        Keyboard2KeyConvert = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Convert)
+                        Keyboard2KeyConvert = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NoConvert)
+                        Keyboard2KeyNoConvert = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NoConvert)
+                        Keyboard2KeyNoConvert = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Yen)
+                        Keyboard2KeyYen = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Yen)
+                        Keyboard2KeyYen = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.AbntC2)
+                        Keyboard2KeyAbntC2 = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.AbntC2)
+                        Keyboard2KeyAbntC2 = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NumberPadEquals)
+                        Keyboard2KeyNumberPadEquals = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NumberPadEquals)
+                        Keyboard2KeyNumberPadEquals = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.PreviousTrack)
+                        Keyboard2KeyPreviousTrack = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.PreviousTrack)
+                        Keyboard2KeyPreviousTrack = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.AT)
+                        Keyboard2KeyAT = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.AT)
+                        Keyboard2KeyAT = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Colon)
+                        Keyboard2KeyColon = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Colon)
+                        Keyboard2KeyColon = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Underline)
+                        Keyboard2KeyUnderline = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Underline)
+                        Keyboard2KeyUnderline = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Kanji)
+                        Keyboard2KeyKanji = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Kanji)
+                        Keyboard2KeyKanji = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Stop)
+                        Keyboard2KeyStop = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Stop)
+                        Keyboard2KeyStop = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.AX)
+                        Keyboard2KeyAX = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.AX)
+                        Keyboard2KeyAX = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Unlabeled)
+                        Keyboard2KeyUnlabeled = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Unlabeled)
+                        Keyboard2KeyUnlabeled = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NextTrack)
+                        Keyboard2KeyNextTrack = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NextTrack)
+                        Keyboard2KeyNextTrack = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NumberPadEnter)
+                        Keyboard2KeyNumberPadEnter = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NumberPadEnter)
+                        Keyboard2KeyNumberPadEnter = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.RightControl)
+                        Keyboard2KeyRightControl = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.RightControl)
+                        Keyboard2KeyRightControl = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Mute)
+                        Keyboard2KeyMute = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Mute)
+                        Keyboard2KeyMute = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Calculator)
+                        Keyboard2KeyCalculator = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Calculator)
+                        Keyboard2KeyCalculator = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.PlayPause)
+                        Keyboard2KeyPlayPause = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.PlayPause)
+                        Keyboard2KeyPlayPause = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.MediaStop)
+                        Keyboard2KeyMediaStop = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.MediaStop)
+                        Keyboard2KeyMediaStop = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.VolumeDown)
+                        Keyboard2KeyVolumeDown = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.VolumeDown)
+                        Keyboard2KeyVolumeDown = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.VolumeUp)
+                        Keyboard2KeyVolumeUp = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.VolumeUp)
+                        Keyboard2KeyVolumeUp = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.WebHome)
+                        Keyboard2KeyWebHome = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.WebHome)
+                        Keyboard2KeyWebHome = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.NumberPadComma)
+                        Keyboard2KeyNumberPadComma = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.NumberPadComma)
+                        Keyboard2KeyNumberPadComma = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Divide)
+                        Keyboard2KeyDivide = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Divide)
+                        Keyboard2KeyDivide = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.PrintScreen)
+                        Keyboard2KeyPrintScreen = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.PrintScreen)
+                        Keyboard2KeyPrintScreen = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.RightAlt)
+                        Keyboard2KeyRightAlt = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.RightAlt)
+                        Keyboard2KeyRightAlt = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Pause)
+                        Keyboard2KeyPause = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Pause)
+                        Keyboard2KeyPause = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Home)
+                        Keyboard2KeyHome = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Home)
+                        Keyboard2KeyHome = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Up)
+                        Keyboard2KeyUp = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Up)
+                        Keyboard2KeyUp = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.PageUp)
+                        Keyboard2KeyPageUp = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.PageUp)
+                        Keyboard2KeyPageUp = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Left)
+                        Keyboard2KeyLeft = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Left)
+                        Keyboard2KeyLeft = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Right)
+                        Keyboard2KeyRight = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Right)
+                        Keyboard2KeyRight = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.End)
+                        Keyboard2KeyEnd = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.End)
+                        Keyboard2KeyEnd = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Down)
+                        Keyboard2KeyDown = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Down)
+                        Keyboard2KeyDown = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.PageDown)
+                        Keyboard2KeyPageDown = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.PageDown)
+                        Keyboard2KeyPageDown = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Insert)
+                        Keyboard2KeyInsert = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Insert)
+                        Keyboard2KeyInsert = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Delete)
+                        Keyboard2KeyDelete = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Delete)
+                        Keyboard2KeyDelete = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.LeftWindowsKey)
+                        Keyboard2KeyLeftWindowsKey = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.LeftWindowsKey)
+                        Keyboard2KeyLeftWindowsKey = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.RightWindowsKey)
+                        Keyboard2KeyRightWindowsKey = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.RightWindowsKey)
+                        Keyboard2KeyRightWindowsKey = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Applications)
+                        Keyboard2KeyApplications = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Applications)
+                        Keyboard2KeyApplications = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Power)
+                        Keyboard2KeyPower = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Power)
+                        Keyboard2KeyPower = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Sleep)
+                        Keyboard2KeySleep = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Sleep)
+                        Keyboard2KeySleep = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Wake)
+                        Keyboard2KeyWake = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Wake)
+                        Keyboard2KeyWake = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.WebSearch)
+                        Keyboard2KeyWebSearch = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.WebSearch)
+                        Keyboard2KeyWebSearch = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.WebFavorites)
+                        Keyboard2KeyWebFavorites = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.WebFavorites)
+                        Keyboard2KeyWebFavorites = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.WebRefresh)
+                        Keyboard2KeyWebRefresh = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.WebRefresh)
+                        Keyboard2KeyWebRefresh = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.WebStop)
+                        Keyboard2KeyWebStop = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.WebStop)
+                        Keyboard2KeyWebStop = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.WebForward)
+                        Keyboard2KeyWebForward = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.WebForward)
+                        Keyboard2KeyWebForward = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.WebBack)
+                        Keyboard2KeyWebBack = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.WebBack)
+                        Keyboard2KeyWebBack = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.MyComputer)
+                        Keyboard2KeyMyComputer = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.MyComputer)
+                        Keyboard2KeyMyComputer = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Mail)
+                        Keyboard2KeyMail = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Mail)
+                        Keyboard2KeyMail = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.MediaSelect)
+                        Keyboard2KeyMediaSelect = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.MediaSelect)
+                        Keyboard2KeyMediaSelect = false;
+                    if (inc == 1 & state.IsPressed & state.Key == Key.Unknown)
+                        Keyboard2KeyUnknown = true;
+                    if (inc == 1 & state.IsReleased & state.Key == Key.Unknown)
+                        Keyboard2KeyUnknown = false;
                 }
             }
         }
