@@ -187,6 +187,8 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"\bConnect\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bDisconnect\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bSetController\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bSetController1\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bSetController2\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bScanDualsense\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bScanDualshock4\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bSetKM\b"));
@@ -1848,6 +1850,8 @@ namespace SIGIL
                 "Connect",
                 "Disconnect",
                 "SetController",
+                "SetController1",
+                "SetController2",
                 "ScanDualsense",
                 "ScanDualshock4",
                 "SetKM",
@@ -3426,7 +3430,7 @@ namespace SIGIL
         }
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            const string message = "• Input Devices : Wiimote and Joycon left (WiiJoyL), Wiimote and Joycon right (WiiJoyR), Wiimote and Nunchuck (Wii), Joycons (Joys), Joycon left (JoyL), Joycon right (JoyR), Switch Pro Controller (SPC), Joycon Charging Grip (JCG), DirectInput Controller (DIC), DirectInput Controller and Mouse (DICM), Dualsense (DS), Dualshock4 (DS4), Keyboard and Mouse (KM), Xbox Controller (XC), Xbox Controller and Mouse (XCM), Mouse and Joycon left (MJoyL), Mouse and Joycon right (MJoyR).\n\r\n\r• Output Devices : Xbox Controller (XC), Keyboard and Mouse (KM), Interception (Int), Dualshock4 Controller (DS4), VJoy Controller (VJoy).\n\r\n\r• Pairing Devices : Wiimote and Joycon left or Wiimote and Joycon right or Wiimote or Joycons or Joycon left or Joycon right need to be set in pairing mode after starting the run process, Switch Pro Controller or Joycon Charging Grip or DirectInput Controller or Dualsense or Dualshock4 or Xbox Controller or Keyboard and Mouse need to be USB wired.";
+            const string message = "• Input Devices : Wiimote(s) and Nunchuck(s), Joycon(s) left, Joycon(s) right, Switch Pro Controller(s), Joycon Charging Grip(s), DirectInput Controller(s), Keyboard(s), Mouse(s), Dualsense(s), Dualshock(s)4, Xbox Controller(s).\n\r\n\r• Output Devices : Xbox Controller(s), Keyboard and Mouse, Interception(s) (Int), Dualshock4 Controller(s), VJoy Controller(s).\n\r\n\r• Pairing Devices : Wiimote(s) or Joycon(s) left or Joycon(s) right need to be set in pairing mode after starting the run process, Switch Pro Controller(s) or Joycon Charging Grip(s) or DirectInput Controller(s) or Dualsense(s) or Dualshock(s)4 or Xbox Controller(s) or Keyboard(s) or Mouse(s) need to be USB wired.";
             const string caption = "Help";
             MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
