@@ -275,12 +275,9 @@ namespace DualShocks4API
             PS4Controller2ButtonTouchpadPressed = TouchpadButton2;
             PS4Controller2ButtonMicPressed = MicButton2;
         }
-        public void InitDualShock4Accel1()
+        public void InitDualShock4Accel()
         {
             InitDirectAngles1PS4 = acc1_gPS4;
-        }
-        public void InitDualShock4Accel2()
-        {
             InitDirectAngles2PS4 = acc2_gPS4;
         }
         private async void taskD1()
@@ -381,12 +378,9 @@ namespace DualShocks4API
                 }
             }
         }
-        public void BeginPolling1()
+        public void BeginPolling()
         {
             Task.Run(() => taskD1());
-        }
-        public void BeginPolling2()
-        {
             Task.Run(() => taskD2());
         }
         private static byte[] GetOutputDataBytes1()

@@ -300,12 +300,9 @@ namespace DualSensesAPI
             PS5Controller2ButtonBRPPressed = BRP2;
             PS5Controller2ButtonMicPressed = MicButton2;
         }
-        public void InitDualSenseAccel1()
+        public void InitDualSenseAccel()
         {
             InitDirectAngles1PS5 = acc1_gPS5;
-        }
-        public void InitDualSenseAccel2()
-        {
             InitDirectAngles2PS5 = acc2_gPS5;
         }
         private async void taskD1()
@@ -414,12 +411,9 @@ namespace DualSensesAPI
                 }
             }
         }
-        public void BeginPolling1()
+        public void BeginPolling()
         {
             Task.Run(() => taskD1());
-        }
-        public void BeginPolling2()
-        {
             Task.Run(() => taskD2());
         }
         private static byte[] GetOutputDataBytes1()
