@@ -217,10 +217,12 @@ namespace SIGIL
                 range.SetStyle(StyleObject, new Regex(@"\bdi\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bScanDirectInput\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bDualSenseAPI\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bDualSensesAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bDualSense\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bds\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitDualSenseAccel\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bDualShock4API\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bDualShocks4API\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bDualShock4\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bds4\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitDualShock4Accel\b"));
@@ -1625,6 +1627,142 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyMail\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyMediaSelect\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bKeyboard2KeyUnknown\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1LeftStickX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1LeftStickY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1RightStickX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1RightStickY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1LeftTriggerPosition\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1RightTriggerPosition\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1TouchX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1TouchY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1TouchOn\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1GyroX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1GyroY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1AccelX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1AccelY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonCrossPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonCirclePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonSquarePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonTrianglePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonDPadUpPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonDPadRightPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonDPadDownPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonDPadLeftPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonL1Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonR1Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonL2Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonR2Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonL3Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonR3Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonCreatePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonMenuPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonLogoPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonTouchpadPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonFnLPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonFnRPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonBLPPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonBRPPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller1ButtonMicPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1LeftStickX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1LeftStickY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1RightStickX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1RightStickY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1LeftTriggerPosition\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1RightTriggerPosition\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1TouchX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1TouchY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1TouchOn\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1GyroX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1GyroY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1AccelX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1AccelY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonCrossPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonCirclePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonSquarePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonTrianglePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonDPadUpPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonDPadRightPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonDPadDownPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonDPadLeftPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonL1Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonR1Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonL2Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonR2Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonL3Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonR3Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonCreatePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonMenuPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonLogoPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonTouchpadPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller1ButtonMicPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2LeftStickX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2LeftStickY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2RightStickX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2RightStickY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2LeftTriggerPosition\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2RightTriggerPosition\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2TouchX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2TouchY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2TouchOn\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2GyroX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2GyroY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2AccelX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2AccelY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonCrossPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonCirclePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonSquarePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonTrianglePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonDPadUpPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonDPadRightPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonDPadDownPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonDPadLeftPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonL1Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonR1Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonL2Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonR2Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonL3Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonR3Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonCreatePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonMenuPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonLogoPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonTouchpadPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonFnLPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonFnRPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonBLPPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonBRPPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS5Controller2ButtonMicPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2LeftStickX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2LeftStickY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2RightStickX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2RightStickY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2LeftTriggerPosition\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2RightTriggerPosition\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2TouchX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2TouchY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2TouchOn\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2GyroX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2GyroY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2AccelX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2AccelY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonCrossPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonCirclePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonSquarePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonTrianglePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonDPadUpPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonDPadRightPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonDPadDownPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonDPadLeftPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonL1Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonR1Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonL2Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonR2Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonL3Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonR3Pressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonCreatePressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonMenuPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonLogoPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonTouchpadPressed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bPS4Controller2ButtonMicPressed\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -1740,10 +1878,13 @@ namespace SIGIL
                 "di",
                 "ScanDirectInput",
                 "DualSenseAPI",
+                "DualSensesAPI",
                 "DualSense",
+                "DualSenses",
                 "ds",
                 "InitDualSenseAccel",
                 "DualShock4API",
+                "DualShocks4API",
                 "DualShock4",
                 "ds4",
                 "InitDualShock4Accel",
@@ -3138,7 +3279,143 @@ namespace SIGIL
                 "Keyboard2KeyMyComputer",
                 "Keyboard2KeyMail",
                 "Keyboard2KeyMediaSelect",
-                "Keyboard2KeyUnknown"
+                "Keyboard2KeyUnknown",
+                "PS5Controller1LeftStickX",
+                "PS5Controller1LeftStickY",
+                "PS5Controller1RightStickX",
+                "PS5Controller1RightStickY",
+                "PS5Controller1LeftTriggerPosition",
+                "PS5Controller1RightTriggerPosition",
+                "PS5Controller1TouchX",
+                "PS5Controller1TouchY",
+                "PS5Controller1TouchOn",
+                "PS5Controller1GyroX",
+                "PS5Controller1GyroY",
+                "PS5Controller1AccelX",
+                "PS5Controller1AccelY",
+                "PS5Controller1ButtonCrossPressed",
+                "PS5Controller1ButtonCirclePressed",
+                "PS5Controller1ButtonSquarePressed",
+                "PS5Controller1ButtonTrianglePressed",
+                "PS5Controller1ButtonDPadUpPressed",
+                "PS5Controller1ButtonDPadRightPressed",
+                "PS5Controller1ButtonDPadDownPressed",
+                "PS5Controller1ButtonDPadLeftPressed",
+                "PS5Controller1ButtonL1Pressed",
+                "PS5Controller1ButtonR1Pressed",
+                "PS5Controller1ButtonL2Pressed",
+                "PS5Controller1ButtonR2Pressed",
+                "PS5Controller1ButtonL3Pressed",
+                "PS5Controller1ButtonR3Pressed",
+                "PS5Controller1ButtonCreatePressed",
+                "PS5Controller1ButtonMenuPressed",
+                "PS5Controller1ButtonLogoPressed",
+                "PS5Controller1ButtonTouchpadPressed",
+                "PS5Controller1ButtonFnLPressed",
+                "PS5Controller1ButtonFnRPressed",
+                "PS5Controller1ButtonBLPPressed",
+                "PS5Controller1ButtonBRPPressed",
+                "PS5Controller1ButtonMicPressed",
+                "PS4Controller1LeftStickX",
+                "PS4Controller1LeftStickY",
+                "PS4Controller1RightStickX",
+                "PS4Controller1RightStickY",
+                "PS4Controller1LeftTriggerPosition",
+                "PS4Controller1RightTriggerPosition",
+                "PS4Controller1TouchX",
+                "PS4Controller1TouchY",
+                "PS4Controller1TouchOn",
+                "PS4Controller1GyroX",
+                "PS4Controller1GyroY",
+                "PS4Controller1AccelX",
+                "PS4Controller1AccelY",
+                "PS4Controller1ButtonCrossPressed",
+                "PS4Controller1ButtonCirclePressed",
+                "PS4Controller1ButtonSquarePressed",
+                "PS4Controller1ButtonTrianglePressed",
+                "PS4Controller1ButtonDPadUpPressed",
+                "PS4Controller1ButtonDPadRightPressed",
+                "PS4Controller1ButtonDPadDownPressed",
+                "PS4Controller1ButtonDPadLeftPressed",
+                "PS4Controller1ButtonL1Pressed",
+                "PS4Controller1ButtonR1Pressed",
+                "PS4Controller1ButtonL2Pressed",
+                "PS4Controller1ButtonR2Pressed",
+                "PS4Controller1ButtonL3Pressed",
+                "PS4Controller1ButtonR3Pressed",
+                "PS4Controller1ButtonCreatePressed",
+                "PS4Controller1ButtonMenuPressed",
+                "PS4Controller1ButtonLogoPressed",
+                "PS4Controller1ButtonTouchpadPressed",
+                "PS4Controller1ButtonMicPressed",
+                "PS5Controller2LeftStickX",
+                "PS5Controller2LeftStickY",
+                "PS5Controller2RightStickX",
+                "PS5Controller2RightStickY",
+                "PS5Controller2LeftTriggerPosition",
+                "PS5Controller2RightTriggerPosition",
+                "PS5Controller2TouchX",
+                "PS5Controller2TouchY",
+                "PS5Controller2TouchOn",
+                "PS5Controller2GyroX",
+                "PS5Controller2GyroY",
+                "PS5Controller2AccelX",
+                "PS5Controller2AccelY",
+                "PS5Controller2ButtonCrossPressed",
+                "PS5Controller2ButtonCirclePressed",
+                "PS5Controller2ButtonSquarePressed",
+                "PS5Controller2ButtonTrianglePressed",
+                "PS5Controller2ButtonDPadUpPressed",
+                "PS5Controller2ButtonDPadRightPressed",
+                "PS5Controller2ButtonDPadDownPressed",
+                "PS5Controller2ButtonDPadLeftPressed",
+                "PS5Controller2ButtonL1Pressed",
+                "PS5Controller2ButtonR1Pressed",
+                "PS5Controller2ButtonL2Pressed",
+                "PS5Controller2ButtonR2Pressed",
+                "PS5Controller2ButtonL3Pressed",
+                "PS5Controller2ButtonR3Pressed",
+                "PS5Controller2ButtonCreatePressed",
+                "PS5Controller2ButtonMenuPressed",
+                "PS5Controller2ButtonLogoPressed",
+                "PS5Controller2ButtonTouchpadPressed",
+                "PS5Controller2ButtonFnLPressed",
+                "PS5Controller2ButtonFnRPressed",
+                "PS5Controller2ButtonBLPPressed",
+                "PS5Controller2ButtonBRPPressed",
+                "PS5Controller2ButtonMicPressed",
+                "PS4Controller2LeftStickX",
+                "PS4Controller2LeftStickY",
+                "PS4Controller2RightStickX",
+                "PS4Controller2RightStickY",
+                "PS4Controller2LeftTriggerPosition",
+                "PS4Controller2RightTriggerPosition",
+                "PS4Controller2TouchX",
+                "PS4Controller2TouchY",
+                "PS4Controller2TouchOn",
+                "PS4Controller2GyroX",
+                "PS4Controller2GyroY",
+                "PS4Controller2AccelX",
+                "PS4Controller2AccelY",
+                "PS4Controller2ButtonCrossPressed",
+                "PS4Controller2ButtonCirclePressed",
+                "PS4Controller2ButtonSquarePressed",
+                "PS4Controller2ButtonTrianglePressed",
+                "PS4Controller2ButtonDPadUpPressed",
+                "PS4Controller2ButtonDPadRightPressed",
+                "PS4Controller2ButtonDPadDownPressed",
+                "PS4Controller2ButtonDPadLeftPressed",
+                "PS4Controller2ButtonL1Pressed",
+                "PS4Controller2ButtonR1Pressed",
+                "PS4Controller2ButtonL2Pressed",
+                "PS4Controller2ButtonR2Pressed",
+                "PS4Controller2ButtonL3Pressed",
+                "PS4Controller2ButtonR3Pressed",
+                "PS4Controller2ButtonCreatePressed",
+                "PS4Controller2ButtonMenuPressed",
+                "PS4Controller2ButtonLogoPressed",
+                "PS4Controller2ButtonTouchpadPressed",
+                "PS4Controller2ButtonMicPressed"
             };
         }
         private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
@@ -3489,6 +3766,8 @@ namespace SIGIL
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\KeyboardsMousesinput.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Dualsense.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Dualshock4.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Dualsenses.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Dualshocks4.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Directinput.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Directinputs.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconcharginggrip.dll");
