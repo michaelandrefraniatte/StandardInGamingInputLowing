@@ -242,6 +242,10 @@
       <Project>{c8a72023-3693-4c30-a5ed-9502fe0c10af}</Project>
       <Name>Interceptions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Joyconcharginggrips\Joyconcharginggrips.csproj">
+      <Project>{c3b880b6-7561-4e01-a029-c18c0f494bcd}</Project>
+      <Name>Joyconcharginggrips</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Joyconcharginggrip\Joyconcharginggrip.csproj">
       <Project>{4505eac8-c05a-4ea0-b48c-9973fa61de22}</Project>
       <Name>Joyconcharginggrip</Name>
@@ -253,6 +257,14 @@
     <ProjectReference Include="..\Joyconright\Joyconright.csproj">
       <Project>{a81591a0-370d-463e-83cf-cf0323d6c892}</Project>
       <Name>Joyconright</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Joyconsleft\Joyconsleft.csproj">
+      <Project>{e611fbc8-48cd-490b-80eb-c7d0115eccc7}</Project>
+      <Name>Joyconsleft</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Joyconsright\Joyconsright.csproj">
+      <Project>{3957bee1-1eed-455f-a785-5014fa0afa81}</Project>
+      <Name>Joyconsright</Name>
     </ProjectReference>
     <ProjectReference Include="..\KeyboardMouseinput\KeyboardMouseinput.csproj">
       <Project>{b95b249f-c364-43b8-a942-3df5e926edda}</Project>
@@ -270,6 +282,10 @@
       <Project>{53849bec-e4f5-4043-bfd3-6b87cfc1c1ff}</Project>
       <Name>mouses</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Switchprocontrollers\Switchprocontrollers.csproj">
+      <Project>{8ed3aed1-4e62-486a-a8d6-7eda69b48559}</Project>
+      <Name>Switchprocontrollers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Switchprocontroller\Switchprocontroller.csproj">
       <Project>{84fcc24d-1231-484b-9900-3aa6bd8cc2c5}</Project>
       <Name>Switchprocontroller</Name>
@@ -277,6 +293,10 @@
     <ProjectReference Include="..\Valuechanges\Valuechanges.csproj">
       <Project>{211d48a2-f49f-41ac-bfdb-5d92ac6043dc}</Project>
       <Name>Valuechanges</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wiimotes\Wiimotes.csproj">
+      <Project>{c1f5f4f6-9795-4f5f-a06a-148ee376b84f}</Project>
+      <Name>Wiimotes</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wiimote\Wiimote.csproj">
       <Project>{1fa4503b-17a2-4de6-9c7e-dd1e5568e4f4}</Project>

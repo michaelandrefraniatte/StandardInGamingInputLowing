@@ -3775,10 +3775,15 @@ namespace SIGIL
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Directinput.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Directinputs.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconcharginggrip.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconcharginggrips.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconleft.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconsleft.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconright.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconsright.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Switchprocontroller.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Switchprocontrollers.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Wiimote.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Wiimotes.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Xinput.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Xinputs.dll");
         }

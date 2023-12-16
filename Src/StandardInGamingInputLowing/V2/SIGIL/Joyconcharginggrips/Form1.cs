@@ -1,0 +1,49 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Joyconcharginggrips
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        public void SetLabel1(string str)
+        {
+            this.label1.Text = str;
+        }
+        public void SetLabel2(string str)
+        {
+            this.label2.Text = str;
+        }
+        public void SetLabel3(string str)
+        {
+            this.label3.Text = str;
+        }
+        public void SetLabel4(string str)
+        {
+            this.label4.Text = str;
+        }
+        public void SetVisible()
+        {
+            this.ShowDialog();
+        }
+        public void SetUnvisible()
+        {
+            this.Hide();
+        }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
+        }
+    }
+}
