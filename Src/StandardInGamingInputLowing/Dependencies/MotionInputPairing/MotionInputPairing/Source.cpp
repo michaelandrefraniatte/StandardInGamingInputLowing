@@ -11,9 +11,17 @@ BLUETOOTH_DEVICE_INFO btdir;
 BLUETOOTH_DEVICE_INFO btdiw;
 BLUETOOTH_DEVICE_INFO btdiw1;
 BLUETOOTH_DEVICE_INFO btdiw2;
+BLUETOOTH_DEVICE_INFO btdijl1;
+BLUETOOTH_DEVICE_INFO btdijl2;
+BLUETOOTH_DEVICE_INFO btdijr1;
+BLUETOOTH_DEVICE_INFO btdijr2;
 BLUETOOTH_DEVICE_INFO btdip;
 bool joyconlfound = false;
 bool joyconrfound = false;
+bool joycon1lfound = false;
+bool joycon1rfound = false;
+bool joycon2lfound = false;
+bool joycon2rfound = false;
 bool wiimotefound = false;
 bool wiimote1found = false;
 bool wiimote2found = false;
@@ -636,6 +644,150 @@ extern "C"
 			return true;
 		return false;
 	}
+	__declspec(dllexport) bool joyconsleftconnect()
+	{
+		joycon1lfound = false;
+		joycon2lfound = false;
+		HBLUETOOTH_DEVICE_FIND hFind = NULL;
+		HANDLE hRadios[256];
+		HBLUETOOTH_RADIO_FIND hFindRadio;
+		BLUETOOTH_FIND_RADIO_PARAMS radioParam;
+		BLUETOOTH_RADIO_INFO radioInfo;
+		BLUETOOTH_DEVICE_SEARCH_PARAMS srch;
+		BLUETOOTH_DEVICE_INFO btdi;
+		int nRadios = 0;
+		radioParam.dwSize = sizeof(BLUETOOTH_FIND_RADIO_PARAMS);
+		radioInfo.dwSize = sizeof(BLUETOOTH_RADIO_INFO);
+		btdiw1.dwSize = sizeof(btdiw1);
+		btdiw2.dwSize = sizeof(btdiw2);
+		btdi.dwSize = sizeof(btdi);
+		srch.dwSize = sizeof(BLUETOOTH_DEVICE_SEARCH_PARAMS);
+		hFindRadio = BluetoothFindFirstRadio(&radioParam, &hRadios[nRadios++]);
+		while (BluetoothFindNextRadio(hFindRadio, &hRadios[nRadios++]))
+		{
+			hFindRadio = BluetoothFindFirstRadio(&radioParam, &hRadios[nRadios++]);
+			BluetoothFindRadioClose(hFindRadio);
+		}
+		srch.fReturnAuthenticated = TRUE;
+		srch.fReturnRemembered = TRUE;
+		srch.fReturnConnected = TRUE;
+		srch.fReturnUnknown = TRUE;
+		srch.fIssueInquiry = TRUE;
+		srch.cTimeoutMultiplier = 2;
+		srch.hRadio = hRadios[1];
+		BluetoothGetRadioInfo(hRadios[1], &radioInfo);
+		WCHAR pass[6];
+		DWORD pcServices = 16;
+		GUID guids[16];
+		pass[0] = radioInfo.address.rgBytes[0];
+		pass[1] = radioInfo.address.rgBytes[1];
+		pass[2] = radioInfo.address.rgBytes[2];
+		pass[3] = radioInfo.address.rgBytes[3];
+		pass[4] = radioInfo.address.rgBytes[4];
+		pass[5] = radioInfo.address.rgBytes[5];
+		hFind = BluetoothFindFirstDevice(&srch, &btdi);
+		if (hFind != NULL)
+		{
+			do
+			{
+				if (!wcscmp(btdi.szName, L"Joy-Con (L)") & joycon1lfound)
+				{
+					BluetoothAuthenticateDevice(NULL, hRadios[1], &btdi, pass, 6);
+					BluetoothEnumerateInstalledServices(hRadios[1], &btdi, &pcServices, guids);
+					BluetoothSetServiceState(hRadios[1], &btdi, &HumanInterfaceDeviceServiceClass_UUID, BLUETOOTH_SERVICE_ENABLE);
+					BluetoothUpdateDeviceRecord(&btdi);
+					btdijl2 = btdi;
+					joycon2lfound = true;
+				}
+				if (!wcscmp(btdi.szName, L"Joy-Con (L)") & !joycon1lfound)
+				{
+					BluetoothAuthenticateDevice(NULL, hRadios[1], &btdi, pass, 6);
+					BluetoothEnumerateInstalledServices(hRadios[1], &btdi, &pcServices, guids);
+					BluetoothSetServiceState(hRadios[1], &btdi, &HumanInterfaceDeviceServiceClass_UUID, BLUETOOTH_SERVICE_ENABLE);
+					BluetoothUpdateDeviceRecord(&btdi);
+					btdijl1 = btdi;
+					joycon1lfound = true;
+				}
+			} while (BluetoothFindNextDevice(hFind, &btdi));
+			BluetoothFindDeviceClose(hFind);
+		}
+		BluetoothFindRadioClose(hFindRadio);
+		if (joycon1lfound & joycon2lfound)
+			return true;
+		return false;
+	}
+	__declspec(dllexport) bool joyconsrightconnect()
+	{
+		joycon1rfound = false;
+		joycon2rfound = false;
+		HBLUETOOTH_DEVICE_FIND hFind = NULL;
+		HANDLE hRadios[256];
+		HBLUETOOTH_RADIO_FIND hFindRadio;
+		BLUETOOTH_FIND_RADIO_PARAMS radioParam;
+		BLUETOOTH_RADIO_INFO radioInfo;
+		BLUETOOTH_DEVICE_SEARCH_PARAMS srch;
+		BLUETOOTH_DEVICE_INFO btdi;
+		int nRadios = 0;
+		radioParam.dwSize = sizeof(BLUETOOTH_FIND_RADIO_PARAMS);
+		radioInfo.dwSize = sizeof(BLUETOOTH_RADIO_INFO);
+		btdiw1.dwSize = sizeof(btdiw1);
+		btdiw2.dwSize = sizeof(btdiw2);
+		btdi.dwSize = sizeof(btdi);
+		srch.dwSize = sizeof(BLUETOOTH_DEVICE_SEARCH_PARAMS);
+		hFindRadio = BluetoothFindFirstRadio(&radioParam, &hRadios[nRadios++]);
+		while (BluetoothFindNextRadio(hFindRadio, &hRadios[nRadios++]))
+		{
+			hFindRadio = BluetoothFindFirstRadio(&radioParam, &hRadios[nRadios++]);
+			BluetoothFindRadioClose(hFindRadio);
+		}
+		srch.fReturnAuthenticated = TRUE;
+		srch.fReturnRemembered = TRUE;
+		srch.fReturnConnected = TRUE;
+		srch.fReturnUnknown = TRUE;
+		srch.fIssueInquiry = TRUE;
+		srch.cTimeoutMultiplier = 2;
+		srch.hRadio = hRadios[1];
+		BluetoothGetRadioInfo(hRadios[1], &radioInfo);
+		WCHAR pass[6];
+		DWORD pcServices = 16;
+		GUID guids[16];
+		pass[0] = radioInfo.address.rgBytes[0];
+		pass[1] = radioInfo.address.rgBytes[1];
+		pass[2] = radioInfo.address.rgBytes[2];
+		pass[3] = radioInfo.address.rgBytes[3];
+		pass[4] = radioInfo.address.rgBytes[4];
+		pass[5] = radioInfo.address.rgBytes[5];
+		hFind = BluetoothFindFirstDevice(&srch, &btdi);
+		if (hFind != NULL)
+		{
+			do
+			{
+				if (!wcscmp(btdi.szName, L"Joy-Con (R)") & joycon1rfound)
+				{
+					BluetoothAuthenticateDevice(NULL, hRadios[1], &btdi, pass, 6);
+					BluetoothEnumerateInstalledServices(hRadios[1], &btdi, &pcServices, guids);
+					BluetoothSetServiceState(hRadios[1], &btdi, &HumanInterfaceDeviceServiceClass_UUID, BLUETOOTH_SERVICE_ENABLE);
+					BluetoothUpdateDeviceRecord(&btdi);
+					btdijr2 = btdi;
+					joycon2rfound = true;
+				}
+				if (!wcscmp(btdi.szName, L"Joy-Con (R)") & !joycon1rfound)
+				{
+					BluetoothAuthenticateDevice(NULL, hRadios[1], &btdi, pass, 6);
+					BluetoothEnumerateInstalledServices(hRadios[1], &btdi, &pcServices, guids);
+					BluetoothSetServiceState(hRadios[1], &btdi, &HumanInterfaceDeviceServiceClass_UUID, BLUETOOTH_SERVICE_ENABLE);
+					BluetoothUpdateDeviceRecord(&btdi);
+					btdijr1 = btdi;
+					joycon1rfound = true;
+				}
+			} while (BluetoothFindNextDevice(hFind, &btdi));
+			BluetoothFindDeviceClose(hFind);
+		}
+		BluetoothFindRadioClose(hFindRadio);
+		if (joycon1rfound & joycon2rfound)
+			return true;
+		return false;
+	}
 	__declspec(dllexport) bool joyconleftdisconnect()
 	{
 		if (joyconlfound)
@@ -666,6 +818,22 @@ extern "C"
 	{
 		if (procontrollerfound)
 			BluetoothRemoveDevice(&btdip.Address);
+		return true;
+	}
+	__declspec(dllexport) bool joyconsleftdisconnect()
+	{
+		if (joycon1lfound)
+			BluetoothRemoveDevice(&btdijl1.Address);
+		if (joycon2lfound)
+			BluetoothRemoveDevice(&btdijl2.Address);
+		return true;
+	}
+	__declspec(dllexport) bool joyconsrightdisconnect()
+	{
+		if (joycon1rfound)
+			BluetoothRemoveDevice(&btdijr1.Address);
+		if (joycon2rfound)
+			BluetoothRemoveDevice(&btdijr2.Address);
 		return true;
 	}
 }
