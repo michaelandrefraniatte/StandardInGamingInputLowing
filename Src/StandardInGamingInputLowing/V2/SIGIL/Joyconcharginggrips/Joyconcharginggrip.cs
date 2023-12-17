@@ -86,6 +86,8 @@ namespace JoyconChargingGripsAPI
         public bool JoyconRightButtonSHOULDER_1, JoyconRightButtonSHOULDER_2, JoyconRightButtonSR, JoyconRightButtonSL, JoyconRightButtonDPAD_DOWN, JoyconRightButtonDPAD_RIGHT, JoyconRightButtonDPAD_UP, JoyconRightButtonDPAD_LEFT, JoyconRightButtonPLUS, JoyconRightButtonSTICK, JoyconRightButtonHOME;
         public float acc_gcalibrationRightX, acc_gcalibrationRightY, acc_gcalibrationRightZ;
         public bool ISLEFT, ISRIGHT, running, formvisible;
+        private bool ISJOYCONCHARGINGGRIP1, ISJOYCONCHARGINGGRIP2;
+        private int number;
         public Form1 form1 = new Form1();
         public JoyconChargingGrip()
         {
@@ -334,10 +336,13 @@ namespace JoyconChargingGripsAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool ScanGrip()
+        public bool ScanGrip(int number)
         {
+            this.number = number;
             ISLEFT = false;
             ISRIGHT = false;
+            ISJOYCONCHARGINGGRIP1 = false;
+            ISJOYCONCHARGINGGRIP2 = false;
             int index = 0;
             System.Guid guid;
             HidD_GetHidGuid(out guid);
@@ -354,17 +359,45 @@ namespace JoyconChargingGripsAPI
                 {
                     if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & diDetail.DevicePath.Contains(product_grip))
                     {
-                        if (ISLEFT)
+                        if (ISJOYCONCHARGINGGRIP1)
                         {
-                            AttachGripRightController(diDetail.DevicePath);
-                            ISRIGHT = true;
+                            if (ISLEFT)
+                            {
+                                if (number == 2)
+                                    AttachGripRightController(diDetail.DevicePath);
+                                ISRIGHT = true;
+                            }
+                            if (!ISLEFT)
+                            {
+                                if (number == 2)
+                                    AttachGripLeftController(diDetail.DevicePath);
+                                ISLEFT = true;
+                            }
+                            if (ISLEFT & ISRIGHT)
+                                ISJOYCONCHARGINGGRIP2 = true;
                         }
-                        if (!ISLEFT)
+                        if (!ISJOYCONCHARGINGGRIP1)
                         {
-                            AttachGripLeftController(diDetail.DevicePath);
-                            ISLEFT = true;
+                            if (ISLEFT)
+                            {
+                                if (number == 1)
+                                    AttachGripRightController(diDetail.DevicePath);
+                                ISRIGHT = true;
+                            }
+                            if (!ISLEFT)
+                            {
+                                if (number == 1)
+                                    AttachGripLeftController(diDetail.DevicePath);
+                                ISLEFT = true;
+                            }
+                            if (ISLEFT & ISRIGHT)
+                            {
+                                ISLEFT = false;
+                                ISRIGHT = false;
+                                ISJOYCONCHARGINGGRIP1 = true;
+                            }
                         }
-                        if (ISLEFT & ISRIGHT)
+                        if (ISJOYCONCHARGINGGRIP1 & ISJOYCONCHARGINGGRIP2)
                             return true;
                     }
                 }

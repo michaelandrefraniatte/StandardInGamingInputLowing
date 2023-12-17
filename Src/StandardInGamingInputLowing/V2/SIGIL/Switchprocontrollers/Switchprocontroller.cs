@@ -63,6 +63,8 @@ namespace SwitchProControllersAPI
         public bool ProControllerButtonSHOULDER_Left_1, ProControllerButtonSHOULDER_Left_2, ProControllerButtonSHOULDER_Right_1, ProControllerButtonSHOULDER_Right_2, ProControllerButtonDPAD_DOWN, ProControllerButtonDPAD_RIGHT, ProControllerButtonDPAD_UP, ProControllerButtonDPAD_LEFT, ProControllerButtonA, ProControllerButtonB, ProControllerButtonX, ProControllerButtonY, ProControllerButtonMINUS, ProControllerButtonPLUS, ProControllerButtonSTICK_Left, ProControllerButtonSTICK_Right, ProControllerButtonCAPTURE, ProControllerButtonHOME;
         public float acc_gcalibrationProX, acc_gcalibrationProY, acc_gcalibrationProZ;
         public bool running, formvisible;
+        private bool ISSWITCHPROCONTROLLER1, ISSWITCHPROCONTROLLER2;
+        private int number;
         public Form1 form1 = new Form1();
         public SwitchProController()
         {
@@ -248,8 +250,11 @@ namespace SwitchProControllersAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool ScanPro()
+        public bool ScanPro(int number)
         {
+            this.number = number;
+            ISSWITCHPROCONTROLLER1 = false;
+            ISSWITCHPROCONTROLLER2 = false;
             int index = 0;
             System.Guid guid;
             HidD_GetHidGuid(out guid);
@@ -266,8 +271,20 @@ namespace SwitchProControllersAPI
                 {
                     if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & diDetail.DevicePath.Contains(product_pro))
                     {
-                        AttachProController(diDetail.DevicePath);
-                        return true;
+                        if (ISSWITCHPROCONTROLLER1)
+                        {
+                            if (number == 2)
+                                AttachProController(diDetail.DevicePath);
+                            ISSWITCHPROCONTROLLER2 = true;
+                        }
+                        if (!ISSWITCHPROCONTROLLER1)
+                        {
+                            if (number == 1)
+                                AttachProController(diDetail.DevicePath);
+                            ISSWITCHPROCONTROLLER1 = true;
+                        }
+                        if (ISSWITCHPROCONTROLLER1 & ISSWITCHPROCONTROLLER2)
+                            return true;
                     }
                 }
                 index++;

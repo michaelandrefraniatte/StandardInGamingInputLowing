@@ -14,10 +14,10 @@ namespace JoyconsRightAPI
 {
     public class JoyconRight
     {
-        [DllImport("MotionInputPairing.dll", EntryPoint = "joyconrightconnect")]
-        public static extern bool joyconrightconnect();
-        [DllImport("MotionInputPairing.dll", EntryPoint = "joyconrightdisconnect")]
-        public static extern bool joyconrightdisconnect();
+        [DllImport("MotionInputPairing.dll", EntryPoint = "joyconsrightconnect")]
+        public static extern bool joyconsrightconnect();
+        [DllImport("MotionInputPairing.dll", EntryPoint = "joyconsrightdisconnect")]
+        public static extern bool joyconsrightdisconnect();
         [DllImport("rhidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Rhid_read_timeout")]
         public static extern int Rhid_read_timeout(SafeFileHandle dev, byte[] data, UIntPtr length);
         [DllImport("rhidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Rhid_write")]
@@ -67,6 +67,8 @@ namespace JoyconsRightAPI
         public float acc_gcalibrationRightX, acc_gcalibrationRightY, acc_gcalibrationRightZ;
         public bool ISRIGHT = true;
         private bool running, formvisible;
+        private bool ISJOYCONRIGHT1, ISJOYCONLRIGHT2;
+        private int number;
         public Form1 form1 = new Form1();
         public JoyconRight()
         {
@@ -216,12 +218,14 @@ namespace JoyconsRightAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool ScanRightJoycon()
+        public bool ScanRightJoycon(int number)
         {
-
+            this.number = number;
             do
                 Thread.Sleep(1);
-            while (!joyconrightconnect());
+            while (!joyconsrightconnect());
+            ISJOYCONRIGHT1 = false;
+            ISJOYCONLRIGHT2 = false;
             int index = 0;
             System.Guid guid;
             HidD_GetHidGuid(out guid);
@@ -238,8 +242,20 @@ namespace JoyconsRightAPI
                 {
                     if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & diDetail.DevicePath.Contains(product_r))
                     {
-                        AttachJoyRight(diDetail.DevicePath);
-                        return true;
+                        if (ISJOYCONRIGHT1)
+                        {
+                            if (number == 2)
+                                AttachJoyRight(diDetail.DevicePath);
+                            ISJOYCONLRIGHT2 = true;
+                        }
+                        if (!ISJOYCONRIGHT1)
+                        {
+                            if (number == 1)
+                                AttachJoyRight(diDetail.DevicePath);
+                            ISJOYCONRIGHT1 = true;
+                        }
+                        if (ISJOYCONRIGHT1 & ISJOYCONLRIGHT2)
+                            return true;
                     }
                 }
                 index++;

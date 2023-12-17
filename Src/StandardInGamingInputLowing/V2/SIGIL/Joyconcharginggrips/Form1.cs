@@ -24,14 +24,6 @@ namespace Joyconcharginggrips
         {
             this.label2.Text = str;
         }
-        public void SetLabel3(string str)
-        {
-            this.label3.Text = str;
-        }
-        public void SetLabel4(string str)
-        {
-            this.label4.Text = str;
-        }
         public void SetVisible()
         {
             this.ShowDialog();

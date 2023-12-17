@@ -14,10 +14,10 @@ namespace JoyconsLeftAPI
 {
     public class JoyconLeft
     {
-        [DllImport("MotionInputPairing.dll", EntryPoint = "joyconleftconnect")]
-        public static extern bool joyconleftconnect();
-        [DllImport("MotionInputPairing.dll", EntryPoint = "joyconleftdisconnect")]
-        public static extern bool joyconleftdisconnect();
+        [DllImport("MotionInputPairing.dll", EntryPoint = "joyconsleftconnect")]
+        public static extern bool joyconsleftconnect();
+        [DllImport("MotionInputPairing.dll", EntryPoint = "joyconsleftdisconnect")]
+        public static extern bool joyconsleftdisconnect();
         [DllImport("lhidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Lhid_read_timeout")]
         public static extern int Lhid_read_timeout(SafeFileHandle dev, byte[] data, UIntPtr length);
         [DllImport("lhidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Lhid_write")]
@@ -67,6 +67,8 @@ namespace JoyconsLeftAPI
         public float acc_gcalibrationLeftX, acc_gcalibrationLeftY, acc_gcalibrationLeftZ;
         public bool ISLEFT = true;
         private bool running, formvisible;
+        private bool ISJOYCONLEFT1, ISJOYCONLEFT2;
+        private int number;
         public Form1 form1 = new Form1();
         public JoyconLeft()
         {
@@ -216,12 +218,14 @@ namespace JoyconsLeftAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool ScanLeftJoycon()
+        public bool ScanLeftJoycon(int number)
         {
-
+            this.number = number;
             do
                 Thread.Sleep(1);
-            while (!joyconleftconnect());
+            while (!joyconsleftconnect());
+            ISJOYCONLEFT1 = false;
+            ISJOYCONLEFT2 = false;
             int index = 0;
             System.Guid guid;
             HidD_GetHidGuid(out guid);
@@ -238,8 +242,20 @@ namespace JoyconsLeftAPI
                 {
                     if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & diDetail.DevicePath.Contains(product_l))
                     {
-                        AttachJoyLeft(diDetail.DevicePath);
-                        return true;
+                        if (ISJOYCONLEFT1)
+                        {
+                            if (number == 2)
+                                AttachJoyLeft(diDetail.DevicePath);
+                            ISJOYCONLEFT2 = true;
+                        }
+                        if (!ISJOYCONLEFT1)
+                        {
+                            if (number == 1)
+                                AttachJoyLeft(diDetail.DevicePath);
+                            ISJOYCONLEFT1 = true;
+                        }
+                        if (ISJOYCONLEFT1 & ISJOYCONLEFT2)
+                            return true;
                     }
                 }
                 index++;
