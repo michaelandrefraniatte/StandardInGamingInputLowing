@@ -119,6 +119,7 @@ namespace SIGIL
                 range.SetStyle(StyleExtra, new Regex(@"\bCurrentResolution\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\brunning\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\birmode\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bnumber\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bcentery\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bvendor_ds_id\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bproduct_ds_id\b"));
@@ -234,30 +235,43 @@ namespace SIGIL
                 range.SetStyle(StyleObject, new Regex(@"\bsi\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bLoad\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bWiiMoteAPI\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bWiiMotesAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bWiiMote\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bwm\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitWiimote\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bSwitchProControllerAPI\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bSwitchProControllersAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bSwitchProController\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bspc\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bspc1\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bspc2\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitProController\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitProControllerAccel\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitProControllerStick\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bJoyconChargingGripAPI\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bJoyconChargingGripsAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bJoyconChargingGrip\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bjcg\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bjcg1\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bjcg2\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitJoyconChargingGrip\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitJoyconChargingGripAccel\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitJoyconChargingGripStick\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bJoyconLeftAPI\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bJoyconsLeftAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bJoyconLeft\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bjl\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bjl1\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bjl2\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitLeftJoycon\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitLeftJoyconAccel\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitLeftJoyconStick\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bJoyconRightAPI\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bJoyconsRightAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bJoyconRight\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bjr\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bjr1\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bjr2\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitRightJoycon\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitRightJoyconAccel\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInitRightJoyconStick\b"));
@@ -1822,6 +1836,7 @@ namespace SIGIL
                 "TimeEndPeriod",
                 "NtSetTimerResolution",
                 "irmode",
+                "number",
                 "centery",
                 "vendor_ds_id",
                 "product_ds_id",
@@ -1944,30 +1959,43 @@ namespace SIGIL
                 "si",
                 "Load",
                 "WiiMoteAPI",
+                "WiiMotesAPI",
                 "WiiMote",
                 "wm",
                 "InitWiimote",
                 "SwitchProControllerAPI",
+                "SwitchProControllersAPI",
                 "SwitchProController",
                 "spc",
+                "spc1",
+                "spc2",
                 "InitProController",
                 "InitProControllerAccel",
                 "InitProControllerStick",
                 "JoyconChargingGripAPI",
+                "JoyconChargingGripsAPI",
                 "JoyconChargingGrip",
                 "jcg",
+                "jcg1",
+                "jcg2",
                 "InitJoyconChargingGrip",
                 "InitJoyconChargingGripAccel",
                 "InitJoyconChargingGripStick",
                 "JoyconLeftAPI",
+                "JoyconsLeftAPI",
                 "JoyconLeft",
                 "jl",
+                "jl1",
+                "jl2",
                 "InitLeftJoycon",
                 "InitLeftJoyconAccel",
                 "InitLeftJoyconStick",
                 "JoyconRightAPI",
+                "JoyconsRightAPI",
                 "JoyconRight",
                 "jr",
+                "jr1",
+                "jr2",
                 "InitRightJoycon",
                 "InitRightJoyconAccel",
                 "InitRightJoyconStick",

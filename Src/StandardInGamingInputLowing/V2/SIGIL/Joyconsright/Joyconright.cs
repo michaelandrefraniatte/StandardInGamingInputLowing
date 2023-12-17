@@ -221,9 +221,10 @@ namespace JoyconsRightAPI
         public bool ScanRightJoycon(int number)
         {
             this.number = number;
-            do
-                Thread.Sleep(1);
-            while (!joyconsrightconnect());
+            if (number == 1)
+                do
+                    Thread.Sleep(1);
+                while (!joyconsrightconnect());
             ISJOYCONRIGHT1 = false;
             ISJOYCONLRIGHT2 = false;
             int index = 0;

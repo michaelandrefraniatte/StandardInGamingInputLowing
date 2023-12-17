@@ -221,9 +221,10 @@ namespace JoyconsLeftAPI
         public bool ScanLeftJoycon(int number)
         {
             this.number = number;
-            do
-                Thread.Sleep(1);
-            while (!joyconsleftconnect());
+            if (number == 1)
+                do
+                    Thread.Sleep(1);
+                while (!joyconsleftconnect());
             ISJOYCONLEFT1 = false;
             ISJOYCONLEFT2 = false;
             int index = 0;
