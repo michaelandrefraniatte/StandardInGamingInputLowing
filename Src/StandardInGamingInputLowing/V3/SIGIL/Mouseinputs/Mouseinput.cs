@@ -70,7 +70,7 @@ namespace MouseInputsAPI
                 MouseInputProcess();
                 System.Threading.Thread.Sleep(1);
                 if (MouseAxisZ != 0)
-                    Task.Run(() => InitMouse());
+                    Task.Run(() => Init());
                 if (formvisible)
                 {
                     string str = "MouseAxisX : " + MouseAxisX + Environment.NewLine;
@@ -93,7 +93,7 @@ namespace MouseInputsAPI
         {
             Task.Run(() => taskM());
         }
-        public void InitMouse()
+        public void Init()
         {
             System.Threading.Thread.Sleep(100);
             MouseAxisZ = 0;

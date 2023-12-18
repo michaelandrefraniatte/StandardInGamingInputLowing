@@ -171,7 +171,7 @@ namespace DualShocks4API
             PS4ControllerButtonTouchpadPressed = TouchpadButton;
             PS4ControllerButtonMicPressed = MicButton;
         }
-        public void InitDualShock4Accel()
+        public void Init()
         {
             InitDirectAnglesPS4 = acc_gPS4;
         }

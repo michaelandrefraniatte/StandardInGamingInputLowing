@@ -183,7 +183,7 @@ namespace DualSensesAPI
             PS5ControllerButtonBRPPressed = BRP;
             PS5ControllerButtonMicPressed = MicButton;
         }
-        public void InitDualSenseAccel()
+        public void Init()
         {
             InitDirectAnglesPS5 = acc_gPS5;
         }

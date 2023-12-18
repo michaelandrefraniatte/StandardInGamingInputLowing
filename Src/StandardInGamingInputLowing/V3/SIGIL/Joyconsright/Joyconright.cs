@@ -138,7 +138,7 @@ namespace JoyconsRightAPI
         {
             Task.Run(() => taskDRight());
         }
-        public void InitRightJoycon()
+        public void Init()
         {
             try
             {
@@ -150,6 +150,7 @@ namespace JoyconsRightAPI
                 acc_gcalibrationRightX = (Int16)(report_bufRight[13 + 0 * 12] | ((report_bufRight[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[13 + 1 * 12] | ((report_bufRight[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[13 + 2 * 12] | ((report_bufRight[14 + 2 * 12] << 8) & 0xff00));
                 acc_gcalibrationRightY = (Int16)(report_bufRight[15 + 0 * 12] | ((report_bufRight[16 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[15 + 1 * 12] | ((report_bufRight[16 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[15 + 2 * 12] | ((report_bufRight[16 + 2 * 12] << 8) & 0xff00));
                 acc_gcalibrationRightZ = (Int16)(report_bufRight[17 + 0 * 12] | ((report_bufRight[18 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[17 + 1 * 12] | ((report_bufRight[18 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[17 + 2 * 12] | ((report_bufRight[18 + 2 * 12] << 8) & 0xff00));
+                InitDirectAnglesRight = acc_gRight;
             }
             catch { }
         }
@@ -190,18 +191,6 @@ namespace JoyconsRightAPI
                 JoyconRightGyroY = gyr_gRight.Y;
             }
             catch { }
-        }
-        public void InitRightJoyconAccel()
-        {
-            InitDirectAnglesRight = acc_gRight;
-        }
-        public void InitRightJoyconStick()
-        {
-            stick_rawRight[0] = report_bufRight[6 + (!ISRIGHT ? 0 : 3)];
-            stick_rawRight[1] = report_bufRight[7 + (!ISRIGHT ? 0 : 3)];
-            stick_rawRight[2] = report_bufRight[8 + (!ISRIGHT ? 0 : 3)];
-            stickCenterRight[0] = (UInt16)(stick_rawRight[0] | ((stick_rawRight[1] & 0xf) << 8));
-            stickCenterRight[1] = (UInt16)((stick_rawRight[1] >> 4) | (stick_rawRight[2] << 4));
         }
         public const string vendor_id = "57e", vendor_id_ = "057e", product_l = "2006", product_r = "2007";
         public enum EFileAttributes : uint

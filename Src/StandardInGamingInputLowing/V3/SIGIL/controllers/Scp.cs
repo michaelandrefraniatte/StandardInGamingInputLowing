@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace controllers
 {
-    public class Scp
+    public class XBoxController
     {
         public static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         public static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
@@ -26,14 +26,14 @@ namespace controllers
                 wd[n] = 0;
             }
         }
-        private XBoxController scpBus;
+        private ScpBus scpBus;
         private X360Controller controller;
         private int number;
         public void Connect(int number = 0)
         {
             this.number = number;
             controller = new X360Controller();
-            scpBus = new XBoxController();
+            scpBus = new ScpBus();
             if (number == 0 | number == 1)
                 scpBus.PlugIn(1);
             else if (number == 2)

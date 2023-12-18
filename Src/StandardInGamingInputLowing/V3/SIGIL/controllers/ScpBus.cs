@@ -25,7 +25,7 @@ namespace controllers
     /// <summary>
     /// Emulates Xbox 360 controllers via Scarlet.Crush's SCP Virtual Bus Driver.
     /// </summary>
-    public class XBoxController : IDisposable
+    public class ScpBus : IDisposable
     {
         private const string SCP_BUS_CLASS_GUID = "{F679F562-3164-42CE-A4DB-E7DDBE723909}";
         private const int ReportSize = 28;
@@ -33,15 +33,15 @@ namespace controllers
         private readonly SafeFileHandle _deviceHandle;
 
         /// <summary>
-        /// Creates a new XBoxController object, which will then try to get a handle to the SCP Virtual Bus device. If it is unable to get the handle, an IOException will be thrown.
+        /// Creates a new ScpBus object, which will then try to get a handle to the SCP Virtual Bus device. If it is unable to get the handle, an IOException will be thrown.
         /// </summary>
-        public XBoxController() : this(0) { }
+        public ScpBus() : this(0) { }
 
         /// <summary>
-        /// Creates a new XBoxController object, which will then try to get a handle to the SCP Virtual Bus device. If it is unable to get the handle, an IOException will be thrown.
+        /// Creates a new ScpBus object, which will then try to get a handle to the SCP Virtual Bus device. If it is unable to get the handle, an IOException will be thrown.
         /// </summary>
         /// <param name="instance">Specifies which SCP Virtual Bus device to use. This is 0-based.</param>
-        public XBoxController(int instance)
+        public ScpBus(int instance)
         {
             string devicePath = "";
 
@@ -56,16 +56,16 @@ namespace controllers
         }
 
         /// <summary>
-        /// Creates a new XBoxController object, which will then try to get a handle to the specified SCP Virtual Bus device. If it is unable to get the handle, an IOException will be thrown.
+        /// Creates a new ScpBus object, which will then try to get a handle to the specified SCP Virtual Bus device. If it is unable to get the handle, an IOException will be thrown.
         /// </summary>
         /// <param name="devicePath">The path to the SCP Virtual Bus device that you want to use.</param>
-        public XBoxController(string devicePath)
+        public ScpBus(string devicePath)
         {
             _deviceHandle = GetHandle(devicePath);
         }
 
         /// <summary>
-        /// Closes the handle to the SCP Virtual Bus device. Call this when you are done with your instance of XBoxController.
+        /// Closes the handle to the SCP Virtual Bus device. Call this when you are done with your instance of ScpBus.
         /// 
         /// (This method does the same thing as the Dispose() method. Use one or the other.)
         /// </summary>
@@ -75,7 +75,7 @@ namespace controllers
         }
 
         /// <summary>
-        /// Closes the handle to the SCP Virtual Bus device. Call this when you are done with your instance of XBoxController.
+        /// Closes the handle to the SCP Virtual Bus device. Call this when you are done with your instance of ScpBus.
         /// </summary>
         public void Dispose()
         {
