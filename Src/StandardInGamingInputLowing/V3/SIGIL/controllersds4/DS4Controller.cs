@@ -9,7 +9,7 @@ namespace controllersds4
     {
         public static IDualShock4Controller Controller { get; set; }
         private static ViGEmClient client = new ViGEmClient();
-        public void Connect()
+        public void Connect(int number = 0)
         {
             Controller = client.CreateDualShock4Controller();
             Controller.Connect();

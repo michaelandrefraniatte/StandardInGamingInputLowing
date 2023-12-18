@@ -130,7 +130,7 @@ namespace StringToCode
                     controller1_send_A                    = ki.KeyboardKeySpace;
                     controller1_send_back                 = ki.KeyboardKeyTab;
                     controller1_send_start                = ki.KeyboardKeyEscape;
-                    controller1_send_X                    = mi.MouseButtons2 | ki.KeyboardKeyR;
+                    controller1_send_X                    = ki.KeyboardKeyR | mi.MouseButtons2;
                     controller1_send_rightbumper          = ki.KeyboardKeyG | mi.MouseButtons4;
                     controller1_send_leftbumper           = ki.KeyboardKeyT | mi.MouseButtons3;
                     controller1_send_B                    = ki.KeyboardKeyLeftControl | ki.KeyboardKeyQ;
@@ -190,7 +190,8 @@ namespace StringToCode
                     controller1_send_righttriggerposition = 0;
                 }
                 XBC.SetController(controller1_send_back, controller1_send_start, controller1_send_A, controller1_send_B, controller1_send_X, controller1_send_Y, controller1_send_up, controller1_send_left, controller1_send_down, controller1_send_right, controller1_send_leftstick, controller1_send_rightstick, controller1_send_leftbumper, controller1_send_rightbumper, controller1_send_leftstickx, controller1_send_leftsticky, controller1_send_rightstickx, controller1_send_rightsticky, controller1_send_lefttriggerposition, controller1_send_righttriggerposition, controller1_send_xbox);
-                /*kmi.ViewData();*/
+                /*mi.ViewData();*/
+                /*ki.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
         }
