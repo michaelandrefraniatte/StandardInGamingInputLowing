@@ -222,10 +222,14 @@ namespace JoyconsLeftAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool ScanLeftJoycon(int number)
+        public bool Scan(int number = 0)
         {
             this.number = number;
-            if (number == 1)
+            if (number == 0)
+                do
+                    Thread.Sleep(1);
+                while (!joyconleftconnect());
+            else if (number == 1)
                 do
                     Thread.Sleep(1);
                 while (!joyconsleftconnect());
@@ -255,9 +259,11 @@ namespace JoyconsLeftAPI
                         }
                         if (!ISJOYCONLEFT1)
                         {
-                            if (number == 1)
+                            if (number == 0 | number == 1)
                                 AttachJoyLeft(diDetail.DevicePath);
                             ISJOYCONLEFT1 = true;
+                            if (number == 0)
+                                return true;
                         }
                         if (ISJOYCONLEFT1 & ISJOYCONLEFT2)
                             return true;

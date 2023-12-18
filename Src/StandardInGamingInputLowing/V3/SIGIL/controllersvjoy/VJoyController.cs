@@ -5,70 +5,42 @@ namespace controllersvjoy
 {
     public class VJoyController
     {
-        public static VirtualJoystick joystick1, joystick2;
-        public void Connect()
+        public static VirtualJoystick joystick;
+        public void Connect(int number = 0)
         {
-            joystick1 = new VirtualJoystick(1);
-            joystick1.Aquire();
-            joystick2 = new VirtualJoystick(2);
-            joystick2.Aquire();
+            uint id = (uint)(number < 2 ? 1 : 2);
+            joystick = new VirtualJoystick(id);
+            joystick.Aquire();
         }
         public void Disconnect()
         {
-            joystick1.Dispose();
-            joystick2.Dispose();
+            joystick.Dispose();
         }
-        public void SetController1(bool Controller1VJoy_Send_1, bool Controller1VJoy_Send_2, bool Controller1VJoy_Send_3, bool Controller1VJoy_Send_4, bool Controller1VJoy_Send_5, bool Controller1VJoy_Send_6, bool Controller1VJoy_Send_7, bool Controller1VJoy_Send_8, double Controller1VJoy_Send_X, double Controller1VJoy_Send_Y, double Controller1VJoy_Send_Z, double Controller1VJoy_Send_WHL, double Controller1VJoy_Send_SL0, double Controller1VJoy_Send_SL1, double Controller1VJoy_Send_RX, double Controller1VJoy_Send_RY, double Controller1VJoy_Send_RZ, double Controller1VJoy_Send_POV, double Controller1VJoy_Send_Hat, double Controller1VJoy_Send_HatExt1, double Controller1VJoy_Send_HatExt2, double Controller1VJoy_Send_HatExt3)
+        public void SetController(bool ControllerVJoy_Send_1, bool ControllerVJoy_Send_2, bool ControllerVJoy_Send_3, bool ControllerVJoy_Send_4, bool ControllerVJoy_Send_5, bool ControllerVJoy_Send_6, bool ControllerVJoy_Send_7, bool ControllerVJoy_Send_8, double ControllerVJoy_Send_X, double ControllerVJoy_Send_Y, double ControllerVJoy_Send_Z, double ControllerVJoy_Send_WHL, double ControllerVJoy_Send_SL0, double ControllerVJoy_Send_SL1, double ControllerVJoy_Send_RX, double ControllerVJoy_Send_RY, double ControllerVJoy_Send_RZ, double ControllerVJoy_Send_POV, double ControllerVJoy_Send_Hat, double ControllerVJoy_Send_HatExt1, double ControllerVJoy_Send_HatExt2, double ControllerVJoy_Send_HatExt3)
         {
-            joystick1.SetJoystickButton(Controller1VJoy_Send_1, 1);
-            joystick1.SetJoystickButton(Controller1VJoy_Send_2, 2);
-            joystick1.SetJoystickButton(Controller1VJoy_Send_3, 3);
-            joystick1.SetJoystickButton(Controller1VJoy_Send_4, 4);
-            joystick1.SetJoystickButton(Controller1VJoy_Send_5, 5);
-            joystick1.SetJoystickButton(Controller1VJoy_Send_6, 6);
-            joystick1.SetJoystickButton(Controller1VJoy_Send_7, 7);
-            joystick1.SetJoystickButton(Controller1VJoy_Send_8, 8);
-            joystick1.SetJoystickAxis((int)Controller1VJoy_Send_X, Axis.HID_USAGE_X);
-            joystick1.SetJoystickAxis((int)Controller1VJoy_Send_Y, Axis.HID_USAGE_Y);
-            joystick1.SetJoystickAxis((int)Controller1VJoy_Send_Z, Axis.HID_USAGE_Z);
-            joystick1.SetJoystickAxis((int)Controller1VJoy_Send_WHL, Axis.HID_USAGE_WHL);
-            joystick1.SetJoystickAxis((int)Controller1VJoy_Send_SL0, Axis.HID_USAGE_SL0);
-            joystick1.SetJoystickAxis((int)Controller1VJoy_Send_SL1, Axis.HID_USAGE_SL1);
-            joystick1.SetJoystickAxis((int)Controller1VJoy_Send_RX, Axis.HID_USAGE_RX);
-            joystick1.SetJoystickAxis((int)Controller1VJoy_Send_RY, Axis.HID_USAGE_RY);
-            joystick1.SetJoystickAxis((int)Controller1VJoy_Send_RZ, Axis.HID_USAGE_RZ);
-            joystick1.SetJoystickAxis((int)Controller1VJoy_Send_POV, Axis.HID_USAGE_POV);
-            joystick1.SetJoystickHat((int)Controller1VJoy_Send_Hat, Hats.Hat);
-            joystick1.SetJoystickHat((int)Controller1VJoy_Send_HatExt1, Hats.HatExt1);
-            joystick1.SetJoystickHat((int)Controller1VJoy_Send_HatExt2, Hats.HatExt2);
-            joystick1.SetJoystickHat((int)Controller1VJoy_Send_HatExt3, Hats.HatExt3);
-            joystick1.Update();
-        }
-        public void SetController2(bool Controller2VJoy_Send_1, bool Controller2VJoy_Send_2, bool Controller2VJoy_Send_3, bool Controller2VJoy_Send_4, bool Controller2VJoy_Send_5, bool Controller2VJoy_Send_6, bool Controller2VJoy_Send_7, bool Controller2VJoy_Send_8, double Controller2VJoy_Send_X, double Controller2VJoy_Send_Y, double Controller2VJoy_Send_Z, double Controller2VJoy_Send_WHL, double Controller2VJoy_Send_SL0, double Controller2VJoy_Send_SL1, double Controller2VJoy_Send_RX, double Controller2VJoy_Send_RY, double Controller2VJoy_Send_RZ, double Controller2VJoy_Send_POV, double Controller2VJoy_Send_Hat, double Controller2VJoy_Send_HatExt1, double Controller2VJoy_Send_HatExt2, double Controller2VJoy_Send_HatExt3)
-        {
-            joystick2.SetJoystickButton(Controller2VJoy_Send_1, 1);
-            joystick2.SetJoystickButton(Controller2VJoy_Send_2, 2);
-            joystick2.SetJoystickButton(Controller2VJoy_Send_3, 3);
-            joystick2.SetJoystickButton(Controller2VJoy_Send_4, 4);
-            joystick2.SetJoystickButton(Controller2VJoy_Send_5, 5);
-            joystick2.SetJoystickButton(Controller2VJoy_Send_6, 6);
-            joystick2.SetJoystickButton(Controller2VJoy_Send_7, 7);
-            joystick2.SetJoystickButton(Controller2VJoy_Send_8, 8);
-            joystick2.SetJoystickAxis((int)Controller2VJoy_Send_X, Axis.HID_USAGE_X);
-            joystick2.SetJoystickAxis((int)Controller2VJoy_Send_Y, Axis.HID_USAGE_Y);
-            joystick2.SetJoystickAxis((int)Controller2VJoy_Send_Z, Axis.HID_USAGE_Z);
-            joystick2.SetJoystickAxis((int)Controller2VJoy_Send_WHL, Axis.HID_USAGE_WHL);
-            joystick2.SetJoystickAxis((int)Controller2VJoy_Send_SL0, Axis.HID_USAGE_SL0);
-            joystick2.SetJoystickAxis((int)Controller2VJoy_Send_SL1, Axis.HID_USAGE_SL1);
-            joystick2.SetJoystickAxis((int)Controller2VJoy_Send_RX, Axis.HID_USAGE_RX);
-            joystick2.SetJoystickAxis((int)Controller2VJoy_Send_RY, Axis.HID_USAGE_RY);
-            joystick2.SetJoystickAxis((int)Controller2VJoy_Send_RZ, Axis.HID_USAGE_RZ);
-            joystick2.SetJoystickAxis((int)Controller2VJoy_Send_POV, Axis.HID_USAGE_POV);
-            joystick2.SetJoystickHat((int)Controller2VJoy_Send_Hat, Hats.Hat);
-            joystick2.SetJoystickHat((int)Controller2VJoy_Send_HatExt1, Hats.HatExt1);
-            joystick2.SetJoystickHat((int)Controller2VJoy_Send_HatExt2, Hats.HatExt2);
-            joystick2.SetJoystickHat((int)Controller2VJoy_Send_HatExt3, Hats.HatExt3);
-            joystick2.Update();
+            joystick.SetJoystickButton(ControllerVJoy_Send_1, 1);
+            joystick.SetJoystickButton(ControllerVJoy_Send_2, 2);
+            joystick.SetJoystickButton(ControllerVJoy_Send_3, 3);
+            joystick.SetJoystickButton(ControllerVJoy_Send_4, 4);
+            joystick.SetJoystickButton(ControllerVJoy_Send_5, 5);
+            joystick.SetJoystickButton(ControllerVJoy_Send_6, 6);
+            joystick.SetJoystickButton(ControllerVJoy_Send_7, 7);
+            joystick.SetJoystickButton(ControllerVJoy_Send_8, 8);
+            joystick.SetJoystickAxis((int)ControllerVJoy_Send_X, Axis.HID_USAGE_X);
+            joystick.SetJoystickAxis((int)ControllerVJoy_Send_Y, Axis.HID_USAGE_Y);
+            joystick.SetJoystickAxis((int)ControllerVJoy_Send_Z, Axis.HID_USAGE_Z);
+            joystick.SetJoystickAxis((int)ControllerVJoy_Send_WHL, Axis.HID_USAGE_WHL);
+            joystick.SetJoystickAxis((int)ControllerVJoy_Send_SL0, Axis.HID_USAGE_SL0);
+            joystick.SetJoystickAxis((int)ControllerVJoy_Send_SL1, Axis.HID_USAGE_SL1);
+            joystick.SetJoystickAxis((int)ControllerVJoy_Send_RX, Axis.HID_USAGE_RX);
+            joystick.SetJoystickAxis((int)ControllerVJoy_Send_RY, Axis.HID_USAGE_RY);
+            joystick.SetJoystickAxis((int)ControllerVJoy_Send_RZ, Axis.HID_USAGE_RZ);
+            joystick.SetJoystickAxis((int)ControllerVJoy_Send_POV, Axis.HID_USAGE_POV);
+            joystick.SetJoystickHat((int)ControllerVJoy_Send_Hat, Hats.Hat);
+            joystick.SetJoystickHat((int)ControllerVJoy_Send_HatExt1, Hats.HatExt1);
+            joystick.SetJoystickHat((int)ControllerVJoy_Send_HatExt2, Hats.HatExt2);
+            joystick.SetJoystickHat((int)ControllerVJoy_Send_HatExt3, Hats.HatExt3);
+            joystick.Update();
         }
     }
 }

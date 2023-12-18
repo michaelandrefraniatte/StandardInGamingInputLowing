@@ -20,6 +20,7 @@ namespace MouseInputsAPI
         private static uint CurrentResolution = 0;
         private static bool running, formvisible;
         static DirectInput directInput = new DirectInput();
+        private int number;
         public Form1 form1 = new Form1();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
@@ -68,32 +69,21 @@ namespace MouseInputsAPI
                     break;
                 MouseInputProcess();
                 System.Threading.Thread.Sleep(1);
-                if (Mouse1AxisZ != 0)
+                if (MouseAxisZ != 0)
                     Task.Run(() => InitMouse());
                 if (formvisible)
                 {
-                    string str = "Mouse1AxisX : " + Mouse1AxisX + Environment.NewLine;
-                    str += "Mouse1AxisY : " + Mouse1AxisY + Environment.NewLine;
-                    str += "Mouse1AxisZ : " + Mouse1AxisZ + Environment.NewLine;
-                    str += "Mouse1Buttons0 : " + Mouse1Buttons0 + Environment.NewLine;
-                    str += "Mouse1Buttons1 : " + Mouse1Buttons1 + Environment.NewLine;
-                    str += "Mouse1Buttons2 : " + Mouse1Buttons2 + Environment.NewLine;
-                    str += "Mouse1Buttons3 : " + Mouse1Buttons3 + Environment.NewLine;
-                    str += "Mouse1Buttons4 : " + Mouse1Buttons4 + Environment.NewLine;
-                    str += "Mouse1Buttons5 : " + Mouse1Buttons5 + Environment.NewLine;
-                    str += "Mouse1Buttons6 : " + Mouse1Buttons6 + Environment.NewLine;
-                    str += "Mouse1Buttons7 : " + Mouse1Buttons7 + Environment.NewLine;
-                    str += "Mouse2AxisX : " + Mouse2AxisX + Environment.NewLine;
-                    str += "Mouse2AxisY : " + Mouse2AxisY + Environment.NewLine;
-                    str += "Mouse2AxisZ : " + Mouse2AxisZ + Environment.NewLine;
-                    str += "Mouse2Buttons0 : " + Mouse2Buttons0 + Environment.NewLine;
-                    str += "Mouse2Buttons1 : " + Mouse2Buttons1 + Environment.NewLine;
-                    str += "Mouse2Buttons2 : " + Mouse2Buttons2 + Environment.NewLine;
-                    str += "Mouse2Buttons3 : " + Mouse2Buttons3 + Environment.NewLine;
-                    str += "Mouse2Buttons4 : " + Mouse2Buttons4 + Environment.NewLine;
-                    str += "Mouse2Buttons5 : " + Mouse2Buttons5 + Environment.NewLine;
-                    str += "Mouse2Buttons6 : " + Mouse2Buttons6 + Environment.NewLine;
-                    str += "Mouse2Buttons7 : " + Mouse2Buttons7 + Environment.NewLine;
+                    string str = "MouseAxisX : " + MouseAxisX + Environment.NewLine;
+                    str += "MouseAxisY : " + MouseAxisY + Environment.NewLine;
+                    str += "MouseAxisZ : " + MouseAxisZ + Environment.NewLine;
+                    str += "MouseButtons0 : " + MouseButtons0 + Environment.NewLine;
+                    str += "MouseButtons1 : " + MouseButtons1 + Environment.NewLine;
+                    str += "MouseButtons2 : " + MouseButtons2 + Environment.NewLine;
+                    str += "MouseButtons3 : " + MouseButtons3 + Environment.NewLine;
+                    str += "MouseButtons4 : " + MouseButtons4 + Environment.NewLine;
+                    str += "MouseButtons5 : " + MouseButtons5 + Environment.NewLine;
+                    str += "MouseButtons6 : " + MouseButtons6 + Environment.NewLine;
+                    str += "MouseButtons7 : " + MouseButtons7 + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }
@@ -106,37 +96,27 @@ namespace MouseInputsAPI
         public void InitMouse()
         {
             System.Threading.Thread.Sleep(100);
-            Mouse1AxisZ = 0;
+            MouseAxisZ = 0;
         }
         private static Mouse[] mouse = new Mouse[] { null };
         private static Guid[] mouseGuid = new Guid[] { Guid.Empty };
         private static int mnum = 0;
-        public bool Mouse1Buttons0;
-        public bool Mouse1Buttons1;
-        public bool Mouse1Buttons2;
-        public bool Mouse1Buttons3;
-        public bool Mouse1Buttons4;
-        public bool Mouse1Buttons5;
-        public bool Mouse1Buttons6;
-        public bool Mouse1Buttons7;
-        public int Mouse1AxisX;
-        public int Mouse1AxisY;
-        public int Mouse1AxisZ;
-        public static bool Mouse2Buttons0;
-        public static bool Mouse2Buttons1;
-        public static bool Mouse2Buttons2;
-        public static bool Mouse2Buttons3;
-        public static bool Mouse2Buttons4;
-        public static bool Mouse2Buttons5;
-        public static bool Mouse2Buttons6;
-        public static bool Mouse2Buttons7;
-        public static int Mouse2AxisX;
-        public static int Mouse2AxisY;
-        public static int Mouse2AxisZ;
-        public bool ScanMouse()
+        public bool MouseButtons0;
+        public bool MouseButtons1;
+        public bool MouseButtons2;
+        public bool MouseButtons3;
+        public bool MouseButtons4;
+        public bool MouseButtons5;
+        public bool MouseButtons6;
+        public bool MouseButtons7;
+        public int MouseAxisX;
+        public int MouseAxisY;
+        public int MouseAxisZ;
+        public bool Scan(int number = 0)
         {
             try
             {
+                this.number = number;
                 directInput = new DirectInput();
                 mouse = new Mouse[] { null, null };
                 mouseGuid = new Guid[] { Guid.Empty, Guid.Empty };
@@ -167,89 +147,49 @@ namespace MouseInputsAPI
         }
         public void MouseInputProcess()
         {
-            for (int inc = 0; inc < mnum; inc++)
+            int inc = number < 2 ? 0 : 1;
+            mouse[inc].Poll();
+            var datas = mouse[inc].GetBufferedData();
+            foreach (var state in datas)
             {
-                mouse[inc].Poll();
-                var datas = mouse[inc].GetBufferedData();
-                foreach (var state in datas)
-                {
-                    if (inc == 0 & state.Offset == MouseOffset.X)
-                        Mouse1AxisX = state.Value;
-                    if (inc == 0 & state.Offset == MouseOffset.Y)
-                        Mouse1AxisY = state.Value;
-                    if (inc == 0 & state.Offset == MouseOffset.Z)
-                        Mouse1AxisZ = state.Value;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons0 & state.Value == 128)
-                        Mouse1Buttons0 = true;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons0 & state.Value == 0)
-                        Mouse1Buttons0 = false;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons1 & state.Value == 128)
-                        Mouse1Buttons1 = true;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons1 & state.Value == 0)
-                        Mouse1Buttons1 = false;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons2 & state.Value == 128)
-                        Mouse1Buttons2 = true;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons2 & state.Value == 0)
-                        Mouse1Buttons2 = false;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons3 & state.Value == 128)
-                        Mouse1Buttons3 = true;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons3 & state.Value == 0)
-                        Mouse1Buttons3 = false;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons4 & state.Value == 128)
-                        Mouse1Buttons4 = true;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons4 & state.Value == 0)
-                        Mouse1Buttons4 = false;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons5 & state.Value == 128)
-                        Mouse1Buttons5 = true;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons5 & state.Value == 0)
-                        Mouse1Buttons5 = false;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons6 & state.Value == 128)
-                        Mouse1Buttons6 = true;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons6 & state.Value == 0)
-                        Mouse1Buttons6 = false;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons7 & state.Value == 128)
-                        Mouse1Buttons7 = true;
-                    if (inc == 0 & state.Offset == MouseOffset.Buttons7 & state.Value == 0)
-                        Mouse1Buttons7 = false;
-                    if (inc == 1 & state.Offset == MouseOffset.X)
-                        Mouse2AxisX = state.Value;
-                    if (inc == 1 & state.Offset == MouseOffset.Y)
-                        Mouse2AxisY = state.Value;
-                    if (inc == 1 & state.Offset == MouseOffset.Z)
-                        Mouse2AxisZ = state.Value;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons0 & state.Value == 128)
-                        Mouse2Buttons0 = true;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons0 & state.Value == 0)
-                        Mouse2Buttons0 = false;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons1 & state.Value == 128)
-                        Mouse2Buttons1 = true;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons1 & state.Value == 0)
-                        Mouse2Buttons1 = false;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons2 & state.Value == 128)
-                        Mouse2Buttons2 = true;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons2 & state.Value == 0)
-                        Mouse2Buttons2 = false;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons3 & state.Value == 128)
-                        Mouse2Buttons3 = true;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons3 & state.Value == 0)
-                        Mouse2Buttons3 = false;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons4 & state.Value == 128)
-                        Mouse2Buttons4 = true;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons4 & state.Value == 0)
-                        Mouse2Buttons4 = false;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons5 & state.Value == 128)
-                        Mouse2Buttons5 = true;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons5 & state.Value == 0)
-                        Mouse2Buttons5 = false;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons6 & state.Value == 128)
-                        Mouse2Buttons6 = true;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons6 & state.Value == 0)
-                        Mouse2Buttons6 = false;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons7 & state.Value == 128)
-                        Mouse2Buttons7 = true;
-                    if (inc == 1 & state.Offset == MouseOffset.Buttons7 & state.Value == 0)
-                        Mouse2Buttons7 = false;
-                }
+                if (state.Offset == MouseOffset.X)
+                    MouseAxisX = state.Value;
+                if (state.Offset == MouseOffset.Y)
+                    MouseAxisY = state.Value;
+                if (state.Offset == MouseOffset.Z)
+                    MouseAxisZ = state.Value;
+                if (state.Offset == MouseOffset.Buttons0 & state.Value == 128)
+                    MouseButtons0 = true;
+                if (state.Offset == MouseOffset.Buttons0 & state.Value == 0)
+                    MouseButtons0 = false;
+                if (state.Offset == MouseOffset.Buttons1 & state.Value == 128)
+                    MouseButtons1 = true;
+                if (state.Offset == MouseOffset.Buttons1 & state.Value == 0)
+                    MouseButtons1 = false;
+                if (state.Offset == MouseOffset.Buttons2 & state.Value == 128)
+                    MouseButtons2 = true;
+                if (state.Offset == MouseOffset.Buttons2 & state.Value == 0)
+                    MouseButtons2 = false;
+                if (state.Offset == MouseOffset.Buttons3 & state.Value == 128)
+                    MouseButtons3 = true;
+                if (state.Offset == MouseOffset.Buttons3 & state.Value == 0)
+                    MouseButtons3 = false;
+                if (state.Offset == MouseOffset.Buttons4 & state.Value == 128)
+                    MouseButtons4 = true;
+                if (state.Offset == MouseOffset.Buttons4 & state.Value == 0)
+                    MouseButtons4 = false;
+                if (state.Offset == MouseOffset.Buttons5 & state.Value == 128)
+                    MouseButtons5 = true;
+                if (state.Offset == MouseOffset.Buttons5 & state.Value == 0)
+                    MouseButtons5 = false;
+                if (state.Offset == MouseOffset.Buttons6 & state.Value == 128)
+                    MouseButtons6 = true;
+                if (state.Offset == MouseOffset.Buttons6 & state.Value == 0)
+                    MouseButtons6 = false;
+                if (state.Offset == MouseOffset.Buttons7 & state.Value == 128)
+                    MouseButtons7 = true;
+                if (state.Offset == MouseOffset.Buttons7 & state.Value == 0)
+                    MouseButtons7 = false;
             }
         }
     }

@@ -58,6 +58,7 @@ namespace WiiMoteAPI
         public bool WiimoteIR0foundcam, WiimoteIR1foundcam, WiimoteIRswitch, WiimoteIR1found, WiimoteIR0found, WiimoteButtonStateA, WiimoteButtonStateB, WiimoteButtonStateMinus, WiimoteButtonStateHome, WiimoteButtonStatePlus, WiimoteButtonStateOne, WiimoteButtonStateTwo, WiimoteButtonStateUp, WiimoteButtonStateDown, WiimoteButtonStateLeft, WiimoteButtonStateRight, WiimoteNunchuckStateC, WiimoteNunchuckStateZ;
         public double WiimoteIR0notfound, stickviewxinit, stickviewyinit, WiimoteNunchuckStateRawValuesX, WiimoteNunchuckStateRawValuesY, WiimoteNunchuckStateRawValuesZ, WiimoteNunchuckStateRawJoystickX, WiimoteNunchuckStateRawJoystickY, centery;
         private bool ISWIIMOTE1, ISWIIMOTE2;
+        private int number;
         public Form1 form1 = new Form1();
         public WiiMote()
         {
@@ -359,13 +360,19 @@ namespace WiiMoteAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool ScanWiimote(int irmode, double centery)
+        public bool Scan(int irmode, double centery, int number = 0)
         {
             this.irmode = irmode;
             this.centery = centery;
-            do
-                Thread.Sleep(1);
-            while (!wiimotesconnect());
+            this.number = number;
+            if (number == 0)
+                do
+                    Thread.Sleep(1);
+                while (!wiimoteconnect());
+            else if (number == 1)
+                do
+                    Thread.Sleep(1);
+                while (!wiimotesconnect());
             ISWIIMOTE1 = false;
             ISWIIMOTE2 = false;
             int index = 0;
@@ -387,18 +394,26 @@ namespace WiiMoteAPI
                         if (ISWIIMOTE1)
                         {
                             path = diDetail.DevicePath;
-                            WiimoteFound(path);
-                            WiimoteFound(path);
-                            WiimoteFound(path);
+                            if (number == 2)
+                            {
+                                WiimoteFound(path);
+                                WiimoteFound(path);
+                                WiimoteFound(path);
+                            }
                             ISWIIMOTE2 = true;
                         }
                         if (!ISWIIMOTE1)
                         {
                             path = diDetail.DevicePath;
-                            WiimoteFound(path);
-                            WiimoteFound(path);
-                            WiimoteFound(path);
+                            if (number == 0 | number == 1)
+                            {
+                                WiimoteFound(path);
+                                WiimoteFound(path);
+                                WiimoteFound(path);
+                            }
                             ISWIIMOTE1 = true;
+                            if (number == 0)
+                                return true;
                         }
                         if (ISWIIMOTE1 & ISWIIMOTE2)
                             return true;

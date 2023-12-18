@@ -336,7 +336,7 @@ namespace JoyconChargingGripsAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool ScanGrip(int number)
+        public bool Scan(int number = 0)
         {
             this.number = number;
             ISLEFT = false;
@@ -380,13 +380,13 @@ namespace JoyconChargingGripsAPI
                         {
                             if (ISLEFT)
                             {
-                                if (number == 1)
+                                if (number == 0 | number == 1)
                                     AttachGripRightController(diDetail.DevicePath);
                                 ISRIGHT = true;
                             }
                             if (!ISLEFT)
                             {
-                                if (number == 1)
+                                if (number == 0 | number == 1)
                                     AttachGripLeftController(diDetail.DevicePath);
                                 ISLEFT = true;
                             }
@@ -395,6 +395,8 @@ namespace JoyconChargingGripsAPI
                                 ISLEFT = false;
                                 ISRIGHT = false;
                                 ISJOYCONCHARGINGGRIP1 = true;
+                                if (number == 0)
+                                    return true;
                             }
                         }
                         if (ISJOYCONCHARGINGGRIP1 & ISJOYCONCHARGINGGRIP2)

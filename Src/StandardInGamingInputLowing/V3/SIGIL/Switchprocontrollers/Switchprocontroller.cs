@@ -250,7 +250,7 @@ namespace SwitchProControllersAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool ScanPro(int number)
+        public bool Scan(int number = 0)
         {
             this.number = number;
             ISSWITCHPROCONTROLLER1 = false;
@@ -279,9 +279,11 @@ namespace SwitchProControllersAPI
                         }
                         if (!ISSWITCHPROCONTROLLER1)
                         {
-                            if (number == 1)
+                            if (number == 0 | number == 1)
                                 AttachProController(diDetail.DevicePath);
                             ISSWITCHPROCONTROLLER1 = true;
+                            if (number == 0)
+                                return true;
                         }
                         if (ISSWITCHPROCONTROLLER1 & ISSWITCHPROCONTROLLER2)
                             return true;
