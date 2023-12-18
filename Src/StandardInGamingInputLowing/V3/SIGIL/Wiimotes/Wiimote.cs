@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Wiimotes;
 
-namespace WiiMoteAPI
+namespace WiiMotesAPI
 {
     public class WiiMote
     {

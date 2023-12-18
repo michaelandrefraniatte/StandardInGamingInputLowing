@@ -192,6 +192,8 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"\bcontrollers\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bXBoxController\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bXBC\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bXBC1\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bXBC2\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bXInputsAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bXInput\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bxi\b"));
@@ -228,7 +230,6 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"\bInput\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bsi\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bLoad\b"));
-                range.SetStyle(StyleLibrary, new Regex(@"\bWiiMoteAPI\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bWiiMotesAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bWiiMote\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bwm\b"));
@@ -1578,6 +1579,8 @@ namespace SIGIL
                 "controllers",
                 "XBoxController",
                 "XBC",
+                "XBC1",
+                "XBC2",
                 "XInputsAPI",
                 "XInput",
                 "xi",
@@ -1614,7 +1617,6 @@ namespace SIGIL
                 "Input",
                 "si",
                 "Load",
-                "WiiMoteAPI",
                 "WiiMotesAPI",
                 "WiiMote",
                 "wm",
