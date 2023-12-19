@@ -113,6 +113,8 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"\bList\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bScan\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bCurrentResolution\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bDesiredResolution\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bSetResolution\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\brunning\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\birmode\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bnumber\b"));
@@ -1500,6 +1502,8 @@ namespace SIGIL
                 "List",
                 "Scan",
                 "CurrentResolution",
+                "DesiredResolution",
+                "SetResolution",
                 "running",
                 "irmode",
                 "number",

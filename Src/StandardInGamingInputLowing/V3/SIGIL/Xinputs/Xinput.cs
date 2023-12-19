@@ -82,26 +82,26 @@ namespace XInputsAPI
         private static Controller[] controller = new Controller[] { null };
         private static SharpDX.XInput.State xistate;
         private static int xinum = 0;
-        public static bool ControllerButtonAPressed;
-        public static bool ControllerButtonBPressed;
-        public static bool ControllerButtonXPressed;
-        public static bool ControllerButtonYPressed;
-        public static bool ControllerButtonStartPressed;
-        public static bool ControllerButtonBackPressed;
-        public static bool ControllerButtonDownPressed;
-        public static bool ControllerButtonUpPressed;
-        public static bool ControllerButtonLeftPressed;
-        public static bool ControllerButtonRightPressed;
-        public static bool ControllerButtonShoulderLeftPressed;
-        public static bool ControllerButtonShoulderRightPressed;
-        public static bool ControllerThumbpadLeftPressed;
-        public static bool ControllerThumbpadRightPressed;
-        public static double ControllerTriggerLeftPosition;
-        public static double ControllerTriggerRightPosition;
-        public static double ControllerThumbLeftX;
-        public static double ControllerThumbLeftY;
-        public static double ControllerThumbRightX;
-        public static double ControllerThumbRightY;
+        public bool ControllerButtonAPressed;
+        public bool ControllerButtonBPressed;
+        public bool ControllerButtonXPressed;
+        public bool ControllerButtonYPressed;
+        public bool ControllerButtonStartPressed;
+        public bool ControllerButtonBackPressed;
+        public bool ControllerButtonDownPressed;
+        public bool ControllerButtonUpPressed;
+        public bool ControllerButtonLeftPressed;
+        public bool ControllerButtonRightPressed;
+        public bool ControllerButtonShoulderLeftPressed;
+        public bool ControllerButtonShoulderRightPressed;
+        public bool ControllerThumbpadLeftPressed;
+        public bool ControllerThumbpadRightPressed;
+        public double ControllerTriggerLeftPosition;
+        public double ControllerTriggerRightPosition;
+        public double ControllerThumbLeftX;
+        public double ControllerThumbLeftY;
+        public double ControllerThumbRightX;
+        public double ControllerThumbRightY;
         public bool Scan(int number = 0)
         {
             try

@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
-using controller;
+using controllers;
 using System.Diagnostics;
 using Valuechanges;
-using XInputAPI;
+using XInputsAPI;
 namespace StringToCode
 {
     public class FooClass 
@@ -52,7 +52,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            xi.ScanXInput();
+            xi.Scan();
             xi.BeginPolling();
             XBC.Connect();
             Task.Run(() => task());
@@ -63,32 +63,32 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                mousex = xi.Controller1ThumbRightX;
-                mousey = xi.Controller1ThumbRightY;
-                statex = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
-                statey = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
-                controller1_send_rightstickx = statex;
-                controller1_send_rightsticky = statey;
-                mousex = xi.Controller1ThumbLeftX;
-                mousey = xi.Controller1ThumbLeftY;
-                controller1_send_leftstickx = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
-                controller1_send_leftsticky = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
-                controller1_send_up = xi.Controller1ButtonUpPressed;
-                controller1_send_left = xi.Controller1ButtonLeftPressed;
-                controller1_send_down = xi.Controller1ButtonDownPressed;
-                controller1_send_right = xi.Controller1ButtonRightPressed;
-                controller1_send_back = xi.Controller1ButtonBackPressed;
-                controller1_send_start = xi.Controller1ButtonStartPressed;
-                controller1_send_leftstick = xi.Controller1ThumbpadLeftPressed;
-                controller1_send_leftbumper = xi.Controller1ButtonShoulderLeftPressed;
-                controller1_send_rightbumper = xi.Controller1ButtonShoulderRightPressed;
-                controller1_send_A = xi.Controller1ButtonAPressed;
-                controller1_send_B = xi.Controller1ButtonBPressed;
-                controller1_send_X = xi.Controller1ButtonXPressed;
-                controller1_send_Y = xi.Controller1ButtonYPressed;
-                controller1_send_rightstick = xi.Controller1ThumbpadRightPressed;
-                controller1_send_lefttriggerposition = xi.Controller1TriggerLeftPosition;
-                controller1_send_righttriggerposition = xi.Controller1TriggerRightPosition;
+                mousex                                = xi.ControllerThumbRightX;
+                mousey                                = xi.ControllerThumbRightY;
+                statex                                = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
+                statey                                = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
+                controller1_send_rightstickx          = statex;
+                controller1_send_rightsticky          = statey;
+                mousex                                = xi.ControllerThumbLeftX;
+                mousey                                = xi.ControllerThumbLeftY;
+                controller1_send_leftstickx           = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
+                controller1_send_leftsticky           = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
+                controller1_send_up                   = xi.ControllerButtonUpPressed;
+                controller1_send_left                 = xi.ControllerButtonLeftPressed;
+                controller1_send_down                 = xi.ControllerButtonDownPressed;
+                controller1_send_right                = xi.ControllerButtonRightPressed;
+                controller1_send_back                 = xi.ControllerButtonBackPressed;
+                controller1_send_start                = xi.ControllerButtonStartPressed;
+                controller1_send_leftstick            = xi.ControllerThumbpadLeftPressed;
+                controller1_send_leftbumper           = xi.ControllerButtonShoulderLeftPressed;
+                controller1_send_rightbumper          = xi.ControllerButtonShoulderRightPressed;
+                controller1_send_A                    = xi.ControllerButtonAPressed;
+                controller1_send_B                    = xi.ControllerButtonBPressed;
+                controller1_send_X                    = xi.ControllerButtonXPressed;
+                controller1_send_Y                    = xi.ControllerButtonYPressed;
+                controller1_send_rightstick           = xi.ControllerThumbpadRightPressed;
+                controller1_send_lefttriggerposition  = xi.ControllerTriggerLeftPosition;
+                controller1_send_righttriggerposition = xi.ControllerTriggerRightPosition;
                 XBC.SetController(controller1_send_back, controller1_send_start, controller1_send_A, controller1_send_B, controller1_send_X, controller1_send_Y, controller1_send_up, controller1_send_left, controller1_send_down, controller1_send_right, controller1_send_leftstick, controller1_send_rightstick, controller1_send_leftbumper, controller1_send_rightbumper, controller1_send_leftstickx, controller1_send_leftsticky, controller1_send_rightstickx, controller1_send_rightsticky, controller1_send_lefttriggerposition, controller1_send_righttriggerposition, controller1_send_xbox);
                 /*xi.ViewData();*/
                 Thread.Sleep(sleeptime);
