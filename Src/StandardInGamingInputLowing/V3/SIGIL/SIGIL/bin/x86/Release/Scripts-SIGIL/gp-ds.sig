@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
-using controller;
+using controllers;
 using System.Diagnostics;
 using Valuechanges;
-using DualSenseAPI;
+using DualSensesAPI;
 namespace StringToCode
 {
     public class FooClass 
@@ -53,7 +53,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            ds.ScanDualsense(vendor_ds_id, product_ds_id, product_ds_label);
+            ds.Scan(vendor_ds_id, product_ds_id, product_ds_label);
             Thread.Sleep(2000);
             ds.BeginPolling();
             XBC.Connect();
@@ -66,7 +66,7 @@ namespace StringToCode
                 if (!running)
                     break;
                 if (ds.PS5ControllerButtonMenuPressed)
-                    ds.InitDualSenseAccel();
+                    ds.Init();
                 statex = ds.PS5ControllerGyroX * 15f;
                 statey = ds.PS5ControllerGyroY * 15f;
                 if (statex > 0f)

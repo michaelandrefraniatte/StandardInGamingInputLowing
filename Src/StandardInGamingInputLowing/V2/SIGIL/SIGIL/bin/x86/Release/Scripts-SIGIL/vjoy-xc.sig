@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
-using controllersvjoy;
+using controllervjoy;
 using System.Diagnostics;
 using Valuechanges;
-using XInputsAPI;
+using XInputAPI;
 namespace StringToCode
 {
     public class FooClass 
@@ -52,7 +52,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            xi.Scan();
+            xi.ScanXInput();
             xi.BeginPolling();
             VJoy.Connect();
             Task.Run(() => task());
@@ -63,34 +63,34 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                mousex                  = xi.ControllerThumbRightX;
-                mousey                  = xi.ControllerThumbRightY;
-                statex                  = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
-                statey                  = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
-                Controller1VJoy_Send_X  = statex;
-                Controller1VJoy_Send_Y  = statey;
-                mousex                  = xi.ControllerThumbLeftX;
-                mousey                  = xi.ControllerThumbLeftY;
-                Controller1VJoy_Send_RX = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
-                Controller1VJoy_Send_RY = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
-                Controller1VJoy_Send_1  = xi.ControllerButtonUpPressed;
-                Controller1VJoy_Send_2  = xi.ControllerButtonLeftPressed;
-                Controller1VJoy_Send_3  = xi.ControllerButtonDownPressed;
-                Controller1VJoy_Send_4  = xi.ControllerButtonRightPressed;
-                Controller1VJoy_Send_5  = xi.ControllerThumbpadLeftPressed;
-                Controller1VJoy_Send_6  = xi.ControllerButtonShoulderLeftPressed;
-                Controller1VJoy_Send_7  = xi.ControllerButtonShoulderRightPressed;
-                Controller1VJoy_Send_8  = xi.ControllerButtonAPressed;
-                if (xi.ControllerButtonBPressed)
+                mousex                   = xi.Controller1ThumbRightX;
+                mousey                   = xi.Controller1ThumbRightY;
+                statex                   = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
+                statey                   = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
+                Controller1VJoy_Send_X   = statex;
+                Controller1VJoy_Send_Y   = statey;
+                mousex                   = xi.Controller1ThumbLeftX;
+                mousey                   = xi.Controller1ThumbLeftY;
+                Controller1VJoy_Send_RX  = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
+                Controller1VJoy_Send_RY  = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
+                Controller1VJoy_Send_1   = xi.Controller1ButtonUpPressed;
+                Controller1VJoy_Send_2   = xi.Controller1ButtonLeftPressed;
+                Controller1VJoy_Send_3   = xi.Controller1ButtonDownPressed;
+                Controller1VJoy_Send_4   = xi.Controller1ButtonRightPressed;
+                Controller1VJoy_Send_5   = xi.Controller1ThumbpadLeftPressed;
+                Controller1VJoy_Send_6   = xi.Controller1ButtonShoulderLeftPressed;
+                Controller1VJoy_Send_7   = xi.Controller1ButtonShoulderRightPressed;
+                Controller1VJoy_Send_8   = xi.Controller1ButtonAPressed;
+                if (xi.Controller1ButtonBPressed)
                     Controller1VJoy_Send_POV = 0;
-                if (xi.ControllerButtonXPressed)
+                if (xi.Controller1ButtonXPressed)
                     Controller1VJoy_Send_POV = 9000;
-                if (xi.ControllerButtonYPressed)
+                if (xi.Controller1ButtonYPressed)
                     Controller1VJoy_Send_POV = 18000;
-                if (xi.ControllerThumbpadRightPressed)
+                if (xi.Controller1ThumbpadRightPressed)
                     Controller1VJoy_Send_POV = 27000;
-                Controller1VJoy_Send_Z   = xi.ControllerTriggerLeftPosition;
-                Controller1VJoy_Send_WHL = xi.ControllerTriggerRightPosition;
+                Controller1VJoy_Send_Z   = xi.Controller1TriggerLeftPosition;
+                Controller1VJoy_Send_WHL = xi.Controller1TriggerRightPosition;
                 VJoy.SetController(Controller1VJoy_Send_1, Controller1VJoy_Send_2, Controller1VJoy_Send_3, Controller1VJoy_Send_4, Controller1VJoy_Send_5, Controller1VJoy_Send_6, Controller1VJoy_Send_7, Controller1VJoy_Send_8, Controller1VJoy_Send_X, Controller1VJoy_Send_Y, Controller1VJoy_Send_Z, Controller1VJoy_Send_WHL, Controller1VJoy_Send_SL0, Controller1VJoy_Send_SL1, Controller1VJoy_Send_RX, Controller1VJoy_Send_RY, Controller1VJoy_Send_RZ, Controller1VJoy_Send_POV, Controller1VJoy_Send_Hat, Controller1VJoy_Send_HatExt1, Controller1VJoy_Send_HatExt2, Controller1VJoy_Send_HatExt3);
                 /*xi.ViewData();*/
                 Thread.Sleep(sleeptime);

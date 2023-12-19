@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
-using controllers;
+using controller;
 using System.Diagnostics;
 using Valuechanges;
-using DualShocks4API;
+using DualShock4API;
 namespace StringToCode
 {
     public class FooClass 
@@ -53,7 +53,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            ds4.Scan(vendor_ds4_id, product_ds4_id, product_ds4_label);
+            ds4.ScanDualshock4(vendor_ds4_id, product_ds4_id, product_ds4_label);
             Thread.Sleep(2000);
             ds4.BeginPolling();
             XBC.Connect();
@@ -66,7 +66,7 @@ namespace StringToCode
                 if (!running)
                     break;
                 if (ds4.PS4ControllerButtonMenuPressed)
-                    ds4.Init();
+                    ds4.InitDualShock4Accel();
                 statex = ds4.PS4ControllerGyroX * 15f;
                 statey = ds4.PS4ControllerGyroY * 15f;
                 if (statex > 0f)

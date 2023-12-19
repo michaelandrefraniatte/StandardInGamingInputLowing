@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
-using controllers;
+using controller;
 using System.Diagnostics;
-using MouseInputsAPI;
-using KeyboardInputsAPI;
+using KeyboardMouseInputAPI;
 namespace StringToCode
 {
     public class FooClass 
@@ -30,8 +29,7 @@ namespace StringToCode
         private static bool[] getstate = new bool[12];
         private static int sleeptime = 1;
         private XBoxController XBC = new XBoxController();
-        private MouseInput mi = new MouseInput();
-        private KeyboardInput ki = new KeyboardInput();
+        private KeyboardMouseInput kmi = new KeyboardMouseInput();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         public static void valchanged(int n, bool val)
@@ -59,8 +57,7 @@ namespace StringToCode
             {
                 running = false;
                 Thread.Sleep(100);
-                mi.Close();
-                ki.Close();
+                kmi.Close();
                 XBC.Disconnect();
             }
             catch { }
@@ -74,10 +71,10 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            mi.Scan();
-            ki.Scan();
-            mi.BeginPolling();
-            ki.BeginPolling();
+            kmi.ScanMouse();
+            kmi.ScanKeyboard();
+            kmi.BeginPollingMouse();
+            kmi.BeginPollingKeyboard();
             XBC.Connect();
             Task.Run(() => task());
         }
@@ -87,7 +84,7 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                valchanged(0, ki.KeyboardKeyAdd);
+                valchanged(0, kmi.Keyboard1KeyAdd);
                 if (wd[0] == 1 & !getstate[0])
                 {
                     getstate[0] = true;
@@ -101,8 +98,8 @@ namespace StringToCode
                 }
                 if (getstate[0])
                 {
-                    statex = -mi.MouseAxisX * 50f;
-                    statey = mi.MouseAxisY * 50f;
+                    statex = -kmi.Mouse1AxisX * 50f;
+                    statey = kmi.Mouse1AxisY * 50f;
                     if (statex >= 1024f)
                         statex = 1024f;
                     if (statex <= -1024f)
@@ -119,36 +116,36 @@ namespace StringToCode
                         mousey = Scale(Math.Pow(statey, 3f) / Math.Pow(1024f, 2f) * viewpower3y + Math.Pow(statey, 2f) / Math.Pow(1024f, 1f) * viewpower2y + Math.Pow(statey, 1f) / Math.Pow(1024f, 0f) * viewpower1y + Math.Pow(statey, 0.5f) * Math.Pow(1024f, 0.5f) * viewpower05y, 0f, 1024f, (dzy / 100f) * 1024f, 1024f);
                     if (statey <= 0f)
                         mousey = Scale(-Math.Pow(-statey, 3f) / Math.Pow(1024f, 2f) * viewpower3y - Math.Pow(-statey, 2f) / Math.Pow(1024f, 1f) * viewpower2y - Math.Pow(-statey, 1f) / Math.Pow(1024f, 0f) * viewpower1y - Math.Pow(-statey, 0.5f) * Math.Pow(1024f, 0.5f) * viewpower05y, -1024f, 0f, -1024f, -(dzy / 100f) * 1024f);
-                    controller1_send_rightstickx          = Math.Abs(-mousex * 32767f / 1024f) <= 32767f ? -mousex * 32767f / 1024f : Math.Sign(-mousex) * 32767f;
-                    controller1_send_rightsticky          = Math.Abs(-mousey * 32767f / 1024f) <= 32767f ? -mousey * 32767f / 1024f : Math.Sign(-mousey) * 32767f;
-                    controller1_send_left                 = ki.KeyboardKeyZ;
-                    controller1_send_right                = ki.KeyboardKeyV;
-                    controller1_send_down                 = ki.KeyboardKeyC;
-                    controller1_send_up                   = ki.KeyboardKeyX;
-                    controller1_send_rightstick           = ki.KeyboardKeyE;
-                    controller1_send_leftstick            = ki.KeyboardKeyLeftShift;
-                    controller1_send_A                    = ki.KeyboardKeySpace;
-                    controller1_send_back                 = ki.KeyboardKeyTab;
-                    controller1_send_start                = ki.KeyboardKeyEscape;
-                    controller1_send_X                    = ki.KeyboardKeyR | mi.MouseButtons2;
-                    controller1_send_rightbumper          = ki.KeyboardKeyG | mi.MouseButtons4;
-                    controller1_send_leftbumper           = ki.KeyboardKeyT | mi.MouseButtons3;
-                    controller1_send_B                    = ki.KeyboardKeyLeftControl | ki.KeyboardKeyQ;
-                    controller1_send_Y                    = mi.MouseAxisZ > 0 | mi.MouseAxisZ < 0;
-                    controller1_send_righttriggerposition = mi.MouseButtons0 ? 255 : 0;
-                    if (ki.KeyboardKeyW)
+                    controller1_send_rightstickx = Math.Abs(-mousex * 32767f / 1024f) <= 32767f ? -mousex * 32767f / 1024f : Math.Sign(-mousex) * 32767f;
+                    controller1_send_rightsticky = Math.Abs(-mousey * 32767f / 1024f) <= 32767f ? -mousey * 32767f / 1024f : Math.Sign(-mousey) * 32767f;
+                    controller1_send_left = kmi.Keyboard1KeyZ;
+                    controller1_send_right = kmi.Keyboard1KeyV;
+                    controller1_send_down = kmi.Keyboard1KeyC;
+                    controller1_send_up = kmi.Keyboard1KeyX;
+                    controller1_send_rightstick = kmi.Keyboard1KeyE;
+                    controller1_send_leftstick = kmi.Keyboard1KeyLeftShift;
+                    controller1_send_A = kmi.Keyboard1KeySpace;
+                    controller1_send_back = kmi.Keyboard1KeyTab;
+                    controller1_send_start = kmi.Keyboard1KeyEscape;
+                    controller1_send_X = kmi.Mouse1Buttons2 | kmi.Keyboard1KeyR;
+                    controller1_send_rightbumper = kmi.Keyboard1KeyG | kmi.Mouse1Buttons4;
+                    controller1_send_leftbumper = kmi.Keyboard1KeyT | kmi.Mouse1Buttons3;
+                    controller1_send_B = kmi.Keyboard1KeyLeftControl | kmi.Keyboard1KeyQ;
+                    controller1_send_Y = kmi.Mouse1AxisZ > 0 | kmi.Mouse1AxisZ < 0;
+                    controller1_send_righttriggerposition = kmi.Mouse1Buttons0 ? 255 : 0;
+                    if (kmi.Keyboard1KeyW)
                         controller1_send_leftsticky = 32767;
-                    if (ki.KeyboardKeyS)
+                    if (kmi.Keyboard1KeyS)
                         controller1_send_leftsticky = -32767;
-                    if ((!ki.KeyboardKeyW & !ki.KeyboardKeyS) | (ki.KeyboardKeyW & ki.KeyboardKeyS))
+                    if ((!kmi.Keyboard1KeyW & !kmi.Keyboard1KeyS) | (kmi.Keyboard1KeyW & kmi.Keyboard1KeyS))
                         controller1_send_leftsticky = 0;
-                    if (ki.KeyboardKeyD)
+                    if (kmi.Keyboard1KeyD)
                         controller1_send_leftstickx = 32767;
-                    if (ki.KeyboardKeyA)
+                    if (kmi.Keyboard1KeyA)
                         controller1_send_leftstickx = -32767;
-                    if ((!ki.KeyboardKeyD & !ki.KeyboardKeyA) | (ki.KeyboardKeyD & ki.KeyboardKeyA))
+                    if ((!kmi.Keyboard1KeyD & !kmi.Keyboard1KeyA) | (kmi.Keyboard1KeyD & kmi.Keyboard1KeyA))
                         controller1_send_leftstickx = 0;
-                    valchanged(1, mi.MouseButtons1);
+                    valchanged(1, kmi.Mouse1Buttons1);
                     if (wd[1] == 1 & !getstate[1])
                     {
                         getstate[1] = true;
@@ -190,8 +187,7 @@ namespace StringToCode
                     controller1_send_righttriggerposition = 0;
                 }
                 XBC.SetController(controller1_send_back, controller1_send_start, controller1_send_A, controller1_send_B, controller1_send_X, controller1_send_Y, controller1_send_up, controller1_send_left, controller1_send_down, controller1_send_right, controller1_send_leftstick, controller1_send_rightstick, controller1_send_leftbumper, controller1_send_rightbumper, controller1_send_leftstickx, controller1_send_leftsticky, controller1_send_rightstickx, controller1_send_rightsticky, controller1_send_lefttriggerposition, controller1_send_righttriggerposition, controller1_send_xbox);
-                /*mi.ViewData();*/
-                /*ki.ViewData();*/
+                /*kmi.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
         }

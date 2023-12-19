@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
-using controller;
+using controllers;
 using System.Diagnostics;
 using Valuechanges;
-using SwitchProControllerAPI;
+using SwitchProControllersAPI;
 namespace StringToCode
 {
     public class FooClass 
@@ -52,10 +52,10 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            spc.ScanPro();
+            spc.Scan();
             spc.BeginPolling();
             Thread.Sleep(1000);
-            spc.InitProController();
+            spc.Init();
             XBC.Connect();
             Task.Run(() => task());
         }
@@ -66,7 +66,7 @@ namespace StringToCode
                 if (!running)
                     break;
                 if (spc.ProControllerButtonPLUS)
-                    spc.InitProControllerAccel();
+                    spc.Init();
                 mousex = spc.ProControllerAccelY * 31.25f;
                 mousey = spc.ProControllerLeftStickY * 32767f;
                 statex = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Diagnostics;
 using Valuechanges;
-using DirectInputAPI;
+using DirectInputsAPI;
 using keyboards;
 using mouses;
 namespace StringToCode
@@ -76,7 +76,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            di.ScanDirectInput();
+            di.Scan();
             di.BeginPolling();
             Task.Run(() => task());
         }
@@ -86,7 +86,7 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                valchanged(0, di.Joystick1Buttons11);
+                valchanged(0, di.JoystickButtons11);
                 if (wd[0] == 1 & !getstate[0])  
                 {
                     KeyboardMouseDriverType = "kmevent";
@@ -139,13 +139,13 @@ namespace StringToCode
                 }
                 if (getstate[0]) 
                 {
-                    if (di.Joystick1Buttons12 | di.Joystick1Buttons15)
+                    if (di.JoystickButtons12 | di.JoystickButtons15)
                     {
                         mousexp = 0f;
                         mouseyp = 0f;
                     }
-                    mousexp += Math.Round((di.Joystick1AxisZ - 65535f / 2f) * width / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
-                    mouseyp += Math.Round((di.Joystick1RotationZ - 65535f / 2f) * height / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
+                    mousexp += Math.Round((di.JoystickAxisZ - 65535f / 2f) * width / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
+                    mouseyp += Math.Round((di.JoystickRotationZ - 65535f / 2f) * height / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
                     if (mousexp >= width / 2f) 
                         mousexp = width / 2f;
                     if (mousexp <= -width / 2f) 
@@ -154,28 +154,28 @@ namespace StringToCode
                         mouseyp = height / 2f;
                     if (mouseyp <= -height / 2f) 
                         mouseyp = -height / 2f;
-                    MouseDesktopX  = width / 2f + mousexp + Math.Round((di.Joystick1AxisZ - 65535f / 2f) * width / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
-                    MouseDesktopY  = height / 2f + mouseyp + Math.Round((di.Joystick1RotationZ - 65535f / 2f) * height / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
-                    SendD          = di.Joystick1AxisX - 65535f / 2f > 32767f / 2f;
-                    SendQ          = di.Joystick1AxisX - 65535f / 2f < -32767f / 2f;
-                    SendS          = di.Joystick1AxisY - 65535f / 2f > 32767f / 2f;
-                    SendZ          = di.Joystick1AxisY - 65535f / 2f < -32767f / 2f;
-                    Send1          = di.Joystick1PointOfViewControllers0 == 4500 | di.Joystick1PointOfViewControllers0 == 0 | di.Joystick1PointOfViewControllers0 == 31500;
-                    Send2          = di.Joystick1PointOfViewControllers0 == 22500 | di.Joystick1PointOfViewControllers0 == 27000 | di.Joystick1PointOfViewControllers0 == 31500;
-                    Send3          = di.Joystick1PointOfViewControllers0 == 22500 | di.Joystick1PointOfViewControllers0 == 18000 | di.Joystick1PointOfViewControllers0 == 13500;
-                    Send4          = di.Joystick1PointOfViewControllers0 == 4500 | di.Joystick1PointOfViewControllers0 == 9000 | di.Joystick1PointOfViewControllers0 == 13500; 
-                    SendRightClick = di.Joystick1Buttons9;
-                    SendLeftClick  = di.Joystick1Buttons10;
-                    SendR          = di.Joystick1Buttons1;
-                    SendF          = di.Joystick1Buttons2;
-                    SendX          = di.Joystick1Buttons3;
-                    SendC          = di.Joystick1Buttons4;
-                    SendA          = di.Joystick1Buttons5;
-                    SendE          = di.Joystick1Buttons6;
-                    SendY          = di.Joystick1Buttons7;
-                    SendU          = di.Joystick1Buttons8;
-                    SendTab        = di.Joystick1Buttons13;
-                    SendEscape     = di.Joystick1Buttons14;
+                    MouseDesktopX  = width / 2f + mousexp + Math.Round((di.JoystickAxisZ - 65535f / 2f) * width / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
+                    MouseDesktopY  = height / 2f + mouseyp + Math.Round((di.JoystickRotationZ - 65535f / 2f) * height / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
+                    SendD          = di.JoystickAxisX - 65535f / 2f > 32767f / 2f;
+                    SendQ          = di.JoystickAxisX - 65535f / 2f < -32767f / 2f;
+                    SendS          = di.JoystickAxisY - 65535f / 2f > 32767f / 2f;
+                    SendZ          = di.JoystickAxisY - 65535f / 2f < -32767f / 2f;
+                    Send1          = di.JoystickPointOfViewControllers0 == 4500 | di.JoystickPointOfViewControllers0 == 0 | di.JoystickPointOfViewControllers0 == 31500;
+                    Send2          = di.JoystickPointOfViewControllers0 == 22500 | di.JoystickPointOfViewControllers0 == 27000 | di.JoystickPointOfViewControllers0 == 31500;
+                    Send3          = di.JoystickPointOfViewControllers0 == 22500 | di.JoystickPointOfViewControllers0 == 18000 | di.JoystickPointOfViewControllers0 == 13500;
+                    Send4          = di.JoystickPointOfViewControllers0 == 4500 | di.JoystickPointOfViewControllers0 == 9000 | di.JoystickPointOfViewControllers0 == 13500; 
+                    SendRightClick = di.JoystickButtons9;
+                    SendLeftClick  = di.JoystickButtons10;
+                    SendR          = di.JoystickButtons1;
+                    SendF          = di.JoystickButtons2;
+                    SendX          = di.JoystickButtons3;
+                    SendC          = di.JoystickButtons4;
+                    SendA          = di.JoystickButtons5;
+                    SendE          = di.JoystickButtons6;
+                    SendY          = di.JoystickButtons7;
+                    SendU          = di.JoystickButtons8;
+                    SendTab        = di.JoystickButtons13;
+                    SendEscape     = di.JoystickButtons14;
                 }
                 sk.SetKM(KeyboardMouseDriverType, SendLeftClick, SendRightClick, SendMiddleClick, SendWheelUp, SendWheelDown, SendLeft, SendRight, SendUp, SendDown, SendLButton, SendRButton, SendCancel, SendMBUTTON, SendXBUTTON1, SendXBUTTON2, SendBack, SendTab, SendClear, SendReturn, SendSHIFT, SendCONTROL, SendMENU, SendPAUSE, SendCAPITAL, SendKANA, SendHANGEUL, SendHANGUL, SendJUNJA, SendFINAL, SendHANJA, SendKANJI, SendEscape, SendCONVERT, SendNONCONVERT, SendACCEPT, SendMODECHANGE, SendSpace, SendPRIOR, SendNEXT, SendEND, SendHOME, SendLEFT, SendUP, SendRIGHT, SendDOWN, SendSELECT, SendPRINT, SendEXECUTE, SendSNAPSHOT, SendINSERT, SendDELETE, SendHELP, SendAPOSTROPHE, Send0, Send1, Send2, Send3, Send4, Send5, Send6, Send7, Send8, Send9, SendA, SendB, SendC, SendD, SendE, SendF, SendG, SendH, SendI, SendJ, SendK, SendL, SendM, SendN, SendO, SendP, SendQ, SendR, SendS, SendT, SendU, SendV, SendW, SendX, SendY, SendZ, SendLWIN, SendRWIN, SendAPPS, SendSLEEP, SendNUMPAD0, SendNUMPAD1, SendNUMPAD2, SendNUMPAD3, SendNUMPAD4, SendNUMPAD5, SendNUMPAD6, SendNUMPAD7, SendNUMPAD8, SendNUMPAD9, SendMULTIPLY, SendADD, SendSEPARATOR, SendSUBTRACT, SendDECIMAL, SendDIVIDE, SendF1, SendF2, SendF3, SendF4, SendF5, SendF6, SendF7, SendF8, SendF9, SendF10, SendF11, SendF12, SendF13, SendF14, SendF15, SendF16, SendF17, SendF18, SendF19, SendF20, SendF21, SendF22, SendF23, SendF24, SendNUMLOCK, SendSCROLL, SendLeftShift, SendRightShift, SendLeftControl, SendRightControl, SendLMENU, SendRMENU);
                 sm.SetKM(KeyboardMouseDriverType, MouseMoveX, MouseMoveY, MouseAbsX, MouseAbsY, MouseDesktopX, MouseDesktopY);

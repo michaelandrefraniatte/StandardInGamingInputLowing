@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Diagnostics;
 using Valuechanges;
-using WiiMotesAPI;
+using WiiMoteAPI;
 using Interceptions;
 namespace StringToCode
 {
@@ -76,10 +76,10 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            wm.Scan(irmode, centery);
+            wm.ScanWiimote(irmode, centery);
             wm.BeginPolling();
             Thread.Sleep(1000);
-            wm.Init();
+            wm.InitWiimote();
             Task.Run(() => task());
         }
         private void task()

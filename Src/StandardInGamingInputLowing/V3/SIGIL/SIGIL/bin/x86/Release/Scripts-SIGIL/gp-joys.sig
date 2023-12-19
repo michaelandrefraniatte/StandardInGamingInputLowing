@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
-using controller;
+using controllers;
 using System.Diagnostics;
 using Valuechanges;
-using JoyconLeftAPI;
-using JoyconRightAPI;
+using JoyconsLeftAPI;
+using JoyconsRightAPI;
 namespace StringToCode
 {
     public class FooClass 
@@ -55,13 +55,13 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            jl.ScanLeftJoycon();
-            jr.ScanRightJoycon();
+            jl.Scan();
+            jr.Scan();
             jl.BeginPolling();
             jr.BeginPolling();
             Thread.Sleep(1000);
-            jl.InitLeftJoycon();
-            jr.InitRightJoycon();
+            jl.Init();
+            jr.Init();
             XBC.Connect();
             Task.Run(() => task());
         }
@@ -73,8 +73,8 @@ namespace StringToCode
                     break;
                 if (jr.JoyconRightButtonPLUS)
                 {
-                    jl.InitLeftJoyconAccel();
-                    jr.InitRightJoyconAccel();
+                    jl.Init();
+                    jr.Init();
                 }
                 mousex = (jl.JoyconLeftAccelY - jr.JoyconRightAccelY) * 13.5f;
                 mousey = jl.JoyconLeftStickY * 32767f * 1.2f;

@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
-using controllersds4;
+using controllerds4;
 using System.Diagnostics;
 using Valuechanges;
-using XInputsAPI;
+using XInputAPI;
 namespace StringToCode
 {
     public class FooClass 
@@ -53,7 +53,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            xi.Scan();
+            xi.ScanXInput();
             xi.BeginPolling();
             DS4.Connect();
             Task.Run(() => task());
@@ -64,32 +64,32 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                mousex                                   = xi.ControllerThumbRightX;
-                mousey                                   = xi.ControllerThumbRightY;
+                mousex                                   = xi.Controller1ThumbRightX;
+                mousey                                   = xi.Controller1ThumbRightY;
                 statex                                   = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
                 statey                                   = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
                 Controller1DS4_Send_RightThumbX          = statex;
                 Controller1DS4_Send_RightThumbY          = statey;
-                mousex                                   = xi.ControllerThumbLeftX;
-                mousey                                   = xi.ControllerThumbLeftY;
+                mousex                                   = xi.Controller1ThumbLeftX;
+                mousey                                   = xi.Controller1ThumbLeftY;
                 Controller1DS4_Send_LeftThumbX           = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
                 Controller1DS4_Send_LeftThumbY           = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
-                Controller1DS4_Send_DPadUp               = xi.ControllerButtonUpPressed;
-                Controller1DS4_Send_DPadLeft             = xi.ControllerButtonLeftPressed;
-                Controller1DS4_Send_DPadDown             = xi.ControllerButtonDownPressed;
-                Controller1DS4_Send_DPadRight            = xi.ControllerButtonRightPressed;
-                Controller1DS4_Send_Option               = xi.ControllerButtonBackPressed;
-                Controller1DS4_Send_Share                = xi.ControllerButtonStartPressed;
-                Controller1DS4_Send_ThumbRight           = xi.ControllerThumbpadLeftPressed;
-                Controller1DS4_Send_ShoulderLeft         = xi.ControllerButtonShoulderLeftPressed;
-                Controller1DS4_Send_ShoulderRight        = xi.ControllerButtonShoulderRightPressed;
-                Controller1DS4_Send_Cross                = xi.ControllerButtonAPressed;
-                Controller1DS4_Send_Circle               = xi.ControllerButtonBPressed;
-                Controller1DS4_Send_Square               = xi.ControllerButtonXPressed;
-                Controller1DS4_Send_Triangle             = xi.ControllerButtonYPressed;
-                Controller1DS4_Send_ThumbLeft            = xi.ControllerThumbpadRightPressed;
-                Controller1DS4_Send_LeftTriggerPosition  = xi.ControllerTriggerLeftPosition;
-                Controller1DS4_Send_RightTriggerPosition = xi.ControllerTriggerRightPosition;
+                Controller1DS4_Send_DPadUp               = xi.Controller1ButtonUpPressed;
+                Controller1DS4_Send_DPadLeft             = xi.Controller1ButtonLeftPressed;
+                Controller1DS4_Send_DPadDown             = xi.Controller1ButtonDownPressed;
+                Controller1DS4_Send_DPadRight            = xi.Controller1ButtonRightPressed;
+                Controller1DS4_Send_Option               = xi.Controller1ButtonBackPressed;
+                Controller1DS4_Send_Share                = xi.Controller1ButtonStartPressed;
+                Controller1DS4_Send_ThumbRight           = xi.Controller1ThumbpadLeftPressed;
+                Controller1DS4_Send_ShoulderLeft         = xi.Controller1ButtonShoulderLeftPressed;
+                Controller1DS4_Send_ShoulderRight        = xi.Controller1ButtonShoulderRightPressed;
+                Controller1DS4_Send_Cross                = xi.Controller1ButtonAPressed;
+                Controller1DS4_Send_Circle               = xi.Controller1ButtonBPressed;
+                Controller1DS4_Send_Square               = xi.Controller1ButtonXPressed;
+                Controller1DS4_Send_Triangle             = xi.Controller1ButtonYPressed;
+                Controller1DS4_Send_ThumbLeft            = xi.Controller1ThumbpadRightPressed;
+                Controller1DS4_Send_LeftTriggerPosition  = xi.Controller1TriggerLeftPosition;
+                Controller1DS4_Send_RightTriggerPosition = xi.Controller1TriggerRightPosition;
                 DS4.SetController(Controller1DS4_Send_Options, Controller1DS4_Send_Option, Controller1DS4_Send_ThumbLeft, Controller1DS4_Send_ThumbRight, Controller1DS4_Send_ShoulderLeft, Controller1DS4_Send_ShoulderRight, Controller1DS4_Send_Cross, Controller1DS4_Send_Circle, Controller1DS4_Send_Square, Controller1DS4_Send_Triangle, Controller1DS4_Send_Ps, Controller1DS4_Send_Touchpad, Controller1DS4_Send_Share, Controller1DS4_Send_DPadUp, Controller1DS4_Send_DPadDown, Controller1DS4_Send_DPadLeft, Controller1DS4_Send_DPadRight, Controller1DS4_Send_LeftThumbX, Controller1DS4_Send_RightThumbX, Controller1DS4_Send_LeftThumbY, Controller1DS4_Send_RightThumbY, Controller1DS4_Send_LeftTrigger, Controller1DS4_Send_RightTrigger, Controller1DS4_Send_LeftTriggerPosition, Controller1DS4_Send_RightTriggerPosition);
                 /*xi.ViewData();*/
                 Thread.Sleep(sleeptime);

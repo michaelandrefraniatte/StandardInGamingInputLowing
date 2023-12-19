@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
-using controller;
+using controllers;
 using System.Diagnostics;
 using Valuechanges;
-using WiiMoteAPI;
+using WiiMotesAPI;
 namespace StringToCode
 {
     public class FooClass 
@@ -54,10 +54,10 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            wm.ScanWiimote(irmode, centery);
+            wm.Scan(irmode, centery);
             wm.BeginPolling();
             Thread.Sleep(1000);
-            wm.InitWiimote();
+            wm.Init();
             XBC.Connect();
             Task.Run(() => task());
         }

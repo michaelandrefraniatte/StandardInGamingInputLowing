@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
-using controllers;
+using controller;
 using System.Diagnostics;
 using Valuechanges;
-using JoyconChargingGripsAPI;
+using JoyconChargingGripAPI;
 namespace StringToCode
 {
     public class FooClass 
@@ -52,10 +52,10 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            jcg.Scan();
+            jcg.ScanGrip();
             jcg.BeginPolling();
             Thread.Sleep(1000);
-            jcg.Init();
+            jcg.InitJoyconChargingGrip();
             XBC.Connect();
             Task.Run(() => task());
         }
@@ -66,7 +66,7 @@ namespace StringToCode
                 if (!running)
                     break;
                 if (jcg.JoyconRightButtonPLUS)
-                    jcg.Init();
+                    jcg.InitJoyconChargingGripAccel();
                 mousex = (jcg.JoyconLeftAccelY - jcg.JoyconRightAccelY) * 13.5f;
                 mousey = jcg.JoyconLeftStickY * 32767f * 1.2f;
                 statex = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
