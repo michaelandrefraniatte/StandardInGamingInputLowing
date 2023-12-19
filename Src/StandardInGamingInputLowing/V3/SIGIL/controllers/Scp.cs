@@ -38,15 +38,11 @@
         }
         public void Disconnect()
         {
-            UnLoadXC();
+            SetController(false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0, 0, false);
             if (number == 0 | number == 1)
                 scpBus.Unplug(1);
             else if (number == 2)
                 scpBus.Unplug(2);
-        }
-        public void UnLoadXC()
-        {
-            SetController(false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0, 0, false);
         }
         public void SetController(bool controller_send_back, bool controller_send_start, bool controller_send_A, bool controller_send_B, bool controller_send_X, bool controller_send_Y, bool controller_send_up, bool controller_send_left, bool controller_send_down, bool controller_send_right, bool controller_send_leftstick, bool controller_send_rightstick, bool controller_send_leftbumper, bool controller_send_rightbumper, double controller_send_leftstickx, double controller_send_leftsticky, double controller_send_rightstickx, double controller_send_rightsticky, double controller_send_lefttriggerposition, double controller_send_righttriggerposition, bool controller_send_xbox)
         {

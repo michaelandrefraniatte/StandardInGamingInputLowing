@@ -40,3 +40,9 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\keyboards\obj\Release\keyboards.csproj.CoreCompileInputs.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\keyboards\obj\Release\keyboards.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\keyboards\obj\Release\keyboards.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\keyboards\bin\Release\keyboards.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\keyboards\bin\Release\keyboards.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\keyboards\obj\Release\keyboards.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\keyboards\obj\Release\keyboards.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\keyboards\obj\Release\keyboards.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\keyboards\obj\Release\keyboards.pdb

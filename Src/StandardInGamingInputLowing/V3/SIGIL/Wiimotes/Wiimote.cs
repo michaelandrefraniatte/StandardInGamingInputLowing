@@ -48,7 +48,7 @@ namespace WiiMotesAPI
         public byte[] mBuff = new byte[22], aBuffer = new byte[22];
         private const byte Type = 0x12, IR = 0x13, WriteMemory = 0x16, ReadMemory = 0x16, IRExtensionAccel = 0x37;
         private static FileStream mStream;
-        private static SafeFileHandle handle = null, handleunshared = null;
+        private static SafeFileHandle handle = null;
         public bool reconnectingwiimotebool;
         public double reconnectingwiimotecount;
         public bool running, formvisible;
@@ -86,8 +86,6 @@ namespace WiiMotesAPI
         {
             running = false;
             Thread.Sleep(100);
-            handleunshared.Close();
-            handleunshared.Dispose();
             mStream.Close();
             mStream.Dispose();
             handle.Close();
@@ -148,7 +146,7 @@ namespace WiiMotesAPI
         }
         public void ProcessStateLogic()
         {
-            if (this.irmode == 1)
+            if (irmode == 1)
             {
                 WiimoteIRSensors0X = aBuffer[6] | ((aBuffer[8] >> 4) & 0x03) << 8;
                 WiimoteIRSensors0Y = aBuffer[7] | ((aBuffer[8] >> 6) & 0x03) << 8;
@@ -184,7 +182,7 @@ namespace WiiMotesAPI
                 irxc = irx0 + irx1;
                 iryc = iry0 + iry1;
             }
-            else if (this.irmode == 2)
+            else if (irmode == 2)
             {
                 WiimoteIR0found = (aBuffer[6] | ((aBuffer[8] >> 4) & 0x03) << 8) > 1 & (aBuffer[6] | ((aBuffer[8] >> 4) & 0x03) << 8) < 1023;
                 WiimoteIR1found = (aBuffer[9] | ((aBuffer[8] >> 0) & 0x03) << 8) > 1 & (aBuffer[9] | ((aBuffer[8] >> 0) & 0x03) << 8) < 1023;
@@ -260,7 +258,7 @@ namespace WiiMotesAPI
                 irxc = irx2 + irx3;
                 iryc = iry2 + iry3;
             }
-            else if (this.irmode == 3)
+            else if (irmode == 3)
             {
                 WiimoteIR0found = (aBuffer[6] | ((aBuffer[8] >> 4) & 0x03) << 8) > 1 & (aBuffer[6] | ((aBuffer[8] >> 4) & 0x03) << 8) < 1023;
                 WiimoteIR1found = (aBuffer[9] | ((aBuffer[8] >> 0) & 0x03) << 8) > 1 & (aBuffer[9] | ((aBuffer[8] >> 0) & 0x03) << 8) < 1023;
@@ -285,7 +283,7 @@ namespace WiiMotesAPI
                 vallistiry.Add(iry);
                 vallistiry.RemoveAt(0);
                 irx = irxc * (1024f / 1346f);
-                iry = iryc + this.centery >= 0 ? Scale(iryc + this.centery, 0f, 782f + this.centery, 0f, 1024f) : Scale(iryc + this.centery, -782f + this.centery, 0f, -1024f, 0f);
+                iry = iryc + centery >= 0 ? Scale(iryc + centery, 0f, 782f + centery, 0f, 1024f) : Scale(iryc + centery, -782f + centery, 0f, -1024f, 0f);
             }
             else
             {

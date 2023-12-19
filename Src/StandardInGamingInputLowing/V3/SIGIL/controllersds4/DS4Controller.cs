@@ -16,6 +16,7 @@ namespace controllersds4
         }
         public void Disconnect()
         {
+            SetController(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, false, false, 0, 0);
             Controller.Disconnect();
             client.Dispose();
         }

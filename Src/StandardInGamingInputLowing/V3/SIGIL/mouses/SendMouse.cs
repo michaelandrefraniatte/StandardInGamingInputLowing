@@ -21,7 +21,7 @@ namespace mouses
         public string drivertype;
         public void Disconnect()
         {
-            SetKM(this.drivertype, 0, 0, 0, 0, 0, 0);
+            SetKM(drivertype, 0, 0, 0, 0, 0, 0);
         }
         public void SetKM(string KeyboardMouseDriverType, double MouseMoveX, double MouseMoveY, double MouseAbsX, double MouseAbsY, double MouseDesktopX, double MouseDesktopY)
         {
