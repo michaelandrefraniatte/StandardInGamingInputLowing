@@ -1,5 +1,4 @@
-﻿using System;
-using vJoy.Wrapper;
+﻿using vJoy.Wrapper;
 
 namespace controllersvjoy
 {

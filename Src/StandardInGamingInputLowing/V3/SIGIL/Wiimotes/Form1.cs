@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Wiimotes
 {
@@ -19,10 +11,6 @@ namespace Wiimotes
         public void SetLabel1(string str)
         {
             this.label1.Text = str;
-        }
-        public void SetLabel2(string str)
-        {
-            this.label2.Text = str;
         }
         public void SetVisible()
         {

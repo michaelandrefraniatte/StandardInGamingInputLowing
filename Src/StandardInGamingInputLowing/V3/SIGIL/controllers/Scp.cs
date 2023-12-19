@@ -1,7 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Threading;
-
-namespace controllers
+﻿namespace controllers
 {
     public class XBoxController
     {
