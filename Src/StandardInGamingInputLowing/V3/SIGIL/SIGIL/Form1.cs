@@ -231,7 +231,7 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"\bInterceptions\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bSendInterception\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bInput\b"));
-                range.SetStyle(StyleObject, new Regex(@"\bsi\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bSI\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bLoad\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bWiiMotesAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bWiiMote\b"));
@@ -270,10 +270,10 @@ namespace SIGIL
                 range.SetStyle(StyleObject, new Regex(@"\bki2\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bkeyboards\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bSendKeyboard\b"));
-                range.SetStyle(StyleObject, new Regex(@"\bsk\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bSK\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bmouses\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bSendMouse\b"));
-                range.SetStyle(StyleObject, new Regex(@"\bsm\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bSM\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bgetstate\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bmin\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bmax\b"));
@@ -1621,7 +1621,7 @@ namespace SIGIL
                 "Interceptions",
                 "SendInterception",
                 "Input",
-                "si",
+                "SI",
                 "Load",
                 "WiiMotesAPI",
                 "WiiMote",
@@ -1660,10 +1660,10 @@ namespace SIGIL
                 "ki2",
                 "keyboards",
                 "SendKeyboard",
-                "sk",
+                "SK",
                 "mouses",
                 "SendMouse",
-                "sm",
+                "SM",
                 "getstate",
                 "min",
                 "max",
