@@ -91,7 +91,7 @@ namespace StringToCode
                     Controller1VJoy_Send_POV = 27000;
                 Controller1VJoy_Send_Z   = xi.ControllerTriggerLeftPosition;
                 Controller1VJoy_Send_WHL = xi.ControllerTriggerRightPosition;
-                VJoy.SetController(Controller1VJoy_Send_1, Controller1VJoy_Send_2, Controller1VJoy_Send_3, Controller1VJoy_Send_4, Controller1VJoy_Send_5, Controller1VJoy_Send_6, Controller1VJoy_Send_7, Controller1VJoy_Send_8, Controller1VJoy_Send_X, Controller1VJoy_Send_Y, Controller1VJoy_Send_Z, Controller1VJoy_Send_WHL, Controller1VJoy_Send_SL0, Controller1VJoy_Send_SL1, Controller1VJoy_Send_RX, Controller1VJoy_Send_RY, Controller1VJoy_Send_RZ, Controller1VJoy_Send_POV, Controller1VJoy_Send_Hat, Controller1VJoy_Send_HatExt1, Controller1VJoy_Send_HatExt2, Controller1VJoy_Send_HatExt3);
+                VJoy.Set(Controller1VJoy_Send_1, Controller1VJoy_Send_2, Controller1VJoy_Send_3, Controller1VJoy_Send_4, Controller1VJoy_Send_5, Controller1VJoy_Send_6, Controller1VJoy_Send_7, Controller1VJoy_Send_8, Controller1VJoy_Send_X, Controller1VJoy_Send_Y, Controller1VJoy_Send_Z, Controller1VJoy_Send_WHL, Controller1VJoy_Send_SL0, Controller1VJoy_Send_SL1, Controller1VJoy_Send_RX, Controller1VJoy_Send_RY, Controller1VJoy_Send_RZ, Controller1VJoy_Send_POV, Controller1VJoy_Send_Hat, Controller1VJoy_Send_HatExt1, Controller1VJoy_Send_HatExt2, Controller1VJoy_Send_HatExt3);
                 /*xi.ViewData();*/
                 Thread.Sleep(sleeptime);
             }

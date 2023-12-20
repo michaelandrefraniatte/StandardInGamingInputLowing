@@ -16,11 +16,11 @@ namespace controllersds4
         }
         public void Disconnect()
         {
-            SetController(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, false, false, 0, 0);
+            Set(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, false, false, 0, 0);
             Controller.Disconnect();
             client.Dispose();
         }
-        public void SetController(bool ControllerDS4_Send_Options, bool ControllerDS4_Send_Option, bool ControllerDS4_Send_ThumbLeft, bool ControllerDS4_Send_ThumbRight, bool ControllerDS4_Send_ShoulderLeft, bool ControllerDS4_Send_ShoulderRight, bool ControllerDS4_Send_Cross, bool ControllerDS4_Send_Circle, bool ControllerDS4_Send_Square, bool ControllerDS4_Send_Triangle, bool ControllerDS4_Send_Ps, bool ControllerDS4_Send_Touchpad, bool ControllerDS4_Send_Share, bool ControllerDS4_Send_DPadUp, bool ControllerDS4_Send_DPadDown, bool ControllerDS4_Send_DPadLeft, bool ControllerDS4_Send_DPadRight, double ControllerDS4_Send_LeftThumbX, double ControllerDS4_Send_RightThumbX, double ControllerDS4_Send_LeftThumbY, double ControllerDS4_Send_RightThumbY, bool ControllerDS4_Send_LeftTrigger, bool ControllerDS4_Send_RightTrigger, double ControllerDS4_Send_LeftTriggerPosition, double ControllerDS4_Send_RightTriggerPosition)
+        public void Set(bool ControllerDS4_Send_Options, bool ControllerDS4_Send_Option, bool ControllerDS4_Send_ThumbLeft, bool ControllerDS4_Send_ThumbRight, bool ControllerDS4_Send_ShoulderLeft, bool ControllerDS4_Send_ShoulderRight, bool ControllerDS4_Send_Cross, bool ControllerDS4_Send_Circle, bool ControllerDS4_Send_Square, bool ControllerDS4_Send_Triangle, bool ControllerDS4_Send_Ps, bool ControllerDS4_Send_Touchpad, bool ControllerDS4_Send_Share, bool ControllerDS4_Send_DPadUp, bool ControllerDS4_Send_DPadDown, bool ControllerDS4_Send_DPadLeft, bool ControllerDS4_Send_DPadRight, double ControllerDS4_Send_LeftThumbX, double ControllerDS4_Send_RightThumbX, double ControllerDS4_Send_LeftThumbY, double ControllerDS4_Send_RightThumbY, bool ControllerDS4_Send_LeftTrigger, bool ControllerDS4_Send_RightTrigger, double ControllerDS4_Send_LeftTriggerPosition, double ControllerDS4_Send_RightTriggerPosition)
         {
             Controller.SetButtonState(DualShock4Button.Options, ControllerDS4_Send_Options);
             Controller.SetButtonState(DualShock4SpecialButton.Options, ControllerDS4_Send_Option);

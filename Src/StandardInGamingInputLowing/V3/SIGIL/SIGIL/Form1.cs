@@ -107,6 +107,8 @@ namespace SIGIL
             try
             {
                 range = (sender as FastColoredTextBox).Range;
+                range.SetStyle(StyleClass, new Regex(@"\bDllImport\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bEntryPoint\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bTimeBeginPeriod\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bTimeEndPeriod\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bNtSetTimerResolution\b"));
@@ -185,8 +187,7 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"\bBeginPolling\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bConnect\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bDisconnect\b"));
-                range.SetStyle(StyleMethod, new Regex(@"\bSetController\b"));
-                range.SetStyle(StyleMethod, new Regex(@"\bSetKM\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bSet\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bValuechanges\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bValuechange\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bValueChange\b"));
@@ -1496,6 +1497,8 @@ namespace SIGIL
         private void FillAutocompletion()
         {
             this.autocompleteMenu1.Items = new string[] {
+                "DllImport",
+                "EntryPoint",
                 "TimeBeginPeriod",
                 "TimeEndPeriod",
                 "NtSetTimerResolution",
@@ -1574,8 +1577,7 @@ namespace SIGIL
                 "BeginPolling",
                 "Connect",
                 "Disconnect",
-                "SetController",
-                "SetKM",
+                "Set",
                 "Valuechanges",
                 "Valuechange",
                 "ValueChange",

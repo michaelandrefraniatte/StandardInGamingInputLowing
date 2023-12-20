@@ -13,10 +13,10 @@ namespace controllersvjoy
         }
         public void Disconnect()
         {
-            SetController(false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            Set(false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             joystick.Dispose();
         }
-        public void SetController(bool ControllerVJoy_Send_1, bool ControllerVJoy_Send_2, bool ControllerVJoy_Send_3, bool ControllerVJoy_Send_4, bool ControllerVJoy_Send_5, bool ControllerVJoy_Send_6, bool ControllerVJoy_Send_7, bool ControllerVJoy_Send_8, double ControllerVJoy_Send_X, double ControllerVJoy_Send_Y, double ControllerVJoy_Send_Z, double ControllerVJoy_Send_WHL, double ControllerVJoy_Send_SL0, double ControllerVJoy_Send_SL1, double ControllerVJoy_Send_RX, double ControllerVJoy_Send_RY, double ControllerVJoy_Send_RZ, double ControllerVJoy_Send_POV, double ControllerVJoy_Send_Hat, double ControllerVJoy_Send_HatExt1, double ControllerVJoy_Send_HatExt2, double ControllerVJoy_Send_HatExt3)
+        public void Set(bool ControllerVJoy_Send_1, bool ControllerVJoy_Send_2, bool ControllerVJoy_Send_3, bool ControllerVJoy_Send_4, bool ControllerVJoy_Send_5, bool ControllerVJoy_Send_6, bool ControllerVJoy_Send_7, bool ControllerVJoy_Send_8, double ControllerVJoy_Send_X, double ControllerVJoy_Send_Y, double ControllerVJoy_Send_Z, double ControllerVJoy_Send_WHL, double ControllerVJoy_Send_SL0, double ControllerVJoy_Send_SL1, double ControllerVJoy_Send_RX, double ControllerVJoy_Send_RY, double ControllerVJoy_Send_RZ, double ControllerVJoy_Send_POV, double ControllerVJoy_Send_Hat, double ControllerVJoy_Send_HatExt1, double ControllerVJoy_Send_HatExt2, double ControllerVJoy_Send_HatExt3)
         {
             joystick.SetJoystickButton(ControllerVJoy_Send_1, 1);
             joystick.SetJoystickButton(ControllerVJoy_Send_2, 2);
