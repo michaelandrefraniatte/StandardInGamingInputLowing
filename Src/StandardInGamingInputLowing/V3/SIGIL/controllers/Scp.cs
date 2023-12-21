@@ -2,6 +2,35 @@
 
 namespace controllers
 {
+    public class Valuechanges
+    {
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
+        public static double[] _valuechange = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        public static double[] _ValueChange = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        public Valuechanges()
+        {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
+        }
+        public double this[int index]
+        {
+            get { return _ValueChange[index]; }
+            set
+            {
+                if (_valuechange[index] != value)
+                    _ValueChange[index] = value - _valuechange[index];
+                else
+                    _ValueChange[index] = 0;
+                _valuechange[index] = value;
+            }
+        }
+    }
     public class XBoxController
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
@@ -11,30 +40,10 @@ namespace controllers
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        public static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        public static void valchanged(int n, bool val)
-        {
-            if (val)
-            {
-                if (wd[n] <= 1)
-                {
-                    wd[n] = wd[n] + 1;
-                }
-                wu[n] = 0;
-            }
-            else
-            {
-                if (wu[n] <= 1)
-                {
-                    wu[n] = wu[n] + 1;
-                }
-                wd[n] = 0;
-            }
-        }
         private ScpBus scpBus;
         private X360Controller controller;
         private int number;
+        public static Valuechanges ValueChange = new Valuechanges();
         public XBoxController()
         {
             TimeBeginPeriod(1);
@@ -58,89 +67,89 @@ namespace controllers
             else if (number == 2)
                 scpBus.Unplug(2);
         }
-        public void Set(bool controller_send_back, bool controller_send_start, bool controller_send_A, bool controller_send_B, bool controller_send_X, bool controller_send_Y, bool controller_send_up, bool controller_send_left, bool controller_send_down, bool controller_send_right, bool controller_send_leftstick, bool controller_send_rightstick, bool controller_send_leftbumper, bool controller_send_rightbumper, double controller_send_leftstickx, double controller_send_leftsticky, double controller_send_rightstickx, double controller_send_rightsticky, double controller_send_lefttriggerposition, double controller_send_righttriggerposition, bool controller_send_xbox)
+        public void Set(bool back, bool start, bool A, bool B, bool X, bool Y, bool up, bool left, bool down, bool right, bool leftstick, bool rightstick, bool leftbumper, bool rightbumper, double leftstickx, double leftsticky, double rightstickx, double rightsticky, double lefttriggerposition, double righttriggerposition, bool xbox)
         {
-            valchanged(1, controller_send_back);
-            if (wd[1] == 1)
+            ValueChange[0] = back ? 1 : 0;
+            if (Valuechanges._ValueChange[0] > 0f)
                 controller.Buttons ^= X360Buttons.Back;
-            if (wu[1] == 1)
+            if (Valuechanges._ValueChange[0] < 0f)
                 controller.Buttons &= ~X360Buttons.Back;
-            valchanged(2, controller_send_start);
-            if (wd[2] == 1)
+            ValueChange[1] = start ? 1 : 0;
+            if (Valuechanges._ValueChange[1] > 0f)
                 controller.Buttons ^= X360Buttons.Start;
-            if (wu[2] == 1)
+            if (Valuechanges._ValueChange[1] < 0f)
                 controller.Buttons &= ~X360Buttons.Start;
-            valchanged(3, controller_send_A);
-            if (wd[3] == 1)
+            ValueChange[2] = A ? 1 : 0;
+            if (Valuechanges._ValueChange[2] > 0f)
                 controller.Buttons ^= X360Buttons.A;
-            if (wu[3] == 1)
+            if (Valuechanges._ValueChange[2] < 0f)
                 controller.Buttons &= ~X360Buttons.A;
-            valchanged(4, controller_send_B);
-            if (wd[4] == 1)
+            ValueChange[3] = B ? 1 : 0;
+            if (Valuechanges._ValueChange[3] > 0f)
                 controller.Buttons ^= X360Buttons.B;
-            if (wu[4] == 1)
+            if (Valuechanges._ValueChange[3] < 0f)
                 controller.Buttons &= ~X360Buttons.B;
-            valchanged(5, controller_send_X);
-            if (wd[5] == 1)
+            ValueChange[4] = X ? 1 : 0;
+            if (Valuechanges._ValueChange[4] > 0f)
                 controller.Buttons ^= X360Buttons.X;
-            if (wu[5] == 1)
+            if (Valuechanges._ValueChange[4] < 0f)
                 controller.Buttons &= ~X360Buttons.X;
-            valchanged(6, controller_send_Y);
-            if (wd[6] == 1)
+            ValueChange[5] = Y ? 1 : 0;
+            if (Valuechanges._ValueChange[5] > 0f)
                 controller.Buttons ^= X360Buttons.Y;
-            if (wu[6] == 1)
+            if (Valuechanges._ValueChange[5] < 0f)
                 controller.Buttons &= ~X360Buttons.Y;
-            valchanged(7, controller_send_up);
-            if (wd[7] == 1)
+            ValueChange[6] = up ? 1 : 0;
+            if (Valuechanges._ValueChange[6] > 0f)
                 controller.Buttons ^= X360Buttons.Up;
-            if (wu[7] == 1)
+            if (Valuechanges._ValueChange[6] < 0f)
                 controller.Buttons &= ~X360Buttons.Up;
-            valchanged(8, controller_send_left);
-            if (wd[8] == 1)
+            ValueChange[7] = left ? 1 : 0;
+            if (Valuechanges._ValueChange[7] > 0f)
                 controller.Buttons ^= X360Buttons.Left;
-            if (wu[8] == 1)
+            if (Valuechanges._ValueChange[7] < 0f)
                 controller.Buttons &= ~X360Buttons.Left;
-            valchanged(9, controller_send_down);
-            if (wd[9] == 1)
+            ValueChange[8] = down ? 1 : 0;
+            if (Valuechanges._ValueChange[8] > 0f)
                 controller.Buttons ^= X360Buttons.Down;
-            if (wu[9] == 1)
+            if (Valuechanges._ValueChange[8] < 0f)
                 controller.Buttons &= ~X360Buttons.Down;
-            valchanged(10, controller_send_right);
-            if (wd[10] == 1)
+            ValueChange[9] = right ? 1 : 0;
+            if (Valuechanges._ValueChange[9] > 0f)
                 controller.Buttons ^= X360Buttons.Right;
-            if (wu[10] == 1)
+            if (Valuechanges._ValueChange[9] < 0f)
                 controller.Buttons &= ~X360Buttons.Right;
-            valchanged(11, controller_send_leftstick);
-            if (wd[11] == 1)
+            ValueChange[10] = leftstick ? 1 : 0;
+            if (Valuechanges._ValueChange[10] > 0f)
                 controller.Buttons ^= X360Buttons.LeftStick;
-            if (wu[11] == 1)
+            if (Valuechanges._ValueChange[10] < 0f)
                 controller.Buttons &= ~X360Buttons.LeftStick;
-            valchanged(12, controller_send_rightstick);
-            if (wd[12] == 1)
+            ValueChange[11] = rightstick ? 1 : 0;
+            if (Valuechanges._ValueChange[11] > 0f)
                 controller.Buttons ^= X360Buttons.RightStick;
-            if (wu[12] == 1)
+            if (Valuechanges._ValueChange[11] < 0f)
                 controller.Buttons &= ~X360Buttons.RightStick;
-            valchanged(13, controller_send_leftbumper);
-            if (wd[13] == 1)
+            ValueChange[12] = leftbumper ? 1 : 0;
+            if (Valuechanges._ValueChange[12] > 0f)
                 controller.Buttons ^= X360Buttons.LeftBumper;
-            if (wu[13] == 1)
+            if (Valuechanges._ValueChange[12] < 0f)
                 controller.Buttons &= ~X360Buttons.LeftBumper;
-            valchanged(14, controller_send_rightbumper);
-            if (wd[14] == 1)
+            ValueChange[13] = rightbumper ? 1 : 0;
+            if (Valuechanges._ValueChange[13] > 0f)
                 controller.Buttons ^= X360Buttons.RightBumper;
-            if (wu[14] == 1)
+            if (Valuechanges._ValueChange[13] < 0f)
                 controller.Buttons &= ~X360Buttons.RightBumper;
-            controller.LeftStickX = (short)controller_send_leftstickx;
-            controller.LeftStickY = (short)controller_send_leftsticky;
-            controller.RightStickX = (short)controller_send_rightstickx;
-            controller.RightStickY = (short)controller_send_rightsticky;
-            controller.LeftTrigger = (byte)controller_send_lefttriggerposition;
-            controller.RightTrigger = (byte)controller_send_righttriggerposition;
-            valchanged(33, controller_send_xbox);
-            if (wd[33] == 1)
+            ValueChange[14] = xbox ? 1 : 0;
+            if (Valuechanges._ValueChange[14] > 0f)
                 controller.Buttons ^= X360Buttons.Logo;
-            if (wu[33] == 1)
+            if (Valuechanges._ValueChange[14] < 0f)
                 controller.Buttons &= ~X360Buttons.Logo;
+            controller.LeftStickX = (short)leftstickx;
+            controller.LeftStickY = (short)leftsticky;
+            controller.RightStickX = (short)rightstickx;
+            controller.RightStickY = (short)rightsticky;
+            controller.LeftTrigger = (byte)lefttriggerposition;
+            controller.RightTrigger = (byte)righttriggerposition;
             scpBus.Report(number < 2 ? 1 : 2, controller.GetReport());
         }
     }
