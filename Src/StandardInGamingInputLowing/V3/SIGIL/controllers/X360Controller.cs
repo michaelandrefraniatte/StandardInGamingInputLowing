@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace controllers
 {
@@ -7,11 +8,20 @@ namespace controllers
     /// </summary>
     public class X360Controller
     {
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
         /// <summary>
         /// Generates a new X360Controller object with the default initial state (no buttons pressed, all analog inputs 0).
         /// </summary>
         public X360Controller()
         {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
             Buttons = X360Buttons.None;
             LeftTrigger = 0;
             RightTrigger = 0;
@@ -19,42 +29,6 @@ namespace controllers
             LeftStickY = 0;
             RightStickX = 0;
             RightStickY = 0;
-        }
-
-        /// <summary>
-        /// Generates a new X360Controller object. Optionally, you can specify the initial state of the controller.
-        /// </summary>
-        /// <param name="buttons">The pressed buttons. Use like flags (i.e. (X360Buttons.A | X360Buttons.X) would be mean both A and X are pressed).</param>
-        /// <param name="leftTrigger">Left trigger analog input. 0 to 255.</param>
-        /// <param name="rightTrigger">Right trigger analog input. 0 to 255.</param>
-        /// <param name="leftStickX">Left stick X-axis. -32,768 to 32,767.</param>
-        /// <param name="leftStickY">Left stick Y-axis. -32,768 to 32,767.</param>
-        /// <param name="rightStickX">Right stick X-axis. -32,768 to 32,767.</param>
-        /// <param name="rightStickY">Right stick Y-axis. -32,768 to 32,767.</param>
-        public X360Controller(X360Buttons buttons, byte leftTrigger, byte rightTrigger, short leftStickX, short leftStickY, short rightStickX, short rightStickY)
-        {
-            Buttons = buttons;
-            LeftTrigger = leftTrigger;
-            RightTrigger = rightTrigger;
-            LeftStickX = leftStickX;
-            LeftStickY = leftStickY;
-            RightStickX = rightStickX;
-            RightStickY = rightStickY;
-        }
-
-        /// <summary>
-        /// Generates a new X360Controller object with the same values as the specified X360Controller object.
-        /// </summary>
-        /// <param name="controller">An X360Controller object to copy values from.</param>
-        public X360Controller(X360Controller controller)
-        {
-            Buttons = controller.Buttons;
-            LeftTrigger = controller.LeftTrigger;
-            RightTrigger = controller.RightTrigger;
-            LeftStickX = controller.LeftStickX;
-            LeftStickY = controller.LeftStickY;
-            RightStickX = controller.RightStickX;
-            RightStickY = controller.RightStickY;
         }
 
         /// <summary>

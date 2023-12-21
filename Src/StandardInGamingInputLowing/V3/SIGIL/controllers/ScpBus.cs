@@ -27,6 +27,13 @@ namespace controllers
     /// </summary>
     public class ScpBus : IDisposable
     {
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
         private const string SCP_BUS_CLASS_GUID = "{F679F562-3164-42CE-A4DB-E7DDBE723909}";
         private const int ReportSize = 28;
 
@@ -35,7 +42,11 @@ namespace controllers
         /// <summary>
         /// Creates a new ScpBus object, which will then try to get a handle to the SCP Virtual Bus device. If it is unable to get the handle, an IOException will be thrown.
         /// </summary>
-        public ScpBus() : this(0) { }
+        public ScpBus() : this(0)
+        {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
+        }
 
         /// <summary>
         /// Creates a new ScpBus object, which will then try to get a handle to the SCP Virtual Bus device. If it is unable to get the handle, an IOException will be thrown.
@@ -44,7 +55,6 @@ namespace controllers
         public ScpBus(int instance)
         {
             string devicePath = "";
-
             if (Find(new Guid(SCP_BUS_CLASS_GUID), ref devicePath, instance))
             {
                 _deviceHandle = GetHandle(devicePath);
