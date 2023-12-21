@@ -1,9 +1,17 @@
-﻿using System.Windows.Forms;
+﻿using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Joyconsright
 {
     public partial class Form1 : Form
     {
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
         public Form1()
         {
             InitializeComponent();
@@ -24,6 +32,11 @@ namespace Joyconsright
         {
             this.Hide();
             e.Cancel = true;
+        }
+        private void Form1_Load(object sender, System.EventArgs e)
+        {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
         }
     }
 }

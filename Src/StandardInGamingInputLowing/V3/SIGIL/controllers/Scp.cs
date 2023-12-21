@@ -1,7 +1,16 @@
-﻿namespace controllers
+﻿using System.Runtime.InteropServices;
+
+namespace controllers
 {
     public class XBoxController
     {
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
         public static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         public static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         public static void valchanged(int n, bool val)
@@ -26,6 +35,11 @@
         private ScpBus scpBus;
         private X360Controller controller;
         private int number;
+        public XBoxController()
+        {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
+        }
         public void Connect(int number = 0)
         {
             this.number = number;

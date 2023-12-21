@@ -71,6 +71,13 @@ namespace keyboards
         public static extern void WheelDownF();
         [DllImport("keyboard.dll", EntryPoint = "WheelUpF", CallingConvention = CallingConvention.Cdecl)]
         public static extern void WheelUpF();
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
         public const ushort VK_LBUTTON = (ushort)0x01;
         public const ushort VK_RBUTTON = (ushort)0x02;
         public const ushort VK_CANCEL = (ushort)0x03;
@@ -421,6 +428,11 @@ namespace keyboards
         public const ushort S_OEM_CLEAR = 0;
         public string drivertype;
         public static Valuechanges ValueChange = new Valuechanges();
+        public SendKeyboard()
+        {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
+        }
         public void Connect(int number = 0)
         {
         }

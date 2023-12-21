@@ -24,6 +24,13 @@ namespace SIGIL
         static extern bool SetForegroundWindow(IntPtr hWnd);
         [DllImport("user32.dll")]
         private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
         public Form1(string filePath)
         {
             InitializeComponent();
@@ -2949,6 +2956,8 @@ namespace SIGIL
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
             menuItem = new MenuItem("Cut");
             contextMenu.MenuItems.Add(menuItem);
             menuItem.Select += new EventHandler(changeCursor);

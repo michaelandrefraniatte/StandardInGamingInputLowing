@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using Nefarius.ViGEm.Client;
 using Nefarius.ViGEm.Client.Targets;
 using Nefarius.ViGEm.Client.Targets.DualShock4;
@@ -7,8 +8,20 @@ namespace controllersds4
 {
     public class DS4Controller
     {
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
         public static IDualShock4Controller Controller { get; set; }
         private static ViGEmClient client = new ViGEmClient();
+        public DS4Controller()
+        {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
+        }
         public void Connect(int number = 0)
         {
             Controller = client.CreateDualShock4Controller();

@@ -1,10 +1,23 @@
-﻿using vJoy.Wrapper;
+﻿using System.Runtime.InteropServices;
+using vJoy.Wrapper;
 
 namespace controllersvjoy
 {
     public class VJoyController
     {
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
         public static VirtualJoystick joystick;
+        public VJoyController()
+        {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
+        }
         public void Connect(int number = 0)
         {
             uint id = (uint)(number < 2 ? 1 : 2);

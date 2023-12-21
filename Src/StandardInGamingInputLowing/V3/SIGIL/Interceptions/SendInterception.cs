@@ -28,11 +28,20 @@ namespace Interceptions
         public static extern void SetCaretPos(int X, int Y);
         [DllImport("user32.dll")]
         public static extern void SetCursorPos(int X, int Y);
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
         public static Valuechanges ValueChange = new Valuechanges();
         public static Input input = new Input();
         public int keyboard_1_id = 0, mouse_1_id = 0, keyboard_2_id = 0, mouse_2_id = 0;
         public SendInterception()
         {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
             input.KeyboardFilterMode = KeyboardFilterMode.All;
             input.MouseFilterMode = MouseFilterMode.All;
             input.Load();

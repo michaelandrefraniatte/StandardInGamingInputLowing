@@ -18,7 +18,19 @@ namespace mouses
         public static extern void SetCaretPos(int X, int Y);
         [DllImport("user32.dll")]
         public static extern void SetCursorPos(int X, int Y);
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
         public string drivertype;
+        public SendMouse()
+        {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
+        }
         public void Connect(int number = 0)
         {
         }
