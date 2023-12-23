@@ -15,7 +15,7 @@ namespace DirectInputsAPI
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        private static bool running, formvisible;
+        private bool running, formvisible;
         private SharpDX.DirectInput.DirectInput directInput = new SharpDX.DirectInput.DirectInput();
         private int number;
         public Form1 form1 = new Form1();
@@ -220,9 +220,9 @@ namespace DirectInputsAPI
         {
             Task.Run(() => taskD());
         }
-        private static Joystick[] joystick = new Joystick[] { null };
-        private static Guid[] joystickGuid = new Guid[] { Guid.Empty };
-        private static int dinum = 0;
+        private Joystick[] joystick = new Joystick[] { null };
+        private Guid[] joystickGuid = new Guid[] { Guid.Empty };
+        private int dinum = 0;
         public int JoystickAxisX;
         public int JoystickAxisY;
         public int JoystickAxisZ;

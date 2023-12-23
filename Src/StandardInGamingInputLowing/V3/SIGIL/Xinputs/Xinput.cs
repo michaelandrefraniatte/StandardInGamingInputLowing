@@ -15,7 +15,7 @@ namespace XInputsAPI
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        private static bool running, formvisible;
+        private bool running, formvisible;
         private int number;
         public Form1 form1 = new Form1();
         public XInput()
@@ -75,9 +75,9 @@ namespace XInputsAPI
         {
             Task.Run(() => taskD());
         }
-        private static Controller[] controller = new Controller[] { null };
-        private static SharpDX.XInput.State xistate;
-        private static int xinum = 0;
+        private Controller[] controller = new Controller[] { null };
+        private SharpDX.XInput.State xistate;
+        private int xinum = 0;
         public bool ControllerButtonAPressed;
         public bool ControllerButtonBPressed;
         public bool ControllerButtonXPressed;

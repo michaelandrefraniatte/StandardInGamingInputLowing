@@ -15,31 +15,10 @@ namespace KeyboardInputsAPI
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        private static bool running, formvisible;
-        static DirectInput directInput = new DirectInput();
+        private bool running, formvisible;
+        DirectInput directInput = new DirectInput();
         private int number;
         public Form1 form1 = new Form1();
-        private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        public static void valchanged(int n, bool val)
-        {
-            if (val)
-            {
-                if (wd[n] <= 1)
-                {
-                    wd[n] = wd[n] + 1;
-                }
-                wu[n] = 0;
-            }
-            else
-            {
-                if (wu[n] <= 1)
-                {
-                    wu[n] = wu[n] + 1;
-                }
-                wd[n] = 0;
-            }
-        }
         public KeyboardInput()
         {
             TimeBeginPeriod(1);
@@ -222,9 +201,9 @@ namespace KeyboardInputsAPI
         {
             Task.Run(() => taskK());
         }
-        private static Keyboard[] keyboard = new Keyboard[] { null };
-        private static Guid[] keyboardGuid = new Guid[] { Guid.Empty };
-        private static int knum = 0;
+        private Keyboard[] keyboard = new Keyboard[] { null };
+        private Guid[] keyboardGuid = new Guid[] { Guid.Empty };
+        private int knum = 0;
         public bool KeyboardKeyEscape;
         public bool KeyboardKeyD1;
         public bool KeyboardKeyD2;

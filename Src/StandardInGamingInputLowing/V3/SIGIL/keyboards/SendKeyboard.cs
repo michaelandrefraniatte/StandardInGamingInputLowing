@@ -427,7 +427,7 @@ namespace keyboards
         public const ushort S_PA1 = 0;
         public const ushort S_OEM_CLEAR = 0;
         public string drivertype;
-        public static Valuechanges ValueChange = new Valuechanges();
+        public Valuechanges ValueChange = new Valuechanges();
         public SendKeyboard()
         {
             TimeBeginPeriod(1);

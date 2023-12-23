@@ -244,21 +244,21 @@ namespace DualSensesAPI
         {
             Task.Run(() => taskD());
         }
-        private static byte[] GetOutputDataBytes()
+        private byte[] GetOutputDataBytes()
         {
             byte[] bytes = new byte[48];
             bytes[0] = 0x02;
             return bytes;
         }
-        private static byte GetModeSwitch(byte[] dsdata, int indexIfUsb)
+        private byte GetModeSwitch(byte[] dsdata, int indexIfUsb)
         {
             return indexIfUsb >= 0 ? dsdata[indexIfUsb] : (byte)0;
         }
-        private static byte[] GetModeSwitch(byte[] dsdata, int startIndexIfUsb, int size)
+        private byte[] GetModeSwitch(byte[] dsdata, int startIndexIfUsb, int size)
         {
             return startIndexIfUsb >= 0 ? dsdata.Skip(startIndexIfUsb).Take(size).ToArray() : new byte[size];
         }
-        private static Vec2 ReadAnalogStick(byte x, byte y)
+        private Vec2 ReadAnalogStick(byte x, byte y)
         {
             float x1 = x.ToSignedFloat();
             float y1 = -y.ToSignedFloat();
@@ -268,12 +268,12 @@ namespace DualSensesAPI
                 Y = Math.Abs(y1) >= 0f ? y1 : 0
             };
         }
-        private static bool ReadDPadButton(byte b, int v1, int v2, int v3)
+        private bool ReadDPadButton(byte b, int v1, int v2, int v3)
         {
             int val = b & 0x0F;
             return val == v1 || val == v2 || val == v3;
         }
-        private static DualShock4Touch ReadTouchpad(byte[] bytes)
+        private DualShock4Touch ReadTouchpad(byte[] bytes)
         {
             if (!BitConverter.IsLittleEndian)
             {
@@ -288,7 +288,7 @@ namespace DualSensesAPI
                 Id = bytes[0]
             };
         }
-        private static Vec3 ReadAccelAxes(byte[] x, byte[] y, byte[] z)
+        private Vec3 ReadAccelAxes(byte[] x, byte[] y, byte[] z)
         {
             if (!BitConverter.IsLittleEndian)
             {
@@ -303,38 +303,38 @@ namespace DualSensesAPI
                 Z = BitConverter.ToInt16(z, 0)
             };
         }
-        public static Vec2 LeftAnalogStick { get; private set; }
-        public static Vec2 RightAnalogStick { get; private set; }
-        public static float L2 { get; private set; }
-        public static float R2 { get; private set; }
-        public static bool SquareButton { get; private set; }
-        public static bool CrossButton { get; private set; }
-        public static bool CircleButton { get; private set; }
-        public static bool TriangleButton { get; private set; }
-        public static bool DPadUpButton { get; private set; }
-        public static bool DPadRightButton { get; private set; }
-        public static bool DPadDownButton { get; private set; }
-        public static bool DPadLeftButton { get; private set; }
-        public static bool L1Button { get; private set; }
-        public static bool R1Button { get; private set; }
-        public static bool L2Button { get; private set; }
-        public static bool R2Button { get; private set; }
-        public static bool CreateButton { get; private set; }
-        public static bool MenuButton { get; private set; }
-        public static bool L3Button { get; private set; }
-        public static bool R3Button { get; private set; }
-        public static bool LogoButton { get; private set; }
-        public static bool TouchpadButton { get; private set; }
-        public static bool FnL { get; private set; }
-        public static bool FnR { get; private set; }
-        public static bool BLP { get; private set; }
-        public static bool BRP { get; private set; }
-        public static bool MicButton { get; private set; }
-        public static DualShock4Touch Touchpad1 { get; private set; }
-        public static DualShock4Touch Touchpad2 { get; private set; }
-        public static Vec3 Gyro { get; private set; }
-        public static Vec3 Accelerometer { get; private set; }
-        public static bool IsHeadphoneConnected { get; private set; }
+        public Vec2 LeftAnalogStick { get; private set; }
+        public Vec2 RightAnalogStick { get; private set; }
+        public float L2 { get; private set; }
+        public float R2 { get; private set; }
+        public bool SquareButton { get; private set; }
+        public bool CrossButton { get; private set; }
+        public bool CircleButton { get; private set; }
+        public bool TriangleButton { get; private set; }
+        public bool DPadUpButton { get; private set; }
+        public bool DPadRightButton { get; private set; }
+        public bool DPadDownButton { get; private set; }
+        public bool DPadLeftButton { get; private set; }
+        public bool L1Button { get; private set; }
+        public bool R1Button { get; private set; }
+        public bool L2Button { get; private set; }
+        public bool R2Button { get; private set; }
+        public bool CreateButton { get; private set; }
+        public bool MenuButton { get; private set; }
+        public bool L3Button { get; private set; }
+        public bool R3Button { get; private set; }
+        public bool LogoButton { get; private set; }
+        public bool TouchpadButton { get; private set; }
+        public bool FnL { get; private set; }
+        public bool FnR { get; private set; }
+        public bool BLP { get; private set; }
+        public bool BRP { get; private set; }
+        public bool MicButton { get; private set; }
+        public DualShock4Touch Touchpad1 { get; private set; }
+        public DualShock4Touch Touchpad2 { get; private set; }
+        public Vec3 Gyro { get; private set; }
+        public Vec3 Accelerometer { get; private set; }
+        public bool IsHeadphoneConnected { get; private set; }
     }
     internal static class DualShock4ByteConverterExtensions
     {

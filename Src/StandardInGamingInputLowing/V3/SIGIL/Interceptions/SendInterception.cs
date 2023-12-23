@@ -35,8 +35,8 @@ namespace Interceptions
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public static Valuechanges ValueChange = new Valuechanges();
-        public static Input input = new Input();
+        public Valuechanges ValueChange = new Valuechanges();
+        public Input input = new Input();
         public int keyboard_1_id = 0, mouse_1_id = 0, keyboard_2_id = 0, mouse_2_id = 0;
         public SendInterception()
         {
@@ -1048,61 +1048,61 @@ namespace Interceptions
             if (ValueChange._ValueChange[195] < 0f)
                 keyboardkeyF(input, Keys.NumpadMinus, keyboard_id);
         }
-        public static void mouseclickleft(Input input, int mouse_id)
+        public void mouseclickleft(Input input, int mouse_id)
         {
             input.SendLeftClick(mouse_id);
         }
-        public static void mouseclickleftF(Input input, int mouse_id)
+        public void mouseclickleftF(Input input, int mouse_id)
         {
             input.SendLeftClickF(mouse_id);
         }
-        public static void mouseclickright(Input input, int mouse_id)
+        public void mouseclickright(Input input, int mouse_id)
         {
             input.SendRightClick(mouse_id);
         }
-        public static void mouseclickrightF(Input input, int mouse_id)
+        public void mouseclickrightF(Input input, int mouse_id)
         {
             input.SendRightClickF(mouse_id);
         }
-        public static void mouseclickmiddle(Input input, int mouse_id)
+        public void mouseclickmiddle(Input input, int mouse_id)
         {
             input.SendMiddleClick(mouse_id);
         }
-        public static void mouseclickmiddleF(Input input, int mouse_id)
+        public void mouseclickmiddleF(Input input, int mouse_id)
         {
             input.SendMiddleClickF(mouse_id);
         }
-        public static void mousewheelup(Input input, int mouse_id)
+        public void mousewheelup(Input input, int mouse_id)
         {
             input.SendWheelUp(mouse_id);
         }
-        public static void mousewheeldown(Input input, int mouse_id)
+        public void mousewheeldown(Input input, int mouse_id)
         {
             input.SendWheelDown(mouse_id);
         }
-        public static void keyboardkey(Input input, Keys key, int keyboard_id)
+        public void keyboardkey(Input input, Keys key, int keyboard_id)
         {
             input.SendKey(key, keyboard_id);
         }
-        public static void keyboardkeyF(Input input, Keys key, int keyboard_id)
+        public void keyboardkeyF(Input input, Keys key, int keyboard_id)
         {
             input.SendKeyF(key, keyboard_id);
         }
-        public static void MoveMouseBy(Input input, int deltaX, int deltaY, int mouseId)
+        public void MoveMouseBy(Input input, int deltaX, int deltaY, int mouseId)
         {
             input.MoveMouseBy(deltaX, deltaY, mouseId);
         }
-        public static void MoveMouseTo(Input input, int x, int y, int mouseId)
+        public void MoveMouseTo(Input input, int x, int y, int mouseId)
         {
             input.MoveMouseTo(x, y, mouseId);
         }
     }
     public class Input
     {
-        private static IntPtr context;
+        private IntPtr context;
         public KeyboardFilterMode KeyboardFilterMode { get; set; }
         public MouseFilterMode MouseFilterMode { get; set; }
-        public static bool IsLoaded { get; set; }
+        public bool IsLoaded { get; set; }
         public Input()
         {
             context = IntPtr.Zero;
@@ -1310,7 +1310,7 @@ namespace Interceptions
         [FieldOffset(0)]
         public KeyStroke Key;
     }
-    public static class InterceptionDriver
+    public class InterceptionDriver
     {
         [DllImport("interception.dll", EntryPoint = "interception_create_context", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr CreateContext();

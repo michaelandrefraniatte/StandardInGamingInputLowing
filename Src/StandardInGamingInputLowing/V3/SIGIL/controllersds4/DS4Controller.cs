@@ -15,8 +15,8 @@ namespace controllersds4
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public static IDualShock4Controller Controller { get; set; }
-        private static ViGEmClient client = new ViGEmClient();
+        public IDualShock4Controller Controller { get; set; }
+        private ViGEmClient client = new ViGEmClient();
         public DS4Controller()
         {
             TimeBeginPeriod(1);

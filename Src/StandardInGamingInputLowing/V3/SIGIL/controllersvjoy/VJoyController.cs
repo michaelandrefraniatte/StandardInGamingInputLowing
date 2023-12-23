@@ -12,7 +12,7 @@ namespace controllersvjoy
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public static VirtualJoystick joystick;
+        public VirtualJoystick joystick;
         public VJoyController()
         {
             TimeBeginPeriod(1);
