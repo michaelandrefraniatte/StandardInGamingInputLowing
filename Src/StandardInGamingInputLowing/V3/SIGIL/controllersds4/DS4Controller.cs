@@ -17,6 +17,7 @@ namespace controllersds4
         private static uint CurrentResolution = 0;
         public IDualShock4Controller Controller { get; set; }
         private ViGEmClient client = new ViGEmClient();
+        private string vendorid = "54C", productid = "9CC";
         public DS4Controller()
         {
             TimeBeginPeriod(1);
@@ -24,7 +25,7 @@ namespace controllersds4
         }
         public void Connect(int number = 0)
         {
-            Controller = client.CreateDualShock4Controller();
+            Controller = client.CreateDualShock4Controller(ushort.Parse(vendorid, System.Globalization.NumberStyles.HexNumber), ushort.Parse(productid, System.Globalization.NumberStyles.HexNumber));
             Controller.Connect();
         }
         public void Disconnect()

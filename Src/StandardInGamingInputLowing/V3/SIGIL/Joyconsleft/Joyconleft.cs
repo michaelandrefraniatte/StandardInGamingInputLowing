@@ -189,7 +189,7 @@ namespace JoyconsLeftAPI
             }
             catch { }
         }
-        public const string vendor_id = "57e", vendor_id_ = "057e", product_l = "2006", product_r = "2007";
+        public const string vendor_id = "57e", vendor_id_ = "057e", product_l = "2006";
         public enum EFileAttributes : uint
         {
             Overlapped = 0x40000000,
