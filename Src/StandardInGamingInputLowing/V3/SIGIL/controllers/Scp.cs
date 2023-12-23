@@ -43,25 +43,23 @@ namespace controllers
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        private XBoxController scpBus;
         private int number;
         public static Valuechanges ValueChange = new Valuechanges();
         public void Connect(int number = 0)
         {
             this.number = number;
-            scpBus = new XBoxController();
             if (number == 0 | number == 1)
-                scpBus.PlugIn(1);
+                PlugIn(1);
             else if (number == 2)
-                scpBus.PlugIn(2);
+                PlugIn(2);
         }
         public void Disconnect()
         {
             Set(false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0, 0, false);
             if (number == 0 | number == 1)
-                scpBus.Unplug(1);
+                Unplug(1);
             else if (number == 2)
-                scpBus.Unplug(2);
+                Unplug(2);
         }
         public void Set(bool back, bool start, bool A, bool B, bool X, bool Y, bool up, bool left, bool down, bool right, bool leftstick, bool rightstick, bool leftbumper, bool rightbumper, double leftstickx, double leftsticky, double rightstickx, double rightsticky, double lefttriggerposition, double righttriggerposition, bool xbox)
         {
@@ -146,7 +144,7 @@ namespace controllers
             RightStickY = (short)rightsticky;
             LeftTrigger = (byte)lefttriggerposition;
             RightTrigger = (byte)righttriggerposition;
-            scpBus.Report(GetReport());
+            Report(GetReport());
         }
         private const string SCP_BUS_CLASS_GUID = "{F679F562-3164-42CE-A4DB-E7DDBE723909}";
         private readonly SafeFileHandle _deviceHandle;
