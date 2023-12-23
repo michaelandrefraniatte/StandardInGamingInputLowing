@@ -80,14 +80,10 @@ namespace controllersds4
             {
                 Controller.SetDPadDirection(DualShock4DPadDirection.Southeast);
             }
-            Int16 ltx = (Int16)((float)ControllerDS4_Send_LeftThumbX / short.MaxValue * 127);
-            Int16 lty = (Int16)((float)ControllerDS4_Send_LeftThumbY / short.MaxValue * -127);
-            Int16 rtx = (Int16)((float)ControllerDS4_Send_RightThumbX / short.MaxValue * 127);
-            Int16 rty = (Int16)((float)ControllerDS4_Send_RightThumbY / short.MaxValue * -127);
-            Controller.SetAxisValue(DualShock4Axis.LeftThumbX, (byte)(ltx + 0x7f));
-            Controller.SetAxisValue(DualShock4Axis.LeftThumbY, (byte)(lty + 0x7f));
-            Controller.SetAxisValue(DualShock4Axis.RightThumbX, (byte)(rtx + 0x7f));
-            Controller.SetAxisValue(DualShock4Axis.RightThumbY, (byte)(rty + 0x7f));
+            Controller.SetAxisValue(DualShock4Axis.LeftThumbX, (byte)(((float)ControllerDS4_Send_LeftThumbX / short.MaxValue * 127) + 0x7f));
+            Controller.SetAxisValue(DualShock4Axis.LeftThumbY, (byte)(((float)ControllerDS4_Send_LeftThumbY / short.MaxValue * -127) + 0x7f));
+            Controller.SetAxisValue(DualShock4Axis.RightThumbX, (byte)(((float)ControllerDS4_Send_RightThumbX / short.MaxValue * 127) + 0x7f));
+            Controller.SetAxisValue(DualShock4Axis.RightThumbY, (byte)(((float)ControllerDS4_Send_RightThumbY / short.MaxValue * -127) + 0x7f));
             Controller.SetButtonState(DualShock4Button.TriggerLeft, ControllerDS4_Send_LeftTrigger);
             Controller.SetSliderValue(DualShock4Slider.LeftTrigger, (byte)ControllerDS4_Send_LeftTriggerPosition);
             Controller.SetButtonState(DualShock4Button.TriggerRight, ControllerDS4_Send_RightTrigger);
