@@ -11,8 +11,8 @@ namespace Valuechanges
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public static double[] _valuechange = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        public static double[] _ValueChange = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
+        public double[] _valuechange = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
+        public double[] _ValueChange = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         public Valuechange()
         {
             TimeBeginPeriod(1);

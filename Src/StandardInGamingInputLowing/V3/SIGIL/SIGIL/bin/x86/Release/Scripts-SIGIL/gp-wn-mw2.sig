@@ -79,13 +79,13 @@ namespace StringToCode
                 controller1_send_Y = wm.WiimoteButtonStateRight;
                 controller1_send_righttriggerposition = wm.WiimoteButtonStateB ? 255 : 0;
                 ValueChange[0] = wm.WiimoteButtonStateA ? 1 : 0;
-                if (Valuechange._ValueChange[0] > 0f & !getstate)
+                if (ValueChange._ValueChange[0] > 0f & !getstate)
                 {
                     getstate = true;
                 }
                 else
                 {
-                    if (Valuechange._ValueChange[0] > 0f & getstate)
+                    if (ValueChange._ValueChange[0] > 0f & getstate)
                     {
                         getstate = false;
                     }
