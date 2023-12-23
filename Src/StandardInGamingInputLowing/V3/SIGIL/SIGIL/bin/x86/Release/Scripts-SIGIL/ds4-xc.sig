@@ -24,7 +24,7 @@ namespace StringToCode
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private static bool running;
-        private static bool Controller1DS4_Send_Options, Controller1DS4_Send_Option, Controller1DS4_Send_ThumbLeft, Controller1DS4_Send_ThumbRight, Controller1DS4_Send_ShoulderLeft, Controller1DS4_Send_ShoulderRight, Controller1DS4_Send_Cross, Controller1DS4_Send_Circle, Controller1DS4_Send_Square, Controller1DS4_Send_Triangle, Controller1DS4_Send_Ps, Controller1DS4_Send_Touchpad, Controller1DS4_Send_Share, Controller1DS4_Send_DPadUp, Controller1DS4_Send_DPadDown, Controller1DS4_Send_DPadLeft, Controller1DS4_Send_DPadRight, Controller1DS4_Send_LeftTrigger, Controller1DS4_Send_RightTrigger;
+        private static bool Controller1DS4_Send_Options, Controller1DS4_Send_ThumbLeft, Controller1DS4_Send_ThumbRight, Controller1DS4_Send_ShoulderLeft, Controller1DS4_Send_ShoulderRight, Controller1DS4_Send_Cross, Controller1DS4_Send_Circle, Controller1DS4_Send_Square, Controller1DS4_Send_Triangle, Controller1DS4_Send_Ps, Controller1DS4_Send_Touchpad, Controller1DS4_Send_Share, Controller1DS4_Send_DPadUp, Controller1DS4_Send_DPadDown, Controller1DS4_Send_DPadLeft, Controller1DS4_Send_DPadRight, Controller1DS4_Send_LeftTrigger, Controller1DS4_Send_RightTrigger;
         private static double Controller1DS4_Send_LeftTriggerPosition, Controller1DS4_Send_RightTriggerPosition;
         private static double Controller1DS4_Send_LeftThumbX, Controller1DS4_Send_RightThumbX, Controller1DS4_Send_LeftThumbY, Controller1DS4_Send_RightThumbY;
         private static double statex = 0f, statey = 0f, mousex = 0f, mousey = 0f, mousestatex = 0f, mousestatey = 0f, dzx = 0.0f, dzy = 0.0f, viewpower1x = 0f, viewpower2x = 1f, viewpower3x = 0f, viewpower1y = 0.25f, viewpower2y = 0.75f, viewpower3y = 0f, viewpower05x = 0f, viewpower05y = 0f;
@@ -78,7 +78,7 @@ namespace StringToCode
                 Controller1DS4_Send_DPadLeft             = xi.ControllerButtonLeftPressed;
                 Controller1DS4_Send_DPadDown             = xi.ControllerButtonDownPressed;
                 Controller1DS4_Send_DPadRight            = xi.ControllerButtonRightPressed;
-                Controller1DS4_Send_Option               = xi.ControllerButtonBackPressed;
+                Controller1DS4_Send_Options              = xi.ControllerButtonBackPressed;
                 Controller1DS4_Send_Share                = xi.ControllerButtonStartPressed;
                 Controller1DS4_Send_ThumbRight           = xi.ControllerThumbpadLeftPressed;
                 Controller1DS4_Send_ShoulderLeft         = xi.ControllerButtonShoulderLeftPressed;
@@ -90,7 +90,7 @@ namespace StringToCode
                 Controller1DS4_Send_ThumbLeft            = xi.ControllerThumbpadRightPressed;
                 Controller1DS4_Send_LeftTriggerPosition  = xi.ControllerTriggerLeftPosition;
                 Controller1DS4_Send_RightTriggerPosition = xi.ControllerTriggerRightPosition;
-                DS4.Set(Controller1DS4_Send_Options, Controller1DS4_Send_Option, Controller1DS4_Send_ThumbLeft, Controller1DS4_Send_ThumbRight, Controller1DS4_Send_ShoulderLeft, Controller1DS4_Send_ShoulderRight, Controller1DS4_Send_Cross, Controller1DS4_Send_Circle, Controller1DS4_Send_Square, Controller1DS4_Send_Triangle, Controller1DS4_Send_Ps, Controller1DS4_Send_Touchpad, Controller1DS4_Send_Share, Controller1DS4_Send_DPadUp, Controller1DS4_Send_DPadDown, Controller1DS4_Send_DPadLeft, Controller1DS4_Send_DPadRight, Controller1DS4_Send_LeftThumbX, Controller1DS4_Send_RightThumbX, Controller1DS4_Send_LeftThumbY, Controller1DS4_Send_RightThumbY, Controller1DS4_Send_LeftTrigger, Controller1DS4_Send_RightTrigger, Controller1DS4_Send_LeftTriggerPosition, Controller1DS4_Send_RightTriggerPosition);
+                DS4.Set(Controller1DS4_Send_Options, Controller1DS4_Send_ThumbLeft, Controller1DS4_Send_ThumbRight, Controller1DS4_Send_ShoulderLeft, Controller1DS4_Send_ShoulderRight, Controller1DS4_Send_Cross, Controller1DS4_Send_Circle, Controller1DS4_Send_Square, Controller1DS4_Send_Triangle, Controller1DS4_Send_Ps, Controller1DS4_Send_Touchpad, Controller1DS4_Send_Share, Controller1DS4_Send_DPadUp, Controller1DS4_Send_DPadDown, Controller1DS4_Send_DPadLeft, Controller1DS4_Send_DPadRight, Controller1DS4_Send_LeftThumbX, Controller1DS4_Send_RightThumbX, Controller1DS4_Send_LeftThumbY, Controller1DS4_Send_RightThumbY, Controller1DS4_Send_LeftTrigger, Controller1DS4_Send_RightTrigger, Controller1DS4_Send_LeftTriggerPosition, Controller1DS4_Send_RightTriggerPosition);
                 /*xi.ViewData();*/
                 Thread.Sleep(sleeptime);
             }

@@ -352,7 +352,6 @@ namespace SIGIL
                 range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_rightstickx\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_rightsticky\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_Options\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_Option\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_ThumbLeft\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_ThumbRight\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_ShoulderLeft\b"));
@@ -1451,7 +1450,6 @@ namespace SIGIL
                 range.SetStyle(StyleOutput, new Regex(@"\bController2_send_rightstickx\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bController2_send_rightsticky\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_Options\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_Option\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_ThumbLeft\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_ThumbRight\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_ShoulderLeft\b"));
@@ -1742,7 +1740,6 @@ namespace SIGIL
                 "controller1_send_rightstickx",
                 "controller1_send_rightsticky",
                 "Controller1DS4_Send_Options",
-                "Controller1DS4_Send_Option",
                 "Controller1DS4_Send_ThumbLeft",
                 "Controller1DS4_Send_ThumbRight",
                 "Controller1DS4_Send_ShoulderLeft",
@@ -2841,7 +2838,6 @@ namespace SIGIL
                 "Controller2_send_rightstickx",
                 "Controller2_send_rightsticky",
                 "Controller2DS4_Send_Options",
-                "Controller2DS4_Send_Option",
                 "Controller2DS4_Send_ThumbLeft",
                 "Controller2DS4_Send_ThumbRight",
                 "Controller2DS4_Send_ShoulderLeft",
