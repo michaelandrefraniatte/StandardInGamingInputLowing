@@ -31,12 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Device.Net">
-      <HintPath>..\SIGIL\bin\x86\Release\Device.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="Hid.Net">
-      <HintPath>..\SIGIL\bin\x86\Release\Hid.Net.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -70,6 +64,19 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Device.Net\Device.Net\Device.Net.csproj">
+      <Project>{d3929a96-0340-45f5-a9eb-069802110556}</Project>
+      <Name>Device.Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Device.Net\Hid.Net\Hid.Net.csproj">
+      <Project>{91660af8-a2fe-4308-8615-6fc34b5ad1dd}</Project>
+      <Name>Hid.Net</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

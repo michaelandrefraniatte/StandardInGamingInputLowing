@@ -1,0 +1,15 @@
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\bin\Debug\netstandard2.0\Device.Net.LibUsb.deps.json
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\bin\Debug\netstandard2.0\Device.Net.LibUsb.dll
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\bin\Debug\netstandard2.0\Device.Net.LibUsb.xml
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\bin\Debug\netstandard2.0\Device.Net.dll
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\bin\Debug\netstandard2.0\Usb.Net.dll
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\bin\Debug\netstandard2.0\Device.Net.xml
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\bin\Debug\netstandard2.0\Usb.Net.xml
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\obj\Debug\netstandard2.0\Device.Net.LibUsb.csproj.AssemblyReference.cache
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\obj\Debug\netstandard2.0\Device.Net.LibUsb.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\obj\Debug\netstandard2.0\Device.Net.LibUsb.AssemblyInfoInputs.cache
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\obj\Debug\netstandard2.0\Device.Net.LibUsb.AssemblyInfo.cs
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\obj\Debug\netstandard2.0\Device.Net.LibUsb.csproj.CoreCompileInputs.cache
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\obj\Debug\netstandard2.0\Device.Net.LibUsb.sourcelink.json
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\obj\Debug\netstandard2.0\Device.Net.LibUsb.csproj.CopyComplete
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.LibUsb\obj\Debug\netstandard2.0\Device.Net.LibUsb.dll

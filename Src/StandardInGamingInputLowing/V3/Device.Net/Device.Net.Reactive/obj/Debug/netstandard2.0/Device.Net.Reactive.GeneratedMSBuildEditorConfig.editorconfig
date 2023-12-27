@@ -1,0 +1,5 @@
+is_global = true
+build_property.RootNamespace = Device.Net.Reactive
+build_property.ProjectDir = C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.Reactive\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

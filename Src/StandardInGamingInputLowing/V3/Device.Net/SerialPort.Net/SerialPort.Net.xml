@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SerialPort.Net</name>
+    </assembly>
+    <members>
+        <member name="P:SerialPort.Net.Windows.WindowsSerialPortDevice.ApiService">
+            <summary>
+            TODO: No need to implement this. The property probably shouldn't exist at the base level
+            </summary>
+        </member>
+    </members>
+</doc>

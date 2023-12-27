@@ -1,0 +1,9 @@
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Usb.Net.Android.Fakes\bin\Debug\netstandard2.1\Usb.Net.Android.Fakes.deps.json
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Usb.Net.Android.Fakes\bin\Debug\netstandard2.1\Usb.Net.Android.Fakes.dll
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Usb.Net.Android.Fakes\bin\Debug\netstandard2.1\Usb.Net.Android.Fakes.pdb
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Usb.Net.Android.Fakes\obj\Debug\netstandard2.1\Usb.Net.Android.Fakes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Usb.Net.Android.Fakes\obj\Debug\netstandard2.1\Usb.Net.Android.Fakes.AssemblyInfoInputs.cache
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Usb.Net.Android.Fakes\obj\Debug\netstandard2.1\Usb.Net.Android.Fakes.AssemblyInfo.cs
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Usb.Net.Android.Fakes\obj\Debug\netstandard2.1\Usb.Net.Android.Fakes.csproj.CoreCompileInputs.cache
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Usb.Net.Android.Fakes\obj\Debug\netstandard2.1\Usb.Net.Android.Fakes.dll
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Usb.Net.Android.Fakes\obj\Debug\netstandard2.1\Usb.Net.Android.Fakes.pdb

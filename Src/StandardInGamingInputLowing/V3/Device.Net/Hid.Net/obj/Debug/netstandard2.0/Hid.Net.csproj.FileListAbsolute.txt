@@ -1,0 +1,13 @@
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Hid.Net\bin\Debug\netstandard2.0\Hid.Net.deps.json
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Hid.Net\bin\Debug\netstandard2.0\Hid.Net.dll
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Hid.Net\bin\Debug\netstandard2.0\Hid.Net.xml
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Hid.Net\bin\Debug\netstandard2.0\Device.Net.dll
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Hid.Net\bin\Debug\netstandard2.0\Device.Net.xml
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Hid.Net\obj\Debug\netstandard2.0\Hid.Net.csproj.AssemblyReference.cache
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Hid.Net\obj\Debug\netstandard2.0\Hid.Net.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Hid.Net\obj\Debug\netstandard2.0\Hid.Net.AssemblyInfoInputs.cache
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Hid.Net\obj\Debug\netstandard2.0\Hid.Net.AssemblyInfo.cs
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Hid.Net\obj\Debug\netstandard2.0\Hid.Net.csproj.CoreCompileInputs.cache
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Hid.Net\obj\Debug\netstandard2.0\Hid.Net.sourcelink.json
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Hid.Net\obj\Debug\netstandard2.0\Hid.Net.csproj.CopyComplete
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Hid.Net\obj\Debug\netstandard2.0\Hid.Net.dll

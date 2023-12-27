@@ -466,8 +466,6 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Wiimotes.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Xinputs.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\obj\x86\Release\SIGIL.csproj.AssemblyReference.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\obj\x86\Release\SIGIL.csproj.SuggestedBindingRedirects.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\obj\x86\Release\SIGIL.exe.config
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form1.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\obj\x86\Release\SIGIL.Properties.Resources.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\obj\x86\Release\SIGIL.ReplaceForm.resources
@@ -480,3 +478,6 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Mouseinputs.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Keyboardinputs.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Mouseinputs.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Dualsenses.dll.config
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Dualshocks4.dll.config
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Nefarius.ViGEm.Client.pdb

@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "geewArTAKx1iYdrLsr3kU6LXjMUrT+VXcWxU56hMuYLKpmEFELOksyElm/bghLTA4MyCnvlcKhYi4Ut0exnuJg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\micha\\Documents\\github\\StandardInGamingInputLowing\\Src\\StandardInGamingInputLowing\\V3\\Nefarius.ViGEm.Client\\ViGEmClient\\ViGEmClient.NET.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\micha\\.nuget\\packages\\costura.fody\\5.7.0\\costura.fody.5.7.0.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\fody\\6.6.4\\fody.6.6.4.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\polysharp\\1.12.1\\polysharp.1.12.1.nupkg.sha512"
+  ],
+  "logs": []
+}

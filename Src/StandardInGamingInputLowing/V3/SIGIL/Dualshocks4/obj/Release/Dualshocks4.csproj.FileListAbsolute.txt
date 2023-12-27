@@ -28,3 +28,6 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\obj\Release\Dualshocks4.csproj.CopyComplete
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\obj\Release\Dualshocks4.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\obj\Release\Dualshocks4.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\Dualshocks4.dll.config
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\Device.Net.xml
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\Hid.Net.xml

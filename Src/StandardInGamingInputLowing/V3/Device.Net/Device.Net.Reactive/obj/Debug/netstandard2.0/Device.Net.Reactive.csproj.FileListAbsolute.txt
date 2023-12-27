@@ -1,0 +1,13 @@
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.Reactive\bin\Debug\netstandard2.0\Device.Net.Reactive.deps.json
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.Reactive\bin\Debug\netstandard2.0\Device.Net.Reactive.dll
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.Reactive\bin\Debug\netstandard2.0\Device.Net.Reactive.pdb
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.Reactive\bin\Debug\netstandard2.0\Device.Net.dll
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.Reactive\bin\Debug\netstandard2.0\Device.Net.xml
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.Reactive\obj\Debug\netstandard2.0\Device.Net.Reactive.csproj.AssemblyReference.cache
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.Reactive\obj\Debug\netstandard2.0\Device.Net.Reactive.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.Reactive\obj\Debug\netstandard2.0\Device.Net.Reactive.AssemblyInfoInputs.cache
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.Reactive\obj\Debug\netstandard2.0\Device.Net.Reactive.AssemblyInfo.cs
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.Reactive\obj\Debug\netstandard2.0\Device.Net.Reactive.csproj.CoreCompileInputs.cache
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.Reactive\obj\Debug\netstandard2.0\Device.Net.Reactive.csproj.CopyComplete
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.Reactive\obj\Debug\netstandard2.0\Device.Net.Reactive.dll
+C:\Users\micha\Downloads\Device.Net-main\Device.Net-main\src\Device.Net.Reactive\obj\Debug\netstandard2.0\Device.Net.Reactive.pdb

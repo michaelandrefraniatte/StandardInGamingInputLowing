@@ -1,0 +1,18 @@
+version: 1.21.{build}
+image: Visual Studio 2022
+skip_commits:
+  files:
+    - assets/*
+    - '**/*.md'
+build_script:
+- cmd: .\build.cmd
+artifacts:
+- path: 'bin**\*.nupkg'
+- path: 'bin**\*.snupkg'
+- path: 'bin**\*.dll'
+deploy:
+- provider: Environment
+  name: nuget.org
+  on:
+    branch: master
+    appveyor_repo_tag: true 

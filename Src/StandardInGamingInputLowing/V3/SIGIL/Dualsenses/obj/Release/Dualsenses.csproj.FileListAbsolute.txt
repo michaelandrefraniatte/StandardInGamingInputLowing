@@ -28,3 +28,6 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualsenses\obj\Release\Dualsenses.csproj.CopyComplete
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualsenses\obj\Release\Dualsenses.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualsenses\obj\Release\Dualsenses.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualsenses\bin\Release\Dualsenses.dll.config
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualsenses\bin\Release\Device.Net.xml
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualsenses\bin\Release\Hid.Net.xml
