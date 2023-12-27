@@ -21,3 +21,6 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\ViGEmClient\obj\Release\ViGEmClient.NET.csproj.Fody.RuntimeCopyLocal.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\ViGEmClient\obj\Release\Nefarius.ViGEm.Client.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\ViGEmClient\obj\Release\Nefarius.ViGEm.Client.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\ViGEmClient\bin\Release\Nefarius.ViGEm.Client.deps.json
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\ViGEmClient\bin\Release\Nefarius.ViGEm.Client.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\ViGEmClient\bin\Release\Nefarius.ViGEm.Client.pdb

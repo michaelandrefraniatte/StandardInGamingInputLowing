@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VIGJf6tdJm8Ulo3g9TTAioIfikJq0V6nwBksw1HcHlmTJcLTVU0G4sWM7XTblwr1bORslUlmIhHDEGHnl9nfyw==",
+  "dgSpecHash": "rm2uW2amXWvva6uzHWJK9tUu6hU6DfYhnJdpjJ4Xznd87TqiuJIBoY/unsZHLzGk1xF65hzXXUeKC3Vj2LI4UQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\micha\\Documents\\github\\ControllerHandle\\Src\\Device.Net\\Device.Net.csproj",
+  "projectFilePath": "C:\\Users\\micha\\Documents\\github\\StandardInGamingInputLowing\\Src\\StandardInGamingInputLowing\\V3\\SIGIL\\Device.Net\\Device.Net.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\micha\\.nuget\\packages\\microsoft.build.tasks.git\\1.0.0\\microsoft.build.tasks.git.1.0.0.nupkg.sha512",
     "C:\\Users\\micha\\.nuget\\packages\\microsoft.codeanalysis.netanalyzers\\5.0.1\\microsoft.codeanalysis.netanalyzers.5.0.1.nupkg.sha512",

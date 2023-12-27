@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -7,7 +7,7 @@
   <PropertyGroup>
     <ProjectGuid>{AA18EBCF-7E9D-4BC5-8760-E8C6E9A773E5}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <OutputPath>$(SolutionDir)bin\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Nefarius.ViGEm.Client</RootNamespace>
     <AssemblyName>Nefarius.ViGEm.Client</AssemblyName>
@@ -27,17 +27,12 @@
     <Copyright>Copyright © Nefarius Software Solutions e.U. 2017-2023</Copyright>
     <PackageProjectUrl>https://github.com/ViGEm/ViGEm.NET</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ViGEm/ViGEm.NET</RepositoryUrl>
-    <PackageIcon>ViGEm_Icon.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="costura32\ViGEmClient.dll" />
     <None Remove="costura64\ViGEmClient.dll" />
-    <None Include="..\ViGEm_Icon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
   <!-- Embedded files -->

@@ -293,11 +293,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\micha\\Documents\\github\\StandardInGamingInputLowing\\Src\\StandardInGamingInputLowing\\V3\\Nefarius.ViGEm.Client\\ViGEmClient\\ViGEmClient.NET.csproj",
+      "projectUniqueName": "C:\\Users\\micha\\Documents\\github\\StandardInGamingInputLowing\\Src\\StandardInGamingInputLowing\\V3\\SIGIL\\ViGEmClient\\ViGEmClient.NET.csproj",
       "projectName": "Nefarius.ViGEm.Client",
-      "projectPath": "C:\\Users\\micha\\Documents\\github\\StandardInGamingInputLowing\\Src\\StandardInGamingInputLowing\\V3\\Nefarius.ViGEm.Client\\ViGEmClient\\ViGEmClient.NET.csproj",
+      "projectPath": "C:\\Users\\micha\\Documents\\github\\StandardInGamingInputLowing\\Src\\StandardInGamingInputLowing\\V3\\SIGIL\\ViGEmClient\\ViGEmClient.NET.csproj",
       "packagesPath": "C:\\Users\\micha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\micha\\Documents\\github\\StandardInGamingInputLowing\\Src\\StandardInGamingInputLowing\\V3\\Nefarius.ViGEm.Client\\ViGEmClient\\obj\\",
+      "outputPath": "C:\\Users\\micha\\Documents\\github\\StandardInGamingInputLowing\\Src\\StandardInGamingInputLowing\\V3\\SIGIL\\ViGEmClient\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [

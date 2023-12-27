@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vVfY6M3ABnF/qd8b6LovFYVhO79M64hUtNjdlke5KGy7GERxDyVeCZFW4hzQaZgIvmeKTd3b9tiQiN3eA+xz2g==",
+  "dgSpecHash": "XdV/0CSJgSC5AaZmySh+bL612xEwkNcukb/a9++/R6jYyhpeTkwLaBr0SunLTj02FbrmMHqZbye1GzWq77Ivcw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\micha\\Documents\\github\\ControllerHandle\\Src\\Hid.Net\\Hid.Net.csproj",
+  "projectFilePath": "C:\\Users\\micha\\Documents\\github\\StandardInGamingInputLowing\\Src\\StandardInGamingInputLowing\\V3\\SIGIL\\Hid.Net\\Hid.Net.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\micha\\.nuget\\packages\\microsoft.build.tasks.git\\1.0.0\\microsoft.build.tasks.git.1.0.0.nupkg.sha512",
     "C:\\Users\\micha\\.nuget\\packages\\microsoft.codeanalysis.netanalyzers\\5.0.1\\microsoft.codeanalysis.netanalyzers.5.0.1.nupkg.sha512",
