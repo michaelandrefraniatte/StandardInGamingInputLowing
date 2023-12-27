@@ -60,17 +60,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\x86\Release\AutocompleteMenu.dll</HintPath>
     </Reference>
-    <Reference Include="Device.Net, Version=4.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Release\Device.Net.dll</HintPath>
-    </Reference>
     <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\x86\Release\FastColoredTextBox.dll</HintPath>
-    </Reference>
-    <Reference Include="Hid.Net, Version=4.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Release\Hid.Net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp">
       <Private>True</Private>
@@ -202,6 +194,10 @@
       <Project>{8bde6140-ee1c-4fd9-85e8-7f0dfd14ce94}</Project>
       <Name>controllers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Device.Net\Device.Net.csproj">
+      <Project>{c94268b8-c07a-4ff2-94d9-19355d3f1f3c}</Project>
+      <Name>Device.Net</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Directinputs\Directinputs.csproj">
       <Project>{6ba6817c-47bb-44de-a4ee-f23b04a29750}</Project>
       <Name>Directinputs</Name>
@@ -213,6 +209,10 @@
     <ProjectReference Include="..\Dualshocks4\Dualshocks4.csproj">
       <Project>{5f2354d3-7620-4ffd-a578-9ba982848234}</Project>
       <Name>Dualshocks4</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hid.Net\Hid.Net.csproj">
+      <Project>{df67ba9d-3e4e-4414-86bb-57c81f80483b}</Project>
+      <Name>Hid.Net</Name>
     </ProjectReference>
     <ProjectReference Include="..\Interceptions\Interceptions.csproj">
       <Project>{c8a72023-3693-4c30-a5ed-9502fe0c10af}</Project>
@@ -253,6 +253,10 @@
     <ProjectReference Include="..\Valuechanges\Valuechanges.csproj">
       <Project>{211d48a2-f49f-41ac-bfdb-5d92ac6043dc}</Project>
       <Name>Valuechanges</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViGEmClient\ViGEmClient.NET.csproj">
+      <Project>{aa18ebcf-7e9d-4bc5-8760-e8c6e9a773e5}</Project>
+      <Name>ViGEmClient.NET</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wiimotes\Wiimotes.csproj">
       <Project>{c1f5f4f6-9795-4f5f-a06a-148ee376b84f}</Project>
