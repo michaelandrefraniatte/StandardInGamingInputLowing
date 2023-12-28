@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Nefarius Software Solutions e.U. 2017-2023")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Managed ViGEmClient library for interaction with the ViGEm Bus Driver.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dfde72032da06be8160e93e5e55b9dce0a76f909")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Managed ViGEmClient library")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Nefarius.ViGEm.Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

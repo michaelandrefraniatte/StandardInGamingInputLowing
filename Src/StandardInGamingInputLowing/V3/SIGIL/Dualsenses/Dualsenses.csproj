@@ -70,11 +70,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Device.Net\Device.Net.csproj">
-      <Project>{c94268b8-c07a-4ff2-94d9-19355d3f1f3c}</Project>
+      <Project>{ab509e73-4e54-40e0-93fb-82984b0a9a55}</Project>
       <Name>Device.Net</Name>
     </ProjectReference>
     <ProjectReference Include="..\Hid.Net\Hid.Net.csproj">
-      <Project>{df67ba9d-3e4e-4414-86bb-57c81f80483b}</Project>
+      <Project>{86b4fbea-39f1-4053-86b4-2a1c40f870c7}</Project>
       <Name>Hid.Net</Name>
     </ProjectReference>
   </ItemGroup>
