@@ -188,7 +188,7 @@
             Close any existing connections and reinitialize the device. 
             </summary>
         </member>
-        <member name="M:Device.Net.IDevice.WriteAndReadAsync(System.Byte[],System.Threading.CancellationToken)">
+        <member name="M:Device.Net.IDevice.WriteAndReadAsync(System.Threading.CancellationToken)">
             <summary>
             Write a page of data and then wait for the device to return a page. If the implementation derives from DeviceBase, this method is thread safe.
             </summary>

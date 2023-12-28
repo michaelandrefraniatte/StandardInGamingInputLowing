@@ -181,7 +181,7 @@ namespace DualShocks4API
             {
                 if (!running)
                     break;
-                readBuffer = trezorDevice.WriteAndReadAsync(GetOutputDataBytes());
+                readBuffer = trezorDevice.WriteAndReadAsync();
                 readBuffer.Wait();
                 ds4data = (await readBuffer).Data.Skip(1).ToArray();
                 ProcessStateLogic();
@@ -227,12 +227,6 @@ namespace DualShocks4API
         public void BeginPolling()
         {
             Task.Run(() => taskD());
-        }
-        private byte[] GetOutputDataBytes()
-        {
-            byte[] bytes = new byte[32];
-            bytes[0] = 0x05;
-            return bytes;
         }
         private byte GetModeSwitch(byte[] ds4data, int indexIfUsb)
         {

@@ -25,3 +25,12 @@ C:\Users\micha\Documents\github\ControllerHandle\Src\DualsenseLib\Device.Net\obj
 C:\Users\micha\Documents\github\ControllerHandle\Src\DualsenseLib\Device.Net\obj\Release\net45\Device.Net.csproj.CoreCompileInputs.cache
 C:\Users\micha\Documents\github\ControllerHandle\Src\DualsenseLib\Device.Net\obj\Release\net45\Device.Net.sourcelink.json
 C:\Users\micha\Documents\github\ControllerHandle\Src\DualsenseLib\Device.Net\obj\Release\net45\Device.Net.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Device.Net\bin\Release\net45\Device.Net.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Device.Net\bin\Release\net45\Device.Net.xml
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Device.Net\obj\Release\net45\Device.Net.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Device.Net\obj\Release\net45\Device.Net.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Device.Net\obj\Release\net45\Device.Net.AssemblyInfoInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Device.Net\obj\Release\net45\Device.Net.AssemblyInfo.cs
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Device.Net\obj\Release\net45\Device.Net.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Device.Net\obj\Release\net45\Device.Net.sourcelink.json
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Device.Net\obj\Release\net45\Device.Net.dll

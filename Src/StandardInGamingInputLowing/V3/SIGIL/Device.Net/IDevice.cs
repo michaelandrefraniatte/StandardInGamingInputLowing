@@ -29,7 +29,7 @@ namespace Device.Net
         /// <summary>
         /// Write a page of data and then wait for the device to return a page. If the implementation derives from DeviceBase, this method is thread safe.
         /// </summary>
-        Task<TransferResult> WriteAndReadAsync(byte[] writeBuffer, CancellationToken cancellationToken = default);
+        Task<TransferResult> WriteAndReadAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Device unique OS level Id for the type of device. The device should have been constructed with this Id. It is used to initialize the device.

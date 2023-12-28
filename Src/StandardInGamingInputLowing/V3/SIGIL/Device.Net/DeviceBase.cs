@@ -47,30 +47,9 @@ namespace Device.Net
         #region Public Methods
         public virtual Task Flush(CancellationToken cancellationToken = default) => throw new NotImplementedException(Messages.ErrorMessageFlushNotImplemented);
 
-        public async Task<TransferResult> WriteAndReadAsync(byte[] writeBuffer, CancellationToken cancellationToken = default)
+        public async Task<TransferResult> WriteAndReadAsync(CancellationToken cancellationToken = default)
         {
-            if (writeBuffer == null) throw new ArgumentNullException(nameof(writeBuffer));
-
-            await _WriteAndReadLock.WaitAsync(cancellationToken).ConfigureAwait(false);
-
-            var logScope = Logger.BeginScope("DeviceId: {deviceId} Call: {call} Write Buffer Length: {writeBufferLength}", DeviceId, nameof(WriteAndReadAsync), writeBuffer.Length);
-
-            try
-            {
-                _ = await WriteAsync(writeBuffer, cancellationToken).ConfigureAwait(false);
-                var retVal = await ReadAsync(cancellationToken).ConfigureAwait(false);
-                Logger.LogInformation(Messages.SuccessMessageWriteAndReadCalled);
-                return retVal;
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError(ex, Messages.ErrorMessageReadWrite);
-                throw;
-            }
-            finally
-            {
-                _ = _WriteAndReadLock.Release();
-            }
+            return await ReadAsync(cancellationToken).ConfigureAwait(false);
         }
 
         public virtual void Dispose()

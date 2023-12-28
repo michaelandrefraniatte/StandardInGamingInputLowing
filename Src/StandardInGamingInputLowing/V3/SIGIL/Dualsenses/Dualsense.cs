@@ -193,7 +193,7 @@ namespace DualSensesAPI
             {
                 if (!running)
                     break;
-                readBuffer = trezorDevice.WriteAndReadAsync(GetOutputDataBytes());
+                readBuffer = trezorDevice.WriteAndReadAsync();
                 readBuffer.Wait();
                 dsdata = (await readBuffer).Data.Skip(1).ToArray();
                 ProcessStateLogic();
@@ -243,12 +243,6 @@ namespace DualSensesAPI
         public void BeginPolling()
         {
             Task.Run(() => taskD());
-        }
-        private byte[] GetOutputDataBytes()
-        {
-            byte[] bytes = new byte[48];
-            bytes[0] = 0x02;
-            return bytes;
         }
         private byte GetModeSwitch(byte[] dsdata, int indexIfUsb)
         {
