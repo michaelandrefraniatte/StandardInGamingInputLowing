@@ -53,7 +53,6 @@ namespace DualSensesAPI
         public Vector3 gyr_gPS5 = new Vector3();
         public Vector3 acc_gPS5 = new Vector3();
         public Vector3 InitDirectAnglesPS5, DirectAnglesPS5;
-        private Task<TransferResult> readBuffer;
         public bool running, formvisible;
         public Form1 form1 = new Form1();
         public DualSense()
@@ -193,9 +192,7 @@ namespace DualSensesAPI
             {
                 if (!running)
                     break;
-                readBuffer = trezorDevice.WriteAndReadAsync();
-                readBuffer.Wait();
-                dsdata = (await readBuffer).Data.Skip(1).ToArray();
+                dsdata = (await trezorDevice.WriteAndReadAsync()).Data.Skip(1).ToArray();
                 ProcessStateLogic();
                 if (formvisible)
                 {
