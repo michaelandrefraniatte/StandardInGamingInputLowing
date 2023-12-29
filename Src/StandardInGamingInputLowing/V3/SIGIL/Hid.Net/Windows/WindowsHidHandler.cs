@@ -164,21 +164,9 @@ namespace Hid.Net.Windows
 
         public async Task<Report> ReadReportAsync(CancellationToken cancellationToken = default)
         {
-            if (_readFileStream == null)
-            {
-                throw new NotInitializedException(Messages.ErrorMessageNotInitialized);
-            }
-
-            //Read the data
             var bytes = new byte[ReadBufferSize.Value];
-            var bytesRead = (uint)await _readFileStream.ReadAsync(bytes, 0, bytes.Length, cancellationToken).ConfigureAwait(false);
-
+            var bytesRead = (uint)_readFileStream.Read(bytes, 0, bytes.Length);
             var transferResult = new TransferResult(bytes, bytesRead);
-
-            //Log the data read
-            _logger.LogDataTransfer(new Trace(false, transferResult));
-
-            //Transform to a ReadReport
             return _readTransferTransform(transferResult);
         }
 

@@ -124,20 +124,7 @@ namespace Hid.Net
 
         public async Task<Report> ReadReportAsync(CancellationToken cancellationToken = default)
         {
-            try
-            {
-                return await _hidDeviceHandler.ReadReportAsync(cancellationToken).ConfigureAwait(false);
-            }
-            catch (OperationCanceledException oce)
-            {
-                Logger.LogError(oce, Messages.ErrorMessageOperationCanceled);
-                throw;
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError(ex, Messages.ErrorMessageRead);
-                throw new IOException(Messages.ErrorMessageRead, ex);
-            }
+            return await _hidDeviceHandler.ReadReportAsync(cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

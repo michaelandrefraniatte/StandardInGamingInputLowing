@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hid.Net")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+66303879625e8df90c46d97c2196b9e6b5078387")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae29bf23c68e9cacf89c345a0204608cef623e1e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hid.Net")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hid.Net")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
