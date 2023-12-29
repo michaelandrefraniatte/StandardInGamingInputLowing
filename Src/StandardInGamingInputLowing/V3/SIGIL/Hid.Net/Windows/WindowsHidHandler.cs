@@ -162,12 +162,16 @@ namespace Hid.Net.Windows
               }, cancellationToken);
         }
 
+        byte[] bytes;
         public async Task<Report> ReadReportAsync(CancellationToken cancellationToken = default)
         {
-            var bytes = new byte[ReadBufferSize.Value];
-            var bytesRead = (uint)_readFileStream.Read(bytes, 0, bytes.Length);
-            var transferResult = new TransferResult(bytes, bytesRead);
-            return _readTransferTransform(transferResult);
+            bytes = new byte[ReadBufferSize.Value];
+            try
+            {
+                _readFileStream.Read(bytes, 0, bytes.Length);
+            }
+            catch { }
+            return _readTransferTransform(bytes);
         }
 
         public async Task<uint> WriteReportAsync(byte[] data, byte reportId, CancellationToken cancellationToken = default)
