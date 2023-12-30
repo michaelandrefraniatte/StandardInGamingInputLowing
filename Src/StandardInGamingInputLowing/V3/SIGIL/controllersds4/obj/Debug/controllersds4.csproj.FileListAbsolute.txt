@@ -1,0 +1,6 @@
+C:\Users\micha\Documents\github\ControllerHandle\Src\VirtualDualshock4-test\V2\VirtualDualshock4-test\controllersds4\bin\Debug\controllersds4.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\VirtualDualshock4-test\V2\VirtualDualshock4-test\controllersds4\bin\Debug\controllersds4.pdb
+C:\Users\micha\Documents\github\ControllerHandle\Src\VirtualDualshock4-test\V2\VirtualDualshock4-test\controllersds4\obj\Debug\controllersds4.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\VirtualDualshock4-test\V2\VirtualDualshock4-test\controllersds4\obj\Debug\controllersds4.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\VirtualDualshock4-test\V2\VirtualDualshock4-test\controllersds4\obj\Debug\controllersds4.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\VirtualDualshock4-test\V2\VirtualDualshock4-test\controllersds4\obj\Debug\controllersds4.pdb

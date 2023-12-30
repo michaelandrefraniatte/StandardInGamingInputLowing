@@ -254,10 +254,6 @@
       <Project>{211d48a2-f49f-41ac-bfdb-5d92ac6043dc}</Project>
       <Name>Valuechanges</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ViGEmClient\ViGEmClient.NET.csproj">
-      <Project>{aa18ebcf-7e9d-4bc5-8760-e8c6e9a773e5}</Project>
-      <Name>ViGEmClient.NET</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Wiimotes\Wiimotes.csproj">
       <Project>{c1f5f4f6-9795-4f5f-a06a-148ee376b84f}</Project>
       <Name>Wiimotes</Name>

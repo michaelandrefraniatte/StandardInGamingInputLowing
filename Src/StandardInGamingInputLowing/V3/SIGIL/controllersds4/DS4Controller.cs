@@ -1,7 +1,4 @@
 ﻿using System.Runtime.InteropServices;
-using Nefarius.ViGEm.Client;
-using Nefarius.ViGEm.Client.Targets;
-using Nefarius.ViGEm.Client.Targets.DualShock4;
 
 namespace controllersds4
 {

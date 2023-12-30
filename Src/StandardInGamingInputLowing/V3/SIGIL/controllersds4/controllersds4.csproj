@@ -44,16 +44,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DS4Controller.cs" />
+    <Compile Include="DualShock4Controller.cs" />
+    <Compile Include="DualShock4Controller.Report.cs" />
+    <Compile Include="DualShock4Controller.ReportExt.cs" />
+    <Compile Include="DualShock4FeedbackReceivedEventArgs.cs" />
+    <Compile Include="DualShock4Properties.cs" />
+    <Compile Include="IDualShock4Controller.cs" />
+    <Compile Include="IViGEmTarget.cs" />
+    <Compile Include="IVirtualGamepad.cs" />
+    <Compile Include="LightbarColor.cs" />
+    <Compile Include="MathUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VigemAllocFailedException.cs" />
+    <Compile Include="VigemAlreadyConnectedException.cs" />
+    <Compile Include="VigemBusAccessFailedException.cs" />
+    <Compile Include="VigemBusInvalidHandleException.cs" />
+    <Compile Include="VigemBusNotFoundException.cs" />
+    <Compile Include="VigemBusVersionMismatchException.cs" />
+    <Compile Include="VigemCallbackAlreadyRegisteredException.cs" />
+    <Compile Include="VigemCallbackNotFoundException.cs" />
+    <Compile Include="ViGEmClient.cs" />
+    <Compile Include="ViGEmClient.Factory.cs" />
+    <Compile Include="ViGEmClient.Native.cs" />
+    <Compile Include="VigemInvalidParameterException.cs" />
+    <Compile Include="VigemInvalidTargetException.cs" />
+    <Compile Include="VigemIsDisposingException.cs" />
+    <Compile Include="VigemNoFreeSlotException.cs" />
+    <Compile Include="VigemNotSupportedException.cs" />
+    <Compile Include="VigemRemovalFailedException.cs" />
+    <Compile Include="ViGEmTarget.cs" />
+    <Compile Include="VigemTargetNotPluggedInException.cs" />
+    <Compile Include="VigemTargetUninitializedException.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ViGEmClient\ViGEmClient.NET.csproj">
-      <Project>{aa18ebcf-7e9d-4bc5-8760-e8c6e9a773e5}</Project>
-      <Name>ViGEmClient.NET</Name>
-    </ProjectReference>
+    <Folder Include="costura32\" />
+    <Folder Include="costura64\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
