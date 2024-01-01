@@ -194,10 +194,6 @@
       <Project>{8bde6140-ee1c-4fd9-85e8-7f0dfd14ce94}</Project>
       <Name>controllers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Device.Net\Device.Net.csproj">
-      <Project>{77b8c2b9-d22d-4dab-b4bb-d955996a8925}</Project>
-      <Name>Device.Net</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Directinputs\Directinputs.csproj">
       <Project>{6ba6817c-47bb-44de-a4ee-f23b04a29750}</Project>
       <Name>Directinputs</Name>
@@ -209,10 +205,6 @@
     <ProjectReference Include="..\Dualshocks4\Dualshocks4.csproj">
       <Project>{5f2354d3-7620-4ffd-a578-9ba982848234}</Project>
       <Name>Dualshocks4</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Hid.Net\Hid.Net.csproj">
-      <Project>{6e937055-13fb-4b43-9e55-843267041ed2}</Project>
-      <Name>Hid.Net</Name>
     </ProjectReference>
     <ProjectReference Include="..\Interceptions\Interceptions.csproj">
       <Project>{c8a72023-3693-4c30-a5ed-9502fe0c10af}</Project>

@@ -479,16 +479,10 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Mouseinputs.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Dualsenses.dll.config
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Dualshocks4.dll.config
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Device.Net.dll
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Hid.Net.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\System.Memory.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\System.Buffers.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Device.Net.pdb
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Device.Net.dll.config
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Hid.Net.pdb
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Hid.Net.dll.config
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\System.Memory.xml
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\SIGIL\bin\x86\Release\System.Buffers.xml

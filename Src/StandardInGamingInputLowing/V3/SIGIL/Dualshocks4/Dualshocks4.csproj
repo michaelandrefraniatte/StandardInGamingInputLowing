@@ -74,14 +74,68 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncExtensions.cs" />
+    <Compile Include="ConnectedDeviceDefinition.cs" />
+    <Compile Include="Delegates.cs" />
+    <Compile Include="DeviceBase.cs" />
+    <Compile Include="DeviceDataStreamer.cs" />
+    <Compile Include="DeviceEventArgs.cs" />
+    <Compile Include="DeviceExtensions.cs" />
+    <Compile Include="DeviceFactory.cs" />
+    <Compile Include="DeviceListener.cs" />
+    <Compile Include="DeviceManager.cs" />
+    <Compile Include="DeviceType.cs" />
     <Compile Include="Dualshock4.cs" />
+    <Compile Include="Exceptions\ApiException.cs" />
+    <Compile Include="Exceptions\AsyncException.cs" />
+    <Compile Include="Exceptions\DeviceException.cs" />
+    <Compile Include="Exceptions\NotInitializedException.cs" />
+    <Compile Include="Exceptions\ValidationException.cs" />
+    <Compile Include="FilterDeviceDefinition.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="HidDevice.cs" />
+    <Compile Include="HidExtensions.cs" />
+    <Compile Include="IDataReceiver.cs" />
+    <Compile Include="IDevice.cs" />
+    <Compile Include="IDeviceFactory.cs" />
+    <Compile Include="IDeviceListener.cs" />
+    <Compile Include="IHidDevice.cs" />
+    <Compile Include="IHidDeviceHandler.cs" />
+    <Compile Include="LoggingExtensions.cs" />
+    <Compile Include="Messages.cs" />
+    <Compile Include="Observable.cs" />
+    <Compile Include="Observer.cs" />
+    <Compile Include="Properties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadResult.cs" />
+    <Compile Include="Trace.cs" />
+    <Compile Include="TransferResult.cs" />
+    <Compile Include="UnsubscribeDisposable.cs" />
+    <Compile Include="Windows\APICalls.cs" />
+    <Compile Include="Windows\ApiService.cs" />
+    <Compile Include="Windows\AqsHelpers.cs" />
+    <Compile Include="Windows\CommTimeouts.cs" />
+    <Compile Include="Windows\Dcb.cs" />
+    <Compile Include="Windows\FileAccessRights.cs" />
+    <Compile Include="Windows\HidAttributes.cs" />
+    <Compile Include="Windows\HidCollectionCapabilities.cs" />
+    <Compile Include="Windows\IApiService.cs" />
+    <Compile Include="Windows\IHidApiService.cs" />
+    <Compile Include="Windows\SpDeviceInfoData.cs" />
+    <Compile Include="Windows\SpDeviceInterfaceData.cs" />
+    <Compile Include="Windows\SpDeviceInterfaceDetailData.cs" />
+    <Compile Include="Windows\WindowsDeviceConstants.cs" />
+    <Compile Include="Windows\WindowsDeviceEnumerator.cs" />
+    <Compile Include="Windows\WindowsHelpers.cs" />
+    <Compile Include="Windows\WindowsHidApiService.cs" />
+    <Compile Include="Windows\WindowsHidDeviceFactoryExtensions.cs" />
+    <Compile Include="Windows\WindowsHidHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -91,16 +145,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Device.Net\Device.Net.csproj">
-      <Project>{77b8c2b9-d22d-4dab-b4bb-d955996a8925}</Project>
-      <Name>Device.Net</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Hid.Net\Hid.Net.csproj">
-      <Project>{6e937055-13fb-4b43-9e55-843267041ed2}</Project>
-      <Name>Hid.Net</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

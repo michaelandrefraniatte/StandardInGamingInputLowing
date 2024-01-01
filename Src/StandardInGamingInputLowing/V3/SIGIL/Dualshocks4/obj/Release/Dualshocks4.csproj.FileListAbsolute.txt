@@ -15,8 +15,6 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\Dualshocks4\obj\Release\Dualshocks4.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\Dualshocks4.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\Dualshocks4.pdb
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\Device.Net.dll
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\Hid.Net.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\System.Numerics.Vectors.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\System.Reactive.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\System.Reactive.Linq.dll
@@ -35,10 +33,6 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\System.Buffers.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\System.Memory.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\Device.Net.pdb
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\Device.Net.dll.config
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\Hid.Net.pdb
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\Hid.Net.dll.config
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\Dualshocks4\bin\Release\Microsoft.Extensions.Logging.Abstractions.xml

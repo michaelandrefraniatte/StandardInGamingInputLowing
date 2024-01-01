@@ -41,10 +41,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mouseinputs", "Mouseinputs\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "controllersds4", "controllersds4\controllersds4.csproj", "{1C365D1F-B40B-416A-BF40-3782EC480E8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Device.Net", "Device.Net\Device.Net.csproj", "{77B8C2B9-D22D-4DAB-B4BB-D955996A8925}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hid.Net", "Hid.Net\Hid.Net.csproj", "{6E937055-13FB-4B43-9E55-843267041ED2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -205,22 +201,6 @@ Global
 		{1C365D1F-B40B-416A-BF40-3782EC480E8F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1C365D1F-B40B-416A-BF40-3782EC480E8F}.Release|x86.ActiveCfg = Release|Any CPU
 		{1C365D1F-B40B-416A-BF40-3782EC480E8F}.Release|x86.Build.0 = Release|Any CPU
-		{77B8C2B9-D22D-4DAB-B4BB-D955996A8925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77B8C2B9-D22D-4DAB-B4BB-D955996A8925}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77B8C2B9-D22D-4DAB-B4BB-D955996A8925}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{77B8C2B9-D22D-4DAB-B4BB-D955996A8925}.Debug|x86.Build.0 = Debug|Any CPU
-		{77B8C2B9-D22D-4DAB-B4BB-D955996A8925}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77B8C2B9-D22D-4DAB-B4BB-D955996A8925}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77B8C2B9-D22D-4DAB-B4BB-D955996A8925}.Release|x86.ActiveCfg = Release|Any CPU
-		{77B8C2B9-D22D-4DAB-B4BB-D955996A8925}.Release|x86.Build.0 = Release|Any CPU
-		{6E937055-13FB-4B43-9E55-843267041ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E937055-13FB-4B43-9E55-843267041ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E937055-13FB-4B43-9E55-843267041ED2}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6E937055-13FB-4B43-9E55-843267041ED2}.Debug|x86.Build.0 = Debug|Any CPU
-		{6E937055-13FB-4B43-9E55-843267041ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E937055-13FB-4B43-9E55-843267041ED2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E937055-13FB-4B43-9E55-843267041ED2}.Release|x86.ActiveCfg = Release|Any CPU
-		{6E937055-13FB-4B43-9E55-843267041ED2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
