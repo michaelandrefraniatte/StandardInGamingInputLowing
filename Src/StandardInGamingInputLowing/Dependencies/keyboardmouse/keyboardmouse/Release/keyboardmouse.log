@@ -1,0 +1,9 @@
+﻿  pch.cpp
+  dllmain.cpp
+  Source.cpp
+     Création de la bibliothèque C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\Dependencies\keyboardmouse\Release\keyboardmouse.lib et de l'objet C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\Dependencies\keyboardmouse\Release\keyboardmouse.exp
+  Génération de code en cours
+  Previous IPDB not found, fall back to full compilation.
+  All 29 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Fin de la génération du code
+  keyboardmouse.vcxproj -> C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\Dependencies\keyboardmouse\Release\keyboardmouse.dll

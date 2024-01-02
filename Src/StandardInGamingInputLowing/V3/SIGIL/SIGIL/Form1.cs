@@ -275,12 +275,9 @@ namespace SIGIL
                 range.SetStyle(StyleObject, new Regex(@"\bki1\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bmi2\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bki2\b"));
-                range.SetStyle(StyleLibrary, new Regex(@"\bkeyboards\b"));
-                range.SetStyle(StyleClass, new Regex(@"\bSendKeyboard\b"));
-                range.SetStyle(StyleObject, new Regex(@"\bSK\b"));
-                range.SetStyle(StyleLibrary, new Regex(@"\bmouses\b"));
-                range.SetStyle(StyleClass, new Regex(@"\bSendMouse\b"));
-                range.SetStyle(StyleObject, new Regex(@"\bSM\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bkeyboardsmouses\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bSendKeyboardMouse\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bSKM\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bgetstate\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bmin\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bmax\b"));
@@ -1663,12 +1660,9 @@ namespace SIGIL
                 "ki1",
                 "mi2",
                 "ki2",
-                "keyboards",
-                "SendKeyboard",
-                "SK",
-                "mouses",
-                "SendMouse",
-                "SM",
+                "keyboardsmouses",
+                "SendKeyboardMouse",
+                "SKM",
                 "getstate",
                 "min",
                 "max",
@@ -3224,8 +3218,7 @@ namespace SIGIL
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllers.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllersds4.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllersvjoy.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\keyboards.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\mouses.dll");
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\keyboardsmouses.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Interceptions.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Valuechanges.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Keyboardinputs.dll");
