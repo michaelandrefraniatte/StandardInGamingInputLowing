@@ -42,15 +42,15 @@ namespace mouses
         {
             this.drivertype = KeyboardMouseDriverType;
             if (MouseMoveX != 0f | MouseMoveY != 0f)
-                mousebrink((int)(MouseMoveX), (int)(MouseMoveY));
+                mousebrink((int)MouseMoveX, (int)MouseMoveY);
             if (MouseAbsX != 0f | MouseAbsY != 0f)
-                mousemw3((int)(MouseAbsX), (int)(MouseAbsY));
+                mousemw3((int)MouseAbsX, (int)MouseAbsY);
             if (MouseDesktopX != 0f | MouseDesktopY != 0f)
             {
-                System.Windows.Forms.Cursor.Position = new System.Drawing.Point((int)(MouseDesktopX), (int)(MouseDesktopY));
-                SetPhysicalCursorPos((int)(MouseDesktopX), (int)(MouseDesktopY));
-                SetCaretPos((int)(MouseDesktopX), (int)(MouseDesktopY));
-                SetCursorPos((int)(MouseDesktopX), (int)(MouseDesktopY));
+                System.Windows.Forms.Cursor.Position = new System.Drawing.Point((int)MouseDesktopX, (int)MouseDesktopY);
+                SetPhysicalCursorPos((int)MouseDesktopX, (int)MouseDesktopY);
+                SetCaretPos((int)MouseDesktopX, (int)MouseDesktopY);
+                SetCursorPos((int)MouseDesktopX, (int)MouseDesktopY);
             }
         }
         public void mousebrink(int x, int y)

@@ -67,14 +67,16 @@ namespace Interceptions
                 this.mouse_1_id = mouse_id;
             else if (this.mouse_2_id == 0 & this.mouse_1_id != mouse_id)
                 this.mouse_2_id = mouse_id;
-            MoveMouseBy(input, (int)deltaX, (int)deltaY, mouse_id);
-            MoveMouseTo(input, (int)x, (int)y, mouse_id);
+            if (deltaX != 0f | deltaY != 0f)
+                MoveMouseBy(input, (int)deltaX, (int)deltaY, mouse_id);
+            if (x != 0f | y != 0f)
+                MoveMouseTo(input, (int)x, (int)y, mouse_id);
             if (MouseDesktopX != 0f | MouseDesktopY != 0f)
             {
-                System.Windows.Forms.Cursor.Position = new System.Drawing.Point((int)(MouseDesktopX), (int)(MouseDesktopY));
-                SetPhysicalCursorPos((int)(MouseDesktopX), (int)(MouseDesktopY));
-                SetCaretPos((int)(MouseDesktopX), (int)(MouseDesktopY));
-                SetCursorPos((int)(MouseDesktopX), (int)(MouseDesktopY));
+                System.Windows.Forms.Cursor.Position = new System.Drawing.Point((int)MouseDesktopX, (int)MouseDesktopY);
+                SetPhysicalCursorPos((int)MouseDesktopX, (int)MouseDesktopY);
+                SetCaretPos((int)MouseDesktopX, (int)MouseDesktopY);
+                SetCursorPos((int)MouseDesktopX, (int)MouseDesktopY);
             }
             ValueChange[1] = SendLeftClick ? 1 : 0;
             if (ValueChange._ValueChange[1] > 0f)
