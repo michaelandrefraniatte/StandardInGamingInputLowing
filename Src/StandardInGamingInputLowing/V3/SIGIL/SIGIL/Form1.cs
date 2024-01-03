@@ -45,7 +45,7 @@ namespace SIGIL
         private static ContextMenu contextMenu = new ContextMenu();
         private static MenuItem menuItem;
         public static bool justSaved = true, onopenwith = false, replaceformvisible = false;
-        private static string filename = "", stringscript = "", fastColoredTextBoxSaved = "";
+        private static string filename = "", fastColoredTextBoxSaved = "", code = "";
         public static ReplaceForm replaceform;
         public static bool runstopbool = false;
         private static Range range;
@@ -56,7 +56,6 @@ namespace SIGIL
         private System.CodeDom.Compiler.CompilerResults results;
         private Microsoft.CSharp.CSharpCodeProvider provider;
         private System.CodeDom.Compiler.CompilerParameters parameters;
-        private string code;
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == MessageHelper.WM_COPYDATA)
@@ -3144,8 +3143,8 @@ namespace SIGIL
             {
                 if (runstopbool)
                     StopProcess();
-                stringscript = fastColoredTextBox1.Text;
-                File.WriteAllText(filename, stringscript);
+                code = fastColoredTextBox1.Text;
+                File.WriteAllText(filename, code);
                 fastColoredTextBoxSaved = fastColoredTextBox1.Text;
                 justSaved = true;
             }
@@ -3160,8 +3159,8 @@ namespace SIGIL
                 sf.FileName = Path.GetFileName(filename);
             if (sf.ShowDialog() == DialogResult.OK)
             {
-                stringscript = fastColoredTextBox1.Text;
-                File.WriteAllText(sf.FileName, stringscript);
+                code = fastColoredTextBox1.Text;
+                File.WriteAllText(sf.FileName, code);
                 this.Text = "SIGIL: " + Path.GetFileName(sf.FileName);
                 filename = sf.FileName;
                 fastColoredTextBoxSaved = fastColoredTextBox1.Text;
@@ -3199,7 +3198,7 @@ namespace SIGIL
         }
         private void FillCode()
         {
-            code = @"funct_driver".Replace("\"", "\"\"");
+            code = fastColoredTextBox1.Text;
             parameters = new System.CodeDom.Compiler.CompilerParameters();
             parameters.GenerateExecutable = false;
             parameters.GenerateInMemory = true;
@@ -3215,31 +3214,46 @@ namespace SIGIL
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Numerics.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Core.dll");
             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\netstandard.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllers.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllersds4.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllersvjoy.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\keyboardsmouses.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Interceptions.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Valuechanges.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Keyboardinputs.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Mouseinputs.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Dualsenses.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Dualshocks4.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Directinputs.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconcharginggrips.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconsleft.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconsright.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Switchprocontrollers.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Wiimotes.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Xinputs.dll");
+            if (code.Contains("using controllers;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllers.dll");
+            if (code.Contains("using controllersds4;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllersds4.dll");
+            if (code.Contains("using controllersvjoy;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllersvjoy.dll");
+            if (code.Contains("using keyboardsmouses;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\keyboardsmouses.dll");
+            if (code.Contains("using Interceptions;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Interceptions.dll");
+            if (code.Contains("using Valuechanges;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Valuechanges.dll");
+            if (code.Contains("using KeyboardInputsAPI;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Keyboardinputs.dll");
+            if (code.Contains("using MouseInputsAPI;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Mouseinputs.dll");
+            if (code.Contains("using DualSensesAPI;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Dualsenses.dll");
+            if (code.Contains("using DualShocks4API;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Dualshocks4.dll");
+            if (code.Contains("using DirectInputsAPI;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Directinputs.dll");
+            if (code.Contains("using JoyconChargingGripsAPI;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconcharginggrips.dll");
+            if (code.Contains("using JoyconsLeftAPI;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconsleft.dll");
+            if (code.Contains("using JoyconsRightAPI;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconsright.dll");
+            if (code.Contains("using SwitchProControllersAPI;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Switchprocontrollers.dll");
+            if (code.Contains("using WiiMotesAPI;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Wiimotes.dll");
+            if (code.Contains("using XInputsAPI;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Xinputs.dll");
         }
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FillCode();
-            stringscript = fastColoredTextBox1.Text;
-            string finalcode = code.Replace("funct_driver", stringscript);
             provider = new Microsoft.CSharp.CSharpCodeProvider();
-            results = provider.CompileAssemblyFromSource(parameters, finalcode);
+            results = provider.CompileAssemblyFromSource(parameters, code);
             if (results.Errors.HasErrors)
             {
                 StringBuilder sb = new StringBuilder();
@@ -3257,10 +3271,8 @@ namespace SIGIL
         private void StartProcess()
         {
             FillCode();
-            stringscript = fastColoredTextBox1.Text;
-            string finalcode = code.Replace("funct_driver", stringscript);
             provider = new Microsoft.CSharp.CSharpCodeProvider();
-            results = provider.CompileAssemblyFromSource(parameters, finalcode);
+            results = provider.CompileAssemblyFromSource(parameters, code);
             if (results.Errors.HasErrors)
             {
                 StringBuilder sb = new StringBuilder();
