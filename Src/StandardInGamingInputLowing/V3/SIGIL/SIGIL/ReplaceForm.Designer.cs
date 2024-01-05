@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReplaceForm));
             this.btClose = new System.Windows.Forms.Button();
             this.btFindNext = new System.Windows.Forms.Button();
             this.tbFind = new System.Windows.Forms.TextBox();
@@ -43,8 +44,8 @@
             // 
             // btClose
             // 
-            this.btClose.Location = new System.Drawing.Point(364, 188);
-            this.btClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btClose.Location = new System.Drawing.Point(364, 195);
+            this.btClose.Margin = new System.Windows.Forms.Padding(4);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(100, 28);
             this.btClose.TabIndex = 8;
@@ -54,8 +55,8 @@
             // 
             // btFindNext
             // 
-            this.btFindNext.Location = new System.Drawing.Point(148, 153);
-            this.btFindNext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btFindNext.Location = new System.Drawing.Point(148, 160);
+            this.btFindNext.Margin = new System.Windows.Forms.Padding(4);
             this.btFindNext.Name = "btFindNext";
             this.btFindNext.Size = new System.Drawing.Size(100, 28);
             this.btFindNext.TabIndex = 5;
@@ -65,8 +66,8 @@
             // 
             // tbFind
             // 
-            this.tbFind.Location = new System.Drawing.Point(83, 15);
-            this.tbFind.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbFind.Location = new System.Drawing.Point(83, 22);
+            this.tbFind.Margin = new System.Windows.Forms.Padding(4);
             this.tbFind.Name = "tbFind";
             this.tbFind.Size = new System.Drawing.Size(380, 22);
             this.tbFind.TabIndex = 0;
@@ -76,8 +77,8 @@
             // cbRegex
             // 
             this.cbRegex.AutoSize = true;
-            this.cbRegex.Location = new System.Drawing.Point(364, 47);
-            this.cbRegex.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbRegex.Location = new System.Drawing.Point(364, 54);
+            this.cbRegex.Margin = new System.Windows.Forms.Padding(4);
             this.cbRegex.Name = "cbRegex";
             this.cbRegex.Size = new System.Drawing.Size(69, 20);
             this.cbRegex.TabIndex = 3;
@@ -88,8 +89,8 @@
             // cbMatchCase
             // 
             this.cbMatchCase.AutoSize = true;
-            this.cbMatchCase.Location = new System.Drawing.Point(88, 47);
-            this.cbMatchCase.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbMatchCase.Location = new System.Drawing.Point(88, 54);
+            this.cbMatchCase.Margin = new System.Windows.Forms.Padding(4);
             this.cbMatchCase.Name = "cbMatchCase";
             this.cbMatchCase.Size = new System.Drawing.Size(98, 20);
             this.cbMatchCase.TabIndex = 1;
@@ -100,7 +101,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 17);
+            this.label1.Location = new System.Drawing.Point(31, 24);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 16);
@@ -110,8 +111,8 @@
             // cbWholeWord
             // 
             this.cbWholeWord.AutoSize = true;
-            this.cbWholeWord.Location = new System.Drawing.Point(205, 47);
-            this.cbWholeWord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbWholeWord.Location = new System.Drawing.Point(205, 54);
+            this.cbWholeWord.Margin = new System.Windows.Forms.Padding(4);
             this.cbWholeWord.Name = "cbWholeWord";
             this.cbWholeWord.Size = new System.Drawing.Size(135, 20);
             this.cbWholeWord.TabIndex = 2;
@@ -121,8 +122,8 @@
             // 
             // btReplace
             // 
-            this.btReplace.Location = new System.Drawing.Point(256, 153);
-            this.btReplace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btReplace.Location = new System.Drawing.Point(256, 160);
+            this.btReplace.Margin = new System.Windows.Forms.Padding(4);
             this.btReplace.Name = "btReplace";
             this.btReplace.Size = new System.Drawing.Size(100, 28);
             this.btReplace.TabIndex = 6;
@@ -132,8 +133,8 @@
             // 
             // btReplaceAll
             // 
-            this.btReplaceAll.Location = new System.Drawing.Point(364, 153);
-            this.btReplaceAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btReplaceAll.Location = new System.Drawing.Point(364, 160);
+            this.btReplaceAll.Margin = new System.Windows.Forms.Padding(4);
             this.btReplaceAll.Name = "btReplaceAll";
             this.btReplaceAll.Size = new System.Drawing.Size(100, 28);
             this.btReplaceAll.TabIndex = 7;
@@ -144,7 +145,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 100);
+            this.label2.Location = new System.Drawing.Point(8, 107);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 16);
@@ -153,8 +154,8 @@
             // 
             // tbReplace
             // 
-            this.tbReplace.Location = new System.Drawing.Point(83, 96);
-            this.tbReplace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbReplace.Location = new System.Drawing.Point(83, 103);
+            this.tbReplace.Margin = new System.Windows.Forms.Padding(4);
             this.tbReplace.Name = "tbReplace";
             this.tbReplace.Size = new System.Drawing.Size(380, 22);
             this.tbReplace.TabIndex = 0;
@@ -177,11 +178,9 @@
             this.Controls.Add(this.cbRegex);
             this.Controls.Add(this.btFindNext);
             this.Controls.Add(this.btClose);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ReplaceForm";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Find and replace";
             this.TopMost = true;
