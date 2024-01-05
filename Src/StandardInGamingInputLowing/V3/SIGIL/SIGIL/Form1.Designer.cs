@@ -89,6 +89,7 @@
             this.fastColoredTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.CSharp;
             this.fastColoredTextBox1.LeftBracket = '(';
@@ -183,7 +184,7 @@
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
@@ -191,7 +192,7 @@
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -199,20 +200,20 @@
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(195, 6);
             // 
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.undoToolStripMenuItem.Text = "Undo";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
@@ -220,20 +221,20 @@
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
             this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.redoToolStripMenuItem.Text = "Redo";
             this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(195, 6);
             // 
             // replaceToolStripMenuItem
             // 
             this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
             this.replaceToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.replaceToolStripMenuItem.Text = "Replace";
             this.replaceToolStripMenuItem.Click += new System.EventHandler(this.replaceToolStripMenuItem_Click);
             // 
@@ -252,18 +253,14 @@
             // 
             // runProcessAtLaunchToolStripMenuItem
             // 
-            this.runProcessAtLaunchToolStripMenuItem.Checked = true;
             this.runProcessAtLaunchToolStripMenuItem.CheckOnClick = true;
-            this.runProcessAtLaunchToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.runProcessAtLaunchToolStripMenuItem.Name = "runProcessAtLaunchToolStripMenuItem";
             this.runProcessAtLaunchToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.runProcessAtLaunchToolStripMenuItem.Text = "Run process at launch";
             // 
             // startProgramAtBootToolStripMenuItem
             // 
-            this.startProgramAtBootToolStripMenuItem.Checked = true;
             this.startProgramAtBootToolStripMenuItem.CheckOnClick = true;
-            this.startProgramAtBootToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.startProgramAtBootToolStripMenuItem.Name = "startProgramAtBootToolStripMenuItem";
             this.startProgramAtBootToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.startProgramAtBootToolStripMenuItem.Text = "Start program at boot";
@@ -271,18 +268,14 @@
             // 
             // minimizeToSystrayAtCloseToolStripMenuItem
             // 
-            this.minimizeToSystrayAtCloseToolStripMenuItem.Checked = true;
             this.minimizeToSystrayAtCloseToolStripMenuItem.CheckOnClick = true;
-            this.minimizeToSystrayAtCloseToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.minimizeToSystrayAtCloseToolStripMenuItem.Name = "minimizeToSystrayAtCloseToolStripMenuItem";
             this.minimizeToSystrayAtCloseToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.minimizeToSystrayAtCloseToolStripMenuItem.Text = "Minimize to systray at close";
             // 
             // minimizeToSystrayAtBootToolStripMenuItem
             // 
-            this.minimizeToSystrayAtBootToolStripMenuItem.Checked = true;
             this.minimizeToSystrayAtBootToolStripMenuItem.CheckOnClick = true;
-            this.minimizeToSystrayAtBootToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.minimizeToSystrayAtBootToolStripMenuItem.Name = "minimizeToSystrayAtBootToolStripMenuItem";
             this.minimizeToSystrayAtBootToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.minimizeToSystrayAtBootToolStripMenuItem.Text = "Minimize to systray at boot";
@@ -314,7 +307,7 @@
             // 
             this.runToolStripMenuItem.Name = "runToolStripMenuItem";
             this.runToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.runToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.runToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.runToolStripMenuItem.Text = "Run";
             this.runToolStripMenuItem.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
             // 
@@ -322,7 +315,7 @@
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
             this.testToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.K)));
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.testToolStripMenuItem.Text = "Test";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
