@@ -52,7 +52,6 @@
             this.minimizeToSystrayAtCloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToSystrayAtBootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.associateFileExtensionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeFileAssociationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -245,8 +244,7 @@
             this.startProgramAtBootToolStripMenuItem,
             this.minimizeToSystrayAtCloseToolStripMenuItem,
             this.minimizeToSystrayAtBootToolStripMenuItem,
-            this.associateFileExtensionToolStripMenuItem,
-            this.removeFileAssociationToolStripMenuItem});
+            this.associateFileExtensionToolStripMenuItem});
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             this.optionToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
             this.optionToolStripMenuItem.Text = "Option";
@@ -282,17 +280,11 @@
             // 
             // associateFileExtensionToolStripMenuItem
             // 
+            this.associateFileExtensionToolStripMenuItem.CheckOnClick = true;
             this.associateFileExtensionToolStripMenuItem.Name = "associateFileExtensionToolStripMenuItem";
             this.associateFileExtensionToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.associateFileExtensionToolStripMenuItem.Text = "Associate file extension";
-            this.associateFileExtensionToolStripMenuItem.Click += new System.EventHandler(this.associateFileExtensionToolStripMenuItem_Click);
-            // 
-            // removeFileAssociationToolStripMenuItem
-            // 
-            this.removeFileAssociationToolStripMenuItem.Name = "removeFileAssociationToolStripMenuItem";
-            this.removeFileAssociationToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
-            this.removeFileAssociationToolStripMenuItem.Text = "Remove file association";
-            this.removeFileAssociationToolStripMenuItem.Click += new System.EventHandler(this.removeFileAssociationToolStripMenuItem_Click);
+            this.associateFileExtensionToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.associateFileExtensionToolStripMenuItem_CheckStateChanged);
             // 
             // processToolStripMenuItem
             // 
@@ -307,7 +299,7 @@
             // 
             this.runToolStripMenuItem.Name = "runToolStripMenuItem";
             this.runToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.runToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.runToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.runToolStripMenuItem.Text = "Run";
             this.runToolStripMenuItem.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
             // 
@@ -315,7 +307,7 @@
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
             this.testToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.K)));
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.testToolStripMenuItem.Text = "Test";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
@@ -411,7 +403,6 @@
         private System.Windows.Forms.ToolStripMenuItem minimizeToSystrayAtCloseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem minimizeToSystrayAtBootToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem associateFileExtensionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeFileAssociationToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem replaceToolStripMenuItem;
     }

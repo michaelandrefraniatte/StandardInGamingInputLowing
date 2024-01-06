@@ -100,14 +100,6 @@ namespace SIGIL
                 createdfile.WriteLine(this.Text);
             }
         }
-        private void associateFileExtensionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FileAssociationHelper.AssociateFileExtension(".sig", "ScriptSIGILFile", "Script SIGIL File", Application.ExecutablePath);
-        }
-        private void removeFileAssociationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FileAssociationHelper.RemoveFileAssociation(".sig", "ScriptSIGILFile");
-        }
         private void ChangeScriptColors(object sender)
         {
             try
@@ -3005,6 +2997,7 @@ namespace SIGIL
                         startProgramAtBootToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         minimizeToSystrayAtCloseToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         minimizeToSystrayAtBootToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
+                        associateFileExtensionToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                     }
                     if (filename != "" & File.Exists(filename))
                     {
@@ -3057,6 +3050,7 @@ namespace SIGIL
                 createdfile.WriteLine(startProgramAtBootToolStripMenuItem.Checked);
                 createdfile.WriteLine(minimizeToSystrayAtCloseToolStripMenuItem.Checked);
                 createdfile.WriteLine(minimizeToSystrayAtBootToolStripMenuItem.Checked);
+                createdfile.WriteLine(associateFileExtensionToolStripMenuItem.Checked);
             }
         }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3439,6 +3433,13 @@ namespace SIGIL
                 else
                     rk.DeleteValue("Startupdelayinmsec", false);
             }
+        }
+        private void associateFileExtensionToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (associateFileExtensionToolStripMenuItem.Checked)
+                FileAssociationHelper.AssociateFileExtension(".sig", "ScriptSIGILFile", "Script SIGIL File", Application.ExecutablePath);
+            else
+                FileAssociationHelper.RemoveFileAssociation(".sig", "ScriptSIGILFile");
         }
     }
 }
