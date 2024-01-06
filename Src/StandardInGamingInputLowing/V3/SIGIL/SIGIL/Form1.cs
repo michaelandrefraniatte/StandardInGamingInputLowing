@@ -94,11 +94,6 @@ namespace SIGIL
                 fastColoredTextBoxSaved = fastColoredTextBox1.Text;
                 justSaved = true;
             }
-            using (System.IO.StreamWriter createdfile = new System.IO.StreamWriter(Application.StartupPath + @"\temphandle"))
-            {
-                createdfile.WriteLine(Process.GetCurrentProcess().MainWindowHandle);
-                createdfile.WriteLine(this.Text);
-            }
         }
         private void ChangeScriptColors(object sender)
         {
@@ -2972,6 +2967,7 @@ namespace SIGIL
         private void MaxmizedFromTray()
         {
             if (File.Exists(Application.StartupPath + @"\temphandle"))
+            {
                 using (System.IO.StreamReader file = new System.IO.StreamReader(Application.StartupPath + @"\temphandle"))
                 {
                     IntPtr handle = new IntPtr(int.Parse(file.ReadLine()));
@@ -2979,6 +2975,7 @@ namespace SIGIL
                     SetForegroundWindow(handle);
                     Microsoft.VisualBasic.Interaction.AppActivate(file.ReadLine());
                 }
+            }
         }
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
@@ -3077,11 +3074,6 @@ namespace SIGIL
                 fastColoredTextBoxSaved = fastColoredTextBox1.Text;
                 justSaved = true;
             }
-            using (System.IO.StreamWriter createdfile = new System.IO.StreamWriter(Application.StartupPath + @"\temphandle"))
-            {
-                createdfile.WriteLine(Process.GetCurrentProcess().MainWindowHandle);
-                createdfile.WriteLine(this.Text);
-            }
         }
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -3121,11 +3113,6 @@ namespace SIGIL
                     justSaved = true;
                 }
             }
-            using (System.IO.StreamWriter createdfile = new System.IO.StreamWriter(Application.StartupPath + @"\temphandle"))
-            {
-                createdfile.WriteLine(Process.GetCurrentProcess().MainWindowHandle);
-                createdfile.WriteLine(this.Text);
-            }
         }
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -3159,11 +3146,6 @@ namespace SIGIL
                 filename = sf.FileName;
                 fastColoredTextBoxSaved = fastColoredTextBox1.Text;
                 justSaved = true;
-            }
-            using (System.IO.StreamWriter createdfile = new System.IO.StreamWriter(Application.StartupPath + @"\temphandle"))
-            {
-                createdfile.WriteLine(Process.GetCurrentProcess().MainWindowHandle);
-                createdfile.WriteLine(this.Text);
             }
         }
         private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
