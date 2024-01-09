@@ -152,6 +152,7 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"\bGlobalization\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bIO\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bNumerics\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bDrawing\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bRuntime\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bInteropServices\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bThreading\b"));
@@ -163,6 +164,8 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"\bCollections\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bGeneric\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bLinq\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bVectors\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bCore\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bvalListX\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bvalListY\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bCount\b"));
@@ -1537,6 +1540,7 @@ namespace SIGIL
                 "Globalization",
                 "IO",
                 "Numerics",
+                "Drawing",
                 "Runtime",
                 "InteropServices",
                 "Threading",
@@ -1548,6 +1552,8 @@ namespace SIGIL
                 "Collections",
                 "Generic",
                 "Linq",
+                "Vectors",
+                "Core",
                 "valListX",
                 "valListY",
                 "Count",
@@ -3180,16 +3186,26 @@ namespace SIGIL
             parameters.GenerateInMemory = true;
             parameters.IncludeDebugInformation = false;
             parameters.CompilerOptions = "/optimize";
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Windows.Forms.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Drawing.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Runtime.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Collections.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Linq.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Numerics.Vectors.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Numerics.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Core.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\netstandard.dll");
+            if (code.Contains("using System;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.dll");
+            if (code.Contains("using System.Windows.Forms;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Windows.Forms.dll");
+            if (code.Contains("using System.Drawing;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Drawing.dll");
+            if (code.Contains("using System.Runtime;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Runtime.dll");
+            if (code.Contains("using System.Collections;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Collections.dll");
+            if (code.Contains("using System.Linq;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Linq.dll");
+            if (code.Contains("using System.Numerics.Vectors;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Numerics.Vectors.dll");
+            if (code.Contains("using System.Numerics;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Numerics.dll");
+            if (code.Contains("using System.Core;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Core.dll");
+            if (code.Contains("using netstandard;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\netstandard.dll");
             if (code.Contains("using controllers;"))
                 parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllers.dll");
             if (code.Contains("using controllersds4;"))
