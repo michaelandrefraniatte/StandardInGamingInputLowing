@@ -170,7 +170,7 @@ namespace Hid.Net.Windows
             {
                 _readFileStream.Read(bytes, 0, bytes.Length);
             }
-            catch { }
+            catch { Thread.Sleep(1); }
             return _readTransferTransform(bytes);
         }
 
