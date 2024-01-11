@@ -107,7 +107,7 @@ namespace WiiMotesAPI
                     mStream.Read(aBuffer, 0, 22);
                     reconnectingwiimotebool = false;
                 }
-                catch { Thread.Sleep(1); }
+                catch { Thread.Sleep(10); }
                 if (formvisible)
                 {
                     string str = "irx : " + irx + Environment.NewLine;

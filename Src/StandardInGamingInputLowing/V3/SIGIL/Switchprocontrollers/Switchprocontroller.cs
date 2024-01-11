@@ -97,7 +97,7 @@ namespace SwitchProControllersAPI
                 {
                     Prohid_read_timeout(handlePro, report_bufPro, (UIntPtr)report_lenPro);
                 }
-                catch { Thread.Sleep(1); }
+                catch { Thread.Sleep(10); }
                 ProcessButtonsAndSticksPro();
                 if (formvisible)
                 {

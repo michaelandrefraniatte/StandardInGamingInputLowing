@@ -121,7 +121,7 @@ namespace JoyconChargingGripsAPI
                 {
                     Lhid_read_timeout(handleLeft, report_bufLeft, (UIntPtr)report_lenLeft);
                 }
-                catch { Thread.Sleep(1); }
+                catch { Thread.Sleep(10); }
                 ProcessButtonsLeftJoycon();
                 if (formvisible)
                 {
@@ -159,7 +159,7 @@ namespace JoyconChargingGripsAPI
                 {
                     Rhid_read_timeout(handleRight, report_bufRight, (UIntPtr)report_lenRight);
                 }
-                catch { Thread.Sleep(1); }
+                catch { Thread.Sleep(10); }
                 ProcessButtonsRightJoycon();
                 if (formvisible)
                 {

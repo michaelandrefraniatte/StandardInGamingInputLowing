@@ -101,7 +101,7 @@ namespace JoyconsRightAPI
                 {
                     Rhid_read_timeout(handleRight, report_bufRight, (UIntPtr)report_lenRight);
                 }
-                catch { Thread.Sleep(1); }
+                catch { Thread.Sleep(10); }
                 ProcessButtonsRightJoycon();
                 if (formvisible)
                 {

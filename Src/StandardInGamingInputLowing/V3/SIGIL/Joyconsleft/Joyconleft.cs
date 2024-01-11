@@ -101,7 +101,7 @@ namespace JoyconsLeftAPI
                 {
                     Lhid_read_timeout(handleLeft, report_bufLeft, (UIntPtr)report_lenLeft);
                 }
-                catch { Thread.Sleep(1); }
+                catch { Thread.Sleep(10); }
                 ProcessButtonsLeftJoycon();
                 if (formvisible)
                 {
