@@ -94,6 +94,7 @@ namespace WiiMotesAPI
         public void BeginPolling()
         {
             Task.Run(() => taskD());
+            Task.Run(() => taskP());
         }
         public void taskD()
         {
@@ -101,14 +102,12 @@ namespace WiiMotesAPI
             {
                 if (!running)
                     break;
-                Reconnection();
                 try
                 {
                     mStream.Read(aBuffer, 0, 22);
                     reconnectingwiimotebool = false;
                 }
                 catch { }
-                ProcessStateLogic();
                 if (formvisible)
                 {
                     string str = "irx : " + irx + Environment.NewLine;
@@ -136,6 +135,17 @@ namespace WiiMotesAPI
                     str += "WiimoteNunchuckStateZ : " + WiimoteNunchuckStateZ + Environment.NewLine;
                     form1.SetLabel1(str);
                 }
+            }
+        }
+        public void taskP()
+        {
+            for (; ; )
+            {
+                if (!running)
+                    break;
+                Reconnection();
+                ProcessStateLogic();
+                Thread.Sleep(1);
             }
         }
         public void Init()
@@ -328,13 +338,13 @@ namespace WiiMotesAPI
             if (reconnectingwiimotecount == 0)
                 reconnectingwiimotebool = true;
             reconnectingwiimotecount++;
-            if (reconnectingwiimotecount >= 15f)
+            if (reconnectingwiimotecount >= 150f)
             {
                 if (reconnectingwiimotebool)
                 {
                     ReconnectionInit();
                     WiimoteFound(path);
-                    reconnectingwiimotecount = -15f;
+                    reconnectingwiimotecount = -150f;
                 }
                 else
                     reconnectingwiimotecount = 0;
