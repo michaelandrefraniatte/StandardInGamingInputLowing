@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Numerics;
 using Dualsenses;
 using System.Threading;
+using System.IO;
 
 namespace DualSensesAPI
 {
@@ -22,7 +23,7 @@ namespace DualSensesAPI
         private static uint CurrentResolution = 0;
         private byte miscByte;
         private byte btnBlock1, btnBlock2, btnBlock3;
-        private byte[] dsdata = new byte[54];
+        private byte[] dsdata = new byte[64];
         public IDevice trezorDevice;
         public bool PS5ControllerButtonCrossPressed;
         public bool PS5ControllerButtonCirclePressed;
@@ -54,6 +55,8 @@ namespace DualSensesAPI
         public Vector3 gyr_gPS5 = new Vector3();
         public Vector3 acc_gPS5 = new Vector3();
         public Vector3 InitDirectAnglesPS5, DirectAnglesPS5;
+        private Stream mStream;
+        private byte[] bytes = new byte[64];
         public bool running, formvisible;
         public Form1 form1 = new Form1();
         public DualSense()
@@ -86,13 +89,13 @@ namespace DualSensesAPI
             if (number == 0 | number == 1)
             {
                 trezorDevice = await hidFactory.GetDeviceAsync(deviceDefinitions.First()).ConfigureAwait(false);
-                await trezorDevice.InitializeAsync().ConfigureAwait(false);
             }
             else if (number == 2)
             {
                 trezorDevice = await hidFactory.GetDeviceAsync(deviceDefinitions.Skip(1).First()).ConfigureAwait(false);
-                await trezorDevice.InitializeAsync().ConfigureAwait(false);
             }
+            await trezorDevice.InitializeAsync().ConfigureAwait(false);
+            mStream = trezorDevice.GetFileStream();
         }
         public void ProcessStateLogic()
         {
@@ -187,13 +190,18 @@ namespace DualSensesAPI
         {
             InitDirectAnglesPS5 = acc_gPS5;
         }
-        private async void taskD()
+        private void taskD()
         {
             for (; ; )
             {
                 if (!running)
                     break;
-                dsdata = (await trezorDevice.WriteAndReadAsync()).Data.Skip(1).ToArray();
+                try
+                {
+                    mStream.Read(bytes, 0, bytes.Length);
+                }
+                catch { }
+                dsdata = bytes.Skip(1).ToArray();
                 if (formvisible)
                 {
                     string str = "PS5ControllerLeftStickX : " + PS5ControllerLeftStickX + Environment.NewLine;

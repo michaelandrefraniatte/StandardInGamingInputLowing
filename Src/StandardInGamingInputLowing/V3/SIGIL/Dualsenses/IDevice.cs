@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,6 +26,11 @@ namespace Device.Net
         /// Close any existing connections and reinitialize the device. 
         /// </summary>
         Task InitializeAsync(CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Get the FileStream. 
+        /// </summary>
+        Stream GetFileStream();
 
         /// <summary>
         /// Write a page of data and then wait for the device to return a page. If the implementation derives from DeviceBase, this method is thread safe.

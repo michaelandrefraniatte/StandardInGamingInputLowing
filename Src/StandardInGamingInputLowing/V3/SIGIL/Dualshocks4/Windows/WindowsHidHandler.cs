@@ -162,6 +162,11 @@ namespace Hid.Net.Windows
               }, cancellationToken);
         }
 
+        public Stream GetFileStream()
+        {
+            return _readFileStream;
+        }
+
         byte[] bytes;
         public async Task<Report> ReadReportAsync(CancellationToken cancellationToken = default)
         {
@@ -170,7 +175,7 @@ namespace Hid.Net.Windows
             {
                 _readFileStream.Read(bytes, 0, bytes.Length);
             }
-            catch { Thread.Sleep(10); }
+            catch { }
             return _readTransferTransform(bytes);
         }
 

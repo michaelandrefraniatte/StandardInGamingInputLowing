@@ -116,6 +116,11 @@ namespace Hid.Net
             }
         }
 
+        public Stream GetFileStream()
+        {
+            return _hidDeviceHandler.GetFileStream();
+        }
+
         public override async Task<TransferResult> ReadAsync(CancellationToken cancellationToken = default)
         {
             var readReport = await ReadReportAsync(cancellationToken).ConfigureAwait(false);

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Numerics;
 using Dualshocks4;
 using System.Threading;
+using System.IO;
+using System.Xml.Linq;
 
 namespace DualShocks4API
 {
@@ -22,7 +24,7 @@ namespace DualShocks4API
         private static uint CurrentResolution = 0;
         private byte miscByte;
         private byte btnBlock1, btnBlock2, btnBlock3;
-        private byte[] ds4data = new byte[37];
+        private byte[] ds4data = new byte[64];
         public IDevice trezorDevice;
         public bool PS4ControllerButtonCrossPressed;
         public bool PS4ControllerButtonCirclePressed;
@@ -50,6 +52,8 @@ namespace DualShocks4API
         public Vector3 gyr_gPS4 = new Vector3();
         public Vector3 acc_gPS4 = new Vector3();
         public Vector3 InitDirectAnglesPS4, DirectAnglesPS4;
+        private Stream mStream;
+        private byte[] bytes = new byte[64];
         public bool running, formvisible;
         public Form1 form1 = new Form1();
         public DualShock4()
@@ -82,13 +86,13 @@ namespace DualShocks4API
             if (number == 0 | number == 1)
             {
                 trezorDevice = await hidFactory.GetDeviceAsync(deviceDefinitions.First()).ConfigureAwait(false);
-                await trezorDevice.InitializeAsync().ConfigureAwait(false);
             }
             else if (number == 2)
             {
                 trezorDevice = await hidFactory.GetDeviceAsync(deviceDefinitions.Skip(1).First()).ConfigureAwait(false);
-                await trezorDevice.InitializeAsync().ConfigureAwait(false);
             }
+            await trezorDevice.InitializeAsync().ConfigureAwait(false);
+            mStream = trezorDevice.GetFileStream();
         }
         public void ProcessStateLogic()
         {
@@ -175,13 +179,18 @@ namespace DualShocks4API
         {
             InitDirectAnglesPS4 = acc_gPS4;
         }
-        private async void taskD()
+        private void taskD()
         {
             for (; ; )
             {
                 if (!running)
                     break;
-                ds4data = (await trezorDevice.WriteAndReadAsync()).Data.Skip(1).ToArray();
+                try
+                {
+                    mStream.Read(bytes, 0, bytes.Length);
+                }
+                catch { }
+                ds4data = bytes.Skip(1).ToArray();
                 if (formvisible)
                 {
                     string str = "PS4ControllerLeftStickX : " + PS4ControllerLeftStickX + Environment.NewLine;

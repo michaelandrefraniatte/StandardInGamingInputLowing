@@ -1,4 +1,5 @@
 ﻿using Device.Net;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -31,5 +32,6 @@ namespace Hid.Net
 
         bool IsInitialized { get; }
         void Close();
+        Stream GetFileStream();
     }
 }
