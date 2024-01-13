@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Numerics;
 using Dualshocks4;
+using System.Threading;
 
 namespace DualShocks4API
 {
@@ -181,7 +182,6 @@ namespace DualShocks4API
                 if (!running)
                     break;
                 ds4data = (await trezorDevice.WriteAndReadAsync()).Data.Skip(1).ToArray();
-                ProcessStateLogic();
                 if (formvisible)
                 {
                     string str = "PS4ControllerLeftStickX : " + PS4ControllerLeftStickX + Environment.NewLine;
@@ -221,9 +221,20 @@ namespace DualShocks4API
                 }
             }
         }
+        private void taskP()
+        {
+            for (; ; )
+            {
+                if (!running)
+                    break;
+                ProcessStateLogic();
+                Thread.Sleep(1);
+            }
+        }
         public void BeginPolling()
         {
             Task.Run(() => taskD());
+            Task.Run(() => taskP());
         }
         private byte GetModeSwitch(byte[] ds4data, int indexIfUsb)
         {

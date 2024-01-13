@@ -95,14 +95,15 @@ namespace JoyconsRightAPI
         }
         private void taskDRight()
         {
-            while (running)
+            for (; ; )
             {
+                if (!running)
+                    break;
                 try
                 {
                     Rhid_read_timeout(handleRight, report_bufRight, (UIntPtr)report_lenRight);
                 }
                 catch { Thread.Sleep(10); }
-                ProcessButtonsRightJoycon();
                 if (formvisible)
                 {
                     string str = "JoyconRightStickX : " + JoyconRightStickX + Environment.NewLine;
@@ -131,9 +132,20 @@ namespace JoyconsRightAPI
                 }
             }
         }
+        private void taskPRight()
+        {
+            for (; ; )
+            {
+                if (!running)
+                    break;
+                ProcessButtonsRightJoycon();
+                Thread.Sleep(1);
+            }
+        }
         public void BeginPolling()
         {
             Task.Run(() => taskDRight());
+            Task.Run(() => taskPRight());
         }
         public void Init()
         {

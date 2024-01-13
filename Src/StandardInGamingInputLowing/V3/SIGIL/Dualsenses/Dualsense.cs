@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Numerics;
 using Dualsenses;
+using System.Threading;
 
 namespace DualSensesAPI
 {
@@ -193,7 +194,6 @@ namespace DualSensesAPI
                 if (!running)
                     break;
                 dsdata = (await trezorDevice.WriteAndReadAsync()).Data.Skip(1).ToArray();
-                ProcessStateLogic();
                 if (formvisible)
                 {
                     string str = "PS5ControllerLeftStickX : " + PS5ControllerLeftStickX + Environment.NewLine;
@@ -237,9 +237,20 @@ namespace DualSensesAPI
                 }
             }
         }
+        private void taskP()
+        {
+            for (; ; )
+            {
+                if (!running)
+                    break;
+                ProcessStateLogic();
+                Thread.Sleep(1);
+            }
+        }
         public void BeginPolling()
         {
             Task.Run(() => taskD());
+            Task.Run(() => taskP());
         }
         private byte GetModeSwitch(byte[] dsdata, int indexIfUsb)
         {

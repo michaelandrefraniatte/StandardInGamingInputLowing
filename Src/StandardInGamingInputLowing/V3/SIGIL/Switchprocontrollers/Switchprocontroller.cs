@@ -91,14 +91,15 @@ namespace SwitchProControllersAPI
         }
         private void taskDPro()
         {
-            while (running)
+            for (; ; )
             {
+                if (!running)
+                    break;
                 try
                 {
                     Prohid_read_timeout(handlePro, report_bufPro, (UIntPtr)report_lenPro);
                 }
                 catch { Thread.Sleep(10); }
-                ProcessButtonsAndSticksPro();
                 if (formvisible)
                 {
                     string str = "ProControllerLeftStickX : " + ProControllerLeftStickX + Environment.NewLine;
@@ -132,9 +133,20 @@ namespace SwitchProControllersAPI
                 }
             }
         }
+        private void taskPPro()
+        {
+            for (; ; )
+            {
+                if (!running)
+                    break;
+                ProcessButtonsAndSticksPro();
+                Thread.Sleep(1);
+            }
+        }
         public void BeginPolling()
         {
             Task.Run(() => taskDPro());
+            Task.Run(() => taskPPro());
         }
         public void Init()
         {
