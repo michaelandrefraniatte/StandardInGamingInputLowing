@@ -24,7 +24,7 @@ namespace DualShocks4API
         private byte miscByte;
         private byte btnBlock1, btnBlock2, btnBlock3;
         private byte[] ds4data = new byte[64];
-        public IDevice trezorDevice;
+        public IDevice handle;
         public bool PS4ControllerButtonCrossPressed;
         public bool PS4ControllerButtonCirclePressed;
         public bool PS4ControllerButtonSquarePressed;
@@ -72,6 +72,11 @@ namespace DualShocks4API
         public void Close()
         {
             running = false;
+            Thread.Sleep(100);
+            mStream.Close();
+            mStream.Dispose();
+            handle.Close();
+            handle.Dispose();
         }
         public async void Scan(string vendor_id, string product_id, string label_id, int number = 0)
         {
@@ -84,14 +89,14 @@ namespace DualShocks4API
             }
             if (number == 0 | number == 1)
             {
-                trezorDevice = await hidFactory.GetDeviceAsync(deviceDefinitions.First()).ConfigureAwait(false);
+                handle = await hidFactory.GetDeviceAsync(deviceDefinitions.First()).ConfigureAwait(false);
             }
             else if (number == 2)
             {
-                trezorDevice = await hidFactory.GetDeviceAsync(deviceDefinitions.Skip(1).First()).ConfigureAwait(false);
+                handle = await hidFactory.GetDeviceAsync(deviceDefinitions.Skip(1).First()).ConfigureAwait(false);
             }
-            await trezorDevice.InitializeAsync().ConfigureAwait(false);
-            mStream = trezorDevice.GetFileStream();
+            await handle.InitializeAsync().ConfigureAwait(false);
+            mStream = handle.GetFileStream();
         }
         public void ProcessStateLogic()
         {

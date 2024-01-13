@@ -24,7 +24,7 @@ namespace DualSensesAPI
         private byte miscByte;
         private byte btnBlock1, btnBlock2, btnBlock3;
         private byte[] dsdata = new byte[64];
-        public IDevice trezorDevice;
+        public IDevice handle;
         public bool PS5ControllerButtonCrossPressed;
         public bool PS5ControllerButtonCirclePressed;
         public bool PS5ControllerButtonSquarePressed;
@@ -76,6 +76,11 @@ namespace DualSensesAPI
         public void Close()
         {
             running = false;
+            Thread.Sleep(100);
+            mStream.Close();
+            mStream.Dispose();
+            handle.Close();
+            handle.Dispose();
         }
         public async void Scan(string vendor_id, string product_id, string label_id, int number = 0)
         {
@@ -88,14 +93,14 @@ namespace DualSensesAPI
             }
             if (number == 0 | number == 1)
             {
-                trezorDevice = await hidFactory.GetDeviceAsync(deviceDefinitions.First()).ConfigureAwait(false);
+                handle = await hidFactory.GetDeviceAsync(deviceDefinitions.First()).ConfigureAwait(false);
             }
             else if (number == 2)
             {
-                trezorDevice = await hidFactory.GetDeviceAsync(deviceDefinitions.Skip(1).First()).ConfigureAwait(false);
+                handle = await hidFactory.GetDeviceAsync(deviceDefinitions.Skip(1).First()).ConfigureAwait(false);
             }
-            await trezorDevice.InitializeAsync().ConfigureAwait(false);
-            mStream = trezorDevice.GetFileStream();
+            await handle.InitializeAsync().ConfigureAwait(false);
+            mStream = handle.GetFileStream();
         }
         public void ProcessStateLogic()
         {
