@@ -9,7 +9,6 @@ using System.Numerics;
 using Dualshocks4;
 using System.Threading;
 using System.IO;
-using System.Xml.Linq;
 
 namespace DualShocks4API
 {
@@ -53,13 +52,13 @@ namespace DualShocks4API
         public Vector3 acc_gPS4 = new Vector3();
         public Vector3 InitDirectAnglesPS4, DirectAnglesPS4;
         private Stream mStream;
-        private byte[] bytes = new byte[64];
-        public bool running, formvisible;
+        public bool running, formvisible, littleendian;
         public Form1 form1 = new Form1();
         public DualShock4()
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
+            littleendian = BitConverter.IsLittleEndian;
             running = true;
         }
         public void ViewData()
@@ -96,8 +95,8 @@ namespace DualShocks4API
         }
         public void ProcessStateLogic()
         {
-            LeftAnalogStick = ReadAnalogStick(ds4data[0], ds4data[1]);
-            RightAnalogStick = ReadAnalogStick(ds4data[2], ds4data[3]);
+            LeftAnalogStick = ReadAnalogStick(ds4data[1], ds4data[2]);
+            RightAnalogStick = ReadAnalogStick(ds4data[3], ds4data[4]);
             L2 = GetModeSwitch(ds4data, 7).ToUnsignedFloat();
             R2 = GetModeSwitch(ds4data, 8).ToUnsignedFloat();
             btnBlock1 = GetModeSwitch(ds4data, 4);
@@ -187,10 +186,9 @@ namespace DualShocks4API
                     break;
                 try
                 {
-                    mStream.Read(bytes, 0, bytes.Length);
+                    mStream.Read(ds4data, 0, ds4data.Length);
                 }
-                catch { }
-                ds4data = bytes.Skip(1).ToArray();
+                catch { Thread.Sleep(10); }
                 if (formvisible)
                 {
                     string str = "PS4ControllerLeftStickX : " + PS4ControllerLeftStickX + Environment.NewLine;
@@ -247,11 +245,13 @@ namespace DualShocks4API
         }
         private byte GetModeSwitch(byte[] ds4data, int indexIfUsb)
         {
-            return indexIfUsb >= 0 ? ds4data[indexIfUsb] : (byte)0;
+            indexIfUsb++;
+            return ds4data[indexIfUsb];
         }
         private byte[] GetModeSwitch(byte[] data, int startIndexIfUsb, int size)
         {
-            return startIndexIfUsb >= 0 ? data.Skip(startIndexIfUsb).Take(size).ToArray() : new byte[size];
+            startIndexIfUsb++;
+            return data.Skip(startIndexIfUsb).Take(size).ToArray();
         }
         private Vec2 ReadAnalogStick(byte x, byte y)
         {
@@ -270,7 +270,7 @@ namespace DualShocks4API
         }
         private DualShock4Touch ReadTouchpad(byte[] bytes)
         {
-            if (!BitConverter.IsLittleEndian)
+            if (!littleendian)
             {
                 bytes = bytes.Reverse().ToArray();
             }
@@ -285,7 +285,7 @@ namespace DualShocks4API
         }
         private Vec3 ReadAccelAxes(byte[] x, byte[] y, byte[] z)
         {
-            if (!BitConverter.IsLittleEndian)
+            if (!littleendian)
             {
                 x = x.Reverse().ToArray();
                 y = y.Reverse().ToArray();

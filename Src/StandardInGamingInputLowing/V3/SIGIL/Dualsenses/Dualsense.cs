@@ -56,13 +56,13 @@ namespace DualSensesAPI
         public Vector3 acc_gPS5 = new Vector3();
         public Vector3 InitDirectAnglesPS5, DirectAnglesPS5;
         private Stream mStream;
-        private byte[] bytes = new byte[64];
-        public bool running, formvisible;
+        public bool running, formvisible, littleendian;
         public Form1 form1 = new Form1();
         public DualSense()
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
+            littleendian = BitConverter.IsLittleEndian;
             running = true;
         }
         public void ViewData()
@@ -99,8 +99,8 @@ namespace DualSensesAPI
         }
         public void ProcessStateLogic()
         {
-            LeftAnalogStick = ReadAnalogStick(dsdata[0], dsdata[1]);
-            RightAnalogStick = ReadAnalogStick(dsdata[2], dsdata[3]);
+            LeftAnalogStick = ReadAnalogStick(dsdata[1], dsdata[2]);
+            RightAnalogStick = ReadAnalogStick(dsdata[3], dsdata[4]);
             L2 = GetModeSwitch(dsdata, 4).ToUnsignedFloat();
             R2 = GetModeSwitch(dsdata, 5).ToUnsignedFloat();
             btnBlock1 = GetModeSwitch(dsdata, 7);
@@ -198,10 +198,9 @@ namespace DualSensesAPI
                     break;
                 try
                 {
-                    mStream.Read(bytes, 0, bytes.Length);
+                    mStream.Read(dsdata, 0, dsdata.Length);
                 }
-                catch { }
-                dsdata = bytes.Skip(1).ToArray();
+                catch { Thread.Sleep(10); }
                 if (formvisible)
                 {
                     string str = "PS5ControllerLeftStickX : " + PS5ControllerLeftStickX + Environment.NewLine;
@@ -260,13 +259,15 @@ namespace DualSensesAPI
             Task.Run(() => taskD());
             Task.Run(() => taskP());
         }
-        private byte GetModeSwitch(byte[] dsdata, int indexIfUsb)
+        private byte GetModeSwitch(byte[] ds4data, int indexIfUsb)
         {
-            return indexIfUsb >= 0 ? dsdata[indexIfUsb] : (byte)0;
+            indexIfUsb++;
+            return ds4data[indexIfUsb];
         }
-        private byte[] GetModeSwitch(byte[] dsdata, int startIndexIfUsb, int size)
+        private byte[] GetModeSwitch(byte[] data, int startIndexIfUsb, int size)
         {
-            return startIndexIfUsb >= 0 ? dsdata.Skip(startIndexIfUsb).Take(size).ToArray() : new byte[size];
+            startIndexIfUsb++;
+            return data.Skip(startIndexIfUsb).Take(size).ToArray();
         }
         private Vec2 ReadAnalogStick(byte x, byte y)
         {
@@ -285,7 +286,7 @@ namespace DualSensesAPI
         }
         private DualShock4Touch ReadTouchpad(byte[] bytes)
         {
-            if (!BitConverter.IsLittleEndian)
+            if (!littleendian)
             {
                 bytes = bytes.Reverse().ToArray();
             }
@@ -300,7 +301,7 @@ namespace DualSensesAPI
         }
         private Vec3 ReadAccelAxes(byte[] x, byte[] y, byte[] z)
         {
-            if (!BitConverter.IsLittleEndian)
+            if (!littleendian)
             {
                 x = x.Reverse().ToArray();
                 y = y.Reverse().ToArray();
