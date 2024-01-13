@@ -106,11 +106,11 @@ namespace DualSensesAPI
         {
             LeftAnalogStick = ReadAnalogStick(dsdata[1], dsdata[2]);
             RightAnalogStick = ReadAnalogStick(dsdata[3], dsdata[4]);
-            L2 = GetModeSwitch(dsdata, 4).ToUnsignedFloat();
-            R2 = GetModeSwitch(dsdata, 5).ToUnsignedFloat();
-            btnBlock1 = GetModeSwitch(dsdata, 7);
-            btnBlock2 = GetModeSwitch(dsdata, 8);
-            btnBlock3 = GetModeSwitch(dsdata, 9);
+            L2 = GetModeSwitch(dsdata, 5).ToUnsignedFloat();
+            R2 = GetModeSwitch(dsdata, 6).ToUnsignedFloat();
+            btnBlock1 = GetModeSwitch(dsdata, 8);
+            btnBlock2 = GetModeSwitch(dsdata, 9);
+            btnBlock3 = GetModeSwitch(dsdata, 10);
             SquareButton = btnBlock1.HasFlag(0x10);
             CrossButton = btnBlock1.HasFlag(0x20);
             CircleButton = btnBlock1.HasFlag(0x40);
@@ -133,20 +133,20 @@ namespace DualSensesAPI
             FnR = btnBlock3.HasFlag(1 << 5);
             BLP = btnBlock3.HasFlag(1 << 6);
             BRP = btnBlock3.HasFlag(1 << 7);
-            MicButton = GetModeSwitch(dsdata, 9).HasFlag(0x04);
-            Touchpad1 = ReadTouchpad(GetModeSwitch(dsdata, 32, 4));
-            Touchpad2 = ReadTouchpad(GetModeSwitch(dsdata, 36, 4));
+            MicButton = GetModeSwitch(dsdata, 10).HasFlag(0x04);
+            Touchpad1 = ReadTouchpad(GetModeSwitch(dsdata, 33, 4));
+            Touchpad2 = ReadTouchpad(GetModeSwitch(dsdata, 37, 4));
             Gyro = -ReadAccelAxes(
-                GetModeSwitch(dsdata, 15, 2),
-                GetModeSwitch(dsdata, 17, 2),
-                GetModeSwitch(dsdata, 19, 2)
+                GetModeSwitch(dsdata, 16, 2),
+                GetModeSwitch(dsdata, 18, 2),
+                GetModeSwitch(dsdata, 20, 2)
             );
             Accelerometer = ReadAccelAxes(
-                GetModeSwitch(dsdata, 21, 2),
-                GetModeSwitch(dsdata, 23, 2),
-                GetModeSwitch(dsdata, 25, 2)
+                GetModeSwitch(dsdata, 22, 2),
+                GetModeSwitch(dsdata, 24, 2),
+                GetModeSwitch(dsdata, 26, 2)
             );
-            miscByte = GetModeSwitch(dsdata, 53);
+            miscByte = GetModeSwitch(dsdata, 54);
             IsHeadphoneConnected = miscByte.HasFlag(0x01);
             PS5ControllerLeftStickX = LeftAnalogStick.X;
             PS5ControllerLeftStickY = LeftAnalogStick.Y;
@@ -266,12 +266,10 @@ namespace DualSensesAPI
         }
         private byte GetModeSwitch(byte[] ds4data, int indexIfUsb)
         {
-            indexIfUsb++;
             return ds4data[indexIfUsb];
         }
         private byte[] GetModeSwitch(byte[] data, int startIndexIfUsb, int size)
         {
-            startIndexIfUsb++;
             return data.Skip(startIndexIfUsb).Take(size).ToArray();
         }
         private Vec2 ReadAnalogStick(byte x, byte y)
