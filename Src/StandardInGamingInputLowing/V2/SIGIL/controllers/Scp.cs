@@ -1,220 +1,319 @@
-﻿using System.Threading;
+﻿using Microsoft.Win32.SafeHandles;
+using System.Globalization;
+using System;
+using System.Runtime.InteropServices;
 
 namespace controllers
 {
-    public class Scp
+    public class Valuechanges
     {
-        public static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        public static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        public static void valchanged(int n, bool val)
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
+        public double[] _valuechange = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        public double[] _ValueChange = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        public Valuechanges()
         {
-            if (val)
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
+        }
+        public double this[int index]
+        {
+            get { return _ValueChange[index]; }
+            set
             {
-                if (wd[n] <= 1)
-                {
-                    wd[n] = wd[n] + 1;
-                }
-                wu[n] = 0;
+                if (_valuechange[index] != value)
+                    _ValueChange[index] = value - _valuechange[index];
+                else
+                    _ValueChange[index] = 0;
+                _valuechange[index] = value;
             }
-            else
+        }
+    }
+    public class XBoxController
+    {
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
+        private int number;
+        public Valuechanges ValueChange = new Valuechanges();
+        private const string SCP_BUS_CLASS_GUID = "{F679F562-3164-42CE-A4DB-E7DDBE723909}";
+        private SafeFileHandle _deviceHandle;
+        int transferred = 0;
+        byte[] outputBuffer = null;
+        public void Connect(int number = 0)
+        {
+            this.number = number;
+            string devicePath = "";
+            if (Find(new Guid(SCP_BUS_CLASS_GUID), ref devicePath, 0))
             {
-                if (wu[n] <= 1)
-                {
-                    wu[n] = wu[n] + 1;
-                }
-                wd[n] = 0;
+                _deviceHandle = GetHandle(devicePath);
             }
+            if (number == 0 | number == 1)
+                PlugIn(1);
+            else if (number == 2)
+                PlugIn(2);
         }
-        private static XBoxController scpBus;
-        private static X360Controller controller1, controller2;
-        public static void Connect()
+        public void Disconnect()
         {
-            scpBus = new XBoxController();
-            scpBus.PlugIn(1);
-            controller1 = new X360Controller();
-            scpBus.PlugIn(2);
-            controller2 = new X360Controller();
+            Set(false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0, 0, false);
+            if (number == 0 | number == 1)
+                Unplug(1);
+            else if (number == 2)
+                Unplug(2);
         }
-        public static void Disconnect()
+        public void Set(bool back, bool start, bool A, bool B, bool X, bool Y, bool up, bool left, bool down, bool right, bool leftstick, bool rightstick, bool leftbumper, bool rightbumper, double leftstickx, double leftsticky, double rightstickx, double rightsticky, double lefttriggerposition, double righttriggerposition, bool xbox)
         {
-            UnLoadXC();
-            scpBus.Unplug(1);
-            scpBus.Unplug(2);
+            ValueChange[0] = back ? 1 : 0;
+            if (ValueChange._ValueChange[0] > 0f)
+                Buttons ^= X360Buttons.Back;
+            if (ValueChange._ValueChange[0] < 0f)
+                Buttons &= ~X360Buttons.Back;
+            ValueChange[1] = start ? 1 : 0;
+            if (ValueChange._ValueChange[1] > 0f)
+                Buttons ^= X360Buttons.Start;
+            if (ValueChange._ValueChange[1] < 0f)
+                Buttons &= ~X360Buttons.Start;
+            ValueChange[2] = A ? 1 : 0;
+            if (ValueChange._ValueChange[2] > 0f)
+                Buttons ^= X360Buttons.A;
+            if (ValueChange._ValueChange[2] < 0f)
+                Buttons &= ~X360Buttons.A;
+            ValueChange[3] = B ? 1 : 0;
+            if (ValueChange._ValueChange[3] > 0f)
+                Buttons ^= X360Buttons.B;
+            if (ValueChange._ValueChange[3] < 0f)
+                Buttons &= ~X360Buttons.B;
+            ValueChange[4] = X ? 1 : 0;
+            if (ValueChange._ValueChange[4] > 0f)
+                Buttons ^= X360Buttons.X;
+            if (ValueChange._ValueChange[4] < 0f)
+                Buttons &= ~X360Buttons.X;
+            ValueChange[5] = Y ? 1 : 0;
+            if (ValueChange._ValueChange[5] > 0f)
+                Buttons ^= X360Buttons.Y;
+            if (ValueChange._ValueChange[5] < 0f)
+                Buttons &= ~X360Buttons.Y;
+            ValueChange[6] = up ? 1 : 0;
+            if (ValueChange._ValueChange[6] > 0f)
+                Buttons ^= X360Buttons.Up;
+            if (ValueChange._ValueChange[6] < 0f)
+                Buttons &= ~X360Buttons.Up;
+            ValueChange[7] = left ? 1 : 0;
+            if (ValueChange._ValueChange[7] > 0f)
+                Buttons ^= X360Buttons.Left;
+            if (ValueChange._ValueChange[7] < 0f)
+                Buttons &= ~X360Buttons.Left;
+            ValueChange[8] = down ? 1 : 0;
+            if (ValueChange._ValueChange[8] > 0f)
+                Buttons ^= X360Buttons.Down;
+            if (ValueChange._ValueChange[8] < 0f)
+                Buttons &= ~X360Buttons.Down;
+            ValueChange[9] = right ? 1 : 0;
+            if (ValueChange._ValueChange[9] > 0f)
+                Buttons ^= X360Buttons.Right;
+            if (ValueChange._ValueChange[9] < 0f)
+                Buttons &= ~X360Buttons.Right;
+            ValueChange[10] = leftstick ? 1 : 0;
+            if (ValueChange._ValueChange[10] > 0f)
+                Buttons ^= X360Buttons.LeftStick;
+            if (ValueChange._ValueChange[10] < 0f)
+                Buttons &= ~X360Buttons.LeftStick;
+            ValueChange[11] = rightstick ? 1 : 0;
+            if (ValueChange._ValueChange[11] > 0f)
+                Buttons ^= X360Buttons.RightStick;
+            if (ValueChange._ValueChange[11] < 0f)
+                Buttons &= ~X360Buttons.RightStick;
+            ValueChange[12] = leftbumper ? 1 : 0;
+            if (ValueChange._ValueChange[12] > 0f)
+                Buttons ^= X360Buttons.LeftBumper;
+            if (ValueChange._ValueChange[12] < 0f)
+                Buttons &= ~X360Buttons.LeftBumper;
+            ValueChange[13] = rightbumper ? 1 : 0;
+            if (ValueChange._ValueChange[13] > 0f)
+                Buttons ^= X360Buttons.RightBumper;
+            if (ValueChange._ValueChange[13] < 0f)
+                Buttons &= ~X360Buttons.RightBumper;
+            ValueChange[14] = xbox ? 1 : 0;
+            if (ValueChange._ValueChange[14] > 0f)
+                Buttons ^= X360Buttons.Logo;
+            if (ValueChange._ValueChange[14] < 0f)
+                Buttons &= ~X360Buttons.Logo;
+            LeftStickX = (short)leftstickx;
+            LeftStickY = (short)leftsticky;
+            RightStickX = (short)rightstickx;
+            RightStickY = (short)rightsticky;
+            LeftTrigger = (byte)lefttriggerposition;
+            RightTrigger = (byte)righttriggerposition;
+            Report(GetReport(number < 2 ? 1 : 2));
         }
-        public static void UnLoadXC()
+        public XBoxController()
         {
-            SetController1(false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0, 0, false);
-            SetController2(false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0, 0, false);
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
         }
-        public static void SetController1(bool controller1_send_back, bool controller1_send_start, bool controller1_send_A, bool controller1_send_B, bool controller1_send_X, bool controller1_send_Y, bool controller1_send_up, bool controller1_send_left, bool controller1_send_down, bool controller1_send_right, bool controller1_send_leftstick, bool controller1_send_rightstick, bool controller1_send_leftbumper, bool controller1_send_rightbumper, double controller1_send_leftstickx, double controller1_send_leftsticky, double controller1_send_rightstickx, double controller1_send_rightsticky, double controller1_send_lefttriggerposition, double controller1_send_righttriggerposition, bool controller1_send_xbox)
+        public bool PlugIn(int controllerNumber)
         {
-            valchanged(1, controller1_send_back);
-            if (wd[1] == 1)
-                controller1.Buttons ^= X360Buttons.Back;
-            if (wu[1] == 1)
-                controller1.Buttons &= ~X360Buttons.Back;
-            valchanged(2, controller1_send_start);
-            if (wd[2] == 1)
-                controller1.Buttons ^= X360Buttons.Start;
-            if (wu[2] == 1)
-                controller1.Buttons &= ~X360Buttons.Start;
-            valchanged(3, controller1_send_A);
-            if (wd[3] == 1)
-                controller1.Buttons ^= X360Buttons.A;
-            if (wu[3] == 1)
-                controller1.Buttons &= ~X360Buttons.A;
-            valchanged(4, controller1_send_B);
-            if (wd[4] == 1)
-                controller1.Buttons ^= X360Buttons.B;
-            if (wu[4] == 1)
-                controller1.Buttons &= ~X360Buttons.B;
-            valchanged(5, controller1_send_X);
-            if (wd[5] == 1)
-                controller1.Buttons ^= X360Buttons.X;
-            if (wu[5] == 1)
-                controller1.Buttons &= ~X360Buttons.X;
-            valchanged(6, controller1_send_Y);
-            if (wd[6] == 1)
-                controller1.Buttons ^= X360Buttons.Y;
-            if (wu[6] == 1)
-                controller1.Buttons &= ~X360Buttons.Y;
-            valchanged(7, controller1_send_up);
-            if (wd[7] == 1)
-                controller1.Buttons ^= X360Buttons.Up;
-            if (wu[7] == 1)
-                controller1.Buttons &= ~X360Buttons.Up;
-            valchanged(8, controller1_send_left);
-            if (wd[8] == 1)
-                controller1.Buttons ^= X360Buttons.Left;
-            if (wu[8] == 1)
-                controller1.Buttons &= ~X360Buttons.Left;
-            valchanged(9, controller1_send_down);
-            if (wd[9] == 1)
-                controller1.Buttons ^= X360Buttons.Down;
-            if (wu[9] == 1)
-                controller1.Buttons &= ~X360Buttons.Down;
-            valchanged(10, controller1_send_right);
-            if (wd[10] == 1)
-                controller1.Buttons ^= X360Buttons.Right;
-            if (wu[10] == 1)
-                controller1.Buttons &= ~X360Buttons.Right;
-            valchanged(11, controller1_send_leftstick);
-            if (wd[11] == 1)
-                controller1.Buttons ^= X360Buttons.LeftStick;
-            if (wu[11] == 1)
-                controller1.Buttons &= ~X360Buttons.LeftStick;
-            valchanged(12, controller1_send_rightstick);
-            if (wd[12] == 1)
-                controller1.Buttons ^= X360Buttons.RightStick;
-            if (wu[12] == 1)
-                controller1.Buttons &= ~X360Buttons.RightStick;
-            valchanged(13, controller1_send_leftbumper);
-            if (wd[13] == 1)
-                controller1.Buttons ^= X360Buttons.LeftBumper;
-            if (wu[13] == 1)
-                controller1.Buttons &= ~X360Buttons.LeftBumper;
-            valchanged(14, controller1_send_rightbumper);
-            if (wd[14] == 1)
-                controller1.Buttons ^= X360Buttons.RightBumper;
-            if (wu[14] == 1)
-                controller1.Buttons &= ~X360Buttons.RightBumper;
-            controller1.LeftStickX = (short)controller1_send_leftstickx;
-            controller1.LeftStickY = (short)controller1_send_leftsticky;
-            controller1.RightStickX = (short)controller1_send_rightstickx;
-            controller1.RightStickY = (short)controller1_send_rightsticky;
-            controller1.LeftTrigger = (byte)controller1_send_lefttriggerposition;
-            controller1.RightTrigger = (byte)controller1_send_righttriggerposition;
-            valchanged(33, controller1_send_xbox);
-            if (wd[33] == 1)
-                controller1.Buttons ^= X360Buttons.Logo;
-            if (wu[33] == 1)
-                controller1.Buttons &= ~X360Buttons.Logo;
-            scpBus.Report(1, controller1.GetReport());
+            int transfered = 0;
+            byte[] buffer = new byte[16];
+            buffer[0] = 0x10;
+            buffer[1] = 0x00;
+            buffer[2] = 0x00;
+            buffer[3] = 0x00;
+            buffer[4] = (byte)((controllerNumber) & 0xFF);
+            buffer[5] = (byte)((controllerNumber >> 8) & 0xFF);
+            buffer[6] = (byte)((controllerNumber >> 16) & 0xFF);
+            buffer[7] = (byte)((controllerNumber >> 24) & 0xFF);
+            return DeviceIoControl(_deviceHandle, 0x2A4000, buffer, buffer.Length, null, 0, ref transfered, IntPtr.Zero);
         }
-        public static void SetController2(bool controller2_send_back, bool controller2_send_start, bool controller2_send_A, bool controller2_send_B, bool controller2_send_X, bool controller2_send_Y, bool controller2_send_up, bool controller2_send_left, bool controller2_send_down, bool controller2_send_right, bool controller2_send_leftstick, bool controller2_send_rightstick, bool controller2_send_leftbumper, bool controller2_send_rightbumper, double controller2_send_leftstickx, double controller2_send_leftsticky, double controller2_send_rightstickx, double controller2_send_rightsticky, double controller2_send_lefttriggerposition, double controller2_send_righttriggerposition, bool controller2_send_xbox)
+        public bool Unplug(int controllerNumber)
         {
-            valchanged(15, controller2_send_back);
-            if (wd[15] == 1)
-                controller2.Buttons ^= X360Buttons.Back;
-            if (wu[15] == 1)
-                controller2.Buttons &= ~X360Buttons.Back;
-            valchanged(16, controller2_send_start);
-            if (wd[16] == 1)
-                controller2.Buttons ^= X360Buttons.Start;
-            if (wu[16] == 1)
-                controller2.Buttons &= ~X360Buttons.Start;
-            valchanged(17, controller2_send_A);
-            if (wd[17] == 1)
-                controller2.Buttons ^= X360Buttons.A;
-            if (wu[17] == 1)
-                controller2.Buttons &= ~X360Buttons.A;
-            valchanged(18, controller2_send_B);
-            if (wd[18] == 1)
-                controller2.Buttons ^= X360Buttons.B;
-            if (wu[18] == 1)
-                controller2.Buttons &= ~X360Buttons.B;
-            valchanged(19, controller2_send_X);
-            if (wd[19] == 1)
-                controller2.Buttons ^= X360Buttons.X;
-            if (wu[19] == 1)
-                controller2.Buttons &= ~X360Buttons.X;
-            valchanged(20, controller2_send_Y);
-            if (wd[20] == 1)
-                controller2.Buttons ^= X360Buttons.Y;
-            if (wu[20] == 1)
-                controller2.Buttons &= ~X360Buttons.Y;
-            valchanged(21, controller2_send_up);
-            if (wd[21] == 1)
-                controller2.Buttons ^= X360Buttons.Up;
-            if (wu[21] == 1)
-                controller2.Buttons &= ~X360Buttons.Up;
-            valchanged(22, controller2_send_left);
-            if (wd[22] == 1)
-                controller2.Buttons ^= X360Buttons.Left;
-            if (wu[22] == 1)
-                controller2.Buttons &= ~X360Buttons.Left;
-            valchanged(23, controller2_send_down);
-            if (wd[23] == 1)
-                controller2.Buttons ^= X360Buttons.Down;
-            if (wu[23] == 1)
-                controller2.Buttons &= ~X360Buttons.Down;
-            valchanged(24, controller2_send_right);
-            if (wd[24] == 1)
-                controller2.Buttons ^= X360Buttons.Right;
-            if (wu[24] == 1)
-                controller2.Buttons &= ~X360Buttons.Right;
-            valchanged(25, controller2_send_leftstick);
-            if (wd[25] == 1)
-                controller2.Buttons ^= X360Buttons.LeftStick;
-            if (wu[25] == 1)
-                controller2.Buttons &= ~X360Buttons.LeftStick;
-            valchanged(26, controller2_send_rightstick);
-            if (wd[26] == 1)
-                controller2.Buttons ^= X360Buttons.RightStick;
-            if (wu[26] == 1)
-                controller2.Buttons &= ~X360Buttons.RightStick;
-            valchanged(27, controller2_send_leftbumper);
-            if (wd[27] == 1)
-                controller2.Buttons ^= X360Buttons.LeftBumper;
-            if (wu[27] == 1)
-                controller2.Buttons &= ~X360Buttons.LeftBumper;
-            valchanged(28, controller2_send_rightbumper);
-            if (wd[28] == 1)
-                controller2.Buttons ^= X360Buttons.RightBumper;
-            if (wu[28] == 1)
-                controller2.Buttons &= ~X360Buttons.RightBumper;
-            controller2.LeftStickX = (short)controller2_send_leftstickx;
-            controller2.LeftStickY = (short)controller2_send_leftsticky;
-            controller2.RightStickX = (short)controller2_send_rightstickx;
-            controller2.RightStickY = (short)controller2_send_rightsticky;
-            controller2.LeftTrigger = (byte)controller2_send_lefttriggerposition;
-            controller2.RightTrigger = (byte)controller2_send_righttriggerposition;
-            valchanged(34, controller2_send_xbox);
-            if (wd[34] == 1)
-                controller2.Buttons ^= X360Buttons.Logo;
-            if (wu[34] == 1)
-                controller2.Buttons &= ~X360Buttons.Logo;
-            scpBus.Report(2, controller2.GetReport());
+            int transfered = 0;
+            byte[] buffer = new byte[16];
+            buffer[0] = 0x10;
+            buffer[1] = 0x00;
+            buffer[2] = 0x00;
+            buffer[3] = 0x00;
+            buffer[4] = (byte)((controllerNumber) & 0xFF);
+            buffer[5] = (byte)((controllerNumber >> 8) & 0xFF);
+            buffer[6] = (byte)((controllerNumber >> 16) & 0xFF);
+            buffer[7] = (byte)((controllerNumber >> 24) & 0xFF);
+            return DeviceIoControl(_deviceHandle, 0x2A4004, buffer, buffer.Length, null, 0, ref transfered, IntPtr.Zero);
+        }
+        public bool Report(byte[] controllerReport)
+        {
+            return DeviceIoControl(_deviceHandle, 0x2A400C, controllerReport, controllerReport.Length, outputBuffer, outputBuffer?.Length ?? 0, ref transferred, IntPtr.Zero) && transferred > 0;
+        }
+        private bool Find(Guid target, ref string path, int instance = 0)
+        {
+            IntPtr detailDataBuffer = IntPtr.Zero;
+            IntPtr deviceInfoSet = IntPtr.Zero;
+            try
+            {
+                SP_DEVICE_INTERFACE_DATA DeviceInterfaceData = new SP_DEVICE_INTERFACE_DATA(), da = new SP_DEVICE_INTERFACE_DATA();
+                int bufferSize = 0, memberIndex = 0;
+                deviceInfoSet = SetupDiGetClassDevs(ref target, IntPtr.Zero, IntPtr.Zero, DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
+                DeviceInterfaceData.cbSize = da.cbSize = Marshal.SizeOf(DeviceInterfaceData);
+                while (SetupDiEnumDeviceInterfaces(deviceInfoSet, IntPtr.Zero, ref target, memberIndex, ref DeviceInterfaceData))
+                {
+                    SetupDiGetDeviceInterfaceDetail(deviceInfoSet, ref DeviceInterfaceData, IntPtr.Zero, 0, ref bufferSize, ref da);
+                    detailDataBuffer = Marshal.AllocHGlobal(bufferSize);
+                    Marshal.WriteInt32(detailDataBuffer, (IntPtr.Size == 4) ? (4 + Marshal.SystemDefaultCharSize) : 8);
+                    if (SetupDiGetDeviceInterfaceDetail(deviceInfoSet, ref DeviceInterfaceData, detailDataBuffer, bufferSize, ref bufferSize, ref da))
+                    {
+                        IntPtr pDevicePathName = detailDataBuffer + 4;
+                        path = Marshal.PtrToStringAuto(pDevicePathName).ToUpper(CultureInfo.InvariantCulture);
+                        Marshal.FreeHGlobal(detailDataBuffer);
+                        if (memberIndex == instance)
+                            return true;
+                    }
+                    else
+                        Marshal.FreeHGlobal(detailDataBuffer);
+                    memberIndex++;
+                }
+            }
+            finally
+            {
+                if (deviceInfoSet != IntPtr.Zero)
+                {
+                    SetupDiDestroyDeviceInfoList(deviceInfoSet);
+                }
+            }
+            return false;
+        }
+        private SafeFileHandle GetHandle(string devicePath)
+        {
+            devicePath = devicePath.ToUpper(CultureInfo.InvariantCulture);
+            SafeFileHandle handle = CreateFile(devicePath, GENERIC_WRITE | GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, IntPtr.Zero, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED, UIntPtr.Zero);
+            return handle;
+        }
+        public X360Buttons Buttons { get; set; }
+        public byte LeftTrigger { get; set; }
+        public byte RightTrigger { get; set; }
+        public short LeftStickX { get; set; }
+        public short LeftStickY { get; set; }
+        public short RightStickX { get; set; }
+        public short RightStickY { get; set; }
+        byte[] fullReport = { 0x1C, 0x00, 0x00, 0x00, 0, 0, 0, 0, 0x00, 0x14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        public byte[] GetReport(int controllerNumber)
+        {
+            fullReport[4] = (byte)((controllerNumber) & 0xFF);
+            fullReport[5] = (byte)((controllerNumber >> 8) & 0xFF);
+            fullReport[6] = (byte)((controllerNumber >> 16) & 0xFF);
+            fullReport[7] = (byte)((controllerNumber >> 24) & 0xFF);
+            fullReport[10] = (byte)((ushort)Buttons & 0xFF);
+            fullReport[11] = (byte)((ushort)Buttons >> 8 & 0xFF);
+            fullReport[12] = LeftTrigger;
+            fullReport[13] = RightTrigger;
+            fullReport[14] = (byte)(LeftStickX & 0xFF);
+            fullReport[15] = (byte)(LeftStickX >> 8 & 0xFF);
+            fullReport[16] = (byte)(LeftStickY & 0xFF);
+            fullReport[17] = (byte)(LeftStickY >> 8 & 0xFF);
+            fullReport[18] = (byte)(RightStickX & 0xFF);
+            fullReport[19] = (byte)(RightStickX >> 8 & 0xFF);
+            fullReport[20] = (byte)(RightStickY & 0xFF);
+            fullReport[21] = (byte)(RightStickY >> 8 & 0xFF);
+            return fullReport;
+        }
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct SP_DEVICE_INTERFACE_DATA
+        {
+            internal int cbSize;
+            internal Guid InterfaceClassGuid;
+            internal int Flags;
+            internal IntPtr Reserved;
+        }
+        internal const uint FILE_ATTRIBUTE_NORMAL = 0x80;
+        internal const uint FILE_FLAG_OVERLAPPED = 0x40000000;
+        internal const uint FILE_SHARE_READ = 1;
+        internal const uint FILE_SHARE_WRITE = 2;
+        internal const uint GENERIC_READ = 0x80000000;
+        internal const uint GENERIC_WRITE = 0x40000000;
+        internal const uint OPEN_EXISTING = 3;
+        internal const int DIGCF_PRESENT = 0x0002;
+        internal const int DIGCF_DEVICEINTERFACE = 0x0010;
+        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        internal static extern SafeFileHandle CreateFile(string lpFileName, uint dwDesiredAccess, uint dwShareMode, IntPtr lpSecurityAttributes, uint dwCreationDisposition, uint dwFlagsAndAttributes, UIntPtr hTemplateFile);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool DeviceIoControl(SafeFileHandle hDevice, int dwIoControlCode, byte[] lpInBuffer, int nInBufferSize, byte[] lpOutBuffer, int nOutBufferSize, ref int lpBytesReturned, IntPtr lpOverlapped);
+        [DllImport("setupapi.dll", SetLastError = true)]
+        internal static extern int SetupDiDestroyDeviceInfoList(IntPtr deviceInfoSet);
+        [DllImport("setupapi.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool SetupDiEnumDeviceInterfaces(IntPtr hDevInfo, IntPtr devInfo, ref Guid interfaceClassGuid, int memberIndex, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData);
+        [DllImport("setupapi.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        internal static extern IntPtr SetupDiGetClassDevs(ref Guid classGuid, IntPtr enumerator, IntPtr hwndParent, int flags);
+        [DllImport("setupapi.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool SetupDiGetDeviceInterfaceDetail(IntPtr hDevInfo, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData, IntPtr deviceInterfaceDetailData, int deviceInterfaceDetailDataSize, ref int requiredSize, ref SP_DEVICE_INTERFACE_DATA deviceInfoData);
+        [Flags]
+        public enum X360Buttons
+        {
+            None = 0,
+            Up = 1 << 0,
+            Down = 1 << 1,
+            Left = 1 << 2,
+            Right = 1 << 3,
+            Start = 1 << 4,
+            Back = 1 << 5,
+            LeftStick = 1 << 6,
+            RightStick = 1 << 7,
+            LeftBumper = 1 << 8,
+            RightBumper = 1 << 9,
+            Logo = 1 << 10,
+            A = 1 << 12,
+            B = 1 << 13,
+            X = 1 << 14,
+            Y = 1 << 15,
         }
     }
 }

@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
-using controller;
+using controllers;
 using System.Diagnostics;
 using Valuechanges;
-using DualShock4API;
+using DualShocks4API;
 namespace StringToCode
 {
     public class FooClass 
@@ -53,8 +53,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            ds4.ScanDualshock4(vendor_ds4_id, product_ds4_id, product_ds4_label);
-            Thread.Sleep(2000);
+            ds4.Scan(vendor_ds4_id, product_ds4_id, product_ds4_label);
             ds4.BeginPolling();
             XBC.Connect();
             Task.Run(() => task());
@@ -66,7 +65,7 @@ namespace StringToCode
                 if (!running)
                     break;
                 if (ds4.PS4ControllerButtonMenuPressed)
-                    ds4.InitDualShock4Accel();
+                    ds4.Init();
                 statex = ds4.PS4ControllerGyroX * 15f;
                 statey = ds4.PS4ControllerGyroY * 15f;
                 if (statex > 0f)
@@ -103,7 +102,7 @@ namespace StringToCode
                 controller1_send_rightbumper = ds4.PS4ControllerButtonR1Pressed;
                 controller1_send_back = ds4.PS4ControllerButtonLogoPressed;
                 controller1_send_start = ds4.PS4ControllerButtonTouchpadPressed;
-                XBC.SetController(controller1_send_back, controller1_send_start, controller1_send_A, controller1_send_B, controller1_send_X, controller1_send_Y, controller1_send_up, controller1_send_left, controller1_send_down, controller1_send_right, controller1_send_leftstick, controller1_send_rightstick, controller1_send_leftbumper, controller1_send_rightbumper, controller1_send_leftstickx, controller1_send_leftsticky, controller1_send_rightstickx, controller1_send_rightsticky, controller1_send_lefttriggerposition, controller1_send_righttriggerposition, controller1_send_xbox);
+                XBC.Set(controller1_send_back, controller1_send_start, controller1_send_A, controller1_send_B, controller1_send_X, controller1_send_Y, controller1_send_up, controller1_send_left, controller1_send_down, controller1_send_right, controller1_send_leftstick, controller1_send_rightstick, controller1_send_leftbumper, controller1_send_rightbumper, controller1_send_leftstickx, controller1_send_leftsticky, controller1_send_rightstickx, controller1_send_rightsticky, controller1_send_lefttriggerposition, controller1_send_righttriggerposition, controller1_send_xbox);
                 /*ds4.ViewData();*/
                 Thread.Sleep(sleeptime);
             }

@@ -1,10 +1,6 @@
 ﻿using SharpDX.DirectInput;
-using SharpDX;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 using Directinputs;
 
@@ -19,8 +15,9 @@ namespace DirectInputsAPI
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        private static bool running, formvisible;
+        private bool running, formvisible;
         private SharpDX.DirectInput.DirectInput directInput = new SharpDX.DirectInput.DirectInput();
+        private int number;
         public Form1 form1 = new Form1();
         public void ViewData()
         {
@@ -50,334 +47,170 @@ namespace DirectInputsAPI
                 System.Threading.Thread.Sleep(1);
                 if (formvisible)
                 {
-                    string str = "Joystick1AxisX : " + Joystick1AxisX + Environment.NewLine;
-                    str += "Joystick1AxisY : " + Joystick1AxisY + Environment.NewLine;
-                    str += "Joystick1AxisZ : " + Joystick1AxisZ + Environment.NewLine;
-                    str += "Joystick1RotationX : " + Joystick1RotationX + Environment.NewLine;
-                    str += "Joystick1RotationY : " + Joystick1RotationY + Environment.NewLine;
-                    str += "Joystick1RotationZ : " + Joystick1RotationZ + Environment.NewLine;
-                    str += "Joystick1Sliders0 : " + Joystick1Sliders0 + Environment.NewLine;
-                    str += "Joystick1Sliders1 : " + Joystick1Sliders1 + Environment.NewLine;
-                    str += "Joystick1PointOfViewControllers0 : " + Joystick1PointOfViewControllers0 + Environment.NewLine;
-                    str += "Joystick1PointOfViewControllers1 : " + Joystick1PointOfViewControllers1 + Environment.NewLine;
-                    str += "Joystick1PointOfViewControllers2 : " + Joystick1PointOfViewControllers2 + Environment.NewLine;
-                    str += "Joystick1PointOfViewControllers3 : " + Joystick1PointOfViewControllers3 + Environment.NewLine;
-                    str += "Joystick1VelocityX : " + Joystick1VelocityX + Environment.NewLine;
-                    str += "Joystick1VelocityY : " + Joystick1VelocityY + Environment.NewLine;
-                    str += "Joystick1VelocityZ : " + Joystick1VelocityZ + Environment.NewLine;
-                    str += "Joystick1AngularVelocityX : " + Joystick1AngularVelocityX + Environment.NewLine;
-                    str += "Joystick1AngularVelocityY : " + Joystick1AngularVelocityY + Environment.NewLine;
-                    str += "Joystick1AngularVelocityZ : " + Joystick1AngularVelocityZ + Environment.NewLine;
-                    str += "Joystick1VelocitySliders0 : " + Joystick1VelocitySliders0 + Environment.NewLine;
-                    str += "Joystick1VelocitySliders1 : " + Joystick1VelocitySliders1 + Environment.NewLine;
-                    str += "Joystick1AccelerationX : " + Joystick1AccelerationX + Environment.NewLine;
-                    str += "Joystick1AccelerationY : " + Joystick1AccelerationY + Environment.NewLine;
-                    str += "Joystick1AccelerationZ : " + Joystick1AccelerationZ + Environment.NewLine;
-                    str += "Joystick1AngularAccelerationX : " + Joystick1AngularAccelerationX + Environment.NewLine;
-                    str += "Joystick1AngularAccelerationY : " + Joystick1AngularAccelerationY + Environment.NewLine;
-                    str += "Joystick1AngularAccelerationZ : " + Joystick1AngularAccelerationZ + Environment.NewLine;
-                    str += "Joystick1AccelerationSliders0 : " + Joystick1AccelerationSliders0 + Environment.NewLine;
-                    str += "Joystick1AccelerationSliders1 : " + Joystick1AccelerationSliders1 + Environment.NewLine;
-                    str += "Joystick1ForceX : " + Joystick1ForceX + Environment.NewLine;
-                    str += "Joystick1ForceY : " + Joystick1ForceY + Environment.NewLine;
-                    str += "Joystick1ForceZ : " + Joystick1ForceZ + Environment.NewLine;
-                    str += "Joystick1TorqueX : " + Joystick1TorqueX + Environment.NewLine;
-                    str += "Joystick1TorqueY : " + Joystick1TorqueY + Environment.NewLine;
-                    str += "Joystick1TorqueZ : " + Joystick1TorqueZ + Environment.NewLine;
-                    str += "Joystick1ForceSliders0 : " + Joystick1ForceSliders0 + Environment.NewLine;
-                    str += "Joystick1ForceSliders1 : " + Joystick1ForceSliders1 + Environment.NewLine;
-                    str += "Joystick1Buttons0 : " + Joystick1Buttons0 + Environment.NewLine;
-                    str += "Joystick1Buttons1 : " + Joystick1Buttons1 + Environment.NewLine;
-                    str += "Joystick1Buttons2 : " + Joystick1Buttons2 + Environment.NewLine;
-                    str += "Joystick1Buttons3 : " + Joystick1Buttons3 + Environment.NewLine;
-                    str += "Joystick1Buttons4 : " + Joystick1Buttons4 + Environment.NewLine;
-                    str += "Joystick1Buttons5 : " + Joystick1Buttons5 + Environment.NewLine;
-                    str += "Joystick1Buttons6 : " + Joystick1Buttons6 + Environment.NewLine;
-                    str += "Joystick1Buttons7 : " + Joystick1Buttons7 + Environment.NewLine;
-                    str += "Joystick1Buttons8 : " + Joystick1Buttons8 + Environment.NewLine;
-                    str += "Joystick1Buttons9 : " + Joystick1Buttons9 + Environment.NewLine;
-                    str += "Joystick1Buttons10 : " + Joystick1Buttons10 + Environment.NewLine;
-                    str += "Joystick1Buttons11 : " + Joystick1Buttons11 + Environment.NewLine;
-                    str += "Joystick1Buttons12 : " + Joystick1Buttons12 + Environment.NewLine;
-                    str += "Joystick1Buttons13 : " + Joystick1Buttons13 + Environment.NewLine;
-                    str += "Joystick1Buttons14 : " + Joystick1Buttons14 + Environment.NewLine;
-                    str += "Joystick1Buttons15 : " + Joystick1Buttons15 + Environment.NewLine;
-                    str += "Joystick1Buttons16 : " + Joystick1Buttons16 + Environment.NewLine;
-                    str += "Joystick1Buttons17 : " + Joystick1Buttons17 + Environment.NewLine;
-                    str += "Joystick1Buttons18 : " + Joystick1Buttons18 + Environment.NewLine;
-                    str += "Joystick1Buttons19 : " + Joystick1Buttons19 + Environment.NewLine;
-                    str += "Joystick1Buttons20 : " + Joystick1Buttons20 + Environment.NewLine;
-                    str += "Joystick1Buttons21 : " + Joystick1Buttons21 + Environment.NewLine;
-                    str += "Joystick1Buttons22 : " + Joystick1Buttons22 + Environment.NewLine;
-                    str += "Joystick1Buttons23 : " + Joystick1Buttons23 + Environment.NewLine;
-                    str += "Joystick1Buttons24 : " + Joystick1Buttons24 + Environment.NewLine;
-                    str += "Joystick1Buttons25 : " + Joystick1Buttons25 + Environment.NewLine;
-                    str += "Joystick1Buttons26 : " + Joystick1Buttons26 + Environment.NewLine;
-                    str += "Joystick1Buttons27 : " + Joystick1Buttons27 + Environment.NewLine;
-                    str += "Joystick1Buttons28 : " + Joystick1Buttons28 + Environment.NewLine;
-                    str += "Joystick1Buttons29 : " + Joystick1Buttons29 + Environment.NewLine;
-                    str += "Joystick1Buttons30 : " + Joystick1Buttons30 + Environment.NewLine;
-                    str += "Joystick1Buttons31 : " + Joystick1Buttons31 + Environment.NewLine;
-                    str += "Joystick1Buttons32 : " + Joystick1Buttons32 + Environment.NewLine;
-                    str += "Joystick1Buttons33 : " + Joystick1Buttons33 + Environment.NewLine;
-                    str += "Joystick1Buttons34 : " + Joystick1Buttons34 + Environment.NewLine;
-                    str += "Joystick1Buttons35 : " + Joystick1Buttons35 + Environment.NewLine;
-                    str += "Joystick1Buttons36 : " + Joystick1Buttons36 + Environment.NewLine;
-                    str += "Joystick1Buttons37 : " + Joystick1Buttons37 + Environment.NewLine;
-                    str += "Joystick1Buttons38 : " + Joystick1Buttons38 + Environment.NewLine;
-                    str += "Joystick1Buttons39 : " + Joystick1Buttons39 + Environment.NewLine;
-                    str += "Joystick1Buttons40 : " + Joystick1Buttons40 + Environment.NewLine;
-                    str += "Joystick1Buttons41 : " + Joystick1Buttons41 + Environment.NewLine;
-                    str += "Joystick1Buttons42 : " + Joystick1Buttons42 + Environment.NewLine;
-                    str += "Joystick1Buttons43 : " + Joystick1Buttons43 + Environment.NewLine;
-                    str += "Joystick1Buttons44 : " + Joystick1Buttons44 + Environment.NewLine;
-                    str += "Joystick1Buttons45 : " + Joystick1Buttons45 + Environment.NewLine;
-                    str += "Joystick1Buttons46 : " + Joystick1Buttons46 + Environment.NewLine;
-                    str += "Joystick1Buttons47 : " + Joystick1Buttons47 + Environment.NewLine;
-                    str += "Joystick1Buttons48 : " + Joystick1Buttons48 + Environment.NewLine;
-                    str += "Joystick1Buttons49 : " + Joystick1Buttons49 + Environment.NewLine;
-                    str += "Joystick1Buttons50 : " + Joystick1Buttons50 + Environment.NewLine;
-                    str += "Joystick1Buttons51 : " + Joystick1Buttons51 + Environment.NewLine;
-                    str += "Joystick1Buttons52 : " + Joystick1Buttons52 + Environment.NewLine;
-                    str += "Joystick1Buttons53 : " + Joystick1Buttons53 + Environment.NewLine;
-                    str += "Joystick1Buttons54 : " + Joystick1Buttons54 + Environment.NewLine;
-                    str += "Joystick1Buttons55 : " + Joystick1Buttons55 + Environment.NewLine;
-                    str += "Joystick1Buttons56 : " + Joystick1Buttons56 + Environment.NewLine;
-                    str += "Joystick1Buttons57 : " + Joystick1Buttons57 + Environment.NewLine;
-                    str += "Joystick1Buttons58 : " + Joystick1Buttons58 + Environment.NewLine;
-                    str += "Joystick1Buttons59 : " + Joystick1Buttons59 + Environment.NewLine;
-                    str += "Joystick1Buttons60 : " + Joystick1Buttons60 + Environment.NewLine;
-                    str += "Joystick1Buttons61 : " + Joystick1Buttons61 + Environment.NewLine;
-                    str += "Joystick1Buttons62 : " + Joystick1Buttons62 + Environment.NewLine;
-                    str += "Joystick1Buttons63 : " + Joystick1Buttons63 + Environment.NewLine;
-                    str += "Joystick1Buttons64 : " + Joystick1Buttons64 + Environment.NewLine;
-                    str += "Joystick1Buttons65 : " + Joystick1Buttons65 + Environment.NewLine;
-                    str += "Joystick1Buttons66 : " + Joystick1Buttons66 + Environment.NewLine;
-                    str += "Joystick1Buttons67 : " + Joystick1Buttons67 + Environment.NewLine;
-                    str += "Joystick1Buttons68 : " + Joystick1Buttons68 + Environment.NewLine;
-                    str += "Joystick1Buttons69 : " + Joystick1Buttons69 + Environment.NewLine;
-                    str += "Joystick1Buttons70 : " + Joystick1Buttons70 + Environment.NewLine;
-                    str += "Joystick1Buttons71 : " + Joystick1Buttons71 + Environment.NewLine;
-                    str += "Joystick1Buttons72 : " + Joystick1Buttons72 + Environment.NewLine;
-                    str += "Joystick1Buttons73 : " + Joystick1Buttons73 + Environment.NewLine;
-                    str += "Joystick1Buttons74 : " + Joystick1Buttons74 + Environment.NewLine;
-                    str += "Joystick1Buttons75 : " + Joystick1Buttons75 + Environment.NewLine;
-                    str += "Joystick1Buttons76 : " + Joystick1Buttons76 + Environment.NewLine;
-                    str += "Joystick1Buttons77 : " + Joystick1Buttons77 + Environment.NewLine;
-                    str += "Joystick1Buttons78 : " + Joystick1Buttons78 + Environment.NewLine;
-                    str += "Joystick1Buttons79 : " + Joystick1Buttons79 + Environment.NewLine;
-                    str += "Joystick1Buttons80 : " + Joystick1Buttons80 + Environment.NewLine;
-                    str += "Joystick1Buttons81 : " + Joystick1Buttons81 + Environment.NewLine;
-                    str += "Joystick1Buttons82 : " + Joystick1Buttons82 + Environment.NewLine;
-                    str += "Joystick1Buttons83 : " + Joystick1Buttons83 + Environment.NewLine;
-                    str += "Joystick1Buttons84 : " + Joystick1Buttons84 + Environment.NewLine;
-                    str += "Joystick1Buttons85 : " + Joystick1Buttons85 + Environment.NewLine;
-                    str += "Joystick1Buttons86 : " + Joystick1Buttons86 + Environment.NewLine;
-                    str += "Joystick1Buttons87 : " + Joystick1Buttons87 + Environment.NewLine;
-                    str += "Joystick1Buttons88 : " + Joystick1Buttons88 + Environment.NewLine;
-                    str += "Joystick1Buttons89 : " + Joystick1Buttons89 + Environment.NewLine;
-                    str += "Joystick1Buttons90 : " + Joystick1Buttons90 + Environment.NewLine;
-                    str += "Joystick1Buttons91 : " + Joystick1Buttons91 + Environment.NewLine;
-                    str += "Joystick1Buttons92 : " + Joystick1Buttons92 + Environment.NewLine;
-                    str += "Joystick1Buttons93 : " + Joystick1Buttons93 + Environment.NewLine;
-                    str += "Joystick1Buttons94 : " + Joystick1Buttons94 + Environment.NewLine;
-                    str += "Joystick1Buttons95 : " + Joystick1Buttons95 + Environment.NewLine;
-                    str += "Joystick1Buttons96 : " + Joystick1Buttons96 + Environment.NewLine;
-                    str += "Joystick1Buttons97 : " + Joystick1Buttons97 + Environment.NewLine;
-                    str += "Joystick1Buttons98 : " + Joystick1Buttons98 + Environment.NewLine;
-                    str += "Joystick1Buttons99 : " + Joystick1Buttons99 + Environment.NewLine;
-                    str += "Joystick1Buttons100 : " + Joystick1Buttons100 + Environment.NewLine;
-                    str += "Joystick1Buttons101 : " + Joystick1Buttons101 + Environment.NewLine;
-                    str += "Joystick1Buttons102 : " + Joystick1Buttons102 + Environment.NewLine;
-                    str += "Joystick1Buttons103 : " + Joystick1Buttons103 + Environment.NewLine;
-                    str += "Joystick1Buttons104 : " + Joystick1Buttons104 + Environment.NewLine;
-                    str += "Joystick1Buttons105 : " + Joystick1Buttons105 + Environment.NewLine;
-                    str += "Joystick1Buttons106 : " + Joystick1Buttons106 + Environment.NewLine;
-                    str += "Joystick1Buttons107 : " + Joystick1Buttons107 + Environment.NewLine;
-                    str += "Joystick1Buttons108 : " + Joystick1Buttons108 + Environment.NewLine;
-                    str += "Joystick1Buttons109 : " + Joystick1Buttons109 + Environment.NewLine;
-                    str += "Joystick1Buttons110 : " + Joystick1Buttons110 + Environment.NewLine;
-                    str += "Joystick1Buttons111 : " + Joystick1Buttons111 + Environment.NewLine;
-                    str += "Joystick1Buttons112 : " + Joystick1Buttons112 + Environment.NewLine;
-                    str += "Joystick1Buttons113 : " + Joystick1Buttons113 + Environment.NewLine;
-                    str += "Joystick1Buttons114 : " + Joystick1Buttons114 + Environment.NewLine;
-                    str += "Joystick1Buttons115 : " + Joystick1Buttons115 + Environment.NewLine;
-                    str += "Joystick1Buttons116 : " + Joystick1Buttons116 + Environment.NewLine;
-                    str += "Joystick1Buttons117 : " + Joystick1Buttons117 + Environment.NewLine;
-                    str += "Joystick1Buttons118 : " + Joystick1Buttons118 + Environment.NewLine;
-                    str += "Joystick1Buttons119 : " + Joystick1Buttons119 + Environment.NewLine;
-                    str += "Joystick1Buttons120 : " + Joystick1Buttons120 + Environment.NewLine;
-                    str += "Joystick1Buttons121 : " + Joystick1Buttons121 + Environment.NewLine;
-                    str += "Joystick1Buttons122 : " + Joystick1Buttons122 + Environment.NewLine;
-                    str += "Joystick1Buttons123 : " + Joystick1Buttons123 + Environment.NewLine;
-                    str += "Joystick1Buttons124 : " + Joystick1Buttons124 + Environment.NewLine;
-                    str += "Joystick1Buttons125 : " + Joystick1Buttons125 + Environment.NewLine;
-                    str += "Joystick1Buttons126 : " + Joystick1Buttons126 + Environment.NewLine;
-                    str += "Joystick1Buttons127 : " + Joystick1Buttons127 + Environment.NewLine; 
-                    str += "Joystick2AxisX : " + Joystick2AxisX + Environment.NewLine;
-                    str += "Joystick2AxisY : " + Joystick2AxisY + Environment.NewLine;
-                    str += "Joystick2AxisZ : " + Joystick2AxisZ + Environment.NewLine;
-                    str += "Joystick2RotationX : " + Joystick2RotationX + Environment.NewLine;
-                    str += "Joystick2RotationY : " + Joystick2RotationY + Environment.NewLine;
-                    str += "Joystick2RotationZ : " + Joystick2RotationZ + Environment.NewLine;
-                    str += "Joystick2Sliders0 : " + Joystick2Sliders0 + Environment.NewLine;
-                    str += "Joystick2Sliders1 : " + Joystick2Sliders1 + Environment.NewLine;
-                    str += "Joystick2PointOfViewControllers0 : " + Joystick2PointOfViewControllers0 + Environment.NewLine;
-                    str += "Joystick2PointOfViewControllers1 : " + Joystick2PointOfViewControllers1 + Environment.NewLine;
-                    str += "Joystick2PointOfViewControllers2 : " + Joystick2PointOfViewControllers2 + Environment.NewLine;
-                    str += "Joystick2PointOfViewControllers3 : " + Joystick2PointOfViewControllers3 + Environment.NewLine;
-                    str += "Joystick2VelocityX : " + Joystick2VelocityX + Environment.NewLine;
-                    str += "Joystick2VelocityY : " + Joystick2VelocityY + Environment.NewLine;
-                    str += "Joystick2VelocityZ : " + Joystick2VelocityZ + Environment.NewLine;
-                    str += "Joystick2AngularVelocityX : " + Joystick2AngularVelocityX + Environment.NewLine;
-                    str += "Joystick2AngularVelocityY : " + Joystick2AngularVelocityY + Environment.NewLine;
-                    str += "Joystick2AngularVelocityZ : " + Joystick2AngularVelocityZ + Environment.NewLine;
-                    str += "Joystick2VelocitySliders0 : " + Joystick2VelocitySliders0 + Environment.NewLine;
-                    str += "Joystick2VelocitySliders1 : " + Joystick2VelocitySliders1 + Environment.NewLine;
-                    str += "Joystick2AccelerationX : " + Joystick2AccelerationX + Environment.NewLine;
-                    str += "Joystick2AccelerationY : " + Joystick2AccelerationY + Environment.NewLine;
-                    str += "Joystick2AccelerationZ : " + Joystick2AccelerationZ + Environment.NewLine;
-                    str += "Joystick2AngularAccelerationX : " + Joystick2AngularAccelerationX + Environment.NewLine;
-                    str += "Joystick2AngularAccelerationY : " + Joystick2AngularAccelerationY + Environment.NewLine;
-                    str += "Joystick2AngularAccelerationZ : " + Joystick2AngularAccelerationZ + Environment.NewLine;
-                    str += "Joystick2AccelerationSliders0 : " + Joystick2AccelerationSliders0 + Environment.NewLine;
-                    str += "Joystick2AccelerationSliders1 : " + Joystick2AccelerationSliders1 + Environment.NewLine;
-                    str += "Joystick2ForceX : " + Joystick2ForceX + Environment.NewLine;
-                    str += "Joystick2ForceY : " + Joystick2ForceY + Environment.NewLine;
-                    str += "Joystick2ForceZ : " + Joystick2ForceZ + Environment.NewLine;
-                    str += "Joystick2TorqueX : " + Joystick2TorqueX + Environment.NewLine;
-                    str += "Joystick2TorqueY : " + Joystick2TorqueY + Environment.NewLine;
-                    str += "Joystick2TorqueZ : " + Joystick2TorqueZ + Environment.NewLine;
-                    str += "Joystick2ForceSliders0 : " + Joystick2ForceSliders0 + Environment.NewLine;
-                    str += "Joystick2ForceSliders1 : " + Joystick2ForceSliders1 + Environment.NewLine;
-                    str += "Joystick2Buttons0 : " + Joystick2Buttons0 + Environment.NewLine;
-                    str += "Joystick2Buttons1 : " + Joystick2Buttons1 + Environment.NewLine;
-                    str += "Joystick2Buttons2 : " + Joystick2Buttons2 + Environment.NewLine;
-                    str += "Joystick2Buttons3 : " + Joystick2Buttons3 + Environment.NewLine;
-                    str += "Joystick2Buttons4 : " + Joystick2Buttons4 + Environment.NewLine;
-                    str += "Joystick2Buttons5 : " + Joystick2Buttons5 + Environment.NewLine;
-                    str += "Joystick2Buttons6 : " + Joystick2Buttons6 + Environment.NewLine;
-                    str += "Joystick2Buttons7 : " + Joystick2Buttons7 + Environment.NewLine;
-                    str += "Joystick2Buttons8 : " + Joystick2Buttons8 + Environment.NewLine;
-                    str += "Joystick2Buttons9 : " + Joystick2Buttons9 + Environment.NewLine;
-                    str += "Joystick2Buttons10 : " + Joystick2Buttons10 + Environment.NewLine;
-                    str += "Joystick2Buttons11 : " + Joystick2Buttons11 + Environment.NewLine;
-                    str += "Joystick2Buttons12 : " + Joystick2Buttons12 + Environment.NewLine;
-                    str += "Joystick2Buttons13 : " + Joystick2Buttons13 + Environment.NewLine;
-                    str += "Joystick2Buttons14 : " + Joystick2Buttons14 + Environment.NewLine;
-                    str += "Joystick2Buttons15 : " + Joystick2Buttons15 + Environment.NewLine;
-                    str += "Joystick2Buttons16 : " + Joystick2Buttons16 + Environment.NewLine;
-                    str += "Joystick2Buttons17 : " + Joystick2Buttons17 + Environment.NewLine;
-                    str += "Joystick2Buttons18 : " + Joystick2Buttons18 + Environment.NewLine;
-                    str += "Joystick2Buttons19 : " + Joystick2Buttons19 + Environment.NewLine;
-                    str += "Joystick2Buttons20 : " + Joystick2Buttons20 + Environment.NewLine;
-                    str += "Joystick2Buttons21 : " + Joystick2Buttons21 + Environment.NewLine;
-                    str += "Joystick2Buttons22 : " + Joystick2Buttons22 + Environment.NewLine;
-                    str += "Joystick2Buttons23 : " + Joystick2Buttons23 + Environment.NewLine;
-                    str += "Joystick2Buttons24 : " + Joystick2Buttons24 + Environment.NewLine;
-                    str += "Joystick2Buttons25 : " + Joystick2Buttons25 + Environment.NewLine;
-                    str += "Joystick2Buttons26 : " + Joystick2Buttons26 + Environment.NewLine;
-                    str += "Joystick2Buttons27 : " + Joystick2Buttons27 + Environment.NewLine;
-                    str += "Joystick2Buttons28 : " + Joystick2Buttons28 + Environment.NewLine;
-                    str += "Joystick2Buttons29 : " + Joystick2Buttons29 + Environment.NewLine;
-                    str += "Joystick2Buttons30 : " + Joystick2Buttons30 + Environment.NewLine;
-                    str += "Joystick2Buttons31 : " + Joystick2Buttons31 + Environment.NewLine;
-                    str += "Joystick2Buttons32 : " + Joystick2Buttons32 + Environment.NewLine;
-                    str += "Joystick2Buttons33 : " + Joystick2Buttons33 + Environment.NewLine;
-                    str += "Joystick2Buttons34 : " + Joystick2Buttons34 + Environment.NewLine;
-                    str += "Joystick2Buttons35 : " + Joystick2Buttons35 + Environment.NewLine;
-                    str += "Joystick2Buttons36 : " + Joystick2Buttons36 + Environment.NewLine;
-                    str += "Joystick2Buttons37 : " + Joystick2Buttons37 + Environment.NewLine;
-                    str += "Joystick2Buttons38 : " + Joystick2Buttons38 + Environment.NewLine;
-                    str += "Joystick2Buttons39 : " + Joystick2Buttons39 + Environment.NewLine;
-                    str += "Joystick2Buttons40 : " + Joystick2Buttons40 + Environment.NewLine;
-                    str += "Joystick2Buttons41 : " + Joystick2Buttons41 + Environment.NewLine;
-                    str += "Joystick2Buttons42 : " + Joystick2Buttons42 + Environment.NewLine;
-                    str += "Joystick2Buttons43 : " + Joystick2Buttons43 + Environment.NewLine;
-                    str += "Joystick2Buttons44 : " + Joystick2Buttons44 + Environment.NewLine;
-                    str += "Joystick2Buttons45 : " + Joystick2Buttons45 + Environment.NewLine;
-                    str += "Joystick2Buttons46 : " + Joystick2Buttons46 + Environment.NewLine;
-                    str += "Joystick2Buttons47 : " + Joystick2Buttons47 + Environment.NewLine;
-                    str += "Joystick2Buttons48 : " + Joystick2Buttons48 + Environment.NewLine;
-                    str += "Joystick2Buttons49 : " + Joystick2Buttons49 + Environment.NewLine;
-                    str += "Joystick2Buttons50 : " + Joystick2Buttons50 + Environment.NewLine;
-                    str += "Joystick2Buttons51 : " + Joystick2Buttons51 + Environment.NewLine;
-                    str += "Joystick2Buttons52 : " + Joystick2Buttons52 + Environment.NewLine;
-                    str += "Joystick2Buttons53 : " + Joystick2Buttons53 + Environment.NewLine;
-                    str += "Joystick2Buttons54 : " + Joystick2Buttons54 + Environment.NewLine;
-                    str += "Joystick2Buttons55 : " + Joystick2Buttons55 + Environment.NewLine;
-                    str += "Joystick2Buttons56 : " + Joystick2Buttons56 + Environment.NewLine;
-                    str += "Joystick2Buttons57 : " + Joystick2Buttons57 + Environment.NewLine;
-                    str += "Joystick2Buttons58 : " + Joystick2Buttons58 + Environment.NewLine;
-                    str += "Joystick2Buttons59 : " + Joystick2Buttons59 + Environment.NewLine;
-                    str += "Joystick2Buttons60 : " + Joystick2Buttons60 + Environment.NewLine;
-                    str += "Joystick2Buttons61 : " + Joystick2Buttons61 + Environment.NewLine;
-                    str += "Joystick2Buttons62 : " + Joystick2Buttons62 + Environment.NewLine;
-                    str += "Joystick2Buttons63 : " + Joystick2Buttons63 + Environment.NewLine;
-                    str += "Joystick2Buttons64 : " + Joystick2Buttons64 + Environment.NewLine;
-                    str += "Joystick2Buttons65 : " + Joystick2Buttons65 + Environment.NewLine;
-                    str += "Joystick2Buttons66 : " + Joystick2Buttons66 + Environment.NewLine;
-                    str += "Joystick2Buttons67 : " + Joystick2Buttons67 + Environment.NewLine;
-                    str += "Joystick2Buttons68 : " + Joystick2Buttons68 + Environment.NewLine;
-                    str += "Joystick2Buttons69 : " + Joystick2Buttons69 + Environment.NewLine;
-                    str += "Joystick2Buttons70 : " + Joystick2Buttons70 + Environment.NewLine;
-                    str += "Joystick2Buttons71 : " + Joystick2Buttons71 + Environment.NewLine;
-                    str += "Joystick2Buttons72 : " + Joystick2Buttons72 + Environment.NewLine;
-                    str += "Joystick2Buttons73 : " + Joystick2Buttons73 + Environment.NewLine;
-                    str += "Joystick2Buttons74 : " + Joystick2Buttons74 + Environment.NewLine;
-                    str += "Joystick2Buttons75 : " + Joystick2Buttons75 + Environment.NewLine;
-                    str += "Joystick2Buttons76 : " + Joystick2Buttons76 + Environment.NewLine;
-                    str += "Joystick2Buttons77 : " + Joystick2Buttons77 + Environment.NewLine;
-                    str += "Joystick2Buttons78 : " + Joystick2Buttons78 + Environment.NewLine;
-                    str += "Joystick2Buttons79 : " + Joystick2Buttons79 + Environment.NewLine;
-                    str += "Joystick2Buttons80 : " + Joystick2Buttons80 + Environment.NewLine;
-                    str += "Joystick2Buttons81 : " + Joystick2Buttons81 + Environment.NewLine;
-                    str += "Joystick2Buttons82 : " + Joystick2Buttons82 + Environment.NewLine;
-                    str += "Joystick2Buttons83 : " + Joystick2Buttons83 + Environment.NewLine;
-                    str += "Joystick2Buttons84 : " + Joystick2Buttons84 + Environment.NewLine;
-                    str += "Joystick2Buttons85 : " + Joystick2Buttons85 + Environment.NewLine;
-                    str += "Joystick2Buttons86 : " + Joystick2Buttons86 + Environment.NewLine;
-                    str += "Joystick2Buttons87 : " + Joystick2Buttons87 + Environment.NewLine;
-                    str += "Joystick2Buttons88 : " + Joystick2Buttons88 + Environment.NewLine;
-                    str += "Joystick2Buttons89 : " + Joystick2Buttons89 + Environment.NewLine;
-                    str += "Joystick2Buttons90 : " + Joystick2Buttons90 + Environment.NewLine;
-                    str += "Joystick2Buttons91 : " + Joystick2Buttons91 + Environment.NewLine;
-                    str += "Joystick2Buttons92 : " + Joystick2Buttons92 + Environment.NewLine;
-                    str += "Joystick2Buttons93 : " + Joystick2Buttons93 + Environment.NewLine;
-                    str += "Joystick2Buttons94 : " + Joystick2Buttons94 + Environment.NewLine;
-                    str += "Joystick2Buttons95 : " + Joystick2Buttons95 + Environment.NewLine;
-                    str += "Joystick2Buttons96 : " + Joystick2Buttons96 + Environment.NewLine;
-                    str += "Joystick2Buttons97 : " + Joystick2Buttons97 + Environment.NewLine;
-                    str += "Joystick2Buttons98 : " + Joystick2Buttons98 + Environment.NewLine;
-                    str += "Joystick2Buttons99 : " + Joystick2Buttons99 + Environment.NewLine;
-                    str += "Joystick2Buttons100 : " + Joystick2Buttons100 + Environment.NewLine;
-                    str += "Joystick2Buttons101 : " + Joystick2Buttons101 + Environment.NewLine;
-                    str += "Joystick2Buttons102 : " + Joystick2Buttons102 + Environment.NewLine;
-                    str += "Joystick2Buttons103 : " + Joystick2Buttons103 + Environment.NewLine;
-                    str += "Joystick2Buttons104 : " + Joystick2Buttons104 + Environment.NewLine;
-                    str += "Joystick2Buttons105 : " + Joystick2Buttons105 + Environment.NewLine;
-                    str += "Joystick2Buttons106 : " + Joystick2Buttons106 + Environment.NewLine;
-                    str += "Joystick2Buttons107 : " + Joystick2Buttons107 + Environment.NewLine;
-                    str += "Joystick2Buttons108 : " + Joystick2Buttons108 + Environment.NewLine;
-                    str += "Joystick2Buttons109 : " + Joystick2Buttons109 + Environment.NewLine;
-                    str += "Joystick2Buttons110 : " + Joystick2Buttons110 + Environment.NewLine;
-                    str += "Joystick2Buttons111 : " + Joystick2Buttons111 + Environment.NewLine;
-                    str += "Joystick2Buttons112 : " + Joystick2Buttons112 + Environment.NewLine;
-                    str += "Joystick2Buttons113 : " + Joystick2Buttons113 + Environment.NewLine;
-                    str += "Joystick2Buttons114 : " + Joystick2Buttons114 + Environment.NewLine;
-                    str += "Joystick2Buttons115 : " + Joystick2Buttons115 + Environment.NewLine;
-                    str += "Joystick2Buttons116 : " + Joystick2Buttons116 + Environment.NewLine;
-                    str += "Joystick2Buttons117 : " + Joystick2Buttons117 + Environment.NewLine;
-                    str += "Joystick2Buttons118 : " + Joystick2Buttons118 + Environment.NewLine;
-                    str += "Joystick2Buttons119 : " + Joystick2Buttons119 + Environment.NewLine;
-                    str += "Joystick2Buttons120 : " + Joystick2Buttons120 + Environment.NewLine;
-                    str += "Joystick2Buttons121 : " + Joystick2Buttons121 + Environment.NewLine;
-                    str += "Joystick2Buttons122 : " + Joystick2Buttons122 + Environment.NewLine;
-                    str += "Joystick2Buttons123 : " + Joystick2Buttons123 + Environment.NewLine;
-                    str += "Joystick2Buttons124 : " + Joystick2Buttons124 + Environment.NewLine;
-                    str += "Joystick2Buttons125 : " + Joystick2Buttons125 + Environment.NewLine;
-                    str += "Joystick2Buttons126 : " + Joystick2Buttons126 + Environment.NewLine;
-                    str += "Joystick2Buttons127 : " + Joystick2Buttons127 + Environment.NewLine;
+                    string str = "JoystickAxisX : " + JoystickAxisX + Environment.NewLine;
+                    str += "JoystickAxisY : " + JoystickAxisY + Environment.NewLine;
+                    str += "JoystickAxisZ : " + JoystickAxisZ + Environment.NewLine;
+                    str += "JoystickRotationX : " + JoystickRotationX + Environment.NewLine;
+                    str += "JoystickRotationY : " + JoystickRotationY + Environment.NewLine;
+                    str += "JoystickRotationZ : " + JoystickRotationZ + Environment.NewLine;
+                    str += "JoystickSliders0 : " + JoystickSliders0 + Environment.NewLine;
+                    str += "JoystickSliders1 : " + JoystickSliders1 + Environment.NewLine;
+                    str += "JoystickPointOfViewControllers0 : " + JoystickPointOfViewControllers0 + Environment.NewLine;
+                    str += "JoystickPointOfViewControllers1 : " + JoystickPointOfViewControllers1 + Environment.NewLine;
+                    str += "JoystickPointOfViewControllers2 : " + JoystickPointOfViewControllers2 + Environment.NewLine;
+                    str += "JoystickPointOfViewControllers3 : " + JoystickPointOfViewControllers3 + Environment.NewLine;
+                    str += "JoystickVelocityX : " + JoystickVelocityX + Environment.NewLine;
+                    str += "JoystickVelocityY : " + JoystickVelocityY + Environment.NewLine;
+                    str += "JoystickVelocityZ : " + JoystickVelocityZ + Environment.NewLine;
+                    str += "JoystickAngularVelocityX : " + JoystickAngularVelocityX + Environment.NewLine;
+                    str += "JoystickAngularVelocityY : " + JoystickAngularVelocityY + Environment.NewLine;
+                    str += "JoystickAngularVelocityZ : " + JoystickAngularVelocityZ + Environment.NewLine;
+                    str += "JoystickVelocitySliders0 : " + JoystickVelocitySliders0 + Environment.NewLine;
+                    str += "JoystickVelocitySliders1 : " + JoystickVelocitySliders1 + Environment.NewLine;
+                    str += "JoystickAccelerationX : " + JoystickAccelerationX + Environment.NewLine;
+                    str += "JoystickAccelerationY : " + JoystickAccelerationY + Environment.NewLine;
+                    str += "JoystickAccelerationZ : " + JoystickAccelerationZ + Environment.NewLine;
+                    str += "JoystickAngularAccelerationX : " + JoystickAngularAccelerationX + Environment.NewLine;
+                    str += "JoystickAngularAccelerationY : " + JoystickAngularAccelerationY + Environment.NewLine;
+                    str += "JoystickAngularAccelerationZ : " + JoystickAngularAccelerationZ + Environment.NewLine;
+                    str += "JoystickAccelerationSliders0 : " + JoystickAccelerationSliders0 + Environment.NewLine;
+                    str += "JoystickAccelerationSliders1 : " + JoystickAccelerationSliders1 + Environment.NewLine;
+                    str += "JoystickForceX : " + JoystickForceX + Environment.NewLine;
+                    str += "JoystickForceY : " + JoystickForceY + Environment.NewLine;
+                    str += "JoystickForceZ : " + JoystickForceZ + Environment.NewLine;
+                    str += "JoystickTorqueX : " + JoystickTorqueX + Environment.NewLine;
+                    str += "JoystickTorqueY : " + JoystickTorqueY + Environment.NewLine;
+                    str += "JoystickTorqueZ : " + JoystickTorqueZ + Environment.NewLine;
+                    str += "JoystickForceSliders0 : " + JoystickForceSliders0 + Environment.NewLine;
+                    str += "JoystickForceSliders1 : " + JoystickForceSliders1 + Environment.NewLine;
+                    str += "JoystickButtons0 : " + JoystickButtons0 + Environment.NewLine;
+                    str += "JoystickButtons1 : " + JoystickButtons1 + Environment.NewLine;
+                    str += "JoystickButtons2 : " + JoystickButtons2 + Environment.NewLine;
+                    str += "JoystickButtons3 : " + JoystickButtons3 + Environment.NewLine;
+                    str += "JoystickButtons4 : " + JoystickButtons4 + Environment.NewLine;
+                    str += "JoystickButtons5 : " + JoystickButtons5 + Environment.NewLine;
+                    str += "JoystickButtons6 : " + JoystickButtons6 + Environment.NewLine;
+                    str += "JoystickButtons7 : " + JoystickButtons7 + Environment.NewLine;
+                    str += "JoystickButtons8 : " + JoystickButtons8 + Environment.NewLine;
+                    str += "JoystickButtons9 : " + JoystickButtons9 + Environment.NewLine;
+                    str += "JoystickButtons10 : " + JoystickButtons10 + Environment.NewLine;
+                    str += "JoystickButtons11 : " + JoystickButtons11 + Environment.NewLine;
+                    str += "JoystickButtons12 : " + JoystickButtons12 + Environment.NewLine;
+                    str += "JoystickButtons13 : " + JoystickButtons13 + Environment.NewLine;
+                    str += "JoystickButtons14 : " + JoystickButtons14 + Environment.NewLine;
+                    str += "JoystickButtons15 : " + JoystickButtons15 + Environment.NewLine;
+                    str += "JoystickButtons16 : " + JoystickButtons16 + Environment.NewLine;
+                    str += "JoystickButtons17 : " + JoystickButtons17 + Environment.NewLine;
+                    str += "JoystickButtons18 : " + JoystickButtons18 + Environment.NewLine;
+                    str += "JoystickButtons19 : " + JoystickButtons19 + Environment.NewLine;
+                    str += "JoystickButtons20 : " + JoystickButtons20 + Environment.NewLine;
+                    str += "JoystickButtons21 : " + JoystickButtons21 + Environment.NewLine;
+                    str += "JoystickButtons22 : " + JoystickButtons22 + Environment.NewLine;
+                    str += "JoystickButtons23 : " + JoystickButtons23 + Environment.NewLine;
+                    str += "JoystickButtons24 : " + JoystickButtons24 + Environment.NewLine;
+                    str += "JoystickButtons25 : " + JoystickButtons25 + Environment.NewLine;
+                    str += "JoystickButtons26 : " + JoystickButtons26 + Environment.NewLine;
+                    str += "JoystickButtons27 : " + JoystickButtons27 + Environment.NewLine;
+                    str += "JoystickButtons28 : " + JoystickButtons28 + Environment.NewLine;
+                    str += "JoystickButtons29 : " + JoystickButtons29 + Environment.NewLine;
+                    str += "JoystickButtons30 : " + JoystickButtons30 + Environment.NewLine;
+                    str += "JoystickButtons31 : " + JoystickButtons31 + Environment.NewLine;
+                    str += "JoystickButtons32 : " + JoystickButtons32 + Environment.NewLine;
+                    str += "JoystickButtons33 : " + JoystickButtons33 + Environment.NewLine;
+                    str += "JoystickButtons34 : " + JoystickButtons34 + Environment.NewLine;
+                    str += "JoystickButtons35 : " + JoystickButtons35 + Environment.NewLine;
+                    str += "JoystickButtons36 : " + JoystickButtons36 + Environment.NewLine;
+                    str += "JoystickButtons37 : " + JoystickButtons37 + Environment.NewLine;
+                    str += "JoystickButtons38 : " + JoystickButtons38 + Environment.NewLine;
+                    str += "JoystickButtons39 : " + JoystickButtons39 + Environment.NewLine;
+                    str += "JoystickButtons40 : " + JoystickButtons40 + Environment.NewLine;
+                    str += "JoystickButtons41 : " + JoystickButtons41 + Environment.NewLine;
+                    str += "JoystickButtons42 : " + JoystickButtons42 + Environment.NewLine;
+                    str += "JoystickButtons43 : " + JoystickButtons43 + Environment.NewLine;
+                    str += "JoystickButtons44 : " + JoystickButtons44 + Environment.NewLine;
+                    str += "JoystickButtons45 : " + JoystickButtons45 + Environment.NewLine;
+                    str += "JoystickButtons46 : " + JoystickButtons46 + Environment.NewLine;
+                    str += "JoystickButtons47 : " + JoystickButtons47 + Environment.NewLine;
+                    str += "JoystickButtons48 : " + JoystickButtons48 + Environment.NewLine;
+                    str += "JoystickButtons49 : " + JoystickButtons49 + Environment.NewLine;
+                    str += "JoystickButtons50 : " + JoystickButtons50 + Environment.NewLine;
+                    str += "JoystickButtons51 : " + JoystickButtons51 + Environment.NewLine;
+                    str += "JoystickButtons52 : " + JoystickButtons52 + Environment.NewLine;
+                    str += "JoystickButtons53 : " + JoystickButtons53 + Environment.NewLine;
+                    str += "JoystickButtons54 : " + JoystickButtons54 + Environment.NewLine;
+                    str += "JoystickButtons55 : " + JoystickButtons55 + Environment.NewLine;
+                    str += "JoystickButtons56 : " + JoystickButtons56 + Environment.NewLine;
+                    str += "JoystickButtons57 : " + JoystickButtons57 + Environment.NewLine;
+                    str += "JoystickButtons58 : " + JoystickButtons58 + Environment.NewLine;
+                    str += "JoystickButtons59 : " + JoystickButtons59 + Environment.NewLine;
+                    str += "JoystickButtons60 : " + JoystickButtons60 + Environment.NewLine;
+                    str += "JoystickButtons61 : " + JoystickButtons61 + Environment.NewLine;
+                    str += "JoystickButtons62 : " + JoystickButtons62 + Environment.NewLine;
+                    str += "JoystickButtons63 : " + JoystickButtons63 + Environment.NewLine;
+                    str += "JoystickButtons64 : " + JoystickButtons64 + Environment.NewLine;
+                    str += "JoystickButtons65 : " + JoystickButtons65 + Environment.NewLine;
+                    str += "JoystickButtons66 : " + JoystickButtons66 + Environment.NewLine;
+                    str += "JoystickButtons67 : " + JoystickButtons67 + Environment.NewLine;
+                    str += "JoystickButtons68 : " + JoystickButtons68 + Environment.NewLine;
+                    str += "JoystickButtons69 : " + JoystickButtons69 + Environment.NewLine;
+                    str += "JoystickButtons70 : " + JoystickButtons70 + Environment.NewLine;
+                    str += "JoystickButtons71 : " + JoystickButtons71 + Environment.NewLine;
+                    str += "JoystickButtons72 : " + JoystickButtons72 + Environment.NewLine;
+                    str += "JoystickButtons73 : " + JoystickButtons73 + Environment.NewLine;
+                    str += "JoystickButtons74 : " + JoystickButtons74 + Environment.NewLine;
+                    str += "JoystickButtons75 : " + JoystickButtons75 + Environment.NewLine;
+                    str += "JoystickButtons76 : " + JoystickButtons76 + Environment.NewLine;
+                    str += "JoystickButtons77 : " + JoystickButtons77 + Environment.NewLine;
+                    str += "JoystickButtons78 : " + JoystickButtons78 + Environment.NewLine;
+                    str += "JoystickButtons79 : " + JoystickButtons79 + Environment.NewLine;
+                    str += "JoystickButtons80 : " + JoystickButtons80 + Environment.NewLine;
+                    str += "JoystickButtons81 : " + JoystickButtons81 + Environment.NewLine;
+                    str += "JoystickButtons82 : " + JoystickButtons82 + Environment.NewLine;
+                    str += "JoystickButtons83 : " + JoystickButtons83 + Environment.NewLine;
+                    str += "JoystickButtons84 : " + JoystickButtons84 + Environment.NewLine;
+                    str += "JoystickButtons85 : " + JoystickButtons85 + Environment.NewLine;
+                    str += "JoystickButtons86 : " + JoystickButtons86 + Environment.NewLine;
+                    str += "JoystickButtons87 : " + JoystickButtons87 + Environment.NewLine;
+                    str += "JoystickButtons88 : " + JoystickButtons88 + Environment.NewLine;
+                    str += "JoystickButtons89 : " + JoystickButtons89 + Environment.NewLine;
+                    str += "JoystickButtons90 : " + JoystickButtons90 + Environment.NewLine;
+                    str += "JoystickButtons91 : " + JoystickButtons91 + Environment.NewLine;
+                    str += "JoystickButtons92 : " + JoystickButtons92 + Environment.NewLine;
+                    str += "JoystickButtons93 : " + JoystickButtons93 + Environment.NewLine;
+                    str += "JoystickButtons94 : " + JoystickButtons94 + Environment.NewLine;
+                    str += "JoystickButtons95 : " + JoystickButtons95 + Environment.NewLine;
+                    str += "JoystickButtons96 : " + JoystickButtons96 + Environment.NewLine;
+                    str += "JoystickButtons97 : " + JoystickButtons97 + Environment.NewLine;
+                    str += "JoystickButtons98 : " + JoystickButtons98 + Environment.NewLine;
+                    str += "JoystickButtons99 : " + JoystickButtons99 + Environment.NewLine;
+                    str += "JoystickButtons100 : " + JoystickButtons100 + Environment.NewLine;
+                    str += "JoystickButtons101 : " + JoystickButtons101 + Environment.NewLine;
+                    str += "JoystickButtons102 : " + JoystickButtons102 + Environment.NewLine;
+                    str += "JoystickButtons103 : " + JoystickButtons103 + Environment.NewLine;
+                    str += "JoystickButtons104 : " + JoystickButtons104 + Environment.NewLine;
+                    str += "JoystickButtons105 : " + JoystickButtons105 + Environment.NewLine;
+                    str += "JoystickButtons106 : " + JoystickButtons106 + Environment.NewLine;
+                    str += "JoystickButtons107 : " + JoystickButtons107 + Environment.NewLine;
+                    str += "JoystickButtons108 : " + JoystickButtons108 + Environment.NewLine;
+                    str += "JoystickButtons109 : " + JoystickButtons109 + Environment.NewLine;
+                    str += "JoystickButtons110 : " + JoystickButtons110 + Environment.NewLine;
+                    str += "JoystickButtons111 : " + JoystickButtons111 + Environment.NewLine;
+                    str += "JoystickButtons112 : " + JoystickButtons112 + Environment.NewLine;
+                    str += "JoystickButtons113 : " + JoystickButtons113 + Environment.NewLine;
+                    str += "JoystickButtons114 : " + JoystickButtons114 + Environment.NewLine;
+                    str += "JoystickButtons115 : " + JoystickButtons115 + Environment.NewLine;
+                    str += "JoystickButtons116 : " + JoystickButtons116 + Environment.NewLine;
+                    str += "JoystickButtons117 : " + JoystickButtons117 + Environment.NewLine;
+                    str += "JoystickButtons118 : " + JoystickButtons118 + Environment.NewLine;
+                    str += "JoystickButtons119 : " + JoystickButtons119 + Environment.NewLine;
+                    str += "JoystickButtons120 : " + JoystickButtons120 + Environment.NewLine;
+                    str += "JoystickButtons121 : " + JoystickButtons121 + Environment.NewLine;
+                    str += "JoystickButtons122 : " + JoystickButtons122 + Environment.NewLine;
+                    str += "JoystickButtons123 : " + JoystickButtons123 + Environment.NewLine;
+                    str += "JoystickButtons124 : " + JoystickButtons124 + Environment.NewLine;
+                    str += "JoystickButtons125 : " + JoystickButtons125 + Environment.NewLine;
+                    str += "JoystickButtons126 : " + JoystickButtons126 + Environment.NewLine;
+                    str += "JoystickButtons127 : " + JoystickButtons127 + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }
@@ -387,87 +220,51 @@ namespace DirectInputsAPI
         {
             Task.Run(() => taskD());
         }
-        private static Joystick[] joystick = new Joystick[] { null };
-        private static Guid[] joystickGuid = new Guid[] { Guid.Empty };
-        private static int dinum = 0;
-        public int Joystick1AxisX;
-        public int Joystick1AxisY;
-        public int Joystick1AxisZ;
-        public int Joystick1RotationX;
-        public int Joystick1RotationY;
-        public int Joystick1RotationZ;
-        public int Joystick1Sliders0;
-        public int Joystick1Sliders1;
-        public int Joystick1PointOfViewControllers0;
-        public int Joystick1PointOfViewControllers1;
-        public int Joystick1PointOfViewControllers2;
-        public int Joystick1PointOfViewControllers3;
-        public int Joystick1VelocityX;
-        public int Joystick1VelocityY;
-        public int Joystick1VelocityZ;
-        public int Joystick1AngularVelocityX;
-        public int Joystick1AngularVelocityY;
-        public int Joystick1AngularVelocityZ;
-        public int Joystick1VelocitySliders0;
-        public int Joystick1VelocitySliders1;
-        public int Joystick1AccelerationX;
-        public int Joystick1AccelerationY;
-        public int Joystick1AccelerationZ;
-        public int Joystick1AngularAccelerationX;
-        public int Joystick1AngularAccelerationY;
-        public int Joystick1AngularAccelerationZ;
-        public int Joystick1AccelerationSliders0;
-        public int Joystick1AccelerationSliders1;
-        public int Joystick1ForceX;
-        public int Joystick1ForceY;
-        public int Joystick1ForceZ;
-        public int Joystick1TorqueX;
-        public int Joystick1TorqueY;
-        public int Joystick1TorqueZ;
-        public int Joystick1ForceSliders0;
-        public int Joystick1ForceSliders1;
-        public bool Joystick1Buttons0, Joystick1Buttons1, Joystick1Buttons2, Joystick1Buttons3, Joystick1Buttons4, Joystick1Buttons5, Joystick1Buttons6, Joystick1Buttons7, Joystick1Buttons8, Joystick1Buttons9, Joystick1Buttons10, Joystick1Buttons11, Joystick1Buttons12, Joystick1Buttons13, Joystick1Buttons14, Joystick1Buttons15, Joystick1Buttons16, Joystick1Buttons17, Joystick1Buttons18, Joystick1Buttons19, Joystick1Buttons20, Joystick1Buttons21, Joystick1Buttons22, Joystick1Buttons23, Joystick1Buttons24, Joystick1Buttons25, Joystick1Buttons26, Joystick1Buttons27, Joystick1Buttons28, Joystick1Buttons29, Joystick1Buttons30, Joystick1Buttons31, Joystick1Buttons32, Joystick1Buttons33, Joystick1Buttons34, Joystick1Buttons35, Joystick1Buttons36, Joystick1Buttons37, Joystick1Buttons38, Joystick1Buttons39, Joystick1Buttons40, Joystick1Buttons41, Joystick1Buttons42, Joystick1Buttons43, Joystick1Buttons44, Joystick1Buttons45, Joystick1Buttons46, Joystick1Buttons47, Joystick1Buttons48, Joystick1Buttons49, Joystick1Buttons50, Joystick1Buttons51, Joystick1Buttons52, Joystick1Buttons53, Joystick1Buttons54, Joystick1Buttons55, Joystick1Buttons56, Joystick1Buttons57, Joystick1Buttons58, Joystick1Buttons59, Joystick1Buttons60, Joystick1Buttons61, Joystick1Buttons62, Joystick1Buttons63, Joystick1Buttons64, Joystick1Buttons65, Joystick1Buttons66, Joystick1Buttons67, Joystick1Buttons68, Joystick1Buttons69, Joystick1Buttons70, Joystick1Buttons71, Joystick1Buttons72, Joystick1Buttons73, Joystick1Buttons74, Joystick1Buttons75, Joystick1Buttons76, Joystick1Buttons77, Joystick1Buttons78, Joystick1Buttons79, Joystick1Buttons80, Joystick1Buttons81, Joystick1Buttons82, Joystick1Buttons83, Joystick1Buttons84, Joystick1Buttons85, Joystick1Buttons86, Joystick1Buttons87, Joystick1Buttons88, Joystick1Buttons89, Joystick1Buttons90, Joystick1Buttons91, Joystick1Buttons92, Joystick1Buttons93, Joystick1Buttons94, Joystick1Buttons95, Joystick1Buttons96, Joystick1Buttons97, Joystick1Buttons98, Joystick1Buttons99, Joystick1Buttons100, Joystick1Buttons101, Joystick1Buttons102, Joystick1Buttons103, Joystick1Buttons104, Joystick1Buttons105, Joystick1Buttons106, Joystick1Buttons107, Joystick1Buttons108, Joystick1Buttons109, Joystick1Buttons110, Joystick1Buttons111, Joystick1Buttons112, Joystick1Buttons113, Joystick1Buttons114, Joystick1Buttons115, Joystick1Buttons116, Joystick1Buttons117, Joystick1Buttons118, Joystick1Buttons119, Joystick1Buttons120, Joystick1Buttons121, Joystick1Buttons122, Joystick1Buttons123, Joystick1Buttons124, Joystick1Buttons125, Joystick1Buttons126, Joystick1Buttons127;
-        public static int Joystick2AxisX;
-        public static int Joystick2AxisY;
-        public static int Joystick2AxisZ;
-        public static int Joystick2RotationX;
-        public static int Joystick2RotationY;
-        public static int Joystick2RotationZ;
-        public static int Joystick2Sliders0;
-        public static int Joystick2Sliders1;
-        public static int Joystick2PointOfViewControllers0;
-        public static int Joystick2PointOfViewControllers1;
-        public static int Joystick2PointOfViewControllers2;
-        public static int Joystick2PointOfViewControllers3;
-        public static int Joystick2VelocityX;
-        public static int Joystick2VelocityY;
-        public static int Joystick2VelocityZ;
-        public static int Joystick2AngularVelocityX;
-        public static int Joystick2AngularVelocityY;
-        public static int Joystick2AngularVelocityZ;
-        public static int Joystick2VelocitySliders0;
-        public static int Joystick2VelocitySliders1;
-        public static int Joystick2AccelerationX;
-        public static int Joystick2AccelerationY;
-        public static int Joystick2AccelerationZ;
-        public static int Joystick2AngularAccelerationX;
-        public static int Joystick2AngularAccelerationY;
-        public static int Joystick2AngularAccelerationZ;
-        public static int Joystick2AccelerationSliders0;
-        public static int Joystick2AccelerationSliders1;
-        public static int Joystick2ForceX;
-        public static int Joystick2ForceY;
-        public static int Joystick2ForceZ;
-        public static int Joystick2TorqueX;
-        public static int Joystick2TorqueY;
-        public static int Joystick2TorqueZ;
-        public static int Joystick2ForceSliders0;
-        public static int Joystick2ForceSliders1;
-        public static bool Joystick2Buttons0, Joystick2Buttons1, Joystick2Buttons2, Joystick2Buttons3, Joystick2Buttons4, Joystick2Buttons5, Joystick2Buttons6, Joystick2Buttons7, Joystick2Buttons8, Joystick2Buttons9, Joystick2Buttons10, Joystick2Buttons11, Joystick2Buttons12, Joystick2Buttons13, Joystick2Buttons14, Joystick2Buttons15, Joystick2Buttons16, Joystick2Buttons17, Joystick2Buttons18, Joystick2Buttons19, Joystick2Buttons20, Joystick2Buttons21, Joystick2Buttons22, Joystick2Buttons23, Joystick2Buttons24, Joystick2Buttons25, Joystick2Buttons26, Joystick2Buttons27, Joystick2Buttons28, Joystick2Buttons29, Joystick2Buttons30, Joystick2Buttons31, Joystick2Buttons32, Joystick2Buttons33, Joystick2Buttons34, Joystick2Buttons35, Joystick2Buttons36, Joystick2Buttons37, Joystick2Buttons38, Joystick2Buttons39, Joystick2Buttons40, Joystick2Buttons41, Joystick2Buttons42, Joystick2Buttons43, Joystick2Buttons44, Joystick2Buttons45, Joystick2Buttons46, Joystick2Buttons47, Joystick2Buttons48, Joystick2Buttons49, Joystick2Buttons50, Joystick2Buttons51, Joystick2Buttons52, Joystick2Buttons53, Joystick2Buttons54, Joystick2Buttons55, Joystick2Buttons56, Joystick2Buttons57, Joystick2Buttons58, Joystick2Buttons59, Joystick2Buttons60, Joystick2Buttons61, Joystick2Buttons62, Joystick2Buttons63, Joystick2Buttons64, Joystick2Buttons65, Joystick2Buttons66, Joystick2Buttons67, Joystick2Buttons68, Joystick2Buttons69, Joystick2Buttons70, Joystick2Buttons71, Joystick2Buttons72, Joystick2Buttons73, Joystick2Buttons74, Joystick2Buttons75, Joystick2Buttons76, Joystick2Buttons77, Joystick2Buttons78, Joystick2Buttons79, Joystick2Buttons80, Joystick2Buttons81, Joystick2Buttons82, Joystick2Buttons83, Joystick2Buttons84, Joystick2Buttons85, Joystick2Buttons86, Joystick2Buttons87, Joystick2Buttons88, Joystick2Buttons89, Joystick2Buttons90, Joystick2Buttons91, Joystick2Buttons92, Joystick2Buttons93, Joystick2Buttons94, Joystick2Buttons95, Joystick2Buttons96, Joystick2Buttons97, Joystick2Buttons98, Joystick2Buttons99, Joystick2Buttons100, Joystick2Buttons101, Joystick2Buttons102, Joystick2Buttons103, Joystick2Buttons104, Joystick2Buttons105, Joystick2Buttons106, Joystick2Buttons107, Joystick2Buttons108, Joystick2Buttons109, Joystick2Buttons110, Joystick2Buttons111, Joystick2Buttons112, Joystick2Buttons113, Joystick2Buttons114, Joystick2Buttons115, Joystick2Buttons116, Joystick2Buttons117, Joystick2Buttons118, Joystick2Buttons119, Joystick2Buttons120, Joystick2Buttons121, Joystick2Buttons122, Joystick2Buttons123, Joystick2Buttons124, Joystick2Buttons125, Joystick2Buttons126, Joystick2Buttons127;
-        public bool ScanDirectInput()
+        private Joystick[] joystick = new Joystick[] { null };
+        private Guid[] joystickGuid = new Guid[] { Guid.Empty };
+        private int dinum = 0;
+        public int JoystickAxisX;
+        public int JoystickAxisY;
+        public int JoystickAxisZ;
+        public int JoystickRotationX;
+        public int JoystickRotationY;
+        public int JoystickRotationZ;
+        public int JoystickSliders0;
+        public int JoystickSliders1;
+        public int JoystickPointOfViewControllers0;
+        public int JoystickPointOfViewControllers1;
+        public int JoystickPointOfViewControllers2;
+        public int JoystickPointOfViewControllers3;
+        public int JoystickVelocityX;
+        public int JoystickVelocityY;
+        public int JoystickVelocityZ;
+        public int JoystickAngularVelocityX;
+        public int JoystickAngularVelocityY;
+        public int JoystickAngularVelocityZ;
+        public int JoystickVelocitySliders0;
+        public int JoystickVelocitySliders1;
+        public int JoystickAccelerationX;
+        public int JoystickAccelerationY;
+        public int JoystickAccelerationZ;
+        public int JoystickAngularAccelerationX;
+        public int JoystickAngularAccelerationY;
+        public int JoystickAngularAccelerationZ;
+        public int JoystickAccelerationSliders0;
+        public int JoystickAccelerationSliders1;
+        public int JoystickForceX;
+        public int JoystickForceY;
+        public int JoystickForceZ;
+        public int JoystickTorqueX;
+        public int JoystickTorqueY;
+        public int JoystickTorqueZ;
+        public int JoystickForceSliders0;
+        public int JoystickForceSliders1;
+        public bool JoystickButtons0, JoystickButtons1, JoystickButtons2, JoystickButtons3, JoystickButtons4, JoystickButtons5, JoystickButtons6, JoystickButtons7, JoystickButtons8, JoystickButtons9, JoystickButtons10, JoystickButtons11, JoystickButtons12, JoystickButtons13, JoystickButtons14, JoystickButtons15, JoystickButtons16, JoystickButtons17, JoystickButtons18, JoystickButtons19, JoystickButtons20, JoystickButtons21, JoystickButtons22, JoystickButtons23, JoystickButtons24, JoystickButtons25, JoystickButtons26, JoystickButtons27, JoystickButtons28, JoystickButtons29, JoystickButtons30, JoystickButtons31, JoystickButtons32, JoystickButtons33, JoystickButtons34, JoystickButtons35, JoystickButtons36, JoystickButtons37, JoystickButtons38, JoystickButtons39, JoystickButtons40, JoystickButtons41, JoystickButtons42, JoystickButtons43, JoystickButtons44, JoystickButtons45, JoystickButtons46, JoystickButtons47, JoystickButtons48, JoystickButtons49, JoystickButtons50, JoystickButtons51, JoystickButtons52, JoystickButtons53, JoystickButtons54, JoystickButtons55, JoystickButtons56, JoystickButtons57, JoystickButtons58, JoystickButtons59, JoystickButtons60, JoystickButtons61, JoystickButtons62, JoystickButtons63, JoystickButtons64, JoystickButtons65, JoystickButtons66, JoystickButtons67, JoystickButtons68, JoystickButtons69, JoystickButtons70, JoystickButtons71, JoystickButtons72, JoystickButtons73, JoystickButtons74, JoystickButtons75, JoystickButtons76, JoystickButtons77, JoystickButtons78, JoystickButtons79, JoystickButtons80, JoystickButtons81, JoystickButtons82, JoystickButtons83, JoystickButtons84, JoystickButtons85, JoystickButtons86, JoystickButtons87, JoystickButtons88, JoystickButtons89, JoystickButtons90, JoystickButtons91, JoystickButtons92, JoystickButtons93, JoystickButtons94, JoystickButtons95, JoystickButtons96, JoystickButtons97, JoystickButtons98, JoystickButtons99, JoystickButtons100, JoystickButtons101, JoystickButtons102, JoystickButtons103, JoystickButtons104, JoystickButtons105, JoystickButtons106, JoystickButtons107, JoystickButtons108, JoystickButtons109, JoystickButtons110, JoystickButtons111, JoystickButtons112, JoystickButtons113, JoystickButtons114, JoystickButtons115, JoystickButtons116, JoystickButtons117, JoystickButtons118, JoystickButtons119, JoystickButtons120, JoystickButtons121, JoystickButtons122, JoystickButtons123, JoystickButtons124, JoystickButtons125, JoystickButtons126, JoystickButtons127;
+        public bool Scan(int number = 0)
         {
             try
             {
+                this.number = number;
                 directInput = new SharpDX.DirectInput.DirectInput();
                 joystick = new Joystick[] { null, null };
                 joystickGuid = new Guid[] { Guid.Empty, Guid.Empty };
@@ -548,1181 +345,595 @@ namespace DirectInputsAPI
         }
         private void GamepadProcess()
         {
-            for (int inc = 0; inc < dinum; inc++)
+            int inc = number < 2 ? 0 : 1;
+            joystick[inc].Poll();
+            var datas = joystick[inc].GetBufferedData();
+            foreach (var state in datas)
             {
-                joystick[inc].Poll();
-                var datas = joystick[inc].GetBufferedData();
-                foreach (var state in datas)
-                {
-                    if (inc == 0 & state.Offset == JoystickOffset.X)
-                        Joystick1AxisX = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.Y)
-                        Joystick1AxisY = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.Z)
-                        Joystick1AxisZ = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.RotationX)
-                        Joystick1RotationX = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.RotationY)
-                        Joystick1RotationY = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.RotationZ)
-                        Joystick1RotationZ = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.Sliders0)
-                        Joystick1Sliders0 = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.Sliders1)
-                        Joystick1Sliders1 = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.PointOfViewControllers0)
-                        Joystick1PointOfViewControllers0 = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.PointOfViewControllers1)
-                        Joystick1PointOfViewControllers1 = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.PointOfViewControllers2)
-                        Joystick1PointOfViewControllers2 = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.PointOfViewControllers3)
-                        Joystick1PointOfViewControllers3 = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.VelocityX)
-                        Joystick1VelocityX = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.VelocityY)
-                        Joystick1VelocityY = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.VelocityZ)
-                        Joystick1VelocityZ = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.AngularVelocityX)
-                        Joystick1AngularVelocityX = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.AngularVelocityY)
-                        Joystick1AngularVelocityY = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.AngularVelocityZ)
-                        Joystick1AngularVelocityZ = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.VelocitySliders0)
-                        Joystick1VelocitySliders0 = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.VelocitySliders1)
-                        Joystick1VelocitySliders1 = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.AccelerationX)
-                        Joystick1AccelerationX = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.AccelerationY)
-                        Joystick1AccelerationY = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.AccelerationZ)
-                        Joystick1AccelerationZ = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.AngularAccelerationX)
-                        Joystick1AngularAccelerationX = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.AngularAccelerationY)
-                        Joystick1AngularAccelerationY = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.AngularAccelerationZ)
-                        Joystick1AngularAccelerationZ = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.AccelerationSliders0)
-                        Joystick1AccelerationSliders0 = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.AccelerationSliders1)
-                        Joystick1AccelerationSliders1 = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.ForceX)
-                        Joystick1ForceX = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.ForceY)
-                        Joystick1ForceY = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.ForceZ)
-                        Joystick1ForceZ = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.TorqueX)
-                        Joystick1TorqueX = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.TorqueY)
-                        Joystick1TorqueY = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.TorqueZ)
-                        Joystick1TorqueZ = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.ForceSliders0)
-                        Joystick1ForceSliders0 = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.ForceSliders1)
-                        Joystick1ForceSliders1 = state.Value;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons0 & state.Value == 128)
-                        Joystick1Buttons0 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons0 & state.Value == 0)
-                        Joystick1Buttons0 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons1 & state.Value == 128)
-                        Joystick1Buttons1 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons1 & state.Value == 0)
-                        Joystick1Buttons1 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons2 & state.Value == 128)
-                        Joystick1Buttons2 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons2 & state.Value == 0)
-                        Joystick1Buttons2 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons3 & state.Value == 128)
-                        Joystick1Buttons3 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons3 & state.Value == 0)
-                        Joystick1Buttons3 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons4 & state.Value == 128)
-                        Joystick1Buttons4 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons4 & state.Value == 0)
-                        Joystick1Buttons4 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons5 & state.Value == 128)
-                        Joystick1Buttons5 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons5 & state.Value == 0)
-                        Joystick1Buttons5 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons6 & state.Value == 128)
-                        Joystick1Buttons6 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons6 & state.Value == 0)
-                        Joystick1Buttons6 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons7 & state.Value == 128)
-                        Joystick1Buttons7 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons7 & state.Value == 0)
-                        Joystick1Buttons7 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons8 & state.Value == 128)
-                        Joystick1Buttons8 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons8 & state.Value == 0)
-                        Joystick1Buttons8 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons9 & state.Value == 128)
-                        Joystick1Buttons9 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons9 & state.Value == 0)
-                        Joystick1Buttons9 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons10 & state.Value == 128)
-                        Joystick1Buttons10 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons10 & state.Value == 0)
-                        Joystick1Buttons10 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons11 & state.Value == 128)
-                        Joystick1Buttons11 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons11 & state.Value == 0)
-                        Joystick1Buttons11 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons12 & state.Value == 128)
-                        Joystick1Buttons12 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons12 & state.Value == 0)
-                        Joystick1Buttons12 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons13 & state.Value == 128)
-                        Joystick1Buttons13 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons13 & state.Value == 0)
-                        Joystick1Buttons13 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons14 & state.Value == 128)
-                        Joystick1Buttons14 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons14 & state.Value == 0)
-                        Joystick1Buttons14 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons15 & state.Value == 128)
-                        Joystick1Buttons15 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons15 & state.Value == 0)
-                        Joystick1Buttons15 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons16 & state.Value == 128)
-                        Joystick1Buttons16 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons16 & state.Value == 0)
-                        Joystick1Buttons16 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons17 & state.Value == 128)
-                        Joystick1Buttons17 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons17 & state.Value == 0)
-                        Joystick1Buttons17 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons18 & state.Value == 128)
-                        Joystick1Buttons18 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons18 & state.Value == 0)
-                        Joystick1Buttons18 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons19 & state.Value == 128)
-                        Joystick1Buttons19 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons19 & state.Value == 0)
-                        Joystick1Buttons19 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons20 & state.Value == 128)
-                        Joystick1Buttons20 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons20 & state.Value == 0)
-                        Joystick1Buttons20 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons21 & state.Value == 128)
-                        Joystick1Buttons21 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons21 & state.Value == 0)
-                        Joystick1Buttons21 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons22 & state.Value == 128)
-                        Joystick1Buttons22 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons22 & state.Value == 0)
-                        Joystick1Buttons22 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons23 & state.Value == 128)
-                        Joystick1Buttons23 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons23 & state.Value == 0)
-                        Joystick1Buttons23 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons24 & state.Value == 128)
-                        Joystick1Buttons24 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons24 & state.Value == 0)
-                        Joystick1Buttons24 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons25 & state.Value == 128)
-                        Joystick1Buttons25 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons25 & state.Value == 0)
-                        Joystick1Buttons25 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons26 & state.Value == 128)
-                        Joystick1Buttons26 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons26 & state.Value == 0)
-                        Joystick1Buttons26 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons27 & state.Value == 128)
-                        Joystick1Buttons27 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons27 & state.Value == 0)
-                        Joystick1Buttons27 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons28 & state.Value == 128)
-                        Joystick1Buttons28 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons28 & state.Value == 0)
-                        Joystick1Buttons28 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons29 & state.Value == 128)
-                        Joystick1Buttons29 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons29 & state.Value == 0)
-                        Joystick1Buttons29 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons30 & state.Value == 128)
-                        Joystick1Buttons30 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons30 & state.Value == 0)
-                        Joystick1Buttons30 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons31 & state.Value == 128)
-                        Joystick1Buttons31 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons31 & state.Value == 0)
-                        Joystick1Buttons31 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons32 & state.Value == 128)
-                        Joystick1Buttons32 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons32 & state.Value == 0)
-                        Joystick1Buttons32 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons33 & state.Value == 128)
-                        Joystick1Buttons33 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons33 & state.Value == 0)
-                        Joystick1Buttons33 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons34 & state.Value == 128)
-                        Joystick1Buttons34 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons34 & state.Value == 0)
-                        Joystick1Buttons34 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons35 & state.Value == 128)
-                        Joystick1Buttons35 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons35 & state.Value == 0)
-                        Joystick1Buttons35 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons36 & state.Value == 128)
-                        Joystick1Buttons36 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons36 & state.Value == 0)
-                        Joystick1Buttons36 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons37 & state.Value == 128)
-                        Joystick1Buttons37 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons37 & state.Value == 0)
-                        Joystick1Buttons37 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons38 & state.Value == 128)
-                        Joystick1Buttons38 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons38 & state.Value == 0)
-                        Joystick1Buttons38 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons39 & state.Value == 128)
-                        Joystick1Buttons39 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons39 & state.Value == 0)
-                        Joystick1Buttons39 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons40 & state.Value == 128)
-                        Joystick1Buttons40 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons40 & state.Value == 0)
-                        Joystick1Buttons40 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons41 & state.Value == 128)
-                        Joystick1Buttons41 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons41 & state.Value == 0)
-                        Joystick1Buttons41 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons42 & state.Value == 128)
-                        Joystick1Buttons42 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons42 & state.Value == 0)
-                        Joystick1Buttons42 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons43 & state.Value == 128)
-                        Joystick1Buttons43 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons43 & state.Value == 0)
-                        Joystick1Buttons43 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons44 & state.Value == 128)
-                        Joystick1Buttons44 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons44 & state.Value == 0)
-                        Joystick1Buttons44 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons45 & state.Value == 128)
-                        Joystick1Buttons45 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons45 & state.Value == 0)
-                        Joystick1Buttons45 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons46 & state.Value == 128)
-                        Joystick1Buttons46 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons46 & state.Value == 0)
-                        Joystick1Buttons46 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons47 & state.Value == 128)
-                        Joystick1Buttons47 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons47 & state.Value == 0)
-                        Joystick1Buttons47 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons48 & state.Value == 128)
-                        Joystick1Buttons48 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons48 & state.Value == 0)
-                        Joystick1Buttons48 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons49 & state.Value == 128)
-                        Joystick1Buttons49 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons49 & state.Value == 0)
-                        Joystick1Buttons49 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons50 & state.Value == 128)
-                        Joystick1Buttons50 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons50 & state.Value == 0)
-                        Joystick1Buttons50 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons51 & state.Value == 128)
-                        Joystick1Buttons51 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons51 & state.Value == 0)
-                        Joystick1Buttons51 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons52 & state.Value == 128)
-                        Joystick1Buttons52 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons52 & state.Value == 0)
-                        Joystick1Buttons52 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons53 & state.Value == 128)
-                        Joystick1Buttons53 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons53 & state.Value == 0)
-                        Joystick1Buttons53 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons54 & state.Value == 128)
-                        Joystick1Buttons54 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons54 & state.Value == 0)
-                        Joystick1Buttons54 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons55 & state.Value == 128)
-                        Joystick1Buttons55 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons55 & state.Value == 0)
-                        Joystick1Buttons55 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons56 & state.Value == 128)
-                        Joystick1Buttons56 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons56 & state.Value == 0)
-                        Joystick1Buttons56 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons57 & state.Value == 128)
-                        Joystick1Buttons57 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons57 & state.Value == 0)
-                        Joystick1Buttons57 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons58 & state.Value == 128)
-                        Joystick1Buttons58 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons58 & state.Value == 0)
-                        Joystick1Buttons58 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons59 & state.Value == 128)
-                        Joystick1Buttons59 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons59 & state.Value == 0)
-                        Joystick1Buttons59 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons60 & state.Value == 128)
-                        Joystick1Buttons60 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons60 & state.Value == 0)
-                        Joystick1Buttons60 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons61 & state.Value == 128)
-                        Joystick1Buttons61 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons61 & state.Value == 0)
-                        Joystick1Buttons61 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons62 & state.Value == 128)
-                        Joystick1Buttons62 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons62 & state.Value == 0)
-                        Joystick1Buttons62 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons63 & state.Value == 128)
-                        Joystick1Buttons63 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons63 & state.Value == 0)
-                        Joystick1Buttons63 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons64 & state.Value == 128)
-                        Joystick1Buttons64 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons64 & state.Value == 0)
-                        Joystick1Buttons64 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons65 & state.Value == 128)
-                        Joystick1Buttons65 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons65 & state.Value == 0)
-                        Joystick1Buttons65 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons66 & state.Value == 128)
-                        Joystick1Buttons66 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons66 & state.Value == 0)
-                        Joystick1Buttons66 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons67 & state.Value == 128)
-                        Joystick1Buttons67 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons67 & state.Value == 0)
-                        Joystick1Buttons67 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons68 & state.Value == 128)
-                        Joystick1Buttons68 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons68 & state.Value == 0)
-                        Joystick1Buttons68 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons69 & state.Value == 128)
-                        Joystick1Buttons69 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons69 & state.Value == 0)
-                        Joystick1Buttons69 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons70 & state.Value == 128)
-                        Joystick1Buttons70 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons70 & state.Value == 0)
-                        Joystick1Buttons70 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons71 & state.Value == 128)
-                        Joystick1Buttons71 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons71 & state.Value == 0)
-                        Joystick1Buttons71 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons72 & state.Value == 128)
-                        Joystick1Buttons72 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons72 & state.Value == 0)
-                        Joystick1Buttons72 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons73 & state.Value == 128)
-                        Joystick1Buttons73 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons73 & state.Value == 0)
-                        Joystick1Buttons73 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons74 & state.Value == 128)
-                        Joystick1Buttons74 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons74 & state.Value == 0)
-                        Joystick1Buttons74 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons75 & state.Value == 128)
-                        Joystick1Buttons75 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons75 & state.Value == 0)
-                        Joystick1Buttons75 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons76 & state.Value == 128)
-                        Joystick1Buttons76 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons76 & state.Value == 0)
-                        Joystick1Buttons76 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons77 & state.Value == 128)
-                        Joystick1Buttons77 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons77 & state.Value == 0)
-                        Joystick1Buttons77 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons78 & state.Value == 128)
-                        Joystick1Buttons78 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons78 & state.Value == 0)
-                        Joystick1Buttons78 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons79 & state.Value == 128)
-                        Joystick1Buttons79 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons79 & state.Value == 0)
-                        Joystick1Buttons79 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons80 & state.Value == 128)
-                        Joystick1Buttons80 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons80 & state.Value == 0)
-                        Joystick1Buttons80 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons81 & state.Value == 128)
-                        Joystick1Buttons81 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons81 & state.Value == 0)
-                        Joystick1Buttons81 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons82 & state.Value == 128)
-                        Joystick1Buttons82 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons82 & state.Value == 0)
-                        Joystick1Buttons82 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons83 & state.Value == 128)
-                        Joystick1Buttons83 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons83 & state.Value == 0)
-                        Joystick1Buttons83 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons84 & state.Value == 128)
-                        Joystick1Buttons84 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons84 & state.Value == 0)
-                        Joystick1Buttons84 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons85 & state.Value == 128)
-                        Joystick1Buttons85 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons85 & state.Value == 0)
-                        Joystick1Buttons85 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons86 & state.Value == 128)
-                        Joystick1Buttons86 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons86 & state.Value == 0)
-                        Joystick1Buttons86 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons87 & state.Value == 128)
-                        Joystick1Buttons87 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons87 & state.Value == 0)
-                        Joystick1Buttons87 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons88 & state.Value == 128)
-                        Joystick1Buttons88 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons88 & state.Value == 0)
-                        Joystick1Buttons88 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons89 & state.Value == 128)
-                        Joystick1Buttons89 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons89 & state.Value == 0)
-                        Joystick1Buttons89 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons90 & state.Value == 128)
-                        Joystick1Buttons90 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons90 & state.Value == 0)
-                        Joystick1Buttons90 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons91 & state.Value == 128)
-                        Joystick1Buttons91 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons91 & state.Value == 0)
-                        Joystick1Buttons91 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons92 & state.Value == 128)
-                        Joystick1Buttons92 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons92 & state.Value == 0)
-                        Joystick1Buttons92 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons93 & state.Value == 128)
-                        Joystick1Buttons93 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons93 & state.Value == 0)
-                        Joystick1Buttons93 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons94 & state.Value == 128)
-                        Joystick1Buttons94 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons94 & state.Value == 0)
-                        Joystick1Buttons94 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons95 & state.Value == 128)
-                        Joystick1Buttons95 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons95 & state.Value == 0)
-                        Joystick1Buttons95 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons96 & state.Value == 128)
-                        Joystick1Buttons96 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons96 & state.Value == 0)
-                        Joystick1Buttons96 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons97 & state.Value == 128)
-                        Joystick1Buttons97 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons97 & state.Value == 0)
-                        Joystick1Buttons97 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons98 & state.Value == 128)
-                        Joystick1Buttons98 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons98 & state.Value == 0)
-                        Joystick1Buttons98 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons99 & state.Value == 128)
-                        Joystick1Buttons99 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons99 & state.Value == 0)
-                        Joystick1Buttons99 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons100 & state.Value == 128)
-                        Joystick1Buttons100 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons100 & state.Value == 0)
-                        Joystick1Buttons100 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons101 & state.Value == 128)
-                        Joystick1Buttons101 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons101 & state.Value == 0)
-                        Joystick1Buttons101 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons102 & state.Value == 128)
-                        Joystick1Buttons102 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons102 & state.Value == 0)
-                        Joystick1Buttons102 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons103 & state.Value == 128)
-                        Joystick1Buttons103 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons103 & state.Value == 0)
-                        Joystick1Buttons103 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons104 & state.Value == 128)
-                        Joystick1Buttons104 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons104 & state.Value == 0)
-                        Joystick1Buttons104 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons105 & state.Value == 128)
-                        Joystick1Buttons105 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons105 & state.Value == 0)
-                        Joystick1Buttons105 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons106 & state.Value == 128)
-                        Joystick1Buttons106 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons106 & state.Value == 0)
-                        Joystick1Buttons106 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons107 & state.Value == 128)
-                        Joystick1Buttons107 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons107 & state.Value == 0)
-                        Joystick1Buttons107 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons108 & state.Value == 128)
-                        Joystick1Buttons108 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons108 & state.Value == 0)
-                        Joystick1Buttons108 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons109 & state.Value == 128)
-                        Joystick1Buttons109 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons109 & state.Value == 0)
-                        Joystick1Buttons109 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons110 & state.Value == 128)
-                        Joystick1Buttons110 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons110 & state.Value == 0)
-                        Joystick1Buttons110 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons111 & state.Value == 128)
-                        Joystick1Buttons111 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons111 & state.Value == 0)
-                        Joystick1Buttons111 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons112 & state.Value == 128)
-                        Joystick1Buttons112 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons112 & state.Value == 0)
-                        Joystick1Buttons112 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons113 & state.Value == 128)
-                        Joystick1Buttons113 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons113 & state.Value == 0)
-                        Joystick1Buttons113 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons114 & state.Value == 128)
-                        Joystick1Buttons114 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons114 & state.Value == 0)
-                        Joystick1Buttons114 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons115 & state.Value == 128)
-                        Joystick1Buttons115 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons115 & state.Value == 0)
-                        Joystick1Buttons115 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons116 & state.Value == 128)
-                        Joystick1Buttons116 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons116 & state.Value == 0)
-                        Joystick1Buttons116 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons117 & state.Value == 128)
-                        Joystick1Buttons117 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons117 & state.Value == 0)
-                        Joystick1Buttons117 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons118 & state.Value == 128)
-                        Joystick1Buttons118 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons118 & state.Value == 0)
-                        Joystick1Buttons118 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons119 & state.Value == 128)
-                        Joystick1Buttons119 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons119 & state.Value == 0)
-                        Joystick1Buttons119 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons120 & state.Value == 128)
-                        Joystick1Buttons120 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons120 & state.Value == 0)
-                        Joystick1Buttons120 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons121 & state.Value == 128)
-                        Joystick1Buttons121 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons121 & state.Value == 0)
-                        Joystick1Buttons121 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons122 & state.Value == 128)
-                        Joystick1Buttons122 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons122 & state.Value == 0)
-                        Joystick1Buttons122 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons123 & state.Value == 128)
-                        Joystick1Buttons123 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons123 & state.Value == 0)
-                        Joystick1Buttons123 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons124 & state.Value == 128)
-                        Joystick1Buttons124 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons124 & state.Value == 0)
-                        Joystick1Buttons124 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons125 & state.Value == 128)
-                        Joystick1Buttons125 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons125 & state.Value == 0)
-                        Joystick1Buttons125 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons126 & state.Value == 128)
-                        Joystick1Buttons126 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons126 & state.Value == 0)
-                        Joystick1Buttons126 = false;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons127 & state.Value == 128)
-                        Joystick1Buttons127 = true;
-                    if (inc == 0 & state.Offset == JoystickOffset.Buttons127 & state.Value == 0)
-                        Joystick1Buttons127 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.X)
-                        Joystick2AxisX = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.Y)
-                        Joystick2AxisY = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.Z)
-                        Joystick2AxisZ = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.RotationX)
-                        Joystick2RotationX = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.RotationY)
-                        Joystick2RotationY = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.RotationZ)
-                        Joystick2RotationZ = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.Sliders0)
-                        Joystick2Sliders0 = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.Sliders1)
-                        Joystick2Sliders1 = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.PointOfViewControllers0)
-                        Joystick2PointOfViewControllers0 = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.PointOfViewControllers1)
-                        Joystick2PointOfViewControllers1 = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.PointOfViewControllers2)
-                        Joystick2PointOfViewControllers2 = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.PointOfViewControllers3)
-                        Joystick2PointOfViewControllers3 = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.VelocityX)
-                        Joystick2VelocityX = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.VelocityY)
-                        Joystick2VelocityY = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.VelocityZ)
-                        Joystick2VelocityZ = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.AngularVelocityX)
-                        Joystick2AngularVelocityX = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.AngularVelocityY)
-                        Joystick2AngularVelocityY = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.AngularVelocityZ)
-                        Joystick2AngularVelocityZ = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.VelocitySliders0)
-                        Joystick2VelocitySliders0 = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.VelocitySliders1)
-                        Joystick2VelocitySliders1 = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.AccelerationX)
-                        Joystick2AccelerationX = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.AccelerationY)
-                        Joystick2AccelerationY = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.AccelerationZ)
-                        Joystick2AccelerationZ = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.AngularAccelerationX)
-                        Joystick2AngularAccelerationX = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.AngularAccelerationY)
-                        Joystick2AngularAccelerationY = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.AngularAccelerationZ)
-                        Joystick2AngularAccelerationZ = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.AccelerationSliders0)
-                        Joystick2AccelerationSliders0 = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.AccelerationSliders1)
-                        Joystick2AccelerationSliders1 = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.ForceX)
-                        Joystick2ForceX = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.ForceY)
-                        Joystick2ForceY = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.ForceZ)
-                        Joystick2ForceZ = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.TorqueX)
-                        Joystick2TorqueX = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.TorqueY)
-                        Joystick2TorqueY = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.TorqueZ)
-                        Joystick2TorqueZ = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.ForceSliders0)
-                        Joystick2ForceSliders0 = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.ForceSliders1)
-                        Joystick2ForceSliders1 = state.Value;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons0 & state.Value == 128)
-                        Joystick2Buttons0 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons0 & state.Value == 0)
-                        Joystick2Buttons0 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons1 & state.Value == 128)
-                        Joystick2Buttons1 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons1 & state.Value == 0)
-                        Joystick2Buttons1 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons2 & state.Value == 128)
-                        Joystick2Buttons2 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons2 & state.Value == 0)
-                        Joystick2Buttons2 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons3 & state.Value == 128)
-                        Joystick2Buttons3 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons3 & state.Value == 0)
-                        Joystick2Buttons3 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons4 & state.Value == 128)
-                        Joystick2Buttons4 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons4 & state.Value == 0)
-                        Joystick2Buttons4 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons5 & state.Value == 128)
-                        Joystick2Buttons5 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons5 & state.Value == 0)
-                        Joystick2Buttons5 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons6 & state.Value == 128)
-                        Joystick2Buttons6 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons6 & state.Value == 0)
-                        Joystick2Buttons6 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons7 & state.Value == 128)
-                        Joystick2Buttons7 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons7 & state.Value == 0)
-                        Joystick2Buttons7 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons8 & state.Value == 128)
-                        Joystick2Buttons8 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons8 & state.Value == 0)
-                        Joystick2Buttons8 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons9 & state.Value == 128)
-                        Joystick2Buttons9 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons9 & state.Value == 0)
-                        Joystick2Buttons9 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons10 & state.Value == 128)
-                        Joystick2Buttons10 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons10 & state.Value == 0)
-                        Joystick2Buttons10 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons11 & state.Value == 128)
-                        Joystick2Buttons11 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons11 & state.Value == 0)
-                        Joystick2Buttons11 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons12 & state.Value == 128)
-                        Joystick2Buttons12 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons12 & state.Value == 0)
-                        Joystick2Buttons12 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons13 & state.Value == 128)
-                        Joystick2Buttons13 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons13 & state.Value == 0)
-                        Joystick2Buttons13 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons14 & state.Value == 128)
-                        Joystick2Buttons14 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons14 & state.Value == 0)
-                        Joystick2Buttons14 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons15 & state.Value == 128)
-                        Joystick2Buttons15 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons15 & state.Value == 0)
-                        Joystick2Buttons15 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons16 & state.Value == 128)
-                        Joystick2Buttons16 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons16 & state.Value == 0)
-                        Joystick2Buttons16 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons17 & state.Value == 128)
-                        Joystick2Buttons17 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons17 & state.Value == 0)
-                        Joystick2Buttons17 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons18 & state.Value == 128)
-                        Joystick2Buttons18 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons18 & state.Value == 0)
-                        Joystick2Buttons18 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons19 & state.Value == 128)
-                        Joystick2Buttons19 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons19 & state.Value == 0)
-                        Joystick2Buttons19 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons20 & state.Value == 128)
-                        Joystick2Buttons20 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons20 & state.Value == 0)
-                        Joystick2Buttons20 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons21 & state.Value == 128)
-                        Joystick2Buttons21 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons21 & state.Value == 0)
-                        Joystick2Buttons21 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons22 & state.Value == 128)
-                        Joystick2Buttons22 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons22 & state.Value == 0)
-                        Joystick2Buttons22 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons23 & state.Value == 128)
-                        Joystick2Buttons23 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons23 & state.Value == 0)
-                        Joystick2Buttons23 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons24 & state.Value == 128)
-                        Joystick2Buttons24 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons24 & state.Value == 0)
-                        Joystick2Buttons24 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons25 & state.Value == 128)
-                        Joystick2Buttons25 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons25 & state.Value == 0)
-                        Joystick2Buttons25 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons26 & state.Value == 128)
-                        Joystick2Buttons26 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons26 & state.Value == 0)
-                        Joystick2Buttons26 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons27 & state.Value == 128)
-                        Joystick2Buttons27 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons27 & state.Value == 0)
-                        Joystick2Buttons27 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons28 & state.Value == 128)
-                        Joystick2Buttons28 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons28 & state.Value == 0)
-                        Joystick2Buttons28 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons29 & state.Value == 128)
-                        Joystick2Buttons29 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons29 & state.Value == 0)
-                        Joystick2Buttons29 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons30 & state.Value == 128)
-                        Joystick2Buttons30 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons30 & state.Value == 0)
-                        Joystick2Buttons30 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons31 & state.Value == 128)
-                        Joystick2Buttons31 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons31 & state.Value == 0)
-                        Joystick2Buttons31 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons32 & state.Value == 128)
-                        Joystick2Buttons32 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons32 & state.Value == 0)
-                        Joystick2Buttons32 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons33 & state.Value == 128)
-                        Joystick2Buttons33 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons33 & state.Value == 0)
-                        Joystick2Buttons33 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons34 & state.Value == 128)
-                        Joystick2Buttons34 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons34 & state.Value == 0)
-                        Joystick2Buttons34 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons35 & state.Value == 128)
-                        Joystick2Buttons35 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons35 & state.Value == 0)
-                        Joystick2Buttons35 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons36 & state.Value == 128)
-                        Joystick2Buttons36 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons36 & state.Value == 0)
-                        Joystick2Buttons36 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons37 & state.Value == 128)
-                        Joystick2Buttons37 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons37 & state.Value == 0)
-                        Joystick2Buttons37 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons38 & state.Value == 128)
-                        Joystick2Buttons38 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons38 & state.Value == 0)
-                        Joystick2Buttons38 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons39 & state.Value == 128)
-                        Joystick2Buttons39 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons39 & state.Value == 0)
-                        Joystick2Buttons39 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons40 & state.Value == 128)
-                        Joystick2Buttons40 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons40 & state.Value == 0)
-                        Joystick2Buttons40 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons41 & state.Value == 128)
-                        Joystick2Buttons41 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons41 & state.Value == 0)
-                        Joystick2Buttons41 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons42 & state.Value == 128)
-                        Joystick2Buttons42 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons42 & state.Value == 0)
-                        Joystick2Buttons42 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons43 & state.Value == 128)
-                        Joystick2Buttons43 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons43 & state.Value == 0)
-                        Joystick2Buttons43 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons44 & state.Value == 128)
-                        Joystick2Buttons44 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons44 & state.Value == 0)
-                        Joystick2Buttons44 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons45 & state.Value == 128)
-                        Joystick2Buttons45 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons45 & state.Value == 0)
-                        Joystick2Buttons45 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons46 & state.Value == 128)
-                        Joystick2Buttons46 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons46 & state.Value == 0)
-                        Joystick2Buttons46 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons47 & state.Value == 128)
-                        Joystick2Buttons47 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons47 & state.Value == 0)
-                        Joystick2Buttons47 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons48 & state.Value == 128)
-                        Joystick2Buttons48 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons48 & state.Value == 0)
-                        Joystick2Buttons48 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons49 & state.Value == 128)
-                        Joystick2Buttons49 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons49 & state.Value == 0)
-                        Joystick2Buttons49 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons50 & state.Value == 128)
-                        Joystick2Buttons50 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons50 & state.Value == 0)
-                        Joystick2Buttons50 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons51 & state.Value == 128)
-                        Joystick2Buttons51 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons51 & state.Value == 0)
-                        Joystick2Buttons51 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons52 & state.Value == 128)
-                        Joystick2Buttons52 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons52 & state.Value == 0)
-                        Joystick2Buttons52 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons53 & state.Value == 128)
-                        Joystick2Buttons53 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons53 & state.Value == 0)
-                        Joystick2Buttons53 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons54 & state.Value == 128)
-                        Joystick2Buttons54 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons54 & state.Value == 0)
-                        Joystick2Buttons54 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons55 & state.Value == 128)
-                        Joystick2Buttons55 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons55 & state.Value == 0)
-                        Joystick2Buttons55 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons56 & state.Value == 128)
-                        Joystick2Buttons56 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons56 & state.Value == 0)
-                        Joystick2Buttons56 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons57 & state.Value == 128)
-                        Joystick2Buttons57 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons57 & state.Value == 0)
-                        Joystick2Buttons57 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons58 & state.Value == 128)
-                        Joystick2Buttons58 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons58 & state.Value == 0)
-                        Joystick2Buttons58 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons59 & state.Value == 128)
-                        Joystick2Buttons59 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons59 & state.Value == 0)
-                        Joystick2Buttons59 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons60 & state.Value == 128)
-                        Joystick2Buttons60 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons60 & state.Value == 0)
-                        Joystick2Buttons60 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons61 & state.Value == 128)
-                        Joystick2Buttons61 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons61 & state.Value == 0)
-                        Joystick2Buttons61 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons62 & state.Value == 128)
-                        Joystick2Buttons62 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons62 & state.Value == 0)
-                        Joystick2Buttons62 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons63 & state.Value == 128)
-                        Joystick2Buttons63 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons63 & state.Value == 0)
-                        Joystick2Buttons63 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons64 & state.Value == 128)
-                        Joystick2Buttons64 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons64 & state.Value == 0)
-                        Joystick2Buttons64 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons65 & state.Value == 128)
-                        Joystick2Buttons65 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons65 & state.Value == 0)
-                        Joystick2Buttons65 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons66 & state.Value == 128)
-                        Joystick2Buttons66 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons66 & state.Value == 0)
-                        Joystick2Buttons66 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons67 & state.Value == 128)
-                        Joystick2Buttons67 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons67 & state.Value == 0)
-                        Joystick2Buttons67 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons68 & state.Value == 128)
-                        Joystick2Buttons68 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons68 & state.Value == 0)
-                        Joystick2Buttons68 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons69 & state.Value == 128)
-                        Joystick2Buttons69 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons69 & state.Value == 0)
-                        Joystick2Buttons69 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons70 & state.Value == 128)
-                        Joystick2Buttons70 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons70 & state.Value == 0)
-                        Joystick2Buttons70 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons71 & state.Value == 128)
-                        Joystick2Buttons71 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons71 & state.Value == 0)
-                        Joystick2Buttons71 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons72 & state.Value == 128)
-                        Joystick2Buttons72 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons72 & state.Value == 0)
-                        Joystick2Buttons72 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons73 & state.Value == 128)
-                        Joystick2Buttons73 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons73 & state.Value == 0)
-                        Joystick2Buttons73 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons74 & state.Value == 128)
-                        Joystick2Buttons74 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons74 & state.Value == 0)
-                        Joystick2Buttons74 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons75 & state.Value == 128)
-                        Joystick2Buttons75 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons75 & state.Value == 0)
-                        Joystick2Buttons75 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons76 & state.Value == 128)
-                        Joystick2Buttons76 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons76 & state.Value == 0)
-                        Joystick2Buttons76 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons77 & state.Value == 128)
-                        Joystick2Buttons77 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons77 & state.Value == 0)
-                        Joystick2Buttons77 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons78 & state.Value == 128)
-                        Joystick2Buttons78 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons78 & state.Value == 0)
-                        Joystick2Buttons78 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons79 & state.Value == 128)
-                        Joystick2Buttons79 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons79 & state.Value == 0)
-                        Joystick2Buttons79 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons80 & state.Value == 128)
-                        Joystick2Buttons80 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons80 & state.Value == 0)
-                        Joystick2Buttons80 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons81 & state.Value == 128)
-                        Joystick2Buttons81 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons81 & state.Value == 0)
-                        Joystick2Buttons81 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons82 & state.Value == 128)
-                        Joystick2Buttons82 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons82 & state.Value == 0)
-                        Joystick2Buttons82 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons83 & state.Value == 128)
-                        Joystick2Buttons83 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons83 & state.Value == 0)
-                        Joystick2Buttons83 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons84 & state.Value == 128)
-                        Joystick2Buttons84 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons84 & state.Value == 0)
-                        Joystick2Buttons84 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons85 & state.Value == 128)
-                        Joystick2Buttons85 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons85 & state.Value == 0)
-                        Joystick2Buttons85 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons86 & state.Value == 128)
-                        Joystick2Buttons86 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons86 & state.Value == 0)
-                        Joystick2Buttons86 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons87 & state.Value == 128)
-                        Joystick2Buttons87 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons87 & state.Value == 0)
-                        Joystick2Buttons87 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons88 & state.Value == 128)
-                        Joystick2Buttons88 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons88 & state.Value == 0)
-                        Joystick2Buttons88 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons89 & state.Value == 128)
-                        Joystick2Buttons89 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons89 & state.Value == 0)
-                        Joystick2Buttons89 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons90 & state.Value == 128)
-                        Joystick2Buttons90 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons90 & state.Value == 0)
-                        Joystick2Buttons90 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons91 & state.Value == 128)
-                        Joystick2Buttons91 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons91 & state.Value == 0)
-                        Joystick2Buttons91 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons92 & state.Value == 128)
-                        Joystick2Buttons92 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons92 & state.Value == 0)
-                        Joystick2Buttons92 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons93 & state.Value == 128)
-                        Joystick2Buttons93 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons93 & state.Value == 0)
-                        Joystick2Buttons93 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons94 & state.Value == 128)
-                        Joystick2Buttons94 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons94 & state.Value == 0)
-                        Joystick2Buttons94 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons95 & state.Value == 128)
-                        Joystick2Buttons95 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons95 & state.Value == 0)
-                        Joystick2Buttons95 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons96 & state.Value == 128)
-                        Joystick2Buttons96 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons96 & state.Value == 0)
-                        Joystick2Buttons96 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons97 & state.Value == 128)
-                        Joystick2Buttons97 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons97 & state.Value == 0)
-                        Joystick2Buttons97 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons98 & state.Value == 128)
-                        Joystick2Buttons98 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons98 & state.Value == 0)
-                        Joystick2Buttons98 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons99 & state.Value == 128)
-                        Joystick2Buttons99 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons99 & state.Value == 0)
-                        Joystick2Buttons99 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons100 & state.Value == 128)
-                        Joystick2Buttons100 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons100 & state.Value == 0)
-                        Joystick2Buttons100 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons101 & state.Value == 128)
-                        Joystick2Buttons101 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons101 & state.Value == 0)
-                        Joystick2Buttons101 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons102 & state.Value == 128)
-                        Joystick2Buttons102 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons102 & state.Value == 0)
-                        Joystick2Buttons102 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons103 & state.Value == 128)
-                        Joystick2Buttons103 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons103 & state.Value == 0)
-                        Joystick2Buttons103 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons104 & state.Value == 128)
-                        Joystick2Buttons104 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons104 & state.Value == 0)
-                        Joystick2Buttons104 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons105 & state.Value == 128)
-                        Joystick2Buttons105 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons105 & state.Value == 0)
-                        Joystick2Buttons105 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons106 & state.Value == 128)
-                        Joystick2Buttons106 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons106 & state.Value == 0)
-                        Joystick2Buttons106 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons107 & state.Value == 128)
-                        Joystick2Buttons107 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons107 & state.Value == 0)
-                        Joystick2Buttons107 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons108 & state.Value == 128)
-                        Joystick2Buttons108 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons108 & state.Value == 0)
-                        Joystick2Buttons108 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons109 & state.Value == 128)
-                        Joystick2Buttons109 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons109 & state.Value == 0)
-                        Joystick2Buttons109 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons110 & state.Value == 128)
-                        Joystick2Buttons110 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons110 & state.Value == 0)
-                        Joystick2Buttons110 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons111 & state.Value == 128)
-                        Joystick2Buttons111 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons111 & state.Value == 0)
-                        Joystick2Buttons111 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons112 & state.Value == 128)
-                        Joystick2Buttons112 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons112 & state.Value == 0)
-                        Joystick2Buttons112 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons113 & state.Value == 128)
-                        Joystick2Buttons113 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons113 & state.Value == 0)
-                        Joystick2Buttons113 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons114 & state.Value == 128)
-                        Joystick2Buttons114 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons114 & state.Value == 0)
-                        Joystick2Buttons114 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons115 & state.Value == 128)
-                        Joystick2Buttons115 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons115 & state.Value == 0)
-                        Joystick2Buttons115 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons116 & state.Value == 128)
-                        Joystick2Buttons116 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons116 & state.Value == 0)
-                        Joystick2Buttons116 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons117 & state.Value == 128)
-                        Joystick2Buttons117 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons117 & state.Value == 0)
-                        Joystick2Buttons117 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons118 & state.Value == 128)
-                        Joystick2Buttons118 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons118 & state.Value == 0)
-                        Joystick2Buttons118 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons119 & state.Value == 128)
-                        Joystick2Buttons119 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons119 & state.Value == 0)
-                        Joystick2Buttons119 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons120 & state.Value == 128)
-                        Joystick2Buttons120 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons120 & state.Value == 0)
-                        Joystick2Buttons120 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons121 & state.Value == 128)
-                        Joystick2Buttons121 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons121 & state.Value == 0)
-                        Joystick2Buttons121 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons122 & state.Value == 128)
-                        Joystick2Buttons122 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons122 & state.Value == 0)
-                        Joystick2Buttons122 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons123 & state.Value == 128)
-                        Joystick2Buttons123 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons123 & state.Value == 0)
-                        Joystick2Buttons123 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons124 & state.Value == 128)
-                        Joystick2Buttons124 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons124 & state.Value == 0)
-                        Joystick2Buttons124 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons125 & state.Value == 128)
-                        Joystick2Buttons125 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons125 & state.Value == 0)
-                        Joystick2Buttons125 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons126 & state.Value == 128)
-                        Joystick2Buttons126 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons126 & state.Value == 0)
-                        Joystick2Buttons126 = false;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons127 & state.Value == 128)
-                        Joystick2Buttons127 = true;
-                    if (inc == 1 & state.Offset == JoystickOffset.Buttons127 & state.Value == 0)
-                        Joystick2Buttons127 = false;
-                }
+                if (state.Offset == JoystickOffset.X)
+                    JoystickAxisX = state.Value;
+                if (state.Offset == JoystickOffset.Y)
+                    JoystickAxisY = state.Value;
+                if (state.Offset == JoystickOffset.Z)
+                    JoystickAxisZ = state.Value;
+                if (state.Offset == JoystickOffset.RotationX)
+                    JoystickRotationX = state.Value;
+                if (state.Offset == JoystickOffset.RotationY)
+                    JoystickRotationY = state.Value;
+                if (state.Offset == JoystickOffset.RotationZ)
+                    JoystickRotationZ = state.Value;
+                if (state.Offset == JoystickOffset.Sliders0)
+                    JoystickSliders0 = state.Value;
+                if (state.Offset == JoystickOffset.Sliders1)
+                    JoystickSliders1 = state.Value;
+                if (state.Offset == JoystickOffset.PointOfViewControllers0)
+                    JoystickPointOfViewControllers0 = state.Value;
+                if (state.Offset == JoystickOffset.PointOfViewControllers1)
+                    JoystickPointOfViewControllers1 = state.Value;
+                if (state.Offset == JoystickOffset.PointOfViewControllers2)
+                    JoystickPointOfViewControllers2 = state.Value;
+                if (state.Offset == JoystickOffset.PointOfViewControllers3)
+                    JoystickPointOfViewControllers3 = state.Value;
+                if (state.Offset == JoystickOffset.VelocityX)
+                    JoystickVelocityX = state.Value;
+                if (state.Offset == JoystickOffset.VelocityY)
+                    JoystickVelocityY = state.Value;
+                if (state.Offset == JoystickOffset.VelocityZ)
+                    JoystickVelocityZ = state.Value;
+                if (state.Offset == JoystickOffset.AngularVelocityX)
+                    JoystickAngularVelocityX = state.Value;
+                if (state.Offset == JoystickOffset.AngularVelocityY)
+                    JoystickAngularVelocityY = state.Value;
+                if (state.Offset == JoystickOffset.AngularVelocityZ)
+                    JoystickAngularVelocityZ = state.Value;
+                if (state.Offset == JoystickOffset.VelocitySliders0)
+                    JoystickVelocitySliders0 = state.Value;
+                if (state.Offset == JoystickOffset.VelocitySliders1)
+                    JoystickVelocitySliders1 = state.Value;
+                if (state.Offset == JoystickOffset.AccelerationX)
+                    JoystickAccelerationX = state.Value;
+                if (state.Offset == JoystickOffset.AccelerationY)
+                    JoystickAccelerationY = state.Value;
+                if (state.Offset == JoystickOffset.AccelerationZ)
+                    JoystickAccelerationZ = state.Value;
+                if (state.Offset == JoystickOffset.AngularAccelerationX)
+                    JoystickAngularAccelerationX = state.Value;
+                if (state.Offset == JoystickOffset.AngularAccelerationY)
+                    JoystickAngularAccelerationY = state.Value;
+                if (state.Offset == JoystickOffset.AngularAccelerationZ)
+                    JoystickAngularAccelerationZ = state.Value;
+                if (state.Offset == JoystickOffset.AccelerationSliders0)
+                    JoystickAccelerationSliders0 = state.Value;
+                if (state.Offset == JoystickOffset.AccelerationSliders1)
+                    JoystickAccelerationSliders1 = state.Value;
+                if (state.Offset == JoystickOffset.ForceX)
+                    JoystickForceX = state.Value;
+                if (state.Offset == JoystickOffset.ForceY)
+                    JoystickForceY = state.Value;
+                if (state.Offset == JoystickOffset.ForceZ)
+                    JoystickForceZ = state.Value;
+                if (state.Offset == JoystickOffset.TorqueX)
+                    JoystickTorqueX = state.Value;
+                if (state.Offset == JoystickOffset.TorqueY)
+                    JoystickTorqueY = state.Value;
+                if (state.Offset == JoystickOffset.TorqueZ)
+                    JoystickTorqueZ = state.Value;
+                if (state.Offset == JoystickOffset.ForceSliders0)
+                    JoystickForceSliders0 = state.Value;
+                if (state.Offset == JoystickOffset.ForceSliders1)
+                    JoystickForceSliders1 = state.Value;
+                if (state.Offset == JoystickOffset.Buttons0 & state.Value == 128)
+                    JoystickButtons0 = true;
+                if (state.Offset == JoystickOffset.Buttons0 & state.Value == 0)
+                    JoystickButtons0 = false;
+                if (state.Offset == JoystickOffset.Buttons1 & state.Value == 128)
+                    JoystickButtons1 = true;
+                if (state.Offset == JoystickOffset.Buttons1 & state.Value == 0)
+                    JoystickButtons1 = false;
+                if (state.Offset == JoystickOffset.Buttons2 & state.Value == 128)
+                    JoystickButtons2 = true;
+                if (state.Offset == JoystickOffset.Buttons2 & state.Value == 0)
+                    JoystickButtons2 = false;
+                if (state.Offset == JoystickOffset.Buttons3 & state.Value == 128)
+                    JoystickButtons3 = true;
+                if (state.Offset == JoystickOffset.Buttons3 & state.Value == 0)
+                    JoystickButtons3 = false;
+                if (state.Offset == JoystickOffset.Buttons4 & state.Value == 128)
+                    JoystickButtons4 = true;
+                if (state.Offset == JoystickOffset.Buttons4 & state.Value == 0)
+                    JoystickButtons4 = false;
+                if (state.Offset == JoystickOffset.Buttons5 & state.Value == 128)
+                    JoystickButtons5 = true;
+                if (state.Offset == JoystickOffset.Buttons5 & state.Value == 0)
+                    JoystickButtons5 = false;
+                if (state.Offset == JoystickOffset.Buttons6 & state.Value == 128)
+                    JoystickButtons6 = true;
+                if (state.Offset == JoystickOffset.Buttons6 & state.Value == 0)
+                    JoystickButtons6 = false;
+                if (state.Offset == JoystickOffset.Buttons7 & state.Value == 128)
+                    JoystickButtons7 = true;
+                if (state.Offset == JoystickOffset.Buttons7 & state.Value == 0)
+                    JoystickButtons7 = false;
+                if (state.Offset == JoystickOffset.Buttons8 & state.Value == 128)
+                    JoystickButtons8 = true;
+                if (state.Offset == JoystickOffset.Buttons8 & state.Value == 0)
+                    JoystickButtons8 = false;
+                if (state.Offset == JoystickOffset.Buttons9 & state.Value == 128)
+                    JoystickButtons9 = true;
+                if (state.Offset == JoystickOffset.Buttons9 & state.Value == 0)
+                    JoystickButtons9 = false;
+                if (state.Offset == JoystickOffset.Buttons10 & state.Value == 128)
+                    JoystickButtons10 = true;
+                if (state.Offset == JoystickOffset.Buttons10 & state.Value == 0)
+                    JoystickButtons10 = false;
+                if (state.Offset == JoystickOffset.Buttons11 & state.Value == 128)
+                    JoystickButtons11 = true;
+                if (state.Offset == JoystickOffset.Buttons11 & state.Value == 0)
+                    JoystickButtons11 = false;
+                if (state.Offset == JoystickOffset.Buttons12 & state.Value == 128)
+                    JoystickButtons12 = true;
+                if (state.Offset == JoystickOffset.Buttons12 & state.Value == 0)
+                    JoystickButtons12 = false;
+                if (state.Offset == JoystickOffset.Buttons13 & state.Value == 128)
+                    JoystickButtons13 = true;
+                if (state.Offset == JoystickOffset.Buttons13 & state.Value == 0)
+                    JoystickButtons13 = false;
+                if (state.Offset == JoystickOffset.Buttons14 & state.Value == 128)
+                    JoystickButtons14 = true;
+                if (state.Offset == JoystickOffset.Buttons14 & state.Value == 0)
+                    JoystickButtons14 = false;
+                if (state.Offset == JoystickOffset.Buttons15 & state.Value == 128)
+                    JoystickButtons15 = true;
+                if (state.Offset == JoystickOffset.Buttons15 & state.Value == 0)
+                    JoystickButtons15 = false;
+                if (state.Offset == JoystickOffset.Buttons16 & state.Value == 128)
+                    JoystickButtons16 = true;
+                if (state.Offset == JoystickOffset.Buttons16 & state.Value == 0)
+                    JoystickButtons16 = false;
+                if (state.Offset == JoystickOffset.Buttons17 & state.Value == 128)
+                    JoystickButtons17 = true;
+                if (state.Offset == JoystickOffset.Buttons17 & state.Value == 0)
+                    JoystickButtons17 = false;
+                if (state.Offset == JoystickOffset.Buttons18 & state.Value == 128)
+                    JoystickButtons18 = true;
+                if (state.Offset == JoystickOffset.Buttons18 & state.Value == 0)
+                    JoystickButtons18 = false;
+                if (state.Offset == JoystickOffset.Buttons19 & state.Value == 128)
+                    JoystickButtons19 = true;
+                if (state.Offset == JoystickOffset.Buttons19 & state.Value == 0)
+                    JoystickButtons19 = false;
+                if (state.Offset == JoystickOffset.Buttons20 & state.Value == 128)
+                    JoystickButtons20 = true;
+                if (state.Offset == JoystickOffset.Buttons20 & state.Value == 0)
+                    JoystickButtons20 = false;
+                if (state.Offset == JoystickOffset.Buttons21 & state.Value == 128)
+                    JoystickButtons21 = true;
+                if (state.Offset == JoystickOffset.Buttons21 & state.Value == 0)
+                    JoystickButtons21 = false;
+                if (state.Offset == JoystickOffset.Buttons22 & state.Value == 128)
+                    JoystickButtons22 = true;
+                if (state.Offset == JoystickOffset.Buttons22 & state.Value == 0)
+                    JoystickButtons22 = false;
+                if (state.Offset == JoystickOffset.Buttons23 & state.Value == 128)
+                    JoystickButtons23 = true;
+                if (state.Offset == JoystickOffset.Buttons23 & state.Value == 0)
+                    JoystickButtons23 = false;
+                if (state.Offset == JoystickOffset.Buttons24 & state.Value == 128)
+                    JoystickButtons24 = true;
+                if (state.Offset == JoystickOffset.Buttons24 & state.Value == 0)
+                    JoystickButtons24 = false;
+                if (state.Offset == JoystickOffset.Buttons25 & state.Value == 128)
+                    JoystickButtons25 = true;
+                if (state.Offset == JoystickOffset.Buttons25 & state.Value == 0)
+                    JoystickButtons25 = false;
+                if (state.Offset == JoystickOffset.Buttons26 & state.Value == 128)
+                    JoystickButtons26 = true;
+                if (state.Offset == JoystickOffset.Buttons26 & state.Value == 0)
+                    JoystickButtons26 = false;
+                if (state.Offset == JoystickOffset.Buttons27 & state.Value == 128)
+                    JoystickButtons27 = true;
+                if (state.Offset == JoystickOffset.Buttons27 & state.Value == 0)
+                    JoystickButtons27 = false;
+                if (state.Offset == JoystickOffset.Buttons28 & state.Value == 128)
+                    JoystickButtons28 = true;
+                if (state.Offset == JoystickOffset.Buttons28 & state.Value == 0)
+                    JoystickButtons28 = false;
+                if (state.Offset == JoystickOffset.Buttons29 & state.Value == 128)
+                    JoystickButtons29 = true;
+                if (state.Offset == JoystickOffset.Buttons29 & state.Value == 0)
+                    JoystickButtons29 = false;
+                if (state.Offset == JoystickOffset.Buttons30 & state.Value == 128)
+                    JoystickButtons30 = true;
+                if (state.Offset == JoystickOffset.Buttons30 & state.Value == 0)
+                    JoystickButtons30 = false;
+                if (state.Offset == JoystickOffset.Buttons31 & state.Value == 128)
+                    JoystickButtons31 = true;
+                if (state.Offset == JoystickOffset.Buttons31 & state.Value == 0)
+                    JoystickButtons31 = false;
+                if (state.Offset == JoystickOffset.Buttons32 & state.Value == 128)
+                    JoystickButtons32 = true;
+                if (state.Offset == JoystickOffset.Buttons32 & state.Value == 0)
+                    JoystickButtons32 = false;
+                if (state.Offset == JoystickOffset.Buttons33 & state.Value == 128)
+                    JoystickButtons33 = true;
+                if (state.Offset == JoystickOffset.Buttons33 & state.Value == 0)
+                    JoystickButtons33 = false;
+                if (state.Offset == JoystickOffset.Buttons34 & state.Value == 128)
+                    JoystickButtons34 = true;
+                if (state.Offset == JoystickOffset.Buttons34 & state.Value == 0)
+                    JoystickButtons34 = false;
+                if (state.Offset == JoystickOffset.Buttons35 & state.Value == 128)
+                    JoystickButtons35 = true;
+                if (state.Offset == JoystickOffset.Buttons35 & state.Value == 0)
+                    JoystickButtons35 = false;
+                if (state.Offset == JoystickOffset.Buttons36 & state.Value == 128)
+                    JoystickButtons36 = true;
+                if (state.Offset == JoystickOffset.Buttons36 & state.Value == 0)
+                    JoystickButtons36 = false;
+                if (state.Offset == JoystickOffset.Buttons37 & state.Value == 128)
+                    JoystickButtons37 = true;
+                if (state.Offset == JoystickOffset.Buttons37 & state.Value == 0)
+                    JoystickButtons37 = false;
+                if (state.Offset == JoystickOffset.Buttons38 & state.Value == 128)
+                    JoystickButtons38 = true;
+                if (state.Offset == JoystickOffset.Buttons38 & state.Value == 0)
+                    JoystickButtons38 = false;
+                if (state.Offset == JoystickOffset.Buttons39 & state.Value == 128)
+                    JoystickButtons39 = true;
+                if (state.Offset == JoystickOffset.Buttons39 & state.Value == 0)
+                    JoystickButtons39 = false;
+                if (state.Offset == JoystickOffset.Buttons40 & state.Value == 128)
+                    JoystickButtons40 = true;
+                if (state.Offset == JoystickOffset.Buttons40 & state.Value == 0)
+                    JoystickButtons40 = false;
+                if (state.Offset == JoystickOffset.Buttons41 & state.Value == 128)
+                    JoystickButtons41 = true;
+                if (state.Offset == JoystickOffset.Buttons41 & state.Value == 0)
+                    JoystickButtons41 = false;
+                if (state.Offset == JoystickOffset.Buttons42 & state.Value == 128)
+                    JoystickButtons42 = true;
+                if (state.Offset == JoystickOffset.Buttons42 & state.Value == 0)
+                    JoystickButtons42 = false;
+                if (state.Offset == JoystickOffset.Buttons43 & state.Value == 128)
+                    JoystickButtons43 = true;
+                if (state.Offset == JoystickOffset.Buttons43 & state.Value == 0)
+                    JoystickButtons43 = false;
+                if (state.Offset == JoystickOffset.Buttons44 & state.Value == 128)
+                    JoystickButtons44 = true;
+                if (state.Offset == JoystickOffset.Buttons44 & state.Value == 0)
+                    JoystickButtons44 = false;
+                if (state.Offset == JoystickOffset.Buttons45 & state.Value == 128)
+                    JoystickButtons45 = true;
+                if (state.Offset == JoystickOffset.Buttons45 & state.Value == 0)
+                    JoystickButtons45 = false;
+                if (state.Offset == JoystickOffset.Buttons46 & state.Value == 128)
+                    JoystickButtons46 = true;
+                if (state.Offset == JoystickOffset.Buttons46 & state.Value == 0)
+                    JoystickButtons46 = false;
+                if (state.Offset == JoystickOffset.Buttons47 & state.Value == 128)
+                    JoystickButtons47 = true;
+                if (state.Offset == JoystickOffset.Buttons47 & state.Value == 0)
+                    JoystickButtons47 = false;
+                if (state.Offset == JoystickOffset.Buttons48 & state.Value == 128)
+                    JoystickButtons48 = true;
+                if (state.Offset == JoystickOffset.Buttons48 & state.Value == 0)
+                    JoystickButtons48 = false;
+                if (state.Offset == JoystickOffset.Buttons49 & state.Value == 128)
+                    JoystickButtons49 = true;
+                if (state.Offset == JoystickOffset.Buttons49 & state.Value == 0)
+                    JoystickButtons49 = false;
+                if (state.Offset == JoystickOffset.Buttons50 & state.Value == 128)
+                    JoystickButtons50 = true;
+                if (state.Offset == JoystickOffset.Buttons50 & state.Value == 0)
+                    JoystickButtons50 = false;
+                if (state.Offset == JoystickOffset.Buttons51 & state.Value == 128)
+                    JoystickButtons51 = true;
+                if (state.Offset == JoystickOffset.Buttons51 & state.Value == 0)
+                    JoystickButtons51 = false;
+                if (state.Offset == JoystickOffset.Buttons52 & state.Value == 128)
+                    JoystickButtons52 = true;
+                if (state.Offset == JoystickOffset.Buttons52 & state.Value == 0)
+                    JoystickButtons52 = false;
+                if (state.Offset == JoystickOffset.Buttons53 & state.Value == 128)
+                    JoystickButtons53 = true;
+                if (state.Offset == JoystickOffset.Buttons53 & state.Value == 0)
+                    JoystickButtons53 = false;
+                if (state.Offset == JoystickOffset.Buttons54 & state.Value == 128)
+                    JoystickButtons54 = true;
+                if (state.Offset == JoystickOffset.Buttons54 & state.Value == 0)
+                    JoystickButtons54 = false;
+                if (state.Offset == JoystickOffset.Buttons55 & state.Value == 128)
+                    JoystickButtons55 = true;
+                if (state.Offset == JoystickOffset.Buttons55 & state.Value == 0)
+                    JoystickButtons55 = false;
+                if (state.Offset == JoystickOffset.Buttons56 & state.Value == 128)
+                    JoystickButtons56 = true;
+                if (state.Offset == JoystickOffset.Buttons56 & state.Value == 0)
+                    JoystickButtons56 = false;
+                if (state.Offset == JoystickOffset.Buttons57 & state.Value == 128)
+                    JoystickButtons57 = true;
+                if (state.Offset == JoystickOffset.Buttons57 & state.Value == 0)
+                    JoystickButtons57 = false;
+                if (state.Offset == JoystickOffset.Buttons58 & state.Value == 128)
+                    JoystickButtons58 = true;
+                if (state.Offset == JoystickOffset.Buttons58 & state.Value == 0)
+                    JoystickButtons58 = false;
+                if (state.Offset == JoystickOffset.Buttons59 & state.Value == 128)
+                    JoystickButtons59 = true;
+                if (state.Offset == JoystickOffset.Buttons59 & state.Value == 0)
+                    JoystickButtons59 = false;
+                if (state.Offset == JoystickOffset.Buttons60 & state.Value == 128)
+                    JoystickButtons60 = true;
+                if (state.Offset == JoystickOffset.Buttons60 & state.Value == 0)
+                    JoystickButtons60 = false;
+                if (state.Offset == JoystickOffset.Buttons61 & state.Value == 128)
+                    JoystickButtons61 = true;
+                if (state.Offset == JoystickOffset.Buttons61 & state.Value == 0)
+                    JoystickButtons61 = false;
+                if (state.Offset == JoystickOffset.Buttons62 & state.Value == 128)
+                    JoystickButtons62 = true;
+                if (state.Offset == JoystickOffset.Buttons62 & state.Value == 0)
+                    JoystickButtons62 = false;
+                if (state.Offset == JoystickOffset.Buttons63 & state.Value == 128)
+                    JoystickButtons63 = true;
+                if (state.Offset == JoystickOffset.Buttons63 & state.Value == 0)
+                    JoystickButtons63 = false;
+                if (state.Offset == JoystickOffset.Buttons64 & state.Value == 128)
+                    JoystickButtons64 = true;
+                if (state.Offset == JoystickOffset.Buttons64 & state.Value == 0)
+                    JoystickButtons64 = false;
+                if (state.Offset == JoystickOffset.Buttons65 & state.Value == 128)
+                    JoystickButtons65 = true;
+                if (state.Offset == JoystickOffset.Buttons65 & state.Value == 0)
+                    JoystickButtons65 = false;
+                if (state.Offset == JoystickOffset.Buttons66 & state.Value == 128)
+                    JoystickButtons66 = true;
+                if (state.Offset == JoystickOffset.Buttons66 & state.Value == 0)
+                    JoystickButtons66 = false;
+                if (state.Offset == JoystickOffset.Buttons67 & state.Value == 128)
+                    JoystickButtons67 = true;
+                if (state.Offset == JoystickOffset.Buttons67 & state.Value == 0)
+                    JoystickButtons67 = false;
+                if (state.Offset == JoystickOffset.Buttons68 & state.Value == 128)
+                    JoystickButtons68 = true;
+                if (state.Offset == JoystickOffset.Buttons68 & state.Value == 0)
+                    JoystickButtons68 = false;
+                if (state.Offset == JoystickOffset.Buttons69 & state.Value == 128)
+                    JoystickButtons69 = true;
+                if (state.Offset == JoystickOffset.Buttons69 & state.Value == 0)
+                    JoystickButtons69 = false;
+                if (state.Offset == JoystickOffset.Buttons70 & state.Value == 128)
+                    JoystickButtons70 = true;
+                if (state.Offset == JoystickOffset.Buttons70 & state.Value == 0)
+                    JoystickButtons70 = false;
+                if (state.Offset == JoystickOffset.Buttons71 & state.Value == 128)
+                    JoystickButtons71 = true;
+                if (state.Offset == JoystickOffset.Buttons71 & state.Value == 0)
+                    JoystickButtons71 = false;
+                if (state.Offset == JoystickOffset.Buttons72 & state.Value == 128)
+                    JoystickButtons72 = true;
+                if (state.Offset == JoystickOffset.Buttons72 & state.Value == 0)
+                    JoystickButtons72 = false;
+                if (state.Offset == JoystickOffset.Buttons73 & state.Value == 128)
+                    JoystickButtons73 = true;
+                if (state.Offset == JoystickOffset.Buttons73 & state.Value == 0)
+                    JoystickButtons73 = false;
+                if (state.Offset == JoystickOffset.Buttons74 & state.Value == 128)
+                    JoystickButtons74 = true;
+                if (state.Offset == JoystickOffset.Buttons74 & state.Value == 0)
+                    JoystickButtons74 = false;
+                if (state.Offset == JoystickOffset.Buttons75 & state.Value == 128)
+                    JoystickButtons75 = true;
+                if (state.Offset == JoystickOffset.Buttons75 & state.Value == 0)
+                    JoystickButtons75 = false;
+                if (state.Offset == JoystickOffset.Buttons76 & state.Value == 128)
+                    JoystickButtons76 = true;
+                if (state.Offset == JoystickOffset.Buttons76 & state.Value == 0)
+                    JoystickButtons76 = false;
+                if (state.Offset == JoystickOffset.Buttons77 & state.Value == 128)
+                    JoystickButtons77 = true;
+                if (state.Offset == JoystickOffset.Buttons77 & state.Value == 0)
+                    JoystickButtons77 = false;
+                if (state.Offset == JoystickOffset.Buttons78 & state.Value == 128)
+                    JoystickButtons78 = true;
+                if (state.Offset == JoystickOffset.Buttons78 & state.Value == 0)
+                    JoystickButtons78 = false;
+                if (state.Offset == JoystickOffset.Buttons79 & state.Value == 128)
+                    JoystickButtons79 = true;
+                if (state.Offset == JoystickOffset.Buttons79 & state.Value == 0)
+                    JoystickButtons79 = false;
+                if (state.Offset == JoystickOffset.Buttons80 & state.Value == 128)
+                    JoystickButtons80 = true;
+                if (state.Offset == JoystickOffset.Buttons80 & state.Value == 0)
+                    JoystickButtons80 = false;
+                if (state.Offset == JoystickOffset.Buttons81 & state.Value == 128)
+                    JoystickButtons81 = true;
+                if (state.Offset == JoystickOffset.Buttons81 & state.Value == 0)
+                    JoystickButtons81 = false;
+                if (state.Offset == JoystickOffset.Buttons82 & state.Value == 128)
+                    JoystickButtons82 = true;
+                if (state.Offset == JoystickOffset.Buttons82 & state.Value == 0)
+                    JoystickButtons82 = false;
+                if (state.Offset == JoystickOffset.Buttons83 & state.Value == 128)
+                    JoystickButtons83 = true;
+                if (state.Offset == JoystickOffset.Buttons83 & state.Value == 0)
+                    JoystickButtons83 = false;
+                if (state.Offset == JoystickOffset.Buttons84 & state.Value == 128)
+                    JoystickButtons84 = true;
+                if (state.Offset == JoystickOffset.Buttons84 & state.Value == 0)
+                    JoystickButtons84 = false;
+                if (state.Offset == JoystickOffset.Buttons85 & state.Value == 128)
+                    JoystickButtons85 = true;
+                if (state.Offset == JoystickOffset.Buttons85 & state.Value == 0)
+                    JoystickButtons85 = false;
+                if (state.Offset == JoystickOffset.Buttons86 & state.Value == 128)
+                    JoystickButtons86 = true;
+                if (state.Offset == JoystickOffset.Buttons86 & state.Value == 0)
+                    JoystickButtons86 = false;
+                if (state.Offset == JoystickOffset.Buttons87 & state.Value == 128)
+                    JoystickButtons87 = true;
+                if (state.Offset == JoystickOffset.Buttons87 & state.Value == 0)
+                    JoystickButtons87 = false;
+                if (state.Offset == JoystickOffset.Buttons88 & state.Value == 128)
+                    JoystickButtons88 = true;
+                if (state.Offset == JoystickOffset.Buttons88 & state.Value == 0)
+                    JoystickButtons88 = false;
+                if (state.Offset == JoystickOffset.Buttons89 & state.Value == 128)
+                    JoystickButtons89 = true;
+                if (state.Offset == JoystickOffset.Buttons89 & state.Value == 0)
+                    JoystickButtons89 = false;
+                if (state.Offset == JoystickOffset.Buttons90 & state.Value == 128)
+                    JoystickButtons90 = true;
+                if (state.Offset == JoystickOffset.Buttons90 & state.Value == 0)
+                    JoystickButtons90 = false;
+                if (state.Offset == JoystickOffset.Buttons91 & state.Value == 128)
+                    JoystickButtons91 = true;
+                if (state.Offset == JoystickOffset.Buttons91 & state.Value == 0)
+                    JoystickButtons91 = false;
+                if (state.Offset == JoystickOffset.Buttons92 & state.Value == 128)
+                    JoystickButtons92 = true;
+                if (state.Offset == JoystickOffset.Buttons92 & state.Value == 0)
+                    JoystickButtons92 = false;
+                if (state.Offset == JoystickOffset.Buttons93 & state.Value == 128)
+                    JoystickButtons93 = true;
+                if (state.Offset == JoystickOffset.Buttons93 & state.Value == 0)
+                    JoystickButtons93 = false;
+                if (state.Offset == JoystickOffset.Buttons94 & state.Value == 128)
+                    JoystickButtons94 = true;
+                if (state.Offset == JoystickOffset.Buttons94 & state.Value == 0)
+                    JoystickButtons94 = false;
+                if (state.Offset == JoystickOffset.Buttons95 & state.Value == 128)
+                    JoystickButtons95 = true;
+                if (state.Offset == JoystickOffset.Buttons95 & state.Value == 0)
+                    JoystickButtons95 = false;
+                if (state.Offset == JoystickOffset.Buttons96 & state.Value == 128)
+                    JoystickButtons96 = true;
+                if (state.Offset == JoystickOffset.Buttons96 & state.Value == 0)
+                    JoystickButtons96 = false;
+                if (state.Offset == JoystickOffset.Buttons97 & state.Value == 128)
+                    JoystickButtons97 = true;
+                if (state.Offset == JoystickOffset.Buttons97 & state.Value == 0)
+                    JoystickButtons97 = false;
+                if (state.Offset == JoystickOffset.Buttons98 & state.Value == 128)
+                    JoystickButtons98 = true;
+                if (state.Offset == JoystickOffset.Buttons98 & state.Value == 0)
+                    JoystickButtons98 = false;
+                if (state.Offset == JoystickOffset.Buttons99 & state.Value == 128)
+                    JoystickButtons99 = true;
+                if (state.Offset == JoystickOffset.Buttons99 & state.Value == 0)
+                    JoystickButtons99 = false;
+                if (state.Offset == JoystickOffset.Buttons100 & state.Value == 128)
+                    JoystickButtons100 = true;
+                if (state.Offset == JoystickOffset.Buttons100 & state.Value == 0)
+                    JoystickButtons100 = false;
+                if (state.Offset == JoystickOffset.Buttons101 & state.Value == 128)
+                    JoystickButtons101 = true;
+                if (state.Offset == JoystickOffset.Buttons101 & state.Value == 0)
+                    JoystickButtons101 = false;
+                if (state.Offset == JoystickOffset.Buttons102 & state.Value == 128)
+                    JoystickButtons102 = true;
+                if (state.Offset == JoystickOffset.Buttons102 & state.Value == 0)
+                    JoystickButtons102 = false;
+                if (state.Offset == JoystickOffset.Buttons103 & state.Value == 128)
+                    JoystickButtons103 = true;
+                if (state.Offset == JoystickOffset.Buttons103 & state.Value == 0)
+                    JoystickButtons103 = false;
+                if (state.Offset == JoystickOffset.Buttons104 & state.Value == 128)
+                    JoystickButtons104 = true;
+                if (state.Offset == JoystickOffset.Buttons104 & state.Value == 0)
+                    JoystickButtons104 = false;
+                if (state.Offset == JoystickOffset.Buttons105 & state.Value == 128)
+                    JoystickButtons105 = true;
+                if (state.Offset == JoystickOffset.Buttons105 & state.Value == 0)
+                    JoystickButtons105 = false;
+                if (state.Offset == JoystickOffset.Buttons106 & state.Value == 128)
+                    JoystickButtons106 = true;
+                if (state.Offset == JoystickOffset.Buttons106 & state.Value == 0)
+                    JoystickButtons106 = false;
+                if (state.Offset == JoystickOffset.Buttons107 & state.Value == 128)
+                    JoystickButtons107 = true;
+                if (state.Offset == JoystickOffset.Buttons107 & state.Value == 0)
+                    JoystickButtons107 = false;
+                if (state.Offset == JoystickOffset.Buttons108 & state.Value == 128)
+                    JoystickButtons108 = true;
+                if (state.Offset == JoystickOffset.Buttons108 & state.Value == 0)
+                    JoystickButtons108 = false;
+                if (state.Offset == JoystickOffset.Buttons109 & state.Value == 128)
+                    JoystickButtons109 = true;
+                if (state.Offset == JoystickOffset.Buttons109 & state.Value == 0)
+                    JoystickButtons109 = false;
+                if (state.Offset == JoystickOffset.Buttons110 & state.Value == 128)
+                    JoystickButtons110 = true;
+                if (state.Offset == JoystickOffset.Buttons110 & state.Value == 0)
+                    JoystickButtons110 = false;
+                if (state.Offset == JoystickOffset.Buttons111 & state.Value == 128)
+                    JoystickButtons111 = true;
+                if (state.Offset == JoystickOffset.Buttons111 & state.Value == 0)
+                    JoystickButtons111 = false;
+                if (state.Offset == JoystickOffset.Buttons112 & state.Value == 128)
+                    JoystickButtons112 = true;
+                if (state.Offset == JoystickOffset.Buttons112 & state.Value == 0)
+                    JoystickButtons112 = false;
+                if (state.Offset == JoystickOffset.Buttons113 & state.Value == 128)
+                    JoystickButtons113 = true;
+                if (state.Offset == JoystickOffset.Buttons113 & state.Value == 0)
+                    JoystickButtons113 = false;
+                if (state.Offset == JoystickOffset.Buttons114 & state.Value == 128)
+                    JoystickButtons114 = true;
+                if (state.Offset == JoystickOffset.Buttons114 & state.Value == 0)
+                    JoystickButtons114 = false;
+                if (state.Offset == JoystickOffset.Buttons115 & state.Value == 128)
+                    JoystickButtons115 = true;
+                if (state.Offset == JoystickOffset.Buttons115 & state.Value == 0)
+                    JoystickButtons115 = false;
+                if (state.Offset == JoystickOffset.Buttons116 & state.Value == 128)
+                    JoystickButtons116 = true;
+                if (state.Offset == JoystickOffset.Buttons116 & state.Value == 0)
+                    JoystickButtons116 = false;
+                if (state.Offset == JoystickOffset.Buttons117 & state.Value == 128)
+                    JoystickButtons117 = true;
+                if (state.Offset == JoystickOffset.Buttons117 & state.Value == 0)
+                    JoystickButtons117 = false;
+                if (state.Offset == JoystickOffset.Buttons118 & state.Value == 128)
+                    JoystickButtons118 = true;
+                if (state.Offset == JoystickOffset.Buttons118 & state.Value == 0)
+                    JoystickButtons118 = false;
+                if (state.Offset == JoystickOffset.Buttons119 & state.Value == 128)
+                    JoystickButtons119 = true;
+                if (state.Offset == JoystickOffset.Buttons119 & state.Value == 0)
+                    JoystickButtons119 = false;
+                if (state.Offset == JoystickOffset.Buttons120 & state.Value == 128)
+                    JoystickButtons120 = true;
+                if (state.Offset == JoystickOffset.Buttons120 & state.Value == 0)
+                    JoystickButtons120 = false;
+                if (state.Offset == JoystickOffset.Buttons121 & state.Value == 128)
+                    JoystickButtons121 = true;
+                if (state.Offset == JoystickOffset.Buttons121 & state.Value == 0)
+                    JoystickButtons121 = false;
+                if (state.Offset == JoystickOffset.Buttons122 & state.Value == 128)
+                    JoystickButtons122 = true;
+                if (state.Offset == JoystickOffset.Buttons122 & state.Value == 0)
+                    JoystickButtons122 = false;
+                if (state.Offset == JoystickOffset.Buttons123 & state.Value == 128)
+                    JoystickButtons123 = true;
+                if (state.Offset == JoystickOffset.Buttons123 & state.Value == 0)
+                    JoystickButtons123 = false;
+                if (state.Offset == JoystickOffset.Buttons124 & state.Value == 128)
+                    JoystickButtons124 = true;
+                if (state.Offset == JoystickOffset.Buttons124 & state.Value == 0)
+                    JoystickButtons124 = false;
+                if (state.Offset == JoystickOffset.Buttons125 & state.Value == 128)
+                    JoystickButtons125 = true;
+                if (state.Offset == JoystickOffset.Buttons125 & state.Value == 0)
+                    JoystickButtons125 = false;
+                if (state.Offset == JoystickOffset.Buttons126 & state.Value == 128)
+                    JoystickButtons126 = true;
+                if (state.Offset == JoystickOffset.Buttons126 & state.Value == 0)
+                    JoystickButtons126 = false;
+                if (state.Offset == JoystickOffset.Buttons127 & state.Value == 128)
+                    JoystickButtons127 = true;
+                if (state.Offset == JoystickOffset.Buttons127 & state.Value == 0)
+                    JoystickButtons127 = false;
             }
         }
     }

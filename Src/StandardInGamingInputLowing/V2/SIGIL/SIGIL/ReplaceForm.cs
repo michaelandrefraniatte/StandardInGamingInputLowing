@@ -4,26 +4,31 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using FastColoredTextBoxNS;
 using Range = FastColoredTextBoxNS.Range;
+using System.Runtime.InteropServices;
 
 namespace SIGIL
 {
     public partial class ReplaceForm : Form
     {
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
         FastColoredTextBox tb;
         bool firstSearch = true;
         Place startPlace;
-
         public ReplaceForm(FastColoredTextBox tb)
         {
             InitializeComponent();
             this.tb = tb;
         }
-
         private void btClose_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void btFindNext_Click(object sender, EventArgs e)
         {
             try
@@ -36,7 +41,6 @@ namespace SIGIL
                 MessageBox.Show(ex.Message);
             }
         }
-
         public List<Range> FindAll(string pattern)
         {
             var opt = cbMatchCase.Checked ? RegexOptions.None : RegexOptions.IgnoreCase;
@@ -53,7 +57,6 @@ namespace SIGIL
 
             return list;
         }
-
         public bool Find(string pattern)
         {
             RegexOptions opt = cbMatchCase.Checked ? RegexOptions.None : RegexOptions.IgnoreCase;
@@ -92,7 +95,6 @@ namespace SIGIL
             }
             return false;
         }
-
         private void tbFind_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -100,17 +102,6 @@ namespace SIGIL
             if (e.KeyChar == '\x1b')
                 Hide();
         }
-
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData) // David
-        {
-            if (keyData == Keys.Escape)
-            {
-                this.Close();
-                return true;
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-
         private void ReplaceForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -121,7 +112,6 @@ namespace SIGIL
             }
             this.tb.Focus();
         }
-
         private void btReplace_Click(object sender, EventArgs e)
         {
             try
@@ -136,7 +126,6 @@ namespace SIGIL
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btReplaceAll_Click(object sender, EventArgs e)
         {
             try
@@ -170,21 +159,23 @@ namespace SIGIL
             }
             tb.Selection.EndUpdate();
         }
-
         protected override void OnActivated(EventArgs e)
         {
             tbFind.Focus();
             ResetSerach();
         }
-
         void ResetSerach()
         {
             firstSearch = true;
         }
-
         private void cbMatchCase_CheckedChanged(object sender, EventArgs e)
         {
             ResetSerach();
+        }
+        private void ReplaceForm_Load(object sender, EventArgs e)
+        {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
         }
     }
 }

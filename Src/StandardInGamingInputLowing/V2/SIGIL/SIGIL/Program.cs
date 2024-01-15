@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Security.Principal;
 using System.Windows.Forms;
 using OpenWithSingleInstance;
 namespace SIGIL
@@ -23,6 +24,7 @@ namespace SIGIL
             if (AlreadyRunning())
             {
                 if (File.Exists(Application.StartupPath + @"\temphandle"))
+                {
                     using (System.IO.StreamReader file = new System.IO.StreamReader(Application.StartupPath + @"\temphandle"))
                     {
                         IntPtr handle = new IntPtr(int.Parse(file.ReadLine()));
@@ -30,11 +32,17 @@ namespace SIGIL
                         SetForegroundWindow(handle);
                         Microsoft.VisualBasic.Interaction.AppActivate(file.ReadLine());
                     }
+                }
                 if (SingleInstanceHelper.CheckInstancesUsingMutex() && args.Length > 0)
                 {
                     Process _otherInstance = SingleInstanceHelper.GetAlreadyRunningInstance();
                     MessageHelper.SendDataMessage(_otherInstance, args[0]);
                 }
+                return;
+            }
+            else if (!hasAdminRights())
+            {
+                RunElevated();
                 return;
             }
             Application.EnableVisualStyles();
@@ -49,6 +57,22 @@ namespace SIGIL
                 return true;
             else
                 return false;
+        }
+        public static bool hasAdminRights()
+        {
+            WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
+        public static void RunElevated()
+        {
+            try
+            {
+                ProcessStartInfo processInfo = new ProcessStartInfo();
+                processInfo.Verb = "runas";
+                processInfo.FileName = Application.ExecutablePath;
+                Process.Start(processInfo);
+            }
+            catch { }
         }
     }
 }

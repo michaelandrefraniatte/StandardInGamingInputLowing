@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using System.IO;
+using System.Drawing;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Diagnostics;
 using Valuechanges;
-using DirectInputAPI;
+using DirectInputsAPI;
 using Interceptions;
 namespace StringToCode
 {
@@ -32,7 +33,7 @@ namespace StringToCode
         private static int sleeptime = 1;
         public static Valuechange ValueChange = new Valuechange();
         private DirectInput di = new DirectInput();
-        public static SendInterception si = new SendInterception();
+        public static SendInterception SI = new SendInterception();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         public static void valchanged(int n, bool val)
@@ -61,7 +62,7 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 di.Close();
-                si.Disconnect();
+                SI.Disconnect();
             }
             catch { }
         }
@@ -74,8 +75,9 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            di.ScanDirectInput();
+            di.Scan();
             di.BeginPolling();
+            SI.Connect();
             Task.Run(() => task());
         }
         private void task()
@@ -84,7 +86,7 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                valchanged(0, di.Joystick1Buttons11);
+                valchanged(0, di.JoystickButtons11);
                 if (wd[0] == 1 & !getstate[0])  
                 {
                     width                   = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
@@ -136,13 +138,13 @@ namespace StringToCode
                 }
                 if (getstate[0]) 
                 {
-                    if (di.Joystick1Buttons12 | di.Joystick1Buttons15)
+                    if (di.JoystickButtons12 | di.JoystickButtons15)
                     {
                         mousexp = 0f;
                         mouseyp = 0f;
                     }
-                    mousexp += Math.Round((di.Joystick1AxisZ - 65535f / 2f) * width / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
-                    mouseyp += Math.Round((di.Joystick1RotationZ - 65535f / 2f) * height / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
+                    mousexp += Math.Round((di.JoystickAxisZ - 65535f / 2f) * width / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
+                    mouseyp += Math.Round((di.JoystickRotationZ - 65535f / 2f) * height / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
                     if (mousexp >= width / 2f) 
                         mousexp = width / 2f;
                     if (mousexp <= -width / 2f) 
@@ -151,30 +153,30 @@ namespace StringToCode
                         mouseyp = height / 2f;
                     if (mouseyp <= -height / 2f) 
                         mouseyp = -height / 2f;
-                    MouseDesktopX        = width / 2f + mousexp + Math.Round((di.Joystick1AxisZ - 65535f / 2f) * width / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
-                    MouseDesktopY        = height / 2f + mouseyp + Math.Round((di.Joystick1RotationZ - 65535f / 2f) * height / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
-                    int_1_SendD          = di.Joystick1AxisX - 65535f / 2f > 32767f / 2f;
-                    int_1_SendQ          = di.Joystick1AxisX - 65535f / 2f < -32767f / 2f;
-                    int_1_SendS          = di.Joystick1AxisY - 65535f / 2f > 32767f / 2f;
-                    int_1_SendZ          = di.Joystick1AxisY - 65535f / 2f < -32767f / 2f;
-                    int_1_SendOne        = di.Joystick1PointOfViewControllers0 == 4500 | di.Joystick1PointOfViewControllers0 == 0 | di.Joystick1PointOfViewControllers0 == 31500;
-                    int_1_SendTwo        = di.Joystick1PointOfViewControllers0 == 22500 | di.Joystick1PointOfViewControllers0 == 27000 | di.Joystick1PointOfViewControllers0 == 31500;
-                    int_1_SendThree      = di.Joystick1PointOfViewControllers0 == 22500 | di.Joystick1PointOfViewControllers0 == 18000 | di.Joystick1PointOfViewControllers0 == 13500;
-                    int_1_SendFour       = di.Joystick1PointOfViewControllers0 == 4500 | di.Joystick1PointOfViewControllers0 == 9000 | di.Joystick1PointOfViewControllers0 == 13500; 
-                    int_1_SendRightClick = di.Joystick1Buttons9;
-                    int_1_SendLeftClick  = di.Joystick1Buttons10;
-                    int_1_SendR          = di.Joystick1Buttons1;
-                    int_1_SendF          = di.Joystick1Buttons2;
-                    int_1_SendX          = di.Joystick1Buttons3;
-                    int_1_SendC          = di.Joystick1Buttons4;
-                    int_1_SendA          = di.Joystick1Buttons5;
-                    int_1_SendE          = di.Joystick1Buttons6;
-                    int_1_SendY          = di.Joystick1Buttons7;
-                    int_1_SendU          = di.Joystick1Buttons8;
-                    int_1_SendTab        = di.Joystick1Buttons13;
-                    int_1_SendEscape     = di.Joystick1Buttons14;
+                    MouseDesktopX        = width / 2f + mousexp + Math.Round((di.JoystickAxisZ - 65535f / 2f) * width / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
+                    MouseDesktopY        = height / 2f + mouseyp + Math.Round((di.JoystickRotationZ - 65535f / 2f) * height / 2f / 1024f * 2f / 6000f, 0) * 0.5f;
+                    int_1_SendD          = di.JoystickAxisX - 65535f / 2f > 32767f / 2f;
+                    int_1_SendQ          = di.JoystickAxisX - 65535f / 2f < -32767f / 2f;
+                    int_1_SendS          = di.JoystickAxisY - 65535f / 2f > 32767f / 2f;
+                    int_1_SendZ          = di.JoystickAxisY - 65535f / 2f < -32767f / 2f;
+                    int_1_SendOne        = di.JoystickPointOfViewControllers0 == 4500 | di.JoystickPointOfViewControllers0 == 0 | di.JoystickPointOfViewControllers0 == 31500;
+                    int_1_SendTwo        = di.JoystickPointOfViewControllers0 == 22500 | di.JoystickPointOfViewControllers0 == 27000 | di.JoystickPointOfViewControllers0 == 31500;
+                    int_1_SendThree      = di.JoystickPointOfViewControllers0 == 22500 | di.JoystickPointOfViewControllers0 == 18000 | di.JoystickPointOfViewControllers0 == 13500;
+                    int_1_SendFour       = di.JoystickPointOfViewControllers0 == 4500 | di.JoystickPointOfViewControllers0 == 9000 | di.JoystickPointOfViewControllers0 == 13500; 
+                    int_1_SendRightClick = di.JoystickButtons9;
+                    int_1_SendLeftClick  = di.JoystickButtons10;
+                    int_1_SendR          = di.JoystickButtons1;
+                    int_1_SendF          = di.JoystickButtons2;
+                    int_1_SendX          = di.JoystickButtons3;
+                    int_1_SendC          = di.JoystickButtons4;
+                    int_1_SendA          = di.JoystickButtons5;
+                    int_1_SendE          = di.JoystickButtons6;
+                    int_1_SendY          = di.JoystickButtons7;
+                    int_1_SendU          = di.JoystickButtons8;
+                    int_1_SendTab        = di.JoystickButtons13;
+                    int_1_SendEscape     = di.JoystickButtons14;
                 }
-                si.SetKM(keyboard_1_id, mouse_1_id, MouseDesktopX, MouseDesktopY, int_1_deltaX, int_1_deltaY, int_1_x, int_1_y, int_1_SendLeftClick, int_1_SendRightClick, int_1_SendMiddleClick, int_1_SendWheelUp, int_1_SendWheelDown, int_1_SendCANCEL, int_1_SendBACK, int_1_SendTAB, int_1_SendCLEAR, int_1_SendRETURN, int_1_SendSHIFT, int_1_SendCONTROL, int_1_SendMENU, int_1_SendCAPITAL, int_1_SendESCAPE, int_1_SendSPACE, int_1_SendPRIOR, int_1_SendNEXT, int_1_SendEND, int_1_SendHOME, int_1_SendLEFT, int_1_SendUP, int_1_SendRIGHT, int_1_SendDOWN, int_1_SendSNAPSHOT, int_1_SendINSERT, int_1_SendNUMPADDEL, int_1_SendNUMPADINSERT, int_1_SendHELP, int_1_SendAPOSTROPHE, int_1_SendBACKSPACE, int_1_SendPAGEDOWN, int_1_SendPAGEUP, int_1_SendFIN, int_1_SendMOUSE, int_1_SendA, int_1_SendB, int_1_SendC, int_1_SendD, int_1_SendE, int_1_SendF, int_1_SendG, int_1_SendH, int_1_SendI, int_1_SendJ, int_1_SendK, int_1_SendL, int_1_SendM, int_1_SendN, int_1_SendO, int_1_SendP, int_1_SendQ, int_1_SendR, int_1_SendS, int_1_SendT, int_1_SendU, int_1_SendV, int_1_SendW, int_1_SendX, int_1_SendY, int_1_SendZ, int_1_SendLWIN, int_1_SendRWIN, int_1_SendAPPS, int_1_SendDELETE, int_1_SendNUMPAD0, int_1_SendNUMPAD1, int_1_SendNUMPAD2, int_1_SendNUMPAD3, int_1_SendNUMPAD4, int_1_SendNUMPAD5, int_1_SendNUMPAD6, int_1_SendNUMPAD7, int_1_SendNUMPAD8, int_1_SendNUMPAD9, int_1_SendMULTIPLY, int_1_SendADD, int_1_SendSUBTRACT, int_1_SendDECIMAL, int_1_SendPRINTSCREEN, int_1_SendDIVIDE, int_1_SendF1, int_1_SendF2, int_1_SendF3, int_1_SendF4, int_1_SendF5, int_1_SendF6, int_1_SendF7, int_1_SendF8, int_1_SendF9, int_1_SendF10, int_1_SendF11, int_1_SendF12, int_1_SendNUMLOCK, int_1_SendSCROLLLOCK, int_1_SendLEFTSHIFT, int_1_SendRIGHTSHIFT, int_1_SendLEFTCONTROL, int_1_SendRIGHTCONTROL, int_1_SendLEFTALT, int_1_SendRIGHTALT, int_1_SendBROWSER_BACK, int_1_SendBROWSER_FORWARD, int_1_SendBROWSER_REFRESH, int_1_SendBROWSER_STOP, int_1_SendBROWSER_SEARCH, int_1_SendBROWSER_FAVORITES, int_1_SendBROWSER_HOME, int_1_SendVOLUME_MUTE, int_1_SendVOLUME_DOWN, int_1_SendVOLUME_UP, int_1_SendMEDIA_NEXT_TRACK, int_1_SendMEDIA_PREV_TRACK, int_1_SendMEDIA_STOP, int_1_SendMEDIA_PLAY_PAUSE, int_1_SendLAUNCH_MAIL, int_1_SendLAUNCH_MEDIA_SELECT, int_1_SendLAUNCH_APP1, int_1_SendLAUNCH_APP2, int_1_SendOEM_1, int_1_SendOEM_PLUS, int_1_SendOEM_COMMA, int_1_SendOEM_MINUS, int_1_SendOEM_PERIOD, int_1_SendOEM_2, int_1_SendOEM_3, int_1_SendOEM_4, int_1_SendOEM_5, int_1_SendOEM_6, int_1_SendOEM_7, int_1_SendOEM_8, int_1_SendOEM_102, int_1_SendEREOF, int_1_SendZOOM, int_1_SendEscape, int_1_SendOne, int_1_SendTwo, int_1_SendThree, int_1_SendFour, int_1_SendFive, int_1_SendSix, int_1_SendSeven, int_1_SendEight, int_1_SendNine, int_1_SendZero, int_1_SendDashUnderscore, int_1_SendPlusEquals, int_1_SendBackspace, int_1_SendTab, int_1_SendOpenBracketBrace, int_1_SendCloseBracketBrace, int_1_SendEnter, int_1_SendControl, int_1_SendSemicolonColon, int_1_SendSingleDoubleQuote, int_1_SendTilde, int_1_SendLeftShift, int_1_SendBackslashPipe, int_1_SendCommaLeftArrow, int_1_SendPeriodRightArrow, int_1_SendForwardSlashQuestionMark, int_1_SendRightShift, int_1_SendRightAlt, int_1_SendSpace, int_1_SendCapsLock, int_1_SendUp, int_1_SendDown, int_1_SendRight, int_1_SendLeft, int_1_SendHome, int_1_SendEnd, int_1_SendDelete, int_1_SendPageUp, int_1_SendPageDown, int_1_SendInsert, int_1_SendPrintScreen, int_1_SendNumLock, int_1_SendScrollLock, int_1_SendMenu, int_1_SendWindowsKey, int_1_SendNumpadDivide, int_1_SendNumpadAsterisk, int_1_SendNumpad7, int_1_SendNumpad8, int_1_SendNumpad9, int_1_SendNumpad4, int_1_SendNumpad5, int_1_SendNumpad6, int_1_SendNumpad1, int_1_SendNumpad2, int_1_SendNumpad3, int_1_SendNumpad0, int_1_SendNumpadDelete, int_1_SendNumpadEnter, int_1_SendNumpadPlus, int_1_SendNumpadMinus);
+                SI.Set(keyboard_1_id, mouse_1_id, MouseDesktopX, MouseDesktopY, int_1_deltaX, int_1_deltaY, int_1_x, int_1_y, int_1_SendLeftClick, int_1_SendRightClick, int_1_SendMiddleClick, int_1_SendWheelUp, int_1_SendWheelDown, int_1_SendCANCEL, int_1_SendBACK, int_1_SendTAB, int_1_SendCLEAR, int_1_SendRETURN, int_1_SendSHIFT, int_1_SendCONTROL, int_1_SendMENU, int_1_SendCAPITAL, int_1_SendESCAPE, int_1_SendSPACE, int_1_SendPRIOR, int_1_SendNEXT, int_1_SendEND, int_1_SendHOME, int_1_SendLEFT, int_1_SendUP, int_1_SendRIGHT, int_1_SendDOWN, int_1_SendSNAPSHOT, int_1_SendINSERT, int_1_SendNUMPADDEL, int_1_SendNUMPADINSERT, int_1_SendHELP, int_1_SendAPOSTROPHE, int_1_SendBACKSPACE, int_1_SendPAGEDOWN, int_1_SendPAGEUP, int_1_SendFIN, int_1_SendMOUSE, int_1_SendA, int_1_SendB, int_1_SendC, int_1_SendD, int_1_SendE, int_1_SendF, int_1_SendG, int_1_SendH, int_1_SendI, int_1_SendJ, int_1_SendK, int_1_SendL, int_1_SendM, int_1_SendN, int_1_SendO, int_1_SendP, int_1_SendQ, int_1_SendR, int_1_SendS, int_1_SendT, int_1_SendU, int_1_SendV, int_1_SendW, int_1_SendX, int_1_SendY, int_1_SendZ, int_1_SendLWIN, int_1_SendRWIN, int_1_SendAPPS, int_1_SendDELETE, int_1_SendNUMPAD0, int_1_SendNUMPAD1, int_1_SendNUMPAD2, int_1_SendNUMPAD3, int_1_SendNUMPAD4, int_1_SendNUMPAD5, int_1_SendNUMPAD6, int_1_SendNUMPAD7, int_1_SendNUMPAD8, int_1_SendNUMPAD9, int_1_SendMULTIPLY, int_1_SendADD, int_1_SendSUBTRACT, int_1_SendDECIMAL, int_1_SendPRINTSCREEN, int_1_SendDIVIDE, int_1_SendF1, int_1_SendF2, int_1_SendF3, int_1_SendF4, int_1_SendF5, int_1_SendF6, int_1_SendF7, int_1_SendF8, int_1_SendF9, int_1_SendF10, int_1_SendF11, int_1_SendF12, int_1_SendNUMLOCK, int_1_SendSCROLLLOCK, int_1_SendLEFTSHIFT, int_1_SendRIGHTSHIFT, int_1_SendLEFTCONTROL, int_1_SendRIGHTCONTROL, int_1_SendLEFTALT, int_1_SendRIGHTALT, int_1_SendBROWSER_BACK, int_1_SendBROWSER_FORWARD, int_1_SendBROWSER_REFRESH, int_1_SendBROWSER_STOP, int_1_SendBROWSER_SEARCH, int_1_SendBROWSER_FAVORITES, int_1_SendBROWSER_HOME, int_1_SendVOLUME_MUTE, int_1_SendVOLUME_DOWN, int_1_SendVOLUME_UP, int_1_SendMEDIA_NEXT_TRACK, int_1_SendMEDIA_PREV_TRACK, int_1_SendMEDIA_STOP, int_1_SendMEDIA_PLAY_PAUSE, int_1_SendLAUNCH_MAIL, int_1_SendLAUNCH_MEDIA_SELECT, int_1_SendLAUNCH_APP1, int_1_SendLAUNCH_APP2, int_1_SendOEM_1, int_1_SendOEM_PLUS, int_1_SendOEM_COMMA, int_1_SendOEM_MINUS, int_1_SendOEM_PERIOD, int_1_SendOEM_2, int_1_SendOEM_3, int_1_SendOEM_4, int_1_SendOEM_5, int_1_SendOEM_6, int_1_SendOEM_7, int_1_SendOEM_8, int_1_SendOEM_102, int_1_SendEREOF, int_1_SendZOOM, int_1_SendEscape, int_1_SendOne, int_1_SendTwo, int_1_SendThree, int_1_SendFour, int_1_SendFive, int_1_SendSix, int_1_SendSeven, int_1_SendEight, int_1_SendNine, int_1_SendZero, int_1_SendDashUnderscore, int_1_SendPlusEquals, int_1_SendBackspace, int_1_SendTab, int_1_SendOpenBracketBrace, int_1_SendCloseBracketBrace, int_1_SendEnter, int_1_SendControl, int_1_SendSemicolonColon, int_1_SendSingleDoubleQuote, int_1_SendTilde, int_1_SendLeftShift, int_1_SendBackslashPipe, int_1_SendCommaLeftArrow, int_1_SendPeriodRightArrow, int_1_SendForwardSlashQuestionMark, int_1_SendRightShift, int_1_SendRightAlt, int_1_SendSpace, int_1_SendCapsLock, int_1_SendUp, int_1_SendDown, int_1_SendRight, int_1_SendLeft, int_1_SendHome, int_1_SendEnd, int_1_SendDelete, int_1_SendPageUp, int_1_SendPageDown, int_1_SendInsert, int_1_SendPrintScreen, int_1_SendNumLock, int_1_SendScrollLock, int_1_SendMenu, int_1_SendWindowsKey, int_1_SendNumpadDivide, int_1_SendNumpadAsterisk, int_1_SendNumpad7, int_1_SendNumpad8, int_1_SendNumpad9, int_1_SendNumpad4, int_1_SendNumpad5, int_1_SendNumpad6, int_1_SendNumpad1, int_1_SendNumpad2, int_1_SendNumpad3, int_1_SendNumpad0, int_1_SendNumpadDelete, int_1_SendNumpadEnter, int_1_SendNumpadPlus, int_1_SendNumpadMinus);
                 /*di.ViewData();*/
                 Thread.Sleep(sleeptime);
             }

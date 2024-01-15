@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace vJoy.Wrapper
 {
@@ -8,6 +9,14 @@ namespace vJoy.Wrapper
     /// </summary>
     public class VirtualJoystick : IDisposable
     {
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
+
         // Common vJoy Instance
         static private vJoyInterfaceWrap.vJoy vJoyInstance = new vJoyInterfaceWrap.vJoy();
 
@@ -34,6 +43,8 @@ namespace vJoy.Wrapper
         /// <param name="vJoystickId"></param>
         public VirtualJoystick(uint vJoystickId)
         {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
             JoystickId = vJoystickId;
         }
 

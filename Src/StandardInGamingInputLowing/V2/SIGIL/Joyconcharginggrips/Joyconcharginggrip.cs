@@ -1,10 +1,7 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
@@ -118,14 +115,15 @@ namespace JoyconChargingGripsAPI
         }
         private void taskDLeft()
         {
-            while (running)
+            for (; ; )
             {
+                if (!running)
+                    break;
                 try
                 {
                     Lhid_read_timeout(handleLeft, report_bufLeft, (UIntPtr)report_lenLeft);
                 }
-                catch { }
-                ProcessButtonsLeftJoycon();
+                catch { Thread.Sleep(10); }
                 if (formvisible)
                 {
                     string str = "JoyconLeftStickX : " + JoyconLeftStickX + Environment.NewLine;
@@ -156,14 +154,15 @@ namespace JoyconChargingGripsAPI
         }
         private void taskDRight()
         {
-            while (running)
+            for (; ; )
             {
+                if (!running)
+                    break;
                 try
                 {
                     Rhid_read_timeout(handleRight, report_bufRight, (UIntPtr)report_lenRight);
                 }
-                catch { }
-                ProcessButtonsRightJoycon();
+                catch { Thread.Sleep(10); }
                 if (formvisible)
                 {
                     string str = "JoyconRightStickX : " + JoyconRightStickX + Environment.NewLine;
@@ -191,12 +190,34 @@ namespace JoyconChargingGripsAPI
                 }
             }
         }
+        private void taskPLeft()
+        {
+            for (; ; )
+            {
+                if (!running)
+                    break;
+                ProcessButtonsLeftJoycon();
+                Thread.Sleep(1);
+            }
+        }
+        private void taskPRight()
+        {
+            for (; ; )
+            {
+                if (!running)
+                    break;
+                ProcessButtonsRightJoycon();
+                Thread.Sleep(1);
+            }
+        }
         public void BeginPolling()
         {
             Task.Run(() => taskDLeft());
             Task.Run(() => taskDRight());
+            Task.Run(() => taskPLeft());
+            Task.Run(() => taskPRight());
         }
-        public void InitJoyconChargingGrip()
+        public void Init()
         {
             try
             {
@@ -208,10 +229,6 @@ namespace JoyconChargingGripsAPI
                 acc_gcalibrationLeftX = (Int16)(report_bufLeft[13 + 0 * 12] | ((report_bufLeft[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[13 + 1 * 12] | ((report_bufLeft[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[13 + 2 * 12] | ((report_bufLeft[14 + 2 * 12] << 8) & 0xff00));
                 acc_gcalibrationLeftY = (Int16)(report_bufLeft[15 + 0 * 12] | ((report_bufLeft[16 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[15 + 1 * 12] | ((report_bufLeft[16 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[15 + 2 * 12] | ((report_bufLeft[16 + 2 * 12] << 8) & 0xff00));
                 acc_gcalibrationLeftZ = (Int16)(report_bufLeft[17 + 0 * 12] | ((report_bufLeft[18 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[17 + 1 * 12] | ((report_bufLeft[18 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[17 + 2 * 12] | ((report_bufLeft[18 + 2 * 12] << 8) & 0xff00));
-            }
-            catch { }
-            try
-            {
                 stick_rawRight[0] = report_bufRight[6 + (!ISRIGHT ? 0 : 3)];
                 stick_rawRight[1] = report_bufRight[7 + (!ISRIGHT ? 0 : 3)];
                 stick_rawRight[2] = report_bufRight[8 + (!ISRIGHT ? 0 : 3)];
@@ -220,6 +237,8 @@ namespace JoyconChargingGripsAPI
                 acc_gcalibrationRightX = (Int16)(report_bufRight[13 + 0 * 12] | ((report_bufRight[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[13 + 1 * 12] | ((report_bufRight[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[13 + 2 * 12] | ((report_bufRight[14 + 2 * 12] << 8) & 0xff00));
                 acc_gcalibrationRightY = (Int16)(report_bufRight[15 + 0 * 12] | ((report_bufRight[16 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[15 + 1 * 12] | ((report_bufRight[16 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[15 + 2 * 12] | ((report_bufRight[16 + 2 * 12] << 8) & 0xff00));
                 acc_gcalibrationRightZ = (Int16)(report_bufRight[17 + 0 * 12] | ((report_bufRight[18 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[17 + 1 * 12] | ((report_bufRight[18 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[17 + 2 * 12] | ((report_bufRight[18 + 2 * 12] << 8) & 0xff00));
+                InitDirectAnglesLeft = acc_gLeft;
+                InitDirectAnglesRight = acc_gRight;
             }
             catch { }
         }
@@ -299,24 +318,6 @@ namespace JoyconChargingGripsAPI
             }
             catch { }
         }
-        public void InitJoyconChargingGripAccel()
-        {
-            InitDirectAnglesLeft = acc_gLeft;
-            InitDirectAnglesRight = acc_gRight;
-        }
-        public void InitJoyconChargingGripStick()
-        {
-            stick_rawLeft[0] = report_bufLeft[6 + (ISLEFT ? 0 : 3)];
-            stick_rawLeft[1] = report_bufLeft[7 + (ISLEFT ? 0 : 3)];
-            stick_rawLeft[2] = report_bufLeft[8 + (ISLEFT ? 0 : 3)];
-            stickCenterLeft[0] = (UInt16)(stick_rawLeft[0] | ((stick_rawLeft[1] & 0xf) << 8));
-            stickCenterLeft[1] = (UInt16)((stick_rawLeft[1] >> 4) | (stick_rawLeft[2] << 4));
-            stick_rawRight[0] = report_bufRight[6 + (!ISRIGHT ? 0 : 3)];
-            stick_rawRight[1] = report_bufRight[7 + (!ISRIGHT ? 0 : 3)];
-            stick_rawRight[2] = report_bufRight[8 + (!ISRIGHT ? 0 : 3)];
-            stickCenterRight[0] = (UInt16)(stick_rawRight[0] | ((stick_rawRight[1] & 0xf) << 8));
-            stickCenterRight[1] = (UInt16)((stick_rawRight[1] >> 4) | (stick_rawRight[2] << 4));
-        }
         public const string vendor_id = "57e", vendor_id_ = "057e", product_grip = "200e";
         public enum EFileAttributes : uint
         {
@@ -336,7 +337,7 @@ namespace JoyconChargingGripsAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool ScanGrip(int number)
+        public bool Scan(int number = 0)
         {
             this.number = number;
             ISLEFT = false;
@@ -380,13 +381,13 @@ namespace JoyconChargingGripsAPI
                         {
                             if (ISLEFT)
                             {
-                                if (number == 1)
+                                if (number == 0 | number == 1)
                                     AttachGripRightController(diDetail.DevicePath);
                                 ISRIGHT = true;
                             }
                             if (!ISLEFT)
                             {
-                                if (number == 1)
+                                if (number == 0 | number == 1)
                                     AttachGripLeftController(diDetail.DevicePath);
                                 ISLEFT = true;
                             }
@@ -395,6 +396,8 @@ namespace JoyconChargingGripsAPI
                                 ISLEFT = false;
                                 ISRIGHT = false;
                                 ISJOYCONCHARGINGGRIP1 = true;
+                                if (number == 0)
+                                    return true;
                             }
                         }
                         if (ISJOYCONCHARGINGGRIP1 & ISJOYCONCHARGINGGRIP2)

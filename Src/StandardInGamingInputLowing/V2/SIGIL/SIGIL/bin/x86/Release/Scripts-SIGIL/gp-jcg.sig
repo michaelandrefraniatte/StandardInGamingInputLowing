@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
-using controller;
+using controllers;
 using System.Diagnostics;
 using Valuechanges;
-using JoyconChargingGripAPI;
+using JoyconChargingGripsAPI;
 namespace StringToCode
 {
     public class FooClass 
@@ -52,10 +52,10 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            jcg.ScanGrip();
+            jcg.Scan();
             jcg.BeginPolling();
             Thread.Sleep(1000);
-            jcg.InitJoyconChargingGrip();
+            jcg.Init();
             XBC.Connect();
             Task.Run(() => task());
         }
@@ -66,7 +66,7 @@ namespace StringToCode
                 if (!running)
                     break;
                 if (jcg.JoyconRightButtonPLUS)
-                    jcg.InitJoyconChargingGripAccel();
+                    jcg.Init();
                 mousex = (jcg.JoyconLeftAccelY - jcg.JoyconRightAccelY) * 13.5f;
                 mousey = jcg.JoyconLeftStickY * 32767f * 1.2f;
                 statex = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
@@ -105,7 +105,7 @@ namespace StringToCode
                 controller1_send_rightstick = jcg.JoyconRightButtonSTICK;
                 controller1_send_lefttriggerposition = jcg.JoyconLeftButtonSHOULDER_2 ? 255 : 0;
                 controller1_send_righttriggerposition = jcg.JoyconRightButtonSHOULDER_2 ? 255 : 0;
-                XBC.SetController(controller1_send_back, controller1_send_start, controller1_send_A, controller1_send_B, controller1_send_X, controller1_send_Y, controller1_send_up, controller1_send_left, controller1_send_down, controller1_send_right, controller1_send_leftstick, controller1_send_rightstick, controller1_send_leftbumper, controller1_send_rightbumper, controller1_send_leftstickx, controller1_send_leftsticky, controller1_send_rightstickx, controller1_send_rightsticky, controller1_send_lefttriggerposition, controller1_send_righttriggerposition, controller1_send_xbox);
+                XBC.Set(controller1_send_back, controller1_send_start, controller1_send_A, controller1_send_B, controller1_send_X, controller1_send_Y, controller1_send_up, controller1_send_left, controller1_send_down, controller1_send_right, controller1_send_leftstick, controller1_send_rightstick, controller1_send_leftbumper, controller1_send_rightbumper, controller1_send_leftstickx, controller1_send_leftsticky, controller1_send_rightstickx, controller1_send_rightsticky, controller1_send_lefttriggerposition, controller1_send_righttriggerposition, controller1_send_xbox);
                 /*jcg.ViewData();*/
                 Thread.Sleep(sleeptime);
             }

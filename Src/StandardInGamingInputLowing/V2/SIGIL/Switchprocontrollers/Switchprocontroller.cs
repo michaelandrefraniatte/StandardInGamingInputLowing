@@ -91,14 +91,15 @@ namespace SwitchProControllersAPI
         }
         private void taskDPro()
         {
-            while (running)
+            for (; ; )
             {
+                if (!running)
+                    break;
                 try
                 {
                     Prohid_read_timeout(handlePro, report_bufPro, (UIntPtr)report_lenPro);
                 }
-                catch { }
-                ProcessButtonsAndSticksPro();
+                catch { Thread.Sleep(10); }
                 if (formvisible)
                 {
                     string str = "ProControllerLeftStickX : " + ProControllerLeftStickX + Environment.NewLine;
@@ -132,11 +133,22 @@ namespace SwitchProControllersAPI
                 }
             }
         }
+        private void taskPPro()
+        {
+            for (; ; )
+            {
+                if (!running)
+                    break;
+                ProcessButtonsAndSticksPro();
+                Thread.Sleep(1);
+            }
+        }
         public void BeginPolling()
         {
             Task.Run(() => taskDPro());
+            Task.Run(() => taskPPro());
         }
-        public void InitProController()
+        public void Init()
         {
             try
             {
@@ -153,6 +165,7 @@ namespace SwitchProControllersAPI
                 acc_gcalibrationProX = (Int16)(report_bufPro[13 + 0 * 12] | ((report_bufPro[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufPro[13 + 1 * 12] | ((report_bufPro[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufPro[13 + 2 * 12] | ((report_bufPro[14 + 2 * 12] << 8) & 0xff00));
                 acc_gcalibrationProY = (Int16)(report_bufPro[15 + 0 * 12] | ((report_bufPro[16 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufPro[15 + 1 * 12] | ((report_bufPro[16 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufPro[15 + 2 * 12] | ((report_bufPro[16 + 2 * 12] << 8) & 0xff00));
                 acc_gcalibrationProZ = (Int16)(report_bufPro[17 + 0 * 12] | ((report_bufPro[18 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufPro[17 + 1 * 12] | ((report_bufPro[18 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufPro[17 + 2 * 12] | ((report_bufPro[18 + 2 * 12] << 8) & 0xff00));
+                InitDirectAnglesPro = acc_gPro;
             }
             catch { }
         }
@@ -214,23 +227,6 @@ namespace SwitchProControllersAPI
             }
             catch { }
         }
-        public void InitProControllerAccel()
-        {
-            InitDirectAnglesPro = acc_gPro;
-        }
-        public void InitProControllerStick()
-        {
-            stick_rawleftPro[0] = report_bufPro[6 + (ISPRO ? 0 : 3)];
-            stick_rawleftPro[1] = report_bufPro[7 + (ISPRO ? 0 : 3)];
-            stick_rawleftPro[2] = report_bufPro[8 + (ISPRO ? 0 : 3)];
-            stickCenterleftPro[0] = (UInt16)(stick_rawleftPro[0] | ((stick_rawleftPro[1] & 0xf) << 8));
-            stickCenterleftPro[1] = (UInt16)((stick_rawleftPro[1] >> 4) | (stick_rawleftPro[2] << 4));
-            stick_rawrightPro[0] = report_bufPro[6 + (!ISPRO ? 0 : 3)];
-            stick_rawrightPro[1] = report_bufPro[7 + (!ISPRO ? 0 : 3)];
-            stick_rawrightPro[2] = report_bufPro[8 + (!ISPRO ? 0 : 3)];
-            stickCenterrightPro[0] = (UInt16)(stick_rawrightPro[0] | ((stick_rawrightPro[1] & 0xf) << 8));
-            stickCenterrightPro[1] = (UInt16)((stick_rawrightPro[1] >> 4) | (stick_rawrightPro[2] << 4));
-        }
         public const string vendor_id = "57e", vendor_id_ = "057e", product_pro = "2009";
         public enum EFileAttributes : uint
         {
@@ -250,7 +246,7 @@ namespace SwitchProControllersAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool ScanPro(int number)
+        public bool Scan(int number = 0)
         {
             this.number = number;
             ISSWITCHPROCONTROLLER1 = false;
@@ -279,9 +275,11 @@ namespace SwitchProControllersAPI
                         }
                         if (!ISSWITCHPROCONTROLLER1)
                         {
-                            if (number == 1)
+                            if (number == 0 | number == 1)
                                 AttachProController(diDetail.DevicePath);
                             ISSWITCHPROCONTROLLER1 = true;
+                            if (number == 0)
+                                return true;
                         }
                         if (ISSWITCHPROCONTROLLER1 & ISSWITCHPROCONTROLLER2)
                             return true;
