@@ -81,8 +81,7 @@ namespace DualShocks4API
         public async void Scan(string vendor_id, string product_id, string label_id, int number = 0)
         {
             var hidFactory = new FilterDeviceDefinition((uint)int.Parse(vendor_id, System.Globalization.NumberStyles.HexNumber), (uint)int.Parse(product_id, System.Globalization.NumberStyles.HexNumber), label: label_id).CreateWindowsHidDeviceFactory();
-            var factories = hidFactory;
-            var deviceDefinitions = (await factories.GetConnectedDeviceDefinitionsAsync().ConfigureAwait(false)).ToList();
+            var deviceDefinitions = (await hidFactory.GetConnectedDeviceDefinitionsAsync().ConfigureAwait(false)).ToList();
             if (deviceDefinitions.Count == 0)
             {
                 return;
