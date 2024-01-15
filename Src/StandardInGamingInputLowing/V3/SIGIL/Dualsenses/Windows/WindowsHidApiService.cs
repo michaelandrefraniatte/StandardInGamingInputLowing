@@ -1,7 +1,6 @@
 ﻿using Device.Net;
 using Device.Net.Windows;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.IO;
@@ -28,7 +27,7 @@ namespace Hid.Net.Windows
         #endregion
 
         #region Constructor
-        public WindowsHidApiService(ILoggerFactory loggerFactory) : base((loggerFactory ?? NullLoggerFactory.Instance).CreateLogger<WindowsHidApiService>())
+        public WindowsHidApiService(ILoggerFactory loggerFactory)
         {
         }
         #endregion
@@ -89,11 +88,11 @@ namespace Hid.Net.Windows
                 classGuid: GetHidGuid());
         }
 
-        public string GetManufacturer(SafeFileHandle safeFileHandle) => GetHidString(safeFileHandle, HidD_GetManufacturerString, Logger);
+        public string GetManufacturer(SafeFileHandle safeFileHandle) => GetHidString(safeFileHandle, HidD_GetManufacturerString);
 
-        public string GetProduct(SafeFileHandle safeFileHandle) => GetHidString(safeFileHandle, HidD_GetProductString, Logger);
+        public string GetProduct(SafeFileHandle safeFileHandle) => GetHidString(safeFileHandle, HidD_GetProductString);
 
-        public string GetSerialNumber(SafeFileHandle safeFileHandle) => GetHidString(safeFileHandle, HidD_GetSerialNumberString, Logger);
+        public string GetSerialNumber(SafeFileHandle safeFileHandle) => GetHidString(safeFileHandle, HidD_GetSerialNumberString);
 
         public HidAttributes GetHidAttributes(SafeFileHandle safeFileHandle)
         {
@@ -135,23 +134,18 @@ namespace Hid.Net.Windows
         #endregion
 
         #region Private Methods
-        private static string GetHidString(SafeFileHandle safeFileHandle, GetString getString, ILogger logger, [CallerMemberName] string callMemberName = null)
+        private static string GetHidString(SafeFileHandle safeFileHandle, GetString getString, [CallerMemberName] string callMemberName = null)
         {
             try
             {
                 var pointerToBuffer = Marshal.AllocHGlobal(126);
                 var isSuccess = getString(safeFileHandle, pointerToBuffer, 126);
-                if (!isSuccess)
-                {
-                    logger.LogWarning(Messages.ErrorMessagesCouldntGetHidString, "", nameof(GetHidString), callMemberName);
-                }
                 var text = Marshal.PtrToStringAuto(pointerToBuffer);
                 Marshal.FreeHGlobal(pointerToBuffer);
                 return text;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, Messages.ErrorMessagesCouldntGetHidString, ex.Message, nameof(GetHidString), callMemberName);
                 return null;
             }
             finally

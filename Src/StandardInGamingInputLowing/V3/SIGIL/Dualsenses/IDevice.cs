@@ -13,11 +13,6 @@ namespace Device.Net
         bool IsInitialized { get; }
 
         /// <summary>
-        /// Read a page of data. Warning: this is not thread safe. WriteAndReadAsync() should be preferred.
-        /// </summary>
-        Task<TransferResult> ReadAsync(CancellationToken cancellationToken = default);
-
-        /// <summary>
         /// Write a page of data. Warning: this is not thread safe. WriteAndReadAsync() should be preferred.
         /// </summary>
         Task<uint> WriteAsync(byte[] data, CancellationToken cancellationToken = default);
@@ -31,11 +26,6 @@ namespace Device.Net
         /// Get the FileStream. 
         /// </summary>
         Stream GetFileStream();
-
-        /// <summary>
-        /// Write a page of data and then wait for the device to return a page. If the implementation derives from DeviceBase, this method is thread safe.
-        /// </summary>
-        Task<TransferResult> WriteAndReadAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Device unique OS level Id for the type of device. The device should have been constructed with this Id. It is used to initialize the device.

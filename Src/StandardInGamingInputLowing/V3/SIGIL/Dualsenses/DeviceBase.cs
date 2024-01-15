@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,41 +14,27 @@ namespace Device.Net
         private bool disposed;
         #endregion
 
-        #region Protected Properties
-        protected ILogger Logger { get; }
-        protected ILoggerFactory LoggerFactory { get; }
-        #endregion
-
         #region Public Properties
         public string DeviceId { get; }
         #endregion
 
         #region Constructor
         protected DeviceBase(
-            string deviceId,
-            ILoggerFactory loggerFactory = null,
-            ILogger logger = null)
+            string deviceId
+            )
         {
             DeviceId = deviceId ?? throw new ArgumentNullException(nameof(deviceId));
-            Logger = logger ?? NullLogger.Instance;
-            LoggerFactory = loggerFactory ?? NullLoggerFactory.Instance;
         }
         #endregion
 
         #region Public Abstract Methods
         //TODO: Why are these here?
 
-        public abstract Task<TransferResult> ReadAsync(CancellationToken cancellationToken = default);
         public abstract Task<uint> WriteAsync(byte[] data, CancellationToken cancellationToken = default);
         #endregion
 
         #region Public Methods
         public virtual Task Flush(CancellationToken cancellationToken = default) => throw new NotImplementedException(Messages.ErrorMessageFlushNotImplemented);
-
-        public async Task<TransferResult> WriteAndReadAsync(CancellationToken cancellationToken = default)
-        {
-            return await ReadAsync(cancellationToken).ConfigureAwait(false);
-        }
 
         public virtual void Dispose()
         {
@@ -62,13 +46,10 @@ namespace Device.Net
         {
             if (disposed)
             {
-                Logger.LogWarning(Messages.WarningMessageAlreadyDisposed, DeviceId);
                 return;
             }
 
             disposed = true;
-
-            Logger.LogInformation($"{nameof(DeviceBase)}: {Messages.InformationMessageDisposingDevice}", DeviceId);
 
             _WriteAndReadLock.Dispose();
 
@@ -80,7 +61,6 @@ namespace Device.Net
         public static ConnectedDeviceDefinition GetDeviceDefinitionFromWindowsDeviceId(
             string deviceId,
             DeviceType deviceType,
-            ILogger logger,
             Guid? classGuid = null)
         {
             uint? vid = null;
@@ -91,12 +71,7 @@ namespace Device.Net
                 pid = GetNumberFromDeviceId(deviceId, "pid_");
             }
 #pragma warning disable CA1031 
-            catch (Exception ex)
-#pragma warning restore CA1031 
-            {
-                //If anything goes wrong here, log it and move on. 
-                (logger ?? NullLogger.Instance).LogError(ex, "Error {errorMessage} Area: {area}", ex.Message, nameof(GetDeviceDefinitionFromWindowsDeviceId));
-            }
+            catch { }
 
             return new ConnectedDeviceDefinition(deviceId, deviceType, vid, pid, classGuid: classGuid);
         }

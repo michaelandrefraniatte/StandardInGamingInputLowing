@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
-using Microsoft.Win32.SafeHandles;
+﻿using Microsoft.Win32.SafeHandles;
 using System;
 using System.Runtime.InteropServices;
 
@@ -16,11 +14,6 @@ namespace Device.Net.Windows
         #region Fields
         private const uint FILE_FLAG_OVERLAPPED = 0x40000000;
 
-        protected ILogger Logger { get; }
-        #endregion
-
-        #region Constructor
-        public ApiService(ILogger logger = null) => Logger = logger ?? NullLogger.Instance;
         #endregion
 
         #region Implementation
@@ -39,7 +32,6 @@ namespace Device.Net.Windows
         #region Private Methods
         private SafeFileHandle CreateConnection(string deviceId, FileAccessRights desiredAccess, uint shareMode, uint creationDisposition)
         {
-            Logger.LogInformation("Calling {call} Area: {area} for DeviceId: {deviceId}. Desired Access: {desiredAccess}. Share mode: {shareMode}. Creation Disposition: {creationDisposition}", nameof(APICalls.CreateFile), nameof(ApiService), deviceId, desiredAccess, shareMode, creationDisposition);
             return APICalls.CreateFile(deviceId, desiredAccess, shareMode, IntPtr.Zero, creationDisposition, FILE_FLAG_OVERLAPPED, IntPtr.Zero);
         }
         #endregion

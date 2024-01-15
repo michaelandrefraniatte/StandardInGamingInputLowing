@@ -1,6 +1,5 @@
 ﻿using Device.Net;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.IO;
 using System.Threading;
@@ -30,17 +29,16 @@ namespace Hid.Net
             WriteReportTransform writeReportTransform = null
             ) :
             base(
-                hidDeviceHandler != null ? hidDeviceHandler.DeviceId : throw new ArgumentNullException(nameof(hidDeviceHandler)),
-                loggerFactory,
-                (loggerFactory ?? NullLoggerFactory.Instance).CreateLogger<HidDevice>())
+                hidDeviceHandler != null ? hidDeviceHandler.DeviceId : throw new ArgumentNullException(nameof(hidDeviceHandler))
+                )
         {
             _hidDeviceHandler = hidDeviceHandler;
 
             _readReportTransform = readReportTransform ?? new Func<Report, TransferResult>((readReport)
-                => readReport.ToTransferResult(Logger));
+                => readReport.ToTransferResult(null));
 
             _writeReportTransform = writeReportTransform ?? new WriteReportTransform((data)
-                => new Report(data[0], data.TrimFirstByte(Logger)));
+                => new Report(data[0], data.TrimFirstByte(null)));
         }
 
         #endregion Public Constructors
@@ -67,10 +65,7 @@ namespace Hid.Net
             {
                 _hidDeviceHandler.Close();
             }
-            catch (Exception ex)
-            {
-                Logger.LogError(ex, Messages.ErrorMessageCantClose, DeviceId, nameof(HidDevice));
-            }
+            catch { }
 
             _IsClosing = false;
         }
@@ -79,13 +74,10 @@ namespace Hid.Net
         {
             if (disposed)
             {
-                Logger.LogWarning(Messages.WarningMessageAlreadyDisposed, DeviceId);
                 return;
             }
 
             disposed = true;
-
-            Logger.LogInformation(Messages.InformationMessageDisposingDevice, DeviceId);
 
             GC.SuppressFinalize(this);
 
@@ -96,25 +88,12 @@ namespace Hid.Net
 
         public async Task InitializeAsync(CancellationToken cancellationToken = default)
         {
-            var logScope = Logger.BeginScope("DeviceId: {deviceId} Call: {call}", DeviceId, nameof(InitializeAsync));
-
             await _hidDeviceHandler.InitializeAsync(cancellationToken).ConfigureAwait(false);
         }
 
         public Stream GetFileStream()
         {
             return _hidDeviceHandler.GetFileStream();
-        }
-
-        public override async Task<TransferResult> ReadAsync(CancellationToken cancellationToken = default)
-        {
-            var readReport = await ReadReportAsync(cancellationToken).ConfigureAwait(false);
-            return _readReportTransform(readReport);
-        }
-
-        public async Task<Report> ReadReportAsync(CancellationToken cancellationToken = default)
-        {
-            return await _hidDeviceHandler.ReadReportAsync(cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -134,8 +113,6 @@ namespace Hid.Net
 
         public async Task<uint> WriteReportAsync(byte[] data, byte reportId, CancellationToken cancellationToken = default)
         {
-            var logScope = Logger.BeginScope("DeviceId: {deviceId} Call: {call}", DeviceId, nameof(WriteReportAsync));
-
             try
             {
                 uint bytesWritten = 0;
@@ -155,7 +132,6 @@ namespace Hid.Net
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex, Messages.WriteErrorMessage);
                 throw;
             }
         }

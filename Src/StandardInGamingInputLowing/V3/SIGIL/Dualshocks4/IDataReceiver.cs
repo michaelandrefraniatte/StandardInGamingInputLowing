@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Device.Net
 {
@@ -9,13 +7,6 @@ namespace Device.Net
     /// </summary>
     public interface IDataReceiver : IDisposable
     {
-        /// <summary>
-        /// Read from the source or wait for data to appear for reading
-        /// </summary>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        Task<TransferResult> ReadAsync(CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Manually set the data that appears at the source
         /// </summary>

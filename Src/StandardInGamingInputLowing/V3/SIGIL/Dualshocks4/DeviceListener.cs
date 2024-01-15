@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +18,7 @@ namespace Device.Net
         private bool _IsDisposed;
         private readonly timer _PollTimer;
         private readonly SemaphoreSlim _ListenSemaphoreSlim = new SemaphoreSlim(1, 1);
-        private readonly ILogger _logger;
+        
 
         /// <summary>
         /// This is the list of Devices by their filter definition. Note this is not actually keyed by the connected definition.
@@ -45,7 +44,6 @@ namespace Device.Net
             int? pollMilliseconds = 1000,
             ILoggerFactory loggerFactory = null)
         {
-            _logger = (loggerFactory ?? NullLoggerFactory.Instance).CreateLogger<DeviceListener>();
 
             DeviceFactory = deviceFactory ?? throw new ArgumentNullException(nameof(deviceFactory));
 
@@ -96,12 +94,8 @@ namespace Device.Net
                     {
                         //Need to use the connected device def here instead of the filter version because the filter version won't have the id or any details
                         device = await DeviceFactory.GetDeviceAsync(connectedDeviceDefinition, cancellationToken).ConfigureAwait(false);
-
-                        if (device == null)
-                        {
-                            _logger.LogWarning("A connected device with id {deviceId} was detected but the factory didn't create an instance of it. Bad stuff is going to happen now.", connectedDeviceDefinition.DeviceId);
-                        }
-                        else
+                        
+                        if (device != null)
                         {
                             _CreatedDevicesByDefinition.Add(connectedDeviceDefinition.DeviceId, device);
                         }
@@ -111,15 +105,11 @@ namespace Device.Net
                         if (device.IsInitialized) continue;
                     }
 
-                    _logger.LogDebug("Attempting to initialize with DeviceId of {deviceId}", device.DeviceId);
-
                     //The device is not initialized so initialize it
                     await device.InitializeAsync(cancellationToken).ConfigureAwait(false);
 
                     //Let listeners know a registered device was initialized
                     DeviceInitialized?.Invoke(this, new DeviceEventArgs(device));
-
-                    _logger.LogDebug(Messages.InformationMessageDeviceConnected, device.DeviceId);
                 }
 
                 var removeDeviceIds = new List<string>();
@@ -141,8 +131,6 @@ namespace Device.Net
                     device.Close();
 
                     removeDeviceIds.Add(deviceId);
-
-                    _logger.LogDebug(Messages.InformationMessageDeviceListenerDisconnected);
                 }
 
                 foreach (var deviceId in removeDeviceIds)
@@ -150,18 +138,9 @@ namespace Device.Net
                     _ = _CreatedDevicesByDefinition.Remove(deviceId);
                 }
 
-                _logger.LogDebug(Messages.InformationMessageDeviceListenerPollingComplete);
-
             }
 #pragma warning disable CA1031 // Do not catch general exception types
-            catch (Exception ex)
-#pragma warning restore CA1031 // Do not catch general exception types
-            {
-                //Log and move on
-                _logger.LogError(ex, Messages.ErrorMessagePollingError);
-
-                //TODO: What else to do here?
-            }
+            catch { }
             finally
             {
                 if (!_IsDisposed)
@@ -175,13 +154,10 @@ namespace Device.Net
         {
             if (_IsDisposed)
             {
-                _logger.LogWarning(Messages.WarningMessageAlreadyDisposed, "Listener");
                 return;
             }
 
             _IsDisposed = true;
-
-            _logger.LogInformation(Messages.InformationMessageDisposingDevice, "Listener");
 
             Stop();
 

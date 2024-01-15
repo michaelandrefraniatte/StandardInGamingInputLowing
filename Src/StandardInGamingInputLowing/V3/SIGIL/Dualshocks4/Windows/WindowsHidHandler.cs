@@ -1,7 +1,6 @@
 ﻿using Device.Net;
 using Device.Net.Windows;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.IO;
@@ -16,7 +15,7 @@ namespace Hid.Net.Windows
         #region Private Fields
 
         private readonly IHidApiService _hidService;
-        private readonly ILogger _logger;
+        
         private readonly Func<TransferResult, Report> _readTransferTransform;
         private readonly Func<byte[], byte, byte[]> _writeTransferTransform;
         private Stream _readFileStream;
@@ -37,15 +36,14 @@ namespace Hid.Net.Windows
             Func<TransferResult, Report> readTransferTransform = null,
             Func<byte[], byte, byte[]> writeTransferTransform = null)
         {
-            _logger = (loggerFactory ?? NullLoggerFactory.Instance).CreateLogger<WindowsHidHandler>();
             DeviceId = deviceId ?? throw new ArgumentNullException(nameof(deviceId));
 
             _readTransferTransform = readTransferTransform ??
-                new Func<TransferResult, Report>((tr) => tr.ToReadReport(_logger));
+                new Func<TransferResult, Report>((tr) => tr.ToReadReport(null));
 
             _writeTransferTransform = writeTransferTransform ??
                 new Func<byte[], byte, byte[]>(
-                (data, reportId) => data.InsertReportIdAtIndexZero(reportId, _logger));
+                (data, reportId) => data.InsertReportIdAtIndexZero(reportId, null));
 
             _hidService = hidApiService ?? new WindowsHidApiService(loggerFactory);
             WriteBufferSize = writeBufferSize;
@@ -92,17 +90,11 @@ namespace Hid.Net.Windows
         {
             return Task.Run(() =>
               {
-                  var logScope = _logger.BeginScope("DeviceId: {deviceId} Call: {call}", DeviceId, nameof(InitializeAsync));
 
                   _readSafeFileHandle = _hidService.CreateReadConnection(DeviceId, FileAccessRights.GenericRead);
                   _writeSafeFileHandle = _hidService.CreateWriteConnection(DeviceId);
 
                   IsReadOnly = _writeSafeFileHandle.IsInvalid;
-
-                  if (IsReadOnly.Value)
-                  {
-                      _logger.LogWarning(Messages.WarningMessageOpeningInReadonlyMode, DeviceId);
-                  }
 
                   ConnectedDeviceDefinition = _hidService.GetDeviceDefinition(DeviceId, _readSafeFileHandle);
 
@@ -111,28 +103,10 @@ namespace Hid.Net.Windows
 
                   _readFileStream = _hidService.OpenRead(_readSafeFileHandle, ReadBufferSize.Value);
 
-                  if (_readFileStream.CanRead)
-                  {
-                      _logger.LogInformation(Messages.SuccessMessageReadFileStreamOpened);
-                  }
-                  else
-                  {
-                      _logger.LogWarning(Messages.WarningMessageReadFileStreamCantRead);
-                  }
-
                   if (IsReadOnly.Value) return;
 
                   //Don't open if this is a read only connection
                   _writeFileStream = _hidService.OpenWrite(_writeSafeFileHandle, WriteBufferSize.Value);
-
-                  if (_writeFileStream.CanWrite)
-                  {
-                      _logger.LogInformation(Messages.SuccessMessageWriteFileStreamOpened);
-                  }
-                  else
-                  {
-                      _logger.LogWarning(Messages.WarningMessageWriteFileStreamCantWrite);
-                  }
 
                   IsInitialized = true;
               }, cancellationToken);
@@ -141,20 +115,6 @@ namespace Hid.Net.Windows
         public Stream GetFileStream()
         {
             return _readFileStream;
-        }
-
-        byte[] bytes;
-#pragma warning disable CS1998 // Cette méthode async n'a pas d'opérateur 'await' et elle s'exécutera de façon synchrone
-        public async Task<Report> ReadReportAsync(CancellationToken cancellationToken = default)
-#pragma warning restore CS1998 // Cette méthode async n'a pas d'opérateur 'await' et elle s'exécutera de façon synchrone
-        {
-            bytes = new byte[ReadBufferSize.Value];
-            try
-            {
-                _readFileStream.Read(bytes, 0, bytes.Length);
-            }
-            catch { }
-            return _readTransferTransform(bytes);
         }
 
         public async Task<uint> WriteReportAsync(byte[] data, byte reportId, CancellationToken cancellationToken = default)

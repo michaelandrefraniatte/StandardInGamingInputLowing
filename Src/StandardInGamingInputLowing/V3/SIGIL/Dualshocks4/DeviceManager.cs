@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -13,8 +12,7 @@ namespace Device.Net
         //TODO: Put logging in here
 
         #region Fields
-        private readonly ILoggerFactory _loggerFactory;
-        private readonly ILogger _logger;
+        
         #endregion
 
         #region Public Properties
@@ -27,8 +25,6 @@ namespace Device.Net
             IReadOnlyCollection<IDeviceFactory> deviceFactories,
             ILoggerFactory loggerFactory = null)
         {
-            _loggerFactory = loggerFactory ?? new NullLoggerFactory();
-            _logger = _loggerFactory.CreateLogger<AggregateDeviceFactory>();
             DeviceFactories = deviceFactories ?? throw new ArgumentNullException(nameof(deviceFactories));
 
             if (deviceFactories.Count == 0)
@@ -52,15 +48,8 @@ namespace Device.Net
                     //TODO: Do this in parallel?
                     var factoryResults = await deviceFactory.GetConnectedDeviceDefinitionsAsync(cancellationToken).ConfigureAwait(false);
                     retVal.AddRange(factoryResults);
-
-                    _logger.LogDebug("Called " + nameof(GetConnectedDeviceDefinitionsAsync) + " on " + deviceFactory.GetType().Name);
                 }
-                catch (Exception ex)
-                {
-                    //TODO: We probably want to remove this. If a factory crashes, we probably don't want to swallow the error
-
-                    _logger.LogError(ex, "Error calling " + nameof(GetConnectedDeviceDefinitionsAsync));
-                }
+                catch { }
             }
 
             return retVal;

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,7 +13,7 @@ namespace Device.Net
         private readonly IDeviceFactory _deviceFactory;
         private IDevice _currentDevice;
         private readonly TimeSpan? _interval;
-        private readonly ILogger _logger;
+        
         private readonly Func<IDevice, Task> _initializeFunc;
 
         public DeviceDataStreamer(
@@ -28,7 +27,6 @@ namespace Device.Net
             _processData = processData;
             _deviceFactory = deviceFactory;
             _interval = interval ?? new TimeSpan(0, 0, 1);
-            _logger = (loggerFactory ?? NullLoggerFactory.Instance).CreateLogger<DeviceDataStreamer>();
             _initializeFunc = initializeFunc ?? (d => d.InitializeAsync());
         }
 
@@ -62,7 +60,6 @@ namespace Device.Net
                       }
                       catch (Exception ex)
                       {
-                          _logger.LogError(ex, "Error processing");
                           _currentDevice?.Dispose();
                           _currentDevice = null;
                       }
@@ -77,13 +74,10 @@ namespace Device.Net
         {
             if (disposed)
             {
-                _logger.LogWarning(Messages.WarningMessageAlreadyDisposed, _currentDevice?.DeviceId);
                 return;
             }
 
             disposed = true;
-
-            _logger.LogInformation("Disposing {deviceId}", _currentDevice?.DeviceId);
 
             _isRunning = false;
         }
