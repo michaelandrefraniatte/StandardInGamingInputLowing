@@ -6,8 +6,12 @@ namespace Device.Net
     /// <summary>
     /// Represents the definition of a device that has been physically connected and has a DeviceId
     /// </summary>
-    public class ConnectedDeviceDefinition
+    public class ConnectedDeviceDefinition : IDisposable
     {
+        public void Dispose()
+        {
+        }
+
         #region Public Properties
 
         /// <summary>

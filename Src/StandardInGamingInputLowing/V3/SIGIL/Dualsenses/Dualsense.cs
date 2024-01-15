@@ -84,22 +84,22 @@ namespace DualSensesAPI
         }
         public async void Scan(string vendor_id, string product_id, string label_id, int number = 0)
         {
-            var hidFactory = new FilterDeviceDefinition((uint)int.Parse(vendor_id, System.Globalization.NumberStyles.HexNumber), (uint)int.Parse(product_id, System.Globalization.NumberStyles.HexNumber), label: label_id).CreateWindowsHidDeviceFactory();
-            var deviceDefinitions = (await hidFactory.GetConnectedDeviceDefinitionsAsync().ConfigureAwait(false)).ToList();
-            if (deviceDefinitions.Count == 0)
+            using (var hidFactory = new FilterDeviceDefinition((uint)int.Parse(vendor_id, System.Globalization.NumberStyles.HexNumber), (uint)int.Parse(product_id, System.Globalization.NumberStyles.HexNumber), label: label_id).CreateWindowsHidDeviceFactory())
             {
-                return;
+                using (var deviceDefinitions = hidFactory.GetConnectedDeviceDefinitionsAsync())
+                {
+                    if (number == 0 | number == 1)
+                    {
+                        handle = await hidFactory.GetDeviceAsync((await deviceDefinitions.ConfigureAwait(false)).First()).ConfigureAwait(false);
+                    }
+                    else if (number == 2)
+                    {
+                        handle = await hidFactory.GetDeviceAsync((await deviceDefinitions.ConfigureAwait(false)).Skip(1).First()).ConfigureAwait(false);
+                    }
+                    await handle.InitializeAsync().ConfigureAwait(false);
+                    mStream = handle.GetFileStream();
+                }
             }
-            if (number == 0 | number == 1)
-            {
-                handle = await hidFactory.GetDeviceAsync(deviceDefinitions.First()).ConfigureAwait(false);
-            }
-            else if (number == 2)
-            {
-                handle = await hidFactory.GetDeviceAsync(deviceDefinitions.Skip(1).First()).ConfigureAwait(false);
-            }
-            await handle.InitializeAsync().ConfigureAwait(false);
-            mStream = handle.GetFileStream();
         }
         public void ProcessStateLogic()
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -7,7 +8,7 @@ namespace Device.Net
     /// <summary>
     /// Abstraction for enumerating and constructing <see cref="IDeviceFactory"/>s 
     /// </summary>
-    public interface IDeviceFactory
+    public interface IDeviceFactory : IDisposable
     {
         /// <summary>
         /// Gets the definition of connected devices

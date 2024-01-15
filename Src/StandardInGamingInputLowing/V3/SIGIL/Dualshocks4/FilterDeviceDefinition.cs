@@ -2,8 +2,12 @@
 
 namespace Device.Net
 {
-    public sealed class FilterDeviceDefinition
+    public sealed class FilterDeviceDefinition : IDisposable
     {
+        public void Dispose()
+        {
+        }
+
         public FilterDeviceDefinition(
             uint? vendorId = null,
             uint? productId = null,

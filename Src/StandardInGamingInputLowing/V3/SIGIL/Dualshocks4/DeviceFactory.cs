@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace Device.Net
 {
-    public sealed class DeviceFactory : IDeviceFactory
+    public sealed class DeviceFactory : IDeviceFactory, IDisposable
     {
+        public void Dispose()
+        {
+        }
+
         #region Fields
 #pragma warning disable IDE0052 // Remove unread private members
         
