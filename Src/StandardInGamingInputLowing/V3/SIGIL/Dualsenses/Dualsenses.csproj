@@ -74,7 +74,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsyncExtensions.cs" />
     <Compile Include="ConnectedDeviceDefinition.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="DeviceBase.cs" />
@@ -103,14 +102,11 @@
     <Compile Include="IHidDevice.cs" />
     <Compile Include="IHidDeviceHandler.cs" />
     <Compile Include="Messages.cs" />
-    <Compile Include="Observable.cs" />
-    <Compile Include="Observer.cs" />
     <Compile Include="Properties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadResult.cs" />
     <Compile Include="Trace.cs" />
     <Compile Include="TransferResult.cs" />
-    <Compile Include="UnsubscribeDisposable.cs" />
     <Compile Include="Windows\APICalls.cs" />
     <Compile Include="Windows\ApiService.cs" />
     <Compile Include="Windows\AqsHelpers.cs" />

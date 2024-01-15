@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Device.Net
 {
 
-    internal class AggregateDeviceFactory : IDeviceFactory
+    internal class AggregateDeviceFactory
     {
         //TODO: Put logging in here
 
@@ -40,7 +40,6 @@ namespace Device.Net
         #endregion
 
         #region Public Methods
-        public async Task<bool> SupportsDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition, CancellationToken cancellationToken = default) => await DeviceFactories.FirstOrDefaultAsync(async d => await d.SupportsDeviceAsync(connectedDeviceDefinition, cancellationToken).ConfigureAwait(false), cancellationToken).ConfigureAwait(false) != null;
 
         public async Task<IEnumerable<ConnectedDeviceDefinition>> GetConnectedDeviceDefinitionsAsync(CancellationToken cancellationToken = default)
         {
@@ -66,11 +65,6 @@ namespace Device.Net
 
             return retVal;
         }
-
-        public async Task<IDevice> GetDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition, CancellationToken cancellationToken = default)
-             => connectedDeviceDefinition == null ? throw new ArgumentNullException(nameof(connectedDeviceDefinition)) :
-            await (await DeviceFactories.FirstOrDefaultAsync(f => f.SupportsDeviceAsync(connectedDeviceDefinition, cancellationToken), cancellationToken).ConfigureAwait(false))
-            .GetDeviceAsync(connectedDeviceDefinition, cancellationToken).ConfigureAwait(false);
 
         #endregion
     }

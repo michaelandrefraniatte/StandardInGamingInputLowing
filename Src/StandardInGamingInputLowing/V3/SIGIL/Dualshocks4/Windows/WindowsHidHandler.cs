@@ -144,7 +144,9 @@ namespace Hid.Net.Windows
         }
 
         byte[] bytes;
+#pragma warning disable CS1998 // Cette méthode async n'a pas d'opérateur 'await' et elle s'exécutera de façon synchrone
         public async Task<Report> ReadReportAsync(CancellationToken cancellationToken = default)
+#pragma warning restore CS1998 // Cette méthode async n'a pas d'opérateur 'await' et elle s'exécutera de façon synchrone
         {
             bytes = new byte[ReadBufferSize.Value];
             try

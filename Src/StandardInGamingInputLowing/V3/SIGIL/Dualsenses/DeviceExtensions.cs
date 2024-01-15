@@ -1,32 +1,9 @@
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 
 namespace Device.Net
 {
     public static class DeviceExtensions
     {
-        /// <summary>
-        /// Creates a new <see cref="IDeviceFactory"/> that contains with the existing deviceFactories
-        /// </summary>
-        /// <param name="deviceFactories"></param>
-        /// <param name="loggerFactory"></param>
-        /// <returns></returns>
-        public static IDeviceFactory Aggregate(this IList<IDeviceFactory> deviceFactories, ILoggerFactory loggerFactory = null)
-            => deviceFactories == null ? throw new ArgumentNullException(nameof(deviceFactories)) :
-            new AggregateDeviceFactory(new ReadOnlyCollection<IDeviceFactory>(deviceFactories), loggerFactory);
-
-
-        public static IDeviceFactory Aggregate(this IDeviceFactory deviceFactory, IDeviceFactory newDeviceFactory, ILoggerFactory loggerFactory = null)
-            => deviceFactory == null ? throw new ArgumentNullException(nameof(deviceFactory)) :
-            new AggregateDeviceFactory(
-                new ReadOnlyCollection<IDeviceFactory>(
-                    new ReadOnlyCollection<IDeviceFactory>(
-                        new List<IDeviceFactory> { deviceFactory, newDeviceFactory })), loggerFactory);
-
         /// <summary>
         /// Compares a <see cref="ConnectedDeviceDefinition"/> with a <see cref="FilterDeviceDefinition"/>
         /// </summary>
@@ -54,19 +31,6 @@ namespace Device.Net
                 classGuidPasses;
 
             return returnValue;
-        }
-
-        public static async Task<IDevice> GetFirstDeviceAsync(this IDeviceFactory deviceFactory)
-            => deviceFactory != null ?
-            await deviceFactory.GetDeviceAsync(await (await deviceFactory.GetConnectedDeviceDefinitionsAsync().ConfigureAwait(false)).FirstOrDefaultAsync().ConfigureAwait(false)).ConfigureAwait(false)
-            : throw new ArgumentNullException(nameof(deviceFactory));
-
-        public static async Task<IDevice> ConnectFirstAsync(this IDeviceFactory deviceFactory, ILogger logger = null)
-        {
-            var device = await GetFirstDeviceAsync(deviceFactory).ConfigureAwait(false);
-
-            await device.InitializeAsync().ConfigureAwait(false);
-            return device;
         }
 
     }
