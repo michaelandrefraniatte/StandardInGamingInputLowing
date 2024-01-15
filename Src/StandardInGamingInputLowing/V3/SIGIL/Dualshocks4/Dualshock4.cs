@@ -102,11 +102,11 @@ namespace DualShocks4API
         {
             LeftAnalogStick = ReadAnalogStick(ds4data[1], ds4data[2]);
             RightAnalogStick = ReadAnalogStick(ds4data[3], ds4data[4]);
-            L2 = GetModeSwitch(ds4data, 8).ToUnsignedFloat();
-            R2 = GetModeSwitch(ds4data, 9).ToUnsignedFloat();
-            btnBlock1 = GetModeSwitch(ds4data, 5);
-            btnBlock2 = GetModeSwitch(ds4data, 6);
-            btnBlock3 = GetModeSwitch(ds4data, 7);
+            L2 = ds4data[8].ToUnsignedFloat();
+            R2 = ds4data[9].ToUnsignedFloat();
+            btnBlock1 = ds4data[5];
+            btnBlock2 = ds4data[6];
+            btnBlock3 = ds4data[7];
             SquareButton = btnBlock1.HasFlag(0x10);
             CrossButton = btnBlock1.HasFlag(0x20);
             CircleButton = btnBlock1.HasFlag(0x40);
@@ -125,20 +125,20 @@ namespace DualShocks4API
             R3Button = btnBlock2.HasFlag(0x80);
             LogoButton = btnBlock3.HasFlag(0x01);
             TouchpadButton = btnBlock3.HasFlag(0x02);
-            MicButton = GetModeSwitch(ds4data, 10).HasFlag(0x04);
-            Touchpad1 = ReadTouchpad(GetModeSwitch(ds4data, 35, 4));
-            Touchpad2 = ReadTouchpad(GetModeSwitch(ds4data, 37, 4));
+            MicButton = ds4data[10].HasFlag(0x04);
+            Touchpad1 = ReadTouchpad(new byte[] { ds4data[35], ds4data[36], ds4data[37], ds4data[38] });
+            Touchpad2 = ReadTouchpad(new byte[] { ds4data[39], ds4data[40], ds4data[41], ds4data[42] });
             Gyro = -ReadAccelAxes(
-                GetModeSwitch(ds4data, 13, 2),
-                GetModeSwitch(ds4data, 15, 2),
-                GetModeSwitch(ds4data, 17, 2)
+                new byte[] { ds4data[13], ds4data[14] },
+                new byte[] { ds4data[15], ds4data[16] },
+                new byte[] { ds4data[17], ds4data[18] }
             );
             Accelerometer = ReadAccelAxes(
-                GetModeSwitch(ds4data, 19, 2),
-                GetModeSwitch(ds4data, 21, 2),
-                GetModeSwitch(ds4data, 23, 2)
+                new byte[] { ds4data[19], ds4data[20] },
+                new byte[] { ds4data[21], ds4data[22] },
+                new byte[] { ds4data[23], ds4data[24] }
             );
-            miscByte = GetModeSwitch(ds4data, 30);
+            miscByte = ds4data[30];
             IsHeadphoneConnected = miscByte.HasFlag(0x01);
             PS4ControllerLeftStickX = LeftAnalogStick.X;
             PS4ControllerLeftStickY = LeftAnalogStick.Y;
@@ -247,14 +247,6 @@ namespace DualShocks4API
         {
             Task.Run(() => taskD());
             Task.Run(() => taskP());
-        }
-        private byte GetModeSwitch(byte[] ds4data, int indexIfUsb)
-        {
-            return ds4data[indexIfUsb];
-        }
-        private byte[] GetModeSwitch(byte[] data, int startIndexIfUsb, int size)
-        {
-            return data.Skip(startIndexIfUsb).Take(size).ToArray();
         }
         private Vec2 ReadAnalogStick(byte x, byte y)
         {
