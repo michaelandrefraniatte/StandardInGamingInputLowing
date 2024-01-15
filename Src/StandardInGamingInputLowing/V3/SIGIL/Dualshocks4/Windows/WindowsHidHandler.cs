@@ -1,5 +1,4 @@
 ﻿using Device.Net;
-using Device.Net.Exceptions;
 using Device.Net.Windows;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -95,19 +94,8 @@ namespace Hid.Net.Windows
               {
                   var logScope = _logger.BeginScope("DeviceId: {deviceId} Call: {call}", DeviceId, nameof(InitializeAsync));
 
-                  if (string.IsNullOrEmpty(DeviceId))
-                  {
-                      throw new ValidationException(
-                          $"{nameof(DeviceId)} must be specified before {nameof(InitializeAsync)} can be called.");
-                  }
-
                   _readSafeFileHandle = _hidService.CreateReadConnection(DeviceId, FileAccessRights.GenericRead);
                   _writeSafeFileHandle = _hidService.CreateWriteConnection(DeviceId);
-
-                  if (_readSafeFileHandle.IsInvalid)
-                  {
-                      throw new ApiException(Messages.ErrorMessageCantOpenRead);
-                  }
 
                   IsReadOnly = _writeSafeFileHandle.IsInvalid;
 
@@ -121,12 +109,6 @@ namespace Hid.Net.Windows
                   ReadBufferSize = (ushort?)ConnectedDeviceDefinition.ReadBufferSize;
                   WriteBufferSize = (ushort?)ConnectedDeviceDefinition.WriteBufferSize;
 
-                  if (!ReadBufferSize.HasValue)
-                  {
-                      throw new ValidationException(
-                          $"ReadBufferSize must be specified. HidD_GetAttributes may have failed or returned an InputReportByteLength of 0. Please specify this argument in the constructor");
-                  }
-
                   _readFileStream = _hidService.OpenRead(_readSafeFileHandle, ReadBufferSize.Value);
 
                   if (_readFileStream.CanRead)
@@ -139,12 +121,6 @@ namespace Hid.Net.Windows
                   }
 
                   if (IsReadOnly.Value) return;
-
-                  if (!WriteBufferSize.HasValue)
-                  {
-                      throw new ValidationException(
-                          $"WriteBufferSize must be specified. HidD_GetAttributes may have failed or returned an OutputReportByteLength of 0. Please specify this argument in the constructor");
-                  }
 
                   //Don't open if this is a read only connection
                   _writeFileStream = _hidService.OpenWrite(_writeSafeFileHandle, WriteBufferSize.Value);
@@ -183,16 +159,10 @@ namespace Hid.Net.Windows
         {
             if (data == null) throw new ArgumentNullException(nameof(data));
 
-            if (_writeFileStream == null)
-            {
-                throw new NotInitializedException("The device has not been initialized");
-            }
-
             if (_writeFileStream.CanWrite)
             {
                 var transformedData = _writeTransferTransform(data, reportId);
                 await _writeFileStream.WriteAsync(transformedData, 0, transformedData.Length, cancellationToken).ConfigureAwait(false);
-                _logger.LogDataTransfer(new Trace(true, transformedData));
                 return (uint)data.Length;
             }
             else

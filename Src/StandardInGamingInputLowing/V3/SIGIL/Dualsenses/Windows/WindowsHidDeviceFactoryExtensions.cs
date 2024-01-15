@@ -1,5 +1,4 @@
 using Device.Net;
-using Device.Net.Exceptions;
 using Device.Net.Windows;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -174,17 +173,11 @@ namespace Hid.Net.Windows
 
         private static ConnectedDeviceDefinition GetDeviceDefinition(string deviceId, IHidApiService HidService, ILogger logger)
         {
-            logger = NullLogger.Instance;
-
             var logScope = logger.BeginScope("DeviceId: {deviceId} Call: {call}", deviceId, nameof(GetDeviceDefinition));
 
             try
             {
                 var safeFileHandle = HidService.CreateReadConnection(deviceId, FileAccessRights.None);
-
-                if (safeFileHandle.IsInvalid) throw new DeviceException($"{nameof(HidService.CreateReadConnection)} call with Id of {deviceId} failed.");
-
-                logger.LogDebug(Messages.InformationMessageFoundDevice);
 
                 return HidService.GetDeviceDefinition(deviceId, safeFileHandle);
             }

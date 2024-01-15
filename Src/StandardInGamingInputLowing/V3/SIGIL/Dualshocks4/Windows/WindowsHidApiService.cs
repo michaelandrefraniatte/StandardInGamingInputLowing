@@ -1,5 +1,4 @@
 ﻿using Device.Net;
-using Device.Net.Exceptions;
 using Device.Net.Windows;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -98,24 +97,17 @@ namespace Hid.Net.Windows
 
         public HidAttributes GetHidAttributes(SafeFileHandle safeFileHandle)
         {
-            var isSuccess = HidD_GetAttributes(safeFileHandle, out var hidAttributes);
-            _ = WindowsHelpers.HandleError(isSuccess, $"Could not get Hid Attributes (Call {nameof(HidD_GetAttributes)})", Logger);
+            HidD_GetAttributes(safeFileHandle, out var hidAttributes);
             return hidAttributes;
         }
 
         public HidCollectionCapabilities GetHidCapabilities(SafeFileHandle readSafeFileHandle)
         {
-            var isSuccess = HidD_GetPreparsedData(readSafeFileHandle, out var pointerToPreParsedData);
-            _ = WindowsHelpers.HandleError(isSuccess, "Could not get pre parsed data", Logger);
+            HidD_GetPreparsedData(readSafeFileHandle, out var pointerToPreParsedData);
 
-            var result = HidP_GetCaps(pointerToPreParsedData, out var hidCollectionCapabilities);
-            if (result != HIDP_STATUS_SUCCESS)
-            {
-                throw new ApiException($"Could not get Hid capabilities. Return code: {result}");
-            }
+            HidP_GetCaps(pointerToPreParsedData, out var hidCollectionCapabilities);
 
-            isSuccess = HidD_FreePreparsedData(ref pointerToPreParsedData);
-            _ = WindowsHelpers.HandleError(isSuccess, "Could not release handle for getting Hid capabilities", Logger);
+            HidD_FreePreparsedData(ref pointerToPreParsedData);
 
             return hidCollectionCapabilities;
         }

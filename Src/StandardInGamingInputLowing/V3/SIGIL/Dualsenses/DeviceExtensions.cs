@@ -1,4 +1,3 @@
-using Device.Net.Exceptions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using System;
@@ -64,18 +63,7 @@ namespace Device.Net
 
         public static async Task<IDevice> ConnectFirstAsync(this IDeviceFactory deviceFactory, ILogger logger = null)
         {
-            logger = NullLogger.Instance;
-
             var device = await GetFirstDeviceAsync(deviceFactory).ConfigureAwait(false);
-
-            if (device == null)
-            {
-                var deviceException = new DeviceException(Messages.ErrorMessageCouldntGetDevice);
-
-                logger.LogError(deviceException, "No devices found");
-
-                throw deviceException;
-            }
 
             await device.InitializeAsync().ConfigureAwait(false);
             return device;

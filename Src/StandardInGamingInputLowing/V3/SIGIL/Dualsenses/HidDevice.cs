@@ -1,5 +1,4 @@
 ﻿using Device.Net;
-using Device.Net.Exceptions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using System;
@@ -97,23 +96,9 @@ namespace Hid.Net
 
         public async Task InitializeAsync(CancellationToken cancellationToken = default)
         {
-            if (disposed) throw new ValidationException(Messages.DeviceDisposedErrorMessage);
-
             var logScope = Logger.BeginScope("DeviceId: {deviceId} Call: {call}", DeviceId, nameof(InitializeAsync));
 
-            try
-            {
-                Logger.LogInformation("Initializing...");
-
-                await _hidDeviceHandler.InitializeAsync(cancellationToken).ConfigureAwait(false);
-
-                Logger.LogInformation("Initialized\r\n{deviceDefinition}", ConnectedDeviceDefinition);
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError(ex, Messages.ErrorMessageCouldntIntializeDevice);
-                throw;
-            }
+            await _hidDeviceHandler.InitializeAsync(cancellationToken).ConfigureAwait(false);
         }
 
         public Stream GetFileStream()
@@ -154,11 +139,6 @@ namespace Hid.Net
             try
             {
                 uint bytesWritten = 0;
-
-                if (IsReadOnly.HasValue && IsReadOnly.Value)
-                {
-                    throw new ValidationException("This device was opened in Read Only mode.");
-                }
 
                 if (data == null) throw new ArgumentNullException(nameof(data));
 
