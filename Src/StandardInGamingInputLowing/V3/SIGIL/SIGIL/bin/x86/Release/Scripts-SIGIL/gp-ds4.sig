@@ -54,7 +54,6 @@ namespace StringToCode
         {
             running = true;
             ds4.Scan(vendor_ds4_id, product_ds4_id, product_ds4_label);
-            Thread.Sleep(2000);
             ds4.BeginPolling();
             XBC.Connect();
             Task.Run(() => task());
