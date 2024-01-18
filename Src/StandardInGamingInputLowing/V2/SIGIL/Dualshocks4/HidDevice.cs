@@ -123,10 +123,7 @@ namespace Hid.Net
                 {
                     bytesWritten = await _hidDeviceHandler.WriteReportAsync(data, reportId, cancellationToken).ConfigureAwait(false);
                 }
-                catch (Exception ex)
-                {
-                    throw new IOException(Messages.WriteErrorMessage, ex);
-                }
+                catch { }
 
                 return bytesWritten;
             }

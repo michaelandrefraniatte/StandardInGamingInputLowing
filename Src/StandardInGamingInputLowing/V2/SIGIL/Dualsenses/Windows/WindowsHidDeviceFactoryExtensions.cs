@@ -172,17 +172,14 @@ namespace Hid.Net.Windows
 
         private static ConnectedDeviceDefinition GetDeviceDefinition(string deviceId, IHidApiService HidService, ILogger logger)
         {
-            var logScope = logger.BeginScope("DeviceId: {deviceId} Call: {call}", deviceId, nameof(GetDeviceDefinition));
-
             try
             {
                 var safeFileHandle = HidService.CreateReadConnection(deviceId, FileAccessRights.None);
 
                 return HidService.GetDeviceDefinition(deviceId, safeFileHandle);
             }
-            catch (Exception ex)
+            catch 
             {
-                logger.LogError(ex, Messages.ErrorMessageCouldntGetDevice);
                 return null;
             }
         }
