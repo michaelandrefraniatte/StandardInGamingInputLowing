@@ -148,7 +148,6 @@ namespace Hid.Net.Windows
             }
 
             return new DeviceFactory(
-                loggerFactory,
                 getConnectedDeviceDefinitionsAsync,
                 (c, cancellationToken) => Task.FromResult<IDevice>(new HidDevice
                 (

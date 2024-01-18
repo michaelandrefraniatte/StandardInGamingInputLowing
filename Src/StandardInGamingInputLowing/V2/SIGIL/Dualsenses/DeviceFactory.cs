@@ -17,7 +17,6 @@ namespace Device.Net
 #pragma warning disable IDE0052 // Remove unread private members
         
 #pragma warning restore IDE0052 // Remove unread private members
-        private readonly ILoggerFactory _loggerFactory;
         private readonly GetConnectedDeviceDefinitionsAsync _getConnectedDevicesAsync;
         private readonly GetDeviceAsync _getDevice;
         private readonly Func<ConnectedDeviceDefinition, CancellationToken, Task<bool>> _supportsDevice;
@@ -32,15 +31,12 @@ namespace Device.Net
         /// <param name="getDevice">A delegate to construct the device based on the specified connected device definition</param>
         /// <param name="supportsDevice">A delegate that returns whether or not this factory supports the connected device</param>
         public DeviceFactory(
-
-            ILoggerFactory loggerFactory,
             GetConnectedDeviceDefinitionsAsync getConnectedDevicesAsync,
             GetDeviceAsync getDevice,
             Func<ConnectedDeviceDefinition, CancellationToken, Task<bool>> supportsDevice
             )
         {
             _getConnectedDevicesAsync = getConnectedDevicesAsync ?? throw new ArgumentNullException(nameof(getConnectedDevicesAsync));
-            _loggerFactory = loggerFactory ?? NullLoggerFactory.Instance;
             _getDevice = getDevice;
             _supportsDevice = supportsDevice ?? throw new ArgumentNullException(nameof(supportsDevice));
         }
