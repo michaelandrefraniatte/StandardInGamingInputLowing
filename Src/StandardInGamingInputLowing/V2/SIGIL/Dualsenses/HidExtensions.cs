@@ -1,4 +1,3 @@
-using DeviceHandle;
 using System;
 
 namespace HidHandle
@@ -19,27 +18,6 @@ namespace HidHandle
 
             return transformedData;
         }
-
-        public static Report ToReadReport(this TransferResult tr)
-        {
-            //Grab the report id
-            var reportId = tr.Data[0];
-
-            //Create a new array and copy the data to it without the report id
-            var data = tr.Data.TrimFirstByte();
-
-            //Convert to a read report
-            return new Report(reportId, new TransferResult(data, tr.BytesTransferred));
-        }
-
-        /// <summary>
-        /// Converts a Report to a Tranfer result and inserts the report Id at index 0
-        /// </summary>
-        public static TransferResult ToTransferResult(this Report readReport)
-            => new TransferResult(
-                InsertReportIdAtIndexZero(
-                    readReport.TransferResult.Data,
-                    readReport.ReportId), readReport.TransferResult.BytesTransferred);
 
         /// <summary>
         /// Removes the first byte of the array and shifts other elements to the left

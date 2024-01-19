@@ -33,10 +33,8 @@ namespace HidHandle.Windows
         ushort? readBufferSize = null,
         ushort? writeBufferSize = null,
         GetConnectedDeviceDefinitionsAsync getConnectedDeviceDefinitionsAsync = null,
-        Func<Report, TransferResult> readReportTransform = null,
-        Func<TransferResult, Report> readTransferTransform = null,
-        Func<byte[], byte, byte[]> writeTransferTransform = null,
-        WriteReportTransform writeReportTransform = null)
+        Func<byte[], byte, byte[]> writeTransferTransform = null
+            )
         {
             return CreateWindowsHidDeviceFactory(
                 new ReadOnlyCollection<FilterDeviceDefinition>(new List<FilterDeviceDefinition>()),
@@ -45,10 +43,8 @@ namespace HidHandle.Windows
                 readBufferSize,
                 writeBufferSize,
                 getConnectedDeviceDefinitionsAsync,
-                readReportTransform,
-                readTransferTransform,
-                writeTransferTransform,
-                writeReportTransform: writeReportTransform);
+                writeTransferTransform
+                );
         }
 
         /// <summary>
@@ -73,10 +69,8 @@ namespace HidHandle.Windows
         ushort? readBufferSize = null,
         ushort? writeBufferSize = null,
         GetConnectedDeviceDefinitionsAsync getConnectedDeviceDefinitionsAsync = null,
-        Func<Report, TransferResult> readReportTransform = null,
-        Func<TransferResult, Report> readTransferTransform = null,
-        Func<byte[], byte, byte[]> writeTransferTransform = null,
-        WriteReportTransform writeReportTransform = null)
+        Func<byte[], byte, byte[]> writeTransferTransform = null
+            )
         {
             return CreateWindowsHidDeviceFactory(
                 new ReadOnlyCollection<FilterDeviceDefinition>(new List<FilterDeviceDefinition> { filterDeviceDefinition }),
@@ -85,10 +79,8 @@ namespace HidHandle.Windows
                 readBufferSize,
                 writeBufferSize,
                 getConnectedDeviceDefinitionsAsync,
-                readReportTransform,
-                readTransferTransform,
-                writeTransferTransform,
-                writeReportTransform);
+                writeTransferTransform
+                );
         }
 
         /// <summary>
@@ -113,10 +105,8 @@ namespace HidHandle.Windows
             ushort? readBufferSize = null,
             ushort? writeBufferSize = null,
             GetConnectedDeviceDefinitionsAsync getConnectedDeviceDefinitionsAsync = null,
-            Func<Report, TransferResult> readReportTransform = null,
-            Func<TransferResult, Report> readTransferTransform = null,
-            Func<byte[], byte, byte[]> writeTransferTransform = null,
-            WriteReportTransform writeReportTransform = null)
+            Func<byte[], byte, byte[]> writeTransferTransform = null
+            )
         {
             if (filterDeviceDefinitions == null) throw new ArgumentNullException(nameof(filterDeviceDefinitions));
 
@@ -144,8 +134,7 @@ namespace HidHandle.Windows
                         writeBufferSize,
                         readBufferSize,
                         hidApiService,
-                        writeTransferTransform),
-                    writeReportTransform
+                        writeTransferTransform)
                 )),
                 (c, cancellationToken) => Task.FromResult(c.DeviceType == DeviceType.Hid));
         }

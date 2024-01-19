@@ -13,17 +13,12 @@ namespace HidHandle
         private readonly IHidDeviceHandler _hidDeviceHandler;
         private bool _IsClosing;
         private bool disposed;
-        private readonly WriteReportTransform _writeReportTransform;
 
         public HidDevice(
-            IHidDeviceHandler hidDeviceHandler,
-            WriteReportTransform writeReportTransform = null
+            IHidDeviceHandler hidDeviceHandler
             )
         {
             _hidDeviceHandler = hidDeviceHandler;
-
-            _writeReportTransform = writeReportTransform ?? new WriteReportTransform((data)
-                => new Report(data[0], data.TrimFirstByte()));
         }
 
         public ConnectedDeviceDefinition ConnectedDeviceDefinition => _hidDeviceHandler.ConnectedDeviceDefinition;
