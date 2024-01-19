@@ -1,5 +1,4 @@
 ﻿using System.Runtime.InteropServices;
-// ReSharper disable FieldCanBeMadeReadOnly.Global
 
 namespace Device.Net.Windows
 {

@@ -1,6 +1,4 @@
 ﻿using System.Runtime.InteropServices;
-// ReSharper disable MemberCanBePrivate.Global
-// ReSharper disable FieldCanBeMadeReadOnly.Global
 
 #pragma warning disable CA1815 // Override equals and operator equals on value types
 #pragma warning disable CA1051 

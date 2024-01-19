@@ -1,6 +1,5 @@
 ﻿using Device.Net;
 using Device.Net.Windows;
-using Microsoft.Extensions.Logging;
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.IO;
@@ -27,7 +26,7 @@ namespace Hid.Net.Windows
         #endregion
 
         #region Constructor
-        public WindowsHidApiService(ILoggerFactory loggerFactory)
+        public WindowsHidApiService()
         {
         }
         #endregion

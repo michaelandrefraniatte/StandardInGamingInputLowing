@@ -1,5 +1,4 @@
 ﻿using Device.Net;
-using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 using System.Threading;
@@ -15,7 +14,6 @@ namespace Hid.Net
         private readonly IHidDeviceHandler _hidDeviceHandler;
         private bool _IsClosing;
         private bool disposed;
-        private readonly Func<Report, TransferResult> _readReportTransform;
         private readonly WriteReportTransform _writeReportTransform;
 
         #endregion Private Fields
@@ -24,8 +22,6 @@ namespace Hid.Net
 
         public HidDevice(
             IHidDeviceHandler hidDeviceHandler,
-            ILoggerFactory loggerFactory = null,
-            Func<Report, TransferResult> readReportTransform = null,
             WriteReportTransform writeReportTransform = null
             ) :
             base(
@@ -34,11 +30,8 @@ namespace Hid.Net
         {
             _hidDeviceHandler = hidDeviceHandler;
 
-            _readReportTransform = readReportTransform ?? new Func<Report, TransferResult>((readReport)
-                => readReport.ToTransferResult(null));
-
             _writeReportTransform = writeReportTransform ?? new WriteReportTransform((data)
-                => new Report(data[0], data.TrimFirstByte(null)));
+                => new Report(data[0], data.TrimFirstByte()));
         }
 
         #endregion Public Constructors
@@ -127,7 +120,7 @@ namespace Hid.Net
 
                 return bytesWritten;
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }

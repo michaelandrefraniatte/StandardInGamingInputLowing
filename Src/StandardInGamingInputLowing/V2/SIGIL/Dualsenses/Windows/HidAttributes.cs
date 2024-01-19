@@ -1,6 +1,4 @@
 ﻿using System.Runtime.InteropServices;
-// ReSharper disable FieldCanBeMadeReadOnly.Global
-// ReSharper disable MemberCanBePrivate.Global
 
 namespace Hid.Net.Windows
 {

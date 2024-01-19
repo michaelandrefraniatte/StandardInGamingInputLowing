@@ -1,5 +1,3 @@
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,7 +18,6 @@ namespace Device.Net.Windows
         //TODO: Inject a windows API abstraction here for unit testing purposes
 
         public WindowsDeviceEnumerator(
-            ILogger logger,
             Guid classGuid,
             GetDeviceDefinition getDeviceDefinition,
             IsMatch isMatch

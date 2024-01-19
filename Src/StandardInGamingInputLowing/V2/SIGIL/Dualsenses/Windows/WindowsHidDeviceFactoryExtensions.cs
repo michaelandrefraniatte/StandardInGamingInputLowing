@@ -1,7 +1,5 @@
 using Device.Net;
 using Device.Net.Windows;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,7 +30,6 @@ namespace Hid.Net.Windows
         /// <param name="writeReportTransform">Given the data supplied, allow you to divide the data in to a <see cref="Report"/></param>
         /// <returns>A factory which enumerates and instantiates devices</returns>
         public static IDeviceFactory CreateWindowsHidDeviceFactory(
-        ILoggerFactory loggerFactory = null,
         IHidApiService hidApiService = null,
         Guid? classGuid = null,
         ushort? readBufferSize = null,
@@ -45,7 +42,6 @@ namespace Hid.Net.Windows
         {
             return CreateWindowsHidDeviceFactory(
                 new ReadOnlyCollection<FilterDeviceDefinition>(new List<FilterDeviceDefinition>()),
-                loggerFactory,
                 hidApiService,
                 classGuid,
                 readBufferSize,
@@ -74,7 +70,6 @@ namespace Hid.Net.Windows
         /// <returns>A factory which enumerates and instantiates devices</returns>
         public static IDeviceFactory CreateWindowsHidDeviceFactory(
         this FilterDeviceDefinition filterDeviceDefinition,
-        ILoggerFactory loggerFactory = null,
         IHidApiService hidApiService = null,
         Guid? classGuid = null,
         ushort? readBufferSize = null,
@@ -87,7 +82,6 @@ namespace Hid.Net.Windows
         {
             return CreateWindowsHidDeviceFactory(
                 new ReadOnlyCollection<FilterDeviceDefinition>(new List<FilterDeviceDefinition> { filterDeviceDefinition }),
-                loggerFactory,
                 hidApiService,
                 classGuid,
                 readBufferSize,
@@ -116,7 +110,6 @@ namespace Hid.Net.Windows
         /// <returns>A factory which enumerates and instantiates devices</returns>
         public static IDeviceFactory CreateWindowsHidDeviceFactory(
             this IEnumerable<FilterDeviceDefinition> filterDeviceDefinitions,
-            ILoggerFactory loggerFactory = null,
             IHidApiService hidApiService = null,
             Guid? classGuid = null,
             ushort? readBufferSize = null,
@@ -129,18 +122,15 @@ namespace Hid.Net.Windows
         {
             if (filterDeviceDefinitions == null) throw new ArgumentNullException(nameof(filterDeviceDefinitions));
 
-            loggerFactory = NullLoggerFactory.Instance;
-
-            var selectedHidApiService = hidApiService ?? new WindowsHidApiService(loggerFactory);
+            var selectedHidApiService = hidApiService ?? new WindowsHidApiService();
 
             classGuid = selectedHidApiService.GetHidGuid();
 
             if (getConnectedDeviceDefinitionsAsync == null)
             {
                 var windowsDeviceEnumerator = new WindowsDeviceEnumerator(
-                    loggerFactory.CreateLogger<WindowsDeviceEnumerator>(),
                     classGuid.Value,
-                    (d, guid) => GetDeviceDefinition(d, selectedHidApiService, loggerFactory.CreateLogger(nameof(WindowsHidDeviceFactoryExtensions))),
+                    (d, guid) => GetDeviceDefinition(d, selectedHidApiService),
                     c => Task.FromResult(!filterDeviceDefinitions.Any() || filterDeviceDefinitions.FirstOrDefault(f => f.IsDefinitionMatch(c, DeviceType.Hid)) != null)
                     );
 
@@ -156,11 +146,7 @@ namespace Hid.Net.Windows
                         writeBufferSize,
                         readBufferSize,
                         hidApiService,
-                        loggerFactory,
-                        readTransferTransform,
                         writeTransferTransform),
-                    loggerFactory,
-                    readReportTransform,
                     writeReportTransform
                 )),
                 (c, cancellationToken) => Task.FromResult(c.DeviceType == DeviceType.Hid));
@@ -170,7 +156,7 @@ namespace Hid.Net.Windows
 
         #region Private Methods
 
-        private static ConnectedDeviceDefinition GetDeviceDefinition(string deviceId, IHidApiService HidService, ILogger logger)
+        private static ConnectedDeviceDefinition GetDeviceDefinition(string deviceId, IHidApiService HidService)
         {
             try
             {

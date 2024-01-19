@@ -1,6 +1,5 @@
 ﻿using Device.Net;
 using Device.Net.Windows;
-using Microsoft.Extensions.Logging;
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.IO;
@@ -16,7 +15,6 @@ namespace Hid.Net.Windows
 
         private readonly IHidApiService _hidService;
         
-        private readonly Func<TransferResult, Report> _readTransferTransform;
         private readonly Func<byte[], byte, byte[]> _writeTransferTransform;
         private Stream _readFileStream;
         private SafeFileHandle _readSafeFileHandle;
@@ -32,20 +30,15 @@ namespace Hid.Net.Windows
             ushort? writeBufferSize = null,
             ushort? readBufferSize = null,
             IHidApiService hidApiService = null,
-            ILoggerFactory loggerFactory = null,
-            Func<TransferResult, Report> readTransferTransform = null,
             Func<byte[], byte, byte[]> writeTransferTransform = null)
         {
             DeviceId = deviceId ?? throw new ArgumentNullException(nameof(deviceId));
 
-            _readTransferTransform = readTransferTransform ??
-                new Func<TransferResult, Report>((tr) => tr.ToReadReport(null));
-
             _writeTransferTransform = writeTransferTransform ??
                 new Func<byte[], byte, byte[]>(
-                (data, reportId) => data.InsertReportIdAtIndexZero(reportId, null));
+                (data, reportId) => data.InsertReportIdAtIndexZero(reportId));
 
-            _hidService = hidApiService ?? new WindowsHidApiService(loggerFactory);
+            _hidService = hidApiService ?? new WindowsHidApiService();
             WriteBufferSize = writeBufferSize;
             ReadBufferSize = readBufferSize;
         }
