@@ -1,10 +1,10 @@
-﻿using Device.Net;
-using Device.Net.Windows;
+﻿using DeviceHandle;
+using DeviceHandle.Windows;
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.IO;
 
-namespace Hid.Net.Windows
+namespace HidHandle.Windows
 {
     /// <summary>
     /// Service to handle Hid API calls. Windows oriented for now.

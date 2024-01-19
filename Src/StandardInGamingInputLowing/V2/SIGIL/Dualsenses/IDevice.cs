@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Device.Net
+namespace DeviceHandle
 {
     public interface IDevice : IDisposable
     {

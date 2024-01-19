@@ -2,7 +2,7 @@
 
 #pragma warning disable CA1815 // Override equals and operator equals on value types
 
-namespace Device.Net.Windows
+namespace DeviceHandle.Windows
 {
     [StructLayout(LayoutKind.Sequential)]
     public struct CommTimeouts

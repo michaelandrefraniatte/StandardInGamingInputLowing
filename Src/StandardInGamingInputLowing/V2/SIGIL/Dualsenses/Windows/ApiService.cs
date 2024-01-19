@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 #pragma warning disable CA5392 // Use DefaultDllImportSearchPaths attribute for P/Invokes
 #pragma warning disable CA1060 // Move pinvokes to native methods class
 
-namespace Device.Net.Windows
+namespace DeviceHandle.Windows
 {
     internal class ApiService : IApiService
     {

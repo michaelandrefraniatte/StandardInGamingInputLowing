@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Device.Net
+namespace DeviceHandle
 {
     public sealed class FilterDeviceDefinition : IDisposable
     {

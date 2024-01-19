@@ -1,6 +1,6 @@
 ﻿#pragma warning disable CA1815 // Override equals and operator equals on value types
 
-namespace Device.Net
+namespace DeviceHandle
 {
     /// <summary>
     /// Represents the result of a read or write transfer

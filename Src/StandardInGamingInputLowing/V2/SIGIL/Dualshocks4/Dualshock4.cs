@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
-using Device.Net;
-using Hid.Net.Windows;
+using DeviceHandle;
+using HidHandle.Windows;
 using System.Reactive.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;

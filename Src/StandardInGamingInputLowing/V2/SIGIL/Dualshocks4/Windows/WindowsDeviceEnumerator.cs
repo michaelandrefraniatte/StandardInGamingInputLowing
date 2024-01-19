@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Device.Net.Windows
+namespace DeviceHandle.Windows
 {
     public delegate Task<bool> IsMatch(ConnectedDeviceDefinition connectedDeviceDefinition);
 

@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Device.Net
+namespace DeviceHandle
 {
     /// <summary>
     /// Base class for all devices

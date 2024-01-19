@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Device.Net.Windows
+namespace DeviceHandle.Windows
 {
     [StructLayout(LayoutKind.Sequential)]
 #pragma warning disable CA1815 // Override equals and operator equals on value types

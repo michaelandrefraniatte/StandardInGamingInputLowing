@@ -1,10 +1,10 @@
-﻿using Device.Net;
+﻿using DeviceHandle;
 using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Hid.Net
+namespace HidHandle
 {
     ///<inheritdoc cref="IHidDevice"/>
     public sealed class HidDevice : DeviceBase, IHidDevice

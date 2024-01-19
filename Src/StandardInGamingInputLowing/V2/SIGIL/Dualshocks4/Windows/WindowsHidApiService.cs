@@ -1,5 +1,5 @@
-﻿using Device.Net;
-using Device.Net.Windows;
+﻿using DeviceHandle;
+using DeviceHandle.Windows;
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.IO;
@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 #pragma warning disable CA1045 // Do not pass types by reference
 #pragma warning disable CA1060 // Move pinvokes to native methods class
 
-namespace Hid.Net.Windows
+namespace HidHandle.Windows
 {
     internal class WindowsHidApiService : ApiService, IHidApiService
     {
@@ -125,7 +125,7 @@ namespace Hid.Net.Windows
         }
 
         //TODO: These are not opening as async. If we do, we get an error. This is probably why cancellation tokens don't work.
-        //https://github.com/MelbourneDeveloper/Device.Net/issues/188
+        //https://github.com/MelbourneDeveloper/DeviceHandle/issues/188
 
         public Stream OpenRead(SafeFileHandle readSafeFileHandle, ushort readBufferSize) => new FileStream(readSafeFileHandle, FileAccess.Read, readBufferSize, true);
 

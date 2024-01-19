@@ -1,7 +1,7 @@
-using Device.Net;
+using DeviceHandle;
 using System;
 
-namespace Hid.Net
+namespace HidHandle
 {
     internal static class HidExtensions
     {

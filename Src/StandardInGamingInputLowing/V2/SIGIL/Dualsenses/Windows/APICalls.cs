@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 #pragma warning disable CA1045 // Do not pass types by reference
 #pragma warning disable CA1060 // Move pinvokes to native methods class
 
-namespace Device.Net.Windows
+namespace DeviceHandle.Windows
 {
     internal static class APICalls
     {

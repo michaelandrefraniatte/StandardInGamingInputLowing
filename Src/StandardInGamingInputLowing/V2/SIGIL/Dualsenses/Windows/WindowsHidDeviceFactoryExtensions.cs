@@ -1,12 +1,12 @@
-using Device.Net;
-using Device.Net.Windows;
+using DeviceHandle;
+using DeviceHandle.Windows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Hid.Net.Windows
+namespace HidHandle.Windows
 {
     /// <summary>
     /// Instantiates Windows Hid Factories. Use these methods as extension methods with <see cref="FilterDeviceDefinition"/> or directly to get all devices

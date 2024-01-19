@@ -1,8 +1,8 @@
-﻿using Device.Net;
+﻿using DeviceHandle;
 
 #pragma warning disable CA1815 // Override equals and operator equals on value types
 
-namespace Hid.Net
+namespace HidHandle
 {
     /// <summary>
     /// Represents a Hid Input or Output report. It consists of a TransferResult to/from the device, and a Report Id. An output report is for writing to the device, and input report is for reading from the device.

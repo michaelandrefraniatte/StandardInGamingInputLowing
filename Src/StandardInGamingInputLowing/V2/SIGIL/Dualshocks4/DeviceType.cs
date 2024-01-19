@@ -1,4 +1,4 @@
-﻿namespace Device.Net
+﻿namespace DeviceHandle
 {
     public enum DeviceType
     {

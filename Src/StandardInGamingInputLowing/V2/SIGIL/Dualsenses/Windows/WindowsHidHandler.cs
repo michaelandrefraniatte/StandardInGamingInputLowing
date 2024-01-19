@@ -1,12 +1,12 @@
-﻿using Device.Net;
-using Device.Net.Windows;
+﻿using DeviceHandle;
+using DeviceHandle.Windows;
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Hid.Net.Windows
+namespace HidHandle.Windows
 {
     internal class WindowsHidHandler : IHidDeviceHandler
     {

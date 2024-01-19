@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Device.Net.Windows
+namespace DeviceHandle.Windows
 {
     [Flags]
 #pragma warning disable CA1028 

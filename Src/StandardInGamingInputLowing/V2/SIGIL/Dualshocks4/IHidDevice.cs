@@ -1,8 +1,8 @@
-﻿using Device.Net;
+﻿using DeviceHandle;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Hid.Net
+namespace HidHandle
 {
     ///<inheritdoc cref="IDevice"/>
     public interface IHidDevice : IDevice

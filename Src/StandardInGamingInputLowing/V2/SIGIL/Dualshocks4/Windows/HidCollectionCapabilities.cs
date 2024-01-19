@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Hid.Net.Windows
+namespace HidHandle.Windows
 {
     [StructLayout(LayoutKind.Sequential)]
 #pragma warning disable CA1815 // Override equals and operator equals on value types

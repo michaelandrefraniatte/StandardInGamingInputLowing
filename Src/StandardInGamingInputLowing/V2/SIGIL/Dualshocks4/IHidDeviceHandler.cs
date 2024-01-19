@@ -1,9 +1,9 @@
-﻿using Device.Net;
+﻿using DeviceHandle;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Hid.Net
+namespace HidHandle
 {
     public interface IHidDeviceHandler
     {

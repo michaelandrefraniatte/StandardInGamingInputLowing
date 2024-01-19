@@ -3,7 +3,7 @@
 #pragma warning disable CA1815 // Override equals and operator equals on value types
 #pragma warning disable CA1051 
 
-namespace Device.Net.Windows
+namespace DeviceHandle.Windows
 {
     /// <summary>
     /// Defines the control setting for a serial communications device.
