@@ -1,8 +1,5 @@
 ﻿using System.Runtime.InteropServices;
 
-#pragma warning disable CA1815 // Override equals and operator equals on value types
-#pragma warning disable CA1051 
-
 namespace DeviceHandle.Windows
 {
     /// <summary>

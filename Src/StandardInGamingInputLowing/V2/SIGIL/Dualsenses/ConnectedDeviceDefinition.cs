@@ -12,8 +12,6 @@ namespace DeviceHandle
         {
         }
 
-        #region Public Properties
-
         /// <summary>
         /// The device Id or path specific to the platform for the device
         /// </summary>
@@ -80,9 +78,7 @@ namespace DeviceHandle
         /// The maximum size of data to be read from the device
         /// </summary>
         public int? ReadBufferSize { get; }
-        #endregion
 
-        #region Constructor
         public ConnectedDeviceDefinition(
             string deviceId,
             DeviceType deviceType,
@@ -120,7 +116,6 @@ namespace DeviceHandle
             ReadBufferSize = readBufferSize;
             Label = label;
         }
-        #endregion
 
         public override string ToString() => $"Device Id: {DeviceId} Label: {Label} Vid: {VendorId} Pid: {ProductId}\r\nRead Buffer Size: {ReadBufferSize} Write Buffer Size: {WriteBufferSize}\r\nManufacturer: {Manufacturer} Product Name: {ProductName}";
     }

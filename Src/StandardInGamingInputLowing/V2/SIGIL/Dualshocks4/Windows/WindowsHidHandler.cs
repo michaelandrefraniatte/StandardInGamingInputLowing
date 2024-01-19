@@ -11,8 +11,6 @@ namespace HidHandle.Windows
     internal class WindowsHidHandler : IHidDeviceHandler
     {
 
-        #region Private Fields
-
         private readonly IHidApiService _hidService;
         
         private readonly Func<byte[], byte, byte[]> _writeTransferTransform;
@@ -20,10 +18,6 @@ namespace HidHandle.Windows
         private SafeFileHandle _readSafeFileHandle;
         private Stream _writeFileStream;
         private SafeFileHandle _writeSafeFileHandle;
-
-        #endregion Private Fields
-
-        #region Public Constructors
 
         public WindowsHidHandler(
             string deviceId,
@@ -43,20 +37,12 @@ namespace HidHandle.Windows
             ReadBufferSize = readBufferSize;
         }
 
-        #endregion Public Constructors
-
-        #region Public Properties
-
         public ConnectedDeviceDefinition ConnectedDeviceDefinition { get; private set; }
         public string DeviceId { get; }
         public bool IsInitialized { get; private set; }
         public bool? IsReadOnly { get; private set; }
         public ushort? ReadBufferSize { get; private set; }
         public ushort? WriteBufferSize { get; private set; }
-
-        #endregion Public Properties
-
-        #region Public Methods
 
         public void Close()
         {
@@ -125,7 +111,5 @@ namespace HidHandle.Windows
                 throw new IOException("The file stream cannot be written to");
             }
         }
-
-        #endregion Public Methods
     }
 }

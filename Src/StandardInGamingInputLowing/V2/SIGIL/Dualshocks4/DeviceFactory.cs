@@ -11,16 +11,10 @@ namespace DeviceHandle
         {
         }
 
-        #region Fields
-#pragma warning disable IDE0052 // Remove unread private members
-        
-#pragma warning restore IDE0052 // Remove unread private members
         private readonly GetConnectedDeviceDefinitionsAsync _getConnectedDevicesAsync;
         private readonly GetDeviceAsync _getDevice;
         private readonly Func<ConnectedDeviceDefinition, CancellationToken, Task<bool>> _supportsDevice;
-        #endregion
-
-        #region Constructor
+        
         /// <summary>
         /// Constructs a DeviceFactory
         /// </summary>
@@ -38,9 +32,7 @@ namespace DeviceHandle
             _getDevice = getDevice;
             _supportsDevice = supportsDevice ?? throw new ArgumentNullException(nameof(supportsDevice));
         }
-        #endregion
 
-        #region Public Methods
         public Task<bool> SupportsDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition, CancellationToken cancellationToken = default)
         {
             return _supportsDevice(connectedDeviceDefinition, cancellationToken);
@@ -57,6 +49,5 @@ namespace DeviceHandle
                 _getDevice(connectedDeviceDefinition, cancellationToken);
         }
 
-        #endregion
     }
 }

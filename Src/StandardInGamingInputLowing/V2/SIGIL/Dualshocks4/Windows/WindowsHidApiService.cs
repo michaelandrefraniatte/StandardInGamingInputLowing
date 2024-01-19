@@ -6,32 +6,17 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-#pragma warning disable CA1707 // Identifiers should not contain underscores
-#pragma warning disable CA1021 // Avoid out parameters
-#pragma warning disable CA1401 // P/Invokes should not be visible
-#pragma warning disable CA5392 // Use DefaultDllImportSearchPaths attribute for P/Invokes
-#pragma warning disable CA1045 // Do not pass types by reference
-#pragma warning disable CA1060 // Move pinvokes to native methods class
-
 namespace HidHandle.Windows
 {
     internal class WindowsHidApiService : ApiService, IHidApiService
     {
-        #region Private Static Fields
         private static Guid? _HidGuid;
-        #endregion
-
-        #region Constants
+        
         private const int HIDP_STATUS_SUCCESS = 0x110000;
-        #endregion
-
-        #region Constructor
+        
         public WindowsHidApiService()
         {
         }
-        #endregion
-
-        #region API Calls
 
         [DllImport("hid.dll", SetLastError = true)]
         private static extern bool HidD_GetPreparsedData(SafeFileHandle hidDeviceObject, out IntPtr pointerToPreparsedData);
@@ -59,9 +44,6 @@ namespace HidHandle.Windows
 
         private delegate bool GetString(SafeFileHandle hidDeviceObject, IntPtr pointerToBuffer, uint bufferLength);
 
-        #endregion
-
-        #region Implementation
         public ConnectedDeviceDefinition GetDeviceDefinition(string deviceId, SafeFileHandle safeFileHandle)
         {
             var hidAttributes = GetHidAttributes(safeFileHandle);
@@ -130,9 +112,7 @@ namespace HidHandle.Windows
         public Stream OpenRead(SafeFileHandle readSafeFileHandle, ushort readBufferSize) => new FileStream(readSafeFileHandle, FileAccess.Read, readBufferSize, true);
 
         public Stream OpenWrite(SafeFileHandle writeSafeFileHandle, ushort writeBufferSize) => new FileStream(writeSafeFileHandle, FileAccess.ReadWrite, writeBufferSize, true);
-        #endregion
-
-        #region Private Methods
+        
         private static string GetHidString(SafeFileHandle safeFileHandle, GetString getString, [CallerMemberName] string callMemberName = null)
         {
             try
@@ -143,7 +123,7 @@ namespace HidHandle.Windows
                 Marshal.FreeHGlobal(pointerToBuffer);
                 return text;
             }
-            catch (Exception ex)
+            catch 
             {
                 return null;
             }
@@ -153,6 +133,6 @@ namespace HidHandle.Windows
                 //Marshal.Release(pointerToBuffer);
             }
         }
-        #endregion
+        
     }
 }

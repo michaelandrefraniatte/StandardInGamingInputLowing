@@ -5,8 +5,6 @@ namespace HidHandle
 {
     internal static class HidExtensions
     {
-        #region Public Methods
-
         /// <summary>
         /// Shifts the array to the right and inserts the report id at index zero
         /// </summary>
@@ -55,10 +53,6 @@ namespace HidHandle
             return data;
         }
 
-        #endregion Public Methods
-
-        #region Private Methods
-
         private static byte[] InsertZeroAtIndexZero(this byte[] data)
         {
             if (data == null) throw new ArgumentNullException(nameof(data));
@@ -72,6 +66,5 @@ namespace HidHandle
             return transformedData;
         }
 
-        #endregion Private Methods
     }
 }

@@ -3,11 +3,8 @@
 namespace HidHandle.Windows
 {
     [StructLayout(LayoutKind.Sequential)]
-#pragma warning disable CA1815 // Override equals and operator equals on value types
     internal struct HidCollectionCapabilities
-#pragma warning restore CA1815 // Override equals and operator equals on value types
     {
-#pragma warning disable CA1051 // Do not declare visible instance fields
         public ushort Usage;
         public ushort UsagePage;
         public ushort InputReportByteLength;
@@ -25,6 +22,5 @@ namespace HidHandle.Windows
         public ushort NumberFeatureButtonCaps;
         public ushort NumberFeatureValueCaps;
         public ushort NumberFeatureDataIndices;
-#pragma warning restore CA1051 // Do not declare visible instance fields
     }
 }

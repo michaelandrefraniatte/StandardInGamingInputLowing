@@ -13,8 +13,6 @@ namespace HidHandle.Windows
     /// </summary>
     public static class WindowsHidDeviceFactoryExtensions
     {
-        #region Public Methods
-
         /// <summary>
         /// Creates a <see cref="IDeviceFactory"/> for Windows Hid devices
         /// </summary>
@@ -152,10 +150,6 @@ namespace HidHandle.Windows
                 (c, cancellationToken) => Task.FromResult(c.DeviceType == DeviceType.Hid));
         }
 
-        #endregion Public Methods
-
-        #region Private Methods
-
         private static ConnectedDeviceDefinition GetDeviceDefinition(string deviceId, IHidApiService HidService)
         {
             try
@@ -169,8 +163,6 @@ namespace HidHandle.Windows
                 return null;
             }
         }
-
-        #endregion Private Methods
     }
 
 }

@@ -7,26 +7,18 @@ using System.Threading.Tasks;
 namespace HidHandle
 {
     ///<inheritdoc cref="IHidDevice"/>
-    public sealed class HidDevice : DeviceBase, IHidDevice
+    public sealed class HidDevice : IHidDevice
     {
-        #region Private Fields
 
         private readonly IHidDeviceHandler _hidDeviceHandler;
         private bool _IsClosing;
         private bool disposed;
         private readonly WriteReportTransform _writeReportTransform;
 
-        #endregion Private Fields
-
-        #region Public Constructors
-
         public HidDevice(
             IHidDeviceHandler hidDeviceHandler,
             WriteReportTransform writeReportTransform = null
-            ) :
-            base(
-                hidDeviceHandler != null ? hidDeviceHandler.DeviceId : throw new ArgumentNullException(nameof(hidDeviceHandler))
-                )
+            )
         {
             _hidDeviceHandler = hidDeviceHandler;
 
@@ -34,19 +26,13 @@ namespace HidHandle
                 => new Report(data[0], data.TrimFirstByte()));
         }
 
-        #endregion Public Constructors
-
-        #region Public Properties
-
         public ConnectedDeviceDefinition ConnectedDeviceDefinition => _hidDeviceHandler.ConnectedDeviceDefinition;
         public bool IsInitialized => _hidDeviceHandler.IsInitialized;
         public bool? IsReadOnly => _hidDeviceHandler.IsReadOnly;
         public ushort ReadBufferSize => _hidDeviceHandler.ReadBufferSize ?? throw new InvalidOperationException("Read buffer size unknown");
         public ushort WriteBufferSize => _hidDeviceHandler.WriteBufferSize ?? throw new InvalidOperationException("Write buffer size unknown");
 
-        #endregion Public Properties
-
-        #region Public Methods
+        public string DeviceId => throw new NotImplementedException();
 
         public void Close()
         {
@@ -63,7 +49,7 @@ namespace HidHandle
             _IsClosing = false;
         }
 
-        public sealed override void Dispose()
+        public void Dispose()
         {
             if (disposed)
             {
@@ -75,8 +61,6 @@ namespace HidHandle
             GC.SuppressFinalize(this);
 
             Close();
-
-            base.Dispose();
         }
 
         public async Task InitializeAsync(CancellationToken cancellationToken = default)
@@ -88,21 +72,6 @@ namespace HidHandle
         {
             return _hidDeviceHandler.GetFileStream();
         }
-
-        /// <summary>
-        /// Write a report. The report Id comes from DefaultReportId, or the first byte in the array if the DefaultReportId is null
-        /// </summary>
-        /// <param name="data"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        public override Task<uint> WriteAsync(byte[] data, CancellationToken cancellationToken = default)
-        {
-            var hidReport = _writeReportTransform(data);
-
-            //Write a report based on the default report id or the first byte in the array
-            return WriteReportAsync(hidReport.TransferResult.Data, hidReport.ReportId, cancellationToken);
-        }
-
 
         public async Task<uint> WriteReportAsync(byte[] data, byte reportId, CancellationToken cancellationToken = default)
         {
@@ -126,7 +95,15 @@ namespace HidHandle
             }
         }
 
-        #endregion Public Methods
+        public Task Flush(CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<uint> WriteAsync(byte[] data, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }

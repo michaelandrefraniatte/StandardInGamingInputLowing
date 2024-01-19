@@ -1,7 +1,5 @@
 ﻿using DeviceHandle;
 
-#pragma warning disable CA1815 // Override equals and operator equals on value types
-
 namespace HidHandle
 {
     /// <summary>
