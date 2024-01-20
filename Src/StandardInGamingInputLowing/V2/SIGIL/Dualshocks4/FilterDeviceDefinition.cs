@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DeviceHandle
+namespace HidHandle
 {
     public sealed class FilterDeviceDefinition : IDisposable
     {

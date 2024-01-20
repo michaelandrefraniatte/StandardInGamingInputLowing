@@ -1,4 +1,4 @@
-﻿using DeviceHandle;
+﻿using HidHandle;
 using System;
 using System.IO;
 using System.Threading;

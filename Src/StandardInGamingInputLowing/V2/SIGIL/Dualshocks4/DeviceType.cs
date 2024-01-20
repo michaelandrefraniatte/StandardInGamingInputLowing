@@ -1,4 +1,4 @@
-﻿namespace DeviceHandle
+﻿namespace HidHandle
 {
     public enum DeviceType
     {

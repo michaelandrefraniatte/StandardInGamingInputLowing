@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DeviceHandle
+namespace HidHandle
 {
     public sealed class DeviceFactory : IDeviceFactory, IDisposable
     {

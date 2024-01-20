@@ -1,6 +1,6 @@
 using System;
 
-namespace DeviceHandle
+namespace HidHandle
 {
     public static class DeviceExtensions
     {
