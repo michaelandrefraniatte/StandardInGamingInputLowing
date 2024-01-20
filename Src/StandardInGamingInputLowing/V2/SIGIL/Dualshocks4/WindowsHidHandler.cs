@@ -1,6 +1,4 @@
-﻿using HidHandle;
-using HidHandle;
-using Microsoft.Win32.SafeHandles;
+﻿using Microsoft.Win32.SafeHandles;
 using System;
 using System.IO;
 using System.Threading;
@@ -70,7 +68,7 @@ namespace HidHandle
             return Task.Run(() =>
               {
 
-                  _readSafeFileHandle = _hidService.CreateReadConnection(DeviceId, FileAccessRights.GenericRead);
+                  _readSafeFileHandle = _hidService.CreateReadConnection(DeviceId, FileAccess.Read);
                   _writeSafeFileHandle = _hidService.CreateWriteConnection(DeviceId);
 
                   IsReadOnly = _writeSafeFileHandle.IsInvalid;

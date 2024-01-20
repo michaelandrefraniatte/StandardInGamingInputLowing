@@ -1,8 +1,7 @@
-using HidHandle;
-using HidHandle;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -109,7 +108,7 @@ namespace HidHandle
         {
             try
             {
-                var safeFileHandle = HidService.CreateReadConnection(deviceId, FileAccessRights.None);
+                var safeFileHandle = HidService.CreateReadConnection(deviceId, FileAccess.Read);
 
                 return HidService.GetDeviceDefinition(deviceId, safeFileHandle);
             }

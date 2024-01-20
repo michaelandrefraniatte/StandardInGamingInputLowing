@@ -1,11 +1,12 @@
 ﻿using Microsoft.Win32.SafeHandles;
+using System.IO;
 
 namespace HidHandle
 {
     public interface IApiService
     {
         SafeFileHandle CreateWriteConnection(string deviceId);
-        SafeFileHandle CreateReadConnection(string deviceId, FileAccessRights desiredAccess);
+        SafeFileHandle CreateReadConnection(string deviceId, FileAccess desiredAccess);
         //TODO: Get rid of read/write. They can be done with file streams...
         bool AReadFile(SafeFileHandle hFile, byte[] lpBuffer, int nNumberOfBytesToRead, out uint lpNumberOfBytesRead, int lpOverlapped);
         bool AWriteFile(SafeFileHandle hFile, byte[] lpBuffer, int nNumberOfBytesToWrite, out int lpNumberOfBytesWritten, int lpOverlapped);

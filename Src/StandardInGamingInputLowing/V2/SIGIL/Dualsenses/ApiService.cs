@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 
 namespace HidHandle
@@ -8,9 +9,9 @@ namespace HidHandle
     {
         private const uint FILE_FLAG_OVERLAPPED = 0x40000000;
 
-        public SafeFileHandle CreateWriteConnection(string deviceId) => CreateConnection(deviceId, FileAccessRights.GenericRead | FileAccessRights.GenericWrite, APICalls.FileShareRead | APICalls.FileShareWrite, APICalls.OpenExisting);
+        public SafeFileHandle CreateWriteConnection(string deviceId) => CreateConnection(deviceId, FileAccess.Read | FileAccess.Write, APICalls.FileShareRead | APICalls.FileShareWrite, APICalls.OpenExisting);
 
-        public SafeFileHandle CreateReadConnection(string deviceId, FileAccessRights desiredAccess) => CreateConnection(deviceId, desiredAccess, APICalls.FileShareRead | APICalls.FileShareWrite, APICalls.OpenExisting);
+        public SafeFileHandle CreateReadConnection(string deviceId, FileAccess desiredAccess) => CreateConnection(deviceId, desiredAccess, APICalls.FileShareRead | APICalls.FileShareWrite, APICalls.OpenExisting);
 
         public bool AGetCommState(SafeFileHandle hFile, ref Dcb lpDCB) => GetCommState(hFile, ref lpDCB);
         public bool APurgeComm(SafeFileHandle hFile, int dwFlags) => PurgeComm(hFile, dwFlags);
@@ -19,7 +20,7 @@ namespace HidHandle
         public bool AReadFile(SafeFileHandle hFile, byte[] lpBuffer, int nNumberOfBytesToRead, out uint lpNumberOfBytesRead, int lpOverlapped) => ReadFile(hFile, lpBuffer, nNumberOfBytesToRead, out lpNumberOfBytesRead, lpOverlapped);
         public bool ASetCommState(SafeFileHandle hFile, [In] ref Dcb lpDCB) => SetCommState(hFile, ref lpDCB);
         
-        private SafeFileHandle CreateConnection(string deviceId, FileAccessRights desiredAccess, uint shareMode, uint creationDisposition)
+        private SafeFileHandle CreateConnection(string deviceId, FileAccess desiredAccess, uint shareMode, uint creationDisposition)
         {
             return APICalls.CreateFile(deviceId, desiredAccess, shareMode, IntPtr.Zero, creationDisposition, FILE_FLAG_OVERLAPPED, IntPtr.Zero);
         }

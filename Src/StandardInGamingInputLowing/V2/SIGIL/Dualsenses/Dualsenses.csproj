@@ -60,7 +60,6 @@
     <Compile Include="DeviceFactory.cs" />
     <Compile Include="DeviceType.cs" />
     <Compile Include="Dualsense.cs" />
-    <Compile Include="FileAccessRights.cs" />
     <Compile Include="FilterDeviceDefinition.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
