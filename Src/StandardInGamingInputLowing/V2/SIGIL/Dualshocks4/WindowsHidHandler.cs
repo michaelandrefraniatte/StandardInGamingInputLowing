@@ -1,7 +1,6 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using System;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace HidHandle
@@ -63,7 +62,7 @@ namespace HidHandle
             }
         }
 
-        public Task InitializeAsync(CancellationToken cancellationToken = default)
+        public Task InitializeAsync()
         {
             return Task.Run(() =>
               {
@@ -86,7 +85,7 @@ namespace HidHandle
                   _writeFileStream = _hidService.OpenWrite(_writeSafeFileHandle, WriteBufferSize.Value);
 
                   IsInitialized = true;
-              }, cancellationToken);
+              });
         }
 
         public Stream GetFileStream()
@@ -94,14 +93,14 @@ namespace HidHandle
             return _readFileStream;
         }
 
-        public async Task<uint> WriteReportAsync(byte[] data, byte reportId, CancellationToken cancellationToken = default)
+        public async Task<uint> WriteReportAsync(byte[] data, byte reportId)
         {
             if (data == null) throw new ArgumentNullException(nameof(data));
 
             if (_writeFileStream.CanWrite)
             {
                 var transformedData = _writeTransferTransform(data, reportId);
-                await _writeFileStream.WriteAsync(transformedData, 0, transformedData.Length, cancellationToken).ConfigureAwait(false);
+                await _writeFileStream.WriteAsync(transformedData, 0, transformedData.Length);
                 return (uint)data.Length;
             }
             else

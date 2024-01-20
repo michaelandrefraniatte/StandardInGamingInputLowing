@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace HidHandle
@@ -13,7 +12,7 @@ namespace HidHandle
 
         private readonly GetConnectedDeviceDefinitionsAsync _getConnectedDevicesAsync;
         private readonly GetDeviceAsync _getDevice;
-        private readonly Func<ConnectedDeviceDefinition, CancellationToken, Task<bool>> _supportsDevice;
+        private readonly Func<ConnectedDeviceDefinition, Task<bool>> _supportsDevice;
         
         /// <summary>
         /// Constructs a DeviceFactory
@@ -25,7 +24,7 @@ namespace HidHandle
         public DeviceFactory(
             GetConnectedDeviceDefinitionsAsync getConnectedDevicesAsync,
             GetDeviceAsync getDevice,
-            Func<ConnectedDeviceDefinition, CancellationToken, Task<bool>> supportsDevice
+            Func<ConnectedDeviceDefinition, Task<bool>> supportsDevice
             )
         {
             _getConnectedDevicesAsync = getConnectedDevicesAsync ?? throw new ArgumentNullException(nameof(getConnectedDevicesAsync));
@@ -33,21 +32,21 @@ namespace HidHandle
             _supportsDevice = supportsDevice ?? throw new ArgumentNullException(nameof(supportsDevice));
         }
 
-        public Task<bool> SupportsDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition, CancellationToken cancellationToken = default)
+        public Task<bool> SupportsDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition)
         {
-            return _supportsDevice(connectedDeviceDefinition, cancellationToken);
+            return _supportsDevice(connectedDeviceDefinition);
         }
 
-        public Task<IEnumerable<ConnectedDeviceDefinition>> GetConnectedDeviceDefinitionsAsync(CancellationToken cancellationToken = default)
+        public Task<IEnumerable<ConnectedDeviceDefinition>> GetConnectedDeviceDefinitionsAsync()
         {
-            return _getConnectedDevicesAsync(cancellationToken);
+            return _getConnectedDevicesAsync();
         }
 
-        public Task<IDevice> GetDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition, CancellationToken cancellationToken = default)
+        public Task<IDevice> GetDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition)
         {
             return connectedDeviceDefinition == null ?
                 throw new ArgumentNullException(nameof(connectedDeviceDefinition)) :
-                _getDevice(connectedDeviceDefinition, cancellationToken);
+                _getDevice(connectedDeviceDefinition);
         }
 
     }

@@ -89,13 +89,13 @@ namespace DualSensesAPI
                 {
                     if (number == 0 | number == 1)
                     {
-                        handle = await hidFactory.GetDeviceAsync((await deviceDefinitions.ConfigureAwait(false)).First()).ConfigureAwait(false);
+                        handle = await hidFactory.GetDeviceAsync((await deviceDefinitions).First());
                     }
                     else if (number == 2)
                     {
-                        handle = await hidFactory.GetDeviceAsync((await deviceDefinitions.ConfigureAwait(false)).Skip(1).First()).ConfigureAwait(false);
+                        handle = await hidFactory.GetDeviceAsync((await deviceDefinitions).Skip(1).First());
                     }
-                    await handle.InitializeAsync().ConfigureAwait(false);
+                    await handle.InitializeAsync();
                     mStream = handle.GetFileStream();
                 }
             }

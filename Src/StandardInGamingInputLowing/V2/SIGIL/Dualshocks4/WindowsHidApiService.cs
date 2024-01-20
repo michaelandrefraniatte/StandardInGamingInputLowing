@@ -102,9 +102,6 @@ namespace HidHandle
             return hidGuid;
         }
 
-        //TODO: These are not opening as async. If we do, we get an error. This is probably why cancellation tokens don't work.
-        //https://github.com/MelbourneDeveloper/HidHandle/issues/188
-
         public Stream OpenRead(SafeFileHandle readSafeFileHandle, ushort readBufferSize) => new FileStream(readSafeFileHandle, FileAccess.Read, readBufferSize, true);
 
         public Stream OpenWrite(SafeFileHandle writeSafeFileHandle, ushort writeBufferSize) => new FileStream(writeSafeFileHandle, FileAccess.ReadWrite, writeBufferSize, true);

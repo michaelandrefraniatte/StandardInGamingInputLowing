@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace HidHandle
@@ -54,9 +53,9 @@ namespace HidHandle
             Close();
         }
 
-        public async Task InitializeAsync(CancellationToken cancellationToken = default)
+        public async Task InitializeAsync()
         {
-            await _hidDeviceHandler.InitializeAsync(cancellationToken).ConfigureAwait(false);
+            await _hidDeviceHandler.InitializeAsync();
         }
 
         public Stream GetFileStream()
@@ -64,25 +63,25 @@ namespace HidHandle
             return _hidDeviceHandler.GetFileStream();
         }
 
-        public async Task<uint> WriteReportAsync(byte[] data, byte reportId, CancellationToken cancellationToken = default)
+        public async Task<uint> WriteReportAsync(byte[] data, byte reportId)
         {
             uint bytesWritten = 0;
 
             try
             {
-                bytesWritten = await _hidDeviceHandler.WriteReportAsync(data, reportId, cancellationToken).ConfigureAwait(false);
+                bytesWritten = await _hidDeviceHandler.WriteReportAsync(data, reportId);
             }
             catch { }
 
             return bytesWritten;
         }
 
-        public Task Flush(CancellationToken cancellationToken)
+        public Task Flush()
         {
             throw new NotImplementedException();
         }
 
-        public Task<uint> WriteAsync(byte[] data, CancellationToken cancellationToken = default)
+        public Task<uint> WriteAsync(byte[] data)
         {
             throw new NotImplementedException();
         }

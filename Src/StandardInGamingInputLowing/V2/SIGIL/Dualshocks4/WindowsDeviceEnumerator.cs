@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace HidHandle
@@ -28,7 +27,7 @@ namespace HidHandle
             _isMatch = isMatch;
         }
 
-        public Task<IEnumerable<ConnectedDeviceDefinition>> GetConnectedDeviceDefinitionsAsync(CancellationToken cancellationToken = default)
+        public Task<IEnumerable<ConnectedDeviceDefinition>> GetConnectedDeviceDefinitionsAsync()
             => Task.Run<IEnumerable<ConnectedDeviceDefinition>>(async () =>
             {
                 try
@@ -91,7 +90,7 @@ namespace HidHandle
                                 continue;
                             }
 
-                            if (!await _isMatch(connectedDeviceDefinition).ConfigureAwait(false)) continue;
+                            if (!await _isMatch(connectedDeviceDefinition)) continue;
 
                             deviceDefinitions.Add(connectedDeviceDefinition);
                         }
@@ -106,7 +105,7 @@ namespace HidHandle
                 {
                     throw;
                 }
-            }, cancellationToken);
+            });
 
     }
 }

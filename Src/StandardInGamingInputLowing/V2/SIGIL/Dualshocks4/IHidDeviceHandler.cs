@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace HidHandle
@@ -12,16 +11,15 @@ namespace HidHandle
         ushort? WriteBufferSize { get; }
         string DeviceId { get; }
 
-        Task InitializeAsync(CancellationToken cancellationToken = default);
+        Task InitializeAsync();
 
         /// <summary>
         /// Writes data and allows you to specify the report id
         /// </summary>
         /// <param name="data"></param>
         /// <param name="reportId"></param>
-        /// <param name="cancellationToken">Allows you to cancel the operation</param>
         /// <returns></returns>
-        Task<uint> WriteReportAsync(byte[] data, byte reportId, CancellationToken cancellationToken = default);
+        Task<uint> WriteReportAsync(byte[] data, byte reportId);
 
         bool IsInitialized { get; }
         void Close();

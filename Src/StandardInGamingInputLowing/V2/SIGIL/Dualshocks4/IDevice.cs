@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace HidHandle
@@ -15,12 +14,12 @@ namespace HidHandle
         /// <summary>
         /// Write a page of data. Warning: this is not thread safe. WriteAndReadAsync() should be preferred.
         /// </summary>
-        Task<uint> WriteAsync(byte[] data, CancellationToken cancellationToken = default);
+        Task<uint> WriteAsync(byte[] data);
 
         /// <summary>
         /// Close any existing connections and reinitialize the device. 
         /// </summary>
-        Task InitializeAsync(CancellationToken cancellationToken = default);
+        Task InitializeAsync();
 
         /// <summary>
         /// Get the FileStream. 
@@ -45,6 +44,6 @@ namespace HidHandle
         /// <summary>
         /// Flushes the device. Note: Only available for serial port devices currently
         /// </summary>
-        Task Flush(CancellationToken cancellationToken);
+        Task Flush();
     }
 }

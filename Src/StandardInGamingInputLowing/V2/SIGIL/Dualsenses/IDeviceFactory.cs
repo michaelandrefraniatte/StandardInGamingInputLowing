@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace HidHandle
@@ -13,24 +12,21 @@ namespace HidHandle
         /// <summary>
         /// Gets the definition of connected devices
         /// </summary>
-        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<IEnumerable<ConnectedDeviceDefinition>> GetConnectedDeviceDefinitionsAsync(CancellationToken cancellationToken = default);
+        Task<IEnumerable<ConnectedDeviceDefinition>> GetConnectedDeviceDefinitionsAsync();
 
         /// <summary>
         /// Given a <see cref="ConnectedDeviceDefinition"/> returns a <see cref="IDevice"/>
         /// </summary>
         /// <param name="connectedDeviceDefinition"></param>
-        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<IDevice> GetDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition, CancellationToken cancellationToken = default);
+        Task<IDevice> GetDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition);
 
         /// <summary>
         /// Whether or not the factory supports the given device definition
         /// </summary>
         /// <param name="connectedDeviceDefinition"></param>
-        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<bool> SupportsDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition, CancellationToken cancellationToken = default);
+        Task<bool> SupportsDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition);
     }
 }

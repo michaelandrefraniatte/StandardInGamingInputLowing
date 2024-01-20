@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace HidHandle
 {
@@ -11,8 +10,7 @@ namespace HidHandle
         /// </summary>
         /// <param name="data"></param>
         /// <param name="reportId"></param>
-        /// <param name="cancellationToken">Allows you to cancel the operation</param>
         /// <returns></returns>
-        Task<uint> WriteReportAsync(byte[] data, byte reportId, CancellationToken cancellationToken = default);
+        Task<uint> WriteReportAsync(byte[] data, byte reportId);
     }
 }
