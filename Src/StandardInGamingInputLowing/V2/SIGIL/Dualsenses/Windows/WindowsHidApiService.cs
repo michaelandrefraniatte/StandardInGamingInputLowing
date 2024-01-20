@@ -12,8 +12,6 @@ namespace HidHandle.Windows
     {
         private static Guid? _HidGuid;
         
-        private const int HIDP_STATUS_SUCCESS = 0x110000;
-        
         public WindowsHidApiService()
         {
         }
@@ -126,11 +124,6 @@ namespace HidHandle.Windows
             catch 
             {
                 return null;
-            }
-            finally
-            {
-                //TODO: Shouldn't this pointer be released?
-                //Marshal.Release(pointerToBuffer);
             }
         }
         

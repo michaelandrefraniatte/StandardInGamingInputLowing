@@ -116,7 +116,5 @@ namespace DeviceHandle
             ReadBufferSize = readBufferSize;
             Label = label;
         }
-
-        public override string ToString() => $"Device Id: {DeviceId} Label: {Label} Vid: {VendorId} Pid: {ProductId}\r\nRead Buffer Size: {ReadBufferSize} Write Buffer Size: {WriteBufferSize}\r\nManufacturer: {Manufacturer} Product Name: {ProductName}";
     }
 }

@@ -42,6 +42,7 @@ namespace DeviceHandle
         {
             return _getConnectedDevicesAsync(cancellationToken);
         }
+
         public Task<IDevice> GetDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition, CancellationToken cancellationToken = default)
         {
             return connectedDeviceDefinition == null ?

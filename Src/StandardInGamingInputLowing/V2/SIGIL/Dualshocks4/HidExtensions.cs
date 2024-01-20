@@ -19,18 +19,6 @@ namespace HidHandle
             return transformedData;
         }
 
-        /// <summary>
-        /// Removes the first byte of the array and shifts other elements to the left
-        /// </summary>
-        public static byte[] TrimFirstByte(this byte[] inputData)
-        {
-            var length = inputData.Length - 1;
-            var data = new byte[length];
-            Array.Copy(inputData, 1, data, 0, length);
-
-            return data;
-        }
-
         private static byte[] InsertZeroAtIndexZero(this byte[] data)
         {
             if (data == null) throw new ArgumentNullException(nameof(data));

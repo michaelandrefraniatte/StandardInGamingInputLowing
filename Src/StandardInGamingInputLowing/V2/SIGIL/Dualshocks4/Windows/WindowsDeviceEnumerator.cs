@@ -102,7 +102,7 @@ namespace DeviceHandle.Windows
 
                     return new ReadOnlyCollection<ConnectedDeviceDefinition>(deviceDefinitions);
                 }
-                catch (Exception ex)
+                catch
                 {
                     throw;
                 }

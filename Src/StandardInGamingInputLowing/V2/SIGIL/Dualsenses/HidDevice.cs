@@ -23,9 +23,6 @@ namespace HidHandle
 
         public ConnectedDeviceDefinition ConnectedDeviceDefinition => _hidDeviceHandler.ConnectedDeviceDefinition;
         public bool IsInitialized => _hidDeviceHandler.IsInitialized;
-        public bool? IsReadOnly => _hidDeviceHandler.IsReadOnly;
-        public ushort ReadBufferSize => _hidDeviceHandler.ReadBufferSize ?? throw new InvalidOperationException("Read buffer size unknown");
-        public ushort WriteBufferSize => _hidDeviceHandler.WriteBufferSize ?? throw new InvalidOperationException("Write buffer size unknown");
 
         public string DeviceId => throw new NotImplementedException();
 
@@ -70,24 +67,15 @@ namespace HidHandle
 
         public async Task<uint> WriteReportAsync(byte[] data, byte reportId, CancellationToken cancellationToken = default)
         {
+            uint bytesWritten = 0;
+
             try
             {
-                uint bytesWritten = 0;
-
-                if (data == null) throw new ArgumentNullException(nameof(data));
-
-                try
-                {
-                    bytesWritten = await _hidDeviceHandler.WriteReportAsync(data, reportId, cancellationToken).ConfigureAwait(false);
-                }
-                catch { }
-
-                return bytesWritten;
+                bytesWritten = await _hidDeviceHandler.WriteReportAsync(data, reportId, cancellationToken).ConfigureAwait(false);
             }
-            catch
-            {
-                throw;
-            }
+            catch { }
+
+            return bytesWritten;
         }
 
         public Task Flush(CancellationToken cancellationToken)
