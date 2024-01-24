@@ -49,7 +49,7 @@ namespace SIGIL
             if (cbWholeWord.Checked)
                 pattern = "\\b" + pattern + "\\b";
             //
-            var range = tb.Selection.IsEmpty? tb.Range.Clone() : tb.Selection.Clone();
+            var range = tb.Range.Clone();
             //
             var list = new List<Range>();
             foreach (var r in range.GetRangesByLines(pattern, opt))
