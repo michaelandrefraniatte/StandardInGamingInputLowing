@@ -100,7 +100,7 @@ namespace HidHandle
         {
             try
             {
-                var safeFileHandle = HidService.CreateReadConnection(deviceId, FileAccess.Read);
+                var safeFileHandle = ApiService.CreateReadConnection(deviceId, FileAccess.Read);
 
                 return HidService.GetDeviceDefinition(deviceId, safeFileHandle);
             }

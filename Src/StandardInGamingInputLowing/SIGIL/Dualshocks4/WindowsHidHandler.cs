@@ -7,9 +7,7 @@ namespace HidHandle
 {
     internal class WindowsHidHandler : IHidDeviceHandler
     {
-
         private readonly IHidApiService _hidService;
-        
         private readonly Func<byte[], byte, byte[]> _writeTransferTransform;
         private Stream _readFileStream;
         private SafeFileHandle _readSafeFileHandle;
@@ -67,8 +65,8 @@ namespace HidHandle
             return Task.Run(() =>
               {
 
-                  _readSafeFileHandle = _hidService.CreateReadConnection(DeviceId, FileAccess.Read);
-                  _writeSafeFileHandle = _hidService.CreateWriteConnection(DeviceId);
+                  _readSafeFileHandle = ApiService.CreateReadConnection(DeviceId, FileAccess.Read);
+                  _writeSafeFileHandle = ApiService.CreateWriteConnection(DeviceId);
 
                   IsReadOnly = _writeSafeFileHandle.IsInvalid;
 

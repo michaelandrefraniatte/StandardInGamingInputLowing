@@ -7,7 +7,7 @@ namespace HidHandle
     /// <summary>
     /// Service to handle Hid API calls. Windows oriented for now.
     /// </summary>
-    public interface IHidApiService : IApiService
+    public interface IHidApiService
     {
         ConnectedDeviceDefinition GetDeviceDefinition(string deviceId, SafeFileHandle safeFileHandle);
         Guid GetHidGuid();

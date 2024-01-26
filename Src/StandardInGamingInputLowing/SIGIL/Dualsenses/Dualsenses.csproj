@@ -50,11 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APICalls.cs" />
     <Compile Include="ApiService.cs" />
     <Compile Include="CommTimeouts.cs" />
     <Compile Include="ConnectedDeviceDefinition.cs" />
-    <Compile Include="Dcb.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="DeviceExtensions.cs" />
     <Compile Include="DeviceFactory.cs" />
@@ -71,16 +69,12 @@
     <Compile Include="HidCollectionCapabilities.cs" />
     <Compile Include="HidDevice.cs" />
     <Compile Include="HidExtensions.cs" />
-    <Compile Include="IApiService.cs" />
     <Compile Include="IDevice.cs" />
     <Compile Include="IDeviceFactory.cs" />
     <Compile Include="IHidApiService.cs" />
     <Compile Include="IHidDevice.cs" />
     <Compile Include="IHidDeviceHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpDeviceInfoData.cs" />
-    <Compile Include="SpDeviceInterfaceData.cs" />
-    <Compile Include="SpDeviceInterfaceDetailData.cs" />
     <Compile Include="WindowsDeviceEnumerator.cs" />
     <Compile Include="WindowsHidApiService.cs" />
     <Compile Include="WindowsHidDeviceFactoryExtensions.cs" />
