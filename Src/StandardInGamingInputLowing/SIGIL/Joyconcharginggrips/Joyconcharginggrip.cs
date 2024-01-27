@@ -83,7 +83,7 @@ namespace JoyconChargingGripsAPI
         public bool JoyconRightButtonSHOULDER_1, JoyconRightButtonSHOULDER_2, JoyconRightButtonSR, JoyconRightButtonSL, JoyconRightButtonDPAD_DOWN, JoyconRightButtonDPAD_RIGHT, JoyconRightButtonDPAD_UP, JoyconRightButtonDPAD_LEFT, JoyconRightButtonPLUS, JoyconRightButtonSTICK, JoyconRightButtonHOME;
         public float acc_gcalibrationRightX, acc_gcalibrationRightY, acc_gcalibrationRightZ;
         public bool ISLEFT, ISRIGHT, running, formvisible;
-        private bool ISJOYCONCHARGINGGRIP1, ISJOYCONCHARGINGGRIP2;
+        private bool ISJOYCONCHARGINGGRIP1, ISJOYCONCHARGINGGRIP2, isvalidhandle = false;
         private int number;
         public Form1 form1 = new Form1();
         public JoyconChargingGrip()
@@ -365,14 +365,20 @@ namespace JoyconChargingGripsAPI
                             if (ISLEFT)
                             {
                                 if (number == 2)
-                                    AttachGripRightController(diDetail.DevicePath);
-                                ISRIGHT = true;
+                                    isvalidhandle = AttachGripRightController(diDetail.DevicePath);
+                                if (isvalidhandle)
+                                {
+                                    ISRIGHT = true;
+                                }
                             }
                             if (!ISLEFT)
                             {
                                 if (number == 2)
-                                    AttachGripLeftController(diDetail.DevicePath);
-                                ISLEFT = true;
+                                    isvalidhandle = AttachGripLeftController(diDetail.DevicePath);
+                                if (isvalidhandle)
+                                {
+                                    ISLEFT = true;
+                                }
                             }
                             if (ISLEFT & ISRIGHT)
                                 ISJOYCONCHARGINGGRIP2 = true;
@@ -382,14 +388,20 @@ namespace JoyconChargingGripsAPI
                             if (ISLEFT)
                             {
                                 if (number == 0 | number == 1)
-                                    AttachGripRightController(diDetail.DevicePath);
-                                ISRIGHT = true;
+                                    isvalidhandle = AttachGripRightController(diDetail.DevicePath);
+                                if (isvalidhandle)
+                                {
+                                    ISRIGHT = true;
+                                }
                             }
                             if (!ISLEFT)
                             {
                                 if (number == 0 | number == 1)
-                                    AttachGripLeftController(diDetail.DevicePath);
-                                ISLEFT = true;
+                                    isvalidhandle = AttachGripLeftController(diDetail.DevicePath);
+                                if (isvalidhandle)
+                                {
+                                    ISLEFT = true;
+                                }
                             }
                             if (ISLEFT & ISRIGHT)
                             {
@@ -408,17 +420,18 @@ namespace JoyconChargingGripsAPI
             }
             return false;
         }
-        private void AttachGripLeftController(string path)
+        private bool AttachGripLeftController(string path)
         {
-            do
+            try
             {
                 IntPtr handle = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                 handleLeft = Lhid_open_path(handle);
                 Subcommand1GripLeftController(0x06, new byte[] { 0x01 }, 1);
                 Subcommand2GripLeftController(0x40, new byte[] { 0x1 }, 1);
                 Subcommand2GripLeftController(0x3, new byte[] { 0x30 }, 1);
+                return true;
             }
-            while (handleLeft.IsInvalid);
+            catch { return false; }
         }
         private void Subcommand1GripLeftController(byte sc, byte[] buf, uint len)
         {
@@ -464,17 +477,18 @@ namespace JoyconChargingGripsAPI
             buf_Left[0] = 0x80;
             Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
         }
-        private void AttachGripRightController(string path)
+        private bool AttachGripRightController(string path)
         {
-            do
+            try
             {
                 IntPtr handle = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                 handleRight = Rhid_open_path(handle);
                 Subcommand1GripRightController(0x06, new byte[] { 0x01 }, 1);
                 Subcommand2GripRightController(0x40, new byte[] { 0x1 }, 1);
                 Subcommand2GripRightController(0x3, new byte[] { 0x30 }, 1);
+                return true;
             }
-            while (handleRight.IsInvalid);
+            catch { return false; }
         }
         private void Subcommand1GripRightController(byte sc, byte[] buf, uint len)
         {

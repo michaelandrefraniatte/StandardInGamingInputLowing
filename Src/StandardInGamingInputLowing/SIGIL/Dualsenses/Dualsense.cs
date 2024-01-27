@@ -72,7 +72,7 @@ namespace DualSensesAPI
         public Vector3 InitDirectAnglesPS5, DirectAnglesPS5;
         private Stream mStream;
         public int number = 0;
-        public bool ISDS1 = false, ISDS2 = false;
+        public bool ISDS1 = false, ISDS2 = false, isvalidhandle = false;
         public string path;
         public bool running, formvisible, littleendian;
         public Form1 form1 = new Form1();
@@ -376,27 +376,33 @@ namespace DualSensesAPI
                 diDetail.cbSize = 5;
                 if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new IntPtr()))
                 {
-                    if (diDetail.DevicePath.ToLower().Contains(vendor_id.ToLower()) & diDetail.DevicePath.ToLower().Contains(product_id.ToLower()) & !diDetail.DevicePath.ToLower().Contains("rev_"))
+                    if (diDetail.DevicePath.ToLower().Contains(vendor_id.ToLower()) & diDetail.DevicePath.ToLower().Contains(product_id.ToLower()))
                     {
                         if (ISDS1)
                         {
                             path = diDetail.DevicePath;
                             if (number == 2)
                             {
-                                Found(path);
+                                isvalidhandle = Found(path);
                             }
-                            ISDS2 = true;
+                            if (isvalidhandle)
+                            {
+                                ISDS2 = true;
+                            }
                         }
                         if (!ISDS1)
                         {
                             path = diDetail.DevicePath;
                             if (number == 0 | number == 1)
                             {
-                                Found(path);
+                                isvalidhandle = Found(path);
                             }
-                            ISDS1 = true;
-                            if (number == 0)
-                                return true;
+                            if (isvalidhandle)
+                            {
+                                ISDS1 = true;
+                                if (number == 0)
+                                    return true;
+                            }
                         }
                         if (ISDS1 & ISDS2)
                             return true;
@@ -406,10 +412,15 @@ namespace DualSensesAPI
             }
             return false;
         }
-        public void Found(string path)
+        public bool Found(string path)
         {
-            handle = CreateFile(path, FileAccess.ReadWrite, FileShare.ReadWrite, IntPtr.Zero, FileMode.Open, (uint)EFileAttributes.Overlapped, IntPtr.Zero);
-            mStream = new FileStream(handle, FileAccess.Read, 64, true);
+            try
+            {
+                handle = CreateFile(path, FileAccess.ReadWrite, FileShare.ReadWrite, IntPtr.Zero, FileMode.Open, (uint)EFileAttributes.Overlapped, IntPtr.Zero);
+                mStream = new FileStream(handle, FileAccess.Read, 64, true);
+                return true;
+            }
+            catch { return false; }
         }
     }
     internal static class DualShock4ByteConverterExtensions

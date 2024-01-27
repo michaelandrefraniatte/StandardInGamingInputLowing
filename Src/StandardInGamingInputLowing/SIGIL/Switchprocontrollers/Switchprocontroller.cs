@@ -63,7 +63,7 @@ namespace SwitchProControllersAPI
         public bool ProControllerButtonSHOULDER_Left_1, ProControllerButtonSHOULDER_Left_2, ProControllerButtonSHOULDER_Right_1, ProControllerButtonSHOULDER_Right_2, ProControllerButtonDPAD_DOWN, ProControllerButtonDPAD_RIGHT, ProControllerButtonDPAD_UP, ProControllerButtonDPAD_LEFT, ProControllerButtonA, ProControllerButtonB, ProControllerButtonX, ProControllerButtonY, ProControllerButtonMINUS, ProControllerButtonPLUS, ProControllerButtonSTICK_Left, ProControllerButtonSTICK_Right, ProControllerButtonCAPTURE, ProControllerButtonHOME;
         public float acc_gcalibrationProX, acc_gcalibrationProY, acc_gcalibrationProZ;
         public bool running, formvisible;
-        private bool ISSWITCHPROCONTROLLER1, ISSWITCHPROCONTROLLER2;
+        private bool ISSWITCHPROCONTROLLER1, ISSWITCHPROCONTROLLER2, isvalidhandle = false;
         private int number;
         public Form1 form1 = new Form1();
         public SwitchProController()
@@ -270,16 +270,22 @@ namespace SwitchProControllersAPI
                         if (ISSWITCHPROCONTROLLER1)
                         {
                             if (number == 2)
-                                AttachProController(diDetail.DevicePath);
-                            ISSWITCHPROCONTROLLER2 = true;
+                                isvalidhandle = AttachProController(diDetail.DevicePath);
+                            if (isvalidhandle)
+                            {
+                                ISSWITCHPROCONTROLLER2 = true;
+                            }
                         }
                         if (!ISSWITCHPROCONTROLLER1)
                         {
                             if (number == 0 | number == 1)
-                                AttachProController(diDetail.DevicePath);
-                            ISSWITCHPROCONTROLLER1 = true;
-                            if (number == 0)
-                                return true;
+                                isvalidhandle = AttachProController(diDetail.DevicePath);
+                            if (isvalidhandle)
+                            {
+                                ISSWITCHPROCONTROLLER1 = true;
+                                if (number == 0)
+                                    return true;
+                            }
                         }
                         if (ISSWITCHPROCONTROLLER1 & ISSWITCHPROCONTROLLER2)
                             return true;
@@ -289,9 +295,9 @@ namespace SwitchProControllersAPI
             }
             return false;
         }
-        private void AttachProController(string path)
+        private bool AttachProController(string path)
         {
-            do
+            try
             {
                 IntPtr handle = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                 handlePro = Prohid_open_path(handle);
@@ -300,8 +306,9 @@ namespace SwitchProControllersAPI
                 Subcommand2ProController(0x3, new byte[] { 0x30 }, 1);
                 Subcommand2ProController(0x40, new byte[] { 0x1 }, 1);
                 Subcommand2ProController(0x3, new byte[] { 0x30 }, 1);
+                return true;
             }
-            while (handlePro.IsInvalid);
+            catch { return false; }
         }
         private void Subcommand1ProController(byte sc, byte[] buf, uint len)
         {

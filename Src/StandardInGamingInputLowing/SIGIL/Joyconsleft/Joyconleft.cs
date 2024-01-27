@@ -68,7 +68,7 @@ namespace JoyconsLeftAPI
         public float acc_gcalibrationLeftX, acc_gcalibrationLeftY, acc_gcalibrationLeftZ;
         public bool ISLEFT = true;
         private bool running, formvisible;
-        private bool ISJOYCONLEFT1, ISJOYCONLEFT2;
+        private bool ISJOYCONLEFT1, ISJOYCONLEFT2, isvalidhandle = false;
         private int number;
         public Form1 form1 = new Form1();
         public JoyconLeft()
@@ -252,16 +252,22 @@ namespace JoyconsLeftAPI
                         if (ISJOYCONLEFT1)
                         {
                             if (number == 2)
-                                AttachJoyLeft(diDetail.DevicePath);
-                            ISJOYCONLEFT2 = true;
+                                isvalidhandle = AttachJoyLeft(diDetail.DevicePath);
+                            if (isvalidhandle)
+                            {
+                                ISJOYCONLEFT2 = true;
+                            }
                         }
                         if (!ISJOYCONLEFT1)
                         {
                             if (number == 0 | number == 1)
-                                AttachJoyLeft(diDetail.DevicePath);
-                            ISJOYCONLEFT1 = true;
-                            if (number == 0)
-                                return true;
+                                isvalidhandle = AttachJoyLeft(diDetail.DevicePath);
+                            if (isvalidhandle)
+                            {
+                                ISJOYCONLEFT1 = true;
+                                if (number == 0)
+                                    return true;
+                            }
                         }
                         if (ISJOYCONLEFT1 & ISJOYCONLEFT2)
                             return true;
@@ -271,16 +277,17 @@ namespace JoyconsLeftAPI
             }
             return false;
         }
-        public void AttachJoyLeft(string path)
+        public bool AttachJoyLeft(string path)
         {
-            do
+            try
             {
                 IntPtr handle = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                 handleLeft = Lhid_open_path(handle);
                 SubcommandLeft(0x40, new byte[] { 0x1 }, 1);
                 SubcommandLeft(0x3, new byte[] { 0x30 }, 1);
+                return true;
             }
-            while (handleLeft.IsInvalid);
+            catch { return false; }
         }
         public void SubcommandLeft(byte sc, byte[] buf, uint len)
         {

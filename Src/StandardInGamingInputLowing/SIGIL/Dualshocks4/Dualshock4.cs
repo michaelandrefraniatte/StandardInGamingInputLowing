@@ -68,7 +68,7 @@ namespace DualShocks4API
         public Vector3 InitDirectAnglesPS4, DirectAnglesPS4;
         private Stream mStream;
         public int number = 0;
-        public bool ISDS41 = false, ISDS42 = false;
+        public bool ISDS41 = false, ISDS42 = false, isvalidhandle = false;
         public string path;
         public bool running, formvisible, littleendian;
         public Form1 form1 = new Form1();
@@ -356,27 +356,33 @@ namespace DualShocks4API
                 diDetail.cbSize = 5;
                 if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new IntPtr()))
                 {
-                    if (diDetail.DevicePath.ToLower().Contains(vendor_id.ToLower()) & diDetail.DevicePath.ToLower().Contains(product_id.ToLower()) & !diDetail.DevicePath.ToLower().Contains("rev_"))
+                    if (diDetail.DevicePath.ToLower().Contains(vendor_id.ToLower()) & diDetail.DevicePath.ToLower().Contains(product_id.ToLower()))
                     {
                         if (ISDS41)
                         {
                             path = diDetail.DevicePath;
                             if (number == 2)
                             {
-                                Found(path);
+                                isvalidhandle = Found(path);
                             }
-                            ISDS42 = true;
+                            if (isvalidhandle)
+                            {
+                                ISDS42 = true;
+                            }
                         }
                         if (!ISDS41)
                         {
                             path = diDetail.DevicePath;
                             if (number == 0 | number == 1)
                             {
-                                Found(path);
+                                isvalidhandle = Found(path);
                             }
-                            ISDS41 = true;
-                            if (number == 0)
-                                return true;
+                            if (isvalidhandle)
+                            {
+                                ISDS41 = true;
+                                if (number == 0)
+                                    return true;
+                            }
                         }
                         if (ISDS41 & ISDS42)
                             return true;
@@ -386,10 +392,15 @@ namespace DualShocks4API
             }
             return false;
         }
-        public void Found(string path)
+        public bool Found(string path)
         {
-            handle = CreateFile(path, FileAccess.ReadWrite, FileShare.ReadWrite, IntPtr.Zero, FileMode.Open, (uint)EFileAttributes.Overlapped, IntPtr.Zero);
-            mStream = new FileStream(handle, FileAccess.Read, 64, true);
+            try
+            {
+                handle = CreateFile(path, FileAccess.ReadWrite, FileShare.ReadWrite, IntPtr.Zero, FileMode.Open, (uint)EFileAttributes.Overlapped, IntPtr.Zero);
+                mStream = new FileStream(handle, FileAccess.Read, 64, true);
+                return true;
+            }
+            catch { return false; }
         }
     }
     internal static class DualShock4ByteConverterExtensions

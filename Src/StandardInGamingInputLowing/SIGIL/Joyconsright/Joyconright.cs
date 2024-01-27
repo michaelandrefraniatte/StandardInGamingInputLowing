@@ -68,7 +68,7 @@ namespace JoyconsRightAPI
         public float acc_gcalibrationRightX, acc_gcalibrationRightY, acc_gcalibrationRightZ;
         public bool ISRIGHT = true;
         private bool running, formvisible;
-        private bool ISJOYCONRIGHT1, ISJOYCONLRIGHT2;
+        private bool ISJOYCONRIGHT1, ISJOYCONLRIGHT2, isvalidhandle = false;
         private int number;
         public Form1 form1 = new Form1();
         public JoyconRight()
@@ -252,16 +252,22 @@ namespace JoyconsRightAPI
                         if (ISJOYCONRIGHT1)
                         {
                             if (number == 2)
-                                AttachJoyRight(diDetail.DevicePath);
-                            ISJOYCONLRIGHT2 = true;
+                                isvalidhandle = AttachJoyRight(diDetail.DevicePath);
+                            if (isvalidhandle)
+                            {
+                                ISJOYCONLRIGHT2 = true;
+                            }
                         }
                         if (!ISJOYCONRIGHT1)
                         {
                             if (number == 0 | number == 1)
-                                AttachJoyRight(diDetail.DevicePath);
-                            ISJOYCONRIGHT1 = true;
-                            if (number == 0)
-                                return true;
+                                isvalidhandle = AttachJoyRight(diDetail.DevicePath);
+                            if (isvalidhandle)
+                            {
+                                ISJOYCONRIGHT1 = true;
+                                if (number == 0)
+                                    return true;
+                            }
                         }
                         if (ISJOYCONRIGHT1 & ISJOYCONLRIGHT2)
                             return true;
@@ -271,16 +277,17 @@ namespace JoyconsRightAPI
             }
             return false;
         }
-        public void AttachJoyRight(string path)
+        public bool AttachJoyRight(string path)
         {
-            do
+            try
             {
                 IntPtr handle = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                 handleRight = Rhid_open_path(handle);
                 SubcommandRight(0x40, new byte[] { 0x1 }, 1);
                 SubcommandRight(0x3, new byte[] { 0x30 }, 1);
+                return true;
             }
-            while (handleRight.IsInvalid);
+            catch { return false; }
         }
         public void SubcommandRight(byte sc, byte[] buf, uint len)
         {
