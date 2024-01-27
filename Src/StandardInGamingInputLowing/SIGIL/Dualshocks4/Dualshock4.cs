@@ -68,6 +68,8 @@ namespace DualShocks4API
         public Vector3 InitDirectAnglesPS4, DirectAnglesPS4;
         private Stream mStream;
         public int number = 0;
+        public bool reconnectingbool;
+        public double reconnectingcount;
         public bool ISDS41 = false, ISDS42 = false, isvalidhandle = false;
         public string path;
         public bool running, formvisible, littleendian;
@@ -190,6 +192,7 @@ namespace DualShocks4API
                 try
                 {
                     mStream.Read(ds4data, 0, ds4data.Length);
+                    reconnectingbool = false;
                 }
                 catch { Thread.Sleep(10); }
                 if (formvisible)
@@ -237,6 +240,7 @@ namespace DualShocks4API
             {
                 if (!running)
                     break;
+                Reconnection();
                 ProcessStateLogic();
                 Thread.Sleep(1);
             }
@@ -319,6 +323,58 @@ namespace DualShocks4API
         public Vec3 Gyro { get; private set; }
         public Vec3 Accelerometer { get; private set; }
         public bool IsHeadphoneConnected { get; private set; }
+        public void Reconnection()
+        {
+            if (reconnectingcount == 0)
+                reconnectingbool = true;
+            reconnectingcount++;
+            if (reconnectingcount >= 150f)
+            {
+                if (reconnectingbool)
+                {
+                    ReconnectionInit();
+                    Found(path);
+                    reconnectingcount = -150f;
+                }
+                else
+                    reconnectingcount = 0;
+            }
+        }
+        private void ReconnectionInit()
+        {
+            PS4ControllerLeftStickX = 0;
+            PS4ControllerLeftStickY = 0;
+            PS4ControllerRightStickX = 0;
+            PS4ControllerRightStickY = 0;
+            PS4ControllerLeftTriggerPosition = 0;
+            PS4ControllerRightTriggerPosition = 0;
+            PS4ControllerTouchX = 0;
+            PS4ControllerTouchY = 0;
+            PS4ControllerTouchOn = false;
+            PS4ControllerGyroX = 0;
+            PS4ControllerGyroY = 0;
+            PS4ControllerAccelX = 0;
+            PS4ControllerAccelY = 0;
+            PS4ControllerButtonCrossPressed = false;
+            PS4ControllerButtonCirclePressed = false;
+            PS4ControllerButtonSquarePressed = false;
+            PS4ControllerButtonTrianglePressed = false;
+            PS4ControllerButtonDPadUpPressed = false;
+            PS4ControllerButtonDPadRightPressed = false;
+            PS4ControllerButtonDPadDownPressed = false;
+            PS4ControllerButtonDPadLeftPressed = false;
+            PS4ControllerButtonL1Pressed = false;
+            PS4ControllerButtonR1Pressed = false;
+            PS4ControllerButtonL2Pressed = false;
+            PS4ControllerButtonR2Pressed = false;
+            PS4ControllerButtonL3Pressed = false;
+            PS4ControllerButtonR3Pressed = false;
+            PS4ControllerButtonCreatePressed = false;
+            PS4ControllerButtonMenuPressed = false;
+            PS4ControllerButtonLogoPressed = false;
+            PS4ControllerButtonTouchpadPressed = false;
+            PS4ControllerButtonMicPressed = false;
+        }
         private enum EFileAttributes : uint
         {
             Overlapped = 0x40000000,

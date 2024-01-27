@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
 using Joyconsleft;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace JoyconsLeftAPI
 {
@@ -70,6 +71,9 @@ namespace JoyconsLeftAPI
         private bool running, formvisible;
         private bool ISJOYCONLEFT1, ISJOYCONLEFT2, isvalidhandle = false;
         private int number;
+        public bool reconnectingbool;
+        public double reconnectingcount;
+        public string path;
         public Form1 form1 = new Form1();
         public JoyconLeft()
         {
@@ -102,6 +106,7 @@ namespace JoyconsLeftAPI
                 try
                 {
                     Lhid_read_timeout(handleLeft, report_bufLeft, (UIntPtr)report_lenLeft);
+                    reconnectingbool = false;
                 }
                 catch { Thread.Sleep(10); }
                 if (formvisible)
@@ -138,6 +143,7 @@ namespace JoyconsLeftAPI
             {
                 if (!running)
                     break;
+                Reconnection();
                 ProcessButtonsLeftJoycon();
                 Thread.Sleep(1);
             }
@@ -201,6 +207,47 @@ namespace JoyconsLeftAPI
             }
             catch { }
         }
+        public void Reconnection()
+        {
+            if (reconnectingcount == 0)
+                reconnectingbool = true;
+            reconnectingcount++;
+            if (reconnectingcount >= 150f)
+            {
+                if (reconnectingbool)
+                {
+                    ReconnectionInit();
+                    AttachJoyLeft(path);
+                    reconnectingcount = -150f;
+                }
+                else
+                    reconnectingcount = 0;
+            }
+        }
+        private void ReconnectionInit()
+        {
+            JoyconLeftStickX = 0;
+            JoyconLeftStickY = 0;
+            JoyconLeftButtonSHOULDER_1 = false;
+            JoyconLeftButtonSHOULDER_2 = false;
+            JoyconLeftButtonSR = false;
+            JoyconLeftButtonSL = false;
+            JoyconLeftButtonDPAD_DOWN = false;
+            JoyconLeftButtonDPAD_RIGHT = false;
+            JoyconLeftButtonDPAD_UP = false;
+            JoyconLeftButtonDPAD_LEFT = false;
+            JoyconLeftButtonMINUS = false;
+            JoyconLeftButtonCAPTURE = false;
+            JoyconLeftButtonSTICK = false;
+            JoyconLeftButtonACC = false;
+            JoyconLeftButtonSMA = false;
+            JoyconLeftRollLeft = false;
+            JoyconLeftRollRight = false;
+            JoyconLeftAccelX = 0;
+            JoyconLeftAccelY = 0;
+            JoyconLeftGyroX = 0;
+            JoyconLeftGyroY = 0;
+        }
         public const string vendor_id = "57e", vendor_id_ = "057e", product_l = "2006";
         public enum EFileAttributes : uint
         {
@@ -251,6 +298,7 @@ namespace JoyconsLeftAPI
                     {
                         if (ISJOYCONLEFT1)
                         {
+                            path = diDetail.DevicePath;
                             isvalidhandle = AttachJoyLeft(diDetail.DevicePath);
                             if (isvalidhandle)
                             {
@@ -259,6 +307,7 @@ namespace JoyconsLeftAPI
                         }
                         if (!ISJOYCONLEFT1)
                         {
+                            path = diDetail.DevicePath;
                             isvalidhandle = AttachJoyLeft(diDetail.DevicePath);
                             if (isvalidhandle)
                             {

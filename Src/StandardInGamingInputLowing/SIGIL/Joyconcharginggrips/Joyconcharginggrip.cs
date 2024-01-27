@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
 using Joyconcharginggrips;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace JoyconChargingGripsAPI
 {
@@ -85,6 +86,9 @@ namespace JoyconChargingGripsAPI
         public bool ISLEFT, ISRIGHT, running, formvisible;
         private bool ISJOYCONCHARGINGGRIP1, ISJOYCONCHARGINGGRIP2, isvalidhandle = false;
         private int number;
+        public bool reconnectingboolleft, reconnectingboolright;
+        public double reconnectingcountleft, reconnectingcountright;
+        public string pathleft, pathright;
         public Form1 form1 = new Form1();
         public JoyconChargingGrip()
         {
@@ -122,6 +126,7 @@ namespace JoyconChargingGripsAPI
                 try
                 {
                     Lhid_read_timeout(handleLeft, report_bufLeft, (UIntPtr)report_lenLeft);
+                    reconnectingboolleft = false;
                 }
                 catch { Thread.Sleep(10); }
                 if (formvisible)
@@ -161,6 +166,7 @@ namespace JoyconChargingGripsAPI
                 try
                 {
                     Rhid_read_timeout(handleRight, report_bufRight, (UIntPtr)report_lenRight);
+                    reconnectingboolright = false;
                 }
                 catch { Thread.Sleep(10); }
                 if (formvisible)
@@ -196,6 +202,7 @@ namespace JoyconChargingGripsAPI
             {
                 if (!running)
                     break;
+                ReconnectionLeft();
                 ProcessButtonsLeftJoycon();
                 Thread.Sleep(1);
             }
@@ -206,6 +213,7 @@ namespace JoyconChargingGripsAPI
             {
                 if (!running)
                     break;
+                ReconnectionRight();
                 ProcessButtonsRightJoycon();
                 Thread.Sleep(1);
             }
@@ -318,6 +326,88 @@ namespace JoyconChargingGripsAPI
             }
             catch { }
         }
+        public void ReconnectionLeft()
+        {
+            if (reconnectingcountleft == 0)
+                reconnectingboolleft = true;
+            reconnectingcountleft++;
+            if (reconnectingcountleft >= 150f)
+            {
+                if (reconnectingboolleft)
+                {
+                    ReconnectionInitLeft();
+                    AttachGripLeftController(pathleft);
+                    reconnectingcountleft = -150f;
+                }
+                else
+                    reconnectingcountleft = 0;
+            }
+        }
+        private void ReconnectionInitLeft()
+        {
+            JoyconLeftStickX = 0;
+            JoyconLeftStickY = 0;
+            JoyconLeftButtonSHOULDER_1 = false;
+            JoyconLeftButtonSHOULDER_2 = false;
+            JoyconLeftButtonSR = false;
+            JoyconLeftButtonSL = false;
+            JoyconLeftButtonDPAD_DOWN = false;
+            JoyconLeftButtonDPAD_RIGHT = false;
+            JoyconLeftButtonDPAD_UP = false;
+            JoyconLeftButtonDPAD_LEFT = false;
+            JoyconLeftButtonMINUS = false;
+            JoyconLeftButtonCAPTURE = false;
+            JoyconLeftButtonSTICK = false;
+            JoyconLeftButtonACC = false;
+            JoyconLeftButtonSMA = false;
+            JoyconLeftRollLeft = false;
+            JoyconLeftRollRight = false;
+            JoyconLeftAccelX = 0;
+            JoyconLeftAccelY = 0;
+            JoyconLeftGyroX = 0;
+            JoyconLeftGyroY = 0;
+        }
+        public void ReconnectionRight()
+        {
+            if (reconnectingcountright == 0)
+                reconnectingboolright = true;
+            reconnectingcountright++;
+            if (reconnectingcountright >= 150f)
+            {
+                if (reconnectingboolright)
+                {
+                    ReconnectionInitRight();
+                    AttachGripRightController(pathright);
+                    reconnectingcountright = -150f;
+                }
+                else
+                    reconnectingcountright = 0;
+            }
+        }
+        private void ReconnectionInitRight()
+        {
+            JoyconRightStickX = 0;
+            JoyconRightStickY = 0;
+            JoyconRightButtonSHOULDER_1 = false;
+            JoyconRightButtonSHOULDER_2 = false;
+            JoyconRightButtonSR = false;
+            JoyconRightButtonSL = false;
+            JoyconRightButtonDPAD_DOWN = false;
+            JoyconRightButtonDPAD_RIGHT = false;
+            JoyconRightButtonDPAD_UP = false;
+            JoyconRightButtonDPAD_LEFT = false;
+            JoyconRightButtonPLUS = false;
+            JoyconRightButtonHOME = false;
+            JoyconRightButtonSTICK = false;
+            JoyconRightButtonACC = false;
+            JoyconRightButtonSPA = false;
+            JoyconRightRollLeft = false;
+            JoyconRightRollRight = false;
+            JoyconRightAccelX = 0;
+            JoyconRightAccelY = 0;
+            JoyconRightGyroX = 0;
+            JoyconRightGyroY = 0;
+        }
         public const string vendor_id = "57e", vendor_id_ = "057e", product_grip = "200e";
         public enum EFileAttributes : uint
         {
@@ -364,6 +454,7 @@ namespace JoyconChargingGripsAPI
                         {
                             if (ISLEFT)
                             {
+                                pathright = diDetail.DevicePath;
                                 isvalidhandle = AttachGripRightController(diDetail.DevicePath);
                                 if (isvalidhandle)
                                 {
@@ -372,6 +463,7 @@ namespace JoyconChargingGripsAPI
                             }
                             if (!ISLEFT)
                             {
+                                pathleft = diDetail.DevicePath;
                                 isvalidhandle = AttachGripLeftController(diDetail.DevicePath);
                                 if (isvalidhandle)
                                 {
@@ -385,6 +477,7 @@ namespace JoyconChargingGripsAPI
                         {
                             if (ISLEFT)
                             {
+                                pathright = diDetail.DevicePath;
                                 isvalidhandle = AttachGripRightController(diDetail.DevicePath);
                                 if (isvalidhandle)
                                 {
@@ -393,6 +486,7 @@ namespace JoyconChargingGripsAPI
                             }
                             if (!ISLEFT)
                             {
+                                pathleft = diDetail.DevicePath;
                                 isvalidhandle = AttachGripLeftController(diDetail.DevicePath);
                                 if (isvalidhandle)
                                 {

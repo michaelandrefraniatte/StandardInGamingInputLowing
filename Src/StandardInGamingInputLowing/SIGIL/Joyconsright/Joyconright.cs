@@ -70,6 +70,9 @@ namespace JoyconsRightAPI
         private bool running, formvisible;
         private bool ISJOYCONRIGHT1, ISJOYCONLRIGHT2, isvalidhandle = false;
         private int number;
+        public bool reconnectingbool;
+        public double reconnectingcount;
+        public string path;
         public Form1 form1 = new Form1();
         public JoyconRight()
         {
@@ -102,6 +105,7 @@ namespace JoyconsRightAPI
                 try
                 {
                     Rhid_read_timeout(handleRight, report_bufRight, (UIntPtr)report_lenRight);
+                    reconnectingbool = false;
                 }
                 catch { Thread.Sleep(10); }
                 if (formvisible)
@@ -138,6 +142,7 @@ namespace JoyconsRightAPI
             {
                 if (!running)
                     break;
+                Reconnection();
                 ProcessButtonsRightJoycon();
                 Thread.Sleep(1);
             }
@@ -201,6 +206,47 @@ namespace JoyconsRightAPI
             }
             catch { }
         }
+        public void Reconnection()
+        {
+            if (reconnectingcount == 0)
+                reconnectingbool = true;
+            reconnectingcount++;
+            if (reconnectingcount >= 150f)
+            {
+                if (reconnectingbool)
+                {
+                    ReconnectionInit();
+                    AttachJoyRight(path);
+                    reconnectingcount = -150f;
+                }
+                else
+                    reconnectingcount = 0;
+            }
+        }
+        private void ReconnectionInit()
+        {
+            JoyconRightStickX = 0;
+            JoyconRightStickY = 0;
+            JoyconRightButtonSHOULDER_1 = false;
+            JoyconRightButtonSHOULDER_2 = false;
+            JoyconRightButtonSR = false;
+            JoyconRightButtonSL = false;
+            JoyconRightButtonDPAD_DOWN = false;
+            JoyconRightButtonDPAD_RIGHT = false;
+            JoyconRightButtonDPAD_UP = false;
+            JoyconRightButtonDPAD_LEFT = false;
+            JoyconRightButtonPLUS = false;
+            JoyconRightButtonHOME = false;
+            JoyconRightButtonSTICK = false;
+            JoyconRightButtonACC = false;
+            JoyconRightButtonSPA = false;
+            JoyconRightRollLeft = false;
+            JoyconRightRollRight = false;
+            JoyconRightAccelX = 0;
+            JoyconRightAccelY = 0;
+            JoyconRightGyroX = 0;
+            JoyconRightGyroY = 0;
+        }
         public const string vendor_id = "57e", vendor_id_ = "057e", product_r = "2007";
         public enum EFileAttributes : uint
         {
@@ -251,6 +297,7 @@ namespace JoyconsRightAPI
                     {
                         if (ISJOYCONRIGHT1)
                         {
+                            path = diDetail.DevicePath;
                             isvalidhandle = AttachJoyRight(diDetail.DevicePath);
                             if (isvalidhandle)
                             {
@@ -259,6 +306,7 @@ namespace JoyconsRightAPI
                         }
                         if (!ISJOYCONRIGHT1)
                         {
+                            path = diDetail.DevicePath;
                             isvalidhandle = AttachJoyRight(diDetail.DevicePath);
                             if (isvalidhandle)
                             {

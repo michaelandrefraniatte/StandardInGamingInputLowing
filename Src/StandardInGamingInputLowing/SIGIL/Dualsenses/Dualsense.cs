@@ -72,6 +72,8 @@ namespace DualSensesAPI
         public Vector3 InitDirectAnglesPS5, DirectAnglesPS5;
         private Stream mStream;
         public int number = 0;
+        public bool reconnectingbool;
+        public double reconnectingcount;
         public bool ISDS1 = false, ISDS2 = false, isvalidhandle = false;
         public string path;
         public bool running, formvisible, littleendian;
@@ -202,6 +204,7 @@ namespace DualSensesAPI
                 try
                 {
                     mStream.Read(dsdata, 0, dsdata.Length);
+                    reconnectingbool = false;
                 }
                 catch { Thread.Sleep(10); }
                 if (formvisible)
@@ -253,6 +256,7 @@ namespace DualSensesAPI
             {
                 if (!running)
                     break;
+                Reconnection();
                 ProcessStateLogic();
                 Thread.Sleep(1);
             }
@@ -339,6 +343,62 @@ namespace DualSensesAPI
         public Vec3 Gyro { get; private set; }
         public Vec3 Accelerometer { get; private set; }
         public bool IsHeadphoneConnected { get; private set; }
+        public void Reconnection()
+        {
+            if (reconnectingcount == 0)
+                reconnectingbool = true;
+            reconnectingcount++;
+            if (reconnectingcount >= 150f)
+            {
+                if (reconnectingbool)
+                {
+                    ReconnectionInit();
+                    Found(path);
+                    reconnectingcount = -150f;
+                }
+                else
+                    reconnectingcount = 0;
+            }
+        }
+        private void ReconnectionInit()
+        {
+            PS5ControllerLeftStickX = 0;
+            PS5ControllerLeftStickY = 0;
+            PS5ControllerRightStickX = 0;
+            PS5ControllerRightStickY = 0;
+            PS5ControllerLeftTriggerPosition = 0;
+            PS5ControllerRightTriggerPosition = 0;
+            PS5ControllerTouchX = 0;
+            PS5ControllerTouchY = 0;
+            PS5ControllerTouchOn = false;
+            PS5ControllerGyroX = 0;
+            PS5ControllerGyroY = 0;
+            PS5ControllerAccelX = 0;
+            PS5ControllerAccelY = 0;
+            PS5ControllerButtonCrossPressed = false;
+            PS5ControllerButtonCirclePressed = false;
+            PS5ControllerButtonSquarePressed = false;
+            PS5ControllerButtonTrianglePressed = false;
+            PS5ControllerButtonDPadUpPressed = false;
+            PS5ControllerButtonDPadRightPressed = false;
+            PS5ControllerButtonDPadDownPressed = false;
+            PS5ControllerButtonDPadLeftPressed = false;
+            PS5ControllerButtonL1Pressed = false;
+            PS5ControllerButtonR1Pressed = false;
+            PS5ControllerButtonL2Pressed = false;
+            PS5ControllerButtonR2Pressed = false;
+            PS5ControllerButtonL3Pressed = false;
+            PS5ControllerButtonR3Pressed = false;
+            PS5ControllerButtonCreatePressed = false;
+            PS5ControllerButtonMenuPressed = false;
+            PS5ControllerButtonLogoPressed = false;
+            PS5ControllerButtonTouchpadPressed = false;
+            PS5ControllerButtonFnLPressed = false;
+            PS5ControllerButtonFnRPressed = false;
+            PS5ControllerButtonBLPPressed = false;
+            PS5ControllerButtonBRPPressed = false;
+            PS5ControllerButtonMicPressed = false;
+        }
         private enum EFileAttributes : uint
         {
             Overlapped = 0x40000000,

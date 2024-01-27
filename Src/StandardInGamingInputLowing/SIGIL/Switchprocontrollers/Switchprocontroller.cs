@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
 using Switchprocontrollers;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SwitchProControllersAPI
 {
@@ -65,6 +66,9 @@ namespace SwitchProControllersAPI
         public bool running, formvisible;
         private bool ISSWITCHPROCONTROLLER1, ISSWITCHPROCONTROLLER2, isvalidhandle = false;
         private int number;
+        public bool reconnectingbool;
+        public double reconnectingcount;
+        public string path;
         public Form1 form1 = new Form1();
         public SwitchProController()
         {
@@ -98,6 +102,7 @@ namespace SwitchProControllersAPI
                 try
                 {
                     Prohid_read_timeout(handlePro, report_bufPro, (UIntPtr)report_lenPro);
+                    reconnectingbool = false;
                 }
                 catch { Thread.Sleep(10); }
                 if (formvisible)
@@ -139,6 +144,7 @@ namespace SwitchProControllersAPI
             {
                 if (!running)
                     break;
+                Reconnection();
                 ProcessButtonsAndSticksPro();
                 Thread.Sleep(1);
             }
@@ -227,6 +233,52 @@ namespace SwitchProControllersAPI
             }
             catch { }
         }
+        public void Reconnection()
+        {
+            if (reconnectingcount == 0)
+                reconnectingbool = true;
+            reconnectingcount++;
+            if (reconnectingcount >= 150f)
+            {
+                if (reconnectingbool)
+                {
+                    ReconnectionInit();
+                    AttachProController(path);
+                    reconnectingcount = -150f;
+                }
+                else
+                    reconnectingcount = 0;
+            }
+        }
+        private void ReconnectionInit()
+        {
+            ProControllerLeftStickX = 0;
+            ProControllerLeftStickY = 0;
+            ProControllerRightStickX = 0;
+            ProControllerRightStickY = 0;
+            ProControllerButtonSHOULDER_Left_1 = false;
+            ProControllerButtonSHOULDER_Left_2 = false;
+            ProControllerButtonDPAD_DOWN = false;
+            ProControllerButtonDPAD_RIGHT = false;
+            ProControllerButtonDPAD_UP = false;
+            ProControllerButtonDPAD_LEFT = false;
+            ProControllerButtonMINUS = false;
+            ProControllerButtonCAPTURE = false;
+            ProControllerButtonSTICK_Left = false;
+            ProControllerButtonSHOULDER_Right_1 = false;
+            ProControllerButtonSHOULDER_Right_2 = false;
+            ProControllerButtonA = false;
+            ProControllerButtonB = false;
+            ProControllerButtonX = false;
+            ProControllerButtonY = false;
+            ProControllerButtonPLUS = false;
+            ProControllerButtonHOME = false;
+            ProControllerButtonSTICK_Right = false;
+            ProControllerAccelX = 0;
+            ProControllerAccelY = 0;
+            ProControllerGyroX = 0;
+            ProControllerGyroY = 0;
+        }
         public const string vendor_id = "57e", vendor_id_ = "057e", product_pro = "2009";
         public enum EFileAttributes : uint
         {
@@ -269,6 +321,7 @@ namespace SwitchProControllersAPI
                     {
                         if (ISSWITCHPROCONTROLLER1)
                         {
+                            path = diDetail.DevicePath;
                             isvalidhandle = AttachProController(diDetail.DevicePath);
                             if (isvalidhandle)
                             {
@@ -277,6 +330,7 @@ namespace SwitchProControllersAPI
                         }
                         if (!ISSWITCHPROCONTROLLER1)
                         {
+                            path = diDetail.DevicePath;
                             isvalidhandle = AttachProController(diDetail.DevicePath);
                             if (isvalidhandle)
                             {
