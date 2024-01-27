@@ -19,18 +19,14 @@ namespace HidHandle
         /// <param name="hidApiService">Abstraction for Hid interaction</param>
         /// <param name="classGuid">Filters by specified class guid</param>
         /// <param name="readBufferSize">Override the input report size</param>
-        /// <param name="writeBufferSize">Override the output report size</param>
         /// <param name="getConnectedDeviceDefinitionsAsync">Override the default call for getting definitions</param>
-        /// <param name="writeTransferTransform">Given the Report Id and data supplied for the write, allow you to format the raw data that is sent to the device</param>
         /// <returns>A factory which enumerates and instantiates devices</returns>
         public static IDeviceFactory CreateWindowsHidDeviceFactory(
         this FilterDeviceDefinition filterDeviceDefinition,
         IHidApiService hidApiService = null,
         Guid? classGuid = null,
         ushort? readBufferSize = null,
-        ushort? writeBufferSize = null,
-        GetConnectedDeviceDefinitionsAsync getConnectedDeviceDefinitionsAsync = null,
-        Func<byte[], byte, byte[]> writeTransferTransform = null
+        GetConnectedDeviceDefinitionsAsync getConnectedDeviceDefinitionsAsync = null
             )
         {
             return CreateWindowsHidDeviceFactory(
@@ -38,9 +34,7 @@ namespace HidHandle
                 hidApiService,
                 classGuid,
                 readBufferSize,
-                writeBufferSize,
-                getConnectedDeviceDefinitionsAsync,
-                writeTransferTransform
+                getConnectedDeviceDefinitionsAsync
                 );
         }
 
@@ -51,18 +45,14 @@ namespace HidHandle
         /// <param name="hidApiService">Abstraction for Hid interaction</param>
         /// <param name="classGuid">Filters by specified class guid</param>
         /// <param name="readBufferSize">Override the input report size</param>
-        /// <param name="writeBufferSize">Override the output report size</param>
         /// <param name="getConnectedDeviceDefinitionsAsync">Override the default call for getting definitions</param>
-        /// <param name="writeTransferTransform">Given the Report Id and data supplied for the write, allow you to format the raw data that is sent to the device</param>
         /// <returns>A factory which enumerates and instantiates devices</returns>
         public static IDeviceFactory CreateWindowsHidDeviceFactory(
             this IEnumerable<FilterDeviceDefinition> filterDeviceDefinitions,
             IHidApiService hidApiService = null,
             Guid? classGuid = null,
             ushort? readBufferSize = null,
-            ushort? writeBufferSize = null,
-            GetConnectedDeviceDefinitionsAsync getConnectedDeviceDefinitionsAsync = null,
-            Func<byte[], byte, byte[]> writeTransferTransform = null
+            GetConnectedDeviceDefinitionsAsync getConnectedDeviceDefinitionsAsync = null
             )
         {
             if (filterDeviceDefinitions == null) throw new ArgumentNullException(nameof(filterDeviceDefinitions));
@@ -84,14 +74,12 @@ namespace HidHandle
 
             return new DeviceFactory(
                 getConnectedDeviceDefinitionsAsync,
-                (c) => Task.FromResult<IDevice>(new HidDevice
+                (c) => Task.FromResult(new HidDevice
                 (
                     new WindowsHidHandler(
                         c.DeviceId,
-                        writeBufferSize,
                         readBufferSize,
-                        hidApiService,
-                        writeTransferTransform)
+                        hidApiService)
                 )),
                 (c) => Task.FromResult(c.DeviceType == DeviceType.Hid));
         }

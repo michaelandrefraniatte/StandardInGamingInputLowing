@@ -23,7 +23,7 @@ namespace DualSensesAPI
         private byte miscByte;
         private byte btnBlock1, btnBlock2, btnBlock3;
         private byte[] dsdata = new byte[64];
-        public IDevice handle;
+        public HidDevice handle;
         public bool PS5ControllerButtonCrossPressed;
         public bool PS5ControllerButtonCirclePressed;
         public bool PS5ControllerButtonSquarePressed;
@@ -95,7 +95,6 @@ namespace DualSensesAPI
                     {
                         handle = await hidFactory.GetDeviceAsync((await deviceDefinitions).Skip(1).First());
                     }
-                    await handle.InitializeAsync();
                     mStream = handle.GetFileStream();
                 }
             }

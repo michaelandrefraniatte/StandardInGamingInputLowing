@@ -42,7 +42,7 @@ namespace HidHandle
             return _getConnectedDevicesAsync();
         }
 
-        public Task<IDevice> GetDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition)
+        public Task<HidDevice> GetDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition)
         {
             return connectedDeviceDefinition == null ?
                 throw new ArgumentNullException(nameof(connectedDeviceDefinition)) :

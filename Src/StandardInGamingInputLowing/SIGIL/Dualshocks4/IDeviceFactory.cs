@@ -16,11 +16,11 @@ namespace HidHandle
         Task<IEnumerable<ConnectedDeviceDefinition>> GetConnectedDeviceDefinitionsAsync();
 
         /// <summary>
-        /// Given a <see cref="ConnectedDeviceDefinition"/> returns a <see cref="IDevice"/>
+        /// Given a <see cref="ConnectedDeviceDefinition"/> returns a <see cref="HidDevice"/>
         /// </summary>
         /// <param name="connectedDeviceDefinition"></param>
         /// <returns></returns>
-        Task<IDevice> GetDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition);
+        Task<HidDevice> GetDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition);
 
         /// <summary>
         /// Whether or not the factory supports the given device definition
