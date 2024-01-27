@@ -12,14 +12,14 @@ namespace HidHandle
         /// Gets the definition of connected devices
         /// </summary>
         /// <returns></returns>
-        IEnumerable<ConnectedDeviceDefinition> GetConnectedDeviceDefinitionsAsync();
+        IEnumerable<ConnectedDeviceDefinition> GetConnectedDeviceDefinitions();
 
         /// <summary>
         /// Given a <see cref="ConnectedDeviceDefinition"/> returns a <see cref="HidDevice"/>
         /// </summary>
         /// <param name="connectedDeviceDefinition"></param>
         /// <returns></returns>
-        HidDevice GetDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition);
+        HidDevice GetDevice(ConnectedDeviceDefinition connectedDeviceDefinition);
 
         /// <summary>
         /// Whether or not the factory supports the given device definition

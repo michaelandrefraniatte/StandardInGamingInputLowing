@@ -36,7 +36,6 @@ namespace HidHandle
         /// </summary>
         public string Label { get; }
 
-
         public Guid? ClassGuid { get; }
     }
 }

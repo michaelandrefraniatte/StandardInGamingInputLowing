@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 
 namespace HidHandle
 {
-    public delegate Task<bool> IsMatch(ConnectedDeviceDefinition connectedDeviceDefinition);
-
     public class WindowsDeviceEnumerator
     {
 
@@ -20,15 +18,14 @@ namespace HidHandle
 
         public WindowsDeviceEnumerator(
             Guid classGuid,
-            GetDeviceDefinition getDeviceDefinition,
-            IsMatch isMatch
+            GetDeviceDefinition getDeviceDefinition
             )
         {
             _classGuid = classGuid;
             _getDeviceDefinition = getDeviceDefinition;
         }
 
-        public IEnumerable<ConnectedDeviceDefinition> GetConnectedDeviceDefinitionsAsync()
+        public IEnumerable<ConnectedDeviceDefinition> GetConnectedDeviceDefinitions()
         {
             try
             {

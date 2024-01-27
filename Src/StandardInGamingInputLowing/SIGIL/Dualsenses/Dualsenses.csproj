@@ -53,7 +53,6 @@
     <Compile Include="ApiService.cs" />
     <Compile Include="ConnectedDeviceDefinition.cs" />
     <Compile Include="Delegates.cs" />
-    <Compile Include="DeviceExtensions.cs" />
     <Compile Include="DeviceFactory.cs" />
     <Compile Include="DeviceType.cs" />
     <Compile Include="Dualsense.cs" />

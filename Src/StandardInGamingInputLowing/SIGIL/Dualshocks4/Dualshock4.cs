@@ -81,14 +81,14 @@ namespace DualShocks4API
         {
             using (var hidFactory = new FilterDeviceDefinition((uint)int.Parse(vendor_id, System.Globalization.NumberStyles.HexNumber), (uint)int.Parse(product_id, System.Globalization.NumberStyles.HexNumber), label: label_id).CreateWindowsHidDeviceFactory())
             {
-                var deviceDefinitions = hidFactory.GetConnectedDeviceDefinitionsAsync();
+                var deviceDefinitions = hidFactory.GetConnectedDeviceDefinitions();
                 if (number == 0 | number == 1)
                 {
-                    handle = hidFactory.GetDeviceAsync(deviceDefinitions.First());
+                    handle = hidFactory.GetDevice(deviceDefinitions.First());
                 }
                 else if (number == 2)
                 {
-                    handle = hidFactory.GetDeviceAsync(deviceDefinitions.Skip(1).First());
+                    handle = hidFactory.GetDevice(deviceDefinitions.Skip(1).First());
                 }
                 mStream = handle.GetFileStream();
             }

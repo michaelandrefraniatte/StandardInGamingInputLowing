@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HidHandle
 {
@@ -12,7 +10,6 @@ namespace HidHandle
     /// </summary>
     public static class WindowsHidDeviceFactoryExtensions
     {
-
         /// <summary>
         /// Creates a <see cref="IDeviceFactory"/> for Windows Hid devices
         /// </summary>
@@ -27,7 +24,7 @@ namespace HidHandle
         IHidApiService hidApiService = null,
         Guid? classGuid = null,
         ushort? readBufferSize = null,
-        GetConnectedDeviceDefinitionsAsync getConnectedDeviceDefinitionsAsync = null
+        GetConnectedDeviceDefinitions getConnectedDeviceDefinitionsAsync = null
             )
         {
             return CreateWindowsHidDeviceFactory(
@@ -53,7 +50,7 @@ namespace HidHandle
             IHidApiService hidApiService = null,
             Guid? classGuid = null,
             ushort? readBufferSize = null,
-            GetConnectedDeviceDefinitionsAsync getConnectedDeviceDefinitionsAsync = null
+            GetConnectedDeviceDefinitions getConnectedDeviceDefinitionsAsync = null
             )
         {
             if (filterDeviceDefinitions == null) throw new ArgumentNullException(nameof(filterDeviceDefinitions));
@@ -66,11 +63,10 @@ namespace HidHandle
             {
                 var windowsDeviceEnumerator = new WindowsDeviceEnumerator(
                     classGuid.Value,
-                    (d, guid) => GetDeviceDefinition(d, selectedHidApiService),
-                    c => Task.FromResult(!filterDeviceDefinitions.Any() || filterDeviceDefinitions.FirstOrDefault(f => f.IsDefinitionMatch(c, DeviceType.Hid)) != null)
+                    (d, guid) => GetDeviceDefinition(d, selectedHidApiService)
                     );
 
-                getConnectedDeviceDefinitionsAsync = windowsDeviceEnumerator.GetConnectedDeviceDefinitionsAsync;
+                getConnectedDeviceDefinitionsAsync = windowsDeviceEnumerator.GetConnectedDeviceDefinitions;
             }
 
             return new DeviceFactory(
@@ -99,5 +95,4 @@ namespace HidHandle
             }
         }
     }
-
 }

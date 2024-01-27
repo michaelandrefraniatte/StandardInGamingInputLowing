@@ -9,20 +9,19 @@ namespace HidHandle
         {
         }
 
-        private readonly GetConnectedDeviceDefinitionsAsync _getConnectedDevicesAsync;
-        private readonly GetDeviceAsync _getDevice;
+        private readonly GetConnectedDeviceDefinitions _getConnectedDevicesAsync;
+        private readonly GetDevice _getDevice;
         private readonly Func<ConnectedDeviceDefinition, bool> _supportsDevice;
         
         /// <summary>
         /// Constructs a DeviceFactory
         /// </summary>
-        /// <param name="loggerFactory">The factory for creating new loggers for each device</param>
         /// <param name="getConnectedDevicesAsync">A delegate that returns matching connected device definitions</param>
         /// <param name="getDevice">A delegate to construct the device based on the specified connected device definition</param>
         /// <param name="supportsDevice">A delegate that returns whether or not this factory supports the connected device</param>
         public DeviceFactory(
-            GetConnectedDeviceDefinitionsAsync getConnectedDevicesAsync,
-            GetDeviceAsync getDevice,
+            GetConnectedDeviceDefinitions getConnectedDevicesAsync,
+            GetDevice getDevice,
             Func<ConnectedDeviceDefinition, bool> supportsDevice
             )
         {
@@ -36,12 +35,12 @@ namespace HidHandle
             return _supportsDevice(connectedDeviceDefinition);
         }
 
-        public IEnumerable<ConnectedDeviceDefinition> GetConnectedDeviceDefinitionsAsync()
+        public IEnumerable<ConnectedDeviceDefinition> GetConnectedDeviceDefinitions()
         {
             return _getConnectedDevicesAsync();
         }
 
-        public HidDevice GetDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition)
+        public HidDevice GetDevice(ConnectedDeviceDefinition connectedDeviceDefinition)
         {
             return connectedDeviceDefinition == null ?
                 throw new ArgumentNullException(nameof(connectedDeviceDefinition)) :
