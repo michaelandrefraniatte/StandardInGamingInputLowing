@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using HidHandle;
 using System.Reactive.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -8,11 +7,28 @@ using System.Numerics;
 using Dualshocks4;
 using System.Threading;
 using System.IO;
+using Microsoft.Win32.SafeHandles;
 
 namespace DualShocks4API
 {
     public class DualShock4
     {
+        [DllImport("hid.dll")]
+        private static extern void HidD_GetHidGuid(out Guid gHid);
+        [DllImport("hid.dll")]
+        private extern static bool HidD_SetOutputReport(IntPtr HidDeviceObject, byte[] lpReportBuffer, uint ReportBufferLength);
+        [DllImport("setupapi.dll")]
+        private static extern IntPtr SetupDiGetClassDevs(ref Guid ClassGuid, string Enumerator, IntPtr hwndParent, UInt32 Flags);
+        [DllImport("setupapi.dll")]
+        private static extern Boolean SetupDiEnumDeviceInterfaces(IntPtr hDevInfo, IntPtr devInvo, ref Guid interfaceClassGuid, Int32 memberIndex, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData);
+        [DllImport("setupapi.dll")]
+        private static extern Boolean SetupDiGetDeviceInterfaceDetail(IntPtr hDevInfo, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData, IntPtr deviceInterfaceDetailData, UInt32 deviceInterfaceDetailDataSize, out UInt32 requiredSize, IntPtr deviceInfoData);
+        [DllImport("setupapi.dll")]
+        private static extern Boolean SetupDiGetDeviceInterfaceDetail(IntPtr hDevInfo, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData, ref SP_DEVICE_INTERFACE_DETAIL_DATA deviceInterfaceDetailData, UInt32 deviceInterfaceDetailDataSize, out UInt32 requiredSize, IntPtr deviceInfoData);
+        [DllImport("Kernel32.dll")]
+        private static extern SafeFileHandle CreateFile(string fileName, [MarshalAs(UnmanagedType.U4)] FileAccess fileAccess, [MarshalAs(UnmanagedType.U4)] FileShare fileShare, IntPtr securityAttributes, [MarshalAs(UnmanagedType.U4)] FileMode creationDisposition, [MarshalAs(UnmanagedType.U4)] uint flags, IntPtr template);
+        [DllImport("Kernel32.dll")]
+        private static extern IntPtr CreateFile(string fileName, System.IO.FileAccess fileAccess, System.IO.FileShare fileShare, IntPtr securityAttributes, System.IO.FileMode creationDisposition, EFileAttributes flags, IntPtr template);
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
         [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
@@ -23,7 +39,7 @@ namespace DualShocks4API
         private byte miscByte;
         private byte btnBlock1, btnBlock2, btnBlock3;
         private byte[] ds4data = new byte[64];
-        public HidDevice handle;
+        public SafeFileHandle handle;
         public bool PS4ControllerButtonCrossPressed;
         public bool PS4ControllerButtonCirclePressed;
         public bool PS4ControllerButtonSquarePressed;
@@ -51,6 +67,9 @@ namespace DualShocks4API
         public Vector3 acc_gPS4 = new Vector3();
         public Vector3 InitDirectAnglesPS4, DirectAnglesPS4;
         private Stream mStream;
+        public int number = 0;
+        public bool ISDS41 = false, ISDS42 = false;
+        public string path;
         public bool running, formvisible, littleendian;
         public Form1 form1 = new Form1();
         public DualShock4()
@@ -76,22 +95,6 @@ namespace DualShocks4API
             mStream.Dispose();
             handle.Close();
             handle.Dispose();
-        }
-        public void Scan(string vendor_id, string product_id, string label_id, int number = 0)
-        {
-            using (var hidFactory = new FilterDeviceDefinition((uint)int.Parse(vendor_id, System.Globalization.NumberStyles.HexNumber), (uint)int.Parse(product_id, System.Globalization.NumberStyles.HexNumber), label: label_id).CreateWindowsHidDeviceFactory())
-            {
-                var deviceDefinitions = hidFactory.GetConnectedDeviceDefinitions();
-                if (number == 0 | number == 1)
-                {
-                    handle = hidFactory.GetDevice(deviceDefinitions.First());
-                }
-                else if (number == 2)
-                {
-                    handle = hidFactory.GetDevice(deviceDefinitions.Skip(1).First());
-                }
-                mStream = handle.GetFileStream();
-            }
         }
         public void ProcessStateLogic()
         {
@@ -316,6 +319,78 @@ namespace DualShocks4API
         public Vec3 Gyro { get; private set; }
         public Vec3 Accelerometer { get; private set; }
         public bool IsHeadphoneConnected { get; private set; }
+        private enum EFileAttributes : uint
+        {
+            Overlapped = 0x40000000,
+            Normal = 0x80
+        };
+        struct SP_DEVICE_INTERFACE_DATA
+        {
+            public int cbSize;
+            public Guid InterfaceClassGuid;
+            public int Flags;
+            public IntPtr RESERVED;
+        }
+        struct SP_DEVICE_INTERFACE_DETAIL_DATA
+        {
+            public UInt32 cbSize;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
+            public string DevicePath;
+        }
+        public bool Scan(string vendor_id, string product_id, string label_id, int number = 0)
+        {
+            this.number = number;
+            ISDS41 = false;
+            ISDS42 = false;
+            int index = 0;
+            Guid guid;
+            HidD_GetHidGuid(out guid);
+            IntPtr hDevInfo = SetupDiGetClassDevs(ref guid, null, new IntPtr(), 0x00000010);
+            SP_DEVICE_INTERFACE_DATA diData = new SP_DEVICE_INTERFACE_DATA();
+            diData.cbSize = Marshal.SizeOf(diData);
+            while (SetupDiEnumDeviceInterfaces(hDevInfo, new IntPtr(), ref guid, index, ref diData))
+            {
+                UInt32 size;
+                SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, new IntPtr(), 0, out size, new IntPtr());
+                SP_DEVICE_INTERFACE_DETAIL_DATA diDetail = new SP_DEVICE_INTERFACE_DETAIL_DATA();
+                diDetail.cbSize = 5;
+                if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new IntPtr()))
+                {
+                    if (diDetail.DevicePath.ToLower().Contains(vendor_id.ToLower()) & diDetail.DevicePath.ToLower().Contains(product_id.ToLower()) & !diDetail.DevicePath.ToLower().Contains("rev_"))
+                    {
+                        if (ISDS41)
+                        {
+                            path = diDetail.DevicePath;
+                            if (number == 2)
+                            {
+                                Found(path);
+                            }
+                            ISDS42 = true;
+                        }
+                        if (!ISDS41)
+                        {
+                            path = diDetail.DevicePath;
+                            if (number == 0 | number == 1)
+                            {
+                                Found(path);
+                            }
+                            ISDS41 = true;
+                            if (number == 0)
+                                return true;
+                        }
+                        if (ISDS41 & ISDS42)
+                            return true;
+                    }
+                }
+                index++;
+            }
+            return false;
+        }
+        public void Found(string path)
+        {
+            handle = CreateFile(path, FileAccess.ReadWrite, FileShare.ReadWrite, IntPtr.Zero, FileMode.Open, (uint)EFileAttributes.Overlapped, IntPtr.Zero);
+            mStream = new FileStream(handle, FileAccess.Read, 64, true);
+        }
     }
     internal static class DualShock4ByteConverterExtensions
     {
