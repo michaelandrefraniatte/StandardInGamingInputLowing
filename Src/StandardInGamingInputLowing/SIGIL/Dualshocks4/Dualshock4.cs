@@ -361,10 +361,7 @@ namespace DualShocks4API
                         if (ISDS41)
                         {
                             path = diDetail.DevicePath;
-                            if (number == 2)
-                            {
-                                isvalidhandle = Found(path);
-                            }
+                            isvalidhandle = Found(path);
                             if (isvalidhandle)
                             {
                                 ISDS42 = true;
@@ -373,14 +370,11 @@ namespace DualShocks4API
                         if (!ISDS41)
                         {
                             path = diDetail.DevicePath;
-                            if (number == 0 | number == 1)
-                            {
-                                isvalidhandle = Found(path);
-                            }
+                            isvalidhandle = Found(path);
                             if (isvalidhandle)
                             {
                                 ISDS41 = true;
-                                if (number == 0)
+                                if (number == 0 | number == 1)
                                     return true;
                             }
                         }

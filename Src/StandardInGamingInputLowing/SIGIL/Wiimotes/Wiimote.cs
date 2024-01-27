@@ -427,12 +427,9 @@ namespace WiiMotesAPI
                         if (ISWIIMOTE1)
                         {
                             path = diDetail.DevicePath;
-                            if (number == 2)
-                            {
-                                isvalidhandle = WiimoteFound(path);
-                                isvalidhandle = WiimoteFound(path);
-                                isvalidhandle = WiimoteFound(path);
-                            }
+                            isvalidhandle = WiimoteFound(path);
+                            isvalidhandle = WiimoteFound(path);
+                            isvalidhandle = WiimoteFound(path);
                             if (isvalidhandle)
                             {
                                 ISWIIMOTE2 = true;
@@ -441,16 +438,13 @@ namespace WiiMotesAPI
                         if (!ISWIIMOTE1)
                         {
                             path = diDetail.DevicePath;
-                            if (number == 0 | number == 1)
-                            {
-                                isvalidhandle = WiimoteFound(path);
-                                isvalidhandle = WiimoteFound(path);
-                                isvalidhandle = WiimoteFound(path);
-                            }
+                            isvalidhandle = WiimoteFound(path);
+                            isvalidhandle = WiimoteFound(path);
+                            isvalidhandle = WiimoteFound(path);
                             if (isvalidhandle)
                             {
                                 ISWIIMOTE1 = true;
-                                if (number == 0)
+                                if (number == 0 | number == 1)
                                     return true;
                             }
                         }

@@ -251,8 +251,7 @@ namespace JoyconsLeftAPI
                     {
                         if (ISJOYCONLEFT1)
                         {
-                            if (number == 2)
-                                isvalidhandle = AttachJoyLeft(diDetail.DevicePath);
+                            isvalidhandle = AttachJoyLeft(diDetail.DevicePath);
                             if (isvalidhandle)
                             {
                                 ISJOYCONLEFT2 = true;
@@ -260,12 +259,11 @@ namespace JoyconsLeftAPI
                         }
                         if (!ISJOYCONLEFT1)
                         {
-                            if (number == 0 | number == 1)
-                                isvalidhandle = AttachJoyLeft(diDetail.DevicePath);
+                            isvalidhandle = AttachJoyLeft(diDetail.DevicePath);
                             if (isvalidhandle)
                             {
                                 ISJOYCONLEFT1 = true;
-                                if (number == 0)
+                                if (number == 0 | number == 1)
                                     return true;
                             }
                         }

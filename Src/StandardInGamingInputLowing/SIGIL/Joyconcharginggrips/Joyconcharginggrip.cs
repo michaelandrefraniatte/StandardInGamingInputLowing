@@ -364,8 +364,7 @@ namespace JoyconChargingGripsAPI
                         {
                             if (ISLEFT)
                             {
-                                if (number == 2)
-                                    isvalidhandle = AttachGripRightController(diDetail.DevicePath);
+                                isvalidhandle = AttachGripRightController(diDetail.DevicePath);
                                 if (isvalidhandle)
                                 {
                                     ISRIGHT = true;
@@ -373,8 +372,7 @@ namespace JoyconChargingGripsAPI
                             }
                             if (!ISLEFT)
                             {
-                                if (number == 2)
-                                    isvalidhandle = AttachGripLeftController(diDetail.DevicePath);
+                                isvalidhandle = AttachGripLeftController(diDetail.DevicePath);
                                 if (isvalidhandle)
                                 {
                                     ISLEFT = true;
@@ -387,8 +385,7 @@ namespace JoyconChargingGripsAPI
                         {
                             if (ISLEFT)
                             {
-                                if (number == 0 | number == 1)
-                                    isvalidhandle = AttachGripRightController(diDetail.DevicePath);
+                                isvalidhandle = AttachGripRightController(diDetail.DevicePath);
                                 if (isvalidhandle)
                                 {
                                     ISRIGHT = true;
@@ -396,8 +393,7 @@ namespace JoyconChargingGripsAPI
                             }
                             if (!ISLEFT)
                             {
-                                if (number == 0 | number == 1)
-                                    isvalidhandle = AttachGripLeftController(diDetail.DevicePath);
+                                isvalidhandle = AttachGripLeftController(diDetail.DevicePath);
                                 if (isvalidhandle)
                                 {
                                     ISLEFT = true;
@@ -408,7 +404,7 @@ namespace JoyconChargingGripsAPI
                                 ISLEFT = false;
                                 ISRIGHT = false;
                                 ISJOYCONCHARGINGGRIP1 = true;
-                                if (number == 0)
+                                if (number == 0 | number == 1)
                                     return true;
                             }
                         }

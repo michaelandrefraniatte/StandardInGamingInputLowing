@@ -269,8 +269,7 @@ namespace SwitchProControllersAPI
                     {
                         if (ISSWITCHPROCONTROLLER1)
                         {
-                            if (number == 2)
-                                isvalidhandle = AttachProController(diDetail.DevicePath);
+                            isvalidhandle = AttachProController(diDetail.DevicePath);
                             if (isvalidhandle)
                             {
                                 ISSWITCHPROCONTROLLER2 = true;
@@ -278,12 +277,11 @@ namespace SwitchProControllersAPI
                         }
                         if (!ISSWITCHPROCONTROLLER1)
                         {
-                            if (number == 0 | number == 1)
-                                isvalidhandle = AttachProController(diDetail.DevicePath);
+                            isvalidhandle = AttachProController(diDetail.DevicePath);
                             if (isvalidhandle)
                             {
                                 ISSWITCHPROCONTROLLER1 = true;
-                                if (number == 0)
+                                if (number == 0 | number == 1)
                                     return true;
                             }
                         }
