@@ -81,22 +81,20 @@ namespace DualSensesAPI
             handle.Close();
             handle.Dispose();
         }
-        public async void Scan(string vendor_id, string product_id, string label_id, int number = 0)
+        public void Scan(string vendor_id, string product_id, string label_id, int number = 0)
         {
             using (var hidFactory = new FilterDeviceDefinition((uint)int.Parse(vendor_id, System.Globalization.NumberStyles.HexNumber), (uint)int.Parse(product_id, System.Globalization.NumberStyles.HexNumber), label: label_id).CreateWindowsHidDeviceFactory())
             {
-                using (var deviceDefinitions = hidFactory.GetConnectedDeviceDefinitionsAsync())
+                var deviceDefinitions = hidFactory.GetConnectedDeviceDefinitionsAsync();
+                if (number == 0 | number == 1)
                 {
-                    if (number == 0 | number == 1)
-                    {
-                        handle = await hidFactory.GetDeviceAsync((await deviceDefinitions).First());
-                    }
-                    else if (number == 2)
-                    {
-                        handle = await hidFactory.GetDeviceAsync((await deviceDefinitions).Skip(1).First());
-                    }
-                    mStream = handle.GetFileStream();
+                    handle = hidFactory.GetDeviceAsync(deviceDefinitions.First());
                 }
+                else if (number == 2)
+                {
+                    handle = hidFactory.GetDeviceAsync(deviceDefinitions.Skip(1).First());
+                }
+                mStream = handle.GetFileStream();
             }
         }
         public void ProcessStateLogic()

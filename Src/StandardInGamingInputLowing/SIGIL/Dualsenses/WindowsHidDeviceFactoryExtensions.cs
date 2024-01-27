@@ -12,6 +12,7 @@ namespace HidHandle
     /// </summary>
     public static class WindowsHidDeviceFactoryExtensions
     {
+
         /// <summary>
         /// Creates a <see cref="IDeviceFactory"/> for Windows Hid devices
         /// </summary>
@@ -74,14 +75,14 @@ namespace HidHandle
 
             return new DeviceFactory(
                 getConnectedDeviceDefinitionsAsync,
-                (c) => Task.FromResult(new HidDevice
+                (c) => new HidDevice
                 (
                     new WindowsHidHandler(
                         c.DeviceId,
                         readBufferSize,
                         hidApiService)
-                )),
-                (c) => Task.FromResult(c.DeviceType == DeviceType.Hid));
+                ),
+                (c) => c.DeviceType == DeviceType.Hid);
         }
 
         private static ConnectedDeviceDefinition GetDeviceDefinition(string deviceId, IHidApiService HidService)

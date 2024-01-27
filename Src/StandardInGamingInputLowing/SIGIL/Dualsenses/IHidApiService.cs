@@ -15,6 +15,5 @@ namespace HidHandle
         string GetProduct(SafeFileHandle safeFileHandle);
         string GetSerialNumber(SafeFileHandle safeFileHandle);
         Stream OpenRead(SafeFileHandle readSafeFileHandle, ushort readBufferSize);
-        Stream OpenWrite(SafeFileHandle writeSafeFileHandle, ushort writeBufferSize);
     }
 }

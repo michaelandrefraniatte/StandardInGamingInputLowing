@@ -52,7 +52,6 @@ namespace HidHandle
             return new ConnectedDeviceDefinition(
                 deviceId,
                 DeviceType.Hid,
-                writeBufferSize: hidCollectionCapabilities.OutputReportByteLength,
                 readBufferSize: hidCollectionCapabilities.InputReportByteLength,
                 manufacturer: manufacturer,
                 productName: product,
@@ -104,8 +103,6 @@ namespace HidHandle
 
         public Stream OpenRead(SafeFileHandle readSafeFileHandle, ushort readBufferSize) => new FileStream(readSafeFileHandle, FileAccess.Read, readBufferSize, true);
 
-        public Stream OpenWrite(SafeFileHandle writeSafeFileHandle, ushort writeBufferSize) => new FileStream(writeSafeFileHandle, FileAccess.ReadWrite, writeBufferSize, true);
-        
         private static string GetHidString(SafeFileHandle safeFileHandle, GetString getString, [CallerMemberName] string callMemberName = null)
         {
             try

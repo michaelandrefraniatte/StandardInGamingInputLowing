@@ -2,11 +2,8 @@
 
 namespace HidHandle
 {
-    public sealed class FilterDeviceDefinition : IDisposable
+    public sealed class FilterDeviceDefinition
     {
-        public void Dispose()
-        {
-        }
 
         public FilterDeviceDefinition(
             uint? vendorId = null,

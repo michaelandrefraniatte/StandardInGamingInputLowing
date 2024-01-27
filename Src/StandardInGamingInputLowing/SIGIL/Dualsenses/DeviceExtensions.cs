@@ -13,9 +13,11 @@ namespace HidHandle
         /// <returns>True if the filterDevice matches the actualDevice</returns>
         public static bool IsDefinitionMatch(this FilterDeviceDefinition filterDevice, ConnectedDeviceDefinition actualDevice, DeviceType deviceType)
         {
-            if (actualDevice == null) throw new ArgumentNullException(nameof(actualDevice));
+            if (actualDevice == null) 
+                throw new ArgumentNullException(nameof(actualDevice));
 
-            if (filterDevice == null) return true;
+            if (filterDevice == null) 
+                return true;
 
             var vendorIdPasses = !filterDevice.VendorId.HasValue || filterDevice.VendorId == actualDevice.VendorId;
             var productIdPasses = !filterDevice.ProductId.HasValue || filterDevice.ProductId == actualDevice.ProductId;

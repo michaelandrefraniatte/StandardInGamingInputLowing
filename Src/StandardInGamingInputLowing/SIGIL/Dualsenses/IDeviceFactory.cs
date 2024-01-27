@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace HidHandle
 {
@@ -13,20 +12,20 @@ namespace HidHandle
         /// Gets the definition of connected devices
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<ConnectedDeviceDefinition>> GetConnectedDeviceDefinitionsAsync();
+        IEnumerable<ConnectedDeviceDefinition> GetConnectedDeviceDefinitionsAsync();
 
         /// <summary>
         /// Given a <see cref="ConnectedDeviceDefinition"/> returns a <see cref="HidDevice"/>
         /// </summary>
         /// <param name="connectedDeviceDefinition"></param>
         /// <returns></returns>
-        Task<HidDevice> GetDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition);
+        HidDevice GetDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition);
 
         /// <summary>
         /// Whether or not the factory supports the given device definition
         /// </summary>
         /// <param name="connectedDeviceDefinition"></param>
         /// <returns></returns>
-        Task<bool> SupportsDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition);
+        bool SupportsDeviceAsync(ConnectedDeviceDefinition connectedDeviceDefinition);
     }
 }

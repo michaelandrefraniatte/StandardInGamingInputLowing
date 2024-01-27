@@ -12,9 +12,9 @@ namespace HidHandle
 
     public class WindowsDeviceEnumerator
     {
+
         private readonly Guid _classGuid;
         private readonly GetDeviceDefinition _getDeviceDefinition;
-        private readonly IsMatch _isMatch;
 
         //TODO: Inject a windows API abstraction here for unit testing purposes
 
@@ -26,86 +26,81 @@ namespace HidHandle
         {
             _classGuid = classGuid;
             _getDeviceDefinition = getDeviceDefinition;
-            _isMatch = isMatch;
         }
 
-        public Task<IEnumerable<ConnectedDeviceDefinition>> GetConnectedDeviceDefinitionsAsync()
-            => Task.Run<IEnumerable<ConnectedDeviceDefinition>>(async () =>
+        public IEnumerable<ConnectedDeviceDefinition> GetConnectedDeviceDefinitionsAsync()
+        {
+            try
             {
-                try
+                var deviceDefinitions = new List<ConnectedDeviceDefinition>();
+                var spDeviceInterfaceData = new SpDeviceInterfaceData();
+                var spDeviceInfoData = new SpDeviceInfoData();
+                var spDeviceInterfaceDetailData = new SpDeviceInterfaceDetailData();
+                spDeviceInterfaceData.CbSize = (uint)Marshal.SizeOf(spDeviceInterfaceData);
+                spDeviceInfoData.CbSize = (uint)Marshal.SizeOf(spDeviceInfoData);
+
+                const int flags = DigcfDeviceinterface | DigcfPresent;
+
+                var copyOfClassGuid = new Guid(_classGuid.ToString());
+
+                var devicesHandle = SetupDiGetClassDevs(ref copyOfClassGuid, IntPtr.Zero, IntPtr.Zero, flags);
+
+                spDeviceInterfaceDetailData.CbSize = IntPtr.Size == 8 ? 8 : 4 + Marshal.SystemDefaultCharSize;
+
+                var i = -1;
+
+                while (true)
                 {
-
-                    var deviceDefinitions = new List<ConnectedDeviceDefinition>();
-                    var spDeviceInterfaceData = new SpDeviceInterfaceData();
-                    var spDeviceInfoData = new SpDeviceInfoData();
-                    var spDeviceInterfaceDetailData = new SpDeviceInterfaceDetailData();
-                    spDeviceInterfaceData.CbSize = (uint)Marshal.SizeOf(spDeviceInterfaceData);
-                    spDeviceInfoData.CbSize = (uint)Marshal.SizeOf(spDeviceInfoData);
-
-                    const int flags = DigcfDeviceinterface | DigcfPresent;
-
-                    var copyOfClassGuid = new Guid(_classGuid.ToString());
-
-                    var devicesHandle = SetupDiGetClassDevs(ref copyOfClassGuid, IntPtr.Zero, IntPtr.Zero, flags);
-
-                    spDeviceInterfaceDetailData.CbSize = IntPtr.Size == 8 ? 8 : 4 + Marshal.SystemDefaultCharSize;
-
-                    var i = -1;
-
-                    while (true)
+                    try
                     {
-                        try
+                        i++;
+
+                        var isSuccess = SetupDiEnumDeviceInterfaces(devicesHandle, IntPtr.Zero,
+                            ref copyOfClassGuid, (uint)i, ref spDeviceInterfaceData);
+                        if (!isSuccess)
                         {
-                            i++;
+                            var errorCode = Marshal.GetLastWin32Error();
 
-                            var isSuccess = SetupDiEnumDeviceInterfaces(devicesHandle, IntPtr.Zero,
-                                ref copyOfClassGuid, (uint)i, ref spDeviceInterfaceData);
-                            if (!isSuccess)
+                            if (errorCode == ERROR_NO_MORE_ITEMS)
                             {
-                                var errorCode = Marshal.GetLastWin32Error();
-
-                                if (errorCode == ERROR_NO_MORE_ITEMS)
-                                {
-                                    break;
-                                }
+                                break;
                             }
-
-                            isSuccess = SetupDiGetDeviceInterfaceDetail(devicesHandle,
-                                ref spDeviceInterfaceData, ref spDeviceInterfaceDetailData, 256, out _,
-                                ref spDeviceInfoData);
-                            if (!isSuccess)
-                            {
-                                var errorCode = Marshal.GetLastWin32Error();
-
-                                if (errorCode == ERROR_NO_MORE_ITEMS)
-                                {
-                                    break;
-                                }
-                            }
-
-                            var connectedDeviceDefinition = _getDeviceDefinition(spDeviceInterfaceDetailData.DevicePath, copyOfClassGuid);
-
-                            if (connectedDeviceDefinition == null)
-                            {
-                                continue;
-                            }
-
-                            if (!await _isMatch(connectedDeviceDefinition)) continue;
-
-                            deviceDefinitions.Add(connectedDeviceDefinition);
                         }
-                        catch { }
+
+                        isSuccess = SetupDiGetDeviceInterfaceDetail(devicesHandle,
+                            ref spDeviceInterfaceData, ref spDeviceInterfaceDetailData, 256, out _,
+                            ref spDeviceInfoData);
+                        if (!isSuccess)
+                        {
+                            var errorCode = Marshal.GetLastWin32Error();
+
+                            if (errorCode == ERROR_NO_MORE_ITEMS)
+                            {
+                                break;
+                            }
+                        }
+
+                        var connectedDeviceDefinition = _getDeviceDefinition(spDeviceInterfaceDetailData.DevicePath, copyOfClassGuid);
+
+                        if (connectedDeviceDefinition == null)
+                        {
+                            continue;
+                        }
+
+                        deviceDefinitions.Add(connectedDeviceDefinition);
                     }
-
-                    _ = SetupDiDestroyDeviceInfoList(devicesHandle);
-
-                    return new ReadOnlyCollection<ConnectedDeviceDefinition>(deviceDefinitions);
+                    catch { }
                 }
-                catch
-                {
-                    throw;
-                }
-            });
+
+                _ = SetupDiDestroyDeviceInfoList(devicesHandle);
+
+                return new ReadOnlyCollection<ConnectedDeviceDefinition>(deviceDefinitions);
+            }
+            catch
+            {
+                throw;
+            }
+        }
 
         public const int DigcfDeviceinterface = 16;
         public const int DigcfPresent = 2;

@@ -70,11 +70,6 @@ namespace HidHandle
         public ushort? VersionNumber { get; }
 
         /// <summary>
-        /// The maximum size of data to be written to the device
-        /// </summary>
-        public int? WriteBufferSize { get; }
-
-        /// <summary>
         /// The maximum size of data to be read from the device
         /// </summary>
         public int? ReadBufferSize { get; }
@@ -90,7 +85,6 @@ namespace HidHandle
             ushort? usage = null,
             ushort? usagePage = null,
             ushort? versionNumber = null,
-            int? writeBufferSize = null,
             int? readBufferSize = null,
             string label = null,
             Guid? classGuid = null
@@ -112,7 +106,6 @@ namespace HidHandle
             Usage = usage;
             UsagePage = usagePage;
             VersionNumber = versionNumber;
-            WriteBufferSize = writeBufferSize;
             ReadBufferSize = readBufferSize;
             Label = label;
         }
