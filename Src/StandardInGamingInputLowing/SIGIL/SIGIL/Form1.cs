@@ -107,6 +107,7 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"\bNtSetTimerResolution\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bList\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bScan\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bms\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bCurrentResolution\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bDesiredResolution\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bSetResolution\b"));
@@ -1495,6 +1496,7 @@ namespace SIGIL
                 "NtSetTimerResolution",
                 "List",
                 "Scan",
+                "ms",
                 "CurrentResolution",
                 "DesiredResolution",
                 "SetResolution",
