@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
 using Joyconsleft;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Collections.Generic;
 
 namespace JoyconsLeftAPI
 {
@@ -69,11 +69,13 @@ namespace JoyconsLeftAPI
         public float acc_gcalibrationLeftX, acc_gcalibrationLeftY, acc_gcalibrationLeftZ;
         public bool ISLEFT = true;
         private bool running, formvisible;
-        private bool ISJOYCONLEFT1, ISJOYCONLEFT2, isvalidhandle = false;
+        private bool isvalidhandle = false;
         private int number;
         public bool reconnectingbool;
         public double reconnectingcount;
         public string path;
+        private static List<string> paths = new List<string>();
+        private static List<SafeFileHandle> handles = new List<SafeFileHandle>();
         public Form1 form1 = new Form1();
         public JoyconLeft()
         {
@@ -267,7 +269,7 @@ namespace JoyconsLeftAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool Scan(int number = 0)
+        public void Scan(int number = 0)
         {
             this.number = number;
             if (number == 0)
@@ -278,51 +280,38 @@ namespace JoyconsLeftAPI
                 do
                     Thread.Sleep(1);
                 while (!joyconsleftconnect());
-            ISJOYCONLEFT1 = false;
-            ISJOYCONLEFT2 = false;
-            int index = 0;
-            System.Guid guid;
-            HidD_GetHidGuid(out guid);
-            System.IntPtr hDevInfo = SetupDiGetClassDevs(ref guid, null, new System.IntPtr(), 0x00000010);
-            SP_DEVICE_INTERFACE_DATA diData = new SP_DEVICE_INTERFACE_DATA();
-            diData.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(diData);
-            while (SetupDiEnumDeviceInterfaces(hDevInfo, new System.IntPtr(), ref guid, index, ref diData))
+            if (number <= 1)
             {
-                System.UInt32 size;
-                SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, new System.IntPtr(), 0, out size, new System.IntPtr());
-                SP_DEVICE_INTERFACE_DETAIL_DATA diDetail = new SP_DEVICE_INTERFACE_DETAIL_DATA();
-                diDetail.cbSize = 5;
-                if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new System.IntPtr()))
+                int index = 0;
+                System.Guid guid;
+                HidD_GetHidGuid(out guid);
+                System.IntPtr hDevInfo = SetupDiGetClassDevs(ref guid, null, new System.IntPtr(), 0x00000010);
+                SP_DEVICE_INTERFACE_DATA diData = new SP_DEVICE_INTERFACE_DATA();
+                diData.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(diData);
+                while (SetupDiEnumDeviceInterfaces(hDevInfo, new System.IntPtr(), ref guid, index, ref diData))
                 {
-                    if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & diDetail.DevicePath.Contains(product_l))
+                    System.UInt32 size;
+                    SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, new System.IntPtr(), 0, out size, new System.IntPtr());
+                    SP_DEVICE_INTERFACE_DETAIL_DATA diDetail = new SP_DEVICE_INTERFACE_DETAIL_DATA();
+                    diDetail.cbSize = 5;
+                    if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new System.IntPtr()))
                     {
-                        if (ISJOYCONLEFT1)
+                        if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & diDetail.DevicePath.Contains(product_l))
                         {
                             path = diDetail.DevicePath;
                             isvalidhandle = AttachJoyLeft(diDetail.DevicePath);
                             if (isvalidhandle)
                             {
-                                ISJOYCONLEFT2 = true;
+                                paths.Add(path);
+                                handles.Add(handleLeft);
                             }
                         }
-                        if (!ISJOYCONLEFT1)
-                        {
-                            path = diDetail.DevicePath;
-                            isvalidhandle = AttachJoyLeft(diDetail.DevicePath);
-                            if (isvalidhandle)
-                            {
-                                ISJOYCONLEFT1 = true;
-                                if (number == 0 | number == 1)
-                                    return true;
-                            }
-                        }
-                        if (ISJOYCONLEFT1 & ISJOYCONLEFT2)
-                            return true;
                     }
+                    index++;
                 }
-                index++;
             }
-            return false;
+            path = paths[number < 2 ? 0 : number - 1];
+            handleLeft = handles[number < 2 ? 0 : number - 1];
         }
         public bool AttachJoyLeft(string path)
         {

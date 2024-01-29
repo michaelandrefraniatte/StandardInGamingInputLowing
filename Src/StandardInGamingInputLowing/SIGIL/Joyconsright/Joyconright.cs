@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
 using Joyconsright;
+using System.Collections.Generic;
 
 namespace JoyconsRightAPI
 {
@@ -68,11 +69,13 @@ namespace JoyconsRightAPI
         public float acc_gcalibrationRightX, acc_gcalibrationRightY, acc_gcalibrationRightZ;
         public bool ISRIGHT = true;
         private bool running, formvisible;
-        private bool ISJOYCONRIGHT1, ISJOYCONLRIGHT2, isvalidhandle = false;
+        private bool isvalidhandle = false;
         private int number;
         public bool reconnectingbool;
         public double reconnectingcount;
         public string path;
+        private static List<string> paths = new List<string>();
+        private static List<SafeFileHandle> handles = new List<SafeFileHandle>();
         public Form1 form1 = new Form1();
         public JoyconRight()
         {
@@ -266,7 +269,7 @@ namespace JoyconsRightAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool Scan(int number = 0)
+        public void Scan(int number = 0)
         {
             this.number = number;
             if (number == 0)
@@ -277,51 +280,38 @@ namespace JoyconsRightAPI
                 do
                     Thread.Sleep(1);
                 while (!joyconsrightconnect());
-            ISJOYCONRIGHT1 = false;
-            ISJOYCONLRIGHT2 = false;
-            int index = 0;
-            System.Guid guid;
-            HidD_GetHidGuid(out guid);
-            System.IntPtr hDevInfo = SetupDiGetClassDevs(ref guid, null, new System.IntPtr(), 0x00000010);
-            SP_DEVICE_INTERFACE_DATA diData = new SP_DEVICE_INTERFACE_DATA();
-            diData.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(diData);
-            while (SetupDiEnumDeviceInterfaces(hDevInfo, new System.IntPtr(), ref guid, index, ref diData))
+            if (number <= 1)
             {
-                System.UInt32 size;
-                SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, new System.IntPtr(), 0, out size, new System.IntPtr());
-                SP_DEVICE_INTERFACE_DETAIL_DATA diDetail = new SP_DEVICE_INTERFACE_DETAIL_DATA();
-                diDetail.cbSize = 5;
-                if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new System.IntPtr()))
+                int index = 0;
+                System.Guid guid;
+                HidD_GetHidGuid(out guid);
+                System.IntPtr hDevInfo = SetupDiGetClassDevs(ref guid, null, new System.IntPtr(), 0x00000010);
+                SP_DEVICE_INTERFACE_DATA diData = new SP_DEVICE_INTERFACE_DATA();
+                diData.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(diData);
+                while (SetupDiEnumDeviceInterfaces(hDevInfo, new System.IntPtr(), ref guid, index, ref diData))
                 {
-                    if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & diDetail.DevicePath.Contains(product_r))
+                    System.UInt32 size;
+                    SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, new System.IntPtr(), 0, out size, new System.IntPtr());
+                    SP_DEVICE_INTERFACE_DETAIL_DATA diDetail = new SP_DEVICE_INTERFACE_DETAIL_DATA();
+                    diDetail.cbSize = 5;
+                    if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new System.IntPtr()))
                     {
-                        if (ISJOYCONRIGHT1)
+                        if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & diDetail.DevicePath.Contains(product_r))
                         {
                             path = diDetail.DevicePath;
                             isvalidhandle = AttachJoyRight(diDetail.DevicePath);
                             if (isvalidhandle)
                             {
-                                ISJOYCONLRIGHT2 = true;
+                                paths.Add(path);
+                                handles.Add(handleRight);
                             }
                         }
-                        if (!ISJOYCONRIGHT1)
-                        {
-                            path = diDetail.DevicePath;
-                            isvalidhandle = AttachJoyRight(diDetail.DevicePath);
-                            if (isvalidhandle)
-                            {
-                                ISJOYCONRIGHT1 = true;
-                                if (number == 0 | number == 1)
-                                    return true;
-                            }
-                        }
-                        if (ISJOYCONRIGHT1 & ISJOYCONLRIGHT2)
-                            return true;
                     }
+                    index++;
                 }
-                index++;
             }
-            return false;
+            path = paths[number < 2 ? 0 : number - 1];
+            handleRight = handles[number < 2 ? 0 : number - 1];
         }
         public bool AttachJoyRight(string path)
         {

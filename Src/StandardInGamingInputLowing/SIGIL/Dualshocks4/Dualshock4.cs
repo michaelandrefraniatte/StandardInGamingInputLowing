@@ -8,6 +8,7 @@ using Dualshocks4;
 using System.Threading;
 using System.IO;
 using Microsoft.Win32.SafeHandles;
+using System.Collections.Generic;
 
 namespace DualShocks4API
 {
@@ -70,9 +71,11 @@ namespace DualShocks4API
         public int number = 0;
         public bool reconnectingbool;
         public double reconnectingcount;
-        public bool ISDS41 = false, ISDS42 = false, isvalidhandle = false;
+        public bool isvalidhandle = false;
         public string path;
         public bool running, formvisible, littleendian;
+        private static List<string> paths = new List<string>();
+        private static List<Stream> mStreams = new List<Stream>();
         public Form1 form1 = new Form1();
         public DualShock4()
         {
@@ -393,54 +396,41 @@ namespace DualShocks4API
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool Scan(string vendor_id, string product_id, string label_id, int number = 0)
+        public void Scan(string vendor_id, string product_id, string label_id, int number = 0)
         {
             this.number = number;
-            ISDS41 = false;
-            ISDS42 = false;
-            int index = 0;
-            Guid guid;
-            HidD_GetHidGuid(out guid);
-            IntPtr hDevInfo = SetupDiGetClassDevs(ref guid, null, new IntPtr(), 0x00000010);
-            SP_DEVICE_INTERFACE_DATA diData = new SP_DEVICE_INTERFACE_DATA();
-            diData.cbSize = Marshal.SizeOf(diData);
-            while (SetupDiEnumDeviceInterfaces(hDevInfo, new IntPtr(), ref guid, index, ref diData))
+            if (number <= 1)
             {
-                UInt32 size;
-                SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, new IntPtr(), 0, out size, new IntPtr());
-                SP_DEVICE_INTERFACE_DETAIL_DATA diDetail = new SP_DEVICE_INTERFACE_DETAIL_DATA();
-                diDetail.cbSize = 5;
-                if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new IntPtr()))
+                int index = 0;
+                Guid guid;
+                HidD_GetHidGuid(out guid);
+                IntPtr hDevInfo = SetupDiGetClassDevs(ref guid, null, new IntPtr(), 0x00000010);
+                SP_DEVICE_INTERFACE_DATA diData = new SP_DEVICE_INTERFACE_DATA();
+                diData.cbSize = Marshal.SizeOf(diData);
+                while (SetupDiEnumDeviceInterfaces(hDevInfo, new IntPtr(), ref guid, index, ref diData))
                 {
-                    if (diDetail.DevicePath.ToLower().Contains(vendor_id.ToLower()) & diDetail.DevicePath.ToLower().Contains(product_id.ToLower()))
+                    UInt32 size;
+                    SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, new IntPtr(), 0, out size, new IntPtr());
+                    SP_DEVICE_INTERFACE_DETAIL_DATA diDetail = new SP_DEVICE_INTERFACE_DETAIL_DATA();
+                    diDetail.cbSize = 5;
+                    if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new IntPtr()))
                     {
-                        if (ISDS41)
+                        if (diDetail.DevicePath.ToLower().Contains(vendor_id.ToLower()) & diDetail.DevicePath.ToLower().Contains(product_id.ToLower()))
                         {
                             path = diDetail.DevicePath;
                             isvalidhandle = Found(path);
                             if (isvalidhandle)
                             {
-                                ISDS42 = true;
+                                paths.Add(path);
+                                mStreams.Add(mStream);
                             }
                         }
-                        if (!ISDS41)
-                        {
-                            path = diDetail.DevicePath;
-                            isvalidhandle = Found(path);
-                            if (isvalidhandle)
-                            {
-                                ISDS41 = true;
-                                if (number == 0 | number == 1)
-                                    return true;
-                            }
-                        }
-                        if (ISDS41 & ISDS42)
-                            return true;
                     }
+                    index++;
                 }
-                index++;
             }
-            return false;
+            path = paths[number < 2 ? 0 : number - 1];
+            mStream = mStreams[number < 2 ? 0 : number - 1];
         }
         public bool Found(string path)
         {

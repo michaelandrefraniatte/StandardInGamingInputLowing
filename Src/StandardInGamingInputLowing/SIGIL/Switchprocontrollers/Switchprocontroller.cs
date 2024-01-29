@@ -6,7 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
 using Switchprocontrollers;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace SwitchProControllersAPI
 {
@@ -64,11 +65,13 @@ namespace SwitchProControllersAPI
         public bool ProControllerButtonSHOULDER_Left_1, ProControllerButtonSHOULDER_Left_2, ProControllerButtonSHOULDER_Right_1, ProControllerButtonSHOULDER_Right_2, ProControllerButtonDPAD_DOWN, ProControllerButtonDPAD_RIGHT, ProControllerButtonDPAD_UP, ProControllerButtonDPAD_LEFT, ProControllerButtonA, ProControllerButtonB, ProControllerButtonX, ProControllerButtonY, ProControllerButtonMINUS, ProControllerButtonPLUS, ProControllerButtonSTICK_Left, ProControllerButtonSTICK_Right, ProControllerButtonCAPTURE, ProControllerButtonHOME;
         public float acc_gcalibrationProX, acc_gcalibrationProY, acc_gcalibrationProZ;
         public bool running, formvisible;
-        private bool ISSWITCHPROCONTROLLER1, ISSWITCHPROCONTROLLER2, isvalidhandle = false;
+        private bool isvalidhandle = false;
         private int number;
         public bool reconnectingbool;
         public double reconnectingcount;
         public string path;
+        private static List<string> paths = new List<string>();
+        private static List<SafeFileHandle> handles = new List<SafeFileHandle>();
         public Form1 form1 = new Form1();
         public SwitchProController()
         {
@@ -298,54 +301,41 @@ namespace SwitchProControllersAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool Scan(int number = 0)
+        public void Scan(int number = 0)
         {
             this.number = number;
-            ISSWITCHPROCONTROLLER1 = false;
-            ISSWITCHPROCONTROLLER2 = false;
-            int index = 0;
-            System.Guid guid;
-            HidD_GetHidGuid(out guid);
-            System.IntPtr hDevInfo = SetupDiGetClassDevs(ref guid, null, new System.IntPtr(), 0x00000010);
-            SP_DEVICE_INTERFACE_DATA diData = new SP_DEVICE_INTERFACE_DATA();
-            diData.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(diData);
-            while (SetupDiEnumDeviceInterfaces(hDevInfo, new System.IntPtr(), ref guid, index, ref diData))
+            if (number <= 1)
             {
-                System.UInt32 size;
-                SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, new System.IntPtr(), 0, out size, new System.IntPtr());
-                SP_DEVICE_INTERFACE_DETAIL_DATA diDetail = new SP_DEVICE_INTERFACE_DETAIL_DATA();
-                diDetail.cbSize = 5;
-                if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new System.IntPtr()))
+                int index = 0;
+                System.Guid guid;
+                HidD_GetHidGuid(out guid);
+                System.IntPtr hDevInfo = SetupDiGetClassDevs(ref guid, null, new System.IntPtr(), 0x00000010);
+                SP_DEVICE_INTERFACE_DATA diData = new SP_DEVICE_INTERFACE_DATA();
+                diData.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(diData);
+                while (SetupDiEnumDeviceInterfaces(hDevInfo, new System.IntPtr(), ref guid, index, ref diData))
                 {
-                    if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & diDetail.DevicePath.Contains(product_pro))
+                    System.UInt32 size;
+                    SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, new System.IntPtr(), 0, out size, new System.IntPtr());
+                    SP_DEVICE_INTERFACE_DETAIL_DATA diDetail = new SP_DEVICE_INTERFACE_DETAIL_DATA();
+                    diDetail.cbSize = 5;
+                    if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new System.IntPtr()))
                     {
-                        if (ISSWITCHPROCONTROLLER1)
+                        if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & diDetail.DevicePath.Contains(product_pro))
                         {
                             path = diDetail.DevicePath;
                             isvalidhandle = AttachProController(diDetail.DevicePath);
                             if (isvalidhandle)
                             {
-                                ISSWITCHPROCONTROLLER2 = true;
+                                paths.Add(path);
+                                handles.Add(handlePro);
                             }
                         }
-                        if (!ISSWITCHPROCONTROLLER1)
-                        {
-                            path = diDetail.DevicePath;
-                            isvalidhandle = AttachProController(diDetail.DevicePath);
-                            if (isvalidhandle)
-                            {
-                                ISSWITCHPROCONTROLLER1 = true;
-                                if (number == 0 | number == 1)
-                                    return true;
-                            }
-                        }
-                        if (ISSWITCHPROCONTROLLER1 & ISSWITCHPROCONTROLLER2)
-                            return true;
                     }
+                    index++;
                 }
-                index++;
             }
-            return false;
+            path = paths[number < 2 ? 0 : number - 1];
+            handlePro = handles[number < 2 ? 0 : number - 1];
         }
         private bool AttachProController(string path)
         {

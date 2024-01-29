@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
 using Joyconcharginggrips;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Collections.Generic;
 
 namespace JoyconChargingGripsAPI
 {
@@ -84,11 +84,13 @@ namespace JoyconChargingGripsAPI
         public bool JoyconRightButtonSHOULDER_1, JoyconRightButtonSHOULDER_2, JoyconRightButtonSR, JoyconRightButtonSL, JoyconRightButtonDPAD_DOWN, JoyconRightButtonDPAD_RIGHT, JoyconRightButtonDPAD_UP, JoyconRightButtonDPAD_LEFT, JoyconRightButtonPLUS, JoyconRightButtonSTICK, JoyconRightButtonHOME;
         public float acc_gcalibrationRightX, acc_gcalibrationRightY, acc_gcalibrationRightZ;
         public bool ISLEFT, ISRIGHT, running, formvisible;
-        private bool ISJOYCONCHARGINGGRIP1, ISJOYCONCHARGINGGRIP2, isvalidhandle = false;
+        private bool isvalidhandle = false;
         private int number;
         public bool reconnectingboolleft, reconnectingboolright;
         public double reconnectingcountleft, reconnectingcountright;
         public string pathleft, pathright;
+        private static List<string> pathsleft = new List<string>(), pathsright = new List<string>();
+        private static List<SafeFileHandle> handlesLeft = new List<SafeFileHandle>(), handlesRight = new List<SafeFileHandle>();
         public Form1 form1 = new Form1();
         public JoyconChargingGrip()
         {
@@ -427,30 +429,28 @@ namespace JoyconChargingGripsAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool Scan(int number = 0)
+        public void Scan(int number = 0)
         {
             this.number = number;
             ISLEFT = false;
             ISRIGHT = false;
-            ISJOYCONCHARGINGGRIP1 = false;
-            ISJOYCONCHARGINGGRIP2 = false;
-            int index = 0;
-            System.Guid guid;
-            HidD_GetHidGuid(out guid);
-            System.IntPtr hDevInfo = SetupDiGetClassDevs(ref guid, null, new System.IntPtr(), 0x00000010);
-            SP_DEVICE_INTERFACE_DATA diData = new SP_DEVICE_INTERFACE_DATA();
-            diData.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(diData);
-            while (SetupDiEnumDeviceInterfaces(hDevInfo, new System.IntPtr(), ref guid, index, ref diData))
+            if (number <= 1)
             {
-                System.UInt32 size;
-                SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, new System.IntPtr(), 0, out size, new System.IntPtr());
-                SP_DEVICE_INTERFACE_DETAIL_DATA diDetail = new SP_DEVICE_INTERFACE_DETAIL_DATA();
-                diDetail.cbSize = 5;
-                if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new System.IntPtr()))
+                int index = 0;
+                System.Guid guid;
+                HidD_GetHidGuid(out guid);
+                System.IntPtr hDevInfo = SetupDiGetClassDevs(ref guid, null, new System.IntPtr(), 0x00000010);
+                SP_DEVICE_INTERFACE_DATA diData = new SP_DEVICE_INTERFACE_DATA();
+                diData.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(diData);
+                while (SetupDiEnumDeviceInterfaces(hDevInfo, new System.IntPtr(), ref guid, index, ref diData))
                 {
-                    if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & diDetail.DevicePath.Contains(product_grip))
+                    System.UInt32 size;
+                    SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, new System.IntPtr(), 0, out size, new System.IntPtr());
+                    SP_DEVICE_INTERFACE_DETAIL_DATA diDetail = new SP_DEVICE_INTERFACE_DETAIL_DATA();
+                    diDetail.cbSize = 5;
+                    if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new System.IntPtr()))
                     {
-                        if (ISJOYCONCHARGINGGRIP1)
+                        if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & diDetail.DevicePath.Contains(product_grip))
                         {
                             if (ISLEFT)
                             {
@@ -458,6 +458,8 @@ namespace JoyconChargingGripsAPI
                                 isvalidhandle = AttachGripRightController(diDetail.DevicePath);
                                 if (isvalidhandle)
                                 {
+                                    pathsright.Add(pathright);
+                                    handlesRight.Add(handleRight);
                                     ISRIGHT = true;
                                 }
                             }
@@ -467,29 +469,8 @@ namespace JoyconChargingGripsAPI
                                 isvalidhandle = AttachGripLeftController(diDetail.DevicePath);
                                 if (isvalidhandle)
                                 {
-                                    ISLEFT = true;
-                                }
-                            }
-                            if (ISLEFT & ISRIGHT)
-                                ISJOYCONCHARGINGGRIP2 = true;
-                        }
-                        if (!ISJOYCONCHARGINGGRIP1)
-                        {
-                            if (ISLEFT)
-                            {
-                                pathright = diDetail.DevicePath;
-                                isvalidhandle = AttachGripRightController(diDetail.DevicePath);
-                                if (isvalidhandle)
-                                {
-                                    ISRIGHT = true;
-                                }
-                            }
-                            if (!ISLEFT)
-                            {
-                                pathleft = diDetail.DevicePath;
-                                isvalidhandle = AttachGripLeftController(diDetail.DevicePath);
-                                if (isvalidhandle)
-                                {
+                                    pathsleft.Add(pathleft);
+                                    handlesLeft.Add(handleLeft);
                                     ISLEFT = true;
                                 }
                             }
@@ -497,18 +478,18 @@ namespace JoyconChargingGripsAPI
                             {
                                 ISLEFT = false;
                                 ISRIGHT = false;
-                                ISJOYCONCHARGINGGRIP1 = true;
-                                if (number == 0 | number == 1)
-                                    return true;
                             }
                         }
-                        if (ISJOYCONCHARGINGGRIP1 & ISJOYCONCHARGINGGRIP2)
-                            return true;
                     }
+                    index++;
                 }
-                index++;
             }
-            return false;
+            ISLEFT = true;
+            ISRIGHT = true;
+            pathleft = pathsleft[number < 2 ? 0 : number - 1];
+            handleLeft = handlesLeft[number < 2 ? 0 : number - 1];
+            pathright = pathsright[number < 2 ? 0 : number - 1];
+            handleRight = handlesRight[number < 2 ? 0 : number - 1];
         }
         private bool AttachGripLeftController(string path)
         {

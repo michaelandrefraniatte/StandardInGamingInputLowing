@@ -57,8 +57,10 @@ namespace WiiMotesAPI
         public double irxc, iryc, irx0, iry0, irx1, iry1, irx2, iry2, irx3, iry3, irx, iry, WiimoteIRSensors0X, WiimoteIRSensors0Y, WiimoteIRSensors1X, WiimoteIRSensors1Y, WiimoteRawValuesX, WiimoteRawValuesY, WiimoteRawValuesZ, calibrationinit, WiimoteIRSensors0Xcam, WiimoteIRSensors0Ycam, WiimoteIRSensors1Xcam, WiimoteIRSensors1Ycam, WiimoteIRSensorsXcam, WiimoteIRSensorsYcam;
         public bool WiimoteIR0foundcam, WiimoteIR1foundcam, WiimoteIRswitch, WiimoteIR1found, WiimoteIR0found, WiimoteButtonStateA, WiimoteButtonStateB, WiimoteButtonStateMinus, WiimoteButtonStateHome, WiimoteButtonStatePlus, WiimoteButtonStateOne, WiimoteButtonStateTwo, WiimoteButtonStateUp, WiimoteButtonStateDown, WiimoteButtonStateLeft, WiimoteButtonStateRight, WiimoteNunchuckStateC, WiimoteNunchuckStateZ;
         public double WiimoteIR0notfound, stickviewxinit, stickviewyinit, WiimoteNunchuckStateRawValuesX, WiimoteNunchuckStateRawValuesY, WiimoteNunchuckStateRawValuesZ, WiimoteNunchuckStateRawJoystickX, WiimoteNunchuckStateRawJoystickY, centery;
-        private bool ISWIIMOTE1, ISWIIMOTE2, isvalidhandle = false;
+        private bool isvalidhandle = false;
         private int number;
+        private static List<string> paths = new List<string>();
+        private static List<FileStream> mStreams = new List<FileStream>();
         public Form1 form1 = new Form1();
         public WiiMote()
         {
@@ -393,7 +395,7 @@ namespace WiiMotesAPI
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]
             public string DevicePath;
         }
-        public bool Scan(int irmode, double centery, int number = 0)
+        public void Scan(int irmode, double centery, int number = 0)
         {
             this.irmode = irmode;
             this.centery = centery;
@@ -406,25 +408,23 @@ namespace WiiMotesAPI
                 do
                     Thread.Sleep(1);
                 while (!wiimotesconnect());
-            ISWIIMOTE1 = false;
-            ISWIIMOTE2 = false;
-            int index = 0;
-            Guid guid;
-            HidD_GetHidGuid(out guid);
-            IntPtr hDevInfo = SetupDiGetClassDevs(ref guid, null, new IntPtr(), 0x00000010);
-            SP_DEVICE_INTERFACE_DATA diData = new SP_DEVICE_INTERFACE_DATA();
-            diData.cbSize = Marshal.SizeOf(diData);
-            while (SetupDiEnumDeviceInterfaces(hDevInfo, new IntPtr(), ref guid, index, ref diData))
+            if (number <= 1)
             {
-                UInt32 size;
-                SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, new IntPtr(), 0, out size, new IntPtr());
-                SP_DEVICE_INTERFACE_DETAIL_DATA diDetail = new SP_DEVICE_INTERFACE_DETAIL_DATA();
-                diDetail.cbSize = 5;
-                if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new IntPtr()))
+                int index = 0;
+                Guid guid;
+                HidD_GetHidGuid(out guid);
+                IntPtr hDevInfo = SetupDiGetClassDevs(ref guid, null, new IntPtr(), 0x00000010);
+                SP_DEVICE_INTERFACE_DATA diData = new SP_DEVICE_INTERFACE_DATA();
+                diData.cbSize = Marshal.SizeOf(diData);
+                while (SetupDiEnumDeviceInterfaces(hDevInfo, new IntPtr(), ref guid, index, ref diData))
                 {
-                    if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & (diDetail.DevicePath.Contains(product_id) | diDetail.DevicePath.Contains(product_id_)))
+                    UInt32 size;
+                    SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, new IntPtr(), 0, out size, new IntPtr());
+                    SP_DEVICE_INTERFACE_DETAIL_DATA diDetail = new SP_DEVICE_INTERFACE_DETAIL_DATA();
+                    diDetail.cbSize = 5;
+                    if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new IntPtr()))
                     {
-                        if (ISWIIMOTE1)
+                        if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & (diDetail.DevicePath.Contains(product_id) | diDetail.DevicePath.Contains(product_id_)))
                         {
                             path = diDetail.DevicePath;
                             isvalidhandle = WiimoteFound(path);
@@ -432,29 +432,16 @@ namespace WiiMotesAPI
                             isvalidhandle = WiimoteFound(path);
                             if (isvalidhandle)
                             {
-                                ISWIIMOTE2 = true;
+                                paths.Add(path);
+                                mStreams.Add(mStream);
                             }
                         }
-                        if (!ISWIIMOTE1)
-                        {
-                            path = diDetail.DevicePath;
-                            isvalidhandle = WiimoteFound(path);
-                            isvalidhandle = WiimoteFound(path);
-                            isvalidhandle = WiimoteFound(path);
-                            if (isvalidhandle)
-                            {
-                                ISWIIMOTE1 = true;
-                                if (number == 0 | number == 1)
-                                    return true;
-                            }
-                        }
-                        if (ISWIIMOTE1 & ISWIIMOTE2)
-                            return true;
                     }
+                    index++;
                 }
-                index++;
             }
-            return false;
+            path = paths[number < 2 ? 0 : number - 1];
+            mStream = mStreams[number < 2 ? 0 : number - 1];
         }
         public bool WiimoteFound(string path)
         {
