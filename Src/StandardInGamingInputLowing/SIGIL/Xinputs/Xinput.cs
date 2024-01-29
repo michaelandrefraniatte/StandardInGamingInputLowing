@@ -75,7 +75,7 @@ namespace XInputsAPI
         {
             Task.Run(() => taskD());
         }
-        private Controller[] controller = new Controller[] { null };
+        private Controller[] controller = new Controller[] { null, null, null, null };
         private SharpDX.XInput.State xistate;
         private int xinum = 0;
         public bool ControllerButtonAPressed;
@@ -103,19 +103,15 @@ namespace XInputsAPI
             try
             {
                 this.number = number;
-                controller = new Controller[] { null, null };
+                controller = new Controller[] { null, null, null, null };
                 xinum = 0;
-                var controllers = new[] { new Controller(UserIndex.One), new Controller(UserIndex.Two) };
+                var controllers = new[] { new Controller(UserIndex.One), new Controller(UserIndex.Two), new Controller(UserIndex.Three), new Controller(UserIndex.Four) };
                 foreach (var selectControler in controllers)
                 {
                     if (selectControler.IsConnected)
                     {
                         controller[xinum] = selectControler;
                         xinum++;
-                        if (xinum >= 2)
-                        {
-                            break;
-                        }
                     }
                 }
             }
@@ -131,7 +127,7 @@ namespace XInputsAPI
         }
         private void ControllerProcess()
         {
-            int inc = number < 2 ? 0 : 1;
+            int inc = number < 2 ? 0 : number - 1;
             xistate = controller[inc].GetState();
             if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.A))
                 ControllerButtonAPressed = true;

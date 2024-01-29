@@ -201,8 +201,8 @@ namespace KeyboardInputsAPI
         {
             Task.Run(() => taskK());
         }
-        private Keyboard[] keyboard = new Keyboard[] { null };
-        private Guid[] keyboardGuid = new Guid[] { Guid.Empty };
+        private Keyboard[] keyboard = new Keyboard[] { null, null, null, null };
+        private Guid[] keyboardGuid = new Guid[] { Guid.Empty, Guid.Empty, Guid.Empty, Guid.Empty };
         private int knum = 0;
         public bool KeyboardKeyEscape;
         public bool KeyboardKeyD1;
@@ -355,15 +355,13 @@ namespace KeyboardInputsAPI
             {
                 this.number = number;
                 directInput = new DirectInput();
-                keyboard = new Keyboard[] { null, null };
-                keyboardGuid = new Guid[] { Guid.Empty, Guid.Empty };
+                keyboard = new Keyboard[] { null, null, null, null };
+                keyboardGuid = new Guid[] { Guid.Empty, Guid.Empty, Guid.Empty, Guid.Empty };
                 knum = 0;
                 foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Keyboard, DeviceEnumerationFlags.AllDevices))
                 {
                     keyboardGuid[knum] = deviceInstance.InstanceGuid;
                     knum++;
-                    if (knum >= 2)
-                        break;
                 }
             }
             catch { }
@@ -373,18 +371,16 @@ namespace KeyboardInputsAPI
             }
             else
             {
-                for (int inc = 0; inc < knum; inc++)
-                {
-                    keyboard[inc] = new Keyboard(directInput);
-                    keyboard[inc].Properties.BufferSize = 128;
-                    keyboard[inc].Acquire();
-                }
+                int inc = number < 2 ? 0 : number - 1;
+                keyboard[inc] = new Keyboard(directInput);
+                keyboard[inc].Properties.BufferSize = 128;
+                keyboard[inc].Acquire();
                 return true;
             }
         }
         public void KeyboardInputProcess()
         {
-            int inc = number < 2 ? 0 : 1;
+            int inc = number < 2 ? 0 : number - 1;
             keyboard[inc].Poll();
             var datas = keyboard[inc].GetBufferedData();
             foreach (var state in datas)

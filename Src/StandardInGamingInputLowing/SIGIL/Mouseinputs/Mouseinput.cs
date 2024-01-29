@@ -74,8 +74,8 @@ namespace MouseInputsAPI
             System.Threading.Thread.Sleep(100);
             MouseAxisZ = 0;
         }
-        private Mouse[] mouse = new Mouse[] { null };
-        private Guid[] mouseGuid = new Guid[] { Guid.Empty };
+        private Mouse[] mouse = new Mouse[] { null, null, null, null };
+        private Guid[] mouseGuid = new Guid[] { Guid.Empty, Guid.Empty, Guid.Empty, Guid.Empty };
         private int mnum = 0;
         public bool MouseButtons0;
         public bool MouseButtons1;
@@ -94,15 +94,13 @@ namespace MouseInputsAPI
             {
                 this.number = number;
                 directInput = new DirectInput();
-                mouse = new Mouse[] { null, null };
-                mouseGuid = new Guid[] { Guid.Empty, Guid.Empty };
+                mouse = new Mouse[] { null, null, null, null };
+                mouseGuid = new Guid[] { Guid.Empty, Guid.Empty, Guid.Empty, Guid.Empty };
                 mnum = 0;
                 foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Mouse, DeviceEnumerationFlags.AllDevices))
                 {
                     mouseGuid[mnum] = deviceInstance.InstanceGuid;
                     mnum++;
-                    if (mnum >= 2)
-                        break;
                 }
             }
             catch { }
@@ -112,18 +110,16 @@ namespace MouseInputsAPI
             }
             else
             {
-                for (int inc = 0; inc < mnum; inc++)
-                {
-                    mouse[inc] = new Mouse(directInput);
-                    mouse[inc].Properties.BufferSize = 128;
-                    mouse[inc].Acquire();
-                }
+                int inc = number < 2 ? 0 : number - 1;
+                mouse[inc] = new Mouse(directInput);
+                mouse[inc].Properties.BufferSize = 128;
+                mouse[inc].Acquire();
                 return true;
             }
         }
         public void MouseInputProcess()
         {
-            int inc = number < 2 ? 0 : 1;
+            int inc = number < 2 ? 0 : number - 1;
             mouse[inc].Poll();
             var datas = mouse[inc].GetBufferedData();
             foreach (var state in datas)

@@ -57,18 +57,12 @@ namespace controllers
             {
                 _deviceHandle = GetHandle(devicePath);
             }
-            if (number == 0 | number == 1)
-                PlugIn(1);
-            else if (number == 2)
-                PlugIn(2);
+            PlugIn(number < 2 ? 1 : number);
         }
         public void Disconnect()
         {
             Set(false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0, 0, false);
-            if (number == 0 | number == 1)
-                Unplug(1);
-            else if (number == 2)
-                Unplug(2);
+            Unplug(number < 2 ? 1 : number);
         }
         public void Set(bool back, bool start, bool A, bool B, bool X, bool Y, bool up, bool left, bool down, bool right, bool leftstick, bool rightstick, bool leftbumper, bool rightbumper, double leftstickx, double leftsticky, double rightstickx, double rightsticky, double lefttriggerposition, double righttriggerposition, bool xbox)
         {
@@ -153,7 +147,7 @@ namespace controllers
             RightStickY = (short)rightsticky;
             LeftTrigger = (byte)lefttriggerposition;
             RightTrigger = (byte)righttriggerposition;
-            Report(GetReport(number < 2 ? 1 : 2));
+            Report(GetReport(number < 2 ? 1 : number));
         }
         public XBoxController()
         {

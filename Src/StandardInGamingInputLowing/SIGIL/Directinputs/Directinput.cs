@@ -220,8 +220,8 @@ namespace DirectInputsAPI
         {
             Task.Run(() => taskD());
         }
-        private Joystick[] joystick = new Joystick[] { null };
-        private Guid[] joystickGuid = new Guid[] { Guid.Empty };
+        private Joystick[] joystick = new Joystick[] { null, null, null, null };
+        private Guid[] joystickGuid = new Guid[] { Guid.Empty, Guid.Empty, Guid.Empty, Guid.Empty };
         private int dinum = 0;
         public int JoystickAxisX;
         public int JoystickAxisY;
@@ -266,65 +266,33 @@ namespace DirectInputsAPI
             {
                 this.number = number;
                 directInput = new SharpDX.DirectInput.DirectInput();
-                joystick = new Joystick[] { null, null };
-                joystickGuid = new Guid[] { Guid.Empty, Guid.Empty };
+                joystick = new Joystick[] { null, null, null, null };
+                joystickGuid = new Guid[] { Guid.Empty, Guid.Empty, Guid.Empty, Guid.Empty };
                 dinum = 0;
                 foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Gamepad, DeviceEnumerationFlags.AllDevices))
                 {
                     joystickGuid[dinum] = deviceInstance.InstanceGuid;
                     dinum++;
-                    if (dinum >= 2)
-                    {
-                        break;
-                    }
                 }
-                if (dinum < 2)
+                foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Joystick, DeviceEnumerationFlags.AllDevices))
                 {
-                    foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Joystick, DeviceEnumerationFlags.AllDevices))
-                    {
-                        joystickGuid[dinum] = deviceInstance.InstanceGuid;
-                        dinum++;
-                        if (dinum >= 2)
-                        {
-                            break;
-                        }
-                    }
+                    joystickGuid[dinum] = deviceInstance.InstanceGuid;
+                    dinum++;
                 }
-                if (dinum < 2)
+                foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Flight, DeviceEnumerationFlags.AllDevices))
                 {
-                    foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Flight, DeviceEnumerationFlags.AllDevices))
-                    {
-                        joystickGuid[dinum] = deviceInstance.InstanceGuid;
-                        dinum++;
-                        if (dinum >= 2)
-                        {
-                            break;
-                        }
-                    }
+                    joystickGuid[dinum] = deviceInstance.InstanceGuid;
+                    dinum++;
                 }
-                if (dinum < 2)
+                foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.FirstPerson, DeviceEnumerationFlags.AllDevices))
                 {
-                    foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.FirstPerson, DeviceEnumerationFlags.AllDevices))
-                    {
-                        joystickGuid[dinum] = deviceInstance.InstanceGuid;
-                        dinum++;
-                        if (dinum >= 2)
-                        {
-                            break;
-                        }
-                    }
+                    joystickGuid[dinum] = deviceInstance.InstanceGuid;
+                    dinum++;
                 }
-                if (dinum < 2)
+                foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Driving, DeviceEnumerationFlags.AllDevices))
                 {
-                    foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Driving, DeviceEnumerationFlags.AllDevices))
-                    {
-                        joystickGuid[dinum] = deviceInstance.InstanceGuid;
-                        dinum++;
-                        if (dinum >= 2)
-                        {
-                            break;
-                        }
-                    }
+                    joystickGuid[dinum] = deviceInstance.InstanceGuid;
+                    dinum++;
                 }
             }
             catch { }
@@ -334,18 +302,16 @@ namespace DirectInputsAPI
             }
             else
             {
-                for (int inc = 0; inc < dinum; inc++)
-                {
-                    joystick[inc] = new Joystick(directInput, joystickGuid[inc]);
-                    joystick[inc].Properties.BufferSize = 128;
-                    joystick[inc].Acquire();
-                }
+                int inc = number < 2 ? 0 : number - 1;
+                joystick[inc] = new Joystick(directInput, joystickGuid[inc]);
+                joystick[inc].Properties.BufferSize = 128;
+                joystick[inc].Acquire();
                 return true;
             }
         }
         private void GamepadProcess()
         {
-            int inc = number < 2 ? 0 : 1;
+            int inc = number < 2 ? 0 : number - 1;
             joystick[inc].Poll();
             var datas = joystick[inc].GetBufferedData();
             foreach (var state in datas)

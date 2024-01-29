@@ -20,7 +20,7 @@ namespace controllersvjoy
         }
         public void Connect(int number = 0)
         {
-            uint id = (uint)(number < 2 ? 1 : 2);
+            uint id = (uint)(number < 2 ? 1 : number);
             joystick = new VirtualJoystick(id);
             joystick.Aquire();
         }
