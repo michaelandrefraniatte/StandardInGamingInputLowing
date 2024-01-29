@@ -67,7 +67,7 @@ namespace DualShocks4API
         public Vector3 gyr_gPS4 = new Vector3();
         public Vector3 acc_gPS4 = new Vector3();
         public Vector3 InitDirectAnglesPS4, DirectAnglesPS4;
-        private Stream mStream;
+        private FileStream mStream;
         public int number = 0;
         public bool reconnectingbool;
         public double reconnectingcount;
@@ -75,7 +75,7 @@ namespace DualShocks4API
         public string path;
         public bool running, formvisible, littleendian;
         private static List<string> paths = new List<string>();
-        private static List<Stream> mStreams = new List<Stream>();
+        private static List<FileStream> mStreams = new List<FileStream>();
         public Form1 form1 = new Form1();
         public DualShock4()
         {

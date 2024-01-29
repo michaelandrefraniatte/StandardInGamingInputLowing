@@ -71,7 +71,7 @@ namespace DualSensesAPI
         public Vector3 gyr_gPS5 = new Vector3();
         public Vector3 acc_gPS5 = new Vector3();
         public Vector3 InitDirectAnglesPS5, DirectAnglesPS5;
-        private Stream mStream;
+        private FileStream mStream;
         public int number = 0;
         public bool reconnectingbool;
         public double reconnectingcount;
@@ -79,7 +79,7 @@ namespace DualSensesAPI
         public string path;
         public bool running, formvisible, littleendian;
         private static List<string> paths = new List<string>();
-        private static List<Stream> mStreams = new List<Stream>();
+        private static List<FileStream> mStreams = new List<FileStream>();
         public Form1 form1 = new Form1();
         public DualSense()
         {

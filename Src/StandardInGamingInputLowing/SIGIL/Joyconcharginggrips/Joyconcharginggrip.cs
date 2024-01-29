@@ -83,7 +83,7 @@ namespace JoyconChargingGripsAPI
         public Vector3 InitDirectAnglesRight, DirectAnglesRight;
         public bool JoyconRightButtonSHOULDER_1, JoyconRightButtonSHOULDER_2, JoyconRightButtonSR, JoyconRightButtonSL, JoyconRightButtonDPAD_DOWN, JoyconRightButtonDPAD_RIGHT, JoyconRightButtonDPAD_UP, JoyconRightButtonDPAD_LEFT, JoyconRightButtonPLUS, JoyconRightButtonSTICK, JoyconRightButtonHOME;
         public float acc_gcalibrationRightX, acc_gcalibrationRightY, acc_gcalibrationRightZ;
-        public bool ISLEFT, ISRIGHT, running, formvisible;
+        public bool running, formvisible;
         private bool isvalidhandle = false;
         private int number;
         public bool reconnectingboolleft, reconnectingboolright;
@@ -231,17 +231,17 @@ namespace JoyconChargingGripsAPI
         {
             try
             {
-                stick_rawLeft[0] = report_bufLeft[6 + (ISLEFT ? 0 : 3)];
-                stick_rawLeft[1] = report_bufLeft[7 + (ISLEFT ? 0 : 3)];
-                stick_rawLeft[2] = report_bufLeft[8 + (ISLEFT ? 0 : 3)];
+                stick_rawLeft[0] = report_bufLeft[6 + 0];
+                stick_rawLeft[1] = report_bufLeft[7 + 0];
+                stick_rawLeft[2] = report_bufLeft[8 + 0];
                 stickCenterLeft[0] = (UInt16)(stick_rawLeft[0] | ((stick_rawLeft[1] & 0xf) << 8));
                 stickCenterLeft[1] = (UInt16)((stick_rawLeft[1] >> 4) | (stick_rawLeft[2] << 4));
                 acc_gcalibrationLeftX = (Int16)(report_bufLeft[13 + 0 * 12] | ((report_bufLeft[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[13 + 1 * 12] | ((report_bufLeft[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[13 + 2 * 12] | ((report_bufLeft[14 + 2 * 12] << 8) & 0xff00));
                 acc_gcalibrationLeftY = (Int16)(report_bufLeft[15 + 0 * 12] | ((report_bufLeft[16 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[15 + 1 * 12] | ((report_bufLeft[16 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[15 + 2 * 12] | ((report_bufLeft[16 + 2 * 12] << 8) & 0xff00));
                 acc_gcalibrationLeftZ = (Int16)(report_bufLeft[17 + 0 * 12] | ((report_bufLeft[18 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[17 + 1 * 12] | ((report_bufLeft[18 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[17 + 2 * 12] | ((report_bufLeft[18 + 2 * 12] << 8) & 0xff00));
-                stick_rawRight[0] = report_bufRight[6 + (!ISRIGHT ? 0 : 3)];
-                stick_rawRight[1] = report_bufRight[7 + (!ISRIGHT ? 0 : 3)];
-                stick_rawRight[2] = report_bufRight[8 + (!ISRIGHT ? 0 : 3)];
+                stick_rawRight[0] = report_bufRight[6 + 3];
+                stick_rawRight[1] = report_bufRight[7 + 3];
+                stick_rawRight[2] = report_bufRight[8 + 3];
                 stickCenterRight[0] = (UInt16)(stick_rawRight[0] | ((stick_rawRight[1] & 0xf) << 8));
                 stickCenterRight[1] = (UInt16)((stick_rawRight[1] >> 4) | (stick_rawRight[2] << 4));
                 acc_gcalibrationRightX = (Int16)(report_bufRight[13 + 0 * 12] | ((report_bufRight[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[13 + 1 * 12] | ((report_bufRight[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[13 + 2 * 12] | ((report_bufRight[14 + 2 * 12] << 8) & 0xff00));
@@ -256,9 +256,9 @@ namespace JoyconChargingGripsAPI
         {
             try
             {
-                stick_rawLeft[0] = report_bufLeft[6 + (ISLEFT ? 0 : 3)];
-                stick_rawLeft[1] = report_bufLeft[7 + (ISLEFT ? 0 : 3)];
-                stick_rawLeft[2] = report_bufLeft[8 + (ISLEFT ? 0 : 3)];
+                stick_rawLeft[0] = report_bufLeft[6 + 0];
+                stick_rawLeft[1] = report_bufLeft[7 + 0];
+                stick_rawLeft[2] = report_bufLeft[8 + 0];
                 stickLeft[0] = ((UInt16)(stick_rawLeft[0] | ((stick_rawLeft[1] & 0xf) << 8)) - stickCenterLeft[0]) / 1440f;
                 stickLeft[1] = ((UInt16)((stick_rawLeft[1] >> 4) | (stick_rawLeft[2] << 4)) - stickCenterLeft[1]) / 1440f;
                 JoyconLeftStickX = stickLeft[0];
@@ -266,25 +266,25 @@ namespace JoyconChargingGripsAPI
                 acc_gLeft.X = ((Int16)(report_bufLeft[13 + 0 * 12] | ((report_bufLeft[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[13 + 1 * 12] | ((report_bufLeft[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[13 + 2 * 12] | ((report_bufLeft[14 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationLeftX) * (1.0f / 12000f);
                 acc_gLeft.Y = -((Int16)(report_bufLeft[15 + 0 * 12] | ((report_bufLeft[16 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[15 + 1 * 12] | ((report_bufLeft[16 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[15 + 2 * 12] | ((report_bufLeft[16 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationLeftY) * (1.0f / 12000f);
                 acc_gLeft.Z = -((Int16)(report_bufLeft[17 + 0 * 12] | ((report_bufLeft[18 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[17 + 1 * 12] | ((report_bufLeft[18 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[17 + 2 * 12] | ((report_bufLeft[18 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationLeftZ) * (1.0f / 12000f);
-                JoyconLeftButtonSHOULDER_1 = (report_bufLeft[3 + (ISLEFT ? 2 : 0)] & 0x40) != 0;
-                JoyconLeftButtonSHOULDER_2 = (report_bufLeft[3 + (ISLEFT ? 2 : 0)] & 0x80) != 0;
-                JoyconLeftButtonSR = (report_bufLeft[3 + (ISLEFT ? 2 : 0)] & 0x10) != 0;
-                JoyconLeftButtonSL = (report_bufLeft[3 + (ISLEFT ? 2 : 0)] & 0x20) != 0;
-                JoyconLeftButtonDPAD_DOWN = (report_bufLeft[3 + (ISLEFT ? 2 : 0)] & (ISLEFT ? 0x01 : 0x04)) != 0;
-                JoyconLeftButtonDPAD_RIGHT = (report_bufLeft[3 + (ISLEFT ? 2 : 0)] & (ISLEFT ? 0x04 : 0x08)) != 0;
-                JoyconLeftButtonDPAD_UP = (report_bufLeft[3 + (ISLEFT ? 2 : 0)] & (ISLEFT ? 0x02 : 0x02)) != 0;
-                JoyconLeftButtonDPAD_LEFT = (report_bufLeft[3 + (ISLEFT ? 2 : 0)] & (ISLEFT ? 0x08 : 0x01)) != 0;
+                JoyconLeftButtonSHOULDER_1 = (report_bufLeft[3 + 2] & 0x40) != 0;
+                JoyconLeftButtonSHOULDER_2 = (report_bufLeft[3 + 2] & 0x80) != 0;
+                JoyconLeftButtonSR = (report_bufLeft[3 + 2] & 0x10) != 0;
+                JoyconLeftButtonSL = (report_bufLeft[3 + 2] & 0x20) != 0;
+                JoyconLeftButtonDPAD_DOWN = (report_bufLeft[3 + 2] & (0x01)) != 0;
+                JoyconLeftButtonDPAD_RIGHT = (report_bufLeft[3 + 2] & (0x04)) != 0;
+                JoyconLeftButtonDPAD_UP = (report_bufLeft[3 + 2] & (0x02)) != 0;
+                JoyconLeftButtonDPAD_LEFT = (report_bufLeft[3 + 2] & (0x08)) != 0;
                 JoyconLeftButtonMINUS = (report_bufLeft[4] & 0x01) != 0;
                 JoyconLeftButtonCAPTURE = (report_bufLeft[4] & 0x20) != 0;
-                JoyconLeftButtonSTICK = (report_bufLeft[4] & (ISLEFT ? 0x08 : 0x04)) != 0;
+                JoyconLeftButtonSTICK = (report_bufLeft[4] & (0x08)) != 0;
                 JoyconLeftButtonACC = acc_gLeft.X <= -1.13;
                 JoyconLeftButtonSMA = JoyconLeftButtonSL | JoyconLeftButtonSR | JoyconLeftButtonMINUS | JoyconLeftButtonACC;
                 DirectAnglesLeft = acc_gLeft - InitDirectAnglesLeft;
                 JoyconLeftAccelX = DirectAnglesLeft.X * 1350f;
                 JoyconLeftAccelY = -DirectAnglesLeft.Y * 1350f;
-                gyr_gLeft.X = ((Int16)(report_bufLeft[19 + 0 * 12] | ((report_bufLeft[20 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[19 + 1 * 12] | ((report_bufLeft[20 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[19 + 2 * 12] | ((report_bufLeft[20 + 2 * 12] << 8) & 0xff00)));
-                gyr_gLeft.Y = ((Int16)(report_bufLeft[21 + 0 * 12] | ((report_bufLeft[22 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[21 + 1 * 12] | ((report_bufLeft[22 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[21 + 2 * 12] | ((report_bufLeft[22 + 2 * 12] << 8) & 0xff00)));
-                gyr_gLeft.Z = ((Int16)(report_bufLeft[23 + 0 * 12] | ((report_bufLeft[24 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[23 + 1 * 12] | ((report_bufLeft[24 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[23 + 2 * 12] | ((report_bufLeft[24 + 2 * 12] << 8) & 0xff00)));
+                gyr_gLeft.X = (Int16)(report_bufLeft[19 + 0 * 12] | ((report_bufLeft[20 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[19 + 1 * 12] | ((report_bufLeft[20 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[19 + 2 * 12] | ((report_bufLeft[20 + 2 * 12] << 8) & 0xff00));
+                gyr_gLeft.Y = (Int16)(report_bufLeft[21 + 0 * 12] | ((report_bufLeft[22 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[21 + 1 * 12] | ((report_bufLeft[22 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[21 + 2 * 12] | ((report_bufLeft[22 + 2 * 12] << 8) & 0xff00));
+                gyr_gLeft.Z = (Int16)(report_bufLeft[23 + 0 * 12] | ((report_bufLeft[24 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[23 + 1 * 12] | ((report_bufLeft[24 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[23 + 2 * 12] | ((report_bufLeft[24 + 2 * 12] << 8) & 0xff00));
                 JoyconLeftGyroX = gyr_gLeft.Z;
                 JoyconLeftGyroY = gyr_gLeft.Y;
             }
@@ -294,9 +294,9 @@ namespace JoyconChargingGripsAPI
         {
             try
             {
-                stick_rawRight[0] = report_bufRight[6 + (!ISRIGHT ? 0 : 3)];
-                stick_rawRight[1] = report_bufRight[7 + (!ISRIGHT ? 0 : 3)];
-                stick_rawRight[2] = report_bufRight[8 + (!ISRIGHT ? 0 : 3)];
+                stick_rawRight[0] = report_bufRight[6 + 3];
+                stick_rawRight[1] = report_bufRight[7 + 3];
+                stick_rawRight[2] = report_bufRight[8 + 3];
                 stickRight[0] = ((UInt16)(stick_rawRight[0] | ((stick_rawRight[1] & 0xf) << 8)) - stickCenterRight[0]) / 1440f;
                 stickRight[1] = ((UInt16)((stick_rawRight[1] >> 4) | (stick_rawRight[2] << 4)) - stickCenterRight[1]) / 1440f;
                 JoyconRightStickX = -stickRight[0];
@@ -304,25 +304,25 @@ namespace JoyconChargingGripsAPI
                 acc_gRight.X = ((Int16)(report_bufRight[13 + 0 * 12] | ((report_bufRight[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[13 + 1 * 12] | ((report_bufRight[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[13 + 2 * 12] | ((report_bufRight[14 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationRightX) * (1.0f / 12000f);
                 acc_gRight.Y = -((Int16)(report_bufRight[15 + 0 * 12] | ((report_bufRight[16 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[15 + 1 * 12] | ((report_bufRight[16 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[15 + 2 * 12] | ((report_bufRight[16 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationRightY) * (1.0f / 12000f);
                 acc_gRight.Z = -((Int16)(report_bufRight[17 + 0 * 12] | ((report_bufRight[18 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[17 + 1 * 12] | ((report_bufRight[18 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[17 + 2 * 12] | ((report_bufRight[18 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationRightZ) * (1.0f / 12000f);
-                JoyconRightButtonSHOULDER_1 = (report_bufRight[3 + (!ISRIGHT ? 2 : 0)] & 0x40) != 0;
-                JoyconRightButtonSHOULDER_2 = (report_bufRight[3 + (!ISRIGHT ? 2 : 0)] & 0x80) != 0;
-                JoyconRightButtonSR = (report_bufRight[3 + (!ISRIGHT ? 2 : 0)] & 0x10) != 0;
-                JoyconRightButtonSL = (report_bufRight[3 + (!ISRIGHT ? 2 : 0)] & 0x20) != 0;
-                JoyconRightButtonDPAD_DOWN = (report_bufRight[3 + (!ISRIGHT ? 2 : 0)] & (!ISRIGHT ? 0x01 : 0x04)) != 0;
-                JoyconRightButtonDPAD_RIGHT = (report_bufRight[3 + (!ISRIGHT ? 2 : 0)] & (!ISRIGHT ? 0x04 : 0x08)) != 0;
-                JoyconRightButtonDPAD_UP = (report_bufRight[3 + (!ISRIGHT ? 2 : 0)] & (!ISRIGHT ? 0x02 : 0x02)) != 0;
-                JoyconRightButtonDPAD_LEFT = (report_bufRight[3 + (!ISRIGHT ? 2 : 0)] & (!ISRIGHT ? 0x08 : 0x01)) != 0;
-                JoyconRightButtonPLUS = ((report_bufRight[4] & 0x02) != 0);
-                JoyconRightButtonHOME = ((report_bufRight[4] & 0x10) != 0);
-                JoyconRightButtonSTICK = ((report_bufRight[4] & (!ISRIGHT ? 0x08 : 0x04)) != 0);
+                JoyconRightButtonSHOULDER_1 = (report_bufRight[3 + 0] & 0x40) != 0;
+                JoyconRightButtonSHOULDER_2 = (report_bufRight[3 + 0] & 0x80) != 0;
+                JoyconRightButtonSR = (report_bufRight[3 + 0] & 0x10) != 0;
+                JoyconRightButtonSL = (report_bufRight[3 + 0] & 0x20) != 0;
+                JoyconRightButtonDPAD_DOWN = (report_bufRight[3 + 0] & (0x04)) != 0;
+                JoyconRightButtonDPAD_RIGHT = (report_bufRight[3 + 0] & (0x08)) != 0;
+                JoyconRightButtonDPAD_UP = (report_bufRight[3 + 0] & (0x02)) != 0;
+                JoyconRightButtonDPAD_LEFT = (report_bufRight[3 + 0] & (0x01)) != 0;
+                JoyconRightButtonPLUS = (report_bufRight[4] & 0x02) != 0;
+                JoyconRightButtonHOME = (report_bufRight[4] & 0x10) != 0;
+                JoyconRightButtonSTICK = (report_bufRight[4] & (0x04)) != 0;
                 JoyconRightButtonACC = acc_gRight.X <= -1.13;
                 JoyconRightButtonSPA = JoyconRightButtonSL | JoyconRightButtonSR | JoyconRightButtonPLUS | JoyconRightButtonACC;
                 DirectAnglesRight = acc_gRight - InitDirectAnglesRight;
                 JoyconRightAccelX = DirectAnglesRight.X * 1350f;
                 JoyconRightAccelY = -DirectAnglesRight.Y * 1350f;
-                gyr_gRight.X = ((Int16)(report_bufRight[19 + 0 * 12] | ((report_bufRight[20 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[19 + 1 * 12] | ((report_bufRight[20 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[19 + 2 * 12] | ((report_bufRight[20 + 2 * 12] << 8) & 0xff00)));
-                gyr_gRight.Y = ((Int16)(report_bufRight[21 + 0 * 12] | ((report_bufRight[22 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[21 + 1 * 12] | ((report_bufRight[22 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[21 + 2 * 12] | ((report_bufRight[22 + 2 * 12] << 8) & 0xff00)));
-                gyr_gRight.Z = ((Int16)(report_bufRight[23 + 0 * 12] | ((report_bufRight[24 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[23 + 1 * 12] | ((report_bufRight[24 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[23 + 2 * 12] | ((report_bufRight[24 + 2 * 12] << 8) & 0xff00)));
+                gyr_gRight.X = (Int16)(report_bufRight[19 + 0 * 12] | ((report_bufRight[20 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[19 + 1 * 12] | ((report_bufRight[20 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[19 + 2 * 12] | ((report_bufRight[20 + 2 * 12] << 8) & 0xff00));
+                gyr_gRight.Y = (Int16)(report_bufRight[21 + 0 * 12] | ((report_bufRight[22 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[21 + 1 * 12] | ((report_bufRight[22 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[21 + 2 * 12] | ((report_bufRight[22 + 2 * 12] << 8) & 0xff00));
+                gyr_gRight.Z = (Int16)(report_bufRight[23 + 0 * 12] | ((report_bufRight[24 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[23 + 1 * 12] | ((report_bufRight[24 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[23 + 2 * 12] | ((report_bufRight[24 + 2 * 12] << 8) & 0xff00));
                 JoyconRightGyroX = gyr_gRight.Z;
                 JoyconRightGyroY = gyr_gRight.Y;
             }
@@ -432,8 +432,8 @@ namespace JoyconChargingGripsAPI
         public void Scan(int number = 0)
         {
             this.number = number;
-            ISLEFT = false;
-            ISRIGHT = false;
+            bool ISLEFT = false;
+            bool ISRIGHT = false;
             if (number <= 1)
             {
                 int index = 0;
@@ -484,8 +484,6 @@ namespace JoyconChargingGripsAPI
                     index++;
                 }
             }
-            ISLEFT = true;
-            ISRIGHT = true;
             pathleft = pathsleft[number < 2 ? 0 : number - 1];
             handleLeft = handlesLeft[number < 2 ? 0 : number - 1];
             pathright = pathsright[number < 2 ? 0 : number - 1];
