@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 namespace Interceptions
 {
@@ -1051,51 +1052,51 @@ namespace Interceptions
         }
         public void mouseclickleft(Input input, int mouse_id)
         {
-            input.SendLeftClick(mouse_id);
+            Task.Run(() => input.SendLeftClick(mouse_id));
         }
         public void mouseclickleftF(Input input, int mouse_id)
         {
-            input.SendLeftClickF(mouse_id);
+            Task.Run(() => input.SendLeftClickF(mouse_id));
         }
         public void mouseclickright(Input input, int mouse_id)
         {
-            input.SendRightClick(mouse_id);
+            Task.Run(() => input.SendRightClick(mouse_id));
         }
         public void mouseclickrightF(Input input, int mouse_id)
         {
-            input.SendRightClickF(mouse_id);
+            Task.Run(() => input.SendRightClickF(mouse_id));
         }
         public void mouseclickmiddle(Input input, int mouse_id)
         {
-            input.SendMiddleClick(mouse_id);
+            Task.Run(() => input.SendMiddleClick(mouse_id));
         }
         public void mouseclickmiddleF(Input input, int mouse_id)
         {
-            input.SendMiddleClickF(mouse_id);
+            Task.Run(() => input.SendMiddleClickF(mouse_id));
         }
         public void mousewheelup(Input input, int mouse_id)
         {
-            input.SendWheelUp(mouse_id);
+            Task.Run(() => input.SendWheelUp(mouse_id));
         }
         public void mousewheeldown(Input input, int mouse_id)
         {
-            input.SendWheelDown(mouse_id);
+            Task.Run(() => input.SendWheelDown(mouse_id));
         }
         public void keyboardkey(Input input, Keys key, int keyboard_id)
         {
-            input.SendKey(key, keyboard_id);
+            Task.Run(() => input.SendKey(key, keyboard_id));
         }
         public void keyboardkeyF(Input input, Keys key, int keyboard_id)
         {
-            input.SendKeyF(key, keyboard_id);
+            Task.Run(() => input.SendKeyF(key, keyboard_id));
         }
         public void MoveMouseBy(Input input, int deltaX, int deltaY, int mouseId)
         {
-            input.MoveMouseBy(deltaX, deltaY, mouseId);
+            Task.Run(() => input.MoveMouseBy(deltaX, deltaY, mouseId));
         }
         public void MoveMouseTo(Input input, int x, int y, int mouseId)
         {
-            input.MoveMouseTo(x, y, mouseId);
+            Task.Run(() => input.MoveMouseTo(x, y, mouseId));
         }
     }
     public class Input
