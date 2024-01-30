@@ -42,6 +42,7 @@ namespace Camera
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
+            this.pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
     }
 }
