@@ -39,6 +39,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "controllersds4", "controlle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keyboardsmouses", "keyboardsmouses\keyboardsmouses.csproj", "{03C1545F-4BF7-423D-A788-57803B86BAB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Camera", "Camera\Camera.csproj", "{3EB7CEE9-74D1-4E50-95C1-635151E23C29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Speech", "Speech\Speech.csproj", "{2D4E8DDE-67B9-46B6-A256-AEFAF367DF63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -191,6 +195,22 @@ Global
 		{03C1545F-4BF7-423D-A788-57803B86BAB7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{03C1545F-4BF7-423D-A788-57803B86BAB7}.Release|x86.ActiveCfg = Release|Any CPU
 		{03C1545F-4BF7-423D-A788-57803B86BAB7}.Release|x86.Build.0 = Release|Any CPU
+		{3EB7CEE9-74D1-4E50-95C1-635151E23C29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EB7CEE9-74D1-4E50-95C1-635151E23C29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EB7CEE9-74D1-4E50-95C1-635151E23C29}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3EB7CEE9-74D1-4E50-95C1-635151E23C29}.Debug|x86.Build.0 = Debug|Any CPU
+		{3EB7CEE9-74D1-4E50-95C1-635151E23C29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EB7CEE9-74D1-4E50-95C1-635151E23C29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EB7CEE9-74D1-4E50-95C1-635151E23C29}.Release|x86.ActiveCfg = Release|Any CPU
+		{3EB7CEE9-74D1-4E50-95C1-635151E23C29}.Release|x86.Build.0 = Release|Any CPU
+		{2D4E8DDE-67B9-46B6-A256-AEFAF367DF63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D4E8DDE-67B9-46B6-A256-AEFAF367DF63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D4E8DDE-67B9-46B6-A256-AEFAF367DF63}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2D4E8DDE-67B9-46B6-A256-AEFAF367DF63}.Debug|x86.Build.0 = Debug|Any CPU
+		{2D4E8DDE-67B9-46B6-A256-AEFAF367DF63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D4E8DDE-67B9-46B6-A256-AEFAF367DF63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D4E8DDE-67B9-46B6-A256-AEFAF367DF63}.Release|x86.ActiveCfg = Release|Any CPU
+		{2D4E8DDE-67B9-46B6-A256-AEFAF367DF63}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

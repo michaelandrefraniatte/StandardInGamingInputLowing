@@ -1482,6 +1482,15 @@ namespace SIGIL
                 range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_HatExt1\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_HatExt2\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_HatExt3\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bCameraAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bCamera\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bcamera\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bcamx\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bcamy\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bSpeechAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bSpeech\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bspeech\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bspeechtext\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2870,7 +2879,16 @@ namespace SIGIL
                 "Controller2VJoy_Send_Hat",
                 "Controller2VJoy_Send_HatExt1",
                 "Controller2VJoy_Send_HatExt2",
-                "Controller2VJoy_Send_HatExt3"
+                "Controller2VJoy_Send_HatExt3",
+                "CameraAPI",
+                "Camera",
+                "camera",
+                "camx",
+                "camy",
+                "SpeechAPI",
+                "Speech",
+                "speech",
+                "speechtext"
             };
         }
         private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
@@ -3242,6 +3260,10 @@ namespace SIGIL
                 parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Wiimotes.dll");
             if (code.Contains("using XInputsAPI;"))
                 parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Xinputs.dll");
+            if (code.Contains("using CameraAPI;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Camera.dll");
+            if (code.Contains("using SpeechAPI;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Speech.dll");
         }
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
