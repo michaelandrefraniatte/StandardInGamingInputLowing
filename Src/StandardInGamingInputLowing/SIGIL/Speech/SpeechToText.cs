@@ -6,7 +6,7 @@ using Speech;
 
 namespace SpeechAPI
 {
-    public class Speech
+    public class SpeechToText
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -20,10 +20,10 @@ namespace SpeechAPI
         private static Ozeki.Media.MediaConnector connector;
         private static Ozeki.Media.SpeechToText speechToText;
         private static string TextFromSpeech;
-        private string speechtext;
+        public string speechtext;
         private int number;
         public Form1 form1 = new Form1();
-        public Speech()
+        public SpeechToText()
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);

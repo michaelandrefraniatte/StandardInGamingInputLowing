@@ -10,7 +10,7 @@ using System;
 
 namespace CameraAPI
 {
-    public class Camera
+    public class CameraToLed
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -37,7 +37,7 @@ namespace CameraAPI
         public double backpointX, posRightX, backpointY, posRightY, camx, camy;
         private int number;
         public Form1 form1 = new Form1();
-        public Camera()
+        public CameraToLed()
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);

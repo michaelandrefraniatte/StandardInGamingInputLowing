@@ -1483,12 +1483,12 @@ namespace SIGIL
                 range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_HatExt2\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_HatExt3\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bCameraAPI\b"));
-                range.SetStyle(StyleClass, new Regex(@"\bCamera\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bCameraToLed\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bcamera\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bcamx\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bcamy\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bSpeechAPI\b"));
-                range.SetStyle(StyleClass, new Regex(@"\bSpeech\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bSpeechToText\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bspeech\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bspeechtext\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
@@ -2881,12 +2881,12 @@ namespace SIGIL
                 "Controller2VJoy_Send_HatExt2",
                 "Controller2VJoy_Send_HatExt3",
                 "CameraAPI",
-                "Camera",
+                "CameraToLed",
                 "camera",
                 "camx",
                 "camy",
                 "SpeechAPI",
-                "Speech",
+                "SpeechToText",
                 "speech",
                 "speechtext"
             };
