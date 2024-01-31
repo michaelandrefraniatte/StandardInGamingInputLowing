@@ -103,8 +103,8 @@ namespace StringToCode
                 }
                 if (getstate[0])
                 {
-                    statex = width / 2f - mh.MouseX * width / 2f / 1024f;
-                    statey = height / 2f + mh.MouseY * height / 2f / 1024f;
+                    statex = (width / 2f - mh.MouseX) * 1024f * 2f / width;
+                    statey = -(height / 2f - mh.MouseY) * 1024f * 2f / height;
                     if (statex >= 1024f)
                         statex = 1024f;
                     if (statex <= -1024f)

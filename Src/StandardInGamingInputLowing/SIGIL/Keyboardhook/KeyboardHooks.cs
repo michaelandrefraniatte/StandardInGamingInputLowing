@@ -26,6 +26,8 @@ namespace KeyboardHooksAPI
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
+            keyboardHook.Hook += new KeyboardHook.KeyboardHookCallback(KeyboardHook_Hook);
+            keyboardHook.Install();
             running = true;
         }
         public void ViewData()
@@ -243,8 +245,6 @@ namespace KeyboardHooksAPI
         public void Scan(int number = 0)
         {
             this.number = number;
-            keyboardHook.Hook += new KeyboardHook.KeyboardHookCallback(KeyboardHook_Hook);
-            keyboardHook.Install();
         }
         public const int VK_LBUTTON = (int)0x01;
         public const int VK_RBUTTON = (int)0x02;

@@ -30,6 +30,8 @@ namespace MouseHooksAPI
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
+            mouseHook.Hook += new MouseHook.MouseHookCallback(MouseHook_Hook);
+            mouseHook.Install();
             running = true;
         }
         public void ViewData()
@@ -87,8 +89,6 @@ namespace MouseHooksAPI
         public void Scan(int number = 0)
         {
             this.number = number;
-            mouseHook.Hook += new MouseHook.MouseHookCallback(MouseHook_Hook);
-            mouseHook.Install();
         }
         public void MouseHookProcessButtons() 
         {
