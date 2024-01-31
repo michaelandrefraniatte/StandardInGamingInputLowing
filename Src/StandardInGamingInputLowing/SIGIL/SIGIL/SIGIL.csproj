@@ -230,6 +230,10 @@
       <Project>{3957bee1-1eed-455f-a785-5014fa0afa81}</Project>
       <Name>Joyconsright</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Keyboardhook\Keyboardhook.csproj">
+      <Project>{f490bd42-6bef-4f5c-a52c-f192ae6aecff}</Project>
+      <Name>Keyboardhook</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Keyboardinputs\Keyboardinputs.csproj">
       <Project>{beb50b3f-8552-444e-bd3f-d930607b60f6}</Project>
       <Name>Keyboardinputs</Name>
@@ -237,6 +241,10 @@
     <ProjectReference Include="..\keyboardsmouses\keyboardsmouses.csproj">
       <Project>{03c1545f-4bf7-423d-a788-57803b86bab7}</Project>
       <Name>keyboardsmouses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mousehook\Mousehook.csproj">
+      <Project>{c0dadbc7-5b58-4767-84ca-4159a237562d}</Project>
+      <Name>Mousehook</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mouseinputs\Mouseinputs.csproj">
       <Project>{1ed48639-04a4-4cae-a034-52de4088979d}</Project>

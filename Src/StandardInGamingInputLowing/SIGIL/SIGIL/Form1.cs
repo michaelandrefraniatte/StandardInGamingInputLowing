@@ -1491,6 +1491,196 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"\bSpeechToText\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bspeech\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bspeechtext\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bKeyboardHooksAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bKeyboardHooks\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bkh\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bMouseHooksAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bMouseHooks\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bmh\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_LBUTTON\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_RBUTTON\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_CANCEL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_MBUTTON\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_XBUTTON1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_XBUTTON2\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_BACK\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_Tab\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_CLEAR\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_Return\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_SHIFT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_CONTROL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_MENU\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_PAUSE\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_CAPITAL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_KANA\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_HANGEUL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_HANGUL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_JUNJA\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_FINAL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_HANJA\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_KANJI\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_Escape\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_CONVERT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_NONCONVERT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_ACCEPT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_MODECHANGE\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_Space\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_PRIOR\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_NEXT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_END\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_HOME\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_LEFT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_UP\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_RIGHT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_DOWN\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_SELECT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_PRINT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_EXECUTE\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_SNAPSHOT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_INSERT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_DELETE\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_HELP\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_APOSTROPHE\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_0\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_2\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_3\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_4\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_5\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_6\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_7\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_8\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_9\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_A\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_B\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_C\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_D\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_E\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_G\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_H\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_I\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_J\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_K\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_L\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_M\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_N\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_O\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_P\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_Q\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_R\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_S\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_T\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_U\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_V\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_W\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_X\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_Y\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_Z\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_LWIN\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_RWIN\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_APPS\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_SLEEP\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_NUMPAD0\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_NUMPAD1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_NUMPAD2\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_NUMPAD3\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_NUMPAD4\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_NUMPAD5\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_NUMPAD6\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_NUMPAD7\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_NUMPAD8\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_NUMPAD9\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_MULTIPLY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_ADD\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_SEPARATOR\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_SUBTRACT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_DECIMAL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_DIVIDE\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F2\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F3\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F4\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F5\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F6\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F7\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F8\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F9\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F10\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F11\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F12\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F13\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F14\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F15\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F16\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F17\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F18\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F19\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F20\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F21\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F22\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F23\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_F24\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_NUMLOCK\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_SCROLL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_LeftShift\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_RightShift\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_LeftControl\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_RightControl\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_LMENU\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_RMENU\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_BROWSER_BACK\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_BROWSER_FORWARD\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_BROWSER_REFRESH\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_BROWSER_STOP\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_BROWSER_SEARCH\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_BROWSER_FAVORITES\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_BROWSER_HOME\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_VOLUME_MUTE\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_VOLUME_DOWN\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_VOLUME_UP\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_MEDIA_NEXT_TRACK\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_MEDIA_PREV_TRACK\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_MEDIA_STOP\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_MEDIA_PLAY_PAUSE\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_LAUNCH_MAIL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_LAUNCH_MEDIA_SELECT\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_LAUNCH_APP1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_LAUNCH_APP2\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_OEM_1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_OEM_PLUS\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_OEM_COMMA\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_OEM_MINUS\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_OEM_PERIOD\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_OEM_2\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_OEM_3\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_OEM_4\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_OEM_5\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_OEM_6\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_OEM_7\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_OEM_8\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_OEM_102\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_PROCESS\bKey\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_PACKET\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_ATTN\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_CRSEL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_EXSEL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_EREOF\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_PLAY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_ZOOM\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_NONAME\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_PA1\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bKey_OEM_CLEAR\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bCursorX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bCursorY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouseX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouseY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouseZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouseRightButton\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouseLeftButton\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouseMiddleButton\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouseXButton\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMouseButtonX\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2888,7 +3078,197 @@ namespace SIGIL
                 "SpeechAPI",
                 "SpeechToText",
                 "speech",
-                "speechtext"
+                "speechtext",
+                "KeyboardHooksAPI",
+                "KeyboardHooks",
+                "kh",
+                "MouseHooksAPI",
+                "MouseHooks",
+                "mh",
+                "Key_LBUTTON",
+                "Key_RBUTTON",
+                "Key_CANCEL",
+                "Key_MBUTTON",
+                "Key_XBUTTON1",
+                "Key_XBUTTON2",
+                "Key_BACK",
+                "Key_Tab",
+                "Key_CLEAR",
+                "Key_Return",
+                "Key_SHIFT",
+                "Key_CONTROL",
+                "Key_MENU",
+                "Key_PAUSE",
+                "Key_CAPITAL",
+                "Key_KANA",
+                "Key_HANGEUL",
+                "Key_HANGUL",
+                "Key_JUNJA",
+                "Key_FINAL",
+                "Key_HANJA",
+                "Key_KANJI",
+                "Key_Escape",
+                "Key_CONVERT",
+                "Key_NONCONVERT",
+                "Key_ACCEPT",
+                "Key_MODECHANGE",
+                "Key_Space",
+                "Key_PRIOR",
+                "Key_NEXT",
+                "Key_END",
+                "Key_HOME",
+                "Key_LEFT",
+                "Key_UP",
+                "Key_RIGHT",
+                "Key_DOWN",
+                "Key_SELECT",
+                "Key_PRINT",
+                "Key_EXECUTE",
+                "Key_SNAPSHOT",
+                "Key_INSERT",
+                "Key_DELETE",
+                "Key_HELP",
+                "Key_APOSTROPHE",
+                "Key_0",
+                "Key_1",
+                "Key_2",
+                "Key_3",
+                "Key_4",
+                "Key_5",
+                "Key_6",
+                "Key_7",
+                "Key_8",
+                "Key_9",
+                "Key_A",
+                "Key_B",
+                "Key_C",
+                "Key_D",
+                "Key_E",
+                "Key_F",
+                "Key_G",
+                "Key_H",
+                "Key_I",
+                "Key_J",
+                "Key_K",
+                "Key_L",
+                "Key_M",
+                "Key_N",
+                "Key_O",
+                "Key_P",
+                "Key_Q",
+                "Key_R",
+                "Key_S",
+                "Key_T",
+                "Key_U",
+                "Key_V",
+                "Key_W",
+                "Key_X",
+                "Key_Y",
+                "Key_Z",
+                "Key_LWIN",
+                "Key_RWIN",
+                "Key_APPS",
+                "Key_SLEEP",
+                "Key_NUMPAD0",
+                "Key_NUMPAD1",
+                "Key_NUMPAD2",
+                "Key_NUMPAD3",
+                "Key_NUMPAD4",
+                "Key_NUMPAD5",
+                "Key_NUMPAD6",
+                "Key_NUMPAD7",
+                "Key_NUMPAD8",
+                "Key_NUMPAD9",
+                "Key_MULTIPLY",
+                "Key_ADD",
+                "Key_SEPARATOR",
+                "Key_SUBTRACT",
+                "Key_DECIMAL",
+                "Key_DIVIDE",
+                "Key_F1",
+                "Key_F2",
+                "Key_F3",
+                "Key_F4",
+                "Key_F5",
+                "Key_F6",
+                "Key_F7",
+                "Key_F8",
+                "Key_F9",
+                "Key_F10",
+                "Key_F11",
+                "Key_F12",
+                "Key_F13",
+                "Key_F14",
+                "Key_F15",
+                "Key_F16",
+                "Key_F17",
+                "Key_F18",
+                "Key_F19",
+                "Key_F20",
+                "Key_F21",
+                "Key_F22",
+                "Key_F23",
+                "Key_F24",
+                "Key_NUMLOCK",
+                "Key_SCROLL",
+                "Key_LeftShift",
+                "Key_RightShift",
+                "Key_LeftControl",
+                "Key_RightControl",
+                "Key_LMENU",
+                "Key_RMENU",
+                "Key_BROWSER_BACK",
+                "Key_BROWSER_FORWARD",
+                "Key_BROWSER_REFRESH",
+                "Key_BROWSER_STOP",
+                "Key_BROWSER_SEARCH",
+                "Key_BROWSER_FAVORITES",
+                "Key_BROWSER_HOME",
+                "Key_VOLUME_MUTE",
+                "Key_VOLUME_DOWN",
+                "Key_VOLUME_UP",
+                "Key_MEDIA_NEXT_TRACK",
+                "Key_MEDIA_PREV_TRACK",
+                "Key_MEDIA_STOP",
+                "Key_MEDIA_PLAY_PAUSE",
+                "Key_LAUNCH_MAIL",
+                "Key_LAUNCH_MEDIA_SELECT",
+                "Key_LAUNCH_APP1",
+                "Key_LAUNCH_APP2",
+                "Key_OEM_1",
+                "Key_OEM_PLUS",
+                "Key_OEM_COMMA",
+                "Key_OEM_MINUS",
+                "Key_OEM_PERIOD",
+                "Key_OEM_2",
+                "Key_OEM_3",
+                "Key_OEM_4",
+                "Key_OEM_5",
+                "Key_OEM_6",
+                "Key_OEM_7",
+                "Key_OEM_8",
+                "Key_OEM_102",
+                "Key_PROCESS\bKey",
+                "Key_PACKET",
+                "Key_ATTN",
+                "Key_CRSEL",
+                "Key_EXSEL",
+                "Key_EREOF",
+                "Key_PLAY",
+                "Key_ZOOM",
+                "Key_NONAME",
+                "Key_PA1",
+                "Key_OEM_CLEAR",
+                "CursorX",
+                "CursorY",
+                "MouseX",
+                "MouseY",
+                "MouseZ",
+                "MouseRightButton",
+                "MouseLeftButton",
+                "MouseMiddleButton",
+                "MouseXButton",
+                "MouseButtonX"
             };
         }
         private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
@@ -3264,6 +3644,10 @@ namespace SIGIL
                 parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Camera.dll");
             if (code.Contains("using SpeechAPI;"))
                 parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Speech.dll");
+            if (code.Contains("using MouseHooksAPI;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Mousehook.dll");
+            if (code.Contains("using KeyboardHooksAPI;"))
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Keyboardhook.dll");
         }
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {

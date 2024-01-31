@@ -43,6 +43,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Camera", "Camera\Camera.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Speech", "Speech\Speech.csproj", "{2D4E8DDE-67B9-46B6-A256-AEFAF367DF63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keyboardhook", "Keyboardhook\Keyboardhook.csproj", "{F490BD42-6BEF-4F5C-A52C-F192AE6AECFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mousehook", "Mousehook\Mousehook.csproj", "{C0DADBC7-5B58-4767-84CA-4159A237562D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -211,6 +215,22 @@ Global
 		{2D4E8DDE-67B9-46B6-A256-AEFAF367DF63}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2D4E8DDE-67B9-46B6-A256-AEFAF367DF63}.Release|x86.ActiveCfg = Release|Any CPU
 		{2D4E8DDE-67B9-46B6-A256-AEFAF367DF63}.Release|x86.Build.0 = Release|Any CPU
+		{F490BD42-6BEF-4F5C-A52C-F192AE6AECFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F490BD42-6BEF-4F5C-A52C-F192AE6AECFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F490BD42-6BEF-4F5C-A52C-F192AE6AECFF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F490BD42-6BEF-4F5C-A52C-F192AE6AECFF}.Debug|x86.Build.0 = Debug|Any CPU
+		{F490BD42-6BEF-4F5C-A52C-F192AE6AECFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F490BD42-6BEF-4F5C-A52C-F192AE6AECFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F490BD42-6BEF-4F5C-A52C-F192AE6AECFF}.Release|x86.ActiveCfg = Release|Any CPU
+		{F490BD42-6BEF-4F5C-A52C-F192AE6AECFF}.Release|x86.Build.0 = Release|Any CPU
+		{C0DADBC7-5B58-4767-84CA-4159A237562D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0DADBC7-5B58-4767-84CA-4159A237562D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0DADBC7-5B58-4767-84CA-4159A237562D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C0DADBC7-5B58-4767-84CA-4159A237562D}.Debug|x86.Build.0 = Debug|Any CPU
+		{C0DADBC7-5B58-4767-84CA-4159A237562D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0DADBC7-5B58-4767-84CA-4159A237562D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0DADBC7-5B58-4767-84CA-4159A237562D}.Release|x86.ActiveCfg = Release|Any CPU
+		{C0DADBC7-5B58-4767-84CA-4159A237562D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
