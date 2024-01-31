@@ -56,6 +56,8 @@ namespace SIGIL
         private System.CodeDom.Compiler.CompilerResults results;
         private Microsoft.CSharp.CSharpCodeProvider provider;
         private System.CodeDom.Compiler.CompilerParameters parameters;
+        public static Form2 form2 = new Form2();
+        public static bool form2visible = false;
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == MessageHelper.WM_COPYDATA)
@@ -3401,6 +3403,7 @@ namespace SIGIL
                         minimizeToSystrayAtCloseToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         minimizeToSystrayAtBootToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         associateFileExtensionToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
+                        showATransparentClickableOverlayToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                     }
                     if (filename != "" & File.Exists(filename))
                     {
@@ -3454,6 +3457,7 @@ namespace SIGIL
                 createdfile.WriteLine(minimizeToSystrayAtCloseToolStripMenuItem.Checked);
                 createdfile.WriteLine(minimizeToSystrayAtBootToolStripMenuItem.Checked);
                 createdfile.WriteLine(associateFileExtensionToolStripMenuItem.Checked);
+                createdfile.WriteLine(showATransparentClickableOverlayToolStripMenuItem.Checked);
             }
         }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3846,6 +3850,30 @@ namespace SIGIL
                 FileAssociationHelper.AssociateFileExtension(".sig", "ScriptSIGILFile", "Script SIGIL File", Application.ExecutablePath);
             else
                 FileAssociationHelper.RemoveFileAssociation(".sig", "ScriptSIGILFile");
+        }
+        private void showATransparentClickableOverlayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!form2visible)
+            {
+                form2visible = true;
+                try
+                {
+                    form2.Visible = true;
+                }
+                catch { }
+            }
+            else
+            {
+                if (form2visible)
+                {
+                    form2visible = false;
+                    try
+                    {
+                        form2.Hide();
+                    }
+                    catch { }
+                }
+            }
         }
     }
 }

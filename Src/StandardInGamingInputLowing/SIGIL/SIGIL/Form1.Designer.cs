@@ -52,6 +52,7 @@
             this.minimizeToSystrayAtCloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToSystrayAtBootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.associateFileExtensionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showATransparentClickableOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -244,7 +245,8 @@
             this.startProgramAtBootToolStripMenuItem,
             this.minimizeToSystrayAtCloseToolStripMenuItem,
             this.minimizeToSystrayAtBootToolStripMenuItem,
-            this.associateFileExtensionToolStripMenuItem});
+            this.associateFileExtensionToolStripMenuItem,
+            this.showATransparentClickableOverlayToolStripMenuItem});
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             this.optionToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
             this.optionToolStripMenuItem.Text = "Option";
@@ -285,6 +287,14 @@
             this.associateFileExtensionToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.associateFileExtensionToolStripMenuItem.Text = "Associate file extension";
             this.associateFileExtensionToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.associateFileExtensionToolStripMenuItem_CheckStateChanged);
+            // 
+            // showATransparentClickableOverlayToolStripMenuItem
+            // 
+            this.showATransparentClickableOverlayToolStripMenuItem.CheckOnClick = true;
+            this.showATransparentClickableOverlayToolStripMenuItem.Name = "showATransparentClickableOverlayToolStripMenuItem";
+            this.showATransparentClickableOverlayToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
+            this.showATransparentClickableOverlayToolStripMenuItem.Text = "Show a clickable overlay";
+            this.showATransparentClickableOverlayToolStripMenuItem.Click += new System.EventHandler(this.showATransparentClickableOverlayToolStripMenuItem_Click);
             // 
             // processToolStripMenuItem
             // 
@@ -405,6 +415,7 @@
         private System.Windows.Forms.ToolStripMenuItem associateFileExtensionToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem replaceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showATransparentClickableOverlayToolStripMenuItem;
     }
 }
 
