@@ -117,7 +117,7 @@ namespace KeyboardHooksAPI
                     str += "Key_F22 : " + Key_F22 + Environment.NewLine;
                     str += "Key_F23 : " + Key_F23 + Environment.NewLine;
                     str += "Key_F24 : " + Key_F24 + Environment.NewLine;
-                    str = "Key_LWIN : " + Key_LWIN + Environment.NewLine;
+                    str += "Key_LWIN : " + Key_LWIN + Environment.NewLine;
                     str += "Key_RWIN : " + Key_RWIN + Environment.NewLine;
                     str += "Key_APPS : " + Key_APPS + Environment.NewLine;
                     str += "Key_SLEEP : " + Key_SLEEP + Environment.NewLine;

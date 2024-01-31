@@ -11,8 +11,8 @@ using System.Windows.Forms;
 using System.Reflection;
 using controllers;
 using System.Diagnostics;
-using MouseInputsAPI;
-using KeyboardInputsAPI;
+using MouseHooksAPI;
+using KeyboardHooksAPI;
 namespace StringToCode
 {
     public class FooClass 
@@ -32,8 +32,8 @@ namespace StringToCode
         private static bool[] getstate = new bool[12];
         private static int sleeptime = 1;
         private XBoxController XBC = new XBoxController();
-        private MouseInput mi = new MouseInput();
-        private KeyboardInput ki = new KeyboardInput();
+        private MouseHooks mh = new MouseHooks();
+        private KeyboardHooks kh = new KeyboardHooks();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         public static void valchanged(int n, bool val)
@@ -61,8 +61,8 @@ namespace StringToCode
             {
                 running = false;
                 Thread.Sleep(100);
-                mi.Close();
-                ki.Close();
+                mh.Close();
+                kh.Close();
                 XBC.Disconnect();
             }
             catch { }
@@ -76,10 +76,10 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            mi.Scan();
-            ki.Scan();
-            mi.BeginPolling();
-            ki.BeginPolling();
+            mh.Scan();
+            kh.Scan();
+            mh.BeginPolling();
+            kh.BeginPolling();
             XBC.Connect();
             Task.Run(() => task());
         }
@@ -89,7 +89,7 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                valchanged(0, ki.KeyboardKeyAdd);
+                valchanged(0, kh.Key_ADD);
                 if (wd[0] == 1 & !getstate[0])
                 {
                     getstate[0] = true;
@@ -103,8 +103,8 @@ namespace StringToCode
                 }
                 if (getstate[0])
                 {
-                    statex = -mi.MouseAxisX * 50f;
-                    statey = mi.MouseAxisY * 50f;
+                    statex = width / 2f - mh.MouseX * width / 2f / 1024f;
+                    statey = height / 2f + mh.MouseY * height / 2f / 1024f;
                     if (statex >= 1024f)
                         statex = 1024f;
                     if (statex <= -1024f)
@@ -123,34 +123,34 @@ namespace StringToCode
                         mousey = Scale(-Math.Pow(-statey, 3f) / Math.Pow(1024f, 2f) * viewpower3y - Math.Pow(-statey, 2f) / Math.Pow(1024f, 1f) * viewpower2y - Math.Pow(-statey, 1f) / Math.Pow(1024f, 0f) * viewpower1y - Math.Pow(-statey, 0.5f) * Math.Pow(1024f, 0.5f) * viewpower05y, -1024f, 0f, -1024f, -(dzy / 100f) * 1024f);
                     controller1_send_rightstickx          = Math.Abs(-mousex * 32767f / 1024f) <= 32767f ? -mousex * 32767f / 1024f : Math.Sign(-mousex) * 32767f;
                     controller1_send_rightsticky          = Math.Abs(-mousey * 32767f / 1024f) <= 32767f ? -mousey * 32767f / 1024f : Math.Sign(-mousey) * 32767f;
-                    controller1_send_left                 = ki.KeyboardKeyZ;
-                    controller1_send_right                = ki.KeyboardKeyV;
-                    controller1_send_down                 = ki.KeyboardKeyC;
-                    controller1_send_up                   = ki.KeyboardKeyX;
-                    controller1_send_rightstick           = ki.KeyboardKeyE;
-                    controller1_send_leftstick            = ki.KeyboardKeyLeftShift;
-                    controller1_send_A                    = ki.KeyboardKeySpace;
-                    controller1_send_back                 = ki.KeyboardKeyTab;
-                    controller1_send_start                = ki.KeyboardKeyEscape;
-                    controller1_send_X                    = ki.KeyboardKeyR | mi.MouseButtons2;
-                    controller1_send_rightbumper          = ki.KeyboardKeyG | mi.MouseButtons4;
-                    controller1_send_leftbumper           = ki.KeyboardKeyT | mi.MouseButtons3;
-                    controller1_send_B                    = ki.KeyboardKeyLeftControl | ki.KeyboardKeyQ;
-                    controller1_send_Y                    = mi.MouseAxisZ > 0 | mi.MouseAxisZ < 0;
-                    controller1_send_righttriggerposition = mi.MouseButtons0 ? 255 : 0;
-                    if (ki.KeyboardKeyW)
+                    controller1_send_left                 = kh.Key_Z;
+                    controller1_send_right                = kh.Key_V;
+                    controller1_send_down                 = kh.Key_C;
+                    controller1_send_up                   = kh.Key_X;
+                    controller1_send_rightstick           = kh.Key_E;
+                    controller1_send_leftstick            = kh.Key_LeftShift;
+                    controller1_send_A                    = kh.Key_Space;
+                    controller1_send_back                 = kh.Key_Tab;
+                    controller1_send_start                = kh.Key_Escape;
+                    controller1_send_X                    = kh.Key_R | mh.MouseMiddleButton;
+                    controller1_send_rightbumper          = kh.Key_G | mh.MouseXButton;
+                    controller1_send_leftbumper           = kh.Key_T;
+                    controller1_send_B                    = kh.Key_LeftControl | kh.Key_Q;
+                    controller1_send_Y                    = mh.MouseZ > 0 | mh.MouseZ < 0;
+                    controller1_send_righttriggerposition = mh.MouseLeftButton ? 255 : 0;
+                    if (kh.Key_W)
                         controller1_send_leftsticky = 32767;
-                    if (ki.KeyboardKeyS)
+                    if (kh.Key_S)
                         controller1_send_leftsticky = -32767;
-                    if ((!ki.KeyboardKeyW & !ki.KeyboardKeyS) | (ki.KeyboardKeyW & ki.KeyboardKeyS))
+                    if ((!kh.Key_W & !kh.Key_S) | (kh.Key_W & kh.Key_S))
                         controller1_send_leftsticky = 0;
-                    if (ki.KeyboardKeyD)
+                    if (kh.Key_D)
                         controller1_send_leftstickx = 32767;
-                    if (ki.KeyboardKeyA)
+                    if (kh.Key_A)
                         controller1_send_leftstickx = -32767;
-                    if ((!ki.KeyboardKeyD & !ki.KeyboardKeyA) | (ki.KeyboardKeyD & ki.KeyboardKeyA))
+                    if ((!kh.Key_D & !kh.Key_A) | (kh.Key_D & kh.Key_A))
                         controller1_send_leftstickx = 0;
-                    valchanged(1, mi.MouseButtons1);
+                    valchanged(1, mh.MouseRightButton);
                     if (wd[1] == 1 & !getstate[1])
                     {
                         getstate[1] = true;
@@ -192,8 +192,8 @@ namespace StringToCode
                     controller1_send_righttriggerposition = 0;
                 }
                 XBC.Set(controller1_send_back, controller1_send_start, controller1_send_A, controller1_send_B, controller1_send_X, controller1_send_Y, controller1_send_up, controller1_send_left, controller1_send_down, controller1_send_right, controller1_send_leftstick, controller1_send_rightstick, controller1_send_leftbumper, controller1_send_rightbumper, controller1_send_leftstickx, controller1_send_leftsticky, controller1_send_rightstickx, controller1_send_rightsticky, controller1_send_lefttriggerposition, controller1_send_righttriggerposition, controller1_send_xbox);
-                /*mi.ViewData();*/
-                /*ki.ViewData();*/
+                /*mh.ViewData();*/
+                /*kh.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
         }
