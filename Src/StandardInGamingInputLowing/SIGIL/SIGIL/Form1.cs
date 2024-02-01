@@ -3872,9 +3872,5 @@ namespace SIGIL
                 }
             }
         }
-        public void SetShowATransparentClickableOverlayToolStripMenuItem()
-        {
-            showATransparentClickableOverlayToolStripMenuItem.Checked = false;
-        }
     }
 }
