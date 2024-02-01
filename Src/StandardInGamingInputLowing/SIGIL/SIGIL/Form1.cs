@@ -57,7 +57,6 @@ namespace SIGIL
         private Microsoft.CSharp.CSharpCodeProvider provider;
         private System.CodeDom.Compiler.CompilerParameters parameters;
         public static Form2 form2 = new Form2();
-        public static bool form2visible = false;
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == MessageHelper.WM_COPYDATA)
@@ -3851,11 +3850,10 @@ namespace SIGIL
             else
                 FileAssociationHelper.RemoveFileAssociation(".sig", "ScriptSIGILFile");
         }
-        private void showATransparentClickableOverlayToolStripMenuItem_Click(object sender, EventArgs e)
+        private void showATransparentClickableOverlayToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
-            if (!form2visible)
+            if (showATransparentClickableOverlayToolStripMenuItem.Checked)
             {
-                form2visible = true;
                 try
                 {
                     form2.Visible = true;
@@ -3864,9 +3862,8 @@ namespace SIGIL
             }
             else
             {
-                if (form2visible)
+                if (!showATransparentClickableOverlayToolStripMenuItem.Checked)
                 {
-                    form2visible = false;
                     try
                     {
                         form2.Hide();

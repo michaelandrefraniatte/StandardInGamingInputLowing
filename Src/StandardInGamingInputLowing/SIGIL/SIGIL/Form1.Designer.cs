@@ -294,7 +294,7 @@
             this.showATransparentClickableOverlayToolStripMenuItem.Name = "showATransparentClickableOverlayToolStripMenuItem";
             this.showATransparentClickableOverlayToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.showATransparentClickableOverlayToolStripMenuItem.Text = "Show a clickable overlay";
-            this.showATransparentClickableOverlayToolStripMenuItem.Click += new System.EventHandler(this.showATransparentClickableOverlayToolStripMenuItem_Click);
+            this.showATransparentClickableOverlayToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.showATransparentClickableOverlayToolStripMenuItem_CheckStateChanged);
             // 
             // processToolStripMenuItem
             // 

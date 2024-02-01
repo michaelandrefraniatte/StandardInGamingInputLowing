@@ -35,7 +35,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Magenta;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -43,7 +43,6 @@
             this.MinimizeBox = false;
             this.Name = "Form2";
             this.Text = "Clickable Transparent Overlay";
-            this.TransparencyKey = System.Drawing.Color.Magenta;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.Load += new System.EventHandler(this.Form2_Load);
             this.SizeChanged += new System.EventHandler(this.Form2_SizeChanged);

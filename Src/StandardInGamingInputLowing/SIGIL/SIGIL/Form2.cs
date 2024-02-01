@@ -27,7 +27,6 @@ namespace SIGIL
         }
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Form1.form2visible = false;
             form1.SetShowATransparentClickableOverlayToolStripMenuItem();
             this.Hide();
             e.Cancel = true;
