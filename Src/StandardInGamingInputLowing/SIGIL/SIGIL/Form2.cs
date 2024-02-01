@@ -6,7 +6,8 @@ namespace SIGIL
 {
     public partial class Form2 : Form
     {
-        private static int width = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width, height = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
+        private static int width = Screen.PrimaryScreen.Bounds.Width, height = Screen.PrimaryScreen.Bounds.Height;
+        public static Form1 form1 = new Form1(null);
         public Form2()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace SIGIL
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
             Form1.form2visible = false;
+            form1.SetShowATransparentClickableOverlayToolStripMenuItem();
             this.Hide();
             e.Cancel = true;
         }
