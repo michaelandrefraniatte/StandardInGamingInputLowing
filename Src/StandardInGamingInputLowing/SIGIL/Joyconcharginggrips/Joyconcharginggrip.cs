@@ -507,6 +507,10 @@ namespace JoyconChargingGripsAPI
             byte[] buf_Left = new byte[report_lenLeft];
             System.Array.Copy(buf, 0, buf_Left, 11, len);
             buf_Left[10] = sc;
+            buf_Left[1] = 0x1;
+            buf_Left[0] = 0x80;
+            Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
+            Lhid_read_timeout(handleLeft, buf_Left, (UIntPtr)report_lenLeft);
             buf_Left[1] = 0x2;
             buf_Left[0] = 0x80;
             Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
@@ -564,6 +568,10 @@ namespace JoyconChargingGripsAPI
             byte[] buf_Right = new byte[report_lenRight];
             System.Array.Copy(buf, 0, buf_Right, 11, len);
             buf_Right[10] = sc;
+            buf_Right[1] = 0x1;
+            buf_Right[0] = 0x80;
+            Rhid_write(handleRight, buf_Right, new UIntPtr(2));
+            Rhid_read_timeout(handleRight, buf_Right, (UIntPtr)report_lenRight);
             buf_Right[1] = 0x2;
             buf_Right[0] = 0x80;
             Rhid_write(handleRight, buf_Right, new UIntPtr(2));
