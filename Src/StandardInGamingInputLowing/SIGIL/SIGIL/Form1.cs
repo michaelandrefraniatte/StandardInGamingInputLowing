@@ -3862,14 +3862,11 @@ namespace SIGIL
             }
             else
             {
-                if (!showATransparentClickableOverlayToolStripMenuItem.Checked)
+                try
                 {
-                    try
-                    {
-                        form2.Hide();
-                    }
-                    catch { }
+                    form2.Hide();
                 }
+                catch { }
             }
         }
     }
