@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
 using Joyconcharginggrips;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace JoyconChargingGripsAPI
 {
@@ -91,6 +94,8 @@ namespace JoyconChargingGripsAPI
         public string pathleft, pathright;
         private static List<string> pathsleft = new List<string>(), pathsright = new List<string>();
         private static List<SafeFileHandle> handlesLeft = new List<SafeFileHandle>(), handlesRight = new List<SafeFileHandle>();
+        private byte[] default_bufLeft = { 0x0, 0x1, 0x40, 0x40, 0x0, 0x1, 0x40, 0x40 };
+        private byte[] default_bufRight = { 0x0, 0x1, 0x40, 0x40, 0x0, 0x1, 0x40, 0x40 };
         public Form1 form1 = new Form1();
         public JoyconChargingGrip()
         {
@@ -110,8 +115,10 @@ namespace JoyconChargingGripsAPI
         {
             running = false;
             Thread.Sleep(100);
-            Subcommand3GripLeftController(0x06, new byte[] { 0x01 }, 1);
-            Subcommand3GripRightController(0x06, new byte[] { 0x01 }, 1);
+            SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x05 });
+            SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x06 });
+            SubcommandGripRightController(0x06, new byte[] { 0x80, 0x05 });
+            SubcommandGripRightController(0x06, new byte[] { 0x80, 0x06 });
             Lhid_close(handleLeft);
             handleLeft.Close();
             handleLeft.Dispose();
@@ -194,6 +201,7 @@ namespace JoyconChargingGripsAPI
                     str += "JoyconRightAccelY : " + JoyconRightAccelY + Environment.NewLine;
                     str += "JoyconRightGyroX : " + JoyconRightGyroX + Environment.NewLine;
                     str += "JoyconRightGyroY : " + JoyconRightGyroY + Environment.NewLine;
+                    str += Environment.NewLine;
                     form1.SetLabel2(str);
                 }
             }
@@ -231,9 +239,9 @@ namespace JoyconChargingGripsAPI
         {
             try
             {
-                stick_rawLeft[0] = report_bufLeft[6 + 0];
-                stick_rawLeft[1] = report_bufLeft[7 + 0];
-                stick_rawLeft[2] = report_bufLeft[8 + 0];
+                stick_rawLeft[0] = report_bufLeft[6];
+                stick_rawLeft[1] = report_bufLeft[7];
+                stick_rawLeft[2] = report_bufLeft[8];
                 stickCenterLeft[0] = (UInt16)(stick_rawLeft[0] | ((stick_rawLeft[1] & 0xf) << 8));
                 stickCenterLeft[1] = (UInt16)((stick_rawLeft[1] >> 4) | (stick_rawLeft[2] << 4));
                 acc_gcalibrationLeftX = (Int16)(report_bufLeft[13 + 0 * 12] | ((report_bufLeft[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[13 + 1 * 12] | ((report_bufLeft[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[13 + 2 * 12] | ((report_bufLeft[14 + 2 * 12] << 8) & 0xff00));
@@ -256,16 +264,13 @@ namespace JoyconChargingGripsAPI
         {
             try
             {
-                stick_rawLeft[0] = report_bufLeft[6 + 0];
-                stick_rawLeft[1] = report_bufLeft[7 + 0];
-                stick_rawLeft[2] = report_bufLeft[8 + 0];
+                stick_rawLeft[0] = report_bufLeft[6];
+                stick_rawLeft[1] = report_bufLeft[7];
+                stick_rawLeft[2] = report_bufLeft[8];
                 stickLeft[0] = ((UInt16)(stick_rawLeft[0] | ((stick_rawLeft[1] & 0xf) << 8)) - stickCenterLeft[0]) / 1440f;
                 stickLeft[1] = ((UInt16)((stick_rawLeft[1] >> 4) | (stick_rawLeft[2] << 4)) - stickCenterLeft[1]) / 1440f;
                 JoyconLeftStickX = stickLeft[0];
                 JoyconLeftStickY = stickLeft[1];
-                acc_gLeft.X = ((Int16)(report_bufLeft[13 + 0 * 12] | ((report_bufLeft[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[13 + 1 * 12] | ((report_bufLeft[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[13 + 2 * 12] | ((report_bufLeft[14 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationLeftX) * (1.0f / 12000f);
-                acc_gLeft.Y = -((Int16)(report_bufLeft[15 + 0 * 12] | ((report_bufLeft[16 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[15 + 1 * 12] | ((report_bufLeft[16 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[15 + 2 * 12] | ((report_bufLeft[16 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationLeftY) * (1.0f / 12000f);
-                acc_gLeft.Z = -((Int16)(report_bufLeft[17 + 0 * 12] | ((report_bufLeft[18 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[17 + 1 * 12] | ((report_bufLeft[18 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[17 + 2 * 12] | ((report_bufLeft[18 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationLeftZ) * (1.0f / 12000f);
                 JoyconLeftButtonSHOULDER_1 = (report_bufLeft[3 + 2] & 0x40) != 0;
                 JoyconLeftButtonSHOULDER_2 = (report_bufLeft[3 + 2] & 0x80) != 0;
                 JoyconLeftButtonSR = (report_bufLeft[3 + 2] & 0x10) != 0;
@@ -279,6 +284,9 @@ namespace JoyconChargingGripsAPI
                 JoyconLeftButtonSTICK = (report_bufLeft[4] & (0x08)) != 0;
                 JoyconLeftButtonACC = acc_gLeft.X <= -1.13;
                 JoyconLeftButtonSMA = JoyconLeftButtonSL | JoyconLeftButtonSR | JoyconLeftButtonMINUS | JoyconLeftButtonACC;
+                acc_gLeft.X = ((Int16)(report_bufLeft[13 + 0 * 12] | ((report_bufLeft[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[13 + 1 * 12] | ((report_bufLeft[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[13 + 2 * 12] | ((report_bufLeft[14 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationLeftX) * (1.0f / 12000f);
+                acc_gLeft.Y = -((Int16)(report_bufLeft[15 + 0 * 12] | ((report_bufLeft[16 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[15 + 1 * 12] | ((report_bufLeft[16 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[15 + 2 * 12] | ((report_bufLeft[16 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationLeftY) * (1.0f / 12000f);
+                acc_gLeft.Z = -((Int16)(report_bufLeft[17 + 0 * 12] | ((report_bufLeft[18 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[17 + 1 * 12] | ((report_bufLeft[18 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufLeft[17 + 2 * 12] | ((report_bufLeft[18 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationLeftZ) * (1.0f / 12000f);
                 DirectAnglesLeft = acc_gLeft - InitDirectAnglesLeft;
                 JoyconLeftAccelX = DirectAnglesLeft.X * 1350f;
                 JoyconLeftAccelY = -DirectAnglesLeft.Y * 1350f;
@@ -301,22 +309,22 @@ namespace JoyconChargingGripsAPI
                 stickRight[1] = ((UInt16)((stick_rawRight[1] >> 4) | (stick_rawRight[2] << 4)) - stickCenterRight[1]) / 1440f;
                 JoyconRightStickX = -stickRight[0];
                 JoyconRightStickY = -stickRight[1];
-                acc_gRight.X = ((Int16)(report_bufRight[13 + 0 * 12] | ((report_bufRight[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[13 + 1 * 12] | ((report_bufRight[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[13 + 2 * 12] | ((report_bufRight[14 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationRightX) * (1.0f / 12000f);
-                acc_gRight.Y = -((Int16)(report_bufRight[15 + 0 * 12] | ((report_bufRight[16 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[15 + 1 * 12] | ((report_bufRight[16 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[15 + 2 * 12] | ((report_bufRight[16 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationRightY) * (1.0f / 12000f);
-                acc_gRight.Z = -((Int16)(report_bufRight[17 + 0 * 12] | ((report_bufRight[18 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[17 + 1 * 12] | ((report_bufRight[18 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[17 + 2 * 12] | ((report_bufRight[18 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationRightZ) * (1.0f / 12000f);
-                JoyconRightButtonSHOULDER_1 = (report_bufRight[3 + 0] & 0x40) != 0;
-                JoyconRightButtonSHOULDER_2 = (report_bufRight[3 + 0] & 0x80) != 0;
-                JoyconRightButtonSR = (report_bufRight[3 + 0] & 0x10) != 0;
-                JoyconRightButtonSL = (report_bufRight[3 + 0] & 0x20) != 0;
-                JoyconRightButtonDPAD_DOWN = (report_bufRight[3 + 0] & (0x04)) != 0;
-                JoyconRightButtonDPAD_RIGHT = (report_bufRight[3 + 0] & (0x08)) != 0;
-                JoyconRightButtonDPAD_UP = (report_bufRight[3 + 0] & (0x02)) != 0;
-                JoyconRightButtonDPAD_LEFT = (report_bufRight[3 + 0] & (0x01)) != 0;
+                JoyconRightButtonSHOULDER_1 = (report_bufRight[3] & 0x40) != 0;
+                JoyconRightButtonSHOULDER_2 = (report_bufRight[3] & 0x80) != 0;
+                JoyconRightButtonSR = (report_bufRight[3] & 0x10) != 0;
+                JoyconRightButtonSL = (report_bufRight[3] & 0x20) != 0;
+                JoyconRightButtonDPAD_DOWN = (report_bufRight[3] & (0x04)) != 0;
+                JoyconRightButtonDPAD_RIGHT = (report_bufRight[3] & (0x08)) != 0;
+                JoyconRightButtonDPAD_UP = (report_bufRight[3] & (0x02)) != 0;
+                JoyconRightButtonDPAD_LEFT = (report_bufRight[3] & (0x01)) != 0;
                 JoyconRightButtonPLUS = (report_bufRight[4] & 0x02) != 0;
                 JoyconRightButtonHOME = (report_bufRight[4] & 0x10) != 0;
                 JoyconRightButtonSTICK = (report_bufRight[4] & (0x04)) != 0;
                 JoyconRightButtonACC = acc_gRight.X <= -1.13;
                 JoyconRightButtonSPA = JoyconRightButtonSL | JoyconRightButtonSR | JoyconRightButtonPLUS | JoyconRightButtonACC;
+                acc_gRight.X = ((Int16)(report_bufRight[13 + 0 * 12] | ((report_bufRight[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[13 + 1 * 12] | ((report_bufRight[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[13 + 2 * 12] | ((report_bufRight[14 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationRightX) * (1.0f / 12000f);
+                acc_gRight.Y = -((Int16)(report_bufRight[15 + 0 * 12] | ((report_bufRight[16 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[15 + 1 * 12] | ((report_bufRight[16 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[15 + 2 * 12] | ((report_bufRight[16 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationRightY) * (1.0f / 12000f);
+                acc_gRight.Z = -((Int16)(report_bufRight[17 + 0 * 12] | ((report_bufRight[18 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[17 + 1 * 12] | ((report_bufRight[18 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufRight[17 + 2 * 12] | ((report_bufRight[18 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationRightZ) * (1.0f / 12000f);
                 DirectAnglesRight = acc_gRight - InitDirectAnglesRight;
                 JoyconRightAccelX = DirectAnglesRight.X * 1350f;
                 JoyconRightAccelY = -DirectAnglesRight.Y * 1350f;
@@ -452,18 +460,7 @@ namespace JoyconChargingGripsAPI
                     {
                         if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & diDetail.DevicePath.Contains(product_grip))
                         {
-                            if (ISLEFT)
-                            {
-                                pathright = diDetail.DevicePath;
-                                isvalidhandle = AttachGripRightController(diDetail.DevicePath);
-                                if (isvalidhandle)
-                                {
-                                    pathsright.Add(pathright);
-                                    handlesRight.Add(handleRight);
-                                    ISRIGHT = true;
-                                }
-                            }
-                            if (!ISLEFT)
+                            if (ISRIGHT)
                             {
                                 pathleft = diDetail.DevicePath;
                                 isvalidhandle = AttachGripLeftController(diDetail.DevicePath);
@@ -472,6 +469,17 @@ namespace JoyconChargingGripsAPI
                                     pathsleft.Add(pathleft);
                                     handlesLeft.Add(handleLeft);
                                     ISLEFT = true;
+                                }
+                            }
+                            if (!ISRIGHT)
+                            {
+                                pathright = diDetail.DevicePath;
+                                isvalidhandle = AttachGripRightController(diDetail.DevicePath);
+                                if (isvalidhandle)
+                                {
+                                    pathsright.Add(pathright);
+                                    handlesRight.Add(handleRight);
+                                    ISRIGHT = true;
                                 }
                             }
                             if (ISLEFT & ISRIGHT)
@@ -495,60 +503,41 @@ namespace JoyconChargingGripsAPI
             {
                 IntPtr handle = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                 handleLeft = Lhid_open_path(handle);
-                Subcommand1GripLeftController(0x06, new byte[] { 0x01 }, 1);
-                Subcommand2GripLeftController(0x40, new byte[] { 0x1 }, 1);
-                Subcommand2GripLeftController(0x3, new byte[] { 0x30 }, 1);
+                ResetingGripLeftController();
+                SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x02 });
+                SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x03 });
+                SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x02 });
+                SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x04 });
+                SubcommandGripLeftController(0x40, new byte[] { 0x01, 0x01 });
+                SubcommandGripLeftController(0x03, new byte[] { 0x01, 0x30 });
                 return true;
             }
             catch { return false; }
         }
-        private void Subcommand1GripLeftController(byte sc, byte[] buf, uint len)
+        private void ResetingGripLeftController()
         {
-            byte[] buf_Left = new byte[report_lenLeft];
-            System.Array.Copy(buf, 0, buf_Left, 11, len);
-            buf_Left[10] = sc;
-            buf_Left[1] = 0x1;
-            buf_Left[0] = 0x80;
-            Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
-            Lhid_read_timeout(handleLeft, buf_Left, (UIntPtr)report_lenLeft);
-            buf_Left[1] = 0x2;
-            buf_Left[0] = 0x80;
-            Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
-            Lhid_read_timeout(handleLeft, buf_Left, (UIntPtr)report_lenLeft);
-            buf_Left[1] = 0x3;
-            buf_Left[0] = 0x80;
-            Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
-            Lhid_read_timeout(handleLeft, buf_Left, (UIntPtr)report_lenLeft);
-            buf_Left[1] = 0x2;
-            buf_Left[0] = 0x80;
-            Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
-            Lhid_read_timeout(handleLeft, buf_Left, (UIntPtr)report_lenLeft);
-            buf_Left[1] = 0x4;
-            buf_Left[0] = 0x80;
-            Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
-            Lhid_read_timeout(handleLeft, buf_Left, (UIntPtr)report_lenLeft);
+            byte[] a = { 0x0 };
+            a = Enumerable.Repeat((byte)0, (int)report_lenLeft).ToArray();
+            a[0] = 0x80;
+            a[1] = 0x1;
+            Lhid_write(handleLeft, a, new UIntPtr(2));
+            Lhid_read_timeout(handleLeft, a, (UIntPtr)report_lenLeft);
+            if (a[0] != 0x81)
+            {
+                SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x01 });
+            }
         }
-        private void Subcommand2GripLeftController(byte sc, byte[] buf, uint len)
+        private void SubcommandGripLeftController(byte sc, byte[] buf)
         {
-            byte[] buf_Left = new byte[report_lenLeft];
-            System.Array.Copy(buf, 0, buf_Left, 11, len);
-            buf_Left[10] = sc;
-            buf_Left[1] = 0;
-            buf_Left[0] = 0x1;
-            Lhid_write(handleLeft, buf_Left, (UIntPtr)(len + 11));
-            Lhid_read_timeout(handleLeft, buf_Left, (UIntPtr)report_lenLeft);
-        }
-        private void Subcommand3GripLeftController(byte sc, byte[] buf, uint len)
-        {
-            byte[] buf_Left = new byte[report_lenLeft];
-            System.Array.Copy(buf, 0, buf_Left, 11, len);
-            buf_Left[10] = sc;
-            buf_Left[1] = 0x5;
-            buf_Left[0] = 0x80;
-            Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
-            buf_Left[1] = 0x6;
-            buf_Left[0] = 0x80;
-            Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
+            byte[] buf_ = new byte[report_lenLeft];
+            byte[] response = new byte[report_lenLeft];
+            Array.Copy(default_bufLeft, 0, buf_, 2, 8);
+            Array.Copy(buf, 0, buf_, 11, 1);
+            buf_[10] = sc;
+            buf_[1] = buf[1];
+            buf_[0] = buf[0];
+            Lhid_write(handleLeft, buf_, new UIntPtr(12));
+            Lhid_read_timeout(handleLeft, response, (UIntPtr)report_lenLeft);
         }
         private bool AttachGripRightController(string path)
         {
@@ -556,60 +545,41 @@ namespace JoyconChargingGripsAPI
             {
                 IntPtr handle = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                 handleRight = Rhid_open_path(handle);
-                Subcommand1GripRightController(0x06, new byte[] { 0x01 }, 1);
-                Subcommand2GripRightController(0x40, new byte[] { 0x1 }, 1);
-                Subcommand2GripRightController(0x3, new byte[] { 0x30 }, 1);
+                ResetingGripRightController();
+                SubcommandGripRightController(0x06, new byte[] { 0x80, 0x02 });
+                SubcommandGripRightController(0x06, new byte[] { 0x80, 0x03 });
+                SubcommandGripRightController(0x06, new byte[] { 0x80, 0x02 });
+                SubcommandGripRightController(0x06, new byte[] { 0x80, 0x04 });
+                SubcommandGripRightController(0x40, new byte[] { 0x01, 0x01 });
+                SubcommandGripRightController(0x03, new byte[] { 0x01, 0x30 });
                 return true;
             }
             catch { return false; }
         }
-        private void Subcommand1GripRightController(byte sc, byte[] buf, uint len)
+        private void ResetingGripRightController()
         {
-            byte[] buf_Right = new byte[report_lenRight];
-            System.Array.Copy(buf, 0, buf_Right, 11, len);
-            buf_Right[10] = sc;
-            buf_Right[1] = 0x1;
-            buf_Right[0] = 0x80;
-            Rhid_write(handleRight, buf_Right, new UIntPtr(2));
-            Rhid_read_timeout(handleRight, buf_Right, (UIntPtr)report_lenRight);
-            buf_Right[1] = 0x2;
-            buf_Right[0] = 0x80;
-            Rhid_write(handleRight, buf_Right, new UIntPtr(2));
-            Rhid_read_timeout(handleRight, buf_Right, (UIntPtr)report_lenRight);
-            buf_Right[1] = 0x3;
-            buf_Right[0] = 0x80;
-            Rhid_write(handleRight, buf_Right, new UIntPtr(2));
-            Rhid_read_timeout(handleRight, buf_Right, (UIntPtr)report_lenRight);
-            buf_Right[1] = 0x2;
-            buf_Right[0] = 0x80;
-            Rhid_write(handleRight, buf_Right, new UIntPtr(2));
-            Rhid_read_timeout(handleRight, buf_Right, (UIntPtr)report_lenRight);
-            buf_Right[1] = 0x4;
-            buf_Right[0] = 0x80;
-            Rhid_write(handleRight, buf_Right, new UIntPtr(2));
-            Rhid_read_timeout(handleRight, buf_Right, (UIntPtr)report_lenRight);
+            byte[] a = { 0x0 };
+            a = Enumerable.Repeat((byte)0, (int)report_lenRight).ToArray();
+            a[0] = 0x80;
+            a[1] = 0x1;
+            Rhid_write(handleRight, a, new UIntPtr(2));
+            Rhid_read_timeout(handleRight, a, (UIntPtr)report_lenRight);
+            if (a[0] != 0x81)
+            {
+                SubcommandGripRightController(0x06, new byte[] { 0x80, 0x01 });
+            }
         }
-        private void Subcommand2GripRightController(byte sc, byte[] buf, uint len)
+        private void SubcommandGripRightController(byte sc, byte[] buf)
         {
-            byte[] buf_Right = new byte[report_lenRight];
-            System.Array.Copy(buf, 0, buf_Right, 11, len);
-            buf_Right[10] = sc;
-            buf_Right[1] = 0;
-            buf_Right[0] = 0x1;
-            Rhid_write(handleRight, buf_Right, (UIntPtr)(len + 11));
-            Rhid_read_timeout(handleRight, buf_Right, (UIntPtr)report_lenRight);
-        }
-        private void Subcommand3GripRightController(byte sc, byte[] buf, uint len)
-        {
-            byte[] buf_Right = new byte[report_lenRight];
-            System.Array.Copy(buf, 0, buf_Right, 11, len);
-            buf_Right[10] = sc;
-            buf_Right[1] = 0x5;
-            buf_Right[0] = 0x80;
-            Rhid_write(handleRight, buf_Right, new UIntPtr(2));
-            buf_Right[1] = 0x6;
-            buf_Right[0] = 0x80;
-            Rhid_write(handleRight, buf_Right, new UIntPtr(2));
+            byte[] buf_ = new byte[report_lenRight];
+            byte[] response = new byte[report_lenRight];
+            Array.Copy(default_bufRight, 0, buf_, 2, 8);
+            Array.Copy(buf, 0, buf_, 11, 1);
+            buf_[10] = sc;
+            buf_[1] = buf[1];
+            buf_[0] = buf[0];
+            Rhid_write(handleRight, buf_, new UIntPtr(12));
+            Rhid_read_timeout(handleRight, response, (UIntPtr)report_lenRight);
         }
     }
 }
