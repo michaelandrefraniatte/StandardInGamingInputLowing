@@ -58,6 +58,7 @@ namespace SpeechAPI
                 if (formvisible)
                 {
                     string str = "speechtext : " + speechtext + Environment.NewLine;
+                    str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }
             }

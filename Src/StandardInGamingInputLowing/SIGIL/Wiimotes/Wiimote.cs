@@ -135,6 +135,7 @@ namespace WiiMotesAPI
                     str += "WiimoteNunchuckStateRawValuesZ : " + WiimoteNunchuckStateRawValuesZ + Environment.NewLine;
                     str += "WiimoteNunchuckStateC : " + WiimoteNunchuckStateC + Environment.NewLine;
                     str += "WiimoteNunchuckStateZ : " + WiimoteNunchuckStateZ + Environment.NewLine;
+                    str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }
             }

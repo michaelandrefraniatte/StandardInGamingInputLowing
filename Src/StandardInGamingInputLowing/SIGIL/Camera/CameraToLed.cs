@@ -83,6 +83,7 @@ namespace CameraAPI
                         form1.SetPictureBox1(EditableImg);
                         string str = "camx : " + camx + Environment.NewLine;
                         str += "camy : " + camy + Environment.NewLine;
+                        str += Environment.NewLine;
                         form1.SetLabel1(str);
                     }
                     catch { }
