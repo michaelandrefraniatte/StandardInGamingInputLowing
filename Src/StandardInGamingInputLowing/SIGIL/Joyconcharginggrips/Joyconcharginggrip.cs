@@ -8,8 +8,6 @@ using Vector3 = System.Numerics.Vector3;
 using Joyconcharginggrips;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
-using System.IO.Ports;
 
 namespace JoyconChargingGripsAPI
 {
@@ -213,7 +211,7 @@ namespace JoyconChargingGripsAPI
                 if (!running)
                     break;
                 ReconnectionLeft();
-                ProcessButtonsLeftJoycon();
+                ProcessStateLogicLeft();
                 Thread.Sleep(1);
             }
         }
@@ -224,7 +222,7 @@ namespace JoyconChargingGripsAPI
                 if (!running)
                     break;
                 ReconnectionRight();
-                ProcessButtonsRightJoycon();
+                ProcessStateLogicRight();
                 Thread.Sleep(1);
             }
         }
@@ -260,7 +258,7 @@ namespace JoyconChargingGripsAPI
             }
             catch { }
         }
-        public void ProcessButtonsLeftJoycon()
+        public void ProcessStateLogicLeft()
         {
             try
             {
@@ -298,7 +296,7 @@ namespace JoyconChargingGripsAPI
             }
             catch { }
         }
-        public void ProcessButtonsRightJoycon()
+        public void ProcessStateLogicRight()
         {
             try
             {

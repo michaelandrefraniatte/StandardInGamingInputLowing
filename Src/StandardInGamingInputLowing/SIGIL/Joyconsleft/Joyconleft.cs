@@ -145,7 +145,7 @@ namespace JoyconsLeftAPI
                 if (!running)
                     break;
                 Reconnection();
-                ProcessButtonsLeftJoycon();
+                ProcessStateLogic();
                 Thread.Sleep(1);
             }
         }
@@ -170,7 +170,7 @@ namespace JoyconsLeftAPI
             }
             catch { }
         }
-        public void ProcessButtonsLeftJoycon()
+        public void ProcessStateLogic()
         {
             try
             {

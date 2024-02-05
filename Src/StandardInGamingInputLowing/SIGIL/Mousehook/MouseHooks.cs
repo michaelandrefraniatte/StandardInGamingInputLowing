@@ -61,7 +61,7 @@ namespace MouseHooksAPI
             {
                 if (!running)
                     break;
-                MouseHookProcessButtons();
+                ProcessStateLogic();
                 Thread.Sleep(1);
                 if (MouseHookZ != 0)
                     Task.Run(() => Init());
@@ -90,7 +90,7 @@ namespace MouseHooksAPI
         {
             this.number = number;
         }
-        public void MouseHookProcessButtons() 
+        public void ProcessStateLogic() 
         {
             GetCursorPos(out CursorX, out CursorY);
             MouseX = MouseHookX;

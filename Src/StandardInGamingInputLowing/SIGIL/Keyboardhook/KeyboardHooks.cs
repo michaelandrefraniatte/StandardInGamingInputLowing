@@ -55,7 +55,7 @@ namespace KeyboardHooksAPI
             {
                 if (!running)
                     break;
-                KeyboardHookProcessButtons();
+                ProcessStateLogic();
                 Thread.Sleep(1);
                 if (formvisible)
                 {
@@ -768,7 +768,7 @@ namespace KeyboardHooksAPI
         public bool Key_NONAME;
         public bool Key_PA1;
         public bool Key_OEM_CLEAR;
-        public void KeyboardHookProcessButtons()
+        public void ProcessStateLogic()
         {
             if (KeyboardHookButtonDown)
             {

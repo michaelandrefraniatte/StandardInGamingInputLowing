@@ -43,7 +43,7 @@ namespace MouseInputsAPI
             {
                 if (!running)
                     break;
-                MouseInputProcess();
+                ProcessStateLogic();
                 System.Threading.Thread.Sleep(1);
                 if (MouseAxisZ != 0)
                     Task.Run(() => Init());
@@ -117,7 +117,7 @@ namespace MouseInputsAPI
                 return true;
             }
         }
-        public void MouseInputProcess()
+        public void ProcessStateLogic()
         {
             int inc = number < 2 ? 0 : number - 1;
             mouse[inc].Poll();

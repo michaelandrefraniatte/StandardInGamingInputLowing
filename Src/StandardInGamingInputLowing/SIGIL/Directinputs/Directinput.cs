@@ -43,7 +43,7 @@ namespace DirectInputsAPI
             {
                 if (!running)
                     break;
-                GamepadProcess();
+                ProcessStateLogic();
                 System.Threading.Thread.Sleep(1);
                 if (formvisible)
                 {
@@ -309,7 +309,7 @@ namespace DirectInputsAPI
                 return true;
             }
         }
-        private void GamepadProcess()
+        private void ProcessStateLogic()
         {
             int inc = number < 2 ? 0 : number - 1;
             joystick[inc].Poll();

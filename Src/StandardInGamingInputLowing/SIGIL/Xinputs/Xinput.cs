@@ -42,7 +42,7 @@ namespace XInputsAPI
             {
                 if (!running)
                     break;
-                ControllerProcess();
+                ProcessStateLogic();
                 System.Threading.Thread.Sleep(1);
                 if (formvisible)
                 {
@@ -125,7 +125,7 @@ namespace XInputsAPI
                 return true;
             }
         }
-        private void ControllerProcess()
+        private void ProcessStateLogic()
         {
             int inc = number < 2 ? 0 : number - 1;
             xistate = controller[inc].GetState();

@@ -145,7 +145,7 @@ namespace JoyconsRightAPI
                 if (!running)
                     break;
                 Reconnection();
-                ProcessButtonsRightJoycon();
+                ProcessStateLogic();
                 Thread.Sleep(1);
             }
         }
@@ -170,7 +170,7 @@ namespace JoyconsRightAPI
             }
             catch { }
         }
-        public void ProcessButtonsRightJoycon()
+        public void ProcessStateLogic()
         {
             try
             {

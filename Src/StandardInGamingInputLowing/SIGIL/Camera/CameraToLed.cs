@@ -72,7 +72,7 @@ namespace CameraAPI
             {
                 if (!running)
                     break;
-                WebcamInputs();
+                ProcessStateLogic();
                 if (formvisible)
                 {
                     try
@@ -114,7 +114,7 @@ namespace CameraAPI
         {
             img = (Bitmap)eventArgs.Frame.Clone();
         }
-        public void WebcamInputs()
+        public void ProcessStateLogic()
         {
             try
             {

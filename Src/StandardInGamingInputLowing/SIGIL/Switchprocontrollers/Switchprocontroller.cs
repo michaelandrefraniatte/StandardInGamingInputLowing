@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
 using Switchprocontrollers;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
 
 namespace SwitchProControllersAPI
 {
@@ -148,7 +147,7 @@ namespace SwitchProControllersAPI
                 if (!running)
                     break;
                 Reconnection();
-                ProcessButtonsAndSticksPro();
+                ProcessStateLogic();
                 Thread.Sleep(1);
             }
         }
@@ -178,7 +177,7 @@ namespace SwitchProControllersAPI
             }
             catch { }
         }
-        public void ProcessButtonsAndSticksPro()
+        public void ProcessStateLogic()
         {
             try
             {

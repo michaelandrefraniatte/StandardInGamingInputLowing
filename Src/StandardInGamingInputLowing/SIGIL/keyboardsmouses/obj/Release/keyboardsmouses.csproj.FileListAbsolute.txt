@@ -10,3 +10,9 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\keyboardsmouses\obj\Release\keyboardsmouses.csproj.CoreCompileInputs.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\keyboardsmouses\obj\Release\keyboardsmouses.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V2\SIGIL\keyboardsmouses\obj\Release\keyboardsmouses.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\bin\Release\keyboardsmouses.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\bin\Release\keyboardsmouses.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\obj\Release\keyboardsmouses.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\obj\Release\keyboardsmouses.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\obj\Release\keyboardsmouses.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\obj\Release\keyboardsmouses.pdb

@@ -43,7 +43,7 @@ namespace KeyboardInputsAPI
             {
                 if (!running)
                     break;
-                KeyboardInputProcess();
+                ProcessStateLogic();
                 System.Threading.Thread.Sleep(1);
                 if (formvisible)
                 {
@@ -378,7 +378,7 @@ namespace KeyboardInputsAPI
                 return true;
             }
         }
-        public void KeyboardInputProcess()
+        public void ProcessStateLogic()
         {
             int inc = number < 2 ? 0 : number - 1;
             keyboard[inc].Poll();

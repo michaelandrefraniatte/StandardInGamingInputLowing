@@ -16,10 +16,8 @@ C:\Users\micha\Documents\github\AimController\Src\StandardInGamingInputLowing\SI
 C:\Users\micha\Documents\github\AimController\Src\StandardInGamingInputLowing\SIGIL\controllersds4\obj\Release\controllersds4.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersds4\bin\Release\controllersds4.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersds4\bin\Release\controllersds4.pdb
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersds4\bin\Release\Nefarius.ViGEm.Client.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersds4\obj\Release\controllersds4.csproj.AssemblyReference.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersds4\obj\Release\controllersds4.csproj.CoreCompileInputs.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersds4\obj\Release\controllersds4.csproj.CopyComplete
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersds4\obj\Release\controllersds4.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersds4\obj\Release\controllersds4.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\V3\SIGIL\controllersds4\bin\Release\controllersds4.dll
