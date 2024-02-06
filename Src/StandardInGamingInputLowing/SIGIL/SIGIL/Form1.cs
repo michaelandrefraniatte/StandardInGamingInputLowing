@@ -13,7 +13,6 @@ using System.Runtime.InteropServices;
 using OpenWithSingleInstance;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace SIGIL
 {
@@ -32,16 +31,14 @@ namespace SIGIL
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        private static bool closeonicon = false;
         private static DialogResult result;
         private static ContextMenu contextMenu = new ContextMenu();
         private static MenuItem menuItem;
-        public static bool justSaved = true, onopenwith = false, replaceformvisible = false;
+        public static bool justSaved = true, onopenwith = false, replaceformvisible = false, runstopbool = false, closeonicon = false;
         private static string filename = "", fastColoredTextBoxSaved = "", code = "";
         public static ReplaceForm replaceform;
-        public static bool runstopbool = false;
         private static Range range;
-        private static Style StyleInput = new TextStyle(Brushes.Blue, null, System.Drawing.FontStyle.Regular), StyleOutput = new TextStyle(Brushes.Orange, null, System.Drawing.FontStyle.Regular), StyleLibrary = new TextStyle(Brushes.BlueViolet, null, System.Drawing.FontStyle.Regular), StyleClass = new TextStyle(Brushes.DodgerBlue, null, System.Drawing.FontStyle.Regular), StyleMethod = new TextStyle(Brushes.Magenta, null, System.Drawing.FontStyle.Regular), StyleObject = new TextStyle(Brushes.DarkOrange, null, System.Drawing.FontStyle.Regular), StyleExtra = new TextStyle(Brushes.Red, null, System.Drawing.FontStyle.Regular), StyleSpecial = new TextStyle(Brushes.DarkCyan, null, System.Drawing.FontStyle.Regular), StyleNone = new TextStyle(Brushes.Black, null, System.Drawing.FontStyle.Regular);
+        private static Style StyleInput = new TextStyle(Brushes.Blue, null, FontStyle.Regular), StyleOutput = new TextStyle(Brushes.Orange, null, FontStyle.Regular), StyleLibrary = new TextStyle(Brushes.BlueViolet, null, FontStyle.Regular), StyleClass = new TextStyle(Brushes.DodgerBlue, null, FontStyle.Regular), StyleMethod = new TextStyle(Brushes.Magenta, null, FontStyle.Regular), StyleObject = new TextStyle(Brushes.DarkOrange, null, FontStyle.Regular), StyleExtra = new TextStyle(Brushes.Red, null, FontStyle.Regular), StyleSpecial = new TextStyle(Brushes.DarkCyan, null, FontStyle.Regular), StyleNone = new TextStyle(Brushes.Black, null, FontStyle.Regular);
         private Type program;
         private object obj;
         private Assembly assembly;
