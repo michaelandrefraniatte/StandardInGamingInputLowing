@@ -31,15 +31,6 @@ namespace SIGIL
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public Form1(string filePath)
-        {
-            InitializeComponent();
-            if (filePath != null)
-            {
-                onopenwith = true;
-                OpenFileWith(filePath);
-            }
-        }
         private static bool closeonicon = false;
         private static DialogResult result;
         private static ContextMenu contextMenu = new ContextMenu();
@@ -57,6 +48,15 @@ namespace SIGIL
         private Microsoft.CSharp.CSharpCodeProvider provider;
         private System.CodeDom.Compiler.CompilerParameters parameters;
         public static Form2 form2 = new Form2();
+        public Form1(string filePath)
+        {
+            InitializeComponent();
+            if (filePath != null)
+            {
+                onopenwith = true;
+                OpenFileWith(filePath);
+            }
+        }
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == MessageHelper.WM_COPYDATA)
@@ -3590,67 +3590,71 @@ namespace SIGIL
             parameters.IncludeDebugInformation = false;
             parameters.CompilerOptions = "/optimize";
             if (code.Contains("using System;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.dll");
+                AddAssembly("System");
             if (code.Contains("using System.Windows.Forms;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Windows.Forms.dll");
+                AddAssembly("System.Windows.Forms");
             if (code.Contains("using System.Drawing;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Drawing.dll");
+                AddAssembly("System.Drawing");
             if (code.Contains("using System.Runtime;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Runtime.dll");
+                AddAssembly("System.Runtime");
             if (code.Contains("using System.Collections;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Collections.dll");
+                AddAssembly("System.Collections");
             if (code.Contains("using System.Linq;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Linq.dll");
+                AddAssembly("System.Linq");
             if (code.Contains("using System.Numerics.Vectors;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Numerics.Vectors.dll");
+                AddAssembly("System.Numerics.Vectors");
             if (code.Contains("using System.Numerics;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Numerics.dll");
+                AddAssembly("System.Numerics");
             if (code.Contains("using System.Core;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Core.dll");
+                AddAssembly("System.Core");
             if (code.Contains("using netstandard;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\netstandard.dll");
+                AddAssembly("netstandard");
             if (code.Contains("using controllers;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllers.dll");
+                AddAssembly("controllers");
             if (code.Contains("using controllersds4;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllersds4.dll");
+                AddAssembly("controllersds4");
             if (code.Contains("using controllersvjoy;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\controllersvjoy.dll");
+                AddAssembly("controllersvjoy");
             if (code.Contains("using keyboardsmouses;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\keyboardsmouses.dll");
+                AddAssembly("keyboardsmouses");
             if (code.Contains("using Interceptions;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Interceptions.dll");
+                AddAssembly("Interceptions");
             if (code.Contains("using Valuechanges;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Valuechanges.dll");
+                AddAssembly("Valuechanges");
             if (code.Contains("using KeyboardInputsAPI;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Keyboardinputs.dll");
+                AddAssembly("Keyboardinputs");
             if (code.Contains("using MouseInputsAPI;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Mouseinputs.dll");
+                AddAssembly("Mouseinputs");
             if (code.Contains("using DualSensesAPI;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Dualsenses.dll");
+                AddAssembly("Dualsenses");
             if (code.Contains("using DualShocks4API;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Dualshocks4.dll");
+                AddAssembly("Dualshocks4");
             if (code.Contains("using DirectInputsAPI;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Directinputs.dll");
+                AddAssembly("Directinputs");
             if (code.Contains("using JoyconChargingGripsAPI;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconcharginggrips.dll");
+                AddAssembly("Joyconcharginggrips");
             if (code.Contains("using JoyconsLeftAPI;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconsleft.dll");
+                AddAssembly("Joyconsleft");
             if (code.Contains("using JoyconsRightAPI;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Joyconsright.dll");
+                AddAssembly("Joyconsright");
             if (code.Contains("using SwitchProControllersAPI;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Switchprocontrollers.dll");
+                AddAssembly("Switchprocontrollers");
             if (code.Contains("using WiiMotesAPI;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Wiimotes.dll");
+                AddAssembly("Wiimotes");
             if (code.Contains("using XInputsAPI;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Xinputs.dll");
+                AddAssembly("Xinputs");
             if (code.Contains("using CameraAPI;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Camera.dll");
+                AddAssembly("Camera");
             if (code.Contains("using SpeechAPI;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Speech.dll");
+                AddAssembly("Speech");
             if (code.Contains("using MouseHooksAPI;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Mousehook.dll");
+                AddAssembly("Mousehook");
             if (code.Contains("using KeyboardHooksAPI;"))
-                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\Keyboardhook.dll");
+                AddAssembly("Keyboardhook");
+        }
+        public void AddAssembly(string dllName)
+        {
+            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\" + dllName + ".dll");
         }
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
