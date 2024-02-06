@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using OpenWithSingleInstance;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace SIGIL
 {
@@ -3590,25 +3591,25 @@ namespace SIGIL
             parameters.IncludeDebugInformation = false;
             parameters.CompilerOptions = "/optimize";
             if (code.Contains("using System;"))
-                AddAssembly("System");
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.dll");
             if (code.Contains("using System.Windows.Forms;"))
-                AddAssembly("System.Windows.Forms");
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Windows.Forms.dll");
             if (code.Contains("using System.Drawing;"))
-                AddAssembly("System.Drawing");
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Drawing.dll");
             if (code.Contains("using System.Runtime;"))
-                AddAssembly("System.Runtime");
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Runtime.dll");
             if (code.Contains("using System.Collections;"))
-                AddAssembly("System.Collections");
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Collections.dll");
             if (code.Contains("using System.Linq;"))
-                AddAssembly("System.Linq");
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Linq.dll");
             if (code.Contains("using System.Numerics.Vectors;"))
-                AddAssembly("System.Numerics.Vectors");
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Numerics.Vectors.dll");
             if (code.Contains("using System.Numerics;"))
-                AddAssembly("System.Numerics");
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Numerics.dll");
             if (code.Contains("using System.Core;"))
-                AddAssembly("System.Core");
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Core.dll");
             if (code.Contains("using netstandard;"))
-                AddAssembly("netstandard");
+                parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\netstandard.dll");
             if (code.Contains("using controllers;"))
                 AddAssembly("controllers");
             if (code.Contains("using controllersds4;"))
@@ -3654,7 +3655,7 @@ namespace SIGIL
         }
         public void AddAssembly(string dllName)
         {
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\" + dllName + ".dll");
+             parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\" + dllName + ".dll");
         }
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -73,18 +73,6 @@
     <Reference Include="netstandard">
       <Private>True</Private>
     </Reference>
-    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Release\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.DirectInput, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Release\SharpDX.DirectInput.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.XInput, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Release\SharpDX.XInput.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
@@ -193,107 +181,86 @@
     <ProjectReference Include="..\Camera\Camera.csproj">
       <Project>{3eb7cee9-74d1-4e50-95c1-635151e23c29}</Project>
       <Name>Camera</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\controllersds4\controllersds4.csproj">
       <Project>{1c365d1f-b40b-416a-bf40-3782ec480e8f}</Project>
       <Name>controllersds4</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\controllersvjoy\controllersvjoy.csproj">
       <Project>{56a4e8a4-7702-4235-b3d8-8e511ad7490d}</Project>
       <Name>controllersvjoy</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\controllers\controllers.csproj">
       <Project>{8bde6140-ee1c-4fd9-85e8-7f0dfd14ce94}</Project>
       <Name>controllers</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Directinputs\Directinputs.csproj">
       <Project>{6ba6817c-47bb-44de-a4ee-f23b04a29750}</Project>
       <Name>Directinputs</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Dualsenses\Dualsenses.csproj">
       <Project>{159b77e8-23f3-4c3a-b144-6a5d99b1a538}</Project>
       <Name>Dualsenses</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Dualshocks4\Dualshocks4.csproj">
       <Project>{5f2354d3-7620-4ffd-a578-9ba982848234}</Project>
       <Name>Dualshocks4</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Interceptions\Interceptions.csproj">
       <Project>{c8a72023-3693-4c30-a5ed-9502fe0c10af}</Project>
       <Name>Interceptions</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Joyconcharginggrips\Joyconcharginggrips.csproj">
       <Project>{c3b880b6-7561-4e01-a029-c18c0f494bcd}</Project>
       <Name>Joyconcharginggrips</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Joyconsleft\Joyconsleft.csproj">
       <Project>{e611fbc8-48cd-490b-80eb-c7d0115eccc7}</Project>
       <Name>Joyconsleft</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Joyconsright\Joyconsright.csproj">
       <Project>{3957bee1-1eed-455f-a785-5014fa0afa81}</Project>
       <Name>Joyconsright</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Keyboardhook\Keyboardhook.csproj">
       <Project>{f490bd42-6bef-4f5c-a52c-f192ae6aecff}</Project>
       <Name>Keyboardhook</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Keyboardinputs\Keyboardinputs.csproj">
       <Project>{beb50b3f-8552-444e-bd3f-d930607b60f6}</Project>
       <Name>Keyboardinputs</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\keyboardsmouses\keyboardsmouses.csproj">
       <Project>{03c1545f-4bf7-423d-a788-57803b86bab7}</Project>
       <Name>keyboardsmouses</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Mousehook\Mousehook.csproj">
       <Project>{c0dadbc7-5b58-4767-84ca-4159a237562d}</Project>
       <Name>Mousehook</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Mouseinputs\Mouseinputs.csproj">
       <Project>{1ed48639-04a4-4cae-a034-52de4088979d}</Project>
       <Name>Mouseinputs</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Speech\Speech.csproj">
       <Project>{2d4e8dde-67b9-46b6-a256-aefaf367df63}</Project>
       <Name>Speech</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Switchprocontrollers\Switchprocontrollers.csproj">
       <Project>{8ed3aed1-4e62-486a-a8d6-7eda69b48559}</Project>
       <Name>Switchprocontrollers</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Valuechanges\Valuechanges.csproj">
       <Project>{211d48a2-f49f-41ac-bfdb-5d92ac6043dc}</Project>
       <Name>Valuechanges</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Wiimotes\Wiimotes.csproj">
       <Project>{c1f5f4f6-9795-4f5f-a06a-148ee376b84f}</Project>
       <Name>Wiimotes</Name>
-      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Xinputs\Xinputs.csproj">
       <Project>{134c0cab-c0b8-4ef8-923b-d31324bf02d0}</Project>
       <Name>Xinputs</Name>
-      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
