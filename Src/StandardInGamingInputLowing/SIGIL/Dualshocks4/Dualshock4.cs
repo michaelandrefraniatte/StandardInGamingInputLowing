@@ -39,7 +39,6 @@ namespace DualShocks4API
         private byte miscByte;
         private byte btnBlock1, btnBlock2, btnBlock3;
         private byte[] ds4data = new byte[64];
-        public SafeFileHandle handle;
         public bool PS4ControllerButtonCrossPressed;
         public bool PS4ControllerButtonCirclePressed;
         public bool PS4ControllerButtonSquarePressed;
@@ -66,6 +65,7 @@ namespace DualShocks4API
         public Vector3 gyr_gPS4 = new Vector3();
         public Vector3 acc_gPS4 = new Vector3();
         public Vector3 InitDirectAnglesPS4, DirectAnglesPS4;
+        public SafeFileHandle handle = null, handleunshared = null;
         private FileStream mStream;
         public int number = 0;
         public bool reconnectingbool;
@@ -95,6 +95,8 @@ namespace DualShocks4API
         {
             running = false;
             Thread.Sleep(100);
+            handleunshared.Close();
+            handleunshared.Dispose();
             mStream.Close();
             mStream.Dispose();
             handle.Close();
@@ -416,8 +418,15 @@ namespace DualShocks4API
                     {
                         if (diDetail.DevicePath.ToLower().Contains(vendor_id.ToLower()) & diDetail.DevicePath.ToLower().Contains(product_id.ToLower()))
                         {
+                            if (handleunshared != null)
+                            {
+                                handleunshared.Close();
+                                handleunshared.Dispose();
+                                handleunshared = null;
+                            }
                             path = diDetail.DevicePath;
                             isvalidhandle = Found(path);
+                            handleunshared = CreateFile(path, FileAccess.ReadWrite, FileShare.None, IntPtr.Zero, FileMode.Open, (uint)EFileAttributes.Overlapped, IntPtr.Zero);
                             if (isvalidhandle)
                             {
                                 paths.Add(path);

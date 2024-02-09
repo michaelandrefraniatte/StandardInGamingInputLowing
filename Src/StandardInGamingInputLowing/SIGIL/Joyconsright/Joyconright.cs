@@ -54,6 +54,7 @@ namespace JoyconsRightAPI
         public const uint report_lenRight = 49;
         public byte[] report_bufRight = new byte[report_lenRight];
         public SafeFileHandle handleRight;
+        private IntPtr handleptrRight, handleptrunsharedRight;
         public bool JoyconRightButtonSPA, JoyconRightButtonACC, JoyconRightRollLeft, JoyconRightRollRight;
         public double JoyconRightStickX, JoyconRightStickY;
         public System.Collections.Generic.List<double> RightValListX = new System.Collections.Generic.List<double>(), RightValListY = new System.Collections.Generic.List<double>();
@@ -299,6 +300,7 @@ namespace JoyconsRightAPI
                         {
                             path = diDetail.DevicePath;
                             isvalidhandle = AttachJoyRight(diDetail.DevicePath);
+                            handleptrunsharedRight = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.None, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                             if (isvalidhandle)
                             {
                                 paths.Add(path);
@@ -316,8 +318,8 @@ namespace JoyconsRightAPI
         {
             try
             {
-                IntPtr handle = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
-                handleRight = Rhid_open_path(handle);
+                handleptrRight = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
+                handleRight = Rhid_open_path(handleptrRight);
                 SubcommandRight(0x40, new byte[] { 0x1 }, 1);
                 SubcommandRight(0x3, new byte[] { 0x30 }, 1);
                 return true;

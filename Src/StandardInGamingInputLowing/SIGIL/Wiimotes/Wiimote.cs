@@ -48,7 +48,7 @@ namespace WiiMotesAPI
         public byte[] mBuff = new byte[22], aBuffer = new byte[22];
         private const byte Type = 0x12, IR = 0x13, WriteMemory = 0x16, ReadMemory = 0x16, IRExtensionAccel = 0x37;
         private static FileStream mStream;
-        private static SafeFileHandle handle = null;
+        private static SafeFileHandle handle = null, handleunshared = null;
         public bool reconnectingwiimotebool;
         public double reconnectingwiimotecount;
         public bool running, formvisible;
@@ -88,6 +88,8 @@ namespace WiiMotesAPI
         {
             running = false;
             Thread.Sleep(100);
+            handleunshared.Close();
+            handleunshared.Dispose();
             mStream.Close();
             mStream.Dispose();
             handle.Close();
@@ -427,10 +429,17 @@ namespace WiiMotesAPI
                     {
                         if ((diDetail.DevicePath.Contains(vendor_id) | diDetail.DevicePath.Contains(vendor_id_)) & (diDetail.DevicePath.Contains(product_id) | diDetail.DevicePath.Contains(product_id_)))
                         {
+                            if (handleunshared != null)
+                            {
+                                handleunshared.Close();
+                                handleunshared.Dispose();
+                                handleunshared = null;
+                            }
                             path = diDetail.DevicePath;
                             isvalidhandle = WiimoteFound(path);
                             isvalidhandle = WiimoteFound(path);
                             isvalidhandle = WiimoteFound(path);
+                            handleunshared = CreateFile(path, FileAccess.ReadWrite, FileShare.None, IntPtr.Zero, FileMode.Open, (uint)EFileAttributes.Overlapped, IntPtr.Zero);
                             if (isvalidhandle)
                             {
                                 paths.Add(path);

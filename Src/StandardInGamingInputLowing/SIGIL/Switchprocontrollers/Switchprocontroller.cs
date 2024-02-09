@@ -46,6 +46,7 @@ namespace SwitchProControllersAPI
         public const uint report_lenPro = 49;
         public byte[] report_bufPro = new byte[report_lenPro];
         public SafeFileHandle handlePro;
+        private IntPtr handleptrPro, handleptrunsharedPro;
         public bool ISPRO = true;
         public bool ProControllerButtonACC, ProControllerRollLeft, ProControllerRollRight;
         public double ProControllerLeftStickX, ProControllerLeftStickY, ProControllerRightStickX, ProControllerRightStickY;
@@ -323,6 +324,7 @@ namespace SwitchProControllersAPI
                         {
                             path = diDetail.DevicePath;
                             isvalidhandle = AttachProController(diDetail.DevicePath);
+                            handleptrunsharedPro = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.None, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                             if (isvalidhandle)
                             {
                                 paths.Add(path);
@@ -340,8 +342,8 @@ namespace SwitchProControllersAPI
         {
             try
             {
-                IntPtr handle = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
-                handlePro = Prohid_open_path(handle);
+                handleptrPro = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
+                handlePro = Prohid_open_path(handleptrPro);
                 Subcommand1ProController(0x06, new byte[] { 0x01 }, 1);
                 Subcommand2ProController(0x40, new byte[] { 0x1 }, 1);
                 Subcommand2ProController(0x3, new byte[] { 0x30 }, 1);

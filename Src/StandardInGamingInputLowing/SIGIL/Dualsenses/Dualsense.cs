@@ -39,7 +39,6 @@ namespace DualSensesAPI
         private byte miscByte;
         private byte btnBlock1, btnBlock2, btnBlock3;
         private byte[] dsdata = new byte[64];
-        public SafeFileHandle handle;
         public bool PS5ControllerButtonCrossPressed;
         public bool PS5ControllerButtonCirclePressed;
         public bool PS5ControllerButtonSquarePressed;
@@ -70,6 +69,7 @@ namespace DualSensesAPI
         public Vector3 gyr_gPS5 = new Vector3();
         public Vector3 acc_gPS5 = new Vector3();
         public Vector3 InitDirectAnglesPS5, DirectAnglesPS5;
+        public SafeFileHandle handle = null, handleunshared = null;
         private FileStream mStream;
         public int number = 0;
         public bool reconnectingbool;
@@ -99,6 +99,8 @@ namespace DualSensesAPI
         {
             running = false;
             Thread.Sleep(100);
+            handleunshared.Close();
+            handleunshared.Dispose();
             mStream.Close();
             mStream.Dispose();
             handle.Close();
@@ -440,8 +442,15 @@ namespace DualSensesAPI
                     {
                         if (diDetail.DevicePath.ToLower().Contains(vendor_id.ToLower()) & diDetail.DevicePath.ToLower().Contains(product_id.ToLower()))
                         {
+                            if (handleunshared != null)
+                            {
+                                handleunshared.Close();
+                                handleunshared.Dispose();
+                                handleunshared = null;
+                            }
                             path = diDetail.DevicePath;
                             isvalidhandle = Found(path);
+                            handleunshared = CreateFile(path, FileAccess.ReadWrite, FileShare.None, IntPtr.Zero, FileMode.Open, (uint)EFileAttributes.Overlapped, IntPtr.Zero);
                             if (isvalidhandle)
                             {
                                 paths.Add(path);

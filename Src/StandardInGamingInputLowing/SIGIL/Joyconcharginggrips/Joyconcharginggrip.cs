@@ -58,6 +58,8 @@ namespace JoyconChargingGripsAPI
         public byte[] report_bufRight = new byte[report_lenRight];
         public SafeFileHandle handleRight;
         public SafeFileHandle handleLeft;
+        private IntPtr handleptrRight, handleptrunsharedRight;
+        private IntPtr handleptrLeft, handleptrunsharedLeft;
         public bool JoyconLeftButtonSMA, JoyconLeftButtonACC, JoyconLeftRollLeft, JoyconLeftRollRight;
         public double JoyconLeftStickX, JoyconLeftStickY;
         public System.Collections.Generic.List<double> LeftValListX = new System.Collections.Generic.List<double>(), LeftValListY = new System.Collections.Generic.List<double>();
@@ -462,6 +464,7 @@ namespace JoyconChargingGripsAPI
                             {
                                 pathleft = diDetail.DevicePath;
                                 isvalidhandle = AttachGripLeftController(diDetail.DevicePath);
+                                handleptrunsharedLeft = CreateFile(pathleft, System.IO.FileAccess.ReadWrite, System.IO.FileShare.None, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                                 if (isvalidhandle)
                                 {
                                     pathsleft.Add(pathleft);
@@ -473,6 +476,7 @@ namespace JoyconChargingGripsAPI
                             {
                                 pathright = diDetail.DevicePath;
                                 isvalidhandle = AttachGripRightController(diDetail.DevicePath);
+                                handleptrunsharedRight = CreateFile(pathright, System.IO.FileAccess.ReadWrite, System.IO.FileShare.None, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                                 if (isvalidhandle)
                                 {
                                     pathsright.Add(pathright);
@@ -499,8 +503,8 @@ namespace JoyconChargingGripsAPI
         {
             try
             {
-                IntPtr handle = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
-                handleLeft = Lhid_open_path(handle);
+                handleptrLeft = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
+                handleLeft = Lhid_open_path(handleptrLeft);
                 ResetingGripLeftController();
                 SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x02 });
                 SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x03 });
@@ -541,8 +545,8 @@ namespace JoyconChargingGripsAPI
         {
             try
             {
-                IntPtr handle = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
-                handleRight = Rhid_open_path(handle);
+                handleptrRight = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
+                handleRight = Rhid_open_path(handleptrRight);
                 ResetingGripRightController();
                 SubcommandGripRightController(0x06, new byte[] { 0x80, 0x02 });
                 SubcommandGripRightController(0x06, new byte[] { 0x80, 0x03 });

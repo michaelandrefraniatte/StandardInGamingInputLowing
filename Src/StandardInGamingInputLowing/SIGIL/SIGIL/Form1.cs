@@ -3736,8 +3736,6 @@ namespace SIGIL
                 using System.Runtime.InteropServices;
                 using System.Threading;
                 using System.Threading.Tasks;
-                using System.Windows;
-                using System.Windows.Forms;
                 using System.Reflection;
                 namespace StringToCode
                 {
@@ -3755,20 +3753,14 @@ namespace SIGIL
                         public static extern bool joyconleftdisconnect();
                         [DllImport(""MotionInputPairing.dll"", EntryPoint = ""wiimotedisconnect"")]
                         public static extern bool wiimotedisconnect();
-                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""wiimotesconnect"")]
-                        public static extern bool wiimotesconnect();
-                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""wiimotesdisconnect"")]
-                        public static extern bool wiimotesdisconnect();
-                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""joyconsleftconnect"")]
-                        public static extern bool joyconsleftconnect();
-                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""joyconsleftdisconnect"")]
-                        public static extern bool joyconsleftdisconnect();
-                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""joyconsrightconnect"")]
-                        public static extern bool joyconsrightconnect();
-                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""joyconsrightdisconnect"")]
-                        public static extern bool joyconsrightdisconnect();
                         public void Disconnect()
                         {
+                            try
+                            {
+                                wiimoteconnect();
+                                wiimotedisconnect();
+                            }
+                            catch { }
                             try
                             {
                                 joyconrightconnect();
@@ -3789,20 +3781,14 @@ namespace SIGIL
                             catch { }
                             try
                             {
-                                wiimotesconnect();
-                                wiimotesdisconnect();
+                                joyconrightconnect();
+                                joyconrightdisconnect();
                             }
                             catch { }
                             try
                             {
-                                joyconsleftconnect();
-                                joyconsleftdisconnect();
-                            }
-                            catch { }
-                            try
-                            {
-                                joyconsrightconnect();
-                                joyconsrightdisconnect();
+                                joyconleftconnect();
+                                joyconleftdisconnect();
                             }
                             catch { }
                         }
@@ -3811,8 +3797,6 @@ namespace SIGIL
             parameters = new System.CodeDom.Compiler.CompilerParameters();
             parameters.GenerateExecutable = false;
             parameters.GenerateInMemory = true;
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Windows.Forms.dll");
-            parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.Drawing.dll");
             provider = new Microsoft.CSharp.CSharpCodeProvider();
             results = provider.CompileAssemblyFromSource(parameters, finalcode);
             assembly = results.CompiledAssembly;

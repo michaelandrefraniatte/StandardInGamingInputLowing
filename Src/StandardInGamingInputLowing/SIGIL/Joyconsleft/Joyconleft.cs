@@ -54,6 +54,7 @@ namespace JoyconsLeftAPI
         public const uint report_lenLeft = 49;
         public byte[] report_bufLeft = new byte[report_lenLeft];
         public SafeFileHandle handleLeft;
+        private IntPtr handleptrLeft, handleptrunsharedLeft;
         public bool JoyconLeftButtonSMA, JoyconLeftButtonACC, JoyconLeftRollLeft, JoyconLeftRollRight;
         public double JoyconLeftStickX, JoyconLeftStickY;
         public System.Collections.Generic.List<double> LeftValListX = new System.Collections.Generic.List<double>(), LeftValListY = new System.Collections.Generic.List<double>();
@@ -299,6 +300,7 @@ namespace JoyconsLeftAPI
                         {
                             path = diDetail.DevicePath;
                             isvalidhandle = AttachJoyLeft(diDetail.DevicePath);
+                            handleptrunsharedLeft = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.None, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                             if (isvalidhandle)
                             {
                                 paths.Add(path);
@@ -316,8 +318,8 @@ namespace JoyconsLeftAPI
         {
             try
             {
-                IntPtr handle = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
-                handleLeft = Lhid_open_path(handle);
+                handleptrLeft = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
+                handleLeft = Lhid_open_path(handleptrLeft);
                 SubcommandLeft(0x40, new byte[] { 0x1 }, 1);
                 SubcommandLeft(0x3, new byte[] { 0x30 }, 1);
                 return true;
