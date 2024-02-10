@@ -18,7 +18,7 @@ namespace DirectInputsAPI
         private bool running, formvisible;
         private SharpDX.DirectInput.DirectInput directInput = new SharpDX.DirectInput.DirectInput();
         private int number;
-        public Form1 form1 = new Form1();
+        private Form1 form1 = new Form1();
         public void ViewData()
         {
             if (!form1.Visible)
@@ -37,7 +37,7 @@ namespace DirectInputsAPI
         {
             running = false;
         }
-        public void taskD()
+        private void taskD()
         {
             for (; ; )
             {

@@ -66,20 +66,20 @@ namespace DualSensesAPI
         public double PS5ControllerLeftStickX, PS5ControllerLeftStickY, PS5ControllerRightStickX, PS5ControllerRightStickY, PS5ControllerRightTriggerPosition, PS5ControllerLeftTriggerPosition, PS5ControllerTouchX, PS5ControllerTouchY;
         public bool PS5ControllerAccelCenter;
         public double PS5ControllerAccelX, PS5ControllerAccelY, PS5ControllerGyroX, PS5ControllerGyroY;
-        public Vector3 gyr_gPS5 = new Vector3();
-        public Vector3 acc_gPS5 = new Vector3();
-        public Vector3 InitDirectAnglesPS5, DirectAnglesPS5;
-        public SafeFileHandle handle = null, handleunshared = null;
+        private Vector3 gyr_gPS5 = new Vector3();
+        private Vector3 acc_gPS5 = new Vector3();
+        private Vector3 InitDirectAnglesPS5, DirectAnglesPS5;
+        private SafeFileHandle handle = null, handleunshared = null;
         private FileStream mStream;
-        public int number = 0;
-        public bool reconnectingbool;
-        public double reconnectingcount;
-        public bool isvalidhandle = false;
-        public string path;
-        public bool running, formvisible, littleendian;
+        private int number = 0;
+        private bool reconnectingbool;
+        private double reconnectingcount;
+        private bool isvalidhandle = false;
+        private string path;
+        private bool running, formvisible, littleendian;
         private static List<string> paths = new List<string>();
         private static List<FileStream> mStreams = new List<FileStream>();
-        public Form1 form1 = new Form1();
+        private Form1 form1 = new Form1();
         public DualSense()
         {
             TimeBeginPeriod(1);
@@ -106,7 +106,7 @@ namespace DualSensesAPI
             handle.Close();
             handle.Dispose();
         }
-        public void ProcessStateLogic()
+        private void ProcessStateLogic()
         {
             LeftAnalogStick = ReadAnalogStick(dsdata[1], dsdata[2]);
             RightAnalogStick = ReadAnalogStick(dsdata[3], dsdata[4]);
@@ -315,39 +315,39 @@ namespace DualSensesAPI
                 Z = BitConverter.ToInt16(z, 0)
             };
         }
-        public Vec2 LeftAnalogStick { get; private set; }
-        public Vec2 RightAnalogStick { get; private set; }
-        public float L2 { get; private set; }
-        public float R2 { get; private set; }
-        public bool SquareButton { get; private set; }
-        public bool CrossButton { get; private set; }
-        public bool CircleButton { get; private set; }
-        public bool TriangleButton { get; private set; }
-        public bool DPadUpButton { get; private set; }
-        public bool DPadRightButton { get; private set; }
-        public bool DPadDownButton { get; private set; }
-        public bool DPadLeftButton { get; private set; }
-        public bool L1Button { get; private set; }
-        public bool R1Button { get; private set; }
-        public bool L2Button { get; private set; }
-        public bool R2Button { get; private set; }
-        public bool CreateButton { get; private set; }
-        public bool MenuButton { get; private set; }
-        public bool L3Button { get; private set; }
-        public bool R3Button { get; private set; }
-        public bool LogoButton { get; private set; }
-        public bool TouchpadButton { get; private set; }
-        public bool FnL { get; private set; }
-        public bool FnR { get; private set; }
-        public bool BLP { get; private set; }
-        public bool BRP { get; private set; }
-        public bool MicButton { get; private set; }
-        public DualShock4Touch Touchpad1 { get; private set; }
-        public DualShock4Touch Touchpad2 { get; private set; }
-        public Vec3 Gyro { get; private set; }
-        public Vec3 Accelerometer { get; private set; }
-        public bool IsHeadphoneConnected { get; private set; }
-        public void Reconnection()
+        private Vec2 LeftAnalogStick { get; set; }
+        private Vec2 RightAnalogStick { get; set; }
+        private float L2 { get; set; }
+        private float R2 { get; set; }
+        private bool SquareButton { get; set; }
+        private bool CrossButton { get; set; }
+        private bool CircleButton { get; set; }
+        private bool TriangleButton { get; set; }
+        private bool DPadUpButton { get; set; }
+        private bool DPadRightButton { get; set; }
+        private bool DPadDownButton { get; set; }
+        private bool DPadLeftButton { get; set; }
+        private bool L1Button { get; set; }
+        private bool R1Button { get; set; }
+        private bool L2Button { get; set; }
+        private bool R2Button { get; set; }
+        private bool CreateButton { get; set; }
+        private bool MenuButton { get; set; }
+        private bool L3Button { get; set; }
+        private bool R3Button { get; set; }
+        private bool LogoButton { get; set; }
+        private bool TouchpadButton { get; set; }
+        private bool FnL { get; set; }
+        private bool FnR { get; set; }
+        private bool BLP { get; set; }
+        private bool BRP { get; set; }
+        private bool MicButton { get; set; }
+        private DualShock4Touch Touchpad1 { get; set; }
+        private DualShock4Touch Touchpad2 { get; set; }
+        private Vec3 Gyro { get; set; }
+        private Vec3 Accelerometer { get; set; }
+        private bool IsHeadphoneConnected { get; set; }
+        private void Reconnection()
         {
             if (reconnectingcount == 0)
                 reconnectingbool = true;
@@ -408,14 +408,14 @@ namespace DualSensesAPI
             Overlapped = 0x40000000,
             Normal = 0x80
         };
-        struct SP_DEVICE_INTERFACE_DATA
+        private struct SP_DEVICE_INTERFACE_DATA
         {
             public int cbSize;
             public Guid InterfaceClassGuid;
             public int Flags;
             public IntPtr RESERVED;
         }
-        struct SP_DEVICE_INTERFACE_DETAIL_DATA
+        private struct SP_DEVICE_INTERFACE_DETAIL_DATA
         {
             public UInt32 cbSize;
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
@@ -464,7 +464,7 @@ namespace DualSensesAPI
             path = paths[number < 2 ? 0 : number - 1];
             mStream = mStreams[number < 2 ? 0 : number - 1];
         }
-        public bool Found(string path)
+        private bool Found(string path)
         {
             try
             {

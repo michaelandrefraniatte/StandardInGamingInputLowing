@@ -24,67 +24,67 @@ namespace keyboardsmouses
     public class SendKeyboardMouse
     {
         [DllImport("keyboardmouse.dll", EntryPoint = "MoveMouseTo", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void MoveMouseTo(int x, int y);
+        private static extern void MoveMouseTo(int x, int y);
         [DllImport("keyboardmouse.dll", EntryPoint = "MoveMouseBy", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void MoveMouseBy(int x, int y);
+        private static extern void MoveMouseBy(int x, int y);
         [DllImport("keyboardmouse.dll", EntryPoint = "MouseMW3", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void MouseMW3(int x, int y);
+        private static extern void MouseMW3(int x, int y);
         [DllImport("keyboardmouse.dll", EntryPoint = "MouseBrink", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void MouseBrink(int x, int y);
+        private static extern void MouseBrink(int x, int y);
         [DllImport("user32.dll")]
-        public static extern void SetPhysicalCursorPos(int X, int Y);
+        private static extern void SetPhysicalCursorPos(int X, int Y);
         [DllImport("user32.dll")]
-        public static extern void SetCaretPos(int X, int Y);
+        private static extern void SetCaretPos(int X, int Y);
         [DllImport("user32.dll")]
-        public static extern void SetCursorPos(int X, int Y);
+        private static extern void SetCursorPos(int X, int Y);
         [DllImport("keyboardmouse.dll", EntryPoint = "SendKey", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SendKey(UInt16 bVk, UInt16 bScan);
+        private static extern void SendKey(UInt16 bVk, UInt16 bScan);
         [DllImport("keyboardmouse.dll", EntryPoint = "SendKeyF", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SendKeyF(UInt16 bVk, UInt16 bScan);
+        private static extern void SendKeyF(UInt16 bVk, UInt16 bScan);
         [DllImport("keyboardmouse.dll", EntryPoint = "SendKeyArrows", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SendKeyArrows(UInt16 bVk, UInt16 bScan);
+        private static extern void SendKeyArrows(UInt16 bVk, UInt16 bScan);
         [DllImport("keyboardmouse.dll", EntryPoint = "SendKeyArrowsF", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SendKeyArrowsF(UInt16 bVk, UInt16 bScan);
+        private static extern void SendKeyArrowsF(UInt16 bVk, UInt16 bScan);
         [DllImport("keyboardmouse.dll", EntryPoint = "SendMouseEventButtonLeft", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SendMouseEventButtonLeft();
+        private static extern void SendMouseEventButtonLeft();
         [DllImport("keyboardmouse.dll", EntryPoint = "SendMouseEventButtonLeftF", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SendMouseEventButtonLeftF();
+        private static extern void SendMouseEventButtonLeftF();
         [DllImport("keyboardmouse.dll", EntryPoint = "SendMouseEventButtonRight", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SendMouseEventButtonRight();
+        private static extern void SendMouseEventButtonRight();
         [DllImport("keyboardmouse.dll", EntryPoint = "SendMouseEventButtonRightF", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SendMouseEventButtonRightF();
+        private static extern void SendMouseEventButtonRightF();
         [DllImport("keyboardmouse.dll", EntryPoint = "SendMouseEventButtonMiddle", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SendMouseEventButtonMiddle();
+        private static extern void SendMouseEventButtonMiddle();
         [DllImport("keyboardmouse.dll", EntryPoint = "SendMouseEventButtonMiddleF", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SendMouseEventButtonMiddleF();
+        private static extern void SendMouseEventButtonMiddleF();
         [DllImport("keyboardmouse.dll", EntryPoint = "SendMouseEventButtonWheelUp", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SendMouseEventButtonWheelUp();
+        private static extern void SendMouseEventButtonWheelUp();
         [DllImport("keyboardmouse.dll", EntryPoint = "SendMouseEventButtonWheelDown", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SendMouseEventButtonWheelDown();
+        private static extern void SendMouseEventButtonWheelDown();
         [DllImport("keyboardmouse.dll", EntryPoint = "SimulateKeyDown", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SimulateKeyDown(UInt16 keyCode, UInt16 bScan);
+        private static extern void SimulateKeyDown(UInt16 keyCode, UInt16 bScan);
         [DllImport("keyboardmouse.dll", EntryPoint = "SimulateKeyUp", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SimulateKeyUp(UInt16 keyCode, UInt16 bScan);
+        private static extern void SimulateKeyUp(UInt16 keyCode, UInt16 bScan);
         [DllImport("keyboardmouse.dll", EntryPoint = "SimulateKeyDownArrows", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SimulateKeyDownArrows(UInt16 keyCode, UInt16 bScan);
+        private static extern void SimulateKeyDownArrows(UInt16 keyCode, UInt16 bScan);
         [DllImport("keyboardmouse.dll", EntryPoint = "SimulateKeyUpArrows", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SimulateKeyUpArrows(UInt16 keyCode, UInt16 bScan);
+        private static extern void SimulateKeyUpArrows(UInt16 keyCode, UInt16 bScan);
         [DllImport("keyboardmouse.dll", EntryPoint = "LeftClick", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void LeftClick();
+        private static extern void LeftClick();
         [DllImport("keyboardmouse.dll", EntryPoint = "LeftClickF", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void LeftClickF();
+        private static extern void LeftClickF();
         [DllImport("keyboardmouse.dll", EntryPoint = "RightClick", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void RightClick();
+        private static extern void RightClick();
         [DllImport("keyboardmouse.dll", EntryPoint = "RightClickF", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void RightClickF();
+        private static extern void RightClickF();
         [DllImport("keyboardmouse.dll", EntryPoint = "MiddleClick", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void MiddleClick();
+        private static extern void MiddleClick();
         [DllImport("keyboardmouse.dll", EntryPoint = "MiddleClickF", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void MiddleClickF();
+        private static extern void MiddleClickF();
         [DllImport("keyboardmouse.dll", EntryPoint = "WheelDownF", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void WheelDownF();
+        private static extern void WheelDownF();
         [DllImport("keyboardmouse.dll", EntryPoint = "WheelUpF", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void WheelUpF();
+        private static extern void WheelUpF();
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
         [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
@@ -92,356 +92,356 @@ namespace keyboardsmouses
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public const ushort VK_LBUTTON = (ushort)0x01;
-        public const ushort VK_RBUTTON = (ushort)0x02;
-        public const ushort VK_CANCEL = (ushort)0x03;
-        public const ushort VK_MBUTTON = (ushort)0x04;
-        public const ushort VK_XBUTTON1 = (ushort)0x05;
-        public const ushort VK_XBUTTON2 = (ushort)0x06;
-        public const ushort VK_BACK = (ushort)0x08;
-        public const ushort VK_Tab = (ushort)0x09;
-        public const ushort VK_CLEAR = (ushort)0x0C;
-        public const ushort VK_Return = (ushort)0x0D;
-        public const ushort VK_SHIFT = (ushort)0x10;
-        public const ushort VK_CONTROL = (ushort)0x11;
-        public const ushort VK_MENU = (ushort)0x12;
-        public const ushort VK_PAUSE = (ushort)0x13;
-        public const ushort VK_CAPITAL = (ushort)0x14;
-        public const ushort VK_KANA = (ushort)0x15;
-        public const ushort VK_HANGEUL = (ushort)0x15;
-        public const ushort VK_HANGUL = (ushort)0x15;
-        public const ushort VK_JUNJA = (ushort)0x17;
-        public const ushort VK_FINAL = (ushort)0x18;
-        public const ushort VK_HANJA = (ushort)0x19;
-        public const ushort VK_KANJI = (ushort)0x19;
-        public const ushort VK_Escape = (ushort)0x1B;
-        public const ushort VK_CONVERT = (ushort)0x1C;
-        public const ushort VK_NONCONVERT = (ushort)0x1D;
-        public const ushort VK_ACCEPT = (ushort)0x1E;
-        public const ushort VK_MODECHANGE = (ushort)0x1F;
-        public const ushort VK_Space = (ushort)0x20;
-        public const ushort VK_PRIOR = (ushort)0x21;
-        public const ushort VK_NEXT = (ushort)0x22;
-        public const ushort VK_END = (ushort)0x23;
-        public const ushort VK_HOME = (ushort)0x24;
-        public const ushort VK_LEFT = (ushort)0x25;
-        public const ushort VK_UP = (ushort)0x26;
-        public const ushort VK_RIGHT = (ushort)0x27;
-        public const ushort VK_DOWN = (ushort)0x28;
-        public const ushort VK_SELECT = (ushort)0x29;
-        public const ushort VK_PRINT = (ushort)0x2A;
-        public const ushort VK_EXECUTE = (ushort)0x2B;
-        public const ushort VK_SNAPSHOT = (ushort)0x2C;
-        public const ushort VK_INSERT = (ushort)0x2D;
-        public const ushort VK_DELETE = (ushort)0x2E;
-        public const ushort VK_HELP = (ushort)0x2F;
-        public const ushort VK_APOSTROPHE = (ushort)0xDE;
-        public const ushort VK_0 = (ushort)0x30;
-        public const ushort VK_1 = (ushort)0x31;
-        public const ushort VK_2 = (ushort)0x32;
-        public const ushort VK_3 = (ushort)0x33;
-        public const ushort VK_4 = (ushort)0x34;
-        public const ushort VK_5 = (ushort)0x35;
-        public const ushort VK_6 = (ushort)0x36;
-        public const ushort VK_7 = (ushort)0x37;
-        public const ushort VK_8 = (ushort)0x38;
-        public const ushort VK_9 = (ushort)0x39;
-        public const ushort VK_A = (ushort)0x41;
-        public const ushort VK_B = (ushort)0x42;
-        public const ushort VK_C = (ushort)0x43;
-        public const ushort VK_D = (ushort)0x44;
-        public const ushort VK_E = (ushort)0x45;
-        public const ushort VK_F = (ushort)0x46;
-        public const ushort VK_G = (ushort)0x47;
-        public const ushort VK_H = (ushort)0x48;
-        public const ushort VK_I = (ushort)0x49;
-        public const ushort VK_J = (ushort)0x4A;
-        public const ushort VK_K = (ushort)0x4B;
-        public const ushort VK_L = (ushort)0x4C;
-        public const ushort VK_M = (ushort)0x4D;
-        public const ushort VK_N = (ushort)0x4E;
-        public const ushort VK_O = (ushort)0x4F;
-        public const ushort VK_P = (ushort)0x50;
-        public const ushort VK_Q = (ushort)0x51;
-        public const ushort VK_R = (ushort)0x52;
-        public const ushort VK_S = (ushort)0x53;
-        public const ushort VK_T = (ushort)0x54;
-        public const ushort VK_U = (ushort)0x55;
-        public const ushort VK_V = (ushort)0x56;
-        public const ushort VK_W = (ushort)0x57;
-        public const ushort VK_X = (ushort)0x58;
-        public const ushort VK_Y = (ushort)0x59;
-        public const ushort VK_Z = (ushort)0x5A;
-        public const ushort VK_LWIN = (ushort)0x5B;
-        public const ushort VK_RWIN = (ushort)0x5C;
-        public const ushort VK_APPS = (ushort)0x5D;
-        public const ushort VK_SLEEP = (ushort)0x5F;
-        public const ushort VK_NUMPAD0 = (ushort)0x60;
-        public const ushort VK_NUMPAD1 = (ushort)0x61;
-        public const ushort VK_NUMPAD2 = (ushort)0x62;
-        public const ushort VK_NUMPAD3 = (ushort)0x63;
-        public const ushort VK_NUMPAD4 = (ushort)0x64;
-        public const ushort VK_NUMPAD5 = (ushort)0x65;
-        public const ushort VK_NUMPAD6 = (ushort)0x66;
-        public const ushort VK_NUMPAD7 = (ushort)0x67;
-        public const ushort VK_NUMPAD8 = (ushort)0x68;
-        public const ushort VK_NUMPAD9 = (ushort)0x69;
-        public const ushort VK_MULTIPLY = (ushort)0x6A;
-        public const ushort VK_ADD = (ushort)0x6B;
-        public const ushort VK_SEPARATOR = (ushort)0x6C;
-        public const ushort VK_SUBTRACT = (ushort)0x6D;
-        public const ushort VK_DECIMAL = (ushort)0x6E;
-        public const ushort VK_DIVIDE = (ushort)0x6F;
-        public const ushort VK_F1 = (ushort)0x70;
-        public const ushort VK_F2 = (ushort)0x71;
-        public const ushort VK_F3 = (ushort)0x72;
-        public const ushort VK_F4 = (ushort)0x73;
-        public const ushort VK_F5 = (ushort)0x74;
-        public const ushort VK_F6 = (ushort)0x75;
-        public const ushort VK_F7 = (ushort)0x76;
-        public const ushort VK_F8 = (ushort)0x77;
-        public const ushort VK_F9 = (ushort)0x78;
-        public const ushort VK_F10 = (ushort)0x79;
-        public const ushort VK_F11 = (ushort)0x7A;
-        public const ushort VK_F12 = (ushort)0x7B;
-        public const ushort VK_F13 = (ushort)0x7C;
-        public const ushort VK_F14 = (ushort)0x7D;
-        public const ushort VK_F15 = (ushort)0x7E;
-        public const ushort VK_F16 = (ushort)0x7F;
-        public const ushort VK_F17 = (ushort)0x80;
-        public const ushort VK_F18 = (ushort)0x81;
-        public const ushort VK_F19 = (ushort)0x82;
-        public const ushort VK_F20 = (ushort)0x83;
-        public const ushort VK_F21 = (ushort)0x84;
-        public const ushort VK_F22 = (ushort)0x85;
-        public const ushort VK_F23 = (ushort)0x86;
-        public const ushort VK_F24 = (ushort)0x87;
-        public const ushort VK_NUMLOCK = (ushort)0x90;
-        public const ushort VK_SCROLL = (ushort)0x91;
-        public const ushort VK_LeftShift = (ushort)0xA0;
-        public const ushort VK_RightShift = (ushort)0xA1;
-        public const ushort VK_LeftControl = (ushort)0xA2;
-        public const ushort VK_RightControl = (ushort)0xA3;
-        public const ushort VK_LMENU = (ushort)0xA4;
-        public const ushort VK_RMENU = (ushort)0xA5;
-        public const ushort VK_BROWSER_BACK = (ushort)0xA6;
-        public const ushort VK_BROWSER_FORWARD = (ushort)0xA7;
-        public const ushort VK_BROWSER_REFRESH = (ushort)0xA8;
-        public const ushort VK_BROWSER_STOP = (ushort)0xA9;
-        public const ushort VK_BROWSER_SEARCH = (ushort)0xAA;
-        public const ushort VK_BROWSER_FAVORITES = (ushort)0xAB;
-        public const ushort VK_BROWSER_HOME = (ushort)0xAC;
-        public const ushort VK_VOLUME_MUTE = (ushort)0xAD;
-        public const ushort VK_VOLUME_DOWN = (ushort)0xAE;
-        public const ushort VK_VOLUME_UP = (ushort)0xAF;
-        public const ushort VK_MEDIA_NEXT_TRACK = (ushort)0xB0;
-        public const ushort VK_MEDIA_PREV_TRACK = (ushort)0xB1;
-        public const ushort VK_MEDIA_STOP = (ushort)0xB2;
-        public const ushort VK_MEDIA_PLAY_PAUSE = (ushort)0xB3;
-        public const ushort VK_LAUNCH_MAIL = (ushort)0xB4;
-        public const ushort VK_LAUNCH_MEDIA_SELECT = (ushort)0xB5;
-        public const ushort VK_LAUNCH_APP1 = (ushort)0xB6;
-        public const ushort VK_LAUNCH_APP2 = (ushort)0xB7;
-        public const ushort VK_OEM_1 = (ushort)0xBA;
-        public const ushort VK_OEM_PLUS = (ushort)0xBB;
-        public const ushort VK_OEM_COMMA = (ushort)0xBC;
-        public const ushort VK_OEM_MINUS = (ushort)0xBD;
-        public const ushort VK_OEM_PERIOD = (ushort)0xBE;
-        public const ushort VK_OEM_2 = (ushort)0xBF;
-        public const ushort VK_OEM_3 = (ushort)0xC0;
-        public const ushort VK_OEM_4 = (ushort)0xDB;
-        public const ushort VK_OEM_5 = (ushort)0xDC;
-        public const ushort VK_OEM_6 = (ushort)0xDD;
-        public const ushort VK_OEM_7 = (ushort)0xDE;
-        public const ushort VK_OEM_8 = (ushort)0xDF;
-        public const ushort VK_OEM_102 = (ushort)0xE2;
-        public const ushort VK_PROCESSKEY = (ushort)0xE5;
-        public const ushort VK_PACKET = (ushort)0xE7;
-        public const ushort VK_ATTN = (ushort)0xF6;
-        public const ushort VK_CRSEL = (ushort)0xF7;
-        public const ushort VK_EXSEL = (ushort)0xF8;
-        public const ushort VK_EREOF = (ushort)0xF9;
-        public const ushort VK_PLAY = (ushort)0xFA;
-        public const ushort VK_ZOOM = (ushort)0xFB;
-        public const ushort VK_NONAME = (ushort)0xFC;
-        public const ushort VK_PA1 = (ushort)0xFD;
-        public const ushort VK_OEM_CLEAR = (ushort)0xFE;
-        public const ushort S_LBUTTON = (ushort)0x0;
-        public const ushort S_RBUTTON = 0;
-        public const ushort S_CANCEL = 70;
-        public const ushort S_MBUTTON = 0;
-        public const ushort S_XBUTTON1 = 0;
-        public const ushort S_XBUTTON2 = 0;
-        public const ushort S_BACK = 14;
-        public const ushort S_Tab = 15;
-        public const ushort S_CLEAR = 76;
-        public const ushort S_Return = 28;
-        public const ushort S_SHIFT = 42;
-        public const ushort S_CONTROL = 29;
-        public const ushort S_MENU = 56;
-        public const ushort S_PAUSE = 0;
-        public const ushort S_CAPITAL = 58;
-        public const ushort S_KANA = 0;
-        public const ushort S_HANGEUL = 0;
-        public const ushort S_HANGUL = 0;
-        public const ushort S_JUNJA = 0;
-        public const ushort S_FINAL = 0;
-        public const ushort S_HANJA = 0;
-        public const ushort S_KANJI = 0;
-        public const ushort S_Escape = 1;
-        public const ushort S_CONVERT = 0;
-        public const ushort S_NONCONVERT = 0;
-        public const ushort S_ACCEPT = 0;
-        public const ushort S_MODECHANGE = 0;
-        public const ushort S_Space = 57;
-        public const ushort S_PRIOR = 73;
-        public const ushort S_NEXT = 81;
-        public const ushort S_END = 79;
-        public const ushort S_HOME = 71;
-        public const ushort S_LEFT = 75;
-        public const ushort S_UP = 72;
-        public const ushort S_RIGHT = 77;
-        public const ushort S_DOWN = 80;
-        public const ushort S_SELECT = 0;
-        public const ushort S_PRINT = 0;
-        public const ushort S_EXECUTE = 0;
-        public const ushort S_SNAPSHOT = 84;
-        public const ushort S_INSERT = 82;
-        public const ushort S_DELETE = 83;
-        public const ushort S_HELP = 99;
-        public const ushort S_APOSTROPHE = 41;
-        public const ushort S_0 = 11;
-        public const ushort S_1 = 2;
-        public const ushort S_2 = 3;
-        public const ushort S_3 = 4;
-        public const ushort S_4 = 5;
-        public const ushort S_5 = 6;
-        public const ushort S_6 = 7;
-        public const ushort S_7 = 8;
-        public const ushort S_8 = 9;
-        public const ushort S_9 = 10;
-        public const ushort S_A = 16;
-        public const ushort S_B = 48;
-        public const ushort S_C = 46;
-        public const ushort S_D = 32;
-        public const ushort S_E = 18;
-        public const ushort S_F = 33;
-        public const ushort S_G = 34;
-        public const ushort S_H = 35;
-        public const ushort S_I = 23;
-        public const ushort S_J = 36;
-        public const ushort S_K = 37;
-        public const ushort S_L = 38;
-        public const ushort S_M = 39;
-        public const ushort S_N = 49;
-        public const ushort S_O = 24;
-        public const ushort S_P = 25;
-        public const ushort S_Q = 30;
-        public const ushort S_R = 19;
-        public const ushort S_S = 31;
-        public const ushort S_T = 20;
-        public const ushort S_U = 22;
-        public const ushort S_V = 47;
-        public const ushort S_W = 44;
-        public const ushort S_X = 45;
-        public const ushort S_Y = 21;
-        public const ushort S_Z = 17;
-        public const ushort S_LWIN = 91;
-        public const ushort S_RWIN = 92;
-        public const ushort S_APPS = 93;
-        public const ushort S_SLEEP = 95;
-        public const ushort S_NUMPAD0 = 82;
-        public const ushort S_NUMPAD1 = 79;
-        public const ushort S_NUMPAD2 = 80;
-        public const ushort S_NUMPAD3 = 81;
-        public const ushort S_NUMPAD4 = 75;
-        public const ushort S_NUMPAD5 = 76;
-        public const ushort S_NUMPAD6 = 77;
-        public const ushort S_NUMPAD7 = 71;
-        public const ushort S_NUMPAD8 = 72;
-        public const ushort S_NUMPAD9 = 73;
-        public const ushort S_MULTIPLY = 55;
-        public const ushort S_ADD = 78;
-        public const ushort S_SEPARATOR = 0;
-        public const ushort S_SUBTRACT = 74;
-        public const ushort S_DECIMAL = 83;
-        public const ushort S_DIVIDE = 53;
-        public const ushort S_F1 = 59;
-        public const ushort S_F2 = 60;
-        public const ushort S_F3 = 61;
-        public const ushort S_F4 = 62;
-        public const ushort S_F5 = 63;
-        public const ushort S_F6 = 64;
-        public const ushort S_F7 = 65;
-        public const ushort S_F8 = 66;
-        public const ushort S_F9 = 67;
-        public const ushort S_F10 = 68;
-        public const ushort S_F11 = 87;
-        public const ushort S_F12 = 88;
-        public const ushort S_F13 = 100;
-        public const ushort S_F14 = 101;
-        public const ushort S_F15 = 102;
-        public const ushort S_F16 = 103;
-        public const ushort S_F17 = 104;
-        public const ushort S_F18 = 105;
-        public const ushort S_F19 = 106;
-        public const ushort S_F20 = 107;
-        public const ushort S_F21 = 108;
-        public const ushort S_F22 = 109;
-        public const ushort S_F23 = 110;
-        public const ushort S_F24 = 118;
-        public const ushort S_NUMLOCK = 69;
-        public const ushort S_SCROLL = 70;
-        public const ushort S_LeftShift = 42;
-        public const ushort S_RightShift = 54;
-        public const ushort S_LeftControl = 29;
-        public const ushort S_RightControl = 29;
-        public const ushort S_LMENU = 56;
-        public const ushort S_RMENU = 56;
-        public const ushort S_BROWSER_BACK = 106;
-        public const ushort S_BROWSER_FORWARD = 105;
-        public const ushort S_BROWSER_REFRESH = 103;
-        public const ushort S_BROWSER_STOP = 104;
-        public const ushort S_BROWSER_SEARCH = 101;
-        public const ushort S_BROWSER_FAVORITES = 102;
-        public const ushort S_BROWSER_HOME = 50;
-        public const ushort S_VOLUME_MUTE = 32;
-        public const ushort S_VOLUME_DOWN = 46;
-        public const ushort S_VOLUME_UP = 48;
-        public const ushort S_MEDIA_NEXT_TRACK = 25;
-        public const ushort S_MEDIA_PREV_TRACK = 16;
-        public const ushort S_MEDIA_STOP = 36;
-        public const ushort S_MEDIA_PLAY_PAUSE = 34;
-        public const ushort S_LAUNCH_MAIL = 108;
-        public const ushort S_LAUNCH_MEDIA_SELECT = 109;
-        public const ushort S_LAUNCH_APP1 = 107;
-        public const ushort S_LAUNCH_APP2 = 33;
-        public const ushort S_OEM_1 = 27;
-        public const ushort S_OEM_PLUS = 13;
-        public const ushort S_OEM_COMMA = 50;
-        public const ushort S_OEM_MINUS = 0;
-        public const ushort S_OEM_PERIOD = 51;
-        public const ushort S_OEM_2 = 52;
-        public const ushort S_OEM_3 = 40;
-        public const ushort S_OEM_4 = 12;
-        public const ushort S_OEM_5 = 43;
-        public const ushort S_OEM_6 = 26;
-        public const ushort S_OEM_7 = 41;
-        public const ushort S_OEM_8 = 53;
-        public const ushort S_OEM_102 = 86;
-        public const ushort S_PROCESSKEY = 0;
-        public const ushort S_PACKET = 0;
-        public const ushort S_ATTN = 0;
-        public const ushort S_CRSEL = 0;
-        public const ushort S_EXSEL = 0;
-        public const ushort S_EREOF = 93;
-        public const ushort S_PLAY = 0;
-        public const ushort S_ZOOM = 98;
-        public const ushort S_NONAME = 0;
-        public const ushort S_PA1 = 0;
-        public const ushort S_OEM_CLEAR = 0;
-        public string drivertype;
-        public Valuechanges ValueChange = new Valuechanges();
+        private const ushort VK_LBUTTON = (ushort)0x01;
+        private const ushort VK_RBUTTON = (ushort)0x02;
+        private const ushort VK_CANCEL = (ushort)0x03;
+        private const ushort VK_MBUTTON = (ushort)0x04;
+        private const ushort VK_XBUTTON1 = (ushort)0x05;
+        private const ushort VK_XBUTTON2 = (ushort)0x06;
+        private const ushort VK_BACK = (ushort)0x08;
+        private const ushort VK_Tab = (ushort)0x09;
+        private const ushort VK_CLEAR = (ushort)0x0C;
+        private const ushort VK_Return = (ushort)0x0D;
+        private const ushort VK_SHIFT = (ushort)0x10;
+        private const ushort VK_CONTROL = (ushort)0x11;
+        private const ushort VK_MENU = (ushort)0x12;
+        private const ushort VK_PAUSE = (ushort)0x13;
+        private const ushort VK_CAPITAL = (ushort)0x14;
+        private const ushort VK_KANA = (ushort)0x15;
+        private const ushort VK_HANGEUL = (ushort)0x15;
+        private const ushort VK_HANGUL = (ushort)0x15;
+        private const ushort VK_JUNJA = (ushort)0x17;
+        private const ushort VK_FINAL = (ushort)0x18;
+        private const ushort VK_HANJA = (ushort)0x19;
+        private const ushort VK_KANJI = (ushort)0x19;
+        private const ushort VK_Escape = (ushort)0x1B;
+        private const ushort VK_CONVERT = (ushort)0x1C;
+        private const ushort VK_NONCONVERT = (ushort)0x1D;
+        private const ushort VK_ACCEPT = (ushort)0x1E;
+        private const ushort VK_MODECHANGE = (ushort)0x1F;
+        private const ushort VK_Space = (ushort)0x20;
+        private const ushort VK_PRIOR = (ushort)0x21;
+        private const ushort VK_NEXT = (ushort)0x22;
+        private const ushort VK_END = (ushort)0x23;
+        private const ushort VK_HOME = (ushort)0x24;
+        private const ushort VK_LEFT = (ushort)0x25;
+        private const ushort VK_UP = (ushort)0x26;
+        private const ushort VK_RIGHT = (ushort)0x27;
+        private const ushort VK_DOWN = (ushort)0x28;
+        private const ushort VK_SELECT = (ushort)0x29;
+        private const ushort VK_PRINT = (ushort)0x2A;
+        private const ushort VK_EXECUTE = (ushort)0x2B;
+        private const ushort VK_SNAPSHOT = (ushort)0x2C;
+        private const ushort VK_INSERT = (ushort)0x2D;
+        private const ushort VK_DELETE = (ushort)0x2E;
+        private const ushort VK_HELP = (ushort)0x2F;
+        private const ushort VK_APOSTROPHE = (ushort)0xDE;
+        private const ushort VK_0 = (ushort)0x30;
+        private const ushort VK_1 = (ushort)0x31;
+        private const ushort VK_2 = (ushort)0x32;
+        private const ushort VK_3 = (ushort)0x33;
+        private const ushort VK_4 = (ushort)0x34;
+        private const ushort VK_5 = (ushort)0x35;
+        private const ushort VK_6 = (ushort)0x36;
+        private const ushort VK_7 = (ushort)0x37;
+        private const ushort VK_8 = (ushort)0x38;
+        private const ushort VK_9 = (ushort)0x39;
+        private const ushort VK_A = (ushort)0x41;
+        private const ushort VK_B = (ushort)0x42;
+        private const ushort VK_C = (ushort)0x43;
+        private const ushort VK_D = (ushort)0x44;
+        private const ushort VK_E = (ushort)0x45;
+        private const ushort VK_F = (ushort)0x46;
+        private const ushort VK_G = (ushort)0x47;
+        private const ushort VK_H = (ushort)0x48;
+        private const ushort VK_I = (ushort)0x49;
+        private const ushort VK_J = (ushort)0x4A;
+        private const ushort VK_K = (ushort)0x4B;
+        private const ushort VK_L = (ushort)0x4C;
+        private const ushort VK_M = (ushort)0x4D;
+        private const ushort VK_N = (ushort)0x4E;
+        private const ushort VK_O = (ushort)0x4F;
+        private const ushort VK_P = (ushort)0x50;
+        private const ushort VK_Q = (ushort)0x51;
+        private const ushort VK_R = (ushort)0x52;
+        private const ushort VK_S = (ushort)0x53;
+        private const ushort VK_T = (ushort)0x54;
+        private const ushort VK_U = (ushort)0x55;
+        private const ushort VK_V = (ushort)0x56;
+        private const ushort VK_W = (ushort)0x57;
+        private const ushort VK_X = (ushort)0x58;
+        private const ushort VK_Y = (ushort)0x59;
+        private const ushort VK_Z = (ushort)0x5A;
+        private const ushort VK_LWIN = (ushort)0x5B;
+        private const ushort VK_RWIN = (ushort)0x5C;
+        private const ushort VK_APPS = (ushort)0x5D;
+        private const ushort VK_SLEEP = (ushort)0x5F;
+        private const ushort VK_NUMPAD0 = (ushort)0x60;
+        private const ushort VK_NUMPAD1 = (ushort)0x61;
+        private const ushort VK_NUMPAD2 = (ushort)0x62;
+        private const ushort VK_NUMPAD3 = (ushort)0x63;
+        private const ushort VK_NUMPAD4 = (ushort)0x64;
+        private const ushort VK_NUMPAD5 = (ushort)0x65;
+        private const ushort VK_NUMPAD6 = (ushort)0x66;
+        private const ushort VK_NUMPAD7 = (ushort)0x67;
+        private const ushort VK_NUMPAD8 = (ushort)0x68;
+        private const ushort VK_NUMPAD9 = (ushort)0x69;
+        private const ushort VK_MULTIPLY = (ushort)0x6A;
+        private const ushort VK_ADD = (ushort)0x6B;
+        private const ushort VK_SEPARATOR = (ushort)0x6C;
+        private const ushort VK_SUBTRACT = (ushort)0x6D;
+        private const ushort VK_DECIMAL = (ushort)0x6E;
+        private const ushort VK_DIVIDE = (ushort)0x6F;
+        private const ushort VK_F1 = (ushort)0x70;
+        private const ushort VK_F2 = (ushort)0x71;
+        private const ushort VK_F3 = (ushort)0x72;
+        private const ushort VK_F4 = (ushort)0x73;
+        private const ushort VK_F5 = (ushort)0x74;
+        private const ushort VK_F6 = (ushort)0x75;
+        private const ushort VK_F7 = (ushort)0x76;
+        private const ushort VK_F8 = (ushort)0x77;
+        private const ushort VK_F9 = (ushort)0x78;
+        private const ushort VK_F10 = (ushort)0x79;
+        private const ushort VK_F11 = (ushort)0x7A;
+        private const ushort VK_F12 = (ushort)0x7B;
+        private const ushort VK_F13 = (ushort)0x7C;
+        private const ushort VK_F14 = (ushort)0x7D;
+        private const ushort VK_F15 = (ushort)0x7E;
+        private const ushort VK_F16 = (ushort)0x7F;
+        private const ushort VK_F17 = (ushort)0x80;
+        private const ushort VK_F18 = (ushort)0x81;
+        private const ushort VK_F19 = (ushort)0x82;
+        private const ushort VK_F20 = (ushort)0x83;
+        private const ushort VK_F21 = (ushort)0x84;
+        private const ushort VK_F22 = (ushort)0x85;
+        private const ushort VK_F23 = (ushort)0x86;
+        private const ushort VK_F24 = (ushort)0x87;
+        private const ushort VK_NUMLOCK = (ushort)0x90;
+        private const ushort VK_SCROLL = (ushort)0x91;
+        private const ushort VK_LeftShift = (ushort)0xA0;
+        private const ushort VK_RightShift = (ushort)0xA1;
+        private const ushort VK_LeftControl = (ushort)0xA2;
+        private const ushort VK_RightControl = (ushort)0xA3;
+        private const ushort VK_LMENU = (ushort)0xA4;
+        private const ushort VK_RMENU = (ushort)0xA5;
+        private const ushort VK_BROWSER_BACK = (ushort)0xA6;
+        private const ushort VK_BROWSER_FORWARD = (ushort)0xA7;
+        private const ushort VK_BROWSER_REFRESH = (ushort)0xA8;
+        private const ushort VK_BROWSER_STOP = (ushort)0xA9;
+        private const ushort VK_BROWSER_SEARCH = (ushort)0xAA;
+        private const ushort VK_BROWSER_FAVORITES = (ushort)0xAB;
+        private const ushort VK_BROWSER_HOME = (ushort)0xAC;
+        private const ushort VK_VOLUME_MUTE = (ushort)0xAD;
+        private const ushort VK_VOLUME_DOWN = (ushort)0xAE;
+        private const ushort VK_VOLUME_UP = (ushort)0xAF;
+        private const ushort VK_MEDIA_NEXT_TRACK = (ushort)0xB0;
+        private const ushort VK_MEDIA_PREV_TRACK = (ushort)0xB1;
+        private const ushort VK_MEDIA_STOP = (ushort)0xB2;
+        private const ushort VK_MEDIA_PLAY_PAUSE = (ushort)0xB3;
+        private const ushort VK_LAUNCH_MAIL = (ushort)0xB4;
+        private const ushort VK_LAUNCH_MEDIA_SELECT = (ushort)0xB5;
+        private const ushort VK_LAUNCH_APP1 = (ushort)0xB6;
+        private const ushort VK_LAUNCH_APP2 = (ushort)0xB7;
+        private const ushort VK_OEM_1 = (ushort)0xBA;
+        private const ushort VK_OEM_PLUS = (ushort)0xBB;
+        private const ushort VK_OEM_COMMA = (ushort)0xBC;
+        private const ushort VK_OEM_MINUS = (ushort)0xBD;
+        private const ushort VK_OEM_PERIOD = (ushort)0xBE;
+        private const ushort VK_OEM_2 = (ushort)0xBF;
+        private const ushort VK_OEM_3 = (ushort)0xC0;
+        private const ushort VK_OEM_4 = (ushort)0xDB;
+        private const ushort VK_OEM_5 = (ushort)0xDC;
+        private const ushort VK_OEM_6 = (ushort)0xDD;
+        private const ushort VK_OEM_7 = (ushort)0xDE;
+        private const ushort VK_OEM_8 = (ushort)0xDF;
+        private const ushort VK_OEM_102 = (ushort)0xE2;
+        private const ushort VK_PROCESSKEY = (ushort)0xE5;
+        private const ushort VK_PACKET = (ushort)0xE7;
+        private const ushort VK_ATTN = (ushort)0xF6;
+        private const ushort VK_CRSEL = (ushort)0xF7;
+        private const ushort VK_EXSEL = (ushort)0xF8;
+        private const ushort VK_EREOF = (ushort)0xF9;
+        private const ushort VK_PLAY = (ushort)0xFA;
+        private const ushort VK_ZOOM = (ushort)0xFB;
+        private const ushort VK_NONAME = (ushort)0xFC;
+        private const ushort VK_PA1 = (ushort)0xFD;
+        private const ushort VK_OEM_CLEAR = (ushort)0xFE;
+        private const ushort S_LBUTTON = (ushort)0x0;
+        private const ushort S_RBUTTON = 0;
+        private const ushort S_CANCEL = 70;
+        private const ushort S_MBUTTON = 0;
+        private const ushort S_XBUTTON1 = 0;
+        private const ushort S_XBUTTON2 = 0;
+        private const ushort S_BACK = 14;
+        private const ushort S_Tab = 15;
+        private const ushort S_CLEAR = 76;
+        private const ushort S_Return = 28;
+        private const ushort S_SHIFT = 42;
+        private const ushort S_CONTROL = 29;
+        private const ushort S_MENU = 56;
+        private const ushort S_PAUSE = 0;
+        private const ushort S_CAPITAL = 58;
+        private const ushort S_KANA = 0;
+        private const ushort S_HANGEUL = 0;
+        private const ushort S_HANGUL = 0;
+        private const ushort S_JUNJA = 0;
+        private const ushort S_FINAL = 0;
+        private const ushort S_HANJA = 0;
+        private const ushort S_KANJI = 0;
+        private const ushort S_Escape = 1;
+        private const ushort S_CONVERT = 0;
+        private const ushort S_NONCONVERT = 0;
+        private const ushort S_ACCEPT = 0;
+        private const ushort S_MODECHANGE = 0;
+        private const ushort S_Space = 57;
+        private const ushort S_PRIOR = 73;
+        private const ushort S_NEXT = 81;
+        private const ushort S_END = 79;
+        private const ushort S_HOME = 71;
+        private const ushort S_LEFT = 75;
+        private const ushort S_UP = 72;
+        private const ushort S_RIGHT = 77;
+        private const ushort S_DOWN = 80;
+        private const ushort S_SELECT = 0;
+        private const ushort S_PRINT = 0;
+        private const ushort S_EXECUTE = 0;
+        private const ushort S_SNAPSHOT = 84;
+        private const ushort S_INSERT = 82;
+        private const ushort S_DELETE = 83;
+        private const ushort S_HELP = 99;
+        private const ushort S_APOSTROPHE = 41;
+        private const ushort S_0 = 11;
+        private const ushort S_1 = 2;
+        private const ushort S_2 = 3;
+        private const ushort S_3 = 4;
+        private const ushort S_4 = 5;
+        private const ushort S_5 = 6;
+        private const ushort S_6 = 7;
+        private const ushort S_7 = 8;
+        private const ushort S_8 = 9;
+        private const ushort S_9 = 10;
+        private const ushort S_A = 16;
+        private const ushort S_B = 48;
+        private const ushort S_C = 46;
+        private const ushort S_D = 32;
+        private const ushort S_E = 18;
+        private const ushort S_F = 33;
+        private const ushort S_G = 34;
+        private const ushort S_H = 35;
+        private const ushort S_I = 23;
+        private const ushort S_J = 36;
+        private const ushort S_K = 37;
+        private const ushort S_L = 38;
+        private const ushort S_M = 39;
+        private const ushort S_N = 49;
+        private const ushort S_O = 24;
+        private const ushort S_P = 25;
+        private const ushort S_Q = 30;
+        private const ushort S_R = 19;
+        private const ushort S_S = 31;
+        private const ushort S_T = 20;
+        private const ushort S_U = 22;
+        private const ushort S_V = 47;
+        private const ushort S_W = 44;
+        private const ushort S_X = 45;
+        private const ushort S_Y = 21;
+        private const ushort S_Z = 17;
+        private const ushort S_LWIN = 91;
+        private const ushort S_RWIN = 92;
+        private const ushort S_APPS = 93;
+        private const ushort S_SLEEP = 95;
+        private const ushort S_NUMPAD0 = 82;
+        private const ushort S_NUMPAD1 = 79;
+        private const ushort S_NUMPAD2 = 80;
+        private const ushort S_NUMPAD3 = 81;
+        private const ushort S_NUMPAD4 = 75;
+        private const ushort S_NUMPAD5 = 76;
+        private const ushort S_NUMPAD6 = 77;
+        private const ushort S_NUMPAD7 = 71;
+        private const ushort S_NUMPAD8 = 72;
+        private const ushort S_NUMPAD9 = 73;
+        private const ushort S_MULTIPLY = 55;
+        private const ushort S_ADD = 78;
+        private const ushort S_SEPARATOR = 0;
+        private const ushort S_SUBTRACT = 74;
+        private const ushort S_DECIMAL = 83;
+        private const ushort S_DIVIDE = 53;
+        private const ushort S_F1 = 59;
+        private const ushort S_F2 = 60;
+        private const ushort S_F3 = 61;
+        private const ushort S_F4 = 62;
+        private const ushort S_F5 = 63;
+        private const ushort S_F6 = 64;
+        private const ushort S_F7 = 65;
+        private const ushort S_F8 = 66;
+        private const ushort S_F9 = 67;
+        private const ushort S_F10 = 68;
+        private const ushort S_F11 = 87;
+        private const ushort S_F12 = 88;
+        private const ushort S_F13 = 100;
+        private const ushort S_F14 = 101;
+        private const ushort S_F15 = 102;
+        private const ushort S_F16 = 103;
+        private const ushort S_F17 = 104;
+        private const ushort S_F18 = 105;
+        private const ushort S_F19 = 106;
+        private const ushort S_F20 = 107;
+        private const ushort S_F21 = 108;
+        private const ushort S_F22 = 109;
+        private const ushort S_F23 = 110;
+        private const ushort S_F24 = 118;
+        private const ushort S_NUMLOCK = 69;
+        private const ushort S_SCROLL = 70;
+        private const ushort S_LeftShift = 42;
+        private const ushort S_RightShift = 54;
+        private const ushort S_LeftControl = 29;
+        private const ushort S_RightControl = 29;
+        private const ushort S_LMENU = 56;
+        private const ushort S_RMENU = 56;
+        private const ushort S_BROWSER_BACK = 106;
+        private const ushort S_BROWSER_FORWARD = 105;
+        private const ushort S_BROWSER_REFRESH = 103;
+        private const ushort S_BROWSER_STOP = 104;
+        private const ushort S_BROWSER_SEARCH = 101;
+        private const ushort S_BROWSER_FAVORITES = 102;
+        private const ushort S_BROWSER_HOME = 50;
+        private const ushort S_VOLUME_MUTE = 32;
+        private const ushort S_VOLUME_DOWN = 46;
+        private const ushort S_VOLUME_UP = 48;
+        private const ushort S_MEDIA_NEXT_TRACK = 25;
+        private const ushort S_MEDIA_PREV_TRACK = 16;
+        private const ushort S_MEDIA_STOP = 36;
+        private const ushort S_MEDIA_PLAY_PAUSE = 34;
+        private const ushort S_LAUNCH_MAIL = 108;
+        private const ushort S_LAUNCH_MEDIA_SELECT = 109;
+        private const ushort S_LAUNCH_APP1 = 107;
+        private const ushort S_LAUNCH_APP2 = 33;
+        private const ushort S_OEM_1 = 27;
+        private const ushort S_OEM_PLUS = 13;
+        private const ushort S_OEM_COMMA = 50;
+        private const ushort S_OEM_MINUS = 0;
+        private const ushort S_OEM_PERIOD = 51;
+        private const ushort S_OEM_2 = 52;
+        private const ushort S_OEM_3 = 40;
+        private const ushort S_OEM_4 = 12;
+        private const ushort S_OEM_5 = 43;
+        private const ushort S_OEM_6 = 26;
+        private const ushort S_OEM_7 = 41;
+        private const ushort S_OEM_8 = 53;
+        private const ushort S_OEM_102 = 86;
+        private const ushort S_PROCESSKEY = 0;
+        private const ushort S_PACKET = 0;
+        private const ushort S_ATTN = 0;
+        private const ushort S_CRSEL = 0;
+        private const ushort S_EXSEL = 0;
+        private const ushort S_EREOF = 93;
+        private const ushort S_PLAY = 0;
+        private const ushort S_ZOOM = 98;
+        private const ushort S_NONAME = 0;
+        private const ushort S_PA1 = 0;
+        private const ushort S_OEM_CLEAR = 0;
+        private string drivertype;
+        private Valuechanges ValueChange = new Valuechanges();
         public SendKeyboardMouse()
         {
             TimeBeginPeriod(1);
@@ -1170,98 +1170,98 @@ namespace keyboardsmouses
             if (ValueChange._ValueChange[141] < 0f)
                 keyboardF(VK_RMENU, S_RMENU);
         }
-        public void mousebrink(int x, int y)
+        private void mousebrink(int x, int y)
         {
             if (drivertype == "sendinput")
                 MoveMouseBy(x, y);
             else
                 MouseBrink(x, y);
         }
-        public void mousemw3(int x, int y)
+        private void mousemw3(int x, int y)
         {
             if (drivertype == "sendinput")
                 MoveMouseTo(x, y);
             else
                 MouseMW3(x, y);
         }
-        public void mouseclickleft()
+        private void mouseclickleft()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonLeft());
             else
                 Task.Run(() => LeftClick());
         }
-        public void mouseclickleftF()
+        private void mouseclickleftF()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonLeftF());
             else
                 Task.Run(() => LeftClickF());
         }
-        public void mouseclickright()
+        private void mouseclickright()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonRight());
             else
                 Task.Run(() => RightClick());
         }
-        public void mouseclickrightF()
+        private void mouseclickrightF()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonRightF());
             else
                 Task.Run(() => RightClickF());
         }
-        public void mouseclickmiddle()
+        private void mouseclickmiddle()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonMiddle());
             else
                 Task.Run(() => MiddleClick());
         }
-        public void mouseclickmiddleF()
+        private void mouseclickmiddleF()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonMiddleF());
             else
                 Task.Run(() => MiddleClickF());
         }
-        public void mousewheelup()
+        private void mousewheelup()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonWheelUp());
             else
                 Task.Run(() => WheelUpF());
         }
-        public void mousewheeldown()
+        private void mousewheeldown()
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendMouseEventButtonWheelDown());
             else
                 Task.Run(() => WheelDownF());
         }
-        public void keyboard(UInt16 bVk, UInt16 bScan)
+        private void keyboard(UInt16 bVk, UInt16 bScan)
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendKey(bVk, bScan));
             else
                 Task.Run(() => SimulateKeyDown(bVk, bScan));
         }
-        public void keyboardF(UInt16 bVk, UInt16 bScan)
+        private void keyboardF(UInt16 bVk, UInt16 bScan)
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendKeyF(bVk, bScan));
             else
                 Task.Run(() => SimulateKeyUp(bVk, bScan));
         }
-        public void keyboardArrows(UInt16 bVk, UInt16 bScan)
+        private void keyboardArrows(UInt16 bVk, UInt16 bScan)
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendKeyArrows(bVk, bScan));
             else
                 Task.Run(() => SimulateKeyDownArrows(bVk, bScan));
         }
-        public void keyboardArrowsF(UInt16 bVk, UInt16 bScan)
+        private void keyboardArrowsF(UInt16 bVk, UInt16 bScan)
         {
             if (drivertype == "sendinput")
                 Task.Run(() => SendKeyArrowsF(bVk, bScan));

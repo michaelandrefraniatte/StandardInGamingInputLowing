@@ -10,7 +10,7 @@ namespace MouseHooksAPI
     public class MouseHooks
     {
         [DllImport("User32.dll")]
-        public static extern bool GetCursorPos(out int x, out int y);
+        private static extern bool GetCursorPos(out int x, out int y);
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
         [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
@@ -18,14 +18,14 @@ namespace MouseHooksAPI
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        MouseHook mouseHook = new MouseHook();
+        private MouseHook mouseHook = new MouseHook();
         public static int MouseHookX, MouseHookY, MouseHookZ, MouseHookButtonX;
         public static bool MouseHookLeftButton, MouseHookRightButton, MouseHookMiddleButton, MouseHookXButton;
         public int CursorX, CursorY, MouseX, MouseY, MouseZ, MouseButtonX;
         public bool MouseLeftButton, MouseRightButton, MouseMiddleButton, MouseXButton;
-        public int number = 0;
-        public bool running, formvisible;
-        public Form1 form1 = new Form1();
+        private int number = 0;
+        private bool running, formvisible;
+        private Form1 form1 = new Form1();
         public MouseHooks()
         {
             TimeBeginPeriod(1);
@@ -90,7 +90,7 @@ namespace MouseHooksAPI
         {
             this.number = number;
         }
-        public void ProcessStateLogic() 
+        private void ProcessStateLogic() 
         {
             GetCursorPos(out CursorX, out CursorY);
             MouseX = MouseHookX;
@@ -103,16 +103,16 @@ namespace MouseHooksAPI
             MouseButtonX = MouseHookButtonX;
         }
     }
-    class MouseHook
+    public class MouseHook
     {
-        public static int MouseHookX, MouseHookY, MouseHookZ, MouseHookButtonX, MouseDesktopHookX, MouseDesktopHookY, MouseHookTime;
-        public static bool MouseHookLeftButton, MouseHookRightButton, MouseHookMiddleButton, MouseHookXButton;
+        private static int MouseHookX, MouseHookY, MouseHookZ, MouseHookButtonX, MouseDesktopHookX, MouseDesktopHookY, MouseHookTime;
+        private static bool MouseHookLeftButton, MouseHookRightButton, MouseHookMiddleButton, MouseHookXButton;
         public delegate IntPtr MouseHookHandler(int nCode, IntPtr wParam, IntPtr lParam);
-        public MouseHookHandler hookHandler;
-        public MSLLHOOKSTRUCT mouseStruct;
+        private MouseHookHandler hookHandler;
+        private MSLLHOOKSTRUCT mouseStruct;
         public delegate void MouseHookCallback(MSLLHOOKSTRUCT mouseStruct);
         public event MouseHookCallback Hook;
-        public IntPtr hookID = IntPtr.Zero;
+        private IntPtr hookID = IntPtr.Zero;
         public void Install()
         {
             hookHandler = HookFunc;
@@ -129,12 +129,12 @@ namespace MouseHooksAPI
         {
             Uninstall();
         }
-        public IntPtr SetHook(MouseHookHandler proc)
+        private IntPtr SetHook(MouseHookHandler proc)
         {
             using (ProcessModule module = Process.GetCurrentProcess().MainModule)
                 return SetWindowsHookEx(WH_MOUSE_LL, proc, GetModuleHandle(module.ModuleName), 0);
         }
-        public IntPtr HookFunc(int nCode, IntPtr wParam, IntPtr lParam)
+        private IntPtr HookFunc(int nCode, IntPtr wParam, IntPtr lParam)
         {
             mouseStruct = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
             if (MouseHook.MouseMessages.WM_RBUTTONDOWN == (MouseHook.MouseMessages)wParam)
@@ -175,8 +175,8 @@ namespace MouseHooksAPI
             Hook((MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT)));
             return CallNextHookEx(hookID, nCode, wParam, lParam);
         }
-        public const int WH_MOUSE_LL = 14;
-        public enum MouseMessages
+        private const int WH_MOUSE_LL = 14;
+        private enum MouseMessages
         {
             WM_LBUTTONDOWN = 0x0201,
             WM_LBUTTONUP = 0x0202,
@@ -207,17 +207,17 @@ namespace MouseHooksAPI
             public IntPtr dwExtraInfo;
         }
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern IntPtr SetWindowsHookEx(int idHook, MouseHookHandler lpfn, IntPtr hMod, uint dwThreadId);
+        private static extern IntPtr SetWindowsHookEx(int idHook, MouseHookHandler lpfn, IntPtr hMod, uint dwThreadId);
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool UnhookWindowsHookEx(IntPtr hhk);
+        private static extern bool UnhookWindowsHookEx(IntPtr hhk);
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
+        private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern IntPtr GetModuleHandle(string lpModuleName);
+        private static extern IntPtr GetModuleHandle(string lpModuleName);
         [DllImport("User32.dll")]
-        public static extern bool GetCursorPos(out int x, out int y);
+        private static extern bool GetCursorPos(out int x, out int y);
         [DllImport("user32.dll")]
-        public static extern void SetCursorPos(int X, int Y);
+        private static extern void SetCursorPos(int X, int Y);
     }
 }

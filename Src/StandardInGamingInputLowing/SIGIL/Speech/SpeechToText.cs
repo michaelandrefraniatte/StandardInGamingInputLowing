@@ -15,14 +15,14 @@ namespace SpeechAPI
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public bool running, formvisible;
+        private bool running, formvisible;
         private static Ozeki.Media.Microphone microphone;
         private static Ozeki.Media.MediaConnector connector;
         private static Ozeki.Media.SpeechToText speechToText;
         private static string TextFromSpeech;
         public string speechtext;
         private int number;
-        public Form1 form1 = new Form1();
+        private Form1 form1 = new Form1();
         public SpeechToText()
         {
             TimeBeginPeriod(1);
@@ -47,7 +47,7 @@ namespace SpeechAPI
         {
             Task.Run(() => taskD());
         }
-        public void taskD()
+        private void taskD()
         {
             for (; ; )
             {

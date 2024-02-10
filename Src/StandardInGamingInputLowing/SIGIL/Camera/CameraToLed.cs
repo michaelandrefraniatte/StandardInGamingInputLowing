@@ -19,24 +19,24 @@ namespace CameraAPI
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public bool running, formvisible;
-        public AForge.Video.DirectShow.FilterInfoCollection CaptureDevice;
-        public AForge.Video.DirectShow.VideoCaptureDevice FinalFrame;
-        public static Bitmap img, ClonedImg, EditableImg;
+        private bool running, formvisible;
+        private AForge.Video.DirectShow.FilterInfoCollection CaptureDevice;
+        private AForge.Video.DirectShow.VideoCaptureDevice FinalFrame;
+        private static Bitmap img, ClonedImg, EditableImg;
         private static AForge.Imaging.BlobCounter blobCounter = new AForge.Imaging.BlobCounter();
-        public static AForge.Imaging.Filters.BlobsFiltering blobfilter = new AForge.Imaging.Filters.BlobsFiltering();
-        public static AForge.Imaging.Filters.ConnectedComponentsLabeling componentfilter = new AForge.Imaging.Filters.ConnectedComponentsLabeling();
-        public static AForge.Imaging.Blob[] blobs;
-        public static List<AForge.IntPoint> corners = new List<AForge.IntPoint>();
-        public static AForge.Math.Geometry.SimpleShapeChecker shapeChecker = new AForge.Math.Geometry.SimpleShapeChecker();
-        public static AForge.Imaging.Filters.BrightnessCorrection brightnessfilter;
-        public static AForge.Imaging.Filters.ColorFiltering colorfilter = new AForge.Imaging.Filters.ColorFiltering();
-        public static AForge.Imaging.Filters.Grayscale grayscalefilter = new AForge.Imaging.Filters.Grayscale(1, 0, 0);
-        public static AForge.Imaging.Filters.EuclideanColorFiltering euclideanfilter = new AForge.Imaging.Filters.EuclideanColorFiltering();
-        public int radius = 175, brightness = -50, red = 0, green = 205, blue = 205;
+        private static AForge.Imaging.Filters.BlobsFiltering blobfilter = new AForge.Imaging.Filters.BlobsFiltering();
+        private static AForge.Imaging.Filters.ConnectedComponentsLabeling componentfilter = new AForge.Imaging.Filters.ConnectedComponentsLabeling();
+        private static AForge.Imaging.Blob[] blobs;
+        private static List<AForge.IntPoint> corners = new List<AForge.IntPoint>();
+        private static AForge.Math.Geometry.SimpleShapeChecker shapeChecker = new AForge.Math.Geometry.SimpleShapeChecker();
+        private static AForge.Imaging.Filters.BrightnessCorrection brightnessfilter;
+        private static AForge.Imaging.Filters.ColorFiltering colorfilter = new AForge.Imaging.Filters.ColorFiltering();
+        private static AForge.Imaging.Filters.Grayscale grayscalefilter = new AForge.Imaging.Filters.Grayscale(1, 0, 0);
+        private static AForge.Imaging.Filters.EuclideanColorFiltering euclideanfilter = new AForge.Imaging.Filters.EuclideanColorFiltering();
+        private int radius = 175, brightness = -50, red = 0, green = 205, blue = 205;
         public double backpointX, posRightX, backpointY, posRightY, camx, camy;
         private int number;
-        public Form1 form1 = new Form1();
+        private Form1 form1 = new Form1();
         public CameraToLed()
         {
             TimeBeginPeriod(1);
@@ -66,7 +66,7 @@ namespace CameraAPI
         {
             Task.Run(() => taskD());
         }
-        public void taskD()
+        private void taskD()
         {
             for (; ; )
             {
@@ -103,7 +103,7 @@ namespace CameraAPI
             this.number = number;
             StartWebcamInputs();
         }
-        public void StartWebcamInputs()
+        private void StartWebcamInputs()
         {
             CaptureDevice = new AForge.Video.DirectShow.FilterInfoCollection(AForge.Video.DirectShow.FilterCategory.VideoInputDevice);
             FinalFrame = new AForge.Video.DirectShow.VideoCaptureDevice(CaptureDevice[CaptureDevice.Count - 1].MonikerString);
@@ -114,7 +114,7 @@ namespace CameraAPI
         {
             img = (Bitmap)eventArgs.Frame.Clone();
         }
-        public void ProcessStateLogic()
+        private void ProcessStateLogic()
         {
             try
             {
@@ -150,7 +150,7 @@ namespace CameraAPI
             catch { }
             Thread.Sleep(1);
         }
-        public void DrawLines(ref Bitmap image, System.Drawing.Point p)
+        private void DrawLines(ref Bitmap image, System.Drawing.Point p)
         {
             Graphics g = Graphics.FromImage(image);
             Pen p1 = new Pen(System.Drawing.Color.Red, 2);

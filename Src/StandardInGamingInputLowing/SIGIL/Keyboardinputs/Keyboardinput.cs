@@ -16,9 +16,9 @@ namespace KeyboardInputsAPI
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private bool running, formvisible;
-        DirectInput directInput = new DirectInput();
+        private DirectInput directInput = new DirectInput();
         private int number;
-        public Form1 form1 = new Form1();
+        private Form1 form1 = new Form1();
         public KeyboardInput()
         {
             TimeBeginPeriod(1);
@@ -37,7 +37,7 @@ namespace KeyboardInputsAPI
         {
             running = false;
         }
-        public void taskK()
+        private void taskK()
         {
             for (; ; )
             {
@@ -378,7 +378,7 @@ namespace KeyboardInputsAPI
                 return true;
             }
         }
-        public void ProcessStateLogic()
+        private void ProcessStateLogic()
         {
             int inc = number < 2 ? 0 : number - 1;
             keyboard[inc].Poll();

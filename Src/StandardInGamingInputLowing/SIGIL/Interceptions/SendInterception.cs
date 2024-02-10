@@ -25,11 +25,11 @@ namespace Interceptions
     public class SendInterception
     {
         [DllImport("user32.dll")]
-        public static extern void SetPhysicalCursorPos(int X, int Y);
+        private static extern void SetPhysicalCursorPos(int X, int Y);
         [DllImport("user32.dll")]
-        public static extern void SetCaretPos(int X, int Y);
+        private static extern void SetCaretPos(int X, int Y);
         [DllImport("user32.dll")]
-        public static extern void SetCursorPos(int X, int Y);
+        private static extern void SetCursorPos(int X, int Y);
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
         [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
@@ -37,10 +37,10 @@ namespace Interceptions
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public Valuechanges ValueChange = new Valuechanges();
-        public Input input = new Input();
-        public List<int> keyboard_ids = new List<int>(), mouse_ids = new List<int>();
-        public bool keyboard_id_alreadyexist, mouse_id_alreadyexist;
+        private Valuechanges ValueChange = new Valuechanges();
+        private Input input = new Input();
+        private List<int> keyboard_ids = new List<int>(), mouse_ids = new List<int>();
+        private bool keyboard_id_alreadyexist, mouse_id_alreadyexist;
         public SendInterception()
         {
             TimeBeginPeriod(1);
@@ -1050,43 +1050,43 @@ namespace Interceptions
             if (ValueChange._ValueChange[195] < 0f)
                 keyboardkeyF(input, Keys.NumpadMinus, keyboard_id);
         }
-        public void mouseclickleft(Input input, int mouse_id)
+        private void mouseclickleft(Input input, int mouse_id)
         {
             Task.Run(() => input.SendLeftClick(mouse_id));
         }
-        public void mouseclickleftF(Input input, int mouse_id)
+        private void mouseclickleftF(Input input, int mouse_id)
         {
             Task.Run(() => input.SendLeftClickF(mouse_id));
         }
-        public void mouseclickright(Input input, int mouse_id)
+        private void mouseclickright(Input input, int mouse_id)
         {
             Task.Run(() => input.SendRightClick(mouse_id));
         }
-        public void mouseclickrightF(Input input, int mouse_id)
+        private void mouseclickrightF(Input input, int mouse_id)
         {
             Task.Run(() => input.SendRightClickF(mouse_id));
         }
-        public void mouseclickmiddle(Input input, int mouse_id)
+        private void mouseclickmiddle(Input input, int mouse_id)
         {
             Task.Run(() => input.SendMiddleClick(mouse_id));
         }
-        public void mouseclickmiddleF(Input input, int mouse_id)
+        private void mouseclickmiddleF(Input input, int mouse_id)
         {
             Task.Run(() => input.SendMiddleClickF(mouse_id));
         }
-        public void mousewheelup(Input input, int mouse_id)
+        private void mousewheelup(Input input, int mouse_id)
         {
             Task.Run(() => input.SendWheelUp(mouse_id));
         }
-        public void mousewheeldown(Input input, int mouse_id)
+        private void mousewheeldown(Input input, int mouse_id)
         {
             Task.Run(() => input.SendWheelDown(mouse_id));
         }
-        public void keyboardkey(Input input, Keys key, int keyboard_id)
+        private void keyboardkey(Input input, Keys key, int keyboard_id)
         {
             Task.Run(() => input.SendKey(key, keyboard_id));
         }
-        public void keyboardkeyF(Input input, Keys key, int keyboard_id)
+        private void keyboardkeyF(Input input, Keys key, int keyboard_id)
         {
             Task.Run(() => input.SendKeyF(key, keyboard_id));
         }
@@ -1094,7 +1094,7 @@ namespace Interceptions
         {
             Task.Run(() => input.MoveMouseBy(deltaX, deltaY, mouseId));
         }
-        public void MoveMouseTo(Input input, int x, int y, int mouseId)
+        private void MoveMouseTo(Input input, int x, int y, int mouseId)
         {
             Task.Run(() => input.MoveMouseTo(x, y, mouseId));
         }

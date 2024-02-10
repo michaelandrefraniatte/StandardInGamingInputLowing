@@ -13,29 +13,29 @@ namespace SwitchProControllersAPI
     public class SwitchProController
     {
         [DllImport("hid.dll")]
-        public static extern void HidD_GetHidGuid(out Guid gHid);
+        private static extern void HidD_GetHidGuid(out Guid gHid);
         [DllImport("hid.dll")]
-        public static extern bool HidD_SetOutputReport(IntPtr HidDeviceObject, byte[] lpReportBuffer, uint ReportBufferLength);
+        private static extern bool HidD_SetOutputReport(IntPtr HidDeviceObject, byte[] lpReportBuffer, uint ReportBufferLength);
         [DllImport("setupapi.dll")]
-        public static extern IntPtr SetupDiGetClassDevs(ref Guid ClassGuid, string Enumerator, IntPtr hwndParent, UInt32 Flags);
+        private static extern IntPtr SetupDiGetClassDevs(ref Guid ClassGuid, string Enumerator, IntPtr hwndParent, UInt32 Flags);
         [DllImport("setupapi.dll")]
-        public static extern Boolean SetupDiEnumDeviceInterfaces(IntPtr hDevInfo, IntPtr devInvo, ref Guid interfaceClassGuid, Int32 memberIndex, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData);
+        private static extern Boolean SetupDiEnumDeviceInterfaces(IntPtr hDevInfo, IntPtr devInvo, ref Guid interfaceClassGuid, Int32 memberIndex, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData);
         [DllImport("setupapi.dll")]
-        public static extern Boolean SetupDiGetDeviceInterfaceDetail(IntPtr hDevInfo, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData, IntPtr deviceInterfaceDetailData, UInt32 deviceInterfaceDetailDataSize, out UInt32 requiredSize, IntPtr deviceInfoData);
+        private static extern Boolean SetupDiGetDeviceInterfaceDetail(IntPtr hDevInfo, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData, IntPtr deviceInterfaceDetailData, UInt32 deviceInterfaceDetailDataSize, out UInt32 requiredSize, IntPtr deviceInfoData);
         [DllImport("setupapi.dll")]
-        public static extern Boolean SetupDiGetDeviceInterfaceDetail(IntPtr hDevInfo, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData, ref SP_DEVICE_INTERFACE_DETAIL_DATA deviceInterfaceDetailData, UInt32 deviceInterfaceDetailDataSize, out UInt32 requiredSize, IntPtr deviceInfoData);
+        private static extern Boolean SetupDiGetDeviceInterfaceDetail(IntPtr hDevInfo, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData, ref SP_DEVICE_INTERFACE_DETAIL_DATA deviceInterfaceDetailData, UInt32 deviceInterfaceDetailDataSize, out UInt32 requiredSize, IntPtr deviceInfoData);
         [DllImport("Kernel32.dll")]
-        public static extern SafeFileHandle CreateFile(string fileName, [MarshalAs(UnmanagedType.U4)] FileAccess fileAccess, [MarshalAs(UnmanagedType.U4)] FileShare fileShare, IntPtr securityAttributes, [MarshalAs(UnmanagedType.U4)] FileMode creationDisposition, [MarshalAs(UnmanagedType.U4)] uint flags, IntPtr template);
+        private static extern SafeFileHandle CreateFile(string fileName, [MarshalAs(UnmanagedType.U4)] FileAccess fileAccess, [MarshalAs(UnmanagedType.U4)] FileShare fileShare, IntPtr securityAttributes, [MarshalAs(UnmanagedType.U4)] FileMode creationDisposition, [MarshalAs(UnmanagedType.U4)] uint flags, IntPtr template);
         [DllImport("Kernel32.dll")]
-        public static extern IntPtr CreateFile(string fileName, System.IO.FileAccess fileAccess, System.IO.FileShare fileShare, IntPtr securityAttributes, System.IO.FileMode creationDisposition, EFileAttributes flags, IntPtr template);
+        private static extern IntPtr CreateFile(string fileName, System.IO.FileAccess fileAccess, System.IO.FileShare fileShare, IntPtr securityAttributes, System.IO.FileMode creationDisposition, EFileAttributes flags, IntPtr template);
         [DllImport("prohidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Prohid_read_timeout")]
-        public static extern int Prohid_read_timeout(SafeFileHandle dev, byte[] data, UIntPtr length);
+        private static extern int Prohid_read_timeout(SafeFileHandle dev, byte[] data, UIntPtr length);
         [DllImport("prohidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Prohid_write")]
-        public static extern int Prohid_write(SafeFileHandle device, byte[] data, UIntPtr length);
+        private static extern int Prohid_write(SafeFileHandle device, byte[] data, UIntPtr length);
         [DllImport("prohidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Prohid_open_path")]
-        public static extern SafeFileHandle Prohid_open_path(IntPtr handle);
+        private static extern SafeFileHandle Prohid_open_path(IntPtr handle);
         [DllImport("prohidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Prohid_close")]
-        public static extern void Prohid_close(SafeFileHandle device);
+        private static extern void Prohid_close(SafeFileHandle device);
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
         [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
@@ -43,14 +43,13 @@ namespace SwitchProControllersAPI
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public const uint report_lenPro = 49;
-        public byte[] report_bufPro = new byte[report_lenPro];
-        public SafeFileHandle handlePro;
+        private const uint report_lenPro = 49;
+        private byte[] report_bufPro = new byte[report_lenPro];
+        private SafeFileHandle handlePro;
         private IntPtr handleptrPro, handleptrunsharedPro;
-        public bool ISPRO = true;
         public bool ProControllerButtonACC, ProControllerRollLeft, ProControllerRollRight;
         public double ProControllerLeftStickX, ProControllerLeftStickY, ProControllerRightStickX, ProControllerRightStickY;
-        public System.Collections.Generic.List<double> ProValListX = new System.Collections.Generic.List<double>(), ProValListY = new System.Collections.Generic.List<double>();
+        private System.Collections.Generic.List<double> ProValListX = new System.Collections.Generic.List<double>(), ProValListY = new System.Collections.Generic.List<double>();
         public bool ProControllerAccelCenter, ProControllerStickCenter;
         public double ProControllerAccelX, ProControllerAccelY, ProControllerGyroX, ProControllerGyroY;
         private double[] stickleftPro = { 0, 0 };
@@ -59,20 +58,20 @@ namespace SwitchProControllersAPI
         private double[] stickrightPro = { 0, 0 };
         private double[] stickCenterrightPro = { 0, 0 };
         private byte[] stick_rawrightPro = { 0, 0, 0 };
-        public Vector3 acc_gPro = new Vector3();
-        public Vector3 gyr_gPro = new Vector3();
-        public Vector3 InitDirectAnglesPro, DirectAnglesPro;
+        private Vector3 acc_gPro = new Vector3();
+        private Vector3 gyr_gPro = new Vector3();
+        private Vector3 InitDirectAnglesPro, DirectAnglesPro;
         public bool ProControllerButtonSHOULDER_Left_1, ProControllerButtonSHOULDER_Left_2, ProControllerButtonSHOULDER_Right_1, ProControllerButtonSHOULDER_Right_2, ProControllerButtonDPAD_DOWN, ProControllerButtonDPAD_RIGHT, ProControllerButtonDPAD_UP, ProControllerButtonDPAD_LEFT, ProControllerButtonA, ProControllerButtonB, ProControllerButtonX, ProControllerButtonY, ProControllerButtonMINUS, ProControllerButtonPLUS, ProControllerButtonSTICK_Left, ProControllerButtonSTICK_Right, ProControllerButtonCAPTURE, ProControllerButtonHOME;
-        public float acc_gcalibrationProX, acc_gcalibrationProY, acc_gcalibrationProZ;
-        public bool running, formvisible;
+        private float acc_gcalibrationProX, acc_gcalibrationProY, acc_gcalibrationProZ;
+        private bool running, formvisible;
         private bool isvalidhandle = false;
         private int number;
-        public bool reconnectingbool;
-        public double reconnectingcount;
-        public string path;
+        private bool reconnectingbool;
+        private double reconnectingcount;
+        private string path;
         private static List<string> paths = new List<string>();
         private static List<SafeFileHandle> handles = new List<SafeFileHandle>();
-        public Form1 form1 = new Form1();
+        private Form1 form1 = new Form1();
         public SwitchProController()
         {
             TimeBeginPeriod(1);
@@ -161,14 +160,14 @@ namespace SwitchProControllersAPI
         {
             try
             {
-                stick_rawleftPro[0] = report_bufPro[6 + (ISPRO ? 0 : 3)];
-                stick_rawleftPro[1] = report_bufPro[7 + (ISPRO ? 0 : 3)];
-                stick_rawleftPro[2] = report_bufPro[8 + (ISPRO ? 0 : 3)];
+                stick_rawleftPro[0] = report_bufPro[6 + 0];
+                stick_rawleftPro[1] = report_bufPro[7 + 0];
+                stick_rawleftPro[2] = report_bufPro[8 + 0];
                 stickCenterleftPro[0] = (UInt16)(stick_rawleftPro[0] | ((stick_rawleftPro[1] & 0xf) << 8));
                 stickCenterleftPro[1] = (UInt16)((stick_rawleftPro[1] >> 4) | (stick_rawleftPro[2] << 4));
-                stick_rawrightPro[0] = report_bufPro[6 + (!ISPRO ? 0 : 3)];
-                stick_rawrightPro[1] = report_bufPro[7 + (!ISPRO ? 0 : 3)];
-                stick_rawrightPro[2] = report_bufPro[8 + (!ISPRO ? 0 : 3)];
+                stick_rawrightPro[0] = report_bufPro[6 + 3];
+                stick_rawrightPro[1] = report_bufPro[7 + 3];
+                stick_rawrightPro[2] = report_bufPro[8 + 3];
                 stickCenterrightPro[0] = (UInt16)(stick_rawrightPro[0] | ((stick_rawrightPro[1] & 0xf) << 8));
                 stickCenterrightPro[1] = (UInt16)((stick_rawrightPro[1] >> 4) | (stick_rawrightPro[2] << 4));
                 acc_gcalibrationProX = (Int16)(report_bufPro[13 + 0 * 12] | ((report_bufPro[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufPro[13 + 1 * 12] | ((report_bufPro[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufPro[13 + 2 * 12] | ((report_bufPro[14 + 2 * 12] << 8) & 0xff00));
@@ -178,20 +177,20 @@ namespace SwitchProControllersAPI
             }
             catch { }
         }
-        public void ProcessStateLogic()
+        private void ProcessStateLogic()
         {
             try
             {
-                stick_rawleftPro[0] = report_bufPro[6 + (ISPRO ? 0 : 3)];
-                stick_rawleftPro[1] = report_bufPro[7 + (ISPRO ? 0 : 3)];
-                stick_rawleftPro[2] = report_bufPro[8 + (ISPRO ? 0 : 3)];
+                stick_rawleftPro[0] = report_bufPro[6 + 0];
+                stick_rawleftPro[1] = report_bufPro[7 + 0];
+                stick_rawleftPro[2] = report_bufPro[8 + 0];
                 stickleftPro[0] = ((UInt16)(stick_rawleftPro[0] | ((stick_rawleftPro[1] & 0xf) << 8)) - stickCenterleftPro[0]) / 1440f;
                 stickleftPro[1] = ((UInt16)((stick_rawleftPro[1] >> 4) | (stick_rawleftPro[2] << 4)) - stickCenterleftPro[1]) / 1440f;
                 ProControllerLeftStickX = stickleftPro[0];
                 ProControllerLeftStickY = stickleftPro[1];
-                stick_rawrightPro[0] = report_bufPro[6 + (!ISPRO ? 0 : 3)];
-                stick_rawrightPro[1] = report_bufPro[7 + (!ISPRO ? 0 : 3)];
-                stick_rawrightPro[2] = report_bufPro[8 + (!ISPRO ? 0 : 3)];
+                stick_rawrightPro[0] = report_bufPro[6 + 3];
+                stick_rawrightPro[1] = report_bufPro[7 + 3];
+                stick_rawrightPro[2] = report_bufPro[8 + 3];
                 stickrightPro[0] = ((UInt16)(stick_rawrightPro[0] | ((stick_rawrightPro[1] & 0xf) << 8)) - stickCenterrightPro[0]) / 1440f;
                 stickrightPro[1] = ((UInt16)((stick_rawrightPro[1] >> 4) | (stick_rawrightPro[2] << 4)) - stickCenterrightPro[1]) / 1440f;
                 ProControllerRightStickX = -stickrightPro[0];
@@ -199,25 +198,25 @@ namespace SwitchProControllersAPI
                 acc_gPro.X = ((Int16)(report_bufPro[13 + 0 * 12] | ((report_bufPro[14 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufPro[13 + 1 * 12] | ((report_bufPro[14 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufPro[13 + 2 * 12] | ((report_bufPro[14 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationProX) * (1.0f / 12000f);
                 acc_gPro.Y = -((Int16)(report_bufPro[15 + 0 * 12] | ((report_bufPro[16 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufPro[15 + 1 * 12] | ((report_bufPro[16 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufPro[15 + 2 * 12] | ((report_bufPro[16 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationProY) * (1.0f / 12000f);
                 acc_gPro.Z = -((Int16)(report_bufPro[17 + 0 * 12] | ((report_bufPro[18 + 0 * 12] << 8) & 0xff00)) + (Int16)(report_bufPro[17 + 1 * 12] | ((report_bufPro[18 + 1 * 12] << 8) & 0xff00)) + (Int16)(report_bufPro[17 + 2 * 12] | ((report_bufPro[18 + 2 * 12] << 8) & 0xff00)) - acc_gcalibrationProZ) * (1.0f / 12000f);
-                ProControllerButtonSHOULDER_Left_1 = (report_bufPro[3 + (ISPRO ? 2 : 0)] & 0x40) != 0;
-                ProControllerButtonSHOULDER_Left_2 = (report_bufPro[3 + (ISPRO ? 2 : 0)] & 0x80) != 0;
-                ProControllerButtonDPAD_DOWN = (report_bufPro[3 + (ISPRO ? 2 : 0)] & (ISPRO ? 0x01 : 0x04)) != 0;
-                ProControllerButtonDPAD_RIGHT = (report_bufPro[3 + (ISPRO ? 2 : 0)] & (ISPRO ? 0x04 : 0x08)) != 0;
-                ProControllerButtonDPAD_UP = (report_bufPro[3 + (ISPRO ? 2 : 0)] & (ISPRO ? 0x02 : 0x02)) != 0;
-                ProControllerButtonDPAD_LEFT = (report_bufPro[3 + (ISPRO ? 2 : 0)] & (ISPRO ? 0x08 : 0x01)) != 0;
+                ProControllerButtonSHOULDER_Left_1 = (report_bufPro[3 + 2] & 0x40) != 0;
+                ProControllerButtonSHOULDER_Left_2 = (report_bufPro[3 + 2] & 0x80) != 0;
+                ProControllerButtonDPAD_DOWN = (report_bufPro[3 + 2] & (0x01)) != 0;
+                ProControllerButtonDPAD_RIGHT = (report_bufPro[3 + 2] & (0x04)) != 0;
+                ProControllerButtonDPAD_UP = (report_bufPro[3 + 2] & (0x02)) != 0;
+                ProControllerButtonDPAD_LEFT = (report_bufPro[3 + 2] & (0x08)) != 0;
                 ProControllerButtonMINUS = (report_bufPro[4] & 0x01) != 0;
                 ProControllerButtonCAPTURE = (report_bufPro[4] & 0x20) != 0;
-                ProControllerButtonSTICK_Left = (report_bufPro[4] & (ISPRO ? 0x08 : 0x04)) != 0;
+                ProControllerButtonSTICK_Left = (report_bufPro[4] & (0x08)) != 0;
                 ProControllerButtonACC = acc_gPro.X <= -1.13;
-                ProControllerButtonSHOULDER_Right_1 = (report_bufPro[3 + (!ISPRO ? 2 : 0)] & 0x40) != 0;
-                ProControllerButtonSHOULDER_Right_2 = (report_bufPro[3 + (!ISPRO ? 2 : 0)] & 0x80) != 0;
-                ProControllerButtonA = (report_bufPro[3 + (!ISPRO ? 2 : 0)] & (!ISPRO ? 0x04 : 0x08)) != 0;
-                ProControllerButtonB = (report_bufPro[3 + (!ISPRO ? 2 : 0)] & (!ISPRO ? 0x01 : 0x04)) != 0;
-                ProControllerButtonX = (report_bufPro[3 + (!ISPRO ? 2 : 0)] & (!ISPRO ? 0x02 : 0x02)) != 0;
-                ProControllerButtonY = (report_bufPro[3 + (!ISPRO ? 2 : 0)] & (!ISPRO ? 0x08 : 0x01)) != 0;
+                ProControllerButtonSHOULDER_Right_1 = (report_bufPro[3 + (0)] & 0x40) != 0;
+                ProControllerButtonSHOULDER_Right_2 = (report_bufPro[3 + (0)] & 0x80) != 0;
+                ProControllerButtonA = (report_bufPro[3 + 0] & (0x08)) != 0;
+                ProControllerButtonB = (report_bufPro[3 + 0] & (0x04)) != 0;
+                ProControllerButtonX = (report_bufPro[3 + 0] & (0x02)) != 0;
+                ProControllerButtonY = (report_bufPro[3 + 0] & (0x01)) != 0;
                 ProControllerButtonPLUS = (report_bufPro[4] & 0x02) != 0;
                 ProControllerButtonHOME = (report_bufPro[4] & 0x10) != 0;
-                ProControllerButtonSTICK_Right = ((report_bufPro[4] & (!ISPRO ? 0x08 : 0x04)) != 0);
+                ProControllerButtonSTICK_Right = ((report_bufPro[4] & (0x04)) != 0);
                 if (ProValListY.Count >= 50)
                 {
                     ProValListY.RemoveAt(0);
@@ -236,7 +235,7 @@ namespace SwitchProControllersAPI
             }
             catch { }
         }
-        public void Reconnection()
+        private void Reconnection()
         {
             if (reconnectingcount == 0)
                 reconnectingbool = true;
@@ -282,20 +281,20 @@ namespace SwitchProControllersAPI
             ProControllerGyroX = 0;
             ProControllerGyroY = 0;
         }
-        public const string vendor_id = "57e", vendor_id_ = "057e", product_pro = "2009";
-        public enum EFileAttributes : uint
+        private const string vendor_id = "57e", vendor_id_ = "057e", product_pro = "2009";
+        private enum EFileAttributes : uint
         {
             Overlapped = 0x40000000,
             Normal = 0x80
         };
-        public struct SP_DEVICE_INTERFACE_DATA
+        private struct SP_DEVICE_INTERFACE_DATA
         {
             public int cbSize;
             public Guid InterfaceClassGuid;
             public int Flags;
             public IntPtr RESERVED;
         }
-        public struct SP_DEVICE_INTERFACE_DETAIL_DATA
+        private struct SP_DEVICE_INTERFACE_DETAIL_DATA
         {
             public UInt32 cbSize;
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]

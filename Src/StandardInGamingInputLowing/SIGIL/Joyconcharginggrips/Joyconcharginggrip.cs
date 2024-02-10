@@ -14,37 +14,37 @@ namespace JoyconChargingGripsAPI
     public class JoyconChargingGrip
     {
         [DllImport("hid.dll")]
-        public static extern void HidD_GetHidGuid(out Guid gHid);
+        private static extern void HidD_GetHidGuid(out Guid gHid);
         [DllImport("hid.dll")]
-        public extern static bool HidD_SetOutputReport(IntPtr HidDeviceObject, byte[] lpReportBuffer, uint ReportBufferLength);
+        private extern static bool HidD_SetOutputReport(IntPtr HidDeviceObject, byte[] lpReportBuffer, uint ReportBufferLength);
         [DllImport("setupapi.dll")]
-        public static extern IntPtr SetupDiGetClassDevs(ref Guid ClassGuid, string Enumerator, IntPtr hwndParent, UInt32 Flags);
+        private static extern IntPtr SetupDiGetClassDevs(ref Guid ClassGuid, string Enumerator, IntPtr hwndParent, UInt32 Flags);
         [DllImport("setupapi.dll")]
-        public static extern Boolean SetupDiEnumDeviceInterfaces(IntPtr hDevInfo, IntPtr devInvo, ref Guid interfaceClassGuid, Int32 memberIndex, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData);
+        private static extern Boolean SetupDiEnumDeviceInterfaces(IntPtr hDevInfo, IntPtr devInvo, ref Guid interfaceClassGuid, Int32 memberIndex, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData);
         [DllImport("setupapi.dll")]
-        public static extern Boolean SetupDiGetDeviceInterfaceDetail(IntPtr hDevInfo, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData, IntPtr deviceInterfaceDetailData, UInt32 deviceInterfaceDetailDataSize, out UInt32 requiredSize, IntPtr deviceInfoData);
+        private static extern Boolean SetupDiGetDeviceInterfaceDetail(IntPtr hDevInfo, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData, IntPtr deviceInterfaceDetailData, UInt32 deviceInterfaceDetailDataSize, out UInt32 requiredSize, IntPtr deviceInfoData);
         [DllImport("setupapi.dll")]
-        public static extern Boolean SetupDiGetDeviceInterfaceDetail(IntPtr hDevInfo, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData, ref SP_DEVICE_INTERFACE_DETAIL_DATA deviceInterfaceDetailData, UInt32 deviceInterfaceDetailDataSize, out UInt32 requiredSize, IntPtr deviceInfoData);
+        private static extern Boolean SetupDiGetDeviceInterfaceDetail(IntPtr hDevInfo, ref SP_DEVICE_INTERFACE_DATA deviceInterfaceData, ref SP_DEVICE_INTERFACE_DETAIL_DATA deviceInterfaceDetailData, UInt32 deviceInterfaceDetailDataSize, out UInt32 requiredSize, IntPtr deviceInfoData);
         [DllImport("Kernel32.dll")]
-        public static extern SafeFileHandle CreateFile(string fileName, [MarshalAs(UnmanagedType.U4)] FileAccess fileAccess, [MarshalAs(UnmanagedType.U4)] FileShare fileShare, IntPtr securityAttributes, [MarshalAs(UnmanagedType.U4)] FileMode creationDisposition, [MarshalAs(UnmanagedType.U4)] uint flags, IntPtr template);
+        private static extern SafeFileHandle CreateFile(string fileName, [MarshalAs(UnmanagedType.U4)] FileAccess fileAccess, [MarshalAs(UnmanagedType.U4)] FileShare fileShare, IntPtr securityAttributes, [MarshalAs(UnmanagedType.U4)] FileMode creationDisposition, [MarshalAs(UnmanagedType.U4)] uint flags, IntPtr template);
         [DllImport("Kernel32.dll")]
-        public static extern IntPtr CreateFile(string fileName, System.IO.FileAccess fileAccess, System.IO.FileShare fileShare, IntPtr securityAttributes, System.IO.FileMode creationDisposition, EFileAttributes flags, IntPtr template);
+        private static extern IntPtr CreateFile(string fileName, System.IO.FileAccess fileAccess, System.IO.FileShare fileShare, IntPtr securityAttributes, System.IO.FileMode creationDisposition, EFileAttributes flags, IntPtr template);
         [DllImport("lhidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Lhid_read_timeout")]
-        public static extern int Lhid_read_timeout(SafeFileHandle dev, byte[] data, UIntPtr length);
+        private static extern int Lhid_read_timeout(SafeFileHandle dev, byte[] data, UIntPtr length);
         [DllImport("lhidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Lhid_write")]
-        public static extern int Lhid_write(SafeFileHandle device, byte[] data, UIntPtr length);
+        private static extern int Lhid_write(SafeFileHandle device, byte[] data, UIntPtr length);
         [DllImport("lhidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Lhid_open_path")]
-        public static extern SafeFileHandle Lhid_open_path(IntPtr handle);
+        private static extern SafeFileHandle Lhid_open_path(IntPtr handle);
         [DllImport("lhidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Lhid_close")]
-        public static extern void Lhid_close(SafeFileHandle device);
+        private static extern void Lhid_close(SafeFileHandle device);
         [DllImport("rhidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Rhid_read_timeout")]
-        public static extern int Rhid_read_timeout(SafeFileHandle dev, byte[] data, UIntPtr length);
+        private static extern int Rhid_read_timeout(SafeFileHandle dev, byte[] data, UIntPtr length);
         [DllImport("rhidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Rhid_write")]
-        public static extern int Rhid_write(SafeFileHandle device, byte[] data, UIntPtr length);
+        private static extern int Rhid_write(SafeFileHandle device, byte[] data, UIntPtr length);
         [DllImport("rhidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Rhid_open_path")]
-        public static extern SafeFileHandle Rhid_open_path(IntPtr handle);
+        private static extern SafeFileHandle Rhid_open_path(IntPtr handle);
         [DllImport("rhidread.dll", CallingConvention = CallingConvention.Cdecl, EntryPoint = "Rhid_close")]
-        public static extern void Rhid_close(SafeFileHandle device);
+        private static extern void Rhid_close(SafeFileHandle device);
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
         [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
@@ -52,51 +52,51 @@ namespace JoyconChargingGripsAPI
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public const uint report_lenLeft = 49;
-        public byte[] report_bufLeft = new byte[report_lenLeft];
-        public const uint report_lenRight = 49;
-        public byte[] report_bufRight = new byte[report_lenRight];
-        public SafeFileHandle handleRight;
-        public SafeFileHandle handleLeft;
+        private const uint report_lenLeft = 49;
+        private byte[] report_bufLeft = new byte[report_lenLeft];
+        private const uint report_lenRight = 49;
+        private byte[] report_bufRight = new byte[report_lenRight];
+        private SafeFileHandle handleRight;
+        private SafeFileHandle handleLeft;
         private IntPtr handleptrRight, handleptrunsharedRight;
         private IntPtr handleptrLeft, handleptrunsharedLeft;
         public bool JoyconLeftButtonSMA, JoyconLeftButtonACC, JoyconLeftRollLeft, JoyconLeftRollRight;
         public double JoyconLeftStickX, JoyconLeftStickY;
-        public System.Collections.Generic.List<double> LeftValListX = new System.Collections.Generic.List<double>(), LeftValListY = new System.Collections.Generic.List<double>();
+        private System.Collections.Generic.List<double> LeftValListX = new System.Collections.Generic.List<double>(), LeftValListY = new System.Collections.Generic.List<double>();
         public bool JoyconLeftAccelCenter, JoyconLeftStickCenter;
         public double JoyconLeftAccelX, JoyconLeftAccelY, JoyconLeftGyroX, JoyconLeftGyroY;
         private double[] stickLeft = { 0, 0 };
         private double[] stickCenterLeft = { 0, 0 };
         private byte[] stick_rawLeft = { 0, 0, 0 };
-        public Vector3 acc_gLeft = new Vector3();
-        public Vector3 gyr_gLeft = new Vector3();
-        public Vector3 InitDirectAnglesLeft, DirectAnglesLeft;
+        private Vector3 acc_gLeft = new Vector3();
+        private Vector3 gyr_gLeft = new Vector3();
+        private Vector3 InitDirectAnglesLeft, DirectAnglesLeft;
         public bool JoyconLeftButtonSHOULDER_1, JoyconLeftButtonSHOULDER_2, JoyconLeftButtonSR, JoyconLeftButtonSL, JoyconLeftButtonDPAD_DOWN, JoyconLeftButtonDPAD_RIGHT, JoyconLeftButtonDPAD_UP, JoyconLeftButtonDPAD_LEFT, JoyconLeftButtonMINUS, JoyconLeftButtonSTICK, JoyconLeftButtonCAPTURE;
-        public float acc_gcalibrationLeftX, acc_gcalibrationLeftY, acc_gcalibrationLeftZ;
+        private float acc_gcalibrationLeftX, acc_gcalibrationLeftY, acc_gcalibrationLeftZ;
         public bool JoyconRightButtonSPA, JoyconRightButtonACC, JoyconRightRollLeft, JoyconRightRollRight;
         public double JoyconRightStickX, JoyconRightStickY;
-        public System.Collections.Generic.List<double> RightValListX = new System.Collections.Generic.List<double>(), RightValListY = new System.Collections.Generic.List<double>();
+        private System.Collections.Generic.List<double> RightValListX = new System.Collections.Generic.List<double>(), RightValListY = new System.Collections.Generic.List<double>();
         public bool JoyconRightAccelCenter, JoyconRightStickCenter;
         public double JoyconRightAccelX, JoyconRightAccelY, JoyconRightGyroX, JoyconRightGyroY;
         private double[] stickRight = { 0, 0 };
         private double[] stickCenterRight = { 0, 0 };
         private byte[] stick_rawRight = { 0, 0, 0 };
-        public Vector3 acc_gRight = new Vector3();
-        public Vector3 gyr_gRight = new Vector3();
-        public Vector3 InitDirectAnglesRight, DirectAnglesRight;
+        private Vector3 acc_gRight = new Vector3();
+        private Vector3 gyr_gRight = new Vector3();
+        private Vector3 InitDirectAnglesRight, DirectAnglesRight;
         public bool JoyconRightButtonSHOULDER_1, JoyconRightButtonSHOULDER_2, JoyconRightButtonSR, JoyconRightButtonSL, JoyconRightButtonDPAD_DOWN, JoyconRightButtonDPAD_RIGHT, JoyconRightButtonDPAD_UP, JoyconRightButtonDPAD_LEFT, JoyconRightButtonPLUS, JoyconRightButtonSTICK, JoyconRightButtonHOME;
-        public float acc_gcalibrationRightX, acc_gcalibrationRightY, acc_gcalibrationRightZ;
-        public bool running, formvisible;
+        private float acc_gcalibrationRightX, acc_gcalibrationRightY, acc_gcalibrationRightZ;
+        private bool running, formvisible;
         private bool isvalidhandle = false;
         private int number;
-        public bool reconnectingboolleft, reconnectingboolright;
-        public double reconnectingcountleft, reconnectingcountright;
-        public string pathleft, pathright;
+        private bool reconnectingboolleft, reconnectingboolright;
+        private double reconnectingcountleft, reconnectingcountright;
+        private string pathleft, pathright;
         private static List<string> pathsleft = new List<string>(), pathsright = new List<string>();
         private static List<SafeFileHandle> handlesLeft = new List<SafeFileHandle>(), handlesRight = new List<SafeFileHandle>();
         private byte[] default_bufLeft = { 0x0, 0x1, 0x40, 0x40, 0x0, 0x1, 0x40, 0x40 };
         private byte[] default_bufRight = { 0x0, 0x1, 0x40, 0x40, 0x0, 0x1, 0x40, 0x40 };
-        public Form1 form1 = new Form1();
+        private Form1 form1 = new Form1();
         public JoyconChargingGrip()
         {
             TimeBeginPeriod(1);
@@ -260,7 +260,7 @@ namespace JoyconChargingGripsAPI
             }
             catch { }
         }
-        public void ProcessStateLogicLeft()
+        private void ProcessStateLogicLeft()
         {
             try
             {
@@ -298,7 +298,7 @@ namespace JoyconChargingGripsAPI
             }
             catch { }
         }
-        public void ProcessStateLogicRight()
+        private void ProcessStateLogicRight()
         {
             try
             {
@@ -336,7 +336,7 @@ namespace JoyconChargingGripsAPI
             }
             catch { }
         }
-        public void ReconnectionLeft()
+        private void ReconnectionLeft()
         {
             if (reconnectingcountleft == 0)
                 reconnectingboolleft = true;
@@ -377,7 +377,7 @@ namespace JoyconChargingGripsAPI
             JoyconLeftGyroX = 0;
             JoyconLeftGyroY = 0;
         }
-        public void ReconnectionRight()
+        private void ReconnectionRight()
         {
             if (reconnectingcountright == 0)
                 reconnectingboolright = true;
@@ -418,20 +418,20 @@ namespace JoyconChargingGripsAPI
             JoyconRightGyroX = 0;
             JoyconRightGyroY = 0;
         }
-        public const string vendor_id = "57e", vendor_id_ = "057e", product_grip = "200e";
-        public enum EFileAttributes : uint
+        private const string vendor_id = "57e", vendor_id_ = "057e", product_grip = "200e";
+        private enum EFileAttributes : uint
         {
             Overlapped = 0x40000000,
             Normal = 0x80
         };
-        public struct SP_DEVICE_INTERFACE_DATA
+        private struct SP_DEVICE_INTERFACE_DATA
         {
             public int cbSize;
             public Guid InterfaceClassGuid;
             public int Flags;
             public IntPtr RESERVED;
         }
-        public struct SP_DEVICE_INTERFACE_DETAIL_DATA
+        private struct SP_DEVICE_INTERFACE_DETAIL_DATA
         {
             public UInt32 cbSize;
             [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst = 256)]

@@ -34,7 +34,8 @@ namespace SIGIL
         private static DialogResult result;
         private static ContextMenu contextMenu = new ContextMenu();
         private static MenuItem menuItem;
-        public static bool justSaved = true, onopenwith = false, replaceformvisible = false, runstopbool = false, closeonicon = false;
+        private static bool justSaved = true, onopenwith = false, runstopbool = false, closeonicon = false;
+        public static bool replaceformvisible = false;
         private static string filename = "", fastColoredTextBoxSaved = "", code = "";
         public static ReplaceForm replaceform;
         private static Range range;
@@ -45,7 +46,7 @@ namespace SIGIL
         private System.CodeDom.Compiler.CompilerResults results;
         private Microsoft.CSharp.CSharpCodeProvider provider;
         private System.CodeDom.Compiler.CompilerParameters parameters;
-        public static Form2 form2 = new Form2();
+        private static Form2 form2 = new Form2();
         public Form1(string filePath)
         {
             InitializeComponent();
@@ -65,7 +66,7 @@ namespace SIGIL
             }
             base.WndProc(ref m);
         }
-        public void OpenFileWith(string filePath)
+        private void OpenFileWith(string filePath)
         {
             if (runstopbool)
                 StopProcess();
@@ -3360,7 +3361,7 @@ namespace SIGIL
             this.notifyIcon1.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
             this.notifyIcon1.ContextMenuStrip.Items.Add("Quit", null, this.MenuTest1_Click);
         }
-        void MenuTest1_Click(object sender, EventArgs e)
+        private void MenuTest1_Click(object sender, EventArgs e)
         {
             closeonicon = true;
             this.Close();
@@ -3650,7 +3651,7 @@ namespace SIGIL
             if (code.Contains("using KeyboardHooksAPI;"))
                 AddAssembly("Keyboardhook");
         }
-        public void AddAssembly(string dllName)
+        private void AddAssembly(string dllName)
         {
              parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\" + dllName + ".dll");
         }

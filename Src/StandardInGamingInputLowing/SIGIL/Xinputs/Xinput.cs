@@ -17,7 +17,7 @@ namespace XInputsAPI
         private static uint CurrentResolution = 0;
         private bool running, formvisible;
         private int number;
-        public Form1 form1 = new Form1();
+        private Form1 form1 = new Form1();
         public XInput()
         {
             TimeBeginPeriod(1);
@@ -36,7 +36,7 @@ namespace XInputsAPI
         {
             running = false;
         }
-        public void taskD()
+        private void taskD()
         {
             for (; ; )
             {
