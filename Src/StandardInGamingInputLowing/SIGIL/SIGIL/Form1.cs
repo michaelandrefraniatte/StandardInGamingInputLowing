@@ -225,9 +225,11 @@ namespace SIGIL
                 range.SetStyle(StyleObject, new Regex(@"\bds4\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bds41\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bds42\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bSendInputs\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bSendInput\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bsendinput\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bInterceptions\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bSendInterception\b"));
-                range.SetStyle(StyleClass, new Regex(@"\bInput\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bSI\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bLoad\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bWiiMotesAPI\b"));
@@ -1813,9 +1815,11 @@ namespace SIGIL
                 "ds4",
                 "ds41",
                 "ds42",
+                "SendInputs",
+                "SendInput",
+                "sendinput",
                 "Interceptions",
                 "SendInterception",
-                "Input",
                 "SI",
                 "Load",
                 "WiiMotesAPI",
@@ -3650,6 +3654,8 @@ namespace SIGIL
                 AddAssembly("Mousehook");
             if (code.Contains("using KeyboardHooksAPI;"))
                 AddAssembly("Keyboardhook");
+            if (code.Contains("using SendInputs;"))
+                AddAssembly("sendinputs");
         }
         private void AddAssembly(string dllName)
         {
