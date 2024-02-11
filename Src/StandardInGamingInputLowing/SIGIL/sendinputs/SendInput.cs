@@ -1211,14 +1211,20 @@ namespace SendInputs
             if (drivertype == "sendinput")
                 Task.Run(() => Send.SimulateKeyDOWN(bVk, bScan));
             else
-                Task.Run(() => keybd_event(bVk, bScan, 0x0001 | 0x0008, 0));
+                Task.Run(() => { 
+                    keybd_event(bVk, bScan, 0x0001 | 0x0008, 0);
+                    keybd_event(bVk, bScan, 0, 0);
+                });
         }
         private void keyboardArrowsF(UInt16 bVk, UInt16 bScan)
         {
             if (drivertype == "sendinput")
                 Task.Run(() => Send.SimulateKeyUP(bVk, bScan));
             else
-                Task.Run(() => keybd_event(bVk, bScan, 0x0002 | 0x0001 | 0x0008, 0));
+                Task.Run(() => { 
+                    keybd_event(bVk, bScan, 0x0002 | 0x0001 | 0x0008, 0);
+                    keybd_event(bVk, bScan, 0x0002, 0);
+                });
         }
         [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Explicit)]
         struct MOUSEKEYBDHARDWAREINPUT
@@ -1293,6 +1299,8 @@ namespace SendInputs
                 down[0].Data.Keyboard.Time = 0;
                 down[0].Data.Keyboard.ExtraInfo = IntPtr.Zero;
                 SendInput(1, down, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+                down[0].Data.Keyboard.Flags = 0;
+                SendInput(1, down, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
             }
             public static void SimulateKeyUP(UInt16 keyCode, UInt16 bScan)
             {
@@ -1303,6 +1311,8 @@ namespace SendInputs
                 up[0].Data.Keyboard.Flags = (UInt16)(0x0002) | (UInt16)(0x0001) | (UInt16)(0x0008);
                 up[0].Data.Keyboard.Time = 0;
                 up[0].Data.Keyboard.ExtraInfo = IntPtr.Zero;
+                SendInput(1, up, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+                up[0].Data.Keyboard.Flags = (UInt16)(0x0002);
                 SendInput(1, up, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
             }
             public static void MouseMW3(int x, int y)
