@@ -123,7 +123,7 @@ namespace SharpDX.DirectInput
         public IList<EffectInfo> GetEffects(EffectType effectType)
         {
             var enumEffectsCallback = new EnumEffectsCallback();
-            EnumEffects(IntPtr.Zero, effectType);
+            EnumEffects(enumEffectsCallback.NativePointer, IntPtr.Zero, effectType);
             return enumEffectsCallback.EffectInfos;
         }
 
@@ -146,7 +146,7 @@ namespace SharpDX.DirectInput
         public IList<EffectFile> GetEffectsInFile(string fileName, EffectFileFlags effectFileFlags)
         {
             var enumEffectsInFileCallback = new EnumEffectsInFileCallback();
-            EnumEffectsInFile(fileName, IntPtr.Zero, effectFileFlags);
+            EnumEffectsInFile(fileName, enumEffectsInFileCallback.NativePointer, IntPtr.Zero, effectFileFlags);
             return enumEffectsInFileCallback.EffectsInFile;
         }
 
@@ -207,7 +207,7 @@ namespace SharpDX.DirectInput
         public IList<DeviceObjectInstance> GetObjects(DeviceObjectTypeFlags deviceObjectTypeFlag)
         {
             var enumEffectsInFileCallback = new EnumObjectsCallback();
-            EnumObjects(IntPtr.Zero, (int)deviceObjectTypeFlag);
+            EnumObjects(enumEffectsInFileCallback.NativePointer, IntPtr.Zero, (int)deviceObjectTypeFlag);
             return enumEffectsInFileCallback.Objects;
         }
 
@@ -294,7 +294,7 @@ namespace SharpDX.DirectInput
             get
             {
                 var enumCreatedEffectsCallback = new EnumCreatedEffectsCallback();
-                EnumCreatedEffectObjects(IntPtr.Zero, 0);
+                EnumCreatedEffectObjects(enumCreatedEffectsCallback.NativePointer, IntPtr.Zero, 0);
                 return enumCreatedEffectsCallback.Effects;
             }
         }

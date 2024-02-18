@@ -52,7 +52,7 @@ namespace SharpDX.DirectInput
         public IList<DeviceInstance> GetDevices(DeviceClass deviceClass, DeviceEnumerationFlags deviceEnumFlags)
         {
             var enumDevicesCallback = new EnumDevicesCallback();
-            EnumDevices((int)deviceClass, IntPtr.Zero, deviceEnumFlags);
+            EnumDevices((int)deviceClass, enumDevicesCallback.NativePointer, IntPtr.Zero, deviceEnumFlags);
             return enumDevicesCallback.DeviceInstances;
         }
 
@@ -65,7 +65,7 @@ namespace SharpDX.DirectInput
         public IList<DeviceInstance> GetDevices(DeviceType deviceType, DeviceEnumerationFlags deviceEnumFlags)
         {
             var enumDevicesCallback = new EnumDevicesCallback();
-            EnumDevices((int)deviceType, IntPtr.Zero, deviceEnumFlags);
+            EnumDevices((int)deviceType, enumDevicesCallback.NativePointer, IntPtr.Zero, deviceEnumFlags);
             return enumDevicesCallback.DeviceInstances;
         }
 
