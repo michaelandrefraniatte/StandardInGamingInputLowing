@@ -27,7 +27,7 @@ namespace SharpDX
     /// FunctionCallback
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public class FunctionCallback
+    internal class FunctionCallback
     {
         public IntPtr Pointer;
 

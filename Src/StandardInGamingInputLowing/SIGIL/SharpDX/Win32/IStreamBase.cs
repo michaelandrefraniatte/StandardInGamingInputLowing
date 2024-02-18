@@ -18,29 +18,28 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+using System;
+
 namespace SharpDX.Win32
 {
-    public partial class ErrorCodeHelper
+    [Shadow(typeof(ComStreamBaseShadow))]
+    public partial interface IStreamBase
     {
         /// <summary>
-        /// Converts a win32 error code to a <see cref="Result"/>.
+        /// Reads a specified number of bytes from the stream object into memory starting at the current seek pointer.
         /// </summary>
-        /// <param name="errorCode">The error code.</param>
-        /// <returns>A HRESULT code</returns>
-        public static Result ToResult(Result errorCode)
-        {
-            return ToResult(errorCode);
-        }
-        
+        /// <param name="buffer">The read buffer.</param>
+        /// <param name="numberOfBytesToRead">The number of bytes to read.</param>
+        /// <returns>The actual number of bytes read from the stream object. </returns>
+        int Read(IntPtr buffer, int numberOfBytesToRead);
+
         /// <summary>
-        /// Converts a win32 error code to a <see cref="Result"/>.
+        /// Writes a specified number of bytes into the stream object starting at the current seek pointer.
         /// </summary>
-        /// <param name="errorCode">The error code.</param>
-        /// <returns>A HRESULT code</returns>
-        public static Result ToResult(int errorCode)
-        {
-            return new Result(((errorCode <= 0) ? unchecked((uint)errorCode) : ((unchecked((uint)errorCode) & 0x0000FFFF) | 0x80070000)));
-        }
+        /// <param name="buffer">The buffer.</param>
+        /// <param name="numberOfBytesToRead">The number of bytes to read.</param>
+        /// <returns>The actual number of bytes written to the stream object</returns>
+        int Write(IntPtr buffer, int numberOfBytesToRead);
     }
 }
 

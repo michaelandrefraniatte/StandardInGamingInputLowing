@@ -17,30 +17,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
-namespace SharpDX.Win32
+namespace SharpDX.Direct3D
 {
-    public partial class ErrorCodeHelper
+    public partial class Blob
     {
-        /// <summary>
-        /// Converts a win32 error code to a <see cref="Result"/>.
-        /// </summary>
-        /// <param name="errorCode">The error code.</param>
-        /// <returns>A HRESULT code</returns>
-        public static Result ToResult(Result errorCode)
+        public static implicit operator DataPointer(Blob blob)
         {
-            return ToResult(errorCode);
-        }
-        
-        /// <summary>
-        /// Converts a win32 error code to a <see cref="Result"/>.
-        /// </summary>
-        /// <param name="errorCode">The error code.</param>
-        /// <returns>A HRESULT code</returns>
-        public static Result ToResult(int errorCode)
-        {
-            return new Result(((errorCode <= 0) ? unchecked((uint)errorCode) : ((unchecked((uint)errorCode) & 0x0000FFFF) | 0x80070000)));
+            return new DataPointer(blob.BufferPointer, blob.BufferSize);
         }
     }
 }
-

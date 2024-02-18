@@ -38,6 +38,8 @@ using SharpDX.Text;
 
 using SharpDX.Mathematics.Interop;
 
+using SharpDX.Win32;
+
 namespace SharpDX
 {
 

@@ -18,28 +18,29 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-namespace SharpDX.Win32
+namespace SharpDX.Multimedia
 {
-    public partial class ErrorCodeHelper
+    /// <summary>
+    /// Helper class for Speaker mask.
+    /// </summary>
+    public static class SpeakersExtensions
     {
         /// <summary>
-        /// Converts a win32 error code to a <see cref="Result"/>.
+        /// Counts the channels from a speaker mask.
         /// </summary>
-        /// <param name="errorCode">The error code.</param>
-        /// <returns>A HRESULT code</returns>
-        public static Result ToResult(Result errorCode)
+        /// <param name="speakers">The speakers mask.</param>
+        /// <returns></returns>
+        public static int ToChannelCount(Speakers speakers)
         {
-            return ToResult(errorCode);
-        }
-        
-        /// <summary>
-        /// Converts a win32 error code to a <see cref="Result"/>.
-        /// </summary>
-        /// <param name="errorCode">The error code.</param>
-        /// <returns>A HRESULT code</returns>
-        public static Result ToResult(int errorCode)
-        {
-            return new Result(((errorCode <= 0) ? unchecked((uint)errorCode) : ((unchecked((uint)errorCode) & 0x0000FFFF) | 0x80070000)));
+            var channelsMask = (int)speakers;
+            int channelCount = 0;
+            while (channelsMask != 0)
+            {
+                if ((channelsMask & 1) != 0)
+                    channelCount++;
+                channelsMask >>= 1;
+            }
+            return channelCount;
         }
     }
 }
