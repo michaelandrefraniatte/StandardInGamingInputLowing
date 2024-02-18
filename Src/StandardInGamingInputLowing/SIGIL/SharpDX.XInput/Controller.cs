@@ -17,20 +17,20 @@
         public BatteryInformation GetBatteryInformation(BatteryDeviceType batteryDeviceType)
         {
             BatteryInformation information;
-            ErrorCodeHelper.ToResult(SharpDX.XInput.XInput.XInputGetBatteryInformation((int) this.userIndex, batteryDeviceType, out information)).CheckError();
+            ErrorCodeHelper.ToResult((int)SharpDX.XInput.XInput.XInputGetBatteryInformation((int) this.userIndex, batteryDeviceType, out information)).CheckError();
             return information;
         }
 
         public Capabilities GetCapabilities(DeviceQueryType deviceQueryType)
         {
             Capabilities capabilities;
-            ErrorCodeHelper.ToResult(SharpDX.XInput.XInput.XInputGetCapabilities((int) this.userIndex, deviceQueryType, out capabilities)).CheckError();
+            ErrorCodeHelper.ToResult((int)SharpDX.XInput.XInput.XInputGetCapabilities((int) this.userIndex, deviceQueryType, out capabilities)).CheckError();
             return capabilities;
         }
 
         public Result GetKeystroke(DeviceQueryType deviceQueryType, out Keystroke keystroke)
         {
-            Result result = ErrorCodeHelper.ToResult(SharpDX.XInput.XInput.XInputGetKeystroke((int) this.userIndex, (int) deviceQueryType, out keystroke));
+            Result result = ErrorCodeHelper.ToResult((int)SharpDX.XInput.XInput.XInputGetKeystroke((int) this.userIndex, (int) deviceQueryType, out keystroke));
             result.CheckError();
             return result;
         }
@@ -38,7 +38,7 @@
         public SharpDX.XInput.State GetState()
         {
             SharpDX.XInput.State state;
-            ErrorCodeHelper.ToResult(SharpDX.XInput.XInput.XInputGetState((int) this.userIndex, out state)).CheckError();
+            ErrorCodeHelper.ToResult((int)SharpDX.XInput.XInput.XInputGetState((int) this.userIndex, out state)).CheckError();
             return state;
         }
 
@@ -54,7 +54,7 @@
 
         public Result SetVibration(Vibration vibration)
         {
-            Result result = ErrorCodeHelper.ToResult(SharpDX.XInput.XInput.XInputSetState((int) this.userIndex, vibration));
+            Result result = ErrorCodeHelper.ToResult((int)SharpDX.XInput.XInput.XInputSetState((int) this.userIndex, vibration));
             result.CheckError();
             return result;
         }

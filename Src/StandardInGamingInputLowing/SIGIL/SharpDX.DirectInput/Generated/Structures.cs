@@ -1450,6 +1450,24 @@ namespace SharpDX.DirectInput {
         /// <unmanaged>GUID guidFFDriver</unmanaged>	
         /// <unmanaged-short>GUID guidFFDriver</unmanaged-short>	
         public System.Guid ForceFeedbackDriverGuid;
+        
+        /// <summary>	
+        /// No documentation.	
+        /// </summary>	
+        /// <include file='.\..\Documentation\CodeComments.xml' path="/comments/comment[@id='DIDEVICEINSTANCEW::wUsagePage']/*"/>	
+        /// <msdn-id>microsoft.directx_sdk.reference.dideviceinstance</msdn-id>	
+        /// <unmanaged>HID_USAGE_PAGE wUsagePage</unmanaged>	
+        /// <unmanaged-short>HID_USAGE_PAGE wUsagePage</unmanaged-short>	
+        public SharpDX.Multimedia.UsagePage UsagePage;
+        
+        /// <summary>	
+        /// No documentation.	
+        /// </summary>	
+        /// <include file='.\..\Documentation\CodeComments.xml' path="/comments/comment[@id='DIDEVICEINSTANCEW::wUsage']/*"/>	
+        /// <msdn-id>microsoft.directx_sdk.reference.dideviceinstance</msdn-id>	
+        /// <unmanaged>HID_USAGE_ID wUsage</unmanaged>	
+        /// <unmanaged-short>HID_USAGE_ID wUsage</unmanaged-short>	
+        public SharpDX.Multimedia.UsageId Usage;
 
         // Internal native struct used for marshalling
         [StructLayout(LayoutKind.Sequential)]
@@ -1979,6 +1997,8 @@ namespace SharpDX.DirectInput {
             char __ProductName258;
             char __ProductName259;
             public System.Guid ForceFeedbackDriverGuid;
+            public SharpDX.Multimedia.UsagePage UsagePage;
+            public SharpDX.Multimedia.UsageId Usage;
 		    // Method to free unmanaged allocation
             internal unsafe void __MarshalFree()
             {   
@@ -2001,6 +2021,8 @@ namespace SharpDX.DirectInput {
             fixed (char* __ptr = &@ref.InstanceName) this.InstanceName = SharpDX.Utilities.PtrToStringUni((IntPtr)__ptr, 260);
             fixed (char* __ptr = &@ref.ProductName) this.ProductName = SharpDX.Utilities.PtrToStringUni((IntPtr)__ptr, 260);
             this.ForceFeedbackDriverGuid = @ref.ForceFeedbackDriverGuid;
+            this.UsagePage = @ref.UsagePage;
+            this.Usage = @ref.Usage;
         }
         // Method to marshal from managed struct tot native
         internal unsafe void __MarshalTo(ref __Native @ref)
@@ -2012,6 +2034,8 @@ namespace SharpDX.DirectInput {
             fixed (char* __psrc = this.InstanceName) fixed (char* __ptr = &@ref.InstanceName) Utilities.CopyMemory((IntPtr)__ptr, (IntPtr)__psrc, InstanceName.Length * 2);
             fixed (char* __psrc = this.ProductName) fixed (char* __ptr = &@ref.ProductName) Utilities.CopyMemory((IntPtr)__ptr, (IntPtr)__psrc, ProductName.Length * 2);
             @ref.ForceFeedbackDriverGuid = this.ForceFeedbackDriverGuid;
+            @ref.UsagePage = this.UsagePage;
+            @ref.Usage = this.Usage;
 		
 		}
     }

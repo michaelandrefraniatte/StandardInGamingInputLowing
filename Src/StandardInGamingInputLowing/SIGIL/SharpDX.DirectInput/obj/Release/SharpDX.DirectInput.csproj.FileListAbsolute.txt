@@ -18,10 +18,10 @@ C:\Users\micha\Documents\github\ControllerHandle\Src\DirectInput\SharpDX.DirectI
 C:\Users\micha\Documents\github\ControllerHandle\Src\DirectInput\SharpDX.DirectInput\SharpDX.DirectInput\obj\Release\SharpDX.DirectInput.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SharpDX.DirectInput\bin\Release\SharpDX.DirectInput.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SharpDX.DirectInput\bin\Release\SharpDX.DirectInput.pdb
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SharpDX.DirectInput\bin\Release\SharpDX.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SharpDX.DirectInput\bin\Release\SharpDX.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SharpDX.DirectInput\obj\Release\SharpDX.DirectInput.csproj.AssemblyReference.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SharpDX.DirectInput\obj\Release\SharpDX.DirectInput.csproj.CoreCompileInputs.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SharpDX.DirectInput\obj\Release\SharpDX.DirectInput.csproj.CopyComplete
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SharpDX.DirectInput\obj\Release\SharpDX.DirectInput.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SharpDX.DirectInput\obj\Release\SharpDX.DirectInput.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SharpDX.DirectInput\bin\Release\SharpDX.DirectInput.dll.config
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SharpDX.DirectInput\obj\Release\SharpDX..6E50D2D5.Up2Date

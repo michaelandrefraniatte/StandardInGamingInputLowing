@@ -4,7 +4,6 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Camera\obj\Release\Camera.Form1.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Camera\obj\Release\Camera.csproj.GenerateResource.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Camera\obj\Release\Camera.csproj.CoreCompileInputs.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Camera\obj\Release\Camera.csproj.CopyComplete
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Camera\obj\Release\Camera.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Camera\obj\Release\Camera.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Camera\bin\Release\AForge.dll
@@ -12,3 +11,4 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Camera\bin\Release\AForge.Math.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Camera\bin\Release\AForge.Video.DirectShow.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Camera\bin\Release\AForge.Video.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Camera\obj\Release\Camera.csproj.Up2Date

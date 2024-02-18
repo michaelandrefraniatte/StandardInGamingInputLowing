@@ -25,6 +25,6 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joyconsright\obj\Release\Joyconsright.Form1.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joyconsright\obj\Release\Joyconsright.csproj.GenerateResource.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joyconsright\obj\Release\Joyconsright.csproj.CoreCompileInputs.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joyconsright\obj\Release\Joyconsright.csproj.CopyComplete
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joyconsright\obj\Release\Joyconsright.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joyconsright\obj\Release\Joyconsright.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joyconsright\obj\Release\Joyconsr.802BC8B0.Up2Date

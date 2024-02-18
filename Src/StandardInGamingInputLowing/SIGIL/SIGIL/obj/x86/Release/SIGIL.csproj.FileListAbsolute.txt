@@ -488,8 +488,11 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\obj\x86\Release\SIGIL.ReplaceForm.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\obj\x86\Release\SIGIL.csproj.GenerateResource.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\obj\x86\Release\SIGIL.csproj.CoreCompileInputs.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\obj\x86\Release\SIGIL.csproj.CopyComplete
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\obj\x86\Release\SIGIL.exe
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\obj\x86\Release\SIGIL.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\bin\x86\Release\sendinputs.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\bin\x86\Release\sendinputs.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\bin\x86\Release\SharpDX.DirectInput.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\bin\x86\Release\SharpDX.XInput.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\bin\x86\Release\SharpDX.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\obj\x86\Release\SIGIL.csproj.Up2Date

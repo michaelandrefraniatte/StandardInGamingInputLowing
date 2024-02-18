@@ -6,7 +6,7 @@
 
     public sealed class ResultCode
     {
-        public static readonly Result NotConnected = ErrorCodeHelper.ToResult(Result.False);
+        public static readonly Result NotConnected = ErrorCodeHelper.ToResult(ErrorCode.DeviceNotConnected);
     }
 }
 

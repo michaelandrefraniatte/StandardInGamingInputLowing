@@ -25,6 +25,6 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joyconcharginggrips\obj\Release\Joyconcharginggrips.Form1.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joyconcharginggrips\obj\Release\Joyconcharginggrips.csproj.GenerateResource.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joyconcharginggrips\obj\Release\Joyconcharginggrips.csproj.CoreCompileInputs.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joyconcharginggrips\obj\Release\Joyconcharginggrips.csproj.CopyComplete
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joyconcharginggrips\obj\Release\Joyconcharginggrips.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joyconcharginggrips\obj\Release\Joyconcharginggrips.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joyconcharginggrips\obj\Release\Joyconch.421D9204.Up2Date

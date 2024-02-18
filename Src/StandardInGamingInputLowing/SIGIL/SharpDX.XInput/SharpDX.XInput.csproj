@@ -32,6 +32,10 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\SharpDX.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -90,12 +94,6 @@
   <ItemGroup>
     <Content Include="Mapping.xml" />
     <Content Include="SharpDX.XInput.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SharpDX\SharpDX.csproj">
-      <Project>{0c1160e3-fcbe-49e1-8090-f4f958691b3f}</Project>
-      <Name>SharpDX</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

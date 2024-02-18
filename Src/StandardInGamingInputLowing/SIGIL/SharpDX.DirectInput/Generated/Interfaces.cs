@@ -169,11 +169,11 @@ namespace SharpDX.DirectInput {
         /// <msdn-id>microsoft.directx_sdk.idirectinputdevice8.idirectinputdevice8.enumobjects</msdn-id>	
         /// <unmanaged>HRESULT IDirectInputDevice8W::EnumObjects([In] __function__stdcall* arg0,[In] void* arg1,[In] unsigned int arg2)</unmanaged>	
         /// <unmanaged-short>IDirectInputDevice8W::EnumObjects</unmanaged-short>	
-        internal void EnumObjects(SharpDX.FunctionCallback arg0, System.IntPtr arg1, int arg2) {
+        internal void EnumObjects(System.IntPtr arg1, int arg2) {
             unsafe {
                 SharpDX.Result __result__;
                 __result__= 
-				SharpDX.DirectInput.LocalInterop.Calliint(_nativePointer, arg0, (void*)arg1, arg2,((void**)(*(void**)_nativePointer))[4]);		
+				SharpDX.DirectInput.LocalInterop.Calliint(_nativePointer, null, (void*)arg1, arg2,((void**)(*(void**)_nativePointer))[4]);		
                 __result__.CheckError();
             }
         }
@@ -514,11 +514,11 @@ namespace SharpDX.DirectInput {
         /// <msdn-id>microsoft.directx_sdk.idirectinputdevice8.idirectinputdevice8.enumeffects</msdn-id>	
         /// <unmanaged>HRESULT IDirectInputDevice8W::EnumEffects([In] __function__stdcall* arg0,[In] void* arg1,[In] DIEFT arg2)</unmanaged>	
         /// <unmanaged-short>IDirectInputDevice8W::EnumEffects</unmanaged-short>	
-        internal void EnumEffects(SharpDX.FunctionCallback arg0, System.IntPtr arg1, SharpDX.DirectInput.EffectType arg2) {
+        internal void EnumEffects(System.IntPtr arg1, SharpDX.DirectInput.EffectType arg2) {
             unsafe {
                 SharpDX.Result __result__;
                 __result__= 
-				SharpDX.DirectInput.LocalInterop.Calliint(_nativePointer, arg0, (void*)arg1, unchecked((int)arg2),((void**)(*(void**)_nativePointer))[19]);		
+				SharpDX.DirectInput.LocalInterop.Calliint(_nativePointer, null, (void*)arg1, unchecked((int)arg2),((void**)(*(void**)_nativePointer))[19]);		
                 __result__.CheckError();
             }
         }
@@ -606,11 +606,11 @@ namespace SharpDX.DirectInput {
         /// <msdn-id>microsoft.directx_sdk.idirectinputdevice8.idirectinputdevice8.enumcreatedeffectobjects</msdn-id>	
         /// <unmanaged>HRESULT IDirectInputDevice8W::EnumCreatedEffectObjects([In] __function__stdcall* arg0,[In] void* arg1,[In] unsigned int arg2)</unmanaged>	
         /// <unmanaged-short>IDirectInputDevice8W::EnumCreatedEffectObjects</unmanaged-short>	
-        internal void EnumCreatedEffectObjects(SharpDX.FunctionCallback arg0, System.IntPtr arg1, int arg2) {
+        internal void EnumCreatedEffectObjects(System.IntPtr arg1, int arg2) {
             unsafe {
                 SharpDX.Result __result__;
                 __result__= 
-				SharpDX.DirectInput.LocalInterop.Calliint(_nativePointer, arg0, (void*)arg1, arg2,((void**)(*(void**)_nativePointer))[23]);		
+				SharpDX.DirectInput.LocalInterop.Calliint(_nativePointer, null, (void*)arg1, arg2,((void**)(*(void**)_nativePointer))[23]);		
                 __result__.CheckError();
             }
         }
@@ -698,12 +698,12 @@ namespace SharpDX.DirectInput {
         /// <msdn-id>microsoft.directx_sdk.idirectinputdevice8.idirectinputdevice8.enumeffectsinfile</msdn-id>	
         /// <unmanaged>HRESULT IDirectInputDevice8W::EnumEffectsInFile([In] const wchar_t* arg0,[In] __function__stdcall* arg1,[In] void* arg2,[In] DIFEF arg3)</unmanaged>	
         /// <unmanaged-short>IDirectInputDevice8W::EnumEffectsInFile</unmanaged-short>	
-        internal void EnumEffectsInFile(string arg0, SharpDX.FunctionCallback arg1, System.IntPtr arg2, SharpDX.DirectInput.EffectFileFlags arg3) {
+        internal void EnumEffectsInFile(string arg0, System.IntPtr arg2, SharpDX.DirectInput.EffectFileFlags arg3) {
             unsafe {
                 IntPtr arg0_ = Utilities.StringToHGlobalUni(arg0);
                 SharpDX.Result __result__;
                 __result__= 
-				SharpDX.DirectInput.LocalInterop.Calliint(_nativePointer, (void*)arg0_, arg1, (void*)arg2, unchecked((int)arg3),((void**)(*(void**)_nativePointer))[27]);		
+				SharpDX.DirectInput.LocalInterop.Calliint(_nativePointer, (void*)arg0_, null, (void*)arg2, unchecked((int)arg3),((void**)(*(void**)_nativePointer))[27]);		
                 Marshal.FreeHGlobal(arg0_ );
                 __result__.CheckError();
             }
@@ -898,11 +898,11 @@ namespace SharpDX.DirectInput {
         /// <msdn-id>microsoft.directx_sdk.idirectinput8.idirectinput8.enumdevices</msdn-id>	
         /// <unmanaged>HRESULT IDirectInput8W::EnumDevices([In] unsigned int arg0,[In] __function__stdcall* arg1,[In] void* arg2,[In] DIEDFL arg3)</unmanaged>	
         /// <unmanaged-short>IDirectInput8W::EnumDevices</unmanaged-short>	
-        internal void EnumDevices(int arg0, SharpDX.FunctionCallback arg1, System.IntPtr arg2, SharpDX.DirectInput.DeviceEnumerationFlags arg3) {
+        internal void EnumDevices(int arg0, System.IntPtr arg2, SharpDX.DirectInput.DeviceEnumerationFlags arg3) {
             unsafe {
                 SharpDX.Result __result__;
                 __result__= 
-				SharpDX.DirectInput.LocalInterop.Calliint(_nativePointer, arg0, arg1, (void*)arg2, unchecked((int)arg3),((void**)(*(void**)_nativePointer))[4]);		
+				SharpDX.DirectInput.LocalInterop.Calliint(_nativePointer, arg0, null, (void*)arg2, unchecked((int)arg3),((void**)(*(void**)_nativePointer))[4]);		
                 __result__.CheckError();
             }
         }
@@ -1004,14 +1004,14 @@ namespace SharpDX.DirectInput {
         /// <msdn-id>microsoft.directx_sdk.idirectinput8.idirectinput8.enumdevicesbysemantics</msdn-id>	
         /// <unmanaged>HRESULT IDirectInput8W::EnumDevicesBySemantics([In] const wchar_t* arg0,[In] DIACTIONFORMATW* arg1,[In] __function__stdcall* arg2,[In] void* arg3,[In] unsigned int arg4)</unmanaged>	
         /// <unmanaged-short>IDirectInput8W::EnumDevicesBySemantics</unmanaged-short>	
-        internal void EnumDevicesBySemantics(string arg0, ref SharpDX.DirectInput.ActionFormat arg1, SharpDX.FunctionCallback arg2, System.IntPtr arg3, int arg4) {
+        internal void EnumDevicesBySemantics(string arg0, ref SharpDX.DirectInput.ActionFormat arg1, System.IntPtr arg3, int arg4) {
             unsafe {
                 IntPtr arg0_ = Utilities.StringToHGlobalUni(arg0);
                 var arg1_ = new SharpDX.DirectInput.ActionFormat.__Native();
                 arg1.__MarshalTo(ref arg1_);
                 SharpDX.Result __result__;
                 __result__= 
-				SharpDX.DirectInput.LocalInterop.Calliint(_nativePointer, (void*)arg0_, &arg1_, arg2, (void*)arg3, arg4,((void**)(*(void**)_nativePointer))[9]);		
+				SharpDX.DirectInput.LocalInterop.Calliint(_nativePointer, (void*)arg0_, &arg1_, null, (void*)arg3, arg4,((void**)(*(void**)_nativePointer))[9]);		
                 Marshal.FreeHGlobal(arg0_ );
                 arg1.__MarshalFree(ref arg1_);
                 __result__.CheckError();

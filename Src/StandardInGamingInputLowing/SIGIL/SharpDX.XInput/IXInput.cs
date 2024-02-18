@@ -23,7 +23,7 @@ namespace SharpDX.XInput
     /// <summary>
     /// Common interface for XInput to allow using XInput 1.4, 1.3 or 9.1.0.
     /// </summary>
-    internal interface IXInput
+    internal partial interface IXInput
     {
         int XInputSetState(int dwUserIndex, SharpDX.XInput.Vibration vibrationRef);
         int XInputGetState(int dwUserIndex, out SharpDX.XInput.State stateRef);
