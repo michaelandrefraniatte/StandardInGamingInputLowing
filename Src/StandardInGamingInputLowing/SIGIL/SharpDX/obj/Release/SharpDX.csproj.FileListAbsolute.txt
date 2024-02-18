@@ -1,0 +1,12 @@
+C:\Users\micha\Documents\github\ControllerHandle\Src\SharpDX\SharpDX\obj\Release\SharpDX.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\SharpDX\SharpDX\obj\Release\SharpDX.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\SharpDX\SharpDX\bin\Release\SharpDX.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\SharpDX\SharpDX\bin\Release\SharpDX.pdb
+C:\Users\micha\Documents\github\ControllerHandle\Src\SharpDX\SharpDX\obj\Release\SharpDX.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\SharpDX\SharpDX\obj\Release\SharpDX.pdb
+C:\Users\micha\Documents\github\ControllerHandle\Src\XInput\SharpDX\SharpDX\obj\Release\SharpDX.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\XInput\SharpDX\SharpDX\obj\Release\SharpDX.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\XInput\SharpDX\SharpDX\obj\Release\SharpDX.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\XInput\SharpDX\SharpDX\obj\Release\SharpDX.pdb
+C:\Users\micha\Documents\github\ControllerHandle\Src\XInput\SharpDX\SharpDX\bin\Release\SharpDX.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\XInput\SharpDX\SharpDX\bin\Release\SharpDX.pdb
