@@ -226,7 +226,7 @@ namespace SIGIL
                 range.SetStyle(StyleObject, new Regex(@"\bds41\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bds42\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bSendInputs\b"));
-                range.SetStyle(StyleClass, new Regex(@"\bSendInput\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bSendinput\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bsendinput\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bInterceptions\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bSendInterception\b"));
@@ -1816,7 +1816,7 @@ namespace SIGIL
                 "ds41",
                 "ds42",
                 "SendInputs",
-                "SendInput",
+                "Sendinput",
                 "sendinput",
                 "Interceptions",
                 "SendInterception",

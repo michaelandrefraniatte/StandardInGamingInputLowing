@@ -32,7 +32,7 @@ namespace StringToCode
         private static int sleeptime = 1;
         public static Valuechange ValueChange = new Valuechange();
         private DirectInput di = new DirectInput();
-        public static SendInput sendinput = new SendInput();
+        public static Sendinput sendinput = new Sendinput();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         public static void valchanged(int n, bool val)

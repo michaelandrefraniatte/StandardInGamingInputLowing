@@ -21,8 +21,10 @@ namespace SendInputs
             }
         }
     }
-    public class SendInput
+    public class Sendinput
     {
+        [DllImport("user32.dll")]
+        private static extern void SendInput(uint numberOfInputs, INPUT[] inputs, int sizeOfInputStructure);
         [DllImport("user32.dll")]
         private static extern void mouse_event(uint dwFlags, int dx, int dy, int dwData, int dwExtraInfo);
         [DllImport("user32.dll", SetLastError = true)]
@@ -390,7 +392,7 @@ namespace SendInputs
         private const ushort S_OEM_CLEAR = 0;
         private string drivertype;
         private Valuechanges ValueChange = new Valuechanges();
-        public SendInput()
+        public Sendinput()
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
@@ -1121,91 +1123,91 @@ namespace SendInputs
         private void mousebrink(int x, int y)
         {
             if (drivertype == "sendinput")
-                Send.MouseBrink(x, y);
+                MouseBrink(x, y);
             else
                 mouse_event(0x0001, x, y, 0, 0);
         }
         private void mousemw3(int x, int y)
         {
             if (drivertype == "sendinput")
-                Send.MouseMW3(x, y);
+                MouseMW3(x, y);
             else
                 mouse_event(0x8001, x, y, 0, 0);
         }
         private void mouseclickleft()
         {
             if (drivertype == "sendinput")
-                Task.Run(() => Send.LeftClick());
+                Task.Run(() => LeftClick());
             else
                 Task.Run(() => mouse_event(0x0002, 0, 0, 0, 0));
         }
         private void mouseclickleftF()
         {
             if (drivertype == "sendinput")
-                Task.Run(() => Send.LeftClickF());
+                Task.Run(() => LeftClickF());
             else
                 Task.Run(() => mouse_event(0x0004, 0, 0, 0, 0));
         }
         private void mouseclickright()
         {
             if (drivertype == "sendinput")
-                Task.Run(() => Send.RightClick());
+                Task.Run(() => RightClick());
             else
                 Task.Run(() => mouse_event(0x0008, 0, 0, 0, 0));
         }
         private void mouseclickrightF()
         {
             if (drivertype == "sendinput")
-                Task.Run(() => Send.RightClickF());
+                Task.Run(() => RightClickF());
             else
                 Task.Run(() => mouse_event(0x0010, 0, 0, 0, 0));
         }
         private void mouseclickmiddle()
         {
             if (drivertype == "sendinput")
-                Task.Run(() => Send.MiddleClick());
+                Task.Run(() => MiddleClick());
             else
                 Task.Run(() => mouse_event(0x0020, 0, 0, 0, 0));
         }
         private void mouseclickmiddleF()
         {
             if (drivertype == "sendinput")
-                Task.Run(() => Send.MiddleClickF());
+                Task.Run(() => MiddleClickF());
             else
                 Task.Run(() => mouse_event(0x0040, 0, 0, 0, 0));
         }
         private void mousewheelup()
         {
             if (drivertype == "sendinput")
-                Task.Run(() => Send.WheelUpF());
+                Task.Run(() => WheelUpF());
             else
                 Task.Run(() => mouse_event(0x0800, 0, 0, 120, 0));
         }
         private void mousewheeldown()
         {
             if (drivertype == "sendinput")
-                Task.Run(() => Send.WheelDownF());
+                Task.Run(() => WheelDownF());
             else
                 Task.Run(() => mouse_event(0x0800, 0, 0, -120, 0));
         }
         private void keyboard(UInt16 bVk, UInt16 bScan)
         {
             if (drivertype == "sendinput")
-                Task.Run(() => Send.SimulateKeyDown(bVk, bScan));
+                Task.Run(() => SimulateKeyDown(bVk, bScan));
             else
                 Task.Run(() => keybd_event(bVk, bScan, 0, 0));
         }
         private void keyboardF(UInt16 bVk, UInt16 bScan)
         {
             if (drivertype == "sendinput")
-                Task.Run(() => Send.SimulateKeyUp(bVk, bScan));
+                Task.Run(() => SimulateKeyUp(bVk, bScan));
             else
                 Task.Run(() => keybd_event(bVk, bScan, 0x0002, 0));
         }
         private void keyboardArrows(UInt16 bVk, UInt16 bScan)
         {
             if (drivertype == "sendinput")
-                Task.Run(() => Send.SimulateKeyDOWN(bVk, bScan));
+                Task.Run(() => SimulateKeyDOWN(bVk, bScan));
             else
                 Task.Run(() => { 
                     keybd_event(bVk, bScan, 0x0001 | 0x0008, 0);
@@ -1215,20 +1217,15 @@ namespace SendInputs
         private void keyboardArrowsF(UInt16 bVk, UInt16 bScan)
         {
             if (drivertype == "sendinput")
-                Task.Run(() => Send.SimulateKeyUP(bVk, bScan));
+                Task.Run(() => SimulateKeyUP(bVk, bScan));
             else
                 Task.Run(() => { 
                     keybd_event(bVk, bScan, 0x0002 | 0x0001 | 0x0008, 0);
                     keybd_event(bVk, bScan, 0x0002, 0);
                 });
         }
-    }
-    public class Send
-    {
-        [DllImport("user32.dll")]
-        private static extern void SendInput(uint numberOfInputs, INPUT[] inputs, int sizeOfInputStructure);
         private static INPUT[] Micek = new INPUT[1], MiceW3 = new INPUT[1], Micewu = new INPUT[1], down = new INPUT[1], up = new INPUT[1], Micel = new INPUT[1], Micelf = new INPUT[1], Micerc = new INPUT[1], Micercf = new INPUT[1], Micemc = new INPUT[1], Micewd = new INPUT[1], Micemcf = new INPUT[1];
-        public static void SimulateKeyDown(UInt16 keyCode, UInt16 bScan)
+        private static void SimulateKeyDown(UInt16 keyCode, UInt16 bScan)
         {
             down[0].Type = (UInt32)InputType.KEYBOARD;
             down[0].Data.Keyboard = new KEYBDINPUT();
@@ -1237,9 +1234,9 @@ namespace SendInputs
             down[0].Data.Keyboard.Flags = 0;
             down[0].Data.Keyboard.Time = 0;
             down[0].Data.Keyboard.ExtraInfo = IntPtr.Zero;
-            SendInput(1, down, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, down, Marshal.SizeOf(typeof(INPUT)));
         }
-        public static void SimulateKeyUp(UInt16 keyCode, UInt16 bScan)
+        private static void SimulateKeyUp(UInt16 keyCode, UInt16 bScan)
         {
             up[0].Type = (UInt32)InputType.KEYBOARD;
             up[0].Data.Keyboard = new KEYBDINPUT();
@@ -1248,9 +1245,9 @@ namespace SendInputs
             up[0].Data.Keyboard.Flags = (UInt16)(0x0002);
             up[0].Data.Keyboard.Time = 0;
             up[0].Data.Keyboard.ExtraInfo = IntPtr.Zero;
-            SendInput(1, up, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, up, Marshal.SizeOf(typeof(INPUT)));
         }
-        public static void SimulateKeyDOWN(UInt16 keyCode, UInt16 bScan)
+        private static void SimulateKeyDOWN(UInt16 keyCode, UInt16 bScan)
         {
             down[0].Type = (UInt32)InputType.KEYBOARD;
             down[0].Data.Keyboard = new KEYBDINPUT();
@@ -1259,11 +1256,11 @@ namespace SendInputs
             down[0].Data.Keyboard.Flags = (UInt16)(0x0001) | (UInt16)(0x0008);
             down[0].Data.Keyboard.Time = 0;
             down[0].Data.Keyboard.ExtraInfo = IntPtr.Zero;
-            SendInput(1, down, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, down, Marshal.SizeOf(typeof(INPUT)));
             down[0].Data.Keyboard.Flags = 0;
-            SendInput(1, down, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, down, Marshal.SizeOf(typeof(INPUT)));
         }
-        public static void SimulateKeyUP(UInt16 keyCode, UInt16 bScan)
+        private static void SimulateKeyUP(UInt16 keyCode, UInt16 bScan)
         {
             up[0].Type = (UInt32)InputType.KEYBOARD;
             up[0].Data.Keyboard = new KEYBDINPUT();
@@ -1272,11 +1269,11 @@ namespace SendInputs
             up[0].Data.Keyboard.Flags = (UInt16)(0x0002) | (UInt16)(0x0001) | (UInt16)(0x0008);
             up[0].Data.Keyboard.Time = 0;
             up[0].Data.Keyboard.ExtraInfo = IntPtr.Zero;
-            SendInput(1, up, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, up, Marshal.SizeOf(typeof(INPUT)));
             up[0].Data.Keyboard.Flags = (UInt16)(0x0002);
-            SendInput(1, up, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, up, Marshal.SizeOf(typeof(INPUT)));
         }
-        public static void MouseMW3(int x, int y)
+        private static void MouseMW3(int x, int y)
         {
             MiceW3[0].Type = (UInt32)InputType.MOUSE;
             MiceW3[0].Data.Mouse = new MOUSEINPUT();
@@ -1286,9 +1283,9 @@ namespace SendInputs
             MiceW3[0].Data.Mouse.X = x;
             MiceW3[0].Data.Mouse.Y = y;
             MiceW3[0].Data.Mouse.ExtraInfo = IntPtr.Zero;
-            SendInput(1, MiceW3, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, MiceW3, Marshal.SizeOf(typeof(INPUT)));
         }
-        public static void MouseBrink(int x, int y)
+        private static void MouseBrink(int x, int y)
         {
             Micek[0].Type = (UInt32)InputType.MOUSE;
             Micek[0].Data.Mouse = new MOUSEINPUT();
@@ -1298,9 +1295,9 @@ namespace SendInputs
             Micek[0].Data.Mouse.X = x;
             Micek[0].Data.Mouse.Y = y;
             Micek[0].Data.Mouse.ExtraInfo = IntPtr.Zero;
-            SendInput(1, Micek, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, Micek, Marshal.SizeOf(typeof(INPUT)));
         }
-        public static void LeftClick()
+        private static void LeftClick()
         {
             Micel[0].Type = (UInt32)InputType.MOUSE;
             Micel[0].Data.Mouse = new MOUSEINPUT();
@@ -1308,9 +1305,9 @@ namespace SendInputs
             Micel[0].Data.Mouse.Flags = (UInt16)(0x0002);
             Micel[0].Data.Mouse.Time = 0;
             Micel[0].Data.Mouse.ExtraInfo = IntPtr.Zero;
-            SendInput(1, Micel, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, Micel, Marshal.SizeOf(typeof(INPUT)));
         }
-        public static void LeftClickF()
+        private static void LeftClickF()
         {
             Micelf[0].Type = (UInt32)InputType.MOUSE;
             Micelf[0].Data.Mouse = new MOUSEINPUT();
@@ -1318,9 +1315,9 @@ namespace SendInputs
             Micelf[0].Data.Mouse.Flags = (UInt16)(0x0004);
             Micelf[0].Data.Mouse.Time = 0;
             Micelf[0].Data.Mouse.ExtraInfo = IntPtr.Zero;
-            SendInput(1, Micelf, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, Micelf, Marshal.SizeOf(typeof(INPUT)));
         }
-        public static void RightClick()
+        private static void RightClick()
         {
             Micerc[0].Type = (UInt32)InputType.MOUSE;
             Micerc[0].Data.Mouse = new MOUSEINPUT();
@@ -1328,9 +1325,9 @@ namespace SendInputs
             Micerc[0].Data.Mouse.Flags = (UInt16)(0x0008);
             Micerc[0].Data.Mouse.Time = 0;
             Micerc[0].Data.Mouse.ExtraInfo = IntPtr.Zero;
-            SendInput(1, Micerc, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, Micerc, Marshal.SizeOf(typeof(INPUT)));
         }
-        public static void RightClickF()
+        private static void RightClickF()
         {
             Micercf[0].Type = (UInt32)InputType.MOUSE;
             Micercf[0].Data.Mouse = new MOUSEINPUT();
@@ -1338,9 +1335,9 @@ namespace SendInputs
             Micercf[0].Data.Mouse.Flags = (UInt16)(0x0010);
             Micercf[0].Data.Mouse.Time = 0;
             Micercf[0].Data.Mouse.ExtraInfo = IntPtr.Zero;
-            SendInput(1, Micercf, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, Micercf, Marshal.SizeOf(typeof(INPUT)));
         }
-        public static void MiddleClick()
+        private static void MiddleClick()
         {
             Micemc[0].Type = (UInt32)InputType.MOUSE;
             Micemc[0].Data.Mouse = new MOUSEINPUT();
@@ -1348,9 +1345,9 @@ namespace SendInputs
             Micemc[0].Data.Mouse.Flags = (UInt16)(0x0020);
             Micemc[0].Data.Mouse.Time = 0;
             Micemc[0].Data.Mouse.ExtraInfo = IntPtr.Zero;
-            SendInput(1, Micemc, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, Micemc, Marshal.SizeOf(typeof(INPUT)));
         }
-        public static void MiddleClickF()
+        private static void MiddleClickF()
         {
             Micemcf[0].Type = (UInt32)InputType.MOUSE;
             Micemcf[0].Data.Mouse = new MOUSEINPUT();
@@ -1358,9 +1355,9 @@ namespace SendInputs
             Micemcf[0].Data.Mouse.Flags = (UInt16)(0x0040);
             Micemcf[0].Data.Mouse.Time = 0;
             Micemcf[0].Data.Mouse.ExtraInfo = IntPtr.Zero;
-            SendInput(1, Micemcf, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, Micemcf, Marshal.SizeOf(typeof(INPUT)));
         }
-        public static void WheelDownF()
+        private static void WheelDownF()
         {
             Micewd[0].Type = (UInt32)InputType.MOUSE;
             Micewd[0].Data.Mouse = new MOUSEINPUT();
@@ -1368,9 +1365,9 @@ namespace SendInputs
             Micewd[0].Data.Mouse.Flags = (UInt16)(0x0800);
             Micewd[0].Data.Mouse.Time = 0;
             Micewd[0].Data.Mouse.ExtraInfo = IntPtr.Zero;
-            SendInput(1, Micewd, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, Micewd, Marshal.SizeOf(typeof(INPUT)));
         }
-        public static void WheelUpF()
+        private static void WheelUpF()
         {
             Micewu[0].Type = (UInt32)InputType.MOUSE;
             Micewu[0].Data.Mouse = new MOUSEINPUT();
@@ -1378,7 +1375,7 @@ namespace SendInputs
             Micewu[0].Data.Mouse.Flags = (UInt16)(0x0800);
             Micewu[0].Data.Mouse.Time = 0;
             Micewu[0].Data.Mouse.ExtraInfo = IntPtr.Zero;
-            SendInput(1, Micewu, System.Runtime.InteropServices.Marshal.SizeOf(typeof(INPUT)));
+            SendInput(1, Micewu, Marshal.SizeOf(typeof(INPUT)));
         }
         [StructLayout(LayoutKind.Explicit)]
         private struct MOUSEKEYBDHARDWAREINPUT
