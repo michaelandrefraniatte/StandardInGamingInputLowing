@@ -206,6 +206,10 @@
       <Project>{5f2354d3-7620-4ffd-a578-9ba982848234}</Project>
       <Name>Dualshocks4</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gamepadshook\Gamepadshook.csproj">
+      <Project>{c7fa239f-cbec-43c9-91f4-b38bc13c4245}</Project>
+      <Name>Gamepadshook</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Interceptions\Interceptions.csproj">
       <Project>{c8a72023-3693-4c30-a5ed-9502fe0c10af}</Project>
       <Name>Interceptions</Name>
@@ -221,6 +225,10 @@
     <ProjectReference Include="..\Joyconsright\Joyconsright.csproj">
       <Project>{3957bee1-1eed-455f-a785-5014fa0afa81}</Project>
       <Name>Joyconsright</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Joystickshook\Joystickshook.csproj">
+      <Project>{3339a8b5-9d7d-4623-b067-ec06f0d86fe0}</Project>
+      <Name>Joystickshook</Name>
     </ProjectReference>
     <ProjectReference Include="..\Keyboardhook\Keyboardhook.csproj">
       <Project>{f490bd42-6bef-4f5c-a52c-f192ae6aecff}</Project>

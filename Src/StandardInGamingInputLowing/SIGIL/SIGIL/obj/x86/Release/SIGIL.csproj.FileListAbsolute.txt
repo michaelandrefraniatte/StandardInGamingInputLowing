@@ -496,3 +496,10 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\bin\x86\Release\SharpDX.XInput.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\bin\x86\Release\SharpDX.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\obj\x86\Release\SIGIL.csproj.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\bin\x86\Release\Gamepadshook.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\bin\x86\Release\Gamepadshook.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\bin\x86\Release\Microsoft.Xna.Framework.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\bin\x86\Release\Joystickshook.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\bin\x86\Release\Microsoft.DirectX.DirectInput.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\bin\x86\Release\Microsoft.DirectX.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\SIGIL\bin\x86\Release\Joystickshook.pdb

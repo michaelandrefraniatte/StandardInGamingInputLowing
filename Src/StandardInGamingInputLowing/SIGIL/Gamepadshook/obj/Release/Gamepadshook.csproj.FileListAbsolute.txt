@@ -1,0 +1,9 @@
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Gamepadshook\bin\Release\Gamepadshook.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Gamepadshook\bin\Release\Gamepadshook.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Gamepadshook\obj\Release\Gamepadshook.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Gamepadshook\obj\Release\Gamepadshook.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Gamepadshook\obj\Release\Gamepadshook.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Gamepadshook\obj\Release\Gamepadshook.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Gamepadshook\obj\Release\Gamepadshook.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Gamepadshook\obj\Release\Gamepadshook.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Gamepadshook\obj\Release\Gamepads.B2DCD71B.Up2Date

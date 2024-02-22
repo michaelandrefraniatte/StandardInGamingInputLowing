@@ -1,0 +1,139 @@
+﻿using System;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using Gamepadshook;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+
+namespace GamepadsHooksAPI
+{
+    public class GamepadsHooks
+    {
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
+        private bool running, formvisible;
+        private int number;
+        private GamePadState gamepadstate;
+        private Form1 form1 = new Form1();
+        public GamepadsHooks()
+        {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
+            running = true;
+        }
+        public void ViewData()
+        {
+            if (!form1.Visible)
+            {
+                formvisible = true;
+                form1.SetVisible();
+            }
+        }
+        public void Close()
+        {
+            running = false;
+        }
+        private void taskD()
+        {
+            for (; ; )
+            {
+                if (!running)
+                    break;
+                ProcessStateLogic();
+                System.Threading.Thread.Sleep(1);
+                if (formvisible)
+                {
+                    string str = "ControllerButtonAPressed : " + ControllerButtonAPressed + Environment.NewLine;
+                    str += "ControllerButtonBPressed : " + ControllerButtonBPressed + Environment.NewLine;
+                    str += "ControllerButtonXPressed : " + ControllerButtonXPressed + Environment.NewLine;
+                    str += "ControllerButtonYPressed : " + ControllerButtonYPressed + Environment.NewLine;
+                    str += "ControllerButtonStartPressed : " + ControllerButtonStartPressed + Environment.NewLine;
+                    str += "ControllerButtonBackPressed : " + ControllerButtonBackPressed + Environment.NewLine;
+                    str += "ControllerButtonDownPressed : " + ControllerButtonDownPressed + Environment.NewLine;
+                    str += "ControllerButtonUpPressed : " + ControllerButtonUpPressed + Environment.NewLine;
+                    str += "ControllerButtonLeftPressed : " + ControllerButtonLeftPressed + Environment.NewLine;
+                    str += "ControllerButtonRightPressed : " + ControllerButtonRightPressed + Environment.NewLine;
+                    str += "ControllerButtonShoulderLeftPressed : " + ControllerButtonShoulderLeftPressed + Environment.NewLine;
+                    str += "ControllerButtonShoulderRightPressed : " + ControllerButtonShoulderRightPressed + Environment.NewLine;
+                    str += "ControllerThumbpadLeftPressed : " + ControllerThumbpadLeftPressed + Environment.NewLine;
+                    str += "ControllerThumbpadRightPressed : " + ControllerThumbpadRightPressed + Environment.NewLine;
+                    str += "ControllerTriggerLeftPosition : " + ControllerTriggerLeftPosition + Environment.NewLine;
+                    str += "ControllerTriggerRightPosition : " + ControllerTriggerRightPosition + Environment.NewLine;
+                    str += "ControllerThumbLeftX : " + ControllerThumbLeftX + Environment.NewLine;
+                    str += "ControllerThumbLeftY : " + ControllerThumbLeftY + Environment.NewLine;
+                    str += "ControllerThumbRightX : " + ControllerThumbRightX + Environment.NewLine;
+                    str += "ControllerThumbRightY : " + ControllerThumbRightY + Environment.NewLine;
+                    str += Environment.NewLine;
+                    form1.SetLabel1(str);
+                }
+            }
+        }
+        public void BeginPolling()
+        {
+            Task.Run(() => taskD());
+        }
+        public bool ControllerButtonAPressed;
+        public bool ControllerButtonBPressed;
+        public bool ControllerButtonXPressed;
+        public bool ControllerButtonYPressed;
+        public bool ControllerButtonStartPressed;
+        public bool ControllerButtonBackPressed;
+        public bool ControllerButtonDownPressed;
+        public bool ControllerButtonUpPressed;
+        public bool ControllerButtonLeftPressed;
+        public bool ControllerButtonRightPressed;
+        public bool ControllerButtonShoulderLeftPressed;
+        public bool ControllerButtonShoulderRightPressed;
+        public bool ControllerThumbpadLeftPressed;
+        public bool ControllerThumbpadRightPressed;
+        public double ControllerTriggerLeftPosition;
+        public double ControllerTriggerRightPosition;
+        public double ControllerThumbLeftX;
+        public double ControllerThumbLeftY;
+        public double ControllerThumbRightX;
+        public double ControllerThumbRightY;
+        public bool Scan(int number = 0)
+        {
+            int inc = number < 2 ? 0 : number - 1;
+            gamepadstate = GamePad.GetState((PlayerIndex)inc);
+            if (!gamepadstate.IsConnected)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private void ProcessStateLogic()
+        {
+            int inc = number < 2 ? 0 : number - 1;
+            gamepadstate = GamePad.GetState((PlayerIndex)inc);
+            ControllerButtonAPressed = gamepadstate.Buttons.A == ButtonState.Pressed;
+            ControllerButtonBPressed = gamepadstate.Buttons.B == ButtonState.Pressed;
+            ControllerButtonXPressed = gamepadstate.Buttons.X == ButtonState.Pressed;
+            ControllerButtonYPressed = gamepadstate.Buttons.Y == ButtonState.Pressed;
+            ControllerButtonShoulderLeftPressed = gamepadstate.Buttons.LeftShoulder == ButtonState.Pressed;
+            ControllerButtonShoulderRightPressed = gamepadstate.Buttons.RightShoulder == ButtonState.Pressed;
+            ControllerButtonStartPressed = gamepadstate.Buttons.Start == ButtonState.Pressed;
+            ControllerButtonBackPressed = gamepadstate.Buttons.Back == ButtonState.Pressed;
+            ControllerThumbpadLeftPressed = gamepadstate.Buttons.LeftStick == ButtonState.Pressed;
+            ControllerThumbpadRightPressed = gamepadstate.Buttons.RightStick == ButtonState.Pressed;
+            ControllerButtonUpPressed = gamepadstate.DPad.Up == ButtonState.Pressed;
+            ControllerButtonDownPressed = gamepadstate.DPad.Down == ButtonState.Pressed;
+            ControllerButtonLeftPressed = gamepadstate.DPad.Left == ButtonState.Pressed;
+            ControllerButtonRightPressed = gamepadstate.DPad.Right == ButtonState.Pressed;
+            ControllerThumbLeftX = gamepadstate.ThumbSticks.Left.X * 32767f;
+            ControllerThumbLeftY = gamepadstate.ThumbSticks.Left.Y * 32767f;
+            ControllerThumbRightX = gamepadstate.ThumbSticks.Right.X * 32767f;
+            ControllerThumbRightY = gamepadstate.ThumbSticks.Right.Y * 32767f;
+            ControllerTriggerLeftPosition = gamepadstate.Triggers.Left * 255f;
+            ControllerTriggerRightPosition = gamepadstate.Triggers.Right * 255f;
+        }
+    }
+}

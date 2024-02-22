@@ -1499,6 +1499,16 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"\bMouseHooksAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bMouseHooks\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bmh\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bGamepadsHooksAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bGamepadsHooks\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bgh\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bgh1\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bgh2\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bJoysticksHooksAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bJoysticksHooks\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bjh\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bjh1\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bjh2\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bKey_LBUTTON\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bKey_RBUTTON\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bKey_CANCEL\b"));
@@ -3089,6 +3099,16 @@ namespace SIGIL
                 "MouseHooksAPI",
                 "MouseHooks",
                 "mh",
+                "GamepadsHooksAPI",
+                "GamepadsHooks",
+                "gh",
+                "gh1",
+                "gh2",
+                "JoysticksHooksAPI",
+                "JoysticksHooks",
+                "jh",
+                "jh1",
+                "jh2",
                 "Key_LBUTTON",
                 "Key_RBUTTON",
                 "Key_CANCEL",
@@ -3656,6 +3676,10 @@ namespace SIGIL
                 AddAssembly("Keyboardhook");
             if (code.Contains("using SendInputs;"))
                 AddAssembly("sendinputs");
+            if (code.Contains("using GamepadsHooksAPI;"))
+                AddAssembly("Gamepadshook");
+            if (code.Contains("using JoysticksHooksAPI;"))
+                AddAssembly("Joystickshook");
         }
         private void AddAssembly(string dllName)
         {

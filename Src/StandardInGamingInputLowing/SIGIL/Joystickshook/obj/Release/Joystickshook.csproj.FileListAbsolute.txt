@@ -1,0 +1,9 @@
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joystickshook\bin\Release\Joystickshook.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joystickshook\bin\Release\Joystickshook.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joystickshook\obj\Release\Joystickshook.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joystickshook\obj\Release\Joystickshook.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joystickshook\obj\Release\Joystickshook.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joystickshook\obj\Release\Joystickshook.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joystickshook\obj\Release\Joystickshook.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joystickshook\obj\Release\Joystickshook.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joystickshook\obj\Release\Joystick.9860B71D.Up2Date
