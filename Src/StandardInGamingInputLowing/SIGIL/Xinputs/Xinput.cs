@@ -16,7 +16,7 @@ namespace XInputsAPI
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private bool running, formvisible;
-        private int number;
+        private int number, inc;
         private Form1 form1 = new Form1();
         public XInput()
         {
@@ -103,6 +103,7 @@ namespace XInputsAPI
             try
             {
                 this.number = number;
+                inc = number < 2 ? 0 : number - 1;
                 controller = new Controller[] { null, null, null, null };
                 xinum = 0;
                 var controllers = new[] { new Controller(UserIndex.One), new Controller(UserIndex.Two), new Controller(UserIndex.Three), new Controller(UserIndex.Four) };
@@ -127,7 +128,6 @@ namespace XInputsAPI
         }
         private void ProcessStateLogic()
         {
-            int inc = number < 2 ? 0 : number - 1;
             xistate = controller[inc].GetState();
             if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.A))
                 ControllerButtonAPressed = true;

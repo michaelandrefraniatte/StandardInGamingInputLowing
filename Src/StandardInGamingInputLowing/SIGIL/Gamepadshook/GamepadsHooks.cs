@@ -17,7 +17,7 @@ namespace GamepadsHooksAPI
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private bool running, formvisible;
-        private int number;
+        private int number, inc;
         private GamePadState gamepadstate;
         private Form1 form1 = new Form1();
         public GamepadsHooks()
@@ -99,7 +99,8 @@ namespace GamepadsHooksAPI
         public double ControllerThumbRightY;
         public bool Scan(int number = 0)
         {
-            int inc = number < 2 ? 0 : number - 1;
+            this.number = number;
+            inc = number < 2 ? 0 : number - 1;
             gamepadstate = GamePad.GetState((PlayerIndex)inc);
             if (!gamepadstate.IsConnected)
             {
@@ -112,7 +113,6 @@ namespace GamepadsHooksAPI
         }
         private void ProcessStateLogic()
         {
-            int inc = number < 2 ? 0 : number - 1;
             gamepadstate = GamePad.GetState((PlayerIndex)inc);
             ControllerButtonAPressed = gamepadstate.Buttons.A == ButtonState.Pressed;
             ControllerButtonBPressed = gamepadstate.Buttons.B == ButtonState.Pressed;

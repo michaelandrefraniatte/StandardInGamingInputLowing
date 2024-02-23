@@ -12,6 +12,7 @@ namespace controllersvjoy
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
+        private int number;
         private VirtualJoystick joystick;
         public VJoyController()
         {
@@ -20,6 +21,7 @@ namespace controllersvjoy
         }
         public void Connect(int number = 0)
         {
+            this.number = number;
             uint id = (uint)(number < 2 ? 1 : number);
             joystick = new VirtualJoystick(id);
             joystick.Aquire();

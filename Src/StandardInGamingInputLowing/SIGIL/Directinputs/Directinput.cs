@@ -17,7 +17,7 @@ namespace DirectInputsAPI
         private static uint CurrentResolution = 0;
         private bool running, formvisible;
         private SharpDX.DirectInput.DirectInput directInput = new SharpDX.DirectInput.DirectInput();
-        private int number;
+        private int number, inc;
         private Form1 form1 = new Form1();
         public void ViewData()
         {
@@ -302,7 +302,7 @@ namespace DirectInputsAPI
             }
             else
             {
-                int inc = number < 2 ? 0 : number - 1;
+                inc = number < 2 ? 0 : number - 1;
                 joystick[inc] = new Joystick(directInput, joystickGuid[inc]);
                 joystick[inc].Properties.BufferSize = 128;
                 joystick[inc].Acquire();
@@ -311,7 +311,6 @@ namespace DirectInputsAPI
         }
         private void ProcessStateLogic()
         {
-            int inc = number < 2 ? 0 : number - 1;
             joystick[inc].Poll();
             var datas = joystick[inc].GetBufferedData();
             foreach (var state in datas)

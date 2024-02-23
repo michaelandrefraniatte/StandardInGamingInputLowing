@@ -17,7 +17,7 @@ namespace MouseInputsAPI
         private static uint CurrentResolution = 0;
         private bool running, formvisible;
         private DirectInput directInput = new DirectInput();
-        private int number;
+        private int number, inc;
         private Form1 form1 = new Form1();
         public MouseInput()
         {
@@ -110,7 +110,7 @@ namespace MouseInputsAPI
             }
             else
             {
-                int inc = number < 2 ? 0 : number - 1;
+                inc = number < 2 ? 0 : number - 1;
                 mouse[inc] = new Mouse(directInput);
                 mouse[inc].Properties.BufferSize = 128;
                 mouse[inc].Acquire();
@@ -119,7 +119,6 @@ namespace MouseInputsAPI
         }
         private void ProcessStateLogic()
         {
-            int inc = number < 2 ? 0 : number - 1;
             mouse[inc].Poll();
             var datas = mouse[inc].GetBufferedData();
             foreach (var state in datas)

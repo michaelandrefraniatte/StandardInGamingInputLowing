@@ -30,7 +30,7 @@ namespace JoysticksHooksAPI
         private int[] pointofview;
         private string[] sticks;
         private static List<string> joysticks = new List<string>();
-        private static string joystick;
+        private string joystick;
         private Form1 form1 = new Form1();
         public void ViewData()
         {

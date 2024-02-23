@@ -11,6 +11,7 @@ namespace controllersds4
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
+        private int number;
         private IDualShock4Controller Controller { get; set; }
         private ViGEmClient client = new ViGEmClient();
         private string vendorid = "54C", productid = "9CC";
@@ -21,6 +22,7 @@ namespace controllersds4
         }
         public void Connect(int number = 0)
         {
+            this.number = number;
             Controller = client.CreateDualShock4Controller(ushort.Parse(vendorid, System.Globalization.NumberStyles.HexNumber), ushort.Parse(productid, System.Globalization.NumberStyles.HexNumber));
             Controller.Connect();
         }

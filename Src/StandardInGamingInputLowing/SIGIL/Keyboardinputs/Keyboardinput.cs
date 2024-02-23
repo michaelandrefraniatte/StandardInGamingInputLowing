@@ -17,7 +17,7 @@ namespace KeyboardInputsAPI
         private static uint CurrentResolution = 0;
         private bool running, formvisible;
         private DirectInput directInput = new DirectInput();
-        private int number;
+        private int number, inc;
         private Form1 form1 = new Form1();
         public KeyboardInput()
         {
@@ -371,7 +371,7 @@ namespace KeyboardInputsAPI
             }
             else
             {
-                int inc = number < 2 ? 0 : number - 1;
+                inc = number < 2 ? 0 : number - 1;
                 keyboard[inc] = new Keyboard(directInput);
                 keyboard[inc].Properties.BufferSize = 128;
                 keyboard[inc].Acquire();
@@ -380,7 +380,6 @@ namespace KeyboardInputsAPI
         }
         private void ProcessStateLogic()
         {
-            int inc = number < 2 ? 0 : number - 1;
             keyboard[inc].Poll();
             var datas = keyboard[inc].GetBufferedData();
             foreach (var state in datas)

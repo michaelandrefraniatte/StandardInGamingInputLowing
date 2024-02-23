@@ -43,7 +43,7 @@ namespace controllers
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        private int number;
+        private int number, inc;
         private Valuechanges ValueChange = new Valuechanges();
         private const string SCP_BUS_CLASS_GUID = "{F679F562-3164-42CE-A4DB-E7DDBE723909}";
         private SafeFileHandle _deviceHandle;
@@ -57,12 +57,13 @@ namespace controllers
             {
                 _deviceHandle = GetHandle(devicePath);
             }
-            PlugIn(number < 2 ? 1 : number);
+            inc = number < 2 ? 1 : number;
+            PlugIn(inc);
         }
         public void Disconnect()
         {
             Set(false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0, 0, false);
-            Unplug(number < 2 ? 1 : number);
+            Unplug(inc);
         }
         public void Set(bool back, bool start, bool A, bool B, bool X, bool Y, bool up, bool left, bool down, bool right, bool leftstick, bool rightstick, bool leftbumper, bool rightbumper, double leftstickx, double leftsticky, double rightstickx, double rightsticky, double lefttriggerposition, double righttriggerposition, bool xbox)
         {
@@ -147,7 +148,7 @@ namespace controllers
             RightStickY = (short)rightsticky;
             LeftTrigger = (byte)lefttriggerposition;
             RightTrigger = (byte)righttriggerposition;
-            Report(GetReport(number < 2 ? 1 : number));
+            Report(GetReport(inc));
         }
         public XBoxController()
         {
