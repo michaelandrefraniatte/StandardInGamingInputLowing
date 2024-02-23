@@ -3,6 +3,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Keyboardinputs;
+using System.Collections.Generic;
 
 namespace KeyboardInputsAPI
 {
@@ -18,6 +19,8 @@ namespace KeyboardInputsAPI
         private bool running, formvisible;
         private DirectInput directInput = new DirectInput();
         private int number, inc;
+        private static List<Keyboard> keyboards = new List<Keyboard>();
+        private Keyboard kb;
         private Form1 form1 = new Form1();
         public KeyboardInput()
         {
@@ -351,9 +354,10 @@ namespace KeyboardInputsAPI
         public bool KeyboardKeyUnknown;
         public bool Scan(int number = 0)
         {
-            try
+            this.number = number;
+            inc = number < 2 ? 0 : number - 1;
+            if (number <= 1)
             {
-                this.number = number;
                 directInput = new DirectInput();
                 keyboard = new Keyboard[] { null, null, null, null };
                 keyboardGuid = new Guid[] { Guid.Empty, Guid.Empty, Guid.Empty, Guid.Empty };
@@ -361,27 +365,27 @@ namespace KeyboardInputsAPI
                 foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Keyboard, DeviceEnumerationFlags.AllDevices))
                 {
                     keyboardGuid[knum] = deviceInstance.InstanceGuid;
+                    keyboard[knum] = new Keyboard(directInput);
+                    keyboard[knum].Properties.BufferSize = 128;
+                    keyboards.Add(keyboard[knum]);
                     knum++;
                 }
             }
-            catch { }
-            if (keyboardGuid[0] == Guid.Empty)
+            if (keyboards.Count == 0)
             {
                 return false;
             }
             else
             {
-                inc = number < 2 ? 0 : number - 1;
-                keyboard[inc] = new Keyboard(directInput);
-                keyboard[inc].Properties.BufferSize = 128;
-                keyboard[inc].Acquire();
+                kb = keyboards[inc];
+                kb.Acquire();
                 return true;
             }
         }
         private void ProcessStateLogic()
         {
-            keyboard[inc].Poll();
-            var datas = keyboard[inc].GetBufferedData();
+            kb.Poll();
+            var datas = kb.GetBufferedData();
             foreach (var state in datas)
             {
                 if (state.IsPressed & state.Key == Key.Escape)

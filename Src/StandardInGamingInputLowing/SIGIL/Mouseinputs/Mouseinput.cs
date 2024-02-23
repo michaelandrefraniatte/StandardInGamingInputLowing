@@ -3,6 +3,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Mouseinputs;
+using System.Collections.Generic;
 
 namespace MouseInputsAPI
 {
@@ -18,6 +19,8 @@ namespace MouseInputsAPI
         private bool running, formvisible;
         private DirectInput directInput = new DirectInput();
         private int number, inc;
+        private static List<Mouse> mouses = new List<Mouse>();
+        private Mouse ms;
         private Form1 form1 = new Form1();
         public MouseInput()
         {
@@ -90,9 +93,10 @@ namespace MouseInputsAPI
         public int MouseAxisZ;
         public bool Scan(int number = 0)
         {
-            try
+            this.number = number;
+            inc = number < 2 ? 0 : number - 1;
+            if (number <= 1)
             {
-                this.number = number;
                 directInput = new DirectInput();
                 mouse = new Mouse[] { null, null, null, null };
                 mouseGuid = new Guid[] { Guid.Empty, Guid.Empty, Guid.Empty, Guid.Empty };
@@ -100,27 +104,27 @@ namespace MouseInputsAPI
                 foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Mouse, DeviceEnumerationFlags.AllDevices))
                 {
                     mouseGuid[mnum] = deviceInstance.InstanceGuid;
+                    mouse[mnum] = new Mouse(directInput);
+                    mouse[mnum].Properties.BufferSize = 128;
+                    mouses.Add(mouse[mnum]);
                     mnum++;
                 }
             }
-            catch { }
-            if (mouseGuid[0] == Guid.Empty)
+            if (mouses.Count == 0)
             {
                 return false;
             }
             else
             {
-                inc = number < 2 ? 0 : number - 1;
-                mouse[inc] = new Mouse(directInput);
-                mouse[inc].Properties.BufferSize = 128;
-                mouse[inc].Acquire();
+                ms = mouses[inc];
+                ms.Acquire();
                 return true;
             }
         }
         private void ProcessStateLogic()
         {
-            mouse[inc].Poll();
-            var datas = mouse[inc].GetBufferedData();
+            ms.Poll();
+            var datas = ms.GetBufferedData();
             foreach (var state in datas)
             {
                 if (state.Offset == MouseOffset.X)

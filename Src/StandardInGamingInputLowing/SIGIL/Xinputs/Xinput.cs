@@ -1,5 +1,6 @@
 ﻿using SharpDX.XInput;
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Xinputs;
@@ -17,6 +18,8 @@ namespace XInputsAPI
         private static uint CurrentResolution = 0;
         private bool running, formvisible;
         private int number, inc;
+        private static List<Controller> gamepads = new List<Controller>();
+        private Controller gp;
         private Form1 form1 = new Form1();
         public XInput()
         {
@@ -100,10 +103,10 @@ namespace XInputsAPI
         public double ControllerThumbRightY;
         public bool Scan(int number = 0)
         {
-            try
+            this.number = number;
+            inc = number < 2 ? 0 : number - 1;
+            if (number <= 1)
             {
-                this.number = number;
-                inc = number < 2 ? 0 : number - 1;
                 controller = new Controller[] { null, null, null, null };
                 xinum = 0;
                 var controllers = new[] { new Controller(UserIndex.One), new Controller(UserIndex.Two), new Controller(UserIndex.Three), new Controller(UserIndex.Four) };
@@ -112,23 +115,24 @@ namespace XInputsAPI
                     if (selectControler.IsConnected)
                     {
                         controller[xinum] = selectControler;
+                        gamepads.Add(controller[xinum]);
                         xinum++;
                     }
                 }
             }
-            catch { }
-            if (controller[0] == null)
+            if (gamepads.Count == 0)
             {
                 return false;
             }
             else
             {
+                gp = gamepads[inc];
                 return true;
             }
         }
         private void ProcessStateLogic()
         {
-            xistate = controller[inc].GetState();
+            xistate = gp.GetState();
             if (xistate.Gamepad.Buttons.HasFlag(GamepadButtonFlags.A))
                 ControllerButtonAPressed = true;
             else

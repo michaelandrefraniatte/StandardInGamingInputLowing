@@ -3,6 +3,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Directinputs;
+using System.Collections.Generic;
 
 namespace DirectInputsAPI
 {
@@ -18,6 +19,8 @@ namespace DirectInputsAPI
         private bool running, formvisible;
         private SharpDX.DirectInput.DirectInput directInput = new SharpDX.DirectInput.DirectInput();
         private int number, inc;
+        private static List<Joystick> joysticks = new List<Joystick>();
+        private Joystick js;
         private Form1 form1 = new Form1();
         public void ViewData()
         {
@@ -262,9 +265,10 @@ namespace DirectInputsAPI
         public bool JoystickButtons0, JoystickButtons1, JoystickButtons2, JoystickButtons3, JoystickButtons4, JoystickButtons5, JoystickButtons6, JoystickButtons7, JoystickButtons8, JoystickButtons9, JoystickButtons10, JoystickButtons11, JoystickButtons12, JoystickButtons13, JoystickButtons14, JoystickButtons15, JoystickButtons16, JoystickButtons17, JoystickButtons18, JoystickButtons19, JoystickButtons20, JoystickButtons21, JoystickButtons22, JoystickButtons23, JoystickButtons24, JoystickButtons25, JoystickButtons26, JoystickButtons27, JoystickButtons28, JoystickButtons29, JoystickButtons30, JoystickButtons31, JoystickButtons32, JoystickButtons33, JoystickButtons34, JoystickButtons35, JoystickButtons36, JoystickButtons37, JoystickButtons38, JoystickButtons39, JoystickButtons40, JoystickButtons41, JoystickButtons42, JoystickButtons43, JoystickButtons44, JoystickButtons45, JoystickButtons46, JoystickButtons47, JoystickButtons48, JoystickButtons49, JoystickButtons50, JoystickButtons51, JoystickButtons52, JoystickButtons53, JoystickButtons54, JoystickButtons55, JoystickButtons56, JoystickButtons57, JoystickButtons58, JoystickButtons59, JoystickButtons60, JoystickButtons61, JoystickButtons62, JoystickButtons63, JoystickButtons64, JoystickButtons65, JoystickButtons66, JoystickButtons67, JoystickButtons68, JoystickButtons69, JoystickButtons70, JoystickButtons71, JoystickButtons72, JoystickButtons73, JoystickButtons74, JoystickButtons75, JoystickButtons76, JoystickButtons77, JoystickButtons78, JoystickButtons79, JoystickButtons80, JoystickButtons81, JoystickButtons82, JoystickButtons83, JoystickButtons84, JoystickButtons85, JoystickButtons86, JoystickButtons87, JoystickButtons88, JoystickButtons89, JoystickButtons90, JoystickButtons91, JoystickButtons92, JoystickButtons93, JoystickButtons94, JoystickButtons95, JoystickButtons96, JoystickButtons97, JoystickButtons98, JoystickButtons99, JoystickButtons100, JoystickButtons101, JoystickButtons102, JoystickButtons103, JoystickButtons104, JoystickButtons105, JoystickButtons106, JoystickButtons107, JoystickButtons108, JoystickButtons109, JoystickButtons110, JoystickButtons111, JoystickButtons112, JoystickButtons113, JoystickButtons114, JoystickButtons115, JoystickButtons116, JoystickButtons117, JoystickButtons118, JoystickButtons119, JoystickButtons120, JoystickButtons121, JoystickButtons122, JoystickButtons123, JoystickButtons124, JoystickButtons125, JoystickButtons126, JoystickButtons127;
         public bool Scan(int number = 0)
         {
-            try
+            this.number = number;
+            inc = number < 2 ? 0 : number - 1;
+            if (number <= 1)
             {
-                this.number = number;
                 directInput = new SharpDX.DirectInput.DirectInput();
                 joystick = new Joystick[] { null, null, null, null };
                 joystickGuid = new Guid[] { Guid.Empty, Guid.Empty, Guid.Empty, Guid.Empty };
@@ -272,47 +276,59 @@ namespace DirectInputsAPI
                 foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Gamepad, DeviceEnumerationFlags.AllDevices))
                 {
                     joystickGuid[dinum] = deviceInstance.InstanceGuid;
+                    joystick[dinum] = new Joystick(directInput, joystickGuid[dinum]);
+                    joystick[dinum].Properties.BufferSize = 128;
+                    joysticks.Add(joystick[dinum]);
                     dinum++;
                 }
                 foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Joystick, DeviceEnumerationFlags.AllDevices))
                 {
                     joystickGuid[dinum] = deviceInstance.InstanceGuid;
+                    joystick[dinum] = new Joystick(directInput, joystickGuid[dinum]);
+                    joystick[dinum].Properties.BufferSize = 128;
+                    joysticks.Add(joystick[dinum]);
                     dinum++;
                 }
                 foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Flight, DeviceEnumerationFlags.AllDevices))
                 {
                     joystickGuid[dinum] = deviceInstance.InstanceGuid;
+                    joystick[dinum] = new Joystick(directInput, joystickGuid[dinum]);
+                    joystick[dinum].Properties.BufferSize = 128;
+                    joysticks.Add(joystick[dinum]);
                     dinum++;
                 }
                 foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.FirstPerson, DeviceEnumerationFlags.AllDevices))
                 {
                     joystickGuid[dinum] = deviceInstance.InstanceGuid;
+                    joystick[dinum] = new Joystick(directInput, joystickGuid[dinum]);
+                    joystick[dinum].Properties.BufferSize = 128;
+                    joysticks.Add(joystick[dinum]);
                     dinum++;
                 }
                 foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Driving, DeviceEnumerationFlags.AllDevices))
                 {
                     joystickGuid[dinum] = deviceInstance.InstanceGuid;
+                    joystick[dinum] = new Joystick(directInput, joystickGuid[dinum]);
+                    joystick[dinum].Properties.BufferSize = 128;
+                    joysticks.Add(joystick[dinum]);
                     dinum++;
                 }
             }
-            catch { }
-            if (joystickGuid[0] == Guid.Empty)
+            if (joysticks.Count == 0)
             {
                 return false;
             }
             else
             {
-                inc = number < 2 ? 0 : number - 1;
-                joystick[inc] = new Joystick(directInput, joystickGuid[inc]);
-                joystick[inc].Properties.BufferSize = 128;
-                joystick[inc].Acquire();
+                js = joysticks[inc];
+                js.Acquire();
                 return true;
             }
         }
         private void ProcessStateLogic()
         {
-            joystick[inc].Poll();
-            var datas = joystick[inc].GetBufferedData();
+            js.Poll();
+            var datas = js.GetBufferedData();
             foreach (var state in datas)
             {
                 if (state.Offset == JoystickOffset.X)
