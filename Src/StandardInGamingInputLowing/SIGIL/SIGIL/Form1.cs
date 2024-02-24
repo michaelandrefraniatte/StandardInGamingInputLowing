@@ -319,73 +319,73 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"\bControllerThumbLeftY\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bControllerThumbRightX\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bControllerThumbRightY\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_xbox\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_back\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_start\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_A\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_B\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_X\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_Y\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_up\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_left\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_down\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_right\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_leftstick\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_rightstick\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_leftbumper\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_rightbumper\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_lefttriggerposition\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_righttriggerposition\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_leftstickx\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_leftsticky\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_rightstickx\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bcontroller1_send_rightsticky\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_Options\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_ThumbLeft\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_ThumbRight\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_ShoulderLeft\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_ShoulderRight\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_Cross\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_Circle\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_Square\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_Triangle\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_Ps\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_Touchpad\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_Share\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_DPadUp\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_DPadDown\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_DPadLeft\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_DPadRight\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_LeftTrigger\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_RightTrigger\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_LeftTriggerPosition\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_RightTriggerPosition\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_LeftThumbX\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_RightThumbX\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_LeftThumbY\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1DS4_Send_RightThumbY\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_2\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_3\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_4\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_5\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_6\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_7\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_8\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_X\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_Y\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_Z\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_WHL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_SL0\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_SL1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_RX\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_RY\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_RZ\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_POV\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_Hat\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_HatExt1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_HatExt2\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController1VJoy_Send_HatExt3\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_xbox\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_back\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_start\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_A\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_B\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_X\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_Y\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_up\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_left\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_down\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_right\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_leftstick\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_rightstick\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_leftbumper\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_rightbumper\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_lefttriggerposition\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_righttriggerposition\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_leftstickx\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_leftsticky\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_rightstickx\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bController_Send_rightsticky\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_Options\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_ThumbLeft\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_ThumbRight\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_ShoulderLeft\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_ShoulderRight\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_Cross\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_Circle\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_Square\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_Triangle\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_Ps\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_Touchpad\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_Share\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_DPadUp\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_DPadDown\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_DPadLeft\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_DPadRight\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_LeftTrigger\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_RightTrigger\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_LeftTriggerPosition\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_RightTriggerPosition\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_LeftThumbX\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_RightThumbX\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_LeftThumbY\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerDS4_Send_RightThumbY\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_1\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_2\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_3\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_4\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_5\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_6\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_7\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_8\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_X\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_Y\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_Z\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_WHL\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_SL0\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_SL1\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_RX\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_RY\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_RZ\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_POV\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_Hat\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_HatExt1\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_HatExt2\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bControllerVJoy_Send_HatExt3\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bJoystickAxisX\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bJoystickAxisY\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bJoystickAxisZ\b"));
@@ -620,408 +620,208 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"\bPS4ControllerButtonMicPressed\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bkeyboard_1_id\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bmouse_1_id\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_deltaX\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_deltaY\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_x\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_y\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendLeftClick\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendRightClick\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendMiddleClick\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendWheelUp\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendWheelDown\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendCANCEL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendBACK\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendTAB\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendCLEAR\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendRETURN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendSHIFT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendCONTROL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendMENU\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendCAPITAL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendESCAPE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendSPACE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendPRIOR\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNEXT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendEND\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendHOME\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendLEFT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendUP\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendRIGHT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendDOWN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendSNAPSHOT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendINSERT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNUMPADDEL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNUMPADINSERT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendHELP\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendAPOSTROPHE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendBACKSPACE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendPAGEDOWN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendPAGEUP\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendFIN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendMOUSE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendA\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendB\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendC\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendD\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendF\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendG\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendH\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendI\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendJ\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendK\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendM\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendO\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendP\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendQ\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendR\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendS\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendU\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendV\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendW\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendX\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendY\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendZ\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendLWIN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendRWIN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendAPPS\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendDELETE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNUMPAD0\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNUMPAD1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNUMPAD2\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNUMPAD3\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNUMPAD4\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNUMPAD5\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNUMPAD6\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNUMPAD7\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNUMPAD8\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNUMPAD9\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendMULTIPLY\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendADD\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendSUBTRACT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendDECIMAL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendPRINTSCREEN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendDIVIDE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendF1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendF2\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendF3\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendF4\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendF5\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendF6\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendF7\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendF8\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendF9\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendF10\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendF11\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendF12\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNUMLOCK\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendSCROLLLOCK\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendLEFTSHIFT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendRIGHTSHIFT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendLEFTCONTROL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendRIGHTCONTROL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendLEFTALT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendRIGHTALT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendBROWSER_BACK\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendBROWSER_FORWARD\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendBROWSER_REFRESH\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendBROWSER_STOP\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendBROWSER_SEARCH\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendBROWSER_FAVORITES\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendBROWSER_HOME\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendVOLUME_MUTE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendVOLUME_DOWN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendVOLUME_UP\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendMEDIA_NEXT_TRACK\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendMEDIA_PREV_TRACK\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendMEDIA_STOP\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendMEDIA_PLAY_PAUSE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendLAUNCH_MAIL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendLAUNCH_MEDIA_SELECT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendLAUNCH_APP1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendLAUNCH_APP2\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOEM_1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOEM_PLUS\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOEM_COMMA\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOEM_MINUS\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOEM_PERIOD\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOEM_2\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOEM_3\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOEM_4\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOEM_5\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOEM_6\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOEM_7\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOEM_8\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOEM_102\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendEREOF\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendZOOM\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendEscape\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOne\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendTwo\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendThree\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendFour\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendFive\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendSix\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendSeven\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendEight\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNine\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendZero\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendDashUnderscore\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendPlusEquals\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendBackspace\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendTab\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendOpenBracketBrace\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendCloseBracketBrace\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendEnter\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendControl\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendSemicolonColon\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendSingleDoubleQuote\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendTilde\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendLeftShift\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendBackslashPipe\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendCommaLeftArrow\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendPeriodRightArrow\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendForwardSlashQuestionMark\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendRightShift\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendRightAlt\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendSpace\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendCapsLock\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendUp\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendDown\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendRight\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendLeft\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendHome\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendEnd\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendDelete\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendPageUp\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendPageDown\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendInsert\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendPrintScreen\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumLock\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendScrollLock\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendMenu\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendWindowsKey\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpadDivide\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpadAsterisk\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpad7\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpad8\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpad9\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpad4\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpad5\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpad6\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpad1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpad2\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpad3\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpad0\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpadDelete\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpadEnter\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpadPlus\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_1_SendNumpadMinus\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bkeyboard_2_id\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bmouse_2_id\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_deltaX\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_deltaY\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_x\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_y\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendLeftClick\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendRightClick\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendMiddleClick\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendWheelUp\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendWheelDown\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendCANCEL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendBACK\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendTAB\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendCLEAR\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendRETURN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendSHIFT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendCONTROL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendMENU\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendCAPITAL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendESCAPE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendSPACE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendPRIOR\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNEXT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendEND\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendHOME\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendLEFT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendUP\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendRIGHT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendDOWN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendSNAPSHOT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendINSERT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNUMPADDEL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNUMPADINSERT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendHELP\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendAPOSTROPHE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendBACKSPACE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendPAGEDOWN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendPAGEUP\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendFIN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendMOUSE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendA\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendB\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendC\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendD\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendF\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendG\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendH\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendI\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendJ\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendK\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendM\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendO\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendP\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendQ\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendR\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendS\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendU\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendV\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendW\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendX\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendY\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendZ\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendLWIN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendRWIN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendAPPS\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendDELETE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNUMPAD0\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNUMPAD1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNUMPAD2\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNUMPAD3\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNUMPAD4\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNUMPAD5\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNUMPAD6\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNUMPAD7\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNUMPAD8\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNUMPAD9\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendMULTIPLY\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendADD\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendSUBTRACT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendDECIMAL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendPRINTSCREEN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendDIVIDE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendF1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendF2\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendF3\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendF4\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendF5\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendF6\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendF7\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendF8\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendF9\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendF10\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendF11\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendF12\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNUMLOCK\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendSCROLLLOCK\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendLEFTSHIFT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendRIGHTSHIFT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendLEFTCONTROL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendRIGHTCONTROL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendLEFTALT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendRIGHTALT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendBROWSER_BACK\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendBROWSER_FORWARD\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendBROWSER_REFRESH\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendBROWSER_STOP\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendBROWSER_SEARCH\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendBROWSER_FAVORITES\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendBROWSER_HOME\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendVOLUME_MUTE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendVOLUME_DOWN\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendVOLUME_UP\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendMEDIA_NEXT_TRACK\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendMEDIA_PREV_TRACK\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendMEDIA_STOP\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendMEDIA_PLAY_PAUSE\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendLAUNCH_MAIL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendLAUNCH_MEDIA_SELECT\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendLAUNCH_APP1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendLAUNCH_APP2\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOEM_1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOEM_PLUS\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOEM_COMMA\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOEM_MINUS\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOEM_PERIOD\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOEM_2\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOEM_3\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOEM_4\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOEM_5\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOEM_6\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOEM_7\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOEM_8\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOEM_102\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendEREOF\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendZOOM\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendEscape\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOne\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendTwo\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendThree\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendFour\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendFive\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendSix\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendSeven\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendEight\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNine\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendZero\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendDashUnderscore\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendPlusEquals\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendBackspace\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendTab\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendOpenBracketBrace\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendCloseBracketBrace\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendEnter\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendControl\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendSemicolonColon\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendSingleDoubleQuote\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendTilde\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendLeftShift\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendBackslashPipe\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendCommaLeftArrow\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendPeriodRightArrow\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendForwardSlashQuestionMark\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendRightShift\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendRightAlt\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendSpace\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendCapsLock\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendUp\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendDown\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendRight\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendLeft\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendHome\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendEnd\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendDelete\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendPageUp\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendPageDown\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendInsert\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendPrintScreen\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumLock\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendScrollLock\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendMenu\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendWindowsKey\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpadDivide\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpadAsterisk\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpad7\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpad8\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpad9\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpad4\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpad5\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpad6\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpad1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpad2\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpad3\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpad0\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpadDelete\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpadEnter\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpadPlus\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bint_2_SendNumpadMinus\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_deltaX\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_deltaY\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_x\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_y\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendLeftClick\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendRightClick\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendMiddleClick\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendWheelUp\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendWheelDown\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendCANCEL\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendBACK\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendTAB\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendCLEAR\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendRETURN\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendSHIFT\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendCONTROL\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendMENU\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendCAPITAL\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendESCAPE\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendSPACE\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendPRIOR\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNEXT\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendEND\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendHOME\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendLEFT\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendUP\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendRIGHT\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendDOWN\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendSNAPSHOT\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendINSERT\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNUMPADDEL\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNUMPADINSERT\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendHELP\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendAPOSTROPHE\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendBACKSPACE\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendPAGEDOWN\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendPAGEUP\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendFIN\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendMOUSE\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendA\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendB\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendC\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendD\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendE\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendF\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendG\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendH\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendI\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendJ\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendK\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendL\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendM\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendN\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendO\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendP\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendQ\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendR\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendS\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendT\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendU\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendV\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendW\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendX\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendY\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendZ\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendLWIN\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendRWIN\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendAPPS\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendDELETE\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNUMPAD0\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNUMPAD1\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNUMPAD2\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNUMPAD3\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNUMPAD4\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNUMPAD5\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNUMPAD6\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNUMPAD7\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNUMPAD8\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNUMPAD9\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendMULTIPLY\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendADD\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendSUBTRACT\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendDECIMAL\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendPRINTSCREEN\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendDIVIDE\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendF1\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendF2\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendF3\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendF4\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendF5\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendF6\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendF7\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendF8\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendF9\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendF10\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendF11\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendF12\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNUMLOCK\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendSCROLLLOCK\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendLEFTSHIFT\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendRIGHTSHIFT\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendLEFTCONTROL\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendRIGHTCONTROL\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendLEFTALT\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendRIGHTALT\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendBROWSER_BACK\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendBROWSER_FORWARD\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendBROWSER_REFRESH\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendBROWSER_STOP\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendBROWSER_SEARCH\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendBROWSER_FAVORITES\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendBROWSER_HOME\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendVOLUME_MUTE\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendVOLUME_DOWN\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendVOLUME_UP\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendMEDIA_NEXT_TRACK\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendMEDIA_PREV_TRACK\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendMEDIA_STOP\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendMEDIA_PLAY_PAUSE\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendLAUNCH_MAIL\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendLAUNCH_MEDIA_SELECT\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendLAUNCH_APP1\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendLAUNCH_APP2\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOEM_1\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOEM_PLUS\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOEM_COMMA\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOEM_MINUS\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOEM_PERIOD\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOEM_2\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOEM_3\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOEM_4\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOEM_5\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOEM_6\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOEM_7\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOEM_8\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOEM_102\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendEREOF\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendZOOM\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendEscape\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOne\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendTwo\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendThree\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendFour\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendFive\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendSix\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendSeven\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendEight\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNine\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendZero\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendDashUnderscore\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendPlusEquals\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendBackspace\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendTab\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendOpenBracketBrace\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendCloseBracketBrace\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendEnter\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendControl\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendSemicolonColon\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendSingleDoubleQuote\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendTilde\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendLeftShift\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendBackslashPipe\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendCommaLeftArrow\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendPeriodRightArrow\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendForwardSlashQuestionMark\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendRightShift\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendRightAlt\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendSpace\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendCapsLock\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendUp\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendDown\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendRight\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendLeft\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendHome\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendEnd\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendDelete\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendPageUp\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendPageDown\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendInsert\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendPrintScreen\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumLock\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendScrollLock\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendMenu\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendWindowsKey\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpadDivide\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpadAsterisk\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpad7\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpad8\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpad9\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpad4\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpad5\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpad6\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpad1\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpad2\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpad3\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpad0\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpadDelete\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpadEnter\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpadPlus\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bint_SendNumpadMinus\b"));
                 range.SetStyle(StyleInput, new Regex(@"\birx\b"));
                 range.SetStyle(StyleInput, new Regex(@"\biry\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bWiimoteButtonStateA\b"));
@@ -1417,73 +1217,6 @@ namespace SIGIL
                 range.SetStyle(StyleOutput, new Regex(@"\bSendRightControl\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bSendLMENU\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bSendRMENU\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_xbox\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_back\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_start\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_A\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_B\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_X\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_Y\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_up\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_left\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_down\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_right\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_leftstick\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_rightstick\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_leftbumper\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_rightbumper\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_lefttriggerposition\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_righttriggerposition\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_leftstickx\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_leftsticky\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_rightstickx\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2_send_rightsticky\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_Options\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_ThumbLeft\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_ThumbRight\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_ShoulderLeft\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_ShoulderRight\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_Cross\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_Circle\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_Square\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_Triangle\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_Ps\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_Touchpad\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_Share\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_DPadUp\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_DPadDown\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_DPadLeft\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_DPadRight\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_LeftTrigger\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_RightTrigger\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_LeftTriggerPosition\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_RightTriggerPosition\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_LeftThumbX\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_RightThumbX\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_LeftThumbY\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2DS4_Send_RightThumbY\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_2\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_3\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_4\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_5\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_6\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_7\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_8\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_X\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_Y\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_Z\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_WHL\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_SL0\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_SL1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_RX\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_RY\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_RZ\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_POV\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_Hat\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_HatExt1\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_HatExt2\b"));
-                range.SetStyle(StyleOutput, new Regex(@"\bController2VJoy_Send_HatExt3\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bCameraAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bCameraToLed\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bcamera\b"));
@@ -1919,73 +1652,73 @@ namespace SIGIL
                 "ControllerThumbLeftY",
                 "ControllerThumbRightX",
                 "ControllerThumbRightY",
-                "controller1_send_xbox",
-                "controller1_send_back",
-                "controller1_send_start",
-                "controller1_send_A",
-                "controller1_send_B",
-                "controller1_send_X",
-                "controller1_send_Y",
-                "controller1_send_up",
-                "controller1_send_left",
-                "controller1_send_down",
-                "controller1_send_right",
-                "controller1_send_leftstick",
-                "controller1_send_rightstick",
-                "controller1_send_leftbumper",
-                "controller1_send_rightbumper",
-                "controller1_send_lefttriggerposition",
-                "controller1_send_righttriggerposition",
-                "controller1_send_leftstickx",
-                "controller1_send_leftsticky",
-                "controller1_send_rightstickx",
-                "controller1_send_rightsticky",
-                "Controller1DS4_Send_Options",
-                "Controller1DS4_Send_ThumbLeft",
-                "Controller1DS4_Send_ThumbRight",
-                "Controller1DS4_Send_ShoulderLeft",
-                "Controller1DS4_Send_ShoulderRight",
-                "Controller1DS4_Send_Cross",
-                "Controller1DS4_Send_Circle",
-                "Controller1DS4_Send_Square",
-                "Controller1DS4_Send_Triangle",
-                "Controller1DS4_Send_Ps",
-                "Controller1DS4_Send_Touchpad",
-                "Controller1DS4_Send_Share",
-                "Controller1DS4_Send_DPadUp",
-                "Controller1DS4_Send_DPadDown",
-                "Controller1DS4_Send_DPadLeft",
-                "Controller1DS4_Send_DPadRight",
-                "Controller1DS4_Send_LeftTrigger",
-                "Controller1DS4_Send_RightTrigger",
-                "Controller1DS4_Send_LeftTriggerPosition",
-                "Controller1DS4_Send_RightTriggerPosition",
-                "Controller1DS4_Send_LeftThumbX",
-                "Controller1DS4_Send_RightThumbX",
-                "Controller1DS4_Send_LeftThumbY",
-                "Controller1DS4_Send_RightThumbY",
-                "Controller1VJoy_Send_1",
-                "Controller1VJoy_Send_2",
-                "Controller1VJoy_Send_3",
-                "Controller1VJoy_Send_4",
-                "Controller1VJoy_Send_5",
-                "Controller1VJoy_Send_6",
-                "Controller1VJoy_Send_7",
-                "Controller1VJoy_Send_8",
-                "Controller1VJoy_Send_X",
-                "Controller1VJoy_Send_Y",
-                "Controller1VJoy_Send_Z",
-                "Controller1VJoy_Send_WHL",
-                "Controller1VJoy_Send_SL0",
-                "Controller1VJoy_Send_SL1",
-                "Controller1VJoy_Send_RX",
-                "Controller1VJoy_Send_RY",
-                "Controller1VJoy_Send_RZ",
-                "Controller1VJoy_Send_POV",
-                "Controller1VJoy_Send_Hat",
-                "Controller1VJoy_Send_HatExt1",
-                "Controller1VJoy_Send_HatExt2",
-                "Controller1VJoy_Send_HatExt3",
+                "Controller_Send_xbox",
+                "Controller_Send_back",
+                "Controller_Send_start",
+                "Controller_Send_A",
+                "Controller_Send_B",
+                "Controller_Send_X",
+                "Controller_Send_Y",
+                "Controller_Send_up",
+                "Controller_Send_left",
+                "Controller_Send_down",
+                "Controller_Send_right",
+                "Controller_Send_leftstick",
+                "Controller_Send_rightstick",
+                "Controller_Send_leftbumper",
+                "Controller_Send_rightbumper",
+                "Controller_Send_lefttriggerposition",
+                "Controller_Send_righttriggerposition",
+                "Controller_Send_leftstickx",
+                "Controller_Send_leftsticky",
+                "Controller_Send_rightstickx",
+                "Controller_Send_rightsticky",
+                "ControllerDS4_Send_Options",
+                "ControllerDS4_Send_ThumbLeft",
+                "ControllerDS4_Send_ThumbRight",
+                "ControllerDS4_Send_ShoulderLeft",
+                "ControllerDS4_Send_ShoulderRight",
+                "ControllerDS4_Send_Cross",
+                "ControllerDS4_Send_Circle",
+                "ControllerDS4_Send_Square",
+                "ControllerDS4_Send_Triangle",
+                "ControllerDS4_Send_Ps",
+                "ControllerDS4_Send_Touchpad",
+                "ControllerDS4_Send_Share",
+                "ControllerDS4_Send_DPadUp",
+                "ControllerDS4_Send_DPadDown",
+                "ControllerDS4_Send_DPadLeft",
+                "ControllerDS4_Send_DPadRight",
+                "ControllerDS4_Send_LeftTrigger",
+                "ControllerDS4_Send_RightTrigger",
+                "ControllerDS4_Send_LeftTriggerPosition",
+                "ControllerDS4_Send_RightTriggerPosition",
+                "ControllerDS4_Send_LeftThumbX",
+                "ControllerDS4_Send_RightThumbX",
+                "ControllerDS4_Send_LeftThumbY",
+                "ControllerDS4_Send_RightThumbY",
+                "ControllerVJoy_Send_1",
+                "ControllerVJoy_Send_2",
+                "ControllerVJoy_Send_3",
+                "ControllerVJoy_Send_4",
+                "ControllerVJoy_Send_5",
+                "ControllerVJoy_Send_6",
+                "ControllerVJoy_Send_7",
+                "ControllerVJoy_Send_8",
+                "ControllerVJoy_Send_X",
+                "ControllerVJoy_Send_Y",
+                "ControllerVJoy_Send_Z",
+                "ControllerVJoy_Send_WHL",
+                "ControllerVJoy_Send_SL0",
+                "ControllerVJoy_Send_SL1",
+                "ControllerVJoy_Send_RX",
+                "ControllerVJoy_Send_RY",
+                "ControllerVJoy_Send_RZ",
+                "ControllerVJoy_Send_POV",
+                "ControllerVJoy_Send_Hat",
+                "ControllerVJoy_Send_HatExt1",
+                "ControllerVJoy_Send_HatExt2",
+                "ControllerVJoy_Send_HatExt3",
                 "JoystickAxisX",
                 "JoystickAxisY",
                 "JoystickAxisZ",
@@ -2220,408 +1953,208 @@ namespace SIGIL
                 "PS4ControllerButtonMicPressed",
                 "keyboard_1_id",
                 "mouse_1_id",
-                "int_1_deltaX",
-                "int_1_deltaY",
-                "int_1_x",
-                "int_1_y",
-                "int_1_SendLeftClick",
-                "int_1_SendRightClick",
-                "int_1_SendMiddleClick",
-                "int_1_SendWheelUp",
-                "int_1_SendWheelDown",
-                "int_1_SendCANCEL",
-                "int_1_SendBACK",
-                "int_1_SendTAB",
-                "int_1_SendCLEAR",
-                "int_1_SendRETURN",
-                "int_1_SendSHIFT",
-                "int_1_SendCONTROL",
-                "int_1_SendMENU",
-                "int_1_SendCAPITAL",
-                "int_1_SendESCAPE",
-                "int_1_SendSPACE",
-                "int_1_SendPRIOR",
-                "int_1_SendNEXT",
-                "int_1_SendEND",
-                "int_1_SendHOME",
-                "int_1_SendLEFT",
-                "int_1_SendUP",
-                "int_1_SendRIGHT",
-                "int_1_SendDOWN",
-                "int_1_SendSNAPSHOT",
-                "int_1_SendINSERT",
-                "int_1_SendNUMPADDEL",
-                "int_1_SendNUMPADINSERT",
-                "int_1_SendHELP",
-                "int_1_SendAPOSTROPHE",
-                "int_1_SendBACKSPACE",
-                "int_1_SendPAGEDOWN",
-                "int_1_SendPAGEUP",
-                "int_1_SendFIN",
-                "int_1_SendMOUSE",
-                "int_1_SendA",
-                "int_1_SendB",
-                "int_1_SendC",
-                "int_1_SendD",
-                "int_1_SendE",
-                "int_1_SendF",
-                "int_1_SendG",
-                "int_1_SendH",
-                "int_1_SendI",
-                "int_1_SendJ",
-                "int_1_SendK",
-                "int_1_SendL",
-                "int_1_SendM",
-                "int_1_SendN",
-                "int_1_SendO",
-                "int_1_SendP",
-                "int_1_SendQ",
-                "int_1_SendR",
-                "int_1_SendS",
-                "int_1_SendT",
-                "int_1_SendU",
-                "int_1_SendV",
-                "int_1_SendW",
-                "int_1_SendX",
-                "int_1_SendY",
-                "int_1_SendZ",
-                "int_1_SendLWIN",
-                "int_1_SendRWIN",
-                "int_1_SendAPPS",
-                "int_1_SendDELETE",
-                "int_1_SendNUMPAD0",
-                "int_1_SendNUMPAD1",
-                "int_1_SendNUMPAD2",
-                "int_1_SendNUMPAD3",
-                "int_1_SendNUMPAD4",
-                "int_1_SendNUMPAD5",
-                "int_1_SendNUMPAD6",
-                "int_1_SendNUMPAD7",
-                "int_1_SendNUMPAD8",
-                "int_1_SendNUMPAD9",
-                "int_1_SendMULTIPLY",
-                "int_1_SendADD",
-                "int_1_SendSUBTRACT",
-                "int_1_SendDECIMAL",
-                "int_1_SendPRINTSCREEN",
-                "int_1_SendDIVIDE",
-                "int_1_SendF1",
-                "int_1_SendF2",
-                "int_1_SendF3",
-                "int_1_SendF4",
-                "int_1_SendF5",
-                "int_1_SendF6",
-                "int_1_SendF7",
-                "int_1_SendF8",
-                "int_1_SendF9",
-                "int_1_SendF10",
-                "int_1_SendF11",
-                "int_1_SendF12",
-                "int_1_SendNUMLOCK",
-                "int_1_SendSCROLLLOCK",
-                "int_1_SendLEFTSHIFT",
-                "int_1_SendRIGHTSHIFT",
-                "int_1_SendLEFTCONTROL",
-                "int_1_SendRIGHTCONTROL",
-                "int_1_SendLEFTALT",
-                "int_1_SendRIGHTALT",
-                "int_1_SendBROWSER_BACK",
-                "int_1_SendBROWSER_FORWARD",
-                "int_1_SendBROWSER_REFRESH",
-                "int_1_SendBROWSER_STOP",
-                "int_1_SendBROWSER_SEARCH",
-                "int_1_SendBROWSER_FAVORITES",
-                "int_1_SendBROWSER_HOME",
-                "int_1_SendVOLUME_MUTE",
-                "int_1_SendVOLUME_DOWN",
-                "int_1_SendVOLUME_UP",
-                "int_1_SendMEDIA_NEXT_TRACK",
-                "int_1_SendMEDIA_PREV_TRACK",
-                "int_1_SendMEDIA_STOP",
-                "int_1_SendMEDIA_PLAY_PAUSE",
-                "int_1_SendLAUNCH_MAIL",
-                "int_1_SendLAUNCH_MEDIA_SELECT",
-                "int_1_SendLAUNCH_APP1",
-                "int_1_SendLAUNCH_APP2",
-                "int_1_SendOEM_1",
-                "int_1_SendOEM_PLUS",
-                "int_1_SendOEM_COMMA",
-                "int_1_SendOEM_MINUS",
-                "int_1_SendOEM_PERIOD",
-                "int_1_SendOEM_2",
-                "int_1_SendOEM_3",
-                "int_1_SendOEM_4",
-                "int_1_SendOEM_5",
-                "int_1_SendOEM_6",
-                "int_1_SendOEM_7",
-                "int_1_SendOEM_8",
-                "int_1_SendOEM_102",
-                "int_1_SendEREOF",
-                "int_1_SendZOOM",
-                "int_1_SendEscape",
-                "int_1_SendOne",
-                "int_1_SendTwo",
-                "int_1_SendThree",
-                "int_1_SendFour",
-                "int_1_SendFive",
-                "int_1_SendSix",
-                "int_1_SendSeven",
-                "int_1_SendEight",
-                "int_1_SendNine",
-                "int_1_SendZero",
-                "int_1_SendDashUnderscore",
-                "int_1_SendPlusEquals",
-                "int_1_SendBackspace",
-                "int_1_SendTab",
-                "int_1_SendOpenBracketBrace",
-                "int_1_SendCloseBracketBrace",
-                "int_1_SendEnter",
-                "int_1_SendControl",
-                "int_1_SendSemicolonColon",
-                "int_1_SendSingleDoubleQuote",
-                "int_1_SendTilde",
-                "int_1_SendLeftShift",
-                "int_1_SendBackslashPipe",
-                "int_1_SendCommaLeftArrow",
-                "int_1_SendPeriodRightArrow",
-                "int_1_SendForwardSlashQuestionMark",
-                "int_1_SendRightShift",
-                "int_1_SendRightAlt",
-                "int_1_SendSpace",
-                "int_1_SendCapsLock",
-                "int_1_SendUp",
-                "int_1_SendDown",
-                "int_1_SendRight",
-                "int_1_SendLeft",
-                "int_1_SendHome",
-                "int_1_SendEnd",
-                "int_1_SendDelete",
-                "int_1_SendPageUp",
-                "int_1_SendPageDown",
-                "int_1_SendInsert",
-                "int_1_SendPrintScreen",
-                "int_1_SendNumLock",
-                "int_1_SendScrollLock",
-                "int_1_SendMenu",
-                "int_1_SendWindowsKey",
-                "int_1_SendNumpadDivide",
-                "int_1_SendNumpadAsterisk",
-                "int_1_SendNumpad7",
-                "int_1_SendNumpad8",
-                "int_1_SendNumpad9",
-                "int_1_SendNumpad4",
-                "int_1_SendNumpad5",
-                "int_1_SendNumpad6",
-                "int_1_SendNumpad1",
-                "int_1_SendNumpad2",
-                "int_1_SendNumpad3",
-                "int_1_SendNumpad0",
-                "int_1_SendNumpadDelete",
-                "int_1_SendNumpadEnter",
-                "int_1_SendNumpadPlus",
-                "int_1_SendNumpadMinus",
                 "keyboard_2_id",
                 "mouse_2_id",
-                "int_2_deltaX",
-                "int_2_deltaY",
-                "int_2_x",
-                "int_2_y",
-                "int_2_SendLeftClick",
-                "int_2_SendRightClick",
-                "int_2_SendMiddleClick",
-                "int_2_SendWheelUp",
-                "int_2_SendWheelDown",
-                "int_2_SendCANCEL",
-                "int_2_SendBACK",
-                "int_2_SendTAB",
-                "int_2_SendCLEAR",
-                "int_2_SendRETURN",
-                "int_2_SendSHIFT",
-                "int_2_SendCONTROL",
-                "int_2_SendMENU",
-                "int_2_SendCAPITAL",
-                "int_2_SendESCAPE",
-                "int_2_SendSPACE",
-                "int_2_SendPRIOR",
-                "int_2_SendNEXT",
-                "int_2_SendEND",
-                "int_2_SendHOME",
-                "int_2_SendLEFT",
-                "int_2_SendUP",
-                "int_2_SendRIGHT",
-                "int_2_SendDOWN",
-                "int_2_SendSNAPSHOT",
-                "int_2_SendINSERT",
-                "int_2_SendNUMPADDEL",
-                "int_2_SendNUMPADINSERT",
-                "int_2_SendHELP",
-                "int_2_SendAPOSTROPHE",
-                "int_2_SendBACKSPACE",
-                "int_2_SendPAGEDOWN",
-                "int_2_SendPAGEUP",
-                "int_2_SendFIN",
-                "int_2_SendMOUSE",
-                "int_2_SendA",
-                "int_2_SendB",
-                "int_2_SendC",
-                "int_2_SendD",
-                "int_2_SendE",
-                "int_2_SendF",
-                "int_2_SendG",
-                "int_2_SendH",
-                "int_2_SendI",
-                "int_2_SendJ",
-                "int_2_SendK",
-                "int_2_SendL",
-                "int_2_SendM",
-                "int_2_SendN",
-                "int_2_SendO",
-                "int_2_SendP",
-                "int_2_SendQ",
-                "int_2_SendR",
-                "int_2_SendS",
-                "int_2_SendT",
-                "int_2_SendU",
-                "int_2_SendV",
-                "int_2_SendW",
-                "int_2_SendX",
-                "int_2_SendY",
-                "int_2_SendZ",
-                "int_2_SendLWIN",
-                "int_2_SendRWIN",
-                "int_2_SendAPPS",
-                "int_2_SendDELETE",
-                "int_2_SendNUMPAD0",
-                "int_2_SendNUMPAD1",
-                "int_2_SendNUMPAD2",
-                "int_2_SendNUMPAD3",
-                "int_2_SendNUMPAD4",
-                "int_2_SendNUMPAD5",
-                "int_2_SendNUMPAD6",
-                "int_2_SendNUMPAD7",
-                "int_2_SendNUMPAD8",
-                "int_2_SendNUMPAD9",
-                "int_2_SendMULTIPLY",
-                "int_2_SendADD",
-                "int_2_SendSUBTRACT",
-                "int_2_SendDECIMAL",
-                "int_2_SendPRINTSCREEN",
-                "int_2_SendDIVIDE",
-                "int_2_SendF1",
-                "int_2_SendF2",
-                "int_2_SendF3",
-                "int_2_SendF4",
-                "int_2_SendF5",
-                "int_2_SendF6",
-                "int_2_SendF7",
-                "int_2_SendF8",
-                "int_2_SendF9",
-                "int_2_SendF10",
-                "int_2_SendF11",
-                "int_2_SendF12",
-                "int_2_SendNUMLOCK",
-                "int_2_SendSCROLLLOCK",
-                "int_2_SendLEFTSHIFT",
-                "int_2_SendRIGHTSHIFT",
-                "int_2_SendLEFTCONTROL",
-                "int_2_SendRIGHTCONTROL",
-                "int_2_SendLEFTALT",
-                "int_2_SendRIGHTALT",
-                "int_2_SendBROWSER_BACK",
-                "int_2_SendBROWSER_FORWARD",
-                "int_2_SendBROWSER_REFRESH",
-                "int_2_SendBROWSER_STOP",
-                "int_2_SendBROWSER_SEARCH",
-                "int_2_SendBROWSER_FAVORITES",
-                "int_2_SendBROWSER_HOME",
-                "int_2_SendVOLUME_MUTE",
-                "int_2_SendVOLUME_DOWN",
-                "int_2_SendVOLUME_UP",
-                "int_2_SendMEDIA_NEXT_TRACK",
-                "int_2_SendMEDIA_PREV_TRACK",
-                "int_2_SendMEDIA_STOP",
-                "int_2_SendMEDIA_PLAY_PAUSE",
-                "int_2_SendLAUNCH_MAIL",
-                "int_2_SendLAUNCH_MEDIA_SELECT",
-                "int_2_SendLAUNCH_APP1",
-                "int_2_SendLAUNCH_APP2",
-                "int_2_SendOEM_1",
-                "int_2_SendOEM_PLUS",
-                "int_2_SendOEM_COMMA",
-                "int_2_SendOEM_MINUS",
-                "int_2_SendOEM_PERIOD",
-                "int_2_SendOEM_2",
-                "int_2_SendOEM_3",
-                "int_2_SendOEM_4",
-                "int_2_SendOEM_5",
-                "int_2_SendOEM_6",
-                "int_2_SendOEM_7",
-                "int_2_SendOEM_8",
-                "int_2_SendOEM_102",
-                "int_2_SendEREOF",
-                "int_2_SendZOOM",
-                "int_2_SendEscape",
-                "int_2_SendOne",
-                "int_2_SendTwo",
-                "int_2_SendThree",
-                "int_2_SendFour",
-                "int_2_SendFive",
-                "int_2_SendSix",
-                "int_2_SendSeven",
-                "int_2_SendEight",
-                "int_2_SendNine",
-                "int_2_SendZero",
-                "int_2_SendDashUnderscore",
-                "int_2_SendPlusEquals",
-                "int_2_SendBackspace",
-                "int_2_SendTab",
-                "int_2_SendOpenBracketBrace",
-                "int_2_SendCloseBracketBrace",
-                "int_2_SendEnter",
-                "int_2_SendControl",
-                "int_2_SendSemicolonColon",
-                "int_2_SendSingleDoubleQuote",
-                "int_2_SendTilde",
-                "int_2_SendLeftShift",
-                "int_2_SendBackslashPipe",
-                "int_2_SendCommaLeftArrow",
-                "int_2_SendPeriodRightArrow",
-                "int_2_SendForwardSlashQuestionMark",
-                "int_2_SendRightShift",
-                "int_2_SendRightAlt",
-                "int_2_SendSpace",
-                "int_2_SendCapsLock",
-                "int_2_SendUp",
-                "int_2_SendDown",
-                "int_2_SendRight",
-                "int_2_SendLeft",
-                "int_2_SendHome",
-                "int_2_SendEnd",
-                "int_2_SendDelete",
-                "int_2_SendPageUp",
-                "int_2_SendPageDown",
-                "int_2_SendInsert",
-                "int_2_SendPrintScreen",
-                "int_2_SendNumLock",
-                "int_2_SendScrollLock",
-                "int_2_SendMenu",
-                "int_2_SendWindowsKey",
-                "int_2_SendNumpadDivide",
-                "int_2_SendNumpadAsterisk",
-                "int_2_SendNumpad7",
-                "int_2_SendNumpad8",
-                "int_2_SendNumpad9",
-                "int_2_SendNumpad4",
-                "int_2_SendNumpad5",
-                "int_2_SendNumpad6",
-                "int_2_SendNumpad1",
-                "int_2_SendNumpad2",
-                "int_2_SendNumpad3",
-                "int_2_SendNumpad0",
-                "int_2_SendNumpadDelete",
-                "int_2_SendNumpadEnter",
-                "int_2_SendNumpadPlus",
-                "int_2_SendNumpadMinus",
+                "int_deltaX",
+                "int_deltaY",
+                "int_x",
+                "int_y",
+                "int_SendLeftClick",
+                "int_SendRightClick",
+                "int_SendMiddleClick",
+                "int_SendWheelUp",
+                "int_SendWheelDown",
+                "int_SendCANCEL",
+                "int_SendBACK",
+                "int_SendTAB",
+                "int_SendCLEAR",
+                "int_SendRETURN",
+                "int_SendSHIFT",
+                "int_SendCONTROL",
+                "int_SendMENU",
+                "int_SendCAPITAL",
+                "int_SendESCAPE",
+                "int_SendSPACE",
+                "int_SendPRIOR",
+                "int_SendNEXT",
+                "int_SendEND",
+                "int_SendHOME",
+                "int_SendLEFT",
+                "int_SendUP",
+                "int_SendRIGHT",
+                "int_SendDOWN",
+                "int_SendSNAPSHOT",
+                "int_SendINSERT",
+                "int_SendNUMPADDEL",
+                "int_SendNUMPADINSERT",
+                "int_SendHELP",
+                "int_SendAPOSTROPHE",
+                "int_SendBACKSPACE",
+                "int_SendPAGEDOWN",
+                "int_SendPAGEUP",
+                "int_SendFIN",
+                "int_SendMOUSE",
+                "int_SendA",
+                "int_SendB",
+                "int_SendC",
+                "int_SendD",
+                "int_SendE",
+                "int_SendF",
+                "int_SendG",
+                "int_SendH",
+                "int_SendI",
+                "int_SendJ",
+                "int_SendK",
+                "int_SendL",
+                "int_SendM",
+                "int_SendN",
+                "int_SendO",
+                "int_SendP",
+                "int_SendQ",
+                "int_SendR",
+                "int_SendS",
+                "int_SendT",
+                "int_SendU",
+                "int_SendV",
+                "int_SendW",
+                "int_SendX",
+                "int_SendY",
+                "int_SendZ",
+                "int_SendLWIN",
+                "int_SendRWIN",
+                "int_SendAPPS",
+                "int_SendDELETE",
+                "int_SendNUMPAD0",
+                "int_SendNUMPAD1",
+                "int_SendNUMPAD2",
+                "int_SendNUMPAD3",
+                "int_SendNUMPAD4",
+                "int_SendNUMPAD5",
+                "int_SendNUMPAD6",
+                "int_SendNUMPAD7",
+                "int_SendNUMPAD8",
+                "int_SendNUMPAD9",
+                "int_SendMULTIPLY",
+                "int_SendADD",
+                "int_SendSUBTRACT",
+                "int_SendDECIMAL",
+                "int_SendPRINTSCREEN",
+                "int_SendDIVIDE",
+                "int_SendF1",
+                "int_SendF2",
+                "int_SendF3",
+                "int_SendF4",
+                "int_SendF5",
+                "int_SendF6",
+                "int_SendF7",
+                "int_SendF8",
+                "int_SendF9",
+                "int_SendF10",
+                "int_SendF11",
+                "int_SendF12",
+                "int_SendNUMLOCK",
+                "int_SendSCROLLLOCK",
+                "int_SendLEFTSHIFT",
+                "int_SendRIGHTSHIFT",
+                "int_SendLEFTCONTROL",
+                "int_SendRIGHTCONTROL",
+                "int_SendLEFTALT",
+                "int_SendRIGHTALT",
+                "int_SendBROWSER_BACK",
+                "int_SendBROWSER_FORWARD",
+                "int_SendBROWSER_REFRESH",
+                "int_SendBROWSER_STOP",
+                "int_SendBROWSER_SEARCH",
+                "int_SendBROWSER_FAVORITES",
+                "int_SendBROWSER_HOME",
+                "int_SendVOLUME_MUTE",
+                "int_SendVOLUME_DOWN",
+                "int_SendVOLUME_UP",
+                "int_SendMEDIA_NEXT_TRACK",
+                "int_SendMEDIA_PREV_TRACK",
+                "int_SendMEDIA_STOP",
+                "int_SendMEDIA_PLAY_PAUSE",
+                "int_SendLAUNCH_MAIL",
+                "int_SendLAUNCH_MEDIA_SELECT",
+                "int_SendLAUNCH_APP1",
+                "int_SendLAUNCH_APP2",
+                "int_SendOEM_1",
+                "int_SendOEM_PLUS",
+                "int_SendOEM_COMMA",
+                "int_SendOEM_MINUS",
+                "int_SendOEM_PERIOD",
+                "int_SendOEM_2",
+                "int_SendOEM_3",
+                "int_SendOEM_4",
+                "int_SendOEM_5",
+                "int_SendOEM_6",
+                "int_SendOEM_7",
+                "int_SendOEM_8",
+                "int_SendOEM_102",
+                "int_SendEREOF",
+                "int_SendZOOM",
+                "int_SendEscape",
+                "int_SendOne",
+                "int_SendTwo",
+                "int_SendThree",
+                "int_SendFour",
+                "int_SendFive",
+                "int_SendSix",
+                "int_SendSeven",
+                "int_SendEight",
+                "int_SendNine",
+                "int_SendZero",
+                "int_SendDashUnderscore",
+                "int_SendPlusEquals",
+                "int_SendBackspace",
+                "int_SendTab",
+                "int_SendOpenBracketBrace",
+                "int_SendCloseBracketBrace",
+                "int_SendEnter",
+                "int_SendControl",
+                "int_SendSemicolonColon",
+                "int_SendSingleDoubleQuote",
+                "int_SendTilde",
+                "int_SendLeftShift",
+                "int_SendBackslashPipe",
+                "int_SendCommaLeftArrow",
+                "int_SendPeriodRightArrow",
+                "int_SendForwardSlashQuestionMark",
+                "int_SendRightShift",
+                "int_SendRightAlt",
+                "int_SendSpace",
+                "int_SendCapsLock",
+                "int_SendUp",
+                "int_SendDown",
+                "int_SendRight",
+                "int_SendLeft",
+                "int_SendHome",
+                "int_SendEnd",
+                "int_SendDelete",
+                "int_SendPageUp",
+                "int_SendPageDown",
+                "int_SendInsert",
+                "int_SendPrintScreen",
+                "int_SendNumLock",
+                "int_SendScrollLock",
+                "int_SendMenu",
+                "int_SendWindowsKey",
+                "int_SendNumpadDivide",
+                "int_SendNumpadAsterisk",
+                "int_SendNumpad7",
+                "int_SendNumpad8",
+                "int_SendNumpad9",
+                "int_SendNumpad4",
+                "int_SendNumpad5",
+                "int_SendNumpad6",
+                "int_SendNumpad1",
+                "int_SendNumpad2",
+                "int_SendNumpad3",
+                "int_SendNumpad0",
+                "int_SendNumpadDelete",
+                "int_SendNumpadEnter",
+                "int_SendNumpadPlus",
+                "int_SendNumpadMinus",
                 "irx",
                 "iry",
                 "WiimoteButtonStateA",
@@ -3017,73 +2550,6 @@ namespace SIGIL
                 "SendRightControl",
                 "SendLMENU",
                 "SendRMENU",
-                "Controller2_send_xbox",
-                "Controller2_send_back",
-                "Controller2_send_start",
-                "Controller2_send_A",
-                "Controller2_send_B",
-                "Controller2_send_X",
-                "Controller2_send_Y",
-                "Controller2_send_up",
-                "Controller2_send_left",
-                "Controller2_send_down",
-                "Controller2_send_right",
-                "Controller2_send_leftstick",
-                "Controller2_send_rightstick",
-                "Controller2_send_leftbumper",
-                "Controller2_send_rightbumper",
-                "Controller2_send_lefttriggerposition",
-                "Controller2_send_righttriggerposition",
-                "Controller2_send_leftstickx",
-                "Controller2_send_leftsticky",
-                "Controller2_send_rightstickx",
-                "Controller2_send_rightsticky",
-                "Controller2DS4_Send_Options",
-                "Controller2DS4_Send_ThumbLeft",
-                "Controller2DS4_Send_ThumbRight",
-                "Controller2DS4_Send_ShoulderLeft",
-                "Controller2DS4_Send_ShoulderRight",
-                "Controller2DS4_Send_Cross",
-                "Controller2DS4_Send_Circle",
-                "Controller2DS4_Send_Square",
-                "Controller2DS4_Send_Triangle",
-                "Controller2DS4_Send_Ps",
-                "Controller2DS4_Send_Touchpad",
-                "Controller2DS4_Send_Share",
-                "Controller2DS4_Send_DPadUp",
-                "Controller2DS4_Send_DPadDown",
-                "Controller2DS4_Send_DPadLeft",
-                "Controller2DS4_Send_DPadRight",
-                "Controller2DS4_Send_LeftTrigger",
-                "Controller2DS4_Send_RightTrigger",
-                "Controller2DS4_Send_LeftTriggerPosition",
-                "Controller2DS4_Send_RightTriggerPosition",
-                "Controller2DS4_Send_LeftThumbX",
-                "Controller2DS4_Send_RightThumbX",
-                "Controller2DS4_Send_LeftThumbY",
-                "Controller2DS4_Send_RightThumbY",
-                "Controller2VJoy_Send_1",
-                "Controller2VJoy_Send_2",
-                "Controller2VJoy_Send_3",
-                "Controller2VJoy_Send_4",
-                "Controller2VJoy_Send_5",
-                "Controller2VJoy_Send_6",
-                "Controller2VJoy_Send_7",
-                "Controller2VJoy_Send_8",
-                "Controller2VJoy_Send_X",
-                "Controller2VJoy_Send_Y",
-                "Controller2VJoy_Send_Z",
-                "Controller2VJoy_Send_WHL",
-                "Controller2VJoy_Send_SL0",
-                "Controller2VJoy_Send_SL1",
-                "Controller2VJoy_Send_RX",
-                "Controller2VJoy_Send_RY",
-                "Controller2VJoy_Send_RZ",
-                "Controller2VJoy_Send_POV",
-                "Controller2VJoy_Send_Hat",
-                "Controller2VJoy_Send_HatExt1",
-                "Controller2VJoy_Send_HatExt2",
-                "Controller2VJoy_Send_HatExt3",
                 "CameraAPI",
                 "CameraToLed",
                 "camera",

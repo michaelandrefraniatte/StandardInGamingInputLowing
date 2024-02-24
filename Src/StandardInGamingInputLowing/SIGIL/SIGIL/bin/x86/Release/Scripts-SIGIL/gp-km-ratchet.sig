@@ -25,8 +25,8 @@ namespace StringToCode
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private static bool running;
-        private static bool controller1_send_back, controller1_send_start, controller1_send_A, controller1_send_B, controller1_send_X, controller1_send_Y, controller1_send_up, controller1_send_left, controller1_send_down, controller1_send_right, controller1_send_leftstick, controller1_send_rightstick, controller1_send_leftbumper, controller1_send_rightbumper, controller1_send_lefttrigger, controller1_send_righttrigger, controller1_send_xbox;
-        private static double controller1_send_leftstickx, controller1_send_leftsticky, controller1_send_rightstickx, controller1_send_rightsticky, controller1_send_lefttriggerposition, controller1_send_righttriggerposition;
+        private static bool Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_lefttrigger, Controller_Send_righttrigger, Controller_Send_xbox;
+        private static double Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition;
         private static int width = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width, height = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
         private static double statex = 0f, statey = 0f, mousex = 0f, mousey = 0f, mousestatex = 0f, mousestatey = 0f, dzx = 0.0f, dzy = 0.0f, viewpower1x = 0f, viewpower2x = 1f, viewpower3x = 0f, viewpower1y = 0.25f, viewpower2y = 0.75f, viewpower3y = 0f, viewpower05x = 0f, viewpower05y = 0f;
         private static bool[] getstate = new bool[12];
@@ -121,35 +121,35 @@ namespace StringToCode
                         mousey = Scale(Math.Pow(statey, 3f) / Math.Pow(1024f, 2f) * viewpower3y + Math.Pow(statey, 2f) / Math.Pow(1024f, 1f) * viewpower2y + Math.Pow(statey, 1f) / Math.Pow(1024f, 0f) * viewpower1y + Math.Pow(statey, 0.5f) * Math.Pow(1024f, 0.5f) * viewpower05y, 0f, 1024f, (dzy / 100f) * 1024f, 1024f);
                     if (statey <= 0f)
                         mousey = Scale(-Math.Pow(-statey, 3f) / Math.Pow(1024f, 2f) * viewpower3y - Math.Pow(-statey, 2f) / Math.Pow(1024f, 1f) * viewpower2y - Math.Pow(-statey, 1f) / Math.Pow(1024f, 0f) * viewpower1y - Math.Pow(-statey, 0.5f) * Math.Pow(1024f, 0.5f) * viewpower05y, -1024f, 0f, -1024f, -(dzy / 100f) * 1024f);
-                    controller1_send_rightstickx          = Math.Abs(-mousex * 32767f / 1024f) <= 32767f ? -mousex * 32767f / 1024f : Math.Sign(-mousex) * 32767f;
-                    controller1_send_rightsticky          = Math.Abs(-mousey * 32767f / 1024f) <= 32767f ? -mousey * 32767f / 1024f : Math.Sign(-mousey) * 32767f;
-                    controller1_send_left                 = kh.Key_Z;
-                    controller1_send_right                = kh.Key_V;
-                    controller1_send_down                 = kh.Key_C;
-                    controller1_send_up                   = kh.Key_X;
-                    controller1_send_rightstick           = kh.Key_E;
-                    controller1_send_leftstick            = kh.Key_LeftShift;
-                    controller1_send_A                    = kh.Key_Space;
-                    controller1_send_back                 = kh.Key_Tab;
-                    controller1_send_start                = kh.Key_Escape;
-                    controller1_send_X                    = kh.Key_R | mh.MouseMiddleButton;
-                    controller1_send_rightbumper          = kh.Key_G | mh.MouseXButton;
-                    controller1_send_leftbumper           = kh.Key_T;
-                    controller1_send_B                    = kh.Key_LeftControl | kh.Key_Q;
-                    controller1_send_Y                    = mh.MouseZ > 0 | mh.MouseZ < 0;
-                    controller1_send_righttriggerposition = mh.MouseLeftButton ? 255 : 0;
+                    Controller_Send_rightstickx          = Math.Abs(-mousex * 32767f / 1024f) <= 32767f ? -mousex * 32767f / 1024f : Math.Sign(-mousex) * 32767f;
+                    Controller_Send_rightsticky          = Math.Abs(-mousey * 32767f / 1024f) <= 32767f ? -mousey * 32767f / 1024f : Math.Sign(-mousey) * 32767f;
+                    Controller_Send_left                 = kh.Key_Z;
+                    Controller_Send_right                = kh.Key_V;
+                    Controller_Send_down                 = kh.Key_C;
+                    Controller_Send_up                   = kh.Key_X;
+                    Controller_Send_rightstick           = kh.Key_E;
+                    Controller_Send_leftstick            = kh.Key_LeftShift;
+                    Controller_Send_A                    = kh.Key_Space;
+                    Controller_Send_back                 = kh.Key_Tab;
+                    Controller_Send_start                = kh.Key_Escape;
+                    Controller_Send_X                    = kh.Key_R | mh.MouseMiddleButton;
+                    Controller_Send_rightbumper          = kh.Key_G | mh.MouseXButton;
+                    Controller_Send_leftbumper           = kh.Key_T;
+                    Controller_Send_B                    = kh.Key_LeftControl | kh.Key_Q;
+                    Controller_Send_Y                    = mh.MouseZ > 0 | mh.MouseZ < 0;
+                    Controller_Send_righttriggerposition = mh.MouseLeftButton ? 255 : 0;
                     if (kh.Key_W)
-                        controller1_send_leftsticky = 32767;
+                        Controller_Send_leftsticky = 32767;
                     if (kh.Key_S)
-                        controller1_send_leftsticky = -32767;
+                        Controller_Send_leftsticky = -32767;
                     if ((!kh.Key_W & !kh.Key_S) | (kh.Key_W & kh.Key_S))
-                        controller1_send_leftsticky = 0;
+                        Controller_Send_leftsticky = 0;
                     if (kh.Key_D)
-                        controller1_send_leftstickx = 32767;
+                        Controller_Send_leftstickx = 32767;
                     if (kh.Key_A)
-                        controller1_send_leftstickx = -32767;
+                        Controller_Send_leftstickx = -32767;
                     if ((!kh.Key_D & !kh.Key_A) | (kh.Key_D & kh.Key_A))
-                        controller1_send_leftstickx = 0;
+                        Controller_Send_leftstickx = 0;
                     valchanged(1, mh.MouseRightButton);
                     if (wd[1] == 1 & !getstate[1])
                     {
@@ -162,36 +162,36 @@ namespace StringToCode
                             getstate[1] = false;
                         }
                     }
-                    if (controller1_send_X | controller1_send_Y | controller1_send_rightbumper | controller1_send_leftbumper | controller1_send_rightstick | controller1_send_leftstick | controller1_send_back | controller1_send_start)
+                    if (Controller_Send_X | Controller_Send_Y | Controller_Send_rightbumper | Controller_Send_leftbumper | Controller_Send_rightstick | Controller_Send_leftstick | Controller_Send_back | Controller_Send_start)
                     {
                         getstate[1] = false;
                     }
-                    controller1_send_lefttriggerposition = getstate[1] ? 255 : 0;
+                    Controller_Send_lefttriggerposition = getstate[1] ? 255 : 0;
                 }
                 else
                 {
-                    controller1_send_rightstickx = 0;
-                    controller1_send_rightsticky = 0;
-                    controller1_send_leftstickx = 0;
-                    controller1_send_leftsticky = 0;
-                    controller1_send_left = false;
-                    controller1_send_right = false;
-                    controller1_send_down = false;
-                    controller1_send_up = false;
-                    controller1_send_rightstick = false;
-                    controller1_send_leftstick = false;
-                    controller1_send_A = false;
-                    controller1_send_back = false;
-                    controller1_send_start = false;
-                    controller1_send_X = false;
-                    controller1_send_rightbumper = false;
-                    controller1_send_leftbumper = false;
-                    controller1_send_B = false;
-                    controller1_send_Y = false;
-                    controller1_send_lefttriggerposition = 0;
-                    controller1_send_righttriggerposition = 0;
+                    Controller_Send_rightstickx = 0;
+                    Controller_Send_rightsticky = 0;
+                    Controller_Send_leftstickx = 0;
+                    Controller_Send_leftsticky = 0;
+                    Controller_Send_left = false;
+                    Controller_Send_right = false;
+                    Controller_Send_down = false;
+                    Controller_Send_up = false;
+                    Controller_Send_rightstick = false;
+                    Controller_Send_leftstick = false;
+                    Controller_Send_A = false;
+                    Controller_Send_back = false;
+                    Controller_Send_start = false;
+                    Controller_Send_X = false;
+                    Controller_Send_rightbumper = false;
+                    Controller_Send_leftbumper = false;
+                    Controller_Send_B = false;
+                    Controller_Send_Y = false;
+                    Controller_Send_lefttriggerposition = 0;
+                    Controller_Send_righttriggerposition = 0;
                 }
-                XBC.Set(controller1_send_back, controller1_send_start, controller1_send_A, controller1_send_B, controller1_send_X, controller1_send_Y, controller1_send_up, controller1_send_left, controller1_send_down, controller1_send_right, controller1_send_leftstick, controller1_send_rightstick, controller1_send_leftbumper, controller1_send_rightbumper, controller1_send_leftstickx, controller1_send_leftsticky, controller1_send_rightstickx, controller1_send_rightsticky, controller1_send_lefttriggerposition, controller1_send_righttriggerposition, controller1_send_xbox);
+                XBC.Set(Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition, Controller_Send_xbox);
                 /*mh.ViewData();*/
                 /*kh.ViewData();*/
                 Thread.Sleep(sleeptime);
