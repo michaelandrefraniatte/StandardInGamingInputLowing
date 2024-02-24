@@ -101,7 +101,7 @@ namespace GamepadsHooksAPI
         {
             this.number = number;
             inc = number < 2 ? 0 : number - 1;
-            gamepadstate = GamePad.GetState((PlayerIndex)inc);
+            gamepadstate = GamePad.GetState((PlayerIndex)inc, 0);
             if (!gamepadstate.IsConnected)
             {
                 return false;
@@ -113,7 +113,7 @@ namespace GamepadsHooksAPI
         }
         private void ProcessStateLogic()
         {
-            gamepadstate = GamePad.GetState((PlayerIndex)inc);
+            gamepadstate = GamePad.GetState((PlayerIndex)inc, 0);
             ControllerButtonAPressed = gamepadstate.Buttons.A == ButtonState.Pressed;
             ControllerButtonBPressed = gamepadstate.Buttons.B == ButtonState.Pressed;
             ControllerButtonXPressed = gamepadstate.Buttons.X == ButtonState.Pressed;

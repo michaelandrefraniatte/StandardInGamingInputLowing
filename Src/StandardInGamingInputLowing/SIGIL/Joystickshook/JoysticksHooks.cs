@@ -49,6 +49,8 @@ namespace JoysticksHooksAPI
         public void Close()
         {
             running = false;
+            System.Threading.Thread.Sleep(100);
+            ReleaseJoystick();
         }
         private void taskD()
         {
