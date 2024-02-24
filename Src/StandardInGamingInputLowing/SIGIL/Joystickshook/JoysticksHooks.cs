@@ -346,6 +346,9 @@ namespace JoysticksHooksAPI
         {
             joystickDevice.Unacquire();
         }
+        public void Init()
+        {
+        }
         private void ProcessStateLogic()
         {
             joystickDevice.Poll();

@@ -130,6 +130,9 @@ namespace XInputsAPI
                 return true;
             }
         }
+        public void Init()
+        {
+        }
         private void ProcessStateLogic()
         {
             xistate = gp.GetState();

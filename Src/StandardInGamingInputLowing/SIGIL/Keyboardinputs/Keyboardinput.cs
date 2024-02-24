@@ -382,6 +382,9 @@ namespace KeyboardInputsAPI
                 return true;
             }
         }
+        public void Init()
+        {
+        }
         private void ProcessStateLogic()
         {
             kb.Poll();

@@ -325,6 +325,9 @@ namespace DirectInputsAPI
                 return true;
             }
         }
+        public void Init()
+        {
+        }
         private void ProcessStateLogic()
         {
             js.Poll();

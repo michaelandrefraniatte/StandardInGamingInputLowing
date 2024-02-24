@@ -111,6 +111,9 @@ namespace GamepadsHooksAPI
                 return true;
             }
         }
+        public void Init()
+        {
+        }
         private void ProcessStateLogic()
         {
             gamepadstate = GamePad.GetState((PlayerIndex)inc, 0);
