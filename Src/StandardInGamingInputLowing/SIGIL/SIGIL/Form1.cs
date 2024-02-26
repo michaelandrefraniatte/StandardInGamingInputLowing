@@ -177,7 +177,6 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"\bCount\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bClear\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bRemoveAt\b"));
-                range.SetStyle(StyleLibrary, new Regex(@"\bAdd\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bAverage\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bViewData\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bClose\b"));
@@ -1435,7 +1434,7 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"\bWs_OnMessage\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bwsc\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bobject\b"));
-                range.SetStyle(StyleExtra, new Regex(@"\bMessageEventArgs\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bMessageEventArgs\b"));
                 range.SetStyle(StyleInput, new Regex(@"\brawdataavailable\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bbyteArrayIn\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bcontrol\b"));
@@ -1445,6 +1444,17 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"\bRawData\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\blocalip\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bport\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bText\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bOnMessage\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bsender\b"));
+                range.SetStyle(StyleInput, new Regex(@"\be\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bIsAlive\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bSend\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bConvert\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bconnectionString\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bToSingle\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bParse\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bToArray\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -1529,7 +1539,6 @@ namespace SIGIL
                 "Count",
                 "Clear",
                 "RemoveAt",
-                "Add",
                 "Average",
                 "ViewData",
                 "Close",
@@ -2796,7 +2805,18 @@ namespace SIGIL
                 "str",
                 "RawData",
                 "localip",
-                "port"
+                "port",
+                "Text",
+                "OnMessage",
+                "sender",
+                "e",
+                "IsAlive",
+                "Send",
+                "Convert",
+                "connectionString",
+                "ToSingle",
+                "Parse",
+                "ToArray"
             };
         }
         private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
