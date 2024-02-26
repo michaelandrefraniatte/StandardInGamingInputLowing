@@ -17,7 +17,7 @@ namespace Networks
         public static WebSocketServer wss;
         public static byte[] rawdataavailable;
         public static bool running = false;
-        public static void Connect(string localip, string port, int number)
+        public static void Connect(string localip, string port, int number = 0)
         {
             try
             {
