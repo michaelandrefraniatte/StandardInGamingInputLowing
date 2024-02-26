@@ -1443,6 +1443,8 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"\bSplit\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bstr\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bRawData\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\blocalip\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bport\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2792,7 +2794,9 @@ namespace SIGIL
                 "Encoding.ASCII.GetString",
                 "Split",
                 "str",
-                "RawData"
+                "RawData",
+                "localip",
+                "port"
             };
         }
         private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
