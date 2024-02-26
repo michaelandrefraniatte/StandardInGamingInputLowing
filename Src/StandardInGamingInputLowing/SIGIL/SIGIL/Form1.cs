@@ -1426,6 +1426,23 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"\bMouseMiddleButton\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bMouseXButton\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bMouseButtonX\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bbyteArrayToControl\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bcontrolToByteArray\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bNetworks\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bNetwork\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bWebSocketSharp\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bWebSocket\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bWs_OnMessage\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bwsc\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bobject\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bMessageEventArgs\b"));
+                range.SetStyle(StyleInput, new Regex(@"\brawdataavailable\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bbyteArrayIn\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bcontrol\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bEncoding.ASCII.GetString\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bSplit\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bstr\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bRawData\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2758,7 +2775,24 @@ namespace SIGIL
                 "MouseLeftButton",
                 "MouseMiddleButton",
                 "MouseXButton",
-                "MouseButtonX"
+                "MouseButtonX",
+                "byteArrayToControl",
+                "controlToByteArray",
+                "Networks",
+                "Network",
+                "WebSocketSharp",
+                "WebSocket",
+                "Ws_OnMessage",
+                "wsc",
+                "object",
+                "MessageEventArgs",
+                "rawdataavailable",
+                "byteArrayIn",
+                "control",
+                "Encoding.ASCII.GetString",
+                "Split",
+                "str",
+                "RawData"
             };
         }
         private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
@@ -3146,6 +3180,10 @@ namespace SIGIL
                 AddAssembly("Gamepadshook");
             if (code.Contains("using JoysticksHooksAPI;"))
                 AddAssembly("Joystickshook");
+            if (code.Contains("using Networks;"))
+                AddAssembly("Networks");
+            if (code.Contains("using WebSocketSharp;"))
+                AddAssembly("websocket-sharp");
         }
         private void AddAssembly(string dllName)
         {
