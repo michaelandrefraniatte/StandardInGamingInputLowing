@@ -172,7 +172,7 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"\bCount\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bClear\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bRemoveAt\b"));
-                range.SetStyle(StyleLibrary, new Regex(@"\bAdd\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bAdd\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bAverage\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bCount\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bClear\b"));
@@ -1454,7 +1454,20 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"\bconnectionString\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bToSingle\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bParse\b"));
-                range.SetStyle(StyleLibrary, new Regex(@"\bToArray\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bToArray\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bEncoding.ASCII.GetBytes\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bIndexOf\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bdata\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bsplitstring\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bnewsplitstring\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bvaluestring\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bpFrom\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bnewvaluestring\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bpTo\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bresult\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bLength\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bSubstring\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bReplace\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2816,7 +2829,20 @@ namespace SIGIL
                 "connectionString",
                 "ToSingle",
                 "Parse",
-                "ToArray"
+                "ToArray",
+                "Encoding.ASCII.GetBytes",
+                "IndexOf",
+                "data",
+                "splitstring",
+                "newsplitstring",
+                "valuestring",
+                "pFrom",
+                "newvaluestring",
+                "pTo",
+                "result",
+                "Length",
+                "Substring",
+                "Replace"
             };
         }
         private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
