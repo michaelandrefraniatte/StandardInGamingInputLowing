@@ -1468,6 +1468,12 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"\bLength\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bSubstring\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bReplace\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bKeyboardRawInputsAPI\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bMouseRawInputsAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bKeyboardRawInputs\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bMouseRawInputs\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bmri\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bkri\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2842,7 +2848,13 @@ namespace SIGIL
                 "result",
                 "Length",
                 "Substring",
-                "Replace"
+                "Replace",
+                "KeyboardRawInputsAPI",
+                "MouseRawInputsAPI",
+                "KeyboardRawInputs",
+                "MouseRawInputs",
+                "mri",
+                "kri"
             };
         }
         private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
@@ -3234,6 +3246,10 @@ namespace SIGIL
                 AddAssembly("Networks");
             if (code.Contains("using WebSocketSharp;"))
                 AddAssembly("websocket-sharp");
+            if (code.Contains("using KeyboardRawInputsAPI;"))
+                AddAssembly("Keyboardrawinputs");
+            if (code.Contains("using MouseRawInputsAPI;"))
+                AddAssembly("Mouserawinputs");
         }
         private void AddAssembly(string dllName)
         {

@@ -238,6 +238,10 @@
       <Project>{beb50b3f-8552-444e-bd3f-d930607b60f6}</Project>
       <Name>Keyboardinputs</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Keyboardrawinputs\Keyboardrawinputs.csproj">
+      <Project>{8d0b0f90-2537-4011-9bb0-5753eadc8dad}</Project>
+      <Name>Keyboardrawinputs</Name>
+    </ProjectReference>
     <ProjectReference Include="..\keyboardsmouses\keyboardsmouses.csproj">
       <Project>{03c1545f-4bf7-423d-a788-57803b86bab7}</Project>
       <Name>keyboardsmouses</Name>
@@ -249,6 +253,10 @@
     <ProjectReference Include="..\Mouseinputs\Mouseinputs.csproj">
       <Project>{1ed48639-04a4-4cae-a034-52de4088979d}</Project>
       <Name>Mouseinputs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mouserawinputs\Mouserawinputs.csproj">
+      <Project>{ec6d5517-31c5-4503-a43d-7c677d078338}</Project>
+      <Name>Mouserawinputs</Name>
     </ProjectReference>
     <ProjectReference Include="..\Networks\Networks.csproj">
       <Project>{a9cd3113-f7ac-4584-9d53-c80229df6f6b}</Project>
