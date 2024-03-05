@@ -417,6 +417,7 @@ namespace SendInputs
                 SetPhysicalCursorPos((int)MouseDesktopX, (int)MouseDesktopY);
                 SetCaretPos((int)MouseDesktopX, (int)MouseDesktopY);
                 SetCursorPos((int)MouseDesktopX, (int)MouseDesktopY);
+                Microsoft.Xna.Framework.Input.Mouse.SetPosition((int)MouseDesktopX, (int)MouseDesktopY);
             }
             ValueChange[1] = SendLeftClick ? 1 : 0;
             if (ValueChange._ValueChange[1] > 0f)

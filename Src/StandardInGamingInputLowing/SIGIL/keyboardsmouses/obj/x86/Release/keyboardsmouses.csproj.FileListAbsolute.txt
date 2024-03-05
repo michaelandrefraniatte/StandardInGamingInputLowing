@@ -4,3 +4,5 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\obj\x86\Release\keyboardsmouses.csproj.CoreCompileInputs.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\obj\x86\Release\keyboardsmouses.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\obj\x86\Release\keyboardsmouses.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\bin\x86\Release\Microsoft.Xna.Framework.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\obj\x86\Release\keyboard.96FAC8DE.Up2Date

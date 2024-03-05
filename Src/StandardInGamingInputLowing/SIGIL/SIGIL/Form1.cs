@@ -1476,6 +1476,12 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"\bMouseRawInputs\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bmri\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bkri\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bKeyboardXnaHookAPI\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bMouseXnaHookAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bKeyboardXnaHook\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bMouseXnaHook\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bmxh\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bkxh\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2857,7 +2863,13 @@ namespace SIGIL
                 "KeyboardRawInputs",
                 "MouseRawInputs",
                 "mri",
-                "kri"
+                "kri",
+                "KeyboardXnaHookAPI",
+                "MouseXnaHookAPI",
+                "KeyboardXnaHook",
+                "MouseXnaHook",
+                "mxh",
+                "kxh"
             };
         }
         private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
@@ -3255,6 +3267,10 @@ namespace SIGIL
                 AddAssembly("Keyboardrawinputs");
             if (code.Contains("using MouseRawInputsAPI;"))
                 AddAssembly("Mouserawinputs");
+            if (code.Contains("using KeyboardXnaHookAPI;"))
+                AddAssembly("Keyboardxnahook");
+            if (code.Contains("using MouseXnaHookAPI;"))
+                AddAssembly("Mousexnahook");
         }
         private void AddAssembly(string dllName)
         {
