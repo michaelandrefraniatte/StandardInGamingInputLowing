@@ -69,6 +69,7 @@ namespace StringToCode
             }
             catch { }
         }
+        public static void Main() {}
         public void Load()
         {
             TimeBeginPeriod(1);

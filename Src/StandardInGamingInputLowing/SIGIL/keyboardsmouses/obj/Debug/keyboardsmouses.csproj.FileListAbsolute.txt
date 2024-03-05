@@ -1,6 +1,0 @@
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\bin\Debug\keyboardsmouses.dll
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\bin\Debug\keyboardsmouses.pdb
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\obj\Debug\keyboardsmouses.csproj.AssemblyReference.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\obj\Debug\keyboardsmouses.csproj.CoreCompileInputs.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\obj\Debug\keyboardsmouses.dll
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\obj\Debug\keyboardsmouses.pdb

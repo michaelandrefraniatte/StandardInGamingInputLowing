@@ -1,9 +1,0 @@
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualsenses\bin\x86\Debug\Dualsenses.dll.config
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualsenses\bin\x86\Debug\Dualsenses.dll
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualsenses\bin\x86\Debug\Dualsenses.pdb
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualsenses\obj\x86\Debug\Dualsenses.csproj.AssemblyReference.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualsenses\obj\x86\Debug\Dualsenses.Form1.resources
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualsenses\obj\x86\Debug\Dualsenses.csproj.GenerateResource.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualsenses\obj\x86\Debug\Dualsenses.csproj.CoreCompileInputs.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualsenses\obj\x86\Debug\Dualsenses.dll
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualsenses\obj\x86\Debug\Dualsenses.pdb

@@ -232,6 +232,7 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"\bSendInterception\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bSI\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bLoad\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bMain\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bWiiMotesAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bWiiMote\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bwm\b"));
@@ -1613,6 +1614,7 @@ namespace SIGIL
                 "SendInterception",
                 "SI",
                 "Load",
+                "Main",
                 "WiiMotesAPI",
                 "WiiMote",
                 "wm",
@@ -3171,12 +3173,12 @@ namespace SIGIL
         {
             code = fastColoredTextBox1.Text;
             parameters = new System.CodeDom.Compiler.CompilerParameters();
-            parameters.GenerateExecutable = false;
+            parameters.GenerateExecutable = true;
             parameters.GenerateInMemory = false;
             parameters.IncludeDebugInformation = true;
             parameters.TreatWarningsAsErrors = false;
             parameters.WarningLevel = 0;
-            parameters.CompilerOptions = "/optimize+ /platform:x86 /target:winmdobj /unsafe";
+            parameters.CompilerOptions = "/optimize+ /platform:x86 /target:exe /unsafe";
             if (code.Contains("using System;"))
                 parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.dll");
             if (code.Contains("using System.Windows.Forms;"))

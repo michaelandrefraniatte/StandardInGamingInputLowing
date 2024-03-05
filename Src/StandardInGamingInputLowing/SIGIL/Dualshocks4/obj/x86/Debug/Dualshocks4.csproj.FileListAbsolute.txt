@@ -1,9 +1,0 @@
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualshocks4\bin\x86\Debug\Dualshocks4.dll.config
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualshocks4\bin\x86\Debug\Dualshocks4.dll
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualshocks4\bin\x86\Debug\Dualshocks4.pdb
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualshocks4\obj\x86\Debug\Dualshocks4.csproj.AssemblyReference.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualshocks4\obj\x86\Debug\Dualshocks4.Form1.resources
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualshocks4\obj\x86\Debug\Dualshocks4.csproj.GenerateResource.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualshocks4\obj\x86\Debug\Dualshocks4.csproj.CoreCompileInputs.cache
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualshocks4\obj\x86\Debug\Dualshocks4.dll
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualshocks4\obj\x86\Debug\Dualshocks4.pdb
