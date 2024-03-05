@@ -1,0 +1,10 @@
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Switchprocontrollers\bin\x86\Debug\Switchprocontrollers.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Switchprocontrollers\bin\x86\Debug\Switchprocontrollers.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Switchprocontrollers\bin\x86\Debug\System.Numerics.Vectors.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Switchprocontrollers\obj\x86\Debug\Switchprocontrollers.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Switchprocontrollers\obj\x86\Debug\Switchprocontrollers.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Switchprocontrollers\obj\x86\Debug\Switchprocontrollers.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Switchprocontrollers\obj\x86\Debug\Switchprocontrollers.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Switchprocontrollers\obj\x86\Debug\Switchpr.43D65E39.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Switchprocontrollers\obj\x86\Debug\Switchprocontrollers.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Switchprocontrollers\obj\x86\Debug\Switchprocontrollers.pdb

@@ -12,3 +12,17 @@ C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawin
 C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawinputs\bin\x86\Debug\SharpDX.dll
 C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawinputs\bin\x86\Debug\SharpDX.RawInput.dll
 C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawinputs\bin\x86\Debug\SharpDX.xml
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\bin\x86\Debug\Keyboardrawinputs.dll.config
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\bin\x86\Debug\Keyboardrawinputs.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\bin\x86\Debug\Keyboardrawinputs.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\bin\x86\Debug\SharpDX.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\bin\x86\Debug\SharpDX.RawInput.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\bin\x86\Debug\SharpDX.xml
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\bin\x86\Debug\SharpDX.RawInput.xml
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\obj\x86\Debug\Keyboardrawinputs.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\obj\x86\Debug\Keyboardrawinputs.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\obj\x86\Debug\Keyboardrawinputs.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\obj\x86\Debug\Keyboardrawinputs.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\obj\x86\Debug\Keyboard.492BAFF2.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\obj\x86\Debug\Keyboardrawinputs.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\obj\x86\Debug\Keyboardrawinputs.pdb
