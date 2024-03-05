@@ -18,11 +18,14 @@ namespace MouseRawInputsAPI
         private static uint CurrentResolution = 0;
         private bool running, formvisible;
         private int number;
+        private MouseInputEventArgs args = new MouseInputEventArgs();
         private Form1 form1 = new Form1();
         public MouseRawInputs()
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
+            Device.RegisterDevice(UsagePage.Generic, UsageId.GenericMouse, DeviceFlags.None);
+            Device.MouseInput += Device_MouseInput;
             running = true;
         }
         public void ViewData()
@@ -36,6 +39,8 @@ namespace MouseRawInputsAPI
         public void Close()
         {
             running = false;
+            System.Threading.Thread.Sleep(100);
+            Device.MouseInput -= Device_MouseInput;
         }
         private void taskM()
         {
@@ -43,9 +48,18 @@ namespace MouseRawInputsAPI
             {
                 if (!running)
                     break;
+                try
+                {
+                    ProcessStateLogic();
+                }
+                catch { }
                 System.Threading.Thread.Sleep(1);
-                if (MouseAxisZ != 0)
-                    Task.Run(() => Init());
+                try
+                {
+                    if (MouseAxisZ != 0)
+                        Task.Run(() => Init());
+                }
+                catch { }
                 if (formvisible)
                 {
                     string str = "MouseAxisX : " + MouseAxisX + Environment.NewLine;
@@ -81,34 +95,36 @@ namespace MouseRawInputsAPI
         public bool Scan(int number = 0)
         {
             this.number = number;
-            Device.RegisterDevice(UsagePage.Generic, UsageId.GenericMouse, DeviceFlags.None);
-            Device.MouseInput += Device_MouseInput;
             return true;
         }
         private void Device_MouseInput(object sender, MouseInputEventArgs e)
         {
-            MouseAxisX = e.X;
-            MouseAxisY = e.Y;
-            MouseAxisZ = e.WheelDelta;
-            if (e.ButtonFlags == MouseButtonFlags.Button1Down)
+            args = e;
+        }
+        private void ProcessStateLogic()
+        {
+            MouseAxisX = args.X;
+            MouseAxisY = args.Y;
+            MouseAxisZ = args.WheelDelta;
+            if (args.ButtonFlags == MouseButtonFlags.Button1Down)
                 MouseButtons0 = true;
-            if (e.ButtonFlags == MouseButtonFlags.Button1Up)
+            if (args.ButtonFlags == MouseButtonFlags.Button1Up)
                 MouseButtons0 = false;
-            if (e.ButtonFlags == MouseButtonFlags.Button2Down)
+            if (args.ButtonFlags == MouseButtonFlags.Button2Down)
                 MouseButtons1 = true;
-            if (e.ButtonFlags == MouseButtonFlags.Button2Up)
+            if (args.ButtonFlags == MouseButtonFlags.Button2Up)
                 MouseButtons1 = false;
-            if (e.ButtonFlags == MouseButtonFlags.Button3Down)
+            if (args.ButtonFlags == MouseButtonFlags.Button3Down)
                 MouseButtons2 = true;
-            if (e.ButtonFlags == MouseButtonFlags.Button3Up)
+            if (args.ButtonFlags == MouseButtonFlags.Button3Up)
                 MouseButtons2 = false;
-            if (e.ButtonFlags == MouseButtonFlags.Button4Down)
+            if (args.ButtonFlags == MouseButtonFlags.Button4Down)
                 MouseButtons3 = true;
-            if (e.ButtonFlags == MouseButtonFlags.Button4Up)
+            if (args.ButtonFlags == MouseButtonFlags.Button4Up)
                 MouseButtons3 = false;
-            if (e.ButtonFlags == MouseButtonFlags.Button5Down)
+            if (args.ButtonFlags == MouseButtonFlags.Button5Down)
                 MouseButtons4 = true;
-            if (e.ButtonFlags == MouseButtonFlags.Button5Up)
+            if (args.ButtonFlags == MouseButtonFlags.Button5Up)
                 MouseButtons4 = false;
         }
     }

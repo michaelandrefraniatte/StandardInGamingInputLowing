@@ -18,11 +18,14 @@ namespace KeyboardRawInputsAPI
         private static uint CurrentResolution = 0;
         private bool running, formvisible;
         private int number;
+        private KeyboardInputEventArgs args = new KeyboardInputEventArgs();
         private Form1 form1 = new Form1();
         public KeyboardRawInputs()
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
+            Device.RegisterDevice(UsagePage.Generic, UsageId.GenericKeyboard, DeviceFlags.None);
+            Device.KeyboardInput += Device_KeyboardInput;
             running = true;
         }
         public void ViewData()
@@ -36,6 +39,8 @@ namespace KeyboardRawInputsAPI
         public void Close()
         {
             running = false;
+            System.Threading.Thread.Sleep(100);
+            Device.KeyboardInput -= Device_KeyboardInput;
         }
         private void taskK()
         {
@@ -43,6 +48,11 @@ namespace KeyboardRawInputsAPI
             {
                 if (!running)
                     break;
+                try
+                {
+                    ProcessStateLogic();
+                }
+                catch { }
                 System.Threading.Thread.Sleep(1);
                 if (formvisible)
                 {
@@ -580,8 +590,6 @@ namespace KeyboardRawInputsAPI
         public bool Scan(int number = 0)
         {
             this.number = number;
-            Device.RegisterDevice(UsagePage.Generic, UsageId.GenericKeyboard, DeviceFlags.None);
-            Device.KeyboardInput += Device_KeyboardInput;
             return true;
         }
         public void Init()
@@ -589,706 +597,710 @@ namespace KeyboardRawInputsAPI
         }
         private void Device_KeyboardInput(object sender, KeyboardInputEventArgs e)
         {
-            if (e.State == KeyState.KeyDown)
+            args = e;
+        }
+        private void ProcessStateLogic()
+        {
+            if (args.State == KeyState.KeyDown)
             {
-                if (e.MakeCode == S_LBUTTON)
+                if (args.MakeCode == S_LBUTTON)
                     Key_LBUTTON = true;
-                if (e.MakeCode == S_RBUTTON)
+                if (args.MakeCode == S_RBUTTON)
                     Key_RBUTTON = true;
-                if (e.MakeCode == S_CANCEL)
+                if (args.MakeCode == S_CANCEL)
                     Key_CANCEL = true;
-                if (e.MakeCode == S_MBUTTON)
+                if (args.MakeCode == S_MBUTTON)
                     Key_MBUTTON = true;
-                if (e.MakeCode == S_XBUTTON1)
+                if (args.MakeCode == S_XBUTTON1)
                     Key_XBUTTON1 = true;
-                if (e.MakeCode == S_XBUTTON2)
+                if (args.MakeCode == S_XBUTTON2)
                     Key_XBUTTON2 = true;
-                if (e.MakeCode == S_BACK)
+                if (args.MakeCode == S_BACK)
                     Key_BACK = true;
-                if (e.MakeCode == S_Tab)
+                if (args.MakeCode == S_Tab)
                     Key_Tab = true;
-                if (e.MakeCode == S_CLEAR)
+                if (args.MakeCode == S_CLEAR)
                     Key_CLEAR = true;
-                if (e.MakeCode == S_Return)
+                if (args.MakeCode == S_Return)
                     Key_Return = true;
-                if (e.MakeCode == S_SHIFT)
+                if (args.MakeCode == S_SHIFT)
                     Key_SHIFT = true;
-                if (e.MakeCode == S_CONTROL)
+                if (args.MakeCode == S_CONTROL)
                     Key_CONTROL = true;
-                if (e.MakeCode == S_MENU)
+                if (args.MakeCode == S_MENU)
                     Key_MENU = true;
-                if (e.MakeCode == S_PAUSE)
+                if (args.MakeCode == S_PAUSE)
                     Key_PAUSE = true;
-                if (e.MakeCode == S_CAPITAL)
+                if (args.MakeCode == S_CAPITAL)
                     Key_CAPITAL = true;
-                if (e.MakeCode == S_KANA)
+                if (args.MakeCode == S_KANA)
                     Key_KANA = true;
-                if (e.MakeCode == S_HANGEUL)
+                if (args.MakeCode == S_HANGEUL)
                     Key_HANGEUL = true;
-                if (e.MakeCode == S_HANGUL)
+                if (args.MakeCode == S_HANGUL)
                     Key_HANGUL = true;
-                if (e.MakeCode == S_JUNJA)
+                if (args.MakeCode == S_JUNJA)
                     Key_JUNJA = true;
-                if (e.MakeCode == S_FINAL)
+                if (args.MakeCode == S_FINAL)
                     Key_FINAL = true;
-                if (e.MakeCode == S_HANJA)
+                if (args.MakeCode == S_HANJA)
                     Key_HANJA = true;
-                if (e.MakeCode == S_KANJI)
+                if (args.MakeCode == S_KANJI)
                     Key_KANJI = true;
-                if (e.MakeCode == S_Escape)
+                if (args.MakeCode == S_Escape)
                     Key_Escape = true;
-                if (e.MakeCode == S_CONVERT)
+                if (args.MakeCode == S_CONVERT)
                     Key_CONVERT = true;
-                if (e.MakeCode == S_NONCONVERT)
+                if (args.MakeCode == S_NONCONVERT)
                     Key_NONCONVERT = true;
-                if (e.MakeCode == S_ACCEPT)
+                if (args.MakeCode == S_ACCEPT)
                     Key_ACCEPT = true;
-                if (e.MakeCode == S_MODECHANGE)
+                if (args.MakeCode == S_MODECHANGE)
                     Key_MODECHANGE = true;
-                if (e.MakeCode == S_Space)
+                if (args.MakeCode == S_Space)
                     Key_Space = true;
-                if (e.MakeCode == S_PRIOR)
+                if (args.MakeCode == S_PRIOR)
                     Key_PRIOR = true;
-                if (e.MakeCode == S_NEXT)
+                if (args.MakeCode == S_NEXT)
                     Key_NEXT = true;
-                if (e.MakeCode == S_END)
+                if (args.MakeCode == S_END)
                     Key_END = true;
-                if (e.MakeCode == S_HOME)
+                if (args.MakeCode == S_HOME)
                     Key_HOME = true;
-                if (e.MakeCode == S_LEFT)
+                if (args.MakeCode == S_LEFT)
                     Key_LEFT = true;
-                if (e.MakeCode == S_UP)
+                if (args.MakeCode == S_UP)
                     Key_UP = true;
-                if (e.MakeCode == S_RIGHT)
+                if (args.MakeCode == S_RIGHT)
                     Key_RIGHT = true;
-                if (e.MakeCode == S_DOWN)
+                if (args.MakeCode == S_DOWN)
                     Key_DOWN = true;
-                if (e.MakeCode == S_SELECT)
+                if (args.MakeCode == S_SELECT)
                     Key_SELECT = true;
-                if (e.MakeCode == S_PRINT)
+                if (args.MakeCode == S_PRINT)
                     Key_PRINT = true;
-                if (e.MakeCode == S_EXECUTE)
+                if (args.MakeCode == S_EXECUTE)
                     Key_EXECUTE = true;
-                if (e.MakeCode == S_SNAPSHOT)
+                if (args.MakeCode == S_SNAPSHOT)
                     Key_SNAPSHOT = true;
-                if (e.MakeCode == S_INSERT)
+                if (args.MakeCode == S_INSERT)
                     Key_INSERT = true;
-                if (e.MakeCode == S_DELETE)
+                if (args.MakeCode == S_DELETE)
                     Key_DELETE = true;
-                if (e.MakeCode == S_HELP)
+                if (args.MakeCode == S_HELP)
                     Key_HELP = true;
-                if (e.MakeCode == S_APOSTROPHE)
+                if (args.MakeCode == S_APOSTROPHE)
                     Key_APOSTROPHE = true;
-                if (e.MakeCode == S_0)
+                if (args.MakeCode == S_0)
                     Key_0 = true;
-                if (e.MakeCode == S_1)
+                if (args.MakeCode == S_1)
                     Key_1 = true;
-                if (e.MakeCode == S_2)
+                if (args.MakeCode == S_2)
                     Key_2 = true;
-                if (e.MakeCode == S_3)
+                if (args.MakeCode == S_3)
                     Key_3 = true;
-                if (e.MakeCode == S_4)
+                if (args.MakeCode == S_4)
                     Key_4 = true;
-                if (e.MakeCode == S_5)
+                if (args.MakeCode == S_5)
                     Key_5 = true;
-                if (e.MakeCode == S_6)
+                if (args.MakeCode == S_6)
                     Key_6 = true;
-                if (e.MakeCode == S_7)
+                if (args.MakeCode == S_7)
                     Key_7 = true;
-                if (e.MakeCode == S_8)
+                if (args.MakeCode == S_8)
                     Key_8 = true;
-                if (e.MakeCode == S_9)
+                if (args.MakeCode == S_9)
                     Key_9 = true;
-                if (e.MakeCode == S_A)
+                if (args.MakeCode == S_A)
                     Key_A = true;
-                if (e.MakeCode == S_B)
+                if (args.MakeCode == S_B)
                     Key_B = true;
-                if (e.MakeCode == S_C)
+                if (args.MakeCode == S_C)
                     Key_C = true;
-                if (e.MakeCode == S_D)
+                if (args.MakeCode == S_D)
                     Key_D = true;
-                if (e.MakeCode == S_E)
+                if (args.MakeCode == S_E)
                     Key_E = true;
-                if (e.MakeCode == S_F)
+                if (args.MakeCode == S_F)
                     Key_F = true;
-                if (e.MakeCode == S_G)
+                if (args.MakeCode == S_G)
                     Key_G = true;
-                if (e.MakeCode == S_H)
+                if (args.MakeCode == S_H)
                     Key_H = true;
-                if (e.MakeCode == S_I)
+                if (args.MakeCode == S_I)
                     Key_I = true;
-                if (e.MakeCode == S_J)
+                if (args.MakeCode == S_J)
                     Key_J = true;
-                if (e.MakeCode == S_K)
+                if (args.MakeCode == S_K)
                     Key_K = true;
-                if (e.MakeCode == S_L)
+                if (args.MakeCode == S_L)
                     Key_L = true;
-                if (e.MakeCode == S_M)
+                if (args.MakeCode == S_M)
                     Key_M = true;
-                if (e.MakeCode == S_N)
+                if (args.MakeCode == S_N)
                     Key_N = true;
-                if (e.MakeCode == S_O)
+                if (args.MakeCode == S_O)
                     Key_O = true;
-                if (e.MakeCode == S_P)
+                if (args.MakeCode == S_P)
                     Key_P = true;
-                if (e.MakeCode == S_Q)
+                if (args.MakeCode == S_Q)
                     Key_Q = true;
-                if (e.MakeCode == S_R)
+                if (args.MakeCode == S_R)
                     Key_R = true;
-                if (e.MakeCode == S_S)
+                if (args.MakeCode == S_S)
                     Key_S = true;
-                if (e.MakeCode == S_T)
+                if (args.MakeCode == S_T)
                     Key_T = true;
-                if (e.MakeCode == S_U)
+                if (args.MakeCode == S_U)
                     Key_U = true;
-                if (e.MakeCode == S_V)
+                if (args.MakeCode == S_V)
                     Key_V = true;
-                if (e.MakeCode == S_W)
+                if (args.MakeCode == S_W)
                     Key_W = true;
-                if (e.MakeCode == S_X)
+                if (args.MakeCode == S_X)
                     Key_X = true;
-                if (e.MakeCode == S_Y)
+                if (args.MakeCode == S_Y)
                     Key_Y = true;
-                if (e.MakeCode == S_Z)
+                if (args.MakeCode == S_Z)
                     Key_Z = true;
-                if (e.MakeCode == S_LWIN)
+                if (args.MakeCode == S_LWIN)
                     Key_LWIN = true;
-                if (e.MakeCode == S_RWIN)
+                if (args.MakeCode == S_RWIN)
                     Key_RWIN = true;
-                if (e.MakeCode == S_APPS)
+                if (args.MakeCode == S_APPS)
                     Key_APPS = true;
-                if (e.MakeCode == S_SLEEP)
+                if (args.MakeCode == S_SLEEP)
                     Key_SLEEP = true;
-                if (e.MakeCode == S_NUMPAD0)
+                if (args.MakeCode == S_NUMPAD0)
                     Key_NUMPAD0 = true;
-                if (e.MakeCode == S_NUMPAD1)
+                if (args.MakeCode == S_NUMPAD1)
                     Key_NUMPAD1 = true;
-                if (e.MakeCode == S_NUMPAD2)
+                if (args.MakeCode == S_NUMPAD2)
                     Key_NUMPAD2 = true;
-                if (e.MakeCode == S_NUMPAD3)
+                if (args.MakeCode == S_NUMPAD3)
                     Key_NUMPAD3 = true;
-                if (e.MakeCode == S_NUMPAD4)
+                if (args.MakeCode == S_NUMPAD4)
                     Key_NUMPAD4 = true;
-                if (e.MakeCode == S_NUMPAD5)
+                if (args.MakeCode == S_NUMPAD5)
                     Key_NUMPAD5 = true;
-                if (e.MakeCode == S_NUMPAD6)
+                if (args.MakeCode == S_NUMPAD6)
                     Key_NUMPAD6 = true;
-                if (e.MakeCode == S_NUMPAD7)
+                if (args.MakeCode == S_NUMPAD7)
                     Key_NUMPAD7 = true;
-                if (e.MakeCode == S_NUMPAD8)
+                if (args.MakeCode == S_NUMPAD8)
                     Key_NUMPAD8 = true;
-                if (e.MakeCode == S_NUMPAD9)
+                if (args.MakeCode == S_NUMPAD9)
                     Key_NUMPAD9 = true;
-                if (e.MakeCode == S_MULTIPLY)
+                if (args.MakeCode == S_MULTIPLY)
                     Key_MULTIPLY = true;
-                if (e.MakeCode == S_ADD)
+                if (args.MakeCode == S_ADD)
                     Key_ADD = true;
-                if (e.MakeCode == S_SEPARATOR)
+                if (args.MakeCode == S_SEPARATOR)
                     Key_SEPARATOR = true;
-                if (e.MakeCode == S_SUBTRACT)
+                if (args.MakeCode == S_SUBTRACT)
                     Key_SUBTRACT = true;
-                if (e.MakeCode == S_DECIMAL)
+                if (args.MakeCode == S_DECIMAL)
                     Key_DECIMAL = true;
-                if (e.MakeCode == S_DIVIDE)
+                if (args.MakeCode == S_DIVIDE)
                     Key_DIVIDE = true;
-                if (e.MakeCode == S_F1)
+                if (args.MakeCode == S_F1)
                     Key_F1 = true;
-                if (e.MakeCode == S_F2)
+                if (args.MakeCode == S_F2)
                     Key_F2 = true;
-                if (e.MakeCode == S_F3)
+                if (args.MakeCode == S_F3)
                     Key_F3 = true;
-                if (e.MakeCode == S_F4)
+                if (args.MakeCode == S_F4)
                     Key_F4 = true;
-                if (e.MakeCode == S_F5)
+                if (args.MakeCode == S_F5)
                     Key_F5 = true;
-                if (e.MakeCode == S_F6)
+                if (args.MakeCode == S_F6)
                     Key_F6 = true;
-                if (e.MakeCode == S_F7)
+                if (args.MakeCode == S_F7)
                     Key_F7 = true;
-                if (e.MakeCode == S_F8)
+                if (args.MakeCode == S_F8)
                     Key_F8 = true;
-                if (e.MakeCode == S_F9)
+                if (args.MakeCode == S_F9)
                     Key_F9 = true;
-                if (e.MakeCode == S_F10)
+                if (args.MakeCode == S_F10)
                     Key_F10 = true;
-                if (e.MakeCode == S_F11)
+                if (args.MakeCode == S_F11)
                     Key_F11 = true;
-                if (e.MakeCode == S_F12)
+                if (args.MakeCode == S_F12)
                     Key_F12 = true;
-                if (e.MakeCode == S_F13)
+                if (args.MakeCode == S_F13)
                     Key_F13 = true;
-                if (e.MakeCode == S_F14)
+                if (args.MakeCode == S_F14)
                     Key_F14 = true;
-                if (e.MakeCode == S_F15)
+                if (args.MakeCode == S_F15)
                     Key_F15 = true;
-                if (e.MakeCode == S_F16)
+                if (args.MakeCode == S_F16)
                     Key_F16 = true;
-                if (e.MakeCode == S_F17)
+                if (args.MakeCode == S_F17)
                     Key_F17 = true;
-                if (e.MakeCode == S_F18)
+                if (args.MakeCode == S_F18)
                     Key_F18 = true;
-                if (e.MakeCode == S_F19)
+                if (args.MakeCode == S_F19)
                     Key_F19 = true;
-                if (e.MakeCode == S_F20)
+                if (args.MakeCode == S_F20)
                     Key_F20 = true;
-                if (e.MakeCode == S_F21)
+                if (args.MakeCode == S_F21)
                     Key_F21 = true;
-                if (e.MakeCode == S_F22)
+                if (args.MakeCode == S_F22)
                     Key_F22 = true;
-                if (e.MakeCode == S_F23)
+                if (args.MakeCode == S_F23)
                     Key_F23 = true;
-                if (e.MakeCode == S_F24)
+                if (args.MakeCode == S_F24)
                     Key_F24 = true;
-                if (e.MakeCode == S_NUMLOCK)
+                if (args.MakeCode == S_NUMLOCK)
                     Key_NUMLOCK = true;
-                if (e.MakeCode == S_SCROLL)
+                if (args.MakeCode == S_SCROLL)
                     Key_SCROLL = true;
-                if (e.MakeCode == S_LeftShift)
+                if (args.MakeCode == S_LeftShift)
                     Key_LeftShift = true;
-                if (e.MakeCode == S_RightShift)
+                if (args.MakeCode == S_RightShift)
                     Key_RightShift = true;
-                if (e.MakeCode == S_LeftControl)
+                if (args.MakeCode == S_LeftControl)
                     Key_LeftControl = true;
-                if (e.MakeCode == S_RightControl)
+                if (args.MakeCode == S_RightControl)
                     Key_RightControl = true;
-                if (e.MakeCode == S_LMENU)
+                if (args.MakeCode == S_LMENU)
                     Key_LMENU = true;
-                if (e.MakeCode == S_RMENU)
+                if (args.MakeCode == S_RMENU)
                     Key_RMENU = true;
-                if (e.MakeCode == S_BROWSER_BACK)
+                if (args.MakeCode == S_BROWSER_BACK)
                     Key_BROWSER_BACK = true;
-                if (e.MakeCode == S_BROWSER_FORWARD)
+                if (args.MakeCode == S_BROWSER_FORWARD)
                     Key_BROWSER_FORWARD = true;
-                if (e.MakeCode == S_BROWSER_REFRESH)
+                if (args.MakeCode == S_BROWSER_REFRESH)
                     Key_BROWSER_REFRESH = true;
-                if (e.MakeCode == S_BROWSER_STOP)
+                if (args.MakeCode == S_BROWSER_STOP)
                     Key_BROWSER_STOP = true;
-                if (e.MakeCode == S_BROWSER_SEARCH)
+                if (args.MakeCode == S_BROWSER_SEARCH)
                     Key_BROWSER_SEARCH = true;
-                if (e.MakeCode == S_BROWSER_FAVORITES)
+                if (args.MakeCode == S_BROWSER_FAVORITES)
                     Key_BROWSER_FAVORITES = true;
-                if (e.MakeCode == S_BROWSER_HOME)
+                if (args.MakeCode == S_BROWSER_HOME)
                     Key_BROWSER_HOME = true;
-                if (e.MakeCode == S_VOLUME_MUTE)
+                if (args.MakeCode == S_VOLUME_MUTE)
                     Key_VOLUME_MUTE = true;
-                if (e.MakeCode == S_VOLUME_DOWN)
+                if (args.MakeCode == S_VOLUME_DOWN)
                     Key_VOLUME_DOWN = true;
-                if (e.MakeCode == S_VOLUME_UP)
+                if (args.MakeCode == S_VOLUME_UP)
                     Key_VOLUME_UP = true;
-                if (e.MakeCode == S_MEDIA_NEXT_TRACK)
+                if (args.MakeCode == S_MEDIA_NEXT_TRACK)
                     Key_MEDIA_NEXT_TRACK = true;
-                if (e.MakeCode == S_MEDIA_PREV_TRACK)
+                if (args.MakeCode == S_MEDIA_PREV_TRACK)
                     Key_MEDIA_PREV_TRACK = true;
-                if (e.MakeCode == S_MEDIA_STOP)
+                if (args.MakeCode == S_MEDIA_STOP)
                     Key_MEDIA_STOP = true;
-                if (e.MakeCode == S_MEDIA_PLAY_PAUSE)
+                if (args.MakeCode == S_MEDIA_PLAY_PAUSE)
                     Key_MEDIA_PLAY_PAUSE = true;
-                if (e.MakeCode == S_LAUNCH_MAIL)
+                if (args.MakeCode == S_LAUNCH_MAIL)
                     Key_LAUNCH_MAIL = true;
-                if (e.MakeCode == S_LAUNCH_MEDIA_SELECT)
+                if (args.MakeCode == S_LAUNCH_MEDIA_SELECT)
                     Key_LAUNCH_MEDIA_SELECT = true;
-                if (e.MakeCode == S_LAUNCH_APP1)
+                if (args.MakeCode == S_LAUNCH_APP1)
                     Key_LAUNCH_APP1 = true;
-                if (e.MakeCode == S_LAUNCH_APP2)
+                if (args.MakeCode == S_LAUNCH_APP2)
                     Key_LAUNCH_APP2 = true;
-                if (e.MakeCode == S_OEM_1)
+                if (args.MakeCode == S_OEM_1)
                     Key_OEM_1 = true;
-                if (e.MakeCode == S_OEM_PLUS)
+                if (args.MakeCode == S_OEM_PLUS)
                     Key_OEM_PLUS = true;
-                if (e.MakeCode == S_OEM_COMMA)
+                if (args.MakeCode == S_OEM_COMMA)
                     Key_OEM_COMMA = true;
-                if (e.MakeCode == S_OEM_MINUS)
+                if (args.MakeCode == S_OEM_MINUS)
                     Key_OEM_MINUS = true;
-                if (e.MakeCode == S_OEM_PERIOD)
+                if (args.MakeCode == S_OEM_PERIOD)
                     Key_OEM_PERIOD = true;
-                if (e.MakeCode == S_OEM_2)
+                if (args.MakeCode == S_OEM_2)
                     Key_OEM_2 = true;
-                if (e.MakeCode == S_OEM_3)
+                if (args.MakeCode == S_OEM_3)
                     Key_OEM_3 = true;
-                if (e.MakeCode == S_OEM_4)
+                if (args.MakeCode == S_OEM_4)
                     Key_OEM_4 = true;
-                if (e.MakeCode == S_OEM_5)
+                if (args.MakeCode == S_OEM_5)
                     Key_OEM_5 = true;
-                if (e.MakeCode == S_OEM_6)
+                if (args.MakeCode == S_OEM_6)
                     Key_OEM_6 = true;
-                if (e.MakeCode == S_OEM_7)
+                if (args.MakeCode == S_OEM_7)
                     Key_OEM_7 = true;
-                if (e.MakeCode == S_OEM_8)
+                if (args.MakeCode == S_OEM_8)
                     Key_OEM_8 = true;
-                if (e.MakeCode == S_OEM_102)
+                if (args.MakeCode == S_OEM_102)
                     Key_OEM_102 = true;
-                if (e.MakeCode == S_PROCESSKEY)
+                if (args.MakeCode == S_PROCESSKEY)
                     Key_PROCESSKEY = true;
-                if (e.MakeCode == S_PACKET)
+                if (args.MakeCode == S_PACKET)
                     Key_PACKET = true;
-                if (e.MakeCode == S_ATTN)
+                if (args.MakeCode == S_ATTN)
                     Key_ATTN = true;
-                if (e.MakeCode == S_CRSEL)
+                if (args.MakeCode == S_CRSEL)
                     Key_CRSEL = true;
-                if (e.MakeCode == S_EXSEL)
+                if (args.MakeCode == S_EXSEL)
                     Key_EXSEL = true;
-                if (e.MakeCode == S_EREOF)
+                if (args.MakeCode == S_EREOF)
                     Key_EREOF = true;
-                if (e.MakeCode == S_PLAY)
+                if (args.MakeCode == S_PLAY)
                     Key_PLAY = true;
-                if (e.MakeCode == S_ZOOM)
+                if (args.MakeCode == S_ZOOM)
                     Key_ZOOM = true;
-                if (e.MakeCode == S_NONAME)
+                if (args.MakeCode == S_NONAME)
                     Key_NONAME = true;
-                if (e.MakeCode == S_PA1)
+                if (args.MakeCode == S_PA1)
                     Key_PA1 = true;
-                if (e.MakeCode == S_OEM_CLEAR)
+                if (args.MakeCode == S_OEM_CLEAR)
                     Key_OEM_CLEAR = true;
             }
-            if (e.State == KeyState.KeyUp)
+            if (args.State == KeyState.KeyUp)
             {
-                if (e.MakeCode == S_LBUTTON)
+                if (args.MakeCode == S_LBUTTON)
                     Key_LBUTTON = false;
-                if (e.MakeCode == S_RBUTTON)
+                if (args.MakeCode == S_RBUTTON)
                     Key_RBUTTON = false;
-                if (e.MakeCode == S_CANCEL)
+                if (args.MakeCode == S_CANCEL)
                     Key_CANCEL = false;
-                if (e.MakeCode == S_MBUTTON)
+                if (args.MakeCode == S_MBUTTON)
                     Key_MBUTTON = false;
-                if (e.MakeCode == S_XBUTTON1)
+                if (args.MakeCode == S_XBUTTON1)
                     Key_XBUTTON1 = false;
-                if (e.MakeCode == S_XBUTTON2)
+                if (args.MakeCode == S_XBUTTON2)
                     Key_XBUTTON2 = false;
-                if (e.MakeCode == S_BACK)
+                if (args.MakeCode == S_BACK)
                     Key_BACK = false;
-                if (e.MakeCode == S_Tab)
+                if (args.MakeCode == S_Tab)
                     Key_Tab = false;
-                if (e.MakeCode == S_CLEAR)
+                if (args.MakeCode == S_CLEAR)
                     Key_CLEAR = false;
-                if (e.MakeCode == S_Return)
+                if (args.MakeCode == S_Return)
                     Key_Return = false;
-                if (e.MakeCode == S_SHIFT)
+                if (args.MakeCode == S_SHIFT)
                     Key_SHIFT = false;
-                if (e.MakeCode == S_CONTROL)
+                if (args.MakeCode == S_CONTROL)
                     Key_CONTROL = false;
-                if (e.MakeCode == S_MENU)
+                if (args.MakeCode == S_MENU)
                     Key_MENU = false;
-                if (e.MakeCode == S_PAUSE)
+                if (args.MakeCode == S_PAUSE)
                     Key_PAUSE = false;
-                if (e.MakeCode == S_CAPITAL)
+                if (args.MakeCode == S_CAPITAL)
                     Key_CAPITAL = false;
-                if (e.MakeCode == S_KANA)
+                if (args.MakeCode == S_KANA)
                     Key_KANA = false;
-                if (e.MakeCode == S_HANGEUL)
+                if (args.MakeCode == S_HANGEUL)
                     Key_HANGEUL = false;
-                if (e.MakeCode == S_HANGUL)
+                if (args.MakeCode == S_HANGUL)
                     Key_HANGUL = false;
-                if (e.MakeCode == S_JUNJA)
+                if (args.MakeCode == S_JUNJA)
                     Key_JUNJA = false;
-                if (e.MakeCode == S_FINAL)
+                if (args.MakeCode == S_FINAL)
                     Key_FINAL = false;
-                if (e.MakeCode == S_HANJA)
+                if (args.MakeCode == S_HANJA)
                     Key_HANJA = false;
-                if (e.MakeCode == S_KANJI)
+                if (args.MakeCode == S_KANJI)
                     Key_KANJI = false;
-                if (e.MakeCode == S_Escape)
+                if (args.MakeCode == S_Escape)
                     Key_Escape = false;
-                if (e.MakeCode == S_CONVERT)
+                if (args.MakeCode == S_CONVERT)
                     Key_CONVERT = false;
-                if (e.MakeCode == S_NONCONVERT)
+                if (args.MakeCode == S_NONCONVERT)
                     Key_NONCONVERT = false;
-                if (e.MakeCode == S_ACCEPT)
+                if (args.MakeCode == S_ACCEPT)
                     Key_ACCEPT = false;
-                if (e.MakeCode == S_MODECHANGE)
+                if (args.MakeCode == S_MODECHANGE)
                     Key_MODECHANGE = false;
-                if (e.MakeCode == S_Space)
+                if (args.MakeCode == S_Space)
                     Key_Space = false;
-                if (e.MakeCode == S_PRIOR)
+                if (args.MakeCode == S_PRIOR)
                     Key_PRIOR = false;
-                if (e.MakeCode == S_NEXT)
+                if (args.MakeCode == S_NEXT)
                     Key_NEXT = false;
-                if (e.MakeCode == S_END)
+                if (args.MakeCode == S_END)
                     Key_END = false;
-                if (e.MakeCode == S_HOME)
+                if (args.MakeCode == S_HOME)
                     Key_HOME = false;
-                if (e.MakeCode == S_LEFT)
+                if (args.MakeCode == S_LEFT)
                     Key_LEFT = false;
-                if (e.MakeCode == S_UP)
+                if (args.MakeCode == S_UP)
                     Key_UP = false;
-                if (e.MakeCode == S_RIGHT)
+                if (args.MakeCode == S_RIGHT)
                     Key_RIGHT = false;
-                if (e.MakeCode == S_DOWN)
+                if (args.MakeCode == S_DOWN)
                     Key_DOWN = false;
-                if (e.MakeCode == S_SELECT)
+                if (args.MakeCode == S_SELECT)
                     Key_SELECT = false;
-                if (e.MakeCode == S_PRINT)
+                if (args.MakeCode == S_PRINT)
                     Key_PRINT = false;
-                if (e.MakeCode == S_EXECUTE)
+                if (args.MakeCode == S_EXECUTE)
                     Key_EXECUTE = false;
-                if (e.MakeCode == S_SNAPSHOT)
+                if (args.MakeCode == S_SNAPSHOT)
                     Key_SNAPSHOT = false;
-                if (e.MakeCode == S_INSERT)
+                if (args.MakeCode == S_INSERT)
                     Key_INSERT = false;
-                if (e.MakeCode == S_DELETE)
+                if (args.MakeCode == S_DELETE)
                     Key_DELETE = false;
-                if (e.MakeCode == S_HELP)
+                if (args.MakeCode == S_HELP)
                     Key_HELP = false;
-                if (e.MakeCode == S_APOSTROPHE)
+                if (args.MakeCode == S_APOSTROPHE)
                     Key_APOSTROPHE = false;
-                if (e.MakeCode == S_0)
+                if (args.MakeCode == S_0)
                     Key_0 = false;
-                if (e.MakeCode == S_1)
+                if (args.MakeCode == S_1)
                     Key_1 = false;
-                if (e.MakeCode == S_2)
+                if (args.MakeCode == S_2)
                     Key_2 = false;
-                if (e.MakeCode == S_3)
+                if (args.MakeCode == S_3)
                     Key_3 = false;
-                if (e.MakeCode == S_4)
+                if (args.MakeCode == S_4)
                     Key_4 = false;
-                if (e.MakeCode == S_5)
+                if (args.MakeCode == S_5)
                     Key_5 = false;
-                if (e.MakeCode == S_6)
+                if (args.MakeCode == S_6)
                     Key_6 = false;
-                if (e.MakeCode == S_7)
+                if (args.MakeCode == S_7)
                     Key_7 = false;
-                if (e.MakeCode == S_8)
+                if (args.MakeCode == S_8)
                     Key_8 = false;
-                if (e.MakeCode == S_9)
+                if (args.MakeCode == S_9)
                     Key_9 = false;
-                if (e.MakeCode == S_A)
+                if (args.MakeCode == S_A)
                     Key_A = false;
-                if (e.MakeCode == S_B)
+                if (args.MakeCode == S_B)
                     Key_B = false;
-                if (e.MakeCode == S_C)
+                if (args.MakeCode == S_C)
                     Key_C = false;
-                if (e.MakeCode == S_D)
+                if (args.MakeCode == S_D)
                     Key_D = false;
-                if (e.MakeCode == S_E)
+                if (args.MakeCode == S_E)
                     Key_E = false;
-                if (e.MakeCode == S_F)
+                if (args.MakeCode == S_F)
                     Key_F = false;
-                if (e.MakeCode == S_G)
+                if (args.MakeCode == S_G)
                     Key_G = false;
-                if (e.MakeCode == S_H)
+                if (args.MakeCode == S_H)
                     Key_H = false;
-                if (e.MakeCode == S_I)
+                if (args.MakeCode == S_I)
                     Key_I = false;
-                if (e.MakeCode == S_J)
+                if (args.MakeCode == S_J)
                     Key_J = false;
-                if (e.MakeCode == S_K)
+                if (args.MakeCode == S_K)
                     Key_K = false;
-                if (e.MakeCode == S_L)
+                if (args.MakeCode == S_L)
                     Key_L = false;
-                if (e.MakeCode == S_M)
+                if (args.MakeCode == S_M)
                     Key_M = false;
-                if (e.MakeCode == S_N)
+                if (args.MakeCode == S_N)
                     Key_N = false;
-                if (e.MakeCode == S_O)
+                if (args.MakeCode == S_O)
                     Key_O = false;
-                if (e.MakeCode == S_P)
+                if (args.MakeCode == S_P)
                     Key_P = false;
-                if (e.MakeCode == S_Q)
+                if (args.MakeCode == S_Q)
                     Key_Q = false;
-                if (e.MakeCode == S_R)
+                if (args.MakeCode == S_R)
                     Key_R = false;
-                if (e.MakeCode == S_S)
+                if (args.MakeCode == S_S)
                     Key_S = false;
-                if (e.MakeCode == S_T)
+                if (args.MakeCode == S_T)
                     Key_T = false;
-                if (e.MakeCode == S_U)
+                if (args.MakeCode == S_U)
                     Key_U = false;
-                if (e.MakeCode == S_V)
+                if (args.MakeCode == S_V)
                     Key_V = false;
-                if (e.MakeCode == S_W)
+                if (args.MakeCode == S_W)
                     Key_W = false;
-                if (e.MakeCode == S_X)
+                if (args.MakeCode == S_X)
                     Key_X = false;
-                if (e.MakeCode == S_Y)
+                if (args.MakeCode == S_Y)
                     Key_Y = false;
-                if (e.MakeCode == S_Z)
+                if (args.MakeCode == S_Z)
                     Key_Z = false;
-                if (e.MakeCode == S_LWIN)
+                if (args.MakeCode == S_LWIN)
                     Key_LWIN = false;
-                if (e.MakeCode == S_RWIN)
+                if (args.MakeCode == S_RWIN)
                     Key_RWIN = false;
-                if (e.MakeCode == S_APPS)
+                if (args.MakeCode == S_APPS)
                     Key_APPS = false;
-                if (e.MakeCode == S_SLEEP)
+                if (args.MakeCode == S_SLEEP)
                     Key_SLEEP = false;
-                if (e.MakeCode == S_NUMPAD0)
+                if (args.MakeCode == S_NUMPAD0)
                     Key_NUMPAD0 = false;
-                if (e.MakeCode == S_NUMPAD1)
+                if (args.MakeCode == S_NUMPAD1)
                     Key_NUMPAD1 = false;
-                if (e.MakeCode == S_NUMPAD2)
+                if (args.MakeCode == S_NUMPAD2)
                     Key_NUMPAD2 = false;
-                if (e.MakeCode == S_NUMPAD3)
+                if (args.MakeCode == S_NUMPAD3)
                     Key_NUMPAD3 = false;
-                if (e.MakeCode == S_NUMPAD4)
+                if (args.MakeCode == S_NUMPAD4)
                     Key_NUMPAD4 = false;
-                if (e.MakeCode == S_NUMPAD5)
+                if (args.MakeCode == S_NUMPAD5)
                     Key_NUMPAD5 = false;
-                if (e.MakeCode == S_NUMPAD6)
+                if (args.MakeCode == S_NUMPAD6)
                     Key_NUMPAD6 = false;
-                if (e.MakeCode == S_NUMPAD7)
+                if (args.MakeCode == S_NUMPAD7)
                     Key_NUMPAD7 = false;
-                if (e.MakeCode == S_NUMPAD8)
+                if (args.MakeCode == S_NUMPAD8)
                     Key_NUMPAD8 = false;
-                if (e.MakeCode == S_NUMPAD9)
+                if (args.MakeCode == S_NUMPAD9)
                     Key_NUMPAD9 = false;
-                if (e.MakeCode == S_MULTIPLY)
+                if (args.MakeCode == S_MULTIPLY)
                     Key_MULTIPLY = false;
-                if (e.MakeCode == S_ADD)
+                if (args.MakeCode == S_ADD)
                     Key_ADD = false;
-                if (e.MakeCode == S_SEPARATOR)
+                if (args.MakeCode == S_SEPARATOR)
                     Key_SEPARATOR = false;
-                if (e.MakeCode == S_SUBTRACT)
+                if (args.MakeCode == S_SUBTRACT)
                     Key_SUBTRACT = false;
-                if (e.MakeCode == S_DECIMAL)
+                if (args.MakeCode == S_DECIMAL)
                     Key_DECIMAL = false;
-                if (e.MakeCode == S_DIVIDE)
+                if (args.MakeCode == S_DIVIDE)
                     Key_DIVIDE = false;
-                if (e.MakeCode == S_F1)
+                if (args.MakeCode == S_F1)
                     Key_F1 = false;
-                if (e.MakeCode == S_F2)
+                if (args.MakeCode == S_F2)
                     Key_F2 = false;
-                if (e.MakeCode == S_F3)
+                if (args.MakeCode == S_F3)
                     Key_F3 = false;
-                if (e.MakeCode == S_F4)
+                if (args.MakeCode == S_F4)
                     Key_F4 = false;
-                if (e.MakeCode == S_F5)
+                if (args.MakeCode == S_F5)
                     Key_F5 = false;
-                if (e.MakeCode == S_F6)
+                if (args.MakeCode == S_F6)
                     Key_F6 = false;
-                if (e.MakeCode == S_F7)
+                if (args.MakeCode == S_F7)
                     Key_F7 = false;
-                if (e.MakeCode == S_F8)
+                if (args.MakeCode == S_F8)
                     Key_F8 = false;
-                if (e.MakeCode == S_F9)
+                if (args.MakeCode == S_F9)
                     Key_F9 = false;
-                if (e.MakeCode == S_F10)
+                if (args.MakeCode == S_F10)
                     Key_F10 = false;
-                if (e.MakeCode == S_F11)
+                if (args.MakeCode == S_F11)
                     Key_F11 = false;
-                if (e.MakeCode == S_F12)
+                if (args.MakeCode == S_F12)
                     Key_F12 = false;
-                if (e.MakeCode == S_F13)
+                if (args.MakeCode == S_F13)
                     Key_F13 = false;
-                if (e.MakeCode == S_F14)
+                if (args.MakeCode == S_F14)
                     Key_F14 = false;
-                if (e.MakeCode == S_F15)
+                if (args.MakeCode == S_F15)
                     Key_F15 = false;
-                if (e.MakeCode == S_F16)
+                if (args.MakeCode == S_F16)
                     Key_F16 = false;
-                if (e.MakeCode == S_F17)
+                if (args.MakeCode == S_F17)
                     Key_F17 = false;
-                if (e.MakeCode == S_F18)
+                if (args.MakeCode == S_F18)
                     Key_F18 = false;
-                if (e.MakeCode == S_F19)
+                if (args.MakeCode == S_F19)
                     Key_F19 = false;
-                if (e.MakeCode == S_F20)
+                if (args.MakeCode == S_F20)
                     Key_F20 = false;
-                if (e.MakeCode == S_F21)
+                if (args.MakeCode == S_F21)
                     Key_F21 = false;
-                if (e.MakeCode == S_F22)
+                if (args.MakeCode == S_F22)
                     Key_F22 = false;
-                if (e.MakeCode == S_F23)
+                if (args.MakeCode == S_F23)
                     Key_F23 = false;
-                if (e.MakeCode == S_F24)
+                if (args.MakeCode == S_F24)
                     Key_F24 = false;
-                if (e.MakeCode == S_NUMLOCK)
+                if (args.MakeCode == S_NUMLOCK)
                     Key_NUMLOCK = false;
-                if (e.MakeCode == S_SCROLL)
+                if (args.MakeCode == S_SCROLL)
                     Key_SCROLL = false;
-                if (e.MakeCode == S_LeftShift)
+                if (args.MakeCode == S_LeftShift)
                     Key_LeftShift = false;
-                if (e.MakeCode == S_RightShift)
+                if (args.MakeCode == S_RightShift)
                     Key_RightShift = false;
-                if (e.MakeCode == S_LeftControl)
+                if (args.MakeCode == S_LeftControl)
                     Key_LeftControl = false;
-                if (e.MakeCode == S_RightControl)
+                if (args.MakeCode == S_RightControl)
                     Key_RightControl = false;
-                if (e.MakeCode == S_LMENU)
+                if (args.MakeCode == S_LMENU)
                     Key_LMENU = false;
-                if (e.MakeCode == S_RMENU)
+                if (args.MakeCode == S_RMENU)
                     Key_RMENU = false;
-                if (e.MakeCode == S_BROWSER_BACK)
+                if (args.MakeCode == S_BROWSER_BACK)
                     Key_BROWSER_BACK = false;
-                if (e.MakeCode == S_BROWSER_FORWARD)
+                if (args.MakeCode == S_BROWSER_FORWARD)
                     Key_BROWSER_FORWARD = false;
-                if (e.MakeCode == S_BROWSER_REFRESH)
+                if (args.MakeCode == S_BROWSER_REFRESH)
                     Key_BROWSER_REFRESH = false;
-                if (e.MakeCode == S_BROWSER_STOP)
+                if (args.MakeCode == S_BROWSER_STOP)
                     Key_BROWSER_STOP = false;
-                if (e.MakeCode == S_BROWSER_SEARCH)
+                if (args.MakeCode == S_BROWSER_SEARCH)
                     Key_BROWSER_SEARCH = false;
-                if (e.MakeCode == S_BROWSER_FAVORITES)
+                if (args.MakeCode == S_BROWSER_FAVORITES)
                     Key_BROWSER_FAVORITES = false;
-                if (e.MakeCode == S_BROWSER_HOME)
+                if (args.MakeCode == S_BROWSER_HOME)
                     Key_BROWSER_HOME = false;
-                if (e.MakeCode == S_VOLUME_MUTE)
+                if (args.MakeCode == S_VOLUME_MUTE)
                     Key_VOLUME_MUTE = false;
-                if (e.MakeCode == S_VOLUME_DOWN)
+                if (args.MakeCode == S_VOLUME_DOWN)
                     Key_VOLUME_DOWN = false;
-                if (e.MakeCode == S_VOLUME_UP)
+                if (args.MakeCode == S_VOLUME_UP)
                     Key_VOLUME_UP = false;
-                if (e.MakeCode == S_MEDIA_NEXT_TRACK)
+                if (args.MakeCode == S_MEDIA_NEXT_TRACK)
                     Key_MEDIA_NEXT_TRACK = false;
-                if (e.MakeCode == S_MEDIA_PREV_TRACK)
+                if (args.MakeCode == S_MEDIA_PREV_TRACK)
                     Key_MEDIA_PREV_TRACK = false;
-                if (e.MakeCode == S_MEDIA_STOP)
+                if (args.MakeCode == S_MEDIA_STOP)
                     Key_MEDIA_STOP = false;
-                if (e.MakeCode == S_MEDIA_PLAY_PAUSE)
+                if (args.MakeCode == S_MEDIA_PLAY_PAUSE)
                     Key_MEDIA_PLAY_PAUSE = false;
-                if (e.MakeCode == S_LAUNCH_MAIL)
+                if (args.MakeCode == S_LAUNCH_MAIL)
                     Key_LAUNCH_MAIL = false;
-                if (e.MakeCode == S_LAUNCH_MEDIA_SELECT)
+                if (args.MakeCode == S_LAUNCH_MEDIA_SELECT)
                     Key_LAUNCH_MEDIA_SELECT = false;
-                if (e.MakeCode == S_LAUNCH_APP1)
+                if (args.MakeCode == S_LAUNCH_APP1)
                     Key_LAUNCH_APP1 = false;
-                if (e.MakeCode == S_LAUNCH_APP2)
+                if (args.MakeCode == S_LAUNCH_APP2)
                     Key_LAUNCH_APP2 = false;
-                if (e.MakeCode == S_OEM_1)
+                if (args.MakeCode == S_OEM_1)
                     Key_OEM_1 = false;
-                if (e.MakeCode == S_OEM_PLUS)
+                if (args.MakeCode == S_OEM_PLUS)
                     Key_OEM_PLUS = false;
-                if (e.MakeCode == S_OEM_COMMA)
+                if (args.MakeCode == S_OEM_COMMA)
                     Key_OEM_COMMA = false;
-                if (e.MakeCode == S_OEM_MINUS)
+                if (args.MakeCode == S_OEM_MINUS)
                     Key_OEM_MINUS = false;
-                if (e.MakeCode == S_OEM_PERIOD)
+                if (args.MakeCode == S_OEM_PERIOD)
                     Key_OEM_PERIOD = false;
-                if (e.MakeCode == S_OEM_2)
+                if (args.MakeCode == S_OEM_2)
                     Key_OEM_2 = false;
-                if (e.MakeCode == S_OEM_3)
+                if (args.MakeCode == S_OEM_3)
                     Key_OEM_3 = false;
-                if (e.MakeCode == S_OEM_4)
+                if (args.MakeCode == S_OEM_4)
                     Key_OEM_4 = false;
-                if (e.MakeCode == S_OEM_5)
+                if (args.MakeCode == S_OEM_5)
                     Key_OEM_5 = false;
-                if (e.MakeCode == S_OEM_6)
+                if (args.MakeCode == S_OEM_6)
                     Key_OEM_6 = false;
-                if (e.MakeCode == S_OEM_7)
+                if (args.MakeCode == S_OEM_7)
                     Key_OEM_7 = false;
-                if (e.MakeCode == S_OEM_8)
+                if (args.MakeCode == S_OEM_8)
                     Key_OEM_8 = false;
-                if (e.MakeCode == S_OEM_102)
+                if (args.MakeCode == S_OEM_102)
                     Key_OEM_102 = false;
-                if (e.MakeCode == S_PROCESSKEY)
+                if (args.MakeCode == S_PROCESSKEY)
                     Key_PROCESSKEY = false;
-                if (e.MakeCode == S_PACKET)
+                if (args.MakeCode == S_PACKET)
                     Key_PACKET = false;
-                if (e.MakeCode == S_ATTN)
+                if (args.MakeCode == S_ATTN)
                     Key_ATTN = false;
-                if (e.MakeCode == S_CRSEL)
+                if (args.MakeCode == S_CRSEL)
                     Key_CRSEL = false;
-                if (e.MakeCode == S_EXSEL)
+                if (args.MakeCode == S_EXSEL)
                     Key_EXSEL = false;
-                if (e.MakeCode == S_EREOF)
+                if (args.MakeCode == S_EREOF)
                     Key_EREOF = false;
-                if (e.MakeCode == S_PLAY)
+                if (args.MakeCode == S_PLAY)
                     Key_PLAY = false;
-                if (e.MakeCode == S_ZOOM)
+                if (args.MakeCode == S_ZOOM)
                     Key_ZOOM = false;
-                if (e.MakeCode == S_NONAME)
+                if (args.MakeCode == S_NONAME)
                     Key_NONAME = false;
-                if (e.MakeCode == S_PA1)
+                if (args.MakeCode == S_PA1)
                     Key_PA1 = false;
-                if (e.MakeCode == S_OEM_CLEAR)
+                if (args.MakeCode == S_OEM_CLEAR)
                     Key_OEM_CLEAR = false;
             }
         }
