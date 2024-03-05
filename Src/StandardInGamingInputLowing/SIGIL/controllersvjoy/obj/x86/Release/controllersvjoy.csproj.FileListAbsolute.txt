@@ -1,0 +1,8 @@
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersvjoy\bin\x86\Release\controllersvjoy.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersvjoy\bin\x86\Release\controllersvjoy.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersvjoy\bin\x86\Release\vJoyInterfaceWrap.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersvjoy\obj\x86\Release\controllersvjoy.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersvjoy\obj\x86\Release\controllersvjoy.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersvjoy\obj\x86\Release\controll.768CB0DA.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersvjoy\obj\x86\Release\controllersvjoy.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\controllersvjoy\obj\x86\Release\controllersvjoy.pdb

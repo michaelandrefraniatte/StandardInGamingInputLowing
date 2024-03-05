@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using OpenWithSingleInstance;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace SIGIL
 {
@@ -3173,7 +3174,9 @@ namespace SIGIL
             parameters.GenerateExecutable = false;
             parameters.GenerateInMemory = true;
             parameters.IncludeDebugInformation = false;
-            parameters.CompilerOptions = "/optimize";
+            parameters.TreatWarningsAsErrors = false;
+            parameters.WarningLevel = 0;
+            parameters.CompilerOptions = "/optimize+ /platform:x86 /unsafe";
             if (code.Contains("using System;"))
                 parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.dll");
             if (code.Contains("using System.Windows.Forms;"))
