@@ -1,6 +1,5 @@
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\bin\Release\Keyboardrawinputs.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\bin\Release\Keyboardrawinputs.pdb
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\bin\Release\SharpDX.RawInput.xml
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\obj\Release\Keyboardrawinputs.csproj.AssemblyReference.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\obj\Release\Keyboardrawinputs.Form1.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\obj\Release\Keyboardrawinputs.csproj.GenerateResource.cache

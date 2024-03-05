@@ -1,6 +1,5 @@
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouserawinputs\bin\Release\Mouserawinputs.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouserawinputs\bin\Release\Mouserawinputs.pdb
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouserawinputs\bin\Release\SharpDX.RawInput.xml
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouserawinputs\obj\Release\Mouserawinputs.csproj.AssemblyReference.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouserawinputs\obj\Release\Mouserawinputs.Form1.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouserawinputs\obj\Release\Mouserawinputs.csproj.GenerateResource.cache
