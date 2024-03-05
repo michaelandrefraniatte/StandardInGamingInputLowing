@@ -1,0 +1,11 @@
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\bin\Debug\Mouserawinputs.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\bin\Debug\Mouserawinputs.pdb
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\bin\Debug\SharpDX.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\bin\Debug\SharpDX.RawInput.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\obj\Debug\Mouserawinputs.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\obj\Debug\Mouserawinputs.Form1.resources
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\obj\Debug\Mouserawinputs.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\obj\Debug\Mouserawinputs.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\obj\Debug\Mouseraw.77F1A37E.Up2Date
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\obj\Debug\Mouserawinputs.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\obj\Debug\Mouserawinputs.pdb

@@ -7,3 +7,12 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouserawinputs\obj\Release\Mouseraw.77F1A37E.Up2Date
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouserawinputs\obj\Release\Mouserawinputs.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouserawinputs\obj\Release\Mouserawinputs.pdb
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\bin\Release\Mouserawinputs.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\bin\Release\Mouserawinputs.pdb
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\obj\Release\Mouserawinputs.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\obj\Release\Mouserawinputs.Form1.resources
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\obj\Release\Mouserawinputs.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\obj\Release\Mouserawinputs.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\obj\Release\Mouseraw.77F1A37E.Up2Date
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\obj\Release\Mouserawinputs.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Mouserawinputs\obj\Release\Mouserawinputs.pdb

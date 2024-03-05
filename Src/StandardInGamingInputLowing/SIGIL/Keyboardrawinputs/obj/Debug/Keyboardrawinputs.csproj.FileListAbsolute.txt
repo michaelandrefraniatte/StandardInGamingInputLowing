@@ -1,0 +1,11 @@
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawinputs\bin\Debug\Keyboardrawinputs.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawinputs\bin\Debug\Keyboardrawinputs.pdb
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawinputs\bin\Debug\SharpDX.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawinputs\bin\Debug\SharpDX.RawInput.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawinputs\obj\Debug\Keyboardrawinputs.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawinputs\obj\Debug\Keyboardrawinputs.Form1.resources
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawinputs\obj\Debug\Keyboardrawinputs.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawinputs\obj\Debug\Keyboardrawinputs.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawinputs\obj\Debug\Keyboard.492BAFF2.Up2Date
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawinputs\obj\Debug\Keyboardrawinputs.dll
+C:\Users\micha\Documents\github\ControllerHandle\Src\RawInputsTest\Keyboardrawinputs\obj\Debug\Keyboardrawinputs.pdb

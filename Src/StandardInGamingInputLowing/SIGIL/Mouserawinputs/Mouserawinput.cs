@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Mouserawinputs;
 using SharpDX.Multimedia;
 using SharpDX.RawInput;
+using SharpDX;
 
 namespace MouseRawInputsAPI
 {
