@@ -3172,11 +3172,11 @@ namespace SIGIL
             code = fastColoredTextBox1.Text;
             parameters = new System.CodeDom.Compiler.CompilerParameters();
             parameters.GenerateExecutable = false;
-            parameters.GenerateInMemory = true;
-            parameters.IncludeDebugInformation = false;
+            parameters.GenerateInMemory = false;
+            parameters.IncludeDebugInformation = true;
             parameters.TreatWarningsAsErrors = false;
             parameters.WarningLevel = 0;
-            parameters.CompilerOptions = "/optimize+ /platform:x86 /unsafe";
+            parameters.CompilerOptions = "/optimize+ /platform:x86 /target:winmdobj /unsafe";
             if (code.Contains("using System;"))
                 parameters.ReferencedAssemblies.Add(Application.StartupPath + @"\System.dll");
             if (code.Contains("using System.Windows.Forms;"))
