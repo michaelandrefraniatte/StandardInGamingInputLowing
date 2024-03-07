@@ -1482,6 +1482,16 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"\bMouseXnaHook\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bmxh\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bkxh\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bKeyboardRawHooksAPI\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bMouseRawHooksAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bKeyboardRawHook\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bMouseRawHook\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bmrh\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bkrh\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bmrh1\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bkrh1\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bmrh2\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bkrh2\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2869,7 +2879,17 @@ namespace SIGIL
                 "KeyboardXnaHook",
                 "MouseXnaHook",
                 "mxh",
-                "kxh"
+                "kxh",
+                "KeyboardRawHooksAPI",
+                "MouseRawHooksAPI",
+                "KeyboardRawHook",
+                "MouseRawHook",
+                "mrh",
+                "krh",
+                "mrh1",
+                "krh1",
+                "mrh2",
+                "krh2"
             };
         }
         private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
@@ -3271,6 +3291,10 @@ namespace SIGIL
                 AddAssembly("Keyboardxnahook");
             if (code.Contains("using MouseXnaHookAPI;"))
                 AddAssembly("Mousexnahook");
+            if (code.Contains("using KeyboardRawHooksAPI;"))
+                AddAssembly("Keyboardrawhooks");
+            if (code.Contains("using MouseRawHooksAPI;"))
+                AddAssembly("Mouserawhooks");
         }
         private void AddAssembly(string dllName)
         {

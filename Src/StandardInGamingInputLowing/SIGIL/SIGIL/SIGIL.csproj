@@ -241,6 +241,10 @@
       <Project>{beb50b3f-8552-444e-bd3f-d930607b60f6}</Project>
       <Name>Keyboardinputs</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Keyboardrawhooks\Keyboardrawhooks.csproj">
+      <Project>{072de04a-a2cd-4e45-b931-714622ec7ae6}</Project>
+      <Name>Keyboardrawhooks</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Keyboardrawinputs\Keyboardrawinputs.csproj">
       <Project>{8d0b0f90-2537-4011-9bb0-5753eadc8dad}</Project>
       <Name>Keyboardrawinputs</Name>
@@ -260,6 +264,10 @@
     <ProjectReference Include="..\Mouseinputs\Mouseinputs.csproj">
       <Project>{1ed48639-04a4-4cae-a034-52de4088979d}</Project>
       <Name>Mouseinputs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mouserawhooks\Mouserawhooks.csproj">
+      <Project>{02ae4f30-a16b-4edb-ad2d-ea90667437cc}</Project>
+      <Name>Mouserawhooks</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mouserawinputs\Mouserawinputs.csproj">
       <Project>{ec6d5517-31c5-4503-a43d-7c677d078338}</Project>
