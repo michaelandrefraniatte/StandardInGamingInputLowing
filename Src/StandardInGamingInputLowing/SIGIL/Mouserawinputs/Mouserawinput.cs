@@ -25,7 +25,7 @@ namespace MouseRawInputsAPI
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
-            Device.RegisterDevice(UsagePage.Generic, UsageId.GenericMouse, DeviceFlags.None);
+            Device.RegisterDevice(UsagePage.Generic, UsageId.GenericMouse, DeviceFlags.InputSink, form1.Handle);
             Device.MouseInput += Device_MouseInput;
             running = true;
         }

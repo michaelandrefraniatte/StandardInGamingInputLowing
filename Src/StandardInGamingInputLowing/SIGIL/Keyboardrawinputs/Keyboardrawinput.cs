@@ -25,7 +25,7 @@ namespace KeyboardRawInputsAPI
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
-            Device.RegisterDevice(UsagePage.Generic, UsageId.GenericKeyboard, DeviceFlags.None);
+            Device.RegisterDevice(UsagePage.Generic, UsageId.GenericKeyboard, DeviceFlags.InputSink, form1.Handle);
             Device.KeyboardInput += Device_KeyboardInput;
             running = true;
         }
