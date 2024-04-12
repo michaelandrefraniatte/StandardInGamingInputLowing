@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keyboardrawhooks", "Keyboar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mouserawhooks", "Mouserawhooks\Mouserawhooks.csproj", "{02AE4F30-A16B-4EDB-AD2D-EA90667437CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scalingfactor", "Scalingfactor\Scalingfactor.csproj", "{3754DDA2-F2A0-41BA-9551-50542499FFFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -331,6 +333,14 @@ Global
 		{02AE4F30-A16B-4EDB-AD2D-EA90667437CC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{02AE4F30-A16B-4EDB-AD2D-EA90667437CC}.Release|x86.ActiveCfg = Release|Any CPU
 		{02AE4F30-A16B-4EDB-AD2D-EA90667437CC}.Release|x86.Build.0 = Release|Any CPU
+		{3754DDA2-F2A0-41BA-9551-50542499FFFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3754DDA2-F2A0-41BA-9551-50542499FFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3754DDA2-F2A0-41BA-9551-50542499FFFF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3754DDA2-F2A0-41BA-9551-50542499FFFF}.Debug|x86.Build.0 = Debug|Any CPU
+		{3754DDA2-F2A0-41BA-9551-50542499FFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3754DDA2-F2A0-41BA-9551-50542499FFFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3754DDA2-F2A0-41BA-9551-50542499FFFF}.Release|x86.ActiveCfg = Release|Any CPU
+		{3754DDA2-F2A0-41BA-9551-50542499FFFF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

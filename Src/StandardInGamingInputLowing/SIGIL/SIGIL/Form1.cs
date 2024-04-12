@@ -1492,6 +1492,10 @@ namespace SIGIL
                 range.SetStyle(StyleObject, new Regex(@"\bkrh1\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bmrh2\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bkrh2\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bScalingFactorAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bScalingFactor\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bsf\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bscalingfactor\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2889,7 +2893,11 @@ namespace SIGIL
                 "mrh1",
                 "krh1",
                 "mrh2",
-                "krh2"
+                "krh2",
+                "ScalingFactorAPI",
+                "ScalingFactor",
+                "sf",
+                "scalingfactor"
             };
         }
         private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
@@ -3295,6 +3303,8 @@ namespace SIGIL
                 AddAssembly("Keyboardrawhooks");
             if (code.Contains("using MouseRawHooksAPI;"))
                 AddAssembly("Mouserawhooks");
+            if (code.Contains("using ScalingFactorAPI;"))
+                AddAssembly("Scalingfactor");
         }
         private void AddAssembly(string dllName)
         {

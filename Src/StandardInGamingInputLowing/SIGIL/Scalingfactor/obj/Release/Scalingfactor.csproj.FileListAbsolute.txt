@@ -1,0 +1,8 @@
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Scalingfactor\bin\Release\Scalingfactor.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Scalingfactor\bin\Release\Scalingfactor.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Scalingfactor\obj\Release\Scalingfactor.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Scalingfactor\obj\Release\Scalingfactor.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Scalingfactor\obj\Release\Scalingfactor.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Scalingfactor\obj\Release\Scalingfactor.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Scalingfactor\obj\Release\Scalingfactor.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Scalingfactor\obj\Release\Scalingfactor.pdb
