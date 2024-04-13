@@ -75,8 +75,7 @@ namespace ScalingFactorAPI
                 DEVMODE dm = new DEVMODE();
                 dm.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
                 EnumDisplaySettings(screen.DeviceName, -1, ref dm);
-                decimal ratio = Math.Round(Decimal.Divide(dm.dmPelsWidth, screen.Bounds.Width), 2);
-                scalingfactor = Convert.ToSingle(ratio);
+                scalingfactor = (double)dm.dmPelsWidth / (double)screen.Bounds.Width;
                 break;
             }
         }
