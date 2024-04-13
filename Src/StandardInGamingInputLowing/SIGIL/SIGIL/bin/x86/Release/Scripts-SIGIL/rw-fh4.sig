@@ -26,7 +26,7 @@ namespace StringToCode
         private static bool running;
         private static bool Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_lefttrigger, Controller_Send_righttrigger, Controller_Send_xbox;
         private static double Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition;
-        private static double mousex = 0f, mousey = 0f, dzx = 15.0f, dzy = 0f, countrightbumperleftbumper = 0, countstartback = 0, countleftbumper = 0, countback = 0;
+        private static double mousex = 0f, mousey = 0f, dzx = 14.0f, dzy = 0f, countrightbumperleftbumper = 0, countstartback = 0, countleftbumper = 0, countback = 0;
         private static bool getstate;
         private static int sleeptime = 1;
         private static int irmode = 0;
