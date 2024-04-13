@@ -77,6 +77,7 @@ namespace ScalingFactorAPI
                 EnumDisplaySettings(screen.DeviceName, -1, ref dm);
                 decimal ratio = Math.Round(Decimal.Divide(dm.dmPelsWidth, screen.Bounds.Width), 2);
                 scalingfactor = Convert.ToSingle(ratio);
+                break;
             }
         }
         [StructLayout(LayoutKind.Sequential)]
