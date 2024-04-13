@@ -47,7 +47,8 @@ namespace ScalingFactorAPI
                 System.Threading.Thread.Sleep(1000);
                 if (formvisible)
                 {
-                    string str = "scalingfactor : " + scalingfactor + Environment.NewLine;
+                    string str = "scalingfactorx : " + scalingfactorx + Environment.NewLine;
+                    str += "scalingfactory : " + scalingfactory + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }
@@ -60,7 +61,7 @@ namespace ScalingFactorAPI
         public void Init()
         {
         }
-        public double scalingfactor;
+        public double scalingfactorx, scalingfactory;
         public bool Scan(int number = 0)
         {
             this.number = number;
@@ -75,7 +76,8 @@ namespace ScalingFactorAPI
                 DEVMODE dm = new DEVMODE();
                 dm.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
                 EnumDisplaySettings(screen.DeviceName, -1, ref dm);
-                scalingfactor = (double)dm.dmPelsWidth / (double)screen.Bounds.Width;
+                scalingfactorx = (double)dm.dmPelsWidth / (double)screen.Bounds.Width;
+                scalingfactory = (double)dm.dmPelsHeight / (double)screen.Bounds.Height;
                 break;
             }
         }

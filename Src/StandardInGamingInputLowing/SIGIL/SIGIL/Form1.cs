@@ -1495,7 +1495,8 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"\bScalingFactorAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bScalingFactor\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bsf\b"));
-                range.SetStyle(StyleInput, new Regex(@"\bscalingfactor\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bscalingfactorx\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bscalingfactory\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2897,7 +2898,8 @@ namespace SIGIL
                 "ScalingFactorAPI",
                 "ScalingFactor",
                 "sf",
-                "scalingfactor"
+                "scalingfactorx",
+                "scalingfactory"
             };
         }
         private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
