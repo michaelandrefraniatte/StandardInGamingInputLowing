@@ -144,9 +144,33 @@ namespace StringToCode
                         getstate[0] = false;
                     }
                 }
+                valchanged(1, ki.KeyboardKeyPageDown);
+                if (wd[1] == 1 & !getstate[1])  
+                { 
+                    getstate[1] = true;
+                }
+                else 
+                { 
+                    if (wd[1] == 1 & getstate[1]) 
+                    {
+                        getstate[1] = false;
+                    }
+                }
+                valchanged(2, ki.KeyboardKeyPageUp);
+                if (wd[2] == 1 & !getstate[2])  
+                { 
+                    getstate[2] = true;
+                }
+                else 
+                { 
+                    if (wd[2] == 1 & getstate[2]) 
+                    {
+                        getstate[2] = false;
+                    }
+                }
                 if (getstate[0]) 
                 {
-                    if ((pollcount[1] < width | pollcount[2] < height) & ki.KeyboardKeyPageDown)
+                    if ((pollcount[1] < width | pollcount[2] < height) & getstate[1])
                     {
                         pollcount[0]++;
                         if (pollcount[0] == 1)
@@ -172,7 +196,7 @@ namespace StringToCode
                                 SendLeftClick = false;
                         }
                     }
-                    if ((pollcount[4] < width | pollcount[5] > 0) & ki.KeyboardKeyPageUp)
+                    if ((pollcount[4] < width | pollcount[5] > 0) & getstate[2])
                     {
                         pollcount[3]++;
                         if (pollcount[3] == 1)
