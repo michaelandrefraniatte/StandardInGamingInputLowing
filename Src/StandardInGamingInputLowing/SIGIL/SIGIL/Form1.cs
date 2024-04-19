@@ -236,6 +236,8 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"\bMain\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bWiiMotesAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bWiiMote\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bWiiMotesLibAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bWiiMoteLib\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bwm\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bwm1\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bwm2\b"));
@@ -1773,6 +1775,8 @@ namespace SIGIL
                 "Main",
                 "WiiMotesAPI",
                 "WiiMote",
+                "WiiMotesLibAPI",
+                "WiiMoteLib",
                 "SwitchProControllersAPI",
                 "SwitchProController",
                 "JoyconChargingGripsAPI",
@@ -3445,6 +3449,8 @@ namespace SIGIL
                 AddAssembly("Mouserawhooks");
             if (code.Contains("using ScalingFactorAPI;"))
                 AddAssembly("Scalingfactor");
+            if (code.Contains("using WiiMotesLibAPI;"))
+                AddAssembly("Wiimoteslib");
         }
         private void AddAssembly(string dllName)
         {
