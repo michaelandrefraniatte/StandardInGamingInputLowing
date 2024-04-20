@@ -1,4 +1,5 @@
 ﻿using NAudio.Wave;
+using System;
 using System.Runtime.InteropServices;
 
 namespace Sound
@@ -56,61 +57,73 @@ namespace Sound
             if (pathsound1 != "")
             {
                 audioFileReader[0] = new MediaFoundationReader(pathsound1);
+                waveOutDevice[0] = new WaveOutEvent();
                 waveOutDevice[0].Init(audioFileReader[0]);
             }
             if (pathsound2 != "")
             {
                 audioFileReader[1] = new MediaFoundationReader(pathsound2);
+                waveOutDevice[1] = new WaveOutEvent();
                 waveOutDevice[1].Init(audioFileReader[1]);
             }
             if (pathsound3 != "")
             {
                 audioFileReader[2] = new MediaFoundationReader(pathsound3);
+                waveOutDevice[2] = new WaveOutEvent();
                 waveOutDevice[2].Init(audioFileReader[2]);
             }
             if (pathsound4 != "")
             {
                 audioFileReader[3] = new MediaFoundationReader(pathsound4);
+                waveOutDevice[3] = new WaveOutEvent();
                 waveOutDevice[3].Init(audioFileReader[3]);
             }
             if (pathsound5 != "")
             {
                 audioFileReader[4] = new MediaFoundationReader(pathsound5);
+                waveOutDevice[4] = new WaveOutEvent();
                 waveOutDevice[4].Init(audioFileReader[4]);
             }
             if (pathsound6 != "")
             {
                 audioFileReader[5] = new MediaFoundationReader(pathsound6);
+                waveOutDevice[5] = new WaveOutEvent();
                 waveOutDevice[5].Init(audioFileReader[5]);
             }
             if (pathsound7 != "")
             {
                 audioFileReader[6] = new MediaFoundationReader(pathsound7);
+                waveOutDevice[6] = new WaveOutEvent();
                 waveOutDevice[6].Init(audioFileReader[6]);
             }
             if (pathsound8 != "")
             {
                 audioFileReader[7] = new MediaFoundationReader(pathsound8);
+                waveOutDevice[7] = new WaveOutEvent();
                 waveOutDevice[7].Init(audioFileReader[7]);
             }
             if (pathsound9 != "")
             {
                 audioFileReader[8] = new MediaFoundationReader(pathsound9);
+                waveOutDevice[8] = new WaveOutEvent();
                 waveOutDevice[8].Init(audioFileReader[8]);
             }
             if (pathsound10 != "")
             {
                 audioFileReader[9] = new MediaFoundationReader(pathsound10);
+                waveOutDevice[9] = new WaveOutEvent();
                 waveOutDevice[9].Init(audioFileReader[9]);
             }
             if (pathsound11 != "")
             {
                 audioFileReader[10] = new MediaFoundationReader(pathsound11);
+                waveOutDevice[10] = new WaveOutEvent();
                 waveOutDevice[10].Init(audioFileReader[10]);
             }
             if (pathsound12 != "")
             {
                 audioFileReader[11] = new MediaFoundationReader(pathsound12);
+                waveOutDevice[11] = new WaveOutEvent();
                 waveOutDevice[11].Init(audioFileReader[11]);
             }
         }
@@ -218,61 +231,85 @@ namespace Sound
             ValueChange[0] = sound1 ? 1 : 0;
             if (ValueChange._ValueChange[0] > 0f)
             {
+                audioFileReader[0].Position = 0;
+                audioFileReader[0].CurrentTime = TimeSpan.Zero;
                 waveOutDevice[0].Play();
             }
             ValueChange[1] = sound2 ? 1 : 0;
             if (ValueChange._ValueChange[1] > 0f)
             {
+                audioFileReader[1].Position = 0;
+                audioFileReader[1].CurrentTime = TimeSpan.Zero;
                 waveOutDevice[1].Play();
             }
             ValueChange[2] = sound3 ? 1 : 0;
             if (ValueChange._ValueChange[2] > 0f)
             {
+                audioFileReader[2].Position = 0;
+                audioFileReader[2].CurrentTime = TimeSpan.Zero;
                 waveOutDevice[2].Play();
             }
             ValueChange[3] = sound4 ? 1 : 0;
             if (ValueChange._ValueChange[3] > 0f)
             {
+                audioFileReader[3].Position = 0;
+                audioFileReader[3].CurrentTime = TimeSpan.Zero;
                 waveOutDevice[3].Play();
             }
             ValueChange[4] = sound5 ? 1 : 0;
             if (ValueChange._ValueChange[4] > 0f)
             {
+                audioFileReader[4].Position = 0;
+                audioFileReader[4].CurrentTime = TimeSpan.Zero;
                 waveOutDevice[4].Play();
             }
             ValueChange[5] = sound6 ? 1 : 0;
             if (ValueChange._ValueChange[5] > 0f)
             {
+                audioFileReader[5].Position = 0;
+                audioFileReader[5].CurrentTime = TimeSpan.Zero;
                 waveOutDevice[5].Play();
             }
             ValueChange[6] = sound7 ? 1 : 0;
             if (ValueChange._ValueChange[6] > 0f)
             {
+                audioFileReader[6].Position = 0;
+                audioFileReader[6].CurrentTime = TimeSpan.Zero;
                 waveOutDevice[6].Play();
             }
             ValueChange[7] = sound8 ? 1 : 0;
             if (ValueChange._ValueChange[7] > 0f)
             {
+                audioFileReader[7].Position = 0;
+                audioFileReader[7].CurrentTime = TimeSpan.Zero;
                 waveOutDevice[7].Play();
             }
             ValueChange[8] = sound9 ? 1 : 0;
             if (ValueChange._ValueChange[8] > 0f)
             {
+                audioFileReader[8].Position = 0;
+                audioFileReader[8].CurrentTime = TimeSpan.Zero;
                 waveOutDevice[8].Play();
             }
             ValueChange[9] = sound10 ? 1 : 0;
             if (ValueChange._ValueChange[9] > 0f)
             {
+                audioFileReader[9].Position = 0;
+                audioFileReader[9].CurrentTime = TimeSpan.Zero;
                 waveOutDevice[9].Play();
             }
             ValueChange[10] = sound11 ? 1 : 0;
             if (ValueChange._ValueChange[10] > 0f)
             {
+                audioFileReader[10].Position = 0;
+                audioFileReader[10].CurrentTime = TimeSpan.Zero;
                 waveOutDevice[10].Play();
             }
             ValueChange[11] = sound12 ? 1 : 0;
             if (ValueChange._ValueChange[11] > 0f)
             {
+                audioFileReader[11].Position = 0;
+                audioFileReader[11].CurrentTime = TimeSpan.Zero;
                 waveOutDevice[11].Play();
             }
         }
