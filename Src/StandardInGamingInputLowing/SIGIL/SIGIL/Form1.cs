@@ -1556,6 +1556,33 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStatePedalVelocity\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateRawJoystickX\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateRawJoystickY\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bSound\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bPlayer\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bplayer\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathsound1\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathsound2\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathsound3\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathsound4\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathsound5\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathsound6\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathsound7\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathsound8\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathsound9\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathsound10\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathsound11\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathsound12\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bsound1\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bsound2\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bsound3\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bsound4\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bsound5\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bsound6\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bsound7\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bsound8\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bsound9\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bsound10\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bsound11\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\bsound12\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2343,6 +2370,33 @@ namespace SIGIL
                 "MouseRawHook",
                 "ScalingFactorAPI",
                 "ScalingFactor",
+                "Sound",
+                "Player",
+                "player",
+                "pathsound1",
+                "pathsound2",
+                "pathsound3",
+                "pathsound4",
+                "pathsound5",
+                "pathsound6",
+                "pathsound7",
+                "pathsound8",
+                "pathsound9",
+                "pathsound10",
+                "pathsound11",
+                "pathsound12",
+                "sound1",
+                "sound2",
+                "sound3",
+                "sound4",
+                "sound5",
+                "sound6",
+                "sound7",
+                "sound8",
+                "sound9",
+                "sound10",
+                "sound11",
+                "sound12"
             };
             string[] methods = { 
                 "ToString()",
@@ -3563,6 +3617,8 @@ namespace SIGIL
                 AddAssembly("Scalingfactor");
             if (code.Contains("using WiiMotesLibAPI;"))
                 AddAssembly("Wiimoteslib");
+            if (code.Contains("using Sound;"))
+                AddAssembly("Sound");
         }
         private void AddAssembly(string dllName)
         {

@@ -290,6 +290,10 @@
       <Project>{1d9fb2c4-bbff-4933-bc58-af34d8c7c2c2}</Project>
       <Name>sendinputs</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Sound\Sound.csproj">
+      <Project>{895e9cf7-9fc1-473f-8150-f577cace3220}</Project>
+      <Name>Sound</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Speech\Speech.csproj">
       <Project>{2d4e8dde-67b9-46b6-a256-aefaf367df63}</Project>
       <Name>Speech</Name>
