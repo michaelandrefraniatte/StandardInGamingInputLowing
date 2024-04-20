@@ -1500,6 +1500,62 @@ namespace SIGIL
                 range.SetStyle(StyleObject, new Regex(@"\bsf\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bscalingfactorx\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bscalingfactory\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteGuitarStatePlus\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteGuitarStateMinus\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteGuitarStateStrumDown\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteGuitarStateStrumUp\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteGuitarStateFretBlue\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteGuitarStateFretGreen\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteGuitarStateFretOrange\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteGuitarStateFretRed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteGuitarStateFretYellow\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteGuitarStateRawJoystickX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteGuitarStateRawJoystickY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteGuitarStateRawWhammyBar\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateA\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateB\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateDown\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateHome\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateLeft\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateMinus\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStatePlus\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateRight\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateTriggerL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateTriggerR\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateUp\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateZL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateZR\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateRawJoystickLeftX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateRawJoystickLeftY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateRawJoystickRightX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateRawJoystickRightY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateRawTriggerL\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteClassicControllerStateRawTriggerR\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteBalanceBoardStateCenterOfGravityX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteBalanceBoardStateCenterOfGravityY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteBalanceBoardStateSensorValuesKgBottomLeft\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteBalanceBoardStateSensorValuesKgBottomRight\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteBalanceBoardStateSensorValuesKgTopLeft\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteBalanceBoardStateSensorValuesKgTopRight\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteBalanceBoardStateWeightKg\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateBlue\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateBlueVelocity\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateGreen\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateGreenVelocity\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateOrange\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateOrangeVelocity\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateRed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateRedVelocity\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateYellow\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateYellowVelocity\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateMinus\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStatePlus\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStatePedal\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStatePedalVelocity\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateRawJoystickX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateRawJoystickY\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -3016,7 +3072,63 @@ namespace SIGIL
                 "PS4ControllerButtonTouchpadPressed",
                 "PS4ControllerButtonMicPressed",
                 "scalingfactorx",
-                "scalingfactory"
+                "scalingfactory",
+                "WiimoteGuitarStatePlus",
+                "WiimoteGuitarStateMinus",
+                "WiimoteGuitarStateStrumDown",
+                "WiimoteGuitarStateStrumUp",
+                "WiimoteGuitarStateFretBlue",
+                "WiimoteGuitarStateFretGreen",
+                "WiimoteGuitarStateFretOrange",
+                "WiimoteGuitarStateFretRed",
+                "WiimoteGuitarStateFretYellow",
+                "WiimoteGuitarStateRawJoystickX",
+                "WiimoteGuitarStateRawJoystickY",
+                "WiimoteGuitarStateRawWhammyBar",
+                "WiimoteClassicControllerStateA",
+                "WiimoteClassicControllerStateB",
+                "WiimoteClassicControllerStateDown",
+                "WiimoteClassicControllerStateHome",
+                "WiimoteClassicControllerStateLeft",
+                "WiimoteClassicControllerStateMinus",
+                "WiimoteClassicControllerStatePlus",
+                "WiimoteClassicControllerStateRight",
+                "WiimoteClassicControllerStateTriggerL",
+                "WiimoteClassicControllerStateTriggerR",
+                "WiimoteClassicControllerStateUp",
+                "WiimoteClassicControllerStateX",
+                "WiimoteClassicControllerStateY",
+                "WiimoteClassicControllerStateZL",
+                "WiimoteClassicControllerStateZR",
+                "WiimoteClassicControllerStateRawJoystickLeftX",
+                "WiimoteClassicControllerStateRawJoystickLeftY",
+                "WiimoteClassicControllerStateRawJoystickRightX",
+                "WiimoteClassicControllerStateRawJoystickRightY",
+                "WiimoteClassicControllerStateRawTriggerL",
+                "WiimoteClassicControllerStateRawTriggerR",
+                "WiimoteBalanceBoardStateCenterOfGravityX",
+                "WiimoteBalanceBoardStateCenterOfGravityY",
+                "WiimoteBalanceBoardStateSensorValuesKgBottomLeft",
+                "WiimoteBalanceBoardStateSensorValuesKgBottomRight",
+                "WiimoteBalanceBoardStateSensorValuesKgTopLeft",
+                "WiimoteBalanceBoardStateSensorValuesKgTopRight",
+                "WiimoteBalanceBoardStateWeightKg",
+                "WiimoteDrumsStateBlue",
+                "WiimoteDrumsStateBlueVelocity",
+                "WiimoteDrumsStateGreen",
+                "WiimoteDrumsStateGreenVelocity",
+                "WiimoteDrumsStateOrange",
+                "WiimoteDrumsStateOrangeVelocity",
+                "WiimoteDrumsStateRed",
+                "WiimoteDrumsStateRedVelocity",
+                "WiimoteDrumsStateYellow",
+                "WiimoteDrumsStateYellowVelocity",
+                "WiimoteDrumsStateMinus",
+                "WiimoteDrumsStatePlus",
+                "WiimoteDrumsStatePedal",
+                "WiimoteDrumsStatePedalVelocity",
+                "WiimoteDrumsStateRawJoystickX",
+                "WiimoteDrumsStateRawJoystickY"
                 };
             string[] snippets = { "if(^)\n{\n}", "if(^)\n{\n}\nelse\n{\n}", "for(^;;)\n{\n}", "while(^)\n{\n}", "do${\n^}while();", "switch(^)\n{\n\tcase : break;\n}" };
             string[] declarationSnippets = {

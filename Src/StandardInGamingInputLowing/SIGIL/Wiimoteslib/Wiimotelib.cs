@@ -35,6 +35,8 @@ namespace WiiMotesLibAPI
         private bool WiimoteIR0foundcam, WiimoteIR1foundcam, WiimoteIRswitch, WiimoteIR1found, WiimoteIR0found;
         public double WiimoteNunchuckStateRawValuesX, WiimoteNunchuckStateRawValuesY, WiimoteNunchuckStateRawValuesZ, WiimoteNunchuckStateRawJoystickX, WiimoteNunchuckStateRawJoystickY;
         private double WiimoteIR0notfound, stickviewxinit, stickviewyinit, centery;
+        private bool WiimoteGuitarStatePlus, WiimoteGuitarStateMinus, WiimoteGuitarStateStrumDown, WiimoteGuitarStateStrumUp, WiimoteGuitarStateFretBlue, WiimoteGuitarStateFretGreen, WiimoteGuitarStateFretOrange, WiimoteGuitarStateFretRed, WiimoteGuitarStateFretYellow, WiimoteClassicControllerStateA, WiimoteClassicControllerStateB, WiimoteClassicControllerStateDown, WiimoteClassicControllerStateHome, WiimoteClassicControllerStateLeft, WiimoteClassicControllerStateMinus, WiimoteClassicControllerStatePlus, WiimoteClassicControllerStateRight, WiimoteClassicControllerStateTriggerL, WiimoteClassicControllerStateTriggerR, WiimoteClassicControllerStateUp, WiimoteClassicControllerStateX, WiimoteClassicControllerStateY, WiimoteClassicControllerStateZL, WiimoteClassicControllerStateZR, WiimoteDrumsStateBlue, WiimoteDrumsStateGreen, WiimoteDrumsStateOrange, WiimoteDrumsStateRed, WiimoteDrumsStateYellow, WiimoteDrumsStateMinus, WiimoteDrumsStatePlus, WiimoteDrumsStatePedal;
+        private double WiimoteGuitarStateRawJoystickX, WiimoteGuitarStateRawJoystickY, WiimoteGuitarStateRawWhammyBar, WiimoteClassicControllerStateRawJoystickLeftX, WiimoteClassicControllerStateRawJoystickLeftY, WiimoteClassicControllerStateRawJoystickRightX, WiimoteClassicControllerStateRawJoystickRightY, WiimoteClassicControllerStateRawTriggerL, WiimoteClassicControllerStateRawTriggerR, WiimoteBalanceBoardStateCenterOfGravityX, WiimoteBalanceBoardStateCenterOfGravityY, WiimoteBalanceBoardStateSensorValuesKgBottomLeft, WiimoteBalanceBoardStateSensorValuesKgBottomRight, WiimoteBalanceBoardStateSensorValuesKgTopLeft, WiimoteBalanceBoardStateSensorValuesKgTopRight, WiimoteBalanceBoardStateWeightKg, WiimoteDrumsStateBlueVelocity, WiimoteDrumsStateGreenVelocity, WiimoteDrumsStateOrangeVelocity, WiimoteDrumsStateRedVelocity, WiimoteDrumsStateYellowVelocity, WiimoteDrumsStatePedalVelocity, WiimoteDrumsStateRawJoystickX, WiimoteDrumsStateRawJoystickY;
         private int number;
         private WiimoteCollection mWC; 
         private Wiimote wiimote;
@@ -110,7 +112,63 @@ namespace WiiMotesLibAPI
                     str += "WiimoteNunchuckStateRawValuesY : " + WiimoteNunchuckStateRawValuesY + Environment.NewLine;
                     str += "WiimoteNunchuckStateRawValuesZ : " + WiimoteNunchuckStateRawValuesZ + Environment.NewLine;
                     str += "WiimoteNunchuckStateC : " + WiimoteNunchuckStateC + Environment.NewLine;
-                    str += "WiimoteNunchuckStateZ : " + WiimoteNunchuckStateZ + Environment.NewLine;
+                    str += "WiimoteNunchuckStateZ : " + WiimoteNunchuckStateZ + Environment.NewLine; 
+                    str += "WiimoteGuitarStatePlus : " + WiimoteGuitarStatePlus + Environment.NewLine; 
+                    str += "WiimoteGuitarStateMinus : " + WiimoteGuitarStateMinus + Environment.NewLine; 
+                    str += "WiimoteGuitarStateStrumDown : " + WiimoteGuitarStateStrumDown + Environment.NewLine; 
+                    str += "WiimoteGuitarStateStrumUp : " + WiimoteGuitarStateStrumUp + Environment.NewLine; 
+                    str += "WiimoteGuitarStateFretBlue : " + WiimoteGuitarStateFretBlue + Environment.NewLine; 
+                    str += "WiimoteGuitarStateFretGreen : " + WiimoteGuitarStateFretGreen + Environment.NewLine; 
+                    str += "WiimoteGuitarStateFretOrange : " + WiimoteGuitarStateFretOrange + Environment.NewLine; 
+                    str += "WiimoteGuitarStateFretRed : " + WiimoteGuitarStateFretRed + Environment.NewLine; 
+                    str += "WiimoteGuitarStateFretYellow : " + WiimoteGuitarStateFretYellow + Environment.NewLine; 
+                    str += "WiimoteGuitarStateRawJoystickX : " + WiimoteGuitarStateRawJoystickX + Environment.NewLine; 
+                    str += "WiimoteGuitarStateRawJoystickY : " + WiimoteGuitarStateRawJoystickY + Environment.NewLine; 
+                    str += "WiimoteGuitarStateRawWhammyBar : " + WiimoteGuitarStateRawWhammyBar + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateA : " + WiimoteClassicControllerStateA + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateB : " + WiimoteClassicControllerStateB + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateDown : " + WiimoteClassicControllerStateDown + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateHome : " + WiimoteClassicControllerStateHome + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateLeft : " + WiimoteClassicControllerStateLeft + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateMinus : " + WiimoteClassicControllerStateMinus + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStatePlus : " + WiimoteClassicControllerStatePlus + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateRight : " + WiimoteClassicControllerStateRight + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateTriggerL : " + WiimoteClassicControllerStateTriggerL + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateTriggerR : " + WiimoteClassicControllerStateTriggerR + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateUp : " + WiimoteClassicControllerStateUp + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateX : " + WiimoteClassicControllerStateX + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateY : " + WiimoteClassicControllerStateY + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateZL : " + WiimoteClassicControllerStateZL + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateZR : " + WiimoteClassicControllerStateZR + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateRawJoystickLeftX : " + WiimoteClassicControllerStateRawJoystickLeftX + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateRawJoystickLeftY : " + WiimoteClassicControllerStateRawJoystickLeftY + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateRawJoystickRightX : " + WiimoteClassicControllerStateRawJoystickRightX + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateRawJoystickRightY : " + WiimoteClassicControllerStateRawJoystickRightY + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateRawTriggerL : " + WiimoteClassicControllerStateRawTriggerL + Environment.NewLine; 
+                    str += "WiimoteClassicControllerStateRawTriggerR : " + WiimoteClassicControllerStateRawTriggerR + Environment.NewLine; 
+                    str += "WiimoteBalanceBoardStateCenterOfGravityX : " + WiimoteBalanceBoardStateCenterOfGravityX + Environment.NewLine; 
+                    str += "WiimoteBalanceBoardStateCenterOfGravityY : " + WiimoteBalanceBoardStateCenterOfGravityY + Environment.NewLine; 
+                    str += "WiimoteBalanceBoardStateSensorValuesKgBottomLeft : " + WiimoteBalanceBoardStateSensorValuesKgBottomLeft + Environment.NewLine; 
+                    str += "WiimoteBalanceBoardStateSensorValuesKgBottomRight : " + WiimoteBalanceBoardStateSensorValuesKgBottomRight + Environment.NewLine; 
+                    str += "WiimoteBalanceBoardStateSensorValuesKgTopLeft : " + WiimoteBalanceBoardStateSensorValuesKgTopLeft + Environment.NewLine; 
+                    str += "WiimoteBalanceBoardStateSensorValuesKgTopRight : " + WiimoteBalanceBoardStateSensorValuesKgTopRight + Environment.NewLine; 
+                    str += "WiimoteBalanceBoardStateWeightKg : " + WiimoteBalanceBoardStateWeightKg + Environment.NewLine; 
+                    str += "WiimoteDrumsStateBlue : " + WiimoteDrumsStateBlue + Environment.NewLine; 
+                    str += "WiimoteDrumsStateBlueVelocity : " + WiimoteDrumsStateBlueVelocity + Environment.NewLine; 
+                    str += "WiimoteDrumsStateGreen : " + WiimoteDrumsStateGreen + Environment.NewLine; 
+                    str += "WiimoteDrumsStateGreenVelocity : " + WiimoteDrumsStateGreenVelocity + Environment.NewLine; 
+                    str += "WiimoteDrumsStateOrange : " + WiimoteDrumsStateOrange + Environment.NewLine; 
+                    str += "WiimoteDrumsStateOrangeVelocity : " + WiimoteDrumsStateOrangeVelocity + Environment.NewLine; 
+                    str += "WiimoteDrumsStateRed : " + WiimoteDrumsStateRed + Environment.NewLine; 
+                    str += "WiimoteDrumsStateRedVelocity : " + WiimoteDrumsStateRedVelocity + Environment.NewLine; 
+                    str += "WiimoteDrumsStateYellow : " + WiimoteDrumsStateYellow + Environment.NewLine; 
+                    str += "WiimoteDrumsStateYellowVelocity : " + WiimoteDrumsStateYellowVelocity + Environment.NewLine; 
+                    str += "WiimoteDrumsStateMinus : " + WiimoteDrumsStateMinus + Environment.NewLine; 
+                    str += "WiimoteDrumsStatePlus : " + WiimoteDrumsStatePlus + Environment.NewLine; 
+                    str += "WiimoteDrumsStatePedal : " + WiimoteDrumsStatePedal + Environment.NewLine; 
+                    str += "WiimoteDrumsStatePedalVelocity : " + WiimoteDrumsStatePedalVelocity + Environment.NewLine; 
+                    str += "WiimoteDrumsStateRawJoystickX : " + WiimoteDrumsStateRawJoystickX + Environment.NewLine; 
+                    str += "WiimoteDrumsStateRawJoystickY : " + WiimoteDrumsStateRawJoystickY + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }
@@ -323,13 +381,84 @@ namespace WiiMotesLibAPI
             WiimoteRawValuesX = ws.AccelState.RawValues.X + calibrationinit;
             WiimoteRawValuesY = ws.AccelState.RawValues.Y + calibrationinit;
             WiimoteRawValuesZ = ws.AccelState.RawValues.Z + calibrationinit;
-            WiimoteNunchuckStateRawJoystickX = ws.NunchukState.Joystick.X + stickviewxinit;
-            WiimoteNunchuckStateRawJoystickY = ws.NunchukState.Joystick.Y + stickviewyinit;
-            WiimoteNunchuckStateRawValuesX = ws.NunchukState.AccelState.RawValues.X;
-            WiimoteNunchuckStateRawValuesY = ws.NunchukState.AccelState.RawValues.Y;
-            WiimoteNunchuckStateRawValuesZ = ws.NunchukState.AccelState.RawValues.Z;
-            WiimoteNunchuckStateC = ws.NunchukState.C;
-            WiimoteNunchuckStateZ = ws.NunchukState.Z;
+            if (ws.ExtensionType == ExtensionType.Nunchuk | ws.ExtensionType == ExtensionType.NewNunchuk)
+            {
+                WiimoteNunchuckStateRawJoystickX = ws.NunchukState.RawJoystick.X + stickviewxinit;
+                WiimoteNunchuckStateRawJoystickY = ws.NunchukState.RawJoystick.Y + stickviewyinit;
+                WiimoteNunchuckStateRawValuesX = ws.NunchukState.AccelState.RawValues.X;
+                WiimoteNunchuckStateRawValuesY = ws.NunchukState.AccelState.RawValues.Y;
+                WiimoteNunchuckStateRawValuesZ = ws.NunchukState.AccelState.RawValues.Z;
+                WiimoteNunchuckStateC = ws.NunchukState.C;
+                WiimoteNunchuckStateZ = ws.NunchukState.Z;
+            }
+            if (ws.ExtensionType == ExtensionType.Guitar)
+            {
+                WiimoteGuitarStatePlus = ws.GuitarState.ButtonState.Plus;
+                WiimoteGuitarStateMinus = ws.GuitarState.ButtonState.Minus;
+                WiimoteGuitarStateStrumDown = ws.GuitarState.ButtonState.StrumDown;
+                WiimoteGuitarStateStrumUp = ws.GuitarState.ButtonState.StrumUp;
+                WiimoteGuitarStateFretBlue = ws.GuitarState.FretButtonState.Blue;
+                WiimoteGuitarStateFretGreen = ws.GuitarState.FretButtonState.Green;
+                WiimoteGuitarStateFretOrange = ws.GuitarState.FretButtonState.Orange;
+                WiimoteGuitarStateFretRed = ws.GuitarState.FretButtonState.Red;
+                WiimoteGuitarStateFretYellow = ws.GuitarState.FretButtonState.Yellow;
+                WiimoteGuitarStateRawJoystickX = ws.GuitarState.RawJoystick.X;
+                WiimoteGuitarStateRawJoystickY = ws.GuitarState.RawJoystick.Y;
+                WiimoteGuitarStateRawWhammyBar = ws.GuitarState.RawWhammyBar;
+            }
+            if (ws.ExtensionType == ExtensionType.ClassicController | ws.ExtensionType == ExtensionType.ClassicControllerPro)
+            {
+                WiimoteClassicControllerStateA = ws.ClassicControllerState.ButtonState.A;
+                WiimoteClassicControllerStateB = ws.ClassicControllerState.ButtonState.B;
+                WiimoteClassicControllerStateDown = ws.ClassicControllerState.ButtonState.Down;
+                WiimoteClassicControllerStateHome = ws.ClassicControllerState.ButtonState.Home;
+                WiimoteClassicControllerStateLeft = ws.ClassicControllerState.ButtonState.Left;
+                WiimoteClassicControllerStateMinus = ws.ClassicControllerState.ButtonState.Minus;
+                WiimoteClassicControllerStatePlus = ws.ClassicControllerState.ButtonState.Plus;
+                WiimoteClassicControllerStateRight = ws.ClassicControllerState.ButtonState.Right;
+                WiimoteClassicControllerStateTriggerL = ws.ClassicControllerState.ButtonState.TriggerL;
+                WiimoteClassicControllerStateTriggerR = ws.ClassicControllerState.ButtonState.TriggerR;
+                WiimoteClassicControllerStateUp = ws.ClassicControllerState.ButtonState.Up;
+                WiimoteClassicControllerStateX = ws.ClassicControllerState.ButtonState.X;
+                WiimoteClassicControllerStateY = ws.ClassicControllerState.ButtonState.Y;
+                WiimoteClassicControllerStateZL = ws.ClassicControllerState.ButtonState.ZL;
+                WiimoteClassicControllerStateZR = ws.ClassicControllerState.ButtonState.ZR;
+                WiimoteClassicControllerStateRawJoystickLeftX = ws.ClassicControllerState.RawJoystickL.X;
+                WiimoteClassicControllerStateRawJoystickLeftY = ws.ClassicControllerState.RawJoystickL.Y;
+                WiimoteClassicControllerStateRawJoystickRightX = ws.ClassicControllerState.RawJoystickR.X;
+                WiimoteClassicControllerStateRawJoystickRightY = ws.ClassicControllerState.RawJoystickR.Y;
+                WiimoteClassicControllerStateRawTriggerL = ws.ClassicControllerState.RawTriggerL;
+                WiimoteClassicControllerStateRawTriggerR = ws.ClassicControllerState.RawTriggerR;
+            }
+            if (ws.ExtensionType == ExtensionType.BalanceBoard)
+            {
+                WiimoteBalanceBoardStateCenterOfGravityX = ws.BalanceBoardState.CenterOfGravity.X;
+                WiimoteBalanceBoardStateCenterOfGravityY = ws.BalanceBoardState.CenterOfGravity.Y;
+                WiimoteBalanceBoardStateSensorValuesKgBottomLeft = ws.BalanceBoardState.SensorValuesKg.BottomLeft;
+                WiimoteBalanceBoardStateSensorValuesKgBottomRight = ws.BalanceBoardState.SensorValuesKg.BottomRight;
+                WiimoteBalanceBoardStateSensorValuesKgTopLeft = ws.BalanceBoardState.SensorValuesKg.TopLeft;
+                WiimoteBalanceBoardStateSensorValuesKgTopRight = ws.BalanceBoardState.SensorValuesKg.TopRight;
+                WiimoteBalanceBoardStateWeightKg = ws.BalanceBoardState.WeightKg;
+            }
+            if (ws.ExtensionType == ExtensionType.Drums)
+            {
+                WiimoteDrumsStateBlue = ws.DrumsState.Blue;
+                WiimoteDrumsStateBlueVelocity = ws.DrumsState.BlueVelocity;
+                WiimoteDrumsStateGreen = ws.DrumsState.Green;
+                WiimoteDrumsStateGreenVelocity = ws.DrumsState.GreenVelocity;
+                WiimoteDrumsStateOrange = ws.DrumsState.Orange;
+                WiimoteDrumsStateOrangeVelocity = ws.DrumsState.OrangeVelocity;
+                WiimoteDrumsStateRed = ws.DrumsState.Red;
+                WiimoteDrumsStateRedVelocity = ws.DrumsState.RedVelocity;
+                WiimoteDrumsStateYellow = ws.DrumsState.Yellow;
+                WiimoteDrumsStateYellowVelocity = ws.DrumsState.YellowVelocity;
+                WiimoteDrumsStateMinus = ws.DrumsState.Minus;
+                WiimoteDrumsStatePlus = ws.DrumsState.Plus;
+                WiimoteDrumsStatePedal = ws.DrumsState.Pedal;
+                WiimoteDrumsStatePedalVelocity = ws.DrumsState.PedalVelocity;
+                WiimoteDrumsStateRawJoystickX = ws.DrumsState.RawJoystick.X;
+                WiimoteDrumsStateRawJoystickY = ws.DrumsState.RawJoystick.Y;
+            }
         }
     }
 }
