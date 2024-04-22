@@ -25,8 +25,8 @@ namespace StringToCode
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private static bool running;
-        private static string pathsound1 = @"sounds\sound1.mp3";
-        private static bool sound1 = false;
+        private static string pathsound1 = @"sounds\sound1.mp3", pathtempsound1 = @"sounds\tempsound1.mp3";
+        private static bool sound1 = false, tempsound1 = false;
         private static int width = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width, height = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
         private static double statex = 0f, statey = 0f, mousex = 0f, mousey = 0f, mousestatex = 0f, mousestatey = 0f, dzx = 0.0f, dzy = 0.0f, viewpower1x = 0f, viewpower2x = 1f, viewpower3x = 0f, viewpower1y = 0.25f, viewpower2y = 0.75f, viewpower3y = 0f, viewpower05x = 0f, viewpower05y = 0f;
         private static bool[] getstate = new bool[12];
@@ -81,7 +81,7 @@ namespace StringToCode
             ki.Scan();
             mi.BeginPolling();
             ki.BeginPolling();
-            player.Connect(pathsound1);
+            player.Connect(pathsound1, "", "", "", "", "", "", "", "", "", "", "", pathtempsound1, "", "", "", "", "", "", "", "", "", "", "");
             Task.Run(() => task());
         }
         private void task()
@@ -90,8 +90,9 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                sound1 = ki.KeyboardKeyA;
-                player.Set(sound1, false, false, false, false, false, false, false, false, false, false, false);
+                sound1     = ki.KeyboardKeyA;
+                tempsound1 = ki.KeyboardKeyS;
+                player.Set(sound1, false, false, false, false, false, false, false, false, false, false, false, tempsound1, false, false, false, false, false, false, false, false, false, false, false);
                 /*mi.ViewData();*/
                 /*ki.ViewData();*/
                 Thread.Sleep(sleeptime);

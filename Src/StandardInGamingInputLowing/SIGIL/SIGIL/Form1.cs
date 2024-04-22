@@ -1583,6 +1583,30 @@ namespace SIGIL
                 range.SetStyle(StyleOutput, new Regex(@"\bsound10\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bsound11\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\bsound12\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathtempsound1\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathtempsound2\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathtempsound3\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathtempsound4\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathtempsound5\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathtempsound6\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathtempsound7\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathtempsound8\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathtempsound9\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathtempsound10\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathtempsound11\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bpathtempsound12\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\btempsound1\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\btempsound2\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\btempsound3\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\btempsound4\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\btempsound5\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\btempsound6\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\btempsound7\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\btempsound8\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\btempsound9\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\btempsound10\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\btempsound11\b"));
+                range.SetStyle(StyleOutput, new Regex(@"\btempsound12\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2396,7 +2420,31 @@ namespace SIGIL
                 "sound9",
                 "sound10",
                 "sound11",
-                "sound12"
+                "sound12",
+                "pathtempsound1",
+                "pathtempsound2",
+                "pathtempsound3",
+                "pathtempsound4",
+                "pathtempsound5",
+                "pathtempsound6",
+                "pathtempsound7",
+                "pathtempsound8",
+                "pathtempsound9",
+                "pathtempsound10",
+                "pathtempsound11",
+                "pathtempsound12",
+                "tempsound1",
+                "tempsound2",
+                "tempsound3",
+                "tempsound4",
+                "tempsound5",
+                "tempsound6",
+                "tempsound7",
+                "tempsound8",
+                "tempsound9",
+                "tempsound10",
+                "tempsound11",
+                "tempsound12"
             };
             string[] methods = { 
                 "ToString()",
