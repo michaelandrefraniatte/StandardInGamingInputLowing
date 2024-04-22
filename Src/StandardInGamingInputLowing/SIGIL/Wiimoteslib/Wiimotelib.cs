@@ -202,12 +202,9 @@ namespace WiiMotesLibAPI
             {
                 mWC = new WiimoteCollection();
                 mWC.FindAllWiimotes();
-                int index = 1;
                 foreach (Wiimote wm in mWC)
                 {
-                    wm.Disconnect();
                     wm.Connect();
-                    wm.SetLEDs(index++);
                     wiimotes.Add(wm);
                 }
             }
