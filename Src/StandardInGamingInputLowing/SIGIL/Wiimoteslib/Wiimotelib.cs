@@ -68,14 +68,8 @@ namespace WiiMotesLibAPI
         {
             running = false;
             Thread.Sleep(100);
-            if (mWC != null)
-            {
-                foreach (Wiimote wm in mWC)
-                {
-                    wm.Disconnect();
-                    wm.Dispose();
-                }
-            }
+            wiimote.Disconnect();
+            wiimote.Dispose();
         }
         public void BeginPolling()
         {
