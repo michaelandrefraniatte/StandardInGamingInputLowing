@@ -210,13 +210,12 @@ namespace WiiMotesLibAPI
         }
         private void wm_WiimoteChanged(object sender, WiimoteChangedEventArgs e)
         {
-            WiimoteState ws = e.WiimoteState;
             if (irmode == 1)
             {
-                WiimoteIRSensors0X = ws.IRState.IRSensors[0].RawPosition.X;
-                WiimoteIRSensors0Y = ws.IRState.IRSensors[0].RawPosition.Y;
-                WiimoteIRSensors1X = ws.IRState.IRSensors[1].RawPosition.X;
-                WiimoteIRSensors1Y = ws.IRState.IRSensors[1].RawPosition.Y;
+                WiimoteIRSensors0X = e.WiimoteState.IRState.IRSensors[0].RawPosition.X;
+                WiimoteIRSensors0Y = e.WiimoteState.IRState.IRSensors[0].RawPosition.Y;
+                WiimoteIRSensors1X = e.WiimoteState.IRState.IRSensors[1].RawPosition.X;
+                WiimoteIRSensors1Y = e.WiimoteState.IRState.IRSensors[1].RawPosition.Y;
                 WiimoteIR0found = WiimoteIRSensors0X > 0f & WiimoteIRSensors0X <= 1024f & WiimoteIRSensors0Y > 0f & WiimoteIRSensors0Y <= 768f;
                 WiimoteIR1found = WiimoteIRSensors1X > 0f & WiimoteIRSensors1X <= 1024f & WiimoteIRSensors1Y > 0f & WiimoteIRSensors1Y <= 768f;
                 if (WiimoteIR0found)
@@ -249,8 +248,8 @@ namespace WiiMotesLibAPI
             }
             else if (irmode == 2)
             {
-                WiimoteIR0found = ws.IRState.IRSensors[0].Found;
-                WiimoteIR1found = ws.IRState.IRSensors[1].Found;
+                WiimoteIR0found = e.WiimoteState.IRState.IRSensors[0].Found;
+                WiimoteIR1found = e.WiimoteState.IRState.IRSensors[1].Found;
                 if (WiimoteIR0notfound == 0 & WiimoteIR1found)
                     WiimoteIR0notfound = 1;
                 if (WiimoteIR0notfound == 1 & !WiimoteIR0found & !WiimoteIR1found)
@@ -271,13 +270,13 @@ namespace WiiMotesLibAPI
                     WiimoteIR0notfound = 0;
                 if (WiimoteIR0found)
                 {
-                    WiimoteIRSensors0X = ws.IRState.IRSensors[0].RawPosition.X;
-                    WiimoteIRSensors0Y = ws.IRState.IRSensors[0].RawPosition.Y;
+                    WiimoteIRSensors0X = e.WiimoteState.IRState.IRSensors[0].RawPosition.X;
+                    WiimoteIRSensors0Y = e.WiimoteState.IRState.IRSensors[0].RawPosition.Y;
                 }
                 if (WiimoteIR1found)
                 {
-                    WiimoteIRSensors1X = ws.IRState.IRSensors[1].RawPosition.X;
-                    WiimoteIRSensors1Y = ws.IRState.IRSensors[1].RawPosition.Y;
+                    WiimoteIRSensors1X = e.WiimoteState.IRState.IRSensors[1].RawPosition.X;
+                    WiimoteIRSensors1Y = e.WiimoteState.IRState.IRSensors[1].RawPosition.Y;
                 }
                 if (WiimoteIRswitch)
                 {
@@ -325,16 +324,16 @@ namespace WiiMotesLibAPI
             }
             else if (irmode == 3)
             {
-                WiimoteIR0found = ws.IRState.IRSensors[0].Found;
-                WiimoteIR1found = ws.IRState.IRSensors[1].Found;
+                WiimoteIR0found = e.WiimoteState.IRState.IRSensors[0].Found;
+                WiimoteIR1found = e.WiimoteState.IRState.IRSensors[1].Found;
                 if (WiimoteIR0found & WiimoteIR1found)
                 {
-                    WiimoteIRSensors0X = ws.IRState.IRSensors[0].RawPosition.X;
-                    WiimoteIRSensors0Y = ws.IRState.IRSensors[0].RawPosition.Y;
+                    WiimoteIRSensors0X = e.WiimoteState.IRState.IRSensors[0].RawPosition.X;
+                    WiimoteIRSensors0Y = e.WiimoteState.IRState.IRSensors[0].RawPosition.Y;
                     irx2 = WiimoteIRSensors0X - 512f;
                     iry2 = WiimoteIRSensors0Y - 384f;
-                    WiimoteIRSensors1X = ws.IRState.IRSensors[1].RawPosition.X;
-                    WiimoteIRSensors1Y = ws.IRState.IRSensors[1].RawPosition.Y;
+                    WiimoteIRSensors1X = e.WiimoteState.IRState.IRSensors[1].RawPosition.X;
+                    WiimoteIRSensors1Y = e.WiimoteState.IRState.IRSensors[1].RawPosition.Y;
                     irx3 = WiimoteIRSensors1X - 512f;
                     iry3 = WiimoteIRSensors1Y - 384f;
                 }
@@ -361,97 +360,97 @@ namespace WiiMotesLibAPI
                 if (iry - vallistiry.Average() <= -200f)
                     iry = -1024f;
             }
-            WiimoteButtonStateA = ws.ButtonState.A;
-            WiimoteButtonStateB = ws.ButtonState.B;
-            WiimoteButtonStateMinus = ws.ButtonState.Minus;
-            WiimoteButtonStateHome = ws.ButtonState.Home;
-            WiimoteButtonStatePlus = ws.ButtonState.Plus;
-            WiimoteButtonStateOne = ws.ButtonState.One;
-            WiimoteButtonStateTwo = ws.ButtonState.Two;
-            WiimoteButtonStateUp = ws.ButtonState.Up;
-            WiimoteButtonStateDown = ws.ButtonState.Down;
-            WiimoteButtonStateLeft = ws.ButtonState.Left;
-            WiimoteButtonStateRight = ws.ButtonState.Right;
-            WiimoteRawValuesX = ws.AccelState.RawValues.X + calibrationinit;
-            WiimoteRawValuesY = ws.AccelState.RawValues.Y + calibrationinit;
-            WiimoteRawValuesZ = ws.AccelState.RawValues.Z + calibrationinit;
-            if (ws.ExtensionType == ExtensionType.Nunchuk | ws.ExtensionType == ExtensionType.NewNunchuk)
+            WiimoteButtonStateA = e.WiimoteState.ButtonState.A;
+            WiimoteButtonStateB = e.WiimoteState.ButtonState.B;
+            WiimoteButtonStateMinus = e.WiimoteState.ButtonState.Minus;
+            WiimoteButtonStateHome = e.WiimoteState.ButtonState.Home;
+            WiimoteButtonStatePlus = e.WiimoteState.ButtonState.Plus;
+            WiimoteButtonStateOne = e.WiimoteState.ButtonState.One;
+            WiimoteButtonStateTwo = e.WiimoteState.ButtonState.Two;
+            WiimoteButtonStateUp = e.WiimoteState.ButtonState.Up;
+            WiimoteButtonStateDown = e.WiimoteState.ButtonState.Down;
+            WiimoteButtonStateLeft = e.WiimoteState.ButtonState.Left;
+            WiimoteButtonStateRight = e.WiimoteState.ButtonState.Right;
+            WiimoteRawValuesX = e.WiimoteState.AccelState.RawValues.X + calibrationinit;
+            WiimoteRawValuesY = e.WiimoteState.AccelState.RawValues.Y + calibrationinit;
+            WiimoteRawValuesZ = e.WiimoteState.AccelState.RawValues.Z + calibrationinit;
+            if (e.WiimoteState.ExtensionType == ExtensionType.Nunchuk | e.WiimoteState.ExtensionType == ExtensionType.NewNunchuk)
             {
-                WiimoteNunchuckStateRawJoystickX = ws.NunchukState.RawJoystick.X + stickviewxinit;
-                WiimoteNunchuckStateRawJoystickY = ws.NunchukState.RawJoystick.Y + stickviewyinit;
-                WiimoteNunchuckStateRawValuesX = ws.NunchukState.AccelState.RawValues.X;
-                WiimoteNunchuckStateRawValuesY = ws.NunchukState.AccelState.RawValues.Y;
-                WiimoteNunchuckStateRawValuesZ = ws.NunchukState.AccelState.RawValues.Z;
-                WiimoteNunchuckStateC = ws.NunchukState.C;
-                WiimoteNunchuckStateZ = ws.NunchukState.Z;
+                WiimoteNunchuckStateRawJoystickX = e.WiimoteState.NunchukState.RawJoystick.X + stickviewxinit;
+                WiimoteNunchuckStateRawJoystickY = e.WiimoteState.NunchukState.RawJoystick.Y + stickviewyinit;
+                WiimoteNunchuckStateRawValuesX = e.WiimoteState.NunchukState.AccelState.RawValues.X;
+                WiimoteNunchuckStateRawValuesY = e.WiimoteState.NunchukState.AccelState.RawValues.Y;
+                WiimoteNunchuckStateRawValuesZ = e.WiimoteState.NunchukState.AccelState.RawValues.Z;
+                WiimoteNunchuckStateC = e.WiimoteState.NunchukState.C;
+                WiimoteNunchuckStateZ = e.WiimoteState.NunchukState.Z;
             }
-            if (ws.ExtensionType == ExtensionType.Guitar)
+            if (e.WiimoteState.ExtensionType == ExtensionType.Guitar)
             {
-                WiimoteGuitarStatePlus = ws.GuitarState.ButtonState.Plus;
-                WiimoteGuitarStateMinus = ws.GuitarState.ButtonState.Minus;
-                WiimoteGuitarStateStrumDown = ws.GuitarState.ButtonState.StrumDown;
-                WiimoteGuitarStateStrumUp = ws.GuitarState.ButtonState.StrumUp;
-                WiimoteGuitarStateFretBlue = ws.GuitarState.FretButtonState.Blue;
-                WiimoteGuitarStateFretGreen = ws.GuitarState.FretButtonState.Green;
-                WiimoteGuitarStateFretOrange = ws.GuitarState.FretButtonState.Orange;
-                WiimoteGuitarStateFretRed = ws.GuitarState.FretButtonState.Red;
-                WiimoteGuitarStateFretYellow = ws.GuitarState.FretButtonState.Yellow;
-                WiimoteGuitarStateRawJoystickX = ws.GuitarState.RawJoystick.X;
-                WiimoteGuitarStateRawJoystickY = ws.GuitarState.RawJoystick.Y;
-                WiimoteGuitarStateRawWhammyBar = ws.GuitarState.RawWhammyBar;
+                WiimoteGuitarStatePlus = e.WiimoteState.GuitarState.ButtonState.Plus;
+                WiimoteGuitarStateMinus = e.WiimoteState.GuitarState.ButtonState.Minus;
+                WiimoteGuitarStateStrumDown = e.WiimoteState.GuitarState.ButtonState.StrumDown;
+                WiimoteGuitarStateStrumUp = e.WiimoteState.GuitarState.ButtonState.StrumUp;
+                WiimoteGuitarStateFretBlue = e.WiimoteState.GuitarState.FretButtonState.Blue;
+                WiimoteGuitarStateFretGreen = e.WiimoteState.GuitarState.FretButtonState.Green;
+                WiimoteGuitarStateFretOrange = e.WiimoteState.GuitarState.FretButtonState.Orange;
+                WiimoteGuitarStateFretRed = e.WiimoteState.GuitarState.FretButtonState.Red;
+                WiimoteGuitarStateFretYellow = e.WiimoteState.GuitarState.FretButtonState.Yellow;
+                WiimoteGuitarStateRawJoystickX = e.WiimoteState.GuitarState.RawJoystick.X;
+                WiimoteGuitarStateRawJoystickY = e.WiimoteState.GuitarState.RawJoystick.Y;
+                WiimoteGuitarStateRawWhammyBar = e.WiimoteState.GuitarState.RawWhammyBar;
             }
-            if (ws.ExtensionType == ExtensionType.ClassicController | ws.ExtensionType == ExtensionType.ClassicControllerPro)
+            if (e.WiimoteState.ExtensionType == ExtensionType.ClassicController | e.WiimoteState.ExtensionType == ExtensionType.ClassicControllerPro)
             {
-                WiimoteClassicControllerStateA = ws.ClassicControllerState.ButtonState.A;
-                WiimoteClassicControllerStateB = ws.ClassicControllerState.ButtonState.B;
-                WiimoteClassicControllerStateDown = ws.ClassicControllerState.ButtonState.Down;
-                WiimoteClassicControllerStateHome = ws.ClassicControllerState.ButtonState.Home;
-                WiimoteClassicControllerStateLeft = ws.ClassicControllerState.ButtonState.Left;
-                WiimoteClassicControllerStateMinus = ws.ClassicControllerState.ButtonState.Minus;
-                WiimoteClassicControllerStatePlus = ws.ClassicControllerState.ButtonState.Plus;
-                WiimoteClassicControllerStateRight = ws.ClassicControllerState.ButtonState.Right;
-                WiimoteClassicControllerStateTriggerL = ws.ClassicControllerState.ButtonState.TriggerL;
-                WiimoteClassicControllerStateTriggerR = ws.ClassicControllerState.ButtonState.TriggerR;
-                WiimoteClassicControllerStateUp = ws.ClassicControllerState.ButtonState.Up;
-                WiimoteClassicControllerStateX = ws.ClassicControllerState.ButtonState.X;
-                WiimoteClassicControllerStateY = ws.ClassicControllerState.ButtonState.Y;
-                WiimoteClassicControllerStateZL = ws.ClassicControllerState.ButtonState.ZL;
-                WiimoteClassicControllerStateZR = ws.ClassicControllerState.ButtonState.ZR;
-                WiimoteClassicControllerStateRawJoystickLeftX = ws.ClassicControllerState.RawJoystickL.X;
-                WiimoteClassicControllerStateRawJoystickLeftY = ws.ClassicControllerState.RawJoystickL.Y;
-                WiimoteClassicControllerStateRawJoystickRightX = ws.ClassicControllerState.RawJoystickR.X;
-                WiimoteClassicControllerStateRawJoystickRightY = ws.ClassicControllerState.RawJoystickR.Y;
-                WiimoteClassicControllerStateRawTriggerL = ws.ClassicControllerState.RawTriggerL;
-                WiimoteClassicControllerStateRawTriggerR = ws.ClassicControllerState.RawTriggerR;
+                WiimoteClassicControllerStateA = e.WiimoteState.ClassicControllerState.ButtonState.A;
+                WiimoteClassicControllerStateB = e.WiimoteState.ClassicControllerState.ButtonState.B;
+                WiimoteClassicControllerStateDown = e.WiimoteState.ClassicControllerState.ButtonState.Down;
+                WiimoteClassicControllerStateHome = e.WiimoteState.ClassicControllerState.ButtonState.Home;
+                WiimoteClassicControllerStateLeft = e.WiimoteState.ClassicControllerState.ButtonState.Left;
+                WiimoteClassicControllerStateMinus = e.WiimoteState.ClassicControllerState.ButtonState.Minus;
+                WiimoteClassicControllerStatePlus = e.WiimoteState.ClassicControllerState.ButtonState.Plus;
+                WiimoteClassicControllerStateRight = e.WiimoteState.ClassicControllerState.ButtonState.Right;
+                WiimoteClassicControllerStateTriggerL = e.WiimoteState.ClassicControllerState.ButtonState.TriggerL;
+                WiimoteClassicControllerStateTriggerR = e.WiimoteState.ClassicControllerState.ButtonState.TriggerR;
+                WiimoteClassicControllerStateUp = e.WiimoteState.ClassicControllerState.ButtonState.Up;
+                WiimoteClassicControllerStateX = e.WiimoteState.ClassicControllerState.ButtonState.X;
+                WiimoteClassicControllerStateY = e.WiimoteState.ClassicControllerState.ButtonState.Y;
+                WiimoteClassicControllerStateZL = e.WiimoteState.ClassicControllerState.ButtonState.ZL;
+                WiimoteClassicControllerStateZR = e.WiimoteState.ClassicControllerState.ButtonState.ZR;
+                WiimoteClassicControllerStateRawJoystickLeftX = e.WiimoteState.ClassicControllerState.RawJoystickL.X;
+                WiimoteClassicControllerStateRawJoystickLeftY = e.WiimoteState.ClassicControllerState.RawJoystickL.Y;
+                WiimoteClassicControllerStateRawJoystickRightX = e.WiimoteState.ClassicControllerState.RawJoystickR.X;
+                WiimoteClassicControllerStateRawJoystickRightY = e.WiimoteState.ClassicControllerState.RawJoystickR.Y;
+                WiimoteClassicControllerStateRawTriggerL = e.WiimoteState.ClassicControllerState.RawTriggerL;
+                WiimoteClassicControllerStateRawTriggerR = e.WiimoteState.ClassicControllerState.RawTriggerR;
             }
-            if (ws.ExtensionType == ExtensionType.BalanceBoard)
+            if (e.WiimoteState.ExtensionType == ExtensionType.BalanceBoard)
             {
-                WiimoteBalanceBoardStateCenterOfGravityX = ws.BalanceBoardState.CenterOfGravity.X;
-                WiimoteBalanceBoardStateCenterOfGravityY = ws.BalanceBoardState.CenterOfGravity.Y;
-                WiimoteBalanceBoardStateSensorValuesKgBottomLeft = ws.BalanceBoardState.SensorValuesKg.BottomLeft;
-                WiimoteBalanceBoardStateSensorValuesKgBottomRight = ws.BalanceBoardState.SensorValuesKg.BottomRight;
-                WiimoteBalanceBoardStateSensorValuesKgTopLeft = ws.BalanceBoardState.SensorValuesKg.TopLeft;
-                WiimoteBalanceBoardStateSensorValuesKgTopRight = ws.BalanceBoardState.SensorValuesKg.TopRight;
-                WiimoteBalanceBoardStateWeightKg = ws.BalanceBoardState.WeightKg;
+                WiimoteBalanceBoardStateCenterOfGravityX = e.WiimoteState.BalanceBoardState.CenterOfGravity.X;
+                WiimoteBalanceBoardStateCenterOfGravityY = e.WiimoteState.BalanceBoardState.CenterOfGravity.Y;
+                WiimoteBalanceBoardStateSensorValuesKgBottomLeft = e.WiimoteState.BalanceBoardState.SensorValuesKg.BottomLeft;
+                WiimoteBalanceBoardStateSensorValuesKgBottomRight = e.WiimoteState.BalanceBoardState.SensorValuesKg.BottomRight;
+                WiimoteBalanceBoardStateSensorValuesKgTopLeft = e.WiimoteState.BalanceBoardState.SensorValuesKg.TopLeft;
+                WiimoteBalanceBoardStateSensorValuesKgTopRight = e.WiimoteState.BalanceBoardState.SensorValuesKg.TopRight;
+                WiimoteBalanceBoardStateWeightKg = e.WiimoteState.BalanceBoardState.WeightKg;
             }
-            if (ws.ExtensionType == ExtensionType.Drums)
+            if (e.WiimoteState.ExtensionType == ExtensionType.Drums)
             {
-                WiimoteDrumsStateBlue = ws.DrumsState.Blue;
-                WiimoteDrumsStateBlueVelocity = ws.DrumsState.BlueVelocity;
-                WiimoteDrumsStateGreen = ws.DrumsState.Green;
-                WiimoteDrumsStateGreenVelocity = ws.DrumsState.GreenVelocity;
-                WiimoteDrumsStateOrange = ws.DrumsState.Orange;
-                WiimoteDrumsStateOrangeVelocity = ws.DrumsState.OrangeVelocity;
-                WiimoteDrumsStateRed = ws.DrumsState.Red;
-                WiimoteDrumsStateRedVelocity = ws.DrumsState.RedVelocity;
-                WiimoteDrumsStateYellow = ws.DrumsState.Yellow;
-                WiimoteDrumsStateYellowVelocity = ws.DrumsState.YellowVelocity;
-                WiimoteDrumsStateMinus = ws.DrumsState.Minus;
-                WiimoteDrumsStatePlus = ws.DrumsState.Plus;
-                WiimoteDrumsStatePedal = ws.DrumsState.Pedal;
-                WiimoteDrumsStatePedalVelocity = ws.DrumsState.PedalVelocity;
-                WiimoteDrumsStateRawJoystickX = ws.DrumsState.RawJoystick.X;
-                WiimoteDrumsStateRawJoystickY = ws.DrumsState.RawJoystick.Y;
+                WiimoteDrumsStateBlue = e.WiimoteState.DrumsState.Blue;
+                WiimoteDrumsStateBlueVelocity = e.WiimoteState.DrumsState.BlueVelocity;
+                WiimoteDrumsStateGreen = e.WiimoteState.DrumsState.Green;
+                WiimoteDrumsStateGreenVelocity = e.WiimoteState.DrumsState.GreenVelocity;
+                WiimoteDrumsStateOrange = e.WiimoteState.DrumsState.Orange;
+                WiimoteDrumsStateOrangeVelocity = e.WiimoteState.DrumsState.OrangeVelocity;
+                WiimoteDrumsStateRed = e.WiimoteState.DrumsState.Red;
+                WiimoteDrumsStateRedVelocity = e.WiimoteState.DrumsState.RedVelocity;
+                WiimoteDrumsStateYellow = e.WiimoteState.DrumsState.Yellow;
+                WiimoteDrumsStateYellowVelocity = e.WiimoteState.DrumsState.YellowVelocity;
+                WiimoteDrumsStateMinus = e.WiimoteState.DrumsState.Minus;
+                WiimoteDrumsStatePlus = e.WiimoteState.DrumsState.Plus;
+                WiimoteDrumsStatePedal = e.WiimoteState.DrumsState.Pedal;
+                WiimoteDrumsStatePedalVelocity = e.WiimoteState.DrumsState.PedalVelocity;
+                WiimoteDrumsStateRawJoystickX = e.WiimoteState.DrumsState.RawJoystick.X;
+                WiimoteDrumsStateRawJoystickY = e.WiimoteState.DrumsState.RawJoystick.Y;
             }
         }
         private void wm_WiimoteExtensionChanged(object sender, WiimoteExtensionChangedEventArgs e)
