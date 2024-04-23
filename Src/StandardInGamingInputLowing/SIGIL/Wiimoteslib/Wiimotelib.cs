@@ -199,11 +199,14 @@ namespace WiiMotesLibAPI
                 foreach (Wiimote wm in mWC)
                 {
                     wm.Connect();
+                    if (wm.WiimoteState.ExtensionType != ExtensionType.BalanceBoard)
+                        wm.SetReportType(InputReport.IRExtensionAccel, IRSensitivity.Maximum, true);
                     wiimotes.Add(wm);
                 }
             }
             wiimote = wiimotes[number < 2 ? 0 : number - 1];
             wiimote.WiimoteChanged += new EventHandler<WiimoteChangedEventArgs>(wm_WiimoteChanged);
+            wiimote.WiimoteExtensionChanged += new EventHandler<WiimoteExtensionChangedEventArgs>(wm_WiimoteExtensionChanged);
         }
         private void wm_WiimoteChanged(object sender, WiimoteChangedEventArgs e)
         {
@@ -450,6 +453,13 @@ namespace WiiMotesLibAPI
                 WiimoteDrumsStateRawJoystickX = ws.DrumsState.RawJoystick.X;
                 WiimoteDrumsStateRawJoystickY = ws.DrumsState.RawJoystick.Y;
             }
+        }
+        private void wm_WiimoteExtensionChanged(object sender, WiimoteExtensionChangedEventArgs e)
+        {
+            if (e.Inserted)
+                ((Wiimote)sender).SetReportType(InputReport.IRExtensionAccel, true);
+            else
+                ((Wiimote)sender).SetReportType(InputReport.IRAccel, true);
         }
     }
 }
