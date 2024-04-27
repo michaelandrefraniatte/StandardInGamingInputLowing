@@ -275,6 +275,7 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"\bSendKeyboardMouse\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bSKM\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bgetstate\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bpollcount\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bmin\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bmax\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bminScale\b"));
@@ -1899,6 +1900,7 @@ namespace SIGIL
                 "keyboardsmouses",
                 "SendKeyboardMouse",
                 "getstate",
+                "pollcount",
                 "min",
                 "max",
                 "minScale",

@@ -1,0 +1,12 @@
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\FastColoredTextBox\bin\Release\FastColoredTextBox.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\FastColoredTextBox\bin\Release\FastColoredTextBox.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\FastColoredTextBox\obj\Release\FastColoredTextBox.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\FastColoredTextBox\obj\Release\FastColoredTextBoxNS.FastColoredTextBox.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\FastColoredTextBox\obj\Release\FastColoredTextBoxNS.FindForm.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\FastColoredTextBox\obj\Release\FastColoredTextBoxNS.GoToForm.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\FastColoredTextBox\obj\Release\FastColoredTextBoxNS.HotkeysEditorForm.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\FastColoredTextBox\obj\Release\FastColoredTextBoxNS.ReplaceForm.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\FastColoredTextBox\obj\Release\FastColoredTextBox.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\FastColoredTextBox\obj\Release\FastColoredTextBox.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\FastColoredTextBox\obj\Release\FastColoredTextBox.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\FastColoredTextBox\obj\Release\FastColoredTextBox.pdb
