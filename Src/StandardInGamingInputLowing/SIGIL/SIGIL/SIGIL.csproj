@@ -306,6 +306,10 @@
       <Project>{211d48a2-f49f-41ac-bfdb-5d92ac6043dc}</Project>
       <Name>Valuechanges</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Wiimoteslibmp\Wiimoteslibmp.csproj">
+      <Project>{ff71f42b-45a9-4e9d-b8f2-84cc7e6da49d}</Project>
+      <Name>Wiimoteslibmp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Wiimoteslib\Wiimoteslib.csproj">
       <Project>{f295ca2c-b2ea-4aae-86a2-342aef21da35}</Project>
       <Name>Wiimoteslib</Name>

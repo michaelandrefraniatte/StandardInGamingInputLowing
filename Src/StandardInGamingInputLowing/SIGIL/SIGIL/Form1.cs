@@ -238,6 +238,8 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"\bWiiMote\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bWiiMotesLibAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bWiiMoteLib\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bWiiMotesLibMPAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bWiiMoteLibMP\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bwm\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bwm1\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bwm2\b"));
@@ -1556,7 +1558,17 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStatePedal\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStatePedalVelocity\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateRawJoystickX\b"));
-                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateRawJoystickY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteDrumsStateRawJoystickY\b")); 
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteMotionPlusStateRawX\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteMotionPlusStateRawY\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteMotionPlusStateRawZ\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteMotionPlusStatePitchFast\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteMotionPlusStateRollFast\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteMotionPlusStateYawFast\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteTaikoDrumStateInnerLeft\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteTaikoDrumStateOuterLeft\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteTaikoDrumStateInnerRight\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bWiimoteTaikoDrumStateOuterRight\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bSound\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bPlayer\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bplayer\b"));
@@ -1885,6 +1897,8 @@ namespace SIGIL
                 "WiiMote",
                 "WiiMotesLibAPI",
                 "WiiMoteLib",
+                "WiiMotesLibMPAPI",
+                "WiiMoteLibMP",
                 "SwitchProControllersAPI",
                 "SwitchProController",
                 "JoyconChargingGripsAPI",
@@ -3232,7 +3246,17 @@ namespace SIGIL
                 "WiimoteDrumsStatePedal",
                 "WiimoteDrumsStatePedalVelocity",
                 "WiimoteDrumsStateRawJoystickX",
-                "WiimoteDrumsStateRawJoystickY"
+                "WiimoteDrumsStateRawJoystickY",
+                "WiimoteMotionPlusStateRawX",
+                "WiimoteMotionPlusStateRawY",
+                "WiimoteMotionPlusStateRawZ",
+                "WiimoteMotionPlusStatePitchFast",
+                "WiimoteMotionPlusStateRollFast",
+                "WiimoteMotionPlusStateYawFast",
+                "WiimoteTaikoDrumStateInnerLeft",
+                "WiimoteTaikoDrumStateOuterLeft",
+                "WiimoteTaikoDrumStateInnerRight",
+                "WiimoteTaikoDrumStateOuterRight"
                 };
             string[] snippets = { "if(^)\n{\n}", "if(^)\n{\n}\nelse\n{\n}", "for(^;;)\n{\n}", "while(^)\n{\n}", "do${\n^}while();", "switch(^)\n{\n\tcase : break;\n}" };
             string[] declarationSnippets = {
@@ -3667,6 +3691,8 @@ namespace SIGIL
                 AddAssembly("Scalingfactor");
             if (code.Contains("using WiiMotesLibAPI;"))
                 AddAssembly("Wiimoteslib");
+            if (code.Contains("using WiiMotesLibMPAPI;"))
+                AddAssembly("Wiimoteslibmp");
             if (code.Contains("using Sound;"))
                 AddAssembly("Sound");
         }
