@@ -13,6 +13,8 @@ using controllers;
 using System.Diagnostics;
 using MouseHooksAPI;
 using KeyboardHooksAPI;
+using ScalingFactorAPI;
+
 namespace StringToCode
 {
     public class FooClass 
@@ -34,6 +36,7 @@ namespace StringToCode
         private XBoxController XBC = new XBoxController();
         private MouseHooks mh = new MouseHooks();
         private KeyboardHooks kh = new KeyboardHooks();
+        private ScalingFactor sf = new ScalingFactor();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         public static void valchanged(int n, bool val)
@@ -64,6 +67,7 @@ namespace StringToCode
                 mh.Close();
                 kh.Close();
                 XBC.Disconnect();
+                sf.Close();
             }
             catch { }
         }
@@ -82,6 +86,8 @@ namespace StringToCode
             mh.BeginPolling();
             kh.BeginPolling();
             XBC.Connect();
+            sf.Scan();
+            sf.BeginPolling();
             Task.Run(() => task());
         }
         private void task()
@@ -104,8 +110,8 @@ namespace StringToCode
                 }
                 if (getstate[0])
                 {
-                    statex = (width / 2f - mh.MouseX) * 1024f * 2f / width;
-                    statey = -(height / 2f - mh.MouseY) * 1024f * 2f / height;
+                    statex = (width / 2f - mh.MouseX / sf.scalingfactorx) * 1024f * 2f / width;
+                    statey = -(height / 2f - mh.MouseY / sf.scalingfactory) * 1024f * 2f / height;
                     if (statex >= 1024f)
                         statex = 1024f;
                     if (statex <= -1024f)
@@ -195,6 +201,7 @@ namespace StringToCode
                 XBC.Set(Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition, Controller_Send_xbox);
                 /*mh.ViewData();*/
                 /*kh.ViewData();*/
+                /*sf.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
         }
