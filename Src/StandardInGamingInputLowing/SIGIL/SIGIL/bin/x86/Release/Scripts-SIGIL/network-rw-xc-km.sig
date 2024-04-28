@@ -18,6 +18,7 @@ using MouseHooksAPI;
 using KeyboardHooksAPI;
 using Valuechanges;
 using XInputsAPI;
+using ScalingFactorAPI;
 
 namespace StringToCode
 {
@@ -34,7 +35,7 @@ namespace StringToCode
         private static bool Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_lefttrigger, Controller_Send_righttrigger, Controller_Send_xbox;
         private static double Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition;
         private static int width = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width, height = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
-        private static double statex = 0f, statey = 0f, mousex = 0f, mousey = 0f, mousestatex = 0f, mousestatey = 0f, dzx = 0.0f, dzy = 0.0f, viewpower1x = 0f, viewpower2x = 1f, viewpower3x = 0f, viewpower1y = 0.25f, viewpower2y = 0.75f, viewpower3y = 0f, viewpower05x = 0f, viewpower05y = 0f;
+        private static double statex = 0f, statey = 0f, mousex = 0f, mousey = 0f, mousestatex = 0f, mousestatey = 0f, dzx = 11.0f, dzy = 11.0f, viewpower1x = 1f, viewpower2x = 0f, viewpower3x = 0f, viewpower1y = 1f, viewpower2y = 0f, viewpower3y = 0f, viewpower05x = 0f, viewpower05y = 0f;
         public static Valuechange ValueChange = new Valuechange();
         public static string localip = "192.168.1.14";
         public static string port = "62000";
@@ -44,6 +45,7 @@ namespace StringToCode
         private MouseHooks mh = new MouseHooks();
         private KeyboardHooks kh = new KeyboardHooks();
         private XInput xi;
+        private ScalingFactor sf = new ScalingFactor();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         public static void valchanged(int n, bool val)
@@ -76,6 +78,7 @@ namespace StringToCode
                 kh.Close();
                 XBC.Disconnect();
                 xi.Close();
+                sf.Close();
             }
             catch { }
         }
@@ -98,6 +101,8 @@ namespace StringToCode
             xi = new XInput();
             xi.Scan();
             xi.BeginPolling();
+            sf.Scan();
+            sf.BeginPolling();
             Network.Connect(localip, port);
             Task.Run(() => task());
         }
@@ -121,8 +126,8 @@ namespace StringToCode
                 }
                 if (getstate[0])
                 {
-                    statex = (width / 2f - mh.MouseX) * 1024f * 2f / width;
-                    statey = -(height / 2f - mh.MouseY) * 1024f * 2f / height;
+                    statex = (width / 2f - mh.MouseX / sf.scalingfactorx) * 1024f * 2f / width;
+                    statey = -(height / 2f - mh.MouseY / sf.scalingfactory) * 1024f * 2f / height;
                     if (statex >= 1024f)
                         statex = 1024f;
                     if (statex <= -1024f)
@@ -139,8 +144,8 @@ namespace StringToCode
                         mousey = Scale(Math.Pow(statey, 3f) / Math.Pow(1024f, 2f) * viewpower3y + Math.Pow(statey, 2f) / Math.Pow(1024f, 1f) * viewpower2y + Math.Pow(statey, 1f) / Math.Pow(1024f, 0f) * viewpower1y + Math.Pow(statey, 0.5f) * Math.Pow(1024f, 0.5f) * viewpower05y, 0f, 1024f, (dzy / 100f) * 1024f, 1024f);
                     if (statey <= 0f)
                         mousey = Scale(-Math.Pow(-statey, 3f) / Math.Pow(1024f, 2f) * viewpower3y - Math.Pow(-statey, 2f) / Math.Pow(1024f, 1f) * viewpower2y - Math.Pow(-statey, 1f) / Math.Pow(1024f, 0f) * viewpower1y - Math.Pow(-statey, 0.5f) * Math.Pow(1024f, 0.5f) * viewpower05y, -1024f, 0f, -1024f, -(dzy / 100f) * 1024f);
-                    Controller_Send_rightstickx          = Math.Abs(-mousex * 32767f / 1024f) <= 32767f ? -mousex * 32767f / 1024f : Math.Sign(-mousex) * 32767f;
-                    Controller_Send_rightsticky          = Math.Abs(-mousey * 32767f / 1024f) <= 32767f ? -mousey * 32767f / 1024f : Math.Sign(-mousey) * 32767f;
+                    Controller_Send_leftstickx          = Math.Abs(-mousex * 32767f / 1024f) <= 32767f ? -mousex * 32767f / 1024f : Math.Sign(-mousex) * 32767f;
+                    Controller_Send_leftsticky          = Math.Abs(-mousey * 32767f / 1024f) <= 32767f ? -mousey * 32767f / 1024f : Math.Sign(-mousey) * 32767f;
                     Controller_Send_left                 = kh.Key_Z;
                     Controller_Send_right                = kh.Key_V;
                     Controller_Send_down                 = kh.Key_C;
@@ -158,17 +163,17 @@ namespace StringToCode
                     Controller_Send_righttriggerposition = mh.MouseLeftButton ? 255 : 0;
                     Controller_Send_lefttriggerposition  = mh.MouseRightButton ? 255 : 0;
                     if (kh.Key_W)
-                        Controller_Send_leftsticky = 32767;
+                        Controller_Send_rightsticky = 32767;
                     if (kh.Key_S)
-                        Controller_Send_leftsticky = -32767;
+                        Controller_Send_rightsticky = -32767;
                     if ((!kh.Key_W & !kh.Key_S) | (kh.Key_W & kh.Key_S))
-                        Controller_Send_leftsticky = 0;
+                        Controller_Send_rightsticky = 0;
                     if (kh.Key_D)
-                        Controller_Send_leftstickx = 32767;
+                        Controller_Send_rightstickx = 32767;
                     if (kh.Key_A)
-                        Controller_Send_leftstickx = -32767;
+                        Controller_Send_rightstickx = -32767;
                     if ((!kh.Key_D & !kh.Key_A) | (kh.Key_D & kh.Key_A))
-                        Controller_Send_leftstickx = 0;
+                        Controller_Send_rightstickx = 0;
                 }
                 else
                 {
@@ -199,6 +204,7 @@ namespace StringToCode
                 /*mh.ViewData();*/
                 /*kh.ViewData();*/
                 /*xi.ViewData();*/
+                /*sf.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
         }
