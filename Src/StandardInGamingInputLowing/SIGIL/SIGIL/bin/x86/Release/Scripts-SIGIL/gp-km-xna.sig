@@ -104,8 +104,8 @@ namespace StringToCode
                 }
                 if (getstate[0])
                 {
-                    statex = -mxh.MouseAxisX * 50f;
-                    statey = mxh.MouseAxisY * 50f;
+                    statex = (width / 2f - mxh.MouseAxisX) * 1024f * 2f / width;
+                    statey = -(height / 2f - mxh.MouseAxisY) * 1024f * 2f / height;
                     if (statex >= 1024f)
                         statex = 1024f;
                     if (statex <= -1024f)

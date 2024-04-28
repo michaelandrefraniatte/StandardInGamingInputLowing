@@ -9,6 +9,8 @@ namespace KeyboardXnaHookAPI
 {
     public class KeyboardXnaHook
     {
+        [DllImport("user32.dll")]
+        public static extern bool GetAsyncKeyState(Keys vKey);
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
         [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
@@ -357,584 +359,583 @@ namespace KeyboardXnaHookAPI
         }
         private void ProcessStateLogic()
         {
-            keys = Keyboard.GetState().GetPressedKeys();
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Escape))
+            if (GetAsyncKeyState(Keys.Escape))
                 KeyboardKeyEscape = true;
             else
                 KeyboardKeyEscape = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.D1))
+            if (GetAsyncKeyState(Keys.D1))
                 KeyboardKeyD1 = true;
             else
                 KeyboardKeyD1 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.D2))
+            if (GetAsyncKeyState(Keys.D2))
                 KeyboardKeyD2 = true;
             else
                 KeyboardKeyD2 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.D3))
+            if (GetAsyncKeyState(Keys.D3))
                 KeyboardKeyD3 = true;
             else
                 KeyboardKeyD3 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.D4))
+            if (GetAsyncKeyState(Keys.D4))
                 KeyboardKeyD4 = true;
             else
                 KeyboardKeyD4 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.D5))
+            if (GetAsyncKeyState(Keys.D5))
                 KeyboardKeyD5 = true;
             else
                 KeyboardKeyD5 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.D6))
+            if (GetAsyncKeyState(Keys.D6))
                 KeyboardKeyD6 = true;
             else
                 KeyboardKeyD6 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.D7))
+            if (GetAsyncKeyState(Keys.D7))
                 KeyboardKeyD7 = true;
             else
                 KeyboardKeyD7 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.D8))
+            if (GetAsyncKeyState(Keys.D8))
                 KeyboardKeyD8 = true;
             else
                 KeyboardKeyD8 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.D9))
+            if (GetAsyncKeyState(Keys.D9))
                 KeyboardKeyD9 = true;
             else
                 KeyboardKeyD9 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.D0))
+            if (GetAsyncKeyState(Keys.D0))
                 KeyboardKeyD0 = true;
             else
                 KeyboardKeyD0 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.OemMinus))
+            if (GetAsyncKeyState(Keys.OemMinus))
                 KeyboardKeyMinus = true;
             else
                 KeyboardKeyMinus = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.OemCloseBrackets))
+            if (GetAsyncKeyState(Keys.OemCloseBrackets))
                 KeyboardKeyEquals = true;
             else
                 KeyboardKeyEquals = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Back))
+            if (GetAsyncKeyState(Keys.Back))
                 KeyboardKeyBack = true;
             else
                 KeyboardKeyBack = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Tab))
+            if (GetAsyncKeyState(Keys.Tab))
                 KeyboardKeyTab = true;
             else
                 KeyboardKeyTab = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Q))
+            if (GetAsyncKeyState(Keys.Q))
                 KeyboardKeyQ = true;
             else
                 KeyboardKeyQ = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.W))
+            if (GetAsyncKeyState(Keys.W))
                 KeyboardKeyW = true;
             else
                 KeyboardKeyW = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.E))
+            if (GetAsyncKeyState(Keys.E))
                 KeyboardKeyE = true;
             else
                 KeyboardKeyE = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.R))
+            if (GetAsyncKeyState(Keys.R))
                 KeyboardKeyR = true;
             else
                 KeyboardKeyR = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.T))
+            if (GetAsyncKeyState(Keys.T))
                 KeyboardKeyT = true;
             else
                 KeyboardKeyT = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Y))
+            if (GetAsyncKeyState(Keys.Y))
                 KeyboardKeyY = true;
             else
                 KeyboardKeyY = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.U))
+            if (GetAsyncKeyState(Keys.U))
                 KeyboardKeyU = true;
             else
                 KeyboardKeyU = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.I))
+            if (GetAsyncKeyState(Keys.I))
                 KeyboardKeyI = true;
             else
                 KeyboardKeyI = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.O))
+            if (GetAsyncKeyState(Keys.O))
                 KeyboardKeyO = true;
             else
                 KeyboardKeyO = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.P))
+            if (GetAsyncKeyState(Keys.P))
                 KeyboardKeyP = true;
             else
                 KeyboardKeyP = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.OemOpenBrackets))
+            if (GetAsyncKeyState(Keys.OemOpenBrackets))
                 KeyboardKeyLeftBracket = true;
             else
                 KeyboardKeyLeftBracket = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.OemCloseBrackets))
+            if (GetAsyncKeyState(Keys.OemCloseBrackets))
                 KeyboardKeyRightBracket = true;
             else
                 KeyboardKeyRightBracket = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Enter))
+            if (GetAsyncKeyState(Keys.Enter))
                 KeyboardKeyReturn = true;
             else
                 KeyboardKeyReturn = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.LeftControl))
+            if (GetAsyncKeyState(Keys.LeftControl))
                 KeyboardKeyLeftControl = true;
             else
                 KeyboardKeyLeftControl = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.A))
+            if (GetAsyncKeyState(Keys.A))
                 KeyboardKeyA = true;
             else
                 KeyboardKeyA = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.S))
+            if (GetAsyncKeyState(Keys.S))
                 KeyboardKeyS = true;
             else
                 KeyboardKeyS = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.D))
+            if (GetAsyncKeyState(Keys.D))
                 KeyboardKeyD = true;
             else
                 KeyboardKeyD = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F))
+            if (GetAsyncKeyState(Keys.F))
                 KeyboardKeyF = true;
             else
                 KeyboardKeyF = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.G))
+            if (GetAsyncKeyState(Keys.G))
                 KeyboardKeyG = true;
             else
                 KeyboardKeyG = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.H))
+            if (GetAsyncKeyState(Keys.H))
                 KeyboardKeyH = true;
             else
                 KeyboardKeyH = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.J))
+            if (GetAsyncKeyState(Keys.J))
                 KeyboardKeyJ = true;
             else
                 KeyboardKeyJ = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.K))
+            if (GetAsyncKeyState(Keys.K))
                 KeyboardKeyK = true;
             else
                 KeyboardKeyK = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.L))
+            if (GetAsyncKeyState(Keys.L))
                 KeyboardKeyL = true;
             else
                 KeyboardKeyL = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.OemSemicolon))
+            if (GetAsyncKeyState(Keys.OemSemicolon))
                 KeyboardKeySemicolon = true;
             else
                 KeyboardKeySemicolon = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Apps))
+            if (GetAsyncKeyState(Keys.Apps))
                 KeyboardKeyApostrophe = true;
             else
                 KeyboardKeyApostrophe = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.ChatPadGreen))
+            if (GetAsyncKeyState(Keys.ChatPadGreen))
                 KeyboardKeyGrave = true;
             else
                 KeyboardKeyGrave = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.LeftShift))
+            if (GetAsyncKeyState(Keys.LeftShift))
                 KeyboardKeyLeftShift = true;
             else
                 KeyboardKeyLeftShift = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.OemBackslash))
+            if (GetAsyncKeyState(Keys.OemBackslash))
                 KeyboardKeyBackslash = true;
             else
                 KeyboardKeyBackslash = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Z))
+            if (GetAsyncKeyState(Keys.Z))
                 KeyboardKeyZ = true;
             else
                 KeyboardKeyZ = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.X))
+            if (GetAsyncKeyState(Keys.X))
                 KeyboardKeyX = true;
             else
                 KeyboardKeyX = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.C))
+            if (GetAsyncKeyState(Keys.C))
                 KeyboardKeyC = true;
             else
                 KeyboardKeyC = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.V))
+            if (GetAsyncKeyState(Keys.V))
                 KeyboardKeyV = true;
             else
                 KeyboardKeyV = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.B))
+            if (GetAsyncKeyState(Keys.B))
                 KeyboardKeyB = true;
             else
                 KeyboardKeyB = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.N))
+            if (GetAsyncKeyState(Keys.N))
                 KeyboardKeyN = true;
             else
                 KeyboardKeyN = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.M))
+            if (GetAsyncKeyState(Keys.M))
                 KeyboardKeyM = true;
             else
                 KeyboardKeyM = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.OemComma))
+            if (GetAsyncKeyState(Keys.OemComma))
                 KeyboardKeyComma = true;
             else
                 KeyboardKeyComma = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.OemPeriod))
+            if (GetAsyncKeyState(Keys.OemPeriod))
                 KeyboardKeyPeriod = true;
             else
                 KeyboardKeyPeriod = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.SelectMedia))
+            if (GetAsyncKeyState(Keys.SelectMedia))
                 KeyboardKeySlash = true;
             else
                 KeyboardKeySlash = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.RightShift))
+            if (GetAsyncKeyState(Keys.RightShift))
                 KeyboardKeyRightShift = true;
             else
                 KeyboardKeyRightShift = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Multiply))
+            if (GetAsyncKeyState(Keys.Multiply))
                 KeyboardKeyMultiply = true;
             else
                 KeyboardKeyMultiply = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.LeftAlt))
+            if (GetAsyncKeyState(Keys.LeftAlt))
                 KeyboardKeyLeftAlt = true;
             else
                 KeyboardKeyLeftAlt = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Space))
+            if (GetAsyncKeyState(Keys.Space))
                 KeyboardKeySpace = true;
             else
                 KeyboardKeySpace = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.CapsLock))
+            if (GetAsyncKeyState(Keys.CapsLock))
                 KeyboardKeyCapital = true;
             else
                 KeyboardKeyCapital = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F1))
+            if (GetAsyncKeyState(Keys.F1))
                 KeyboardKeyF1 = true;
             else
                 KeyboardKeyF1 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F2))
+            if (GetAsyncKeyState(Keys.F2))
                 KeyboardKeyF2 = true;
             else
                 KeyboardKeyF2 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F3))
+            if (GetAsyncKeyState(Keys.F3))
                 KeyboardKeyF3 = true;
             else
                 KeyboardKeyF3 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F4))
+            if (GetAsyncKeyState(Keys.F4))
                 KeyboardKeyF4 = true;
             else
                 KeyboardKeyF4 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F5))
+            if (GetAsyncKeyState(Keys.F5))
                 KeyboardKeyF5 = true;
             else
                 KeyboardKeyF5 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F6))
+            if (GetAsyncKeyState(Keys.F6))
                 KeyboardKeyF6 = true;
             else
                 KeyboardKeyF6 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F7))
+            if (GetAsyncKeyState(Keys.F7))
                 KeyboardKeyF7 = true;
             else
                 KeyboardKeyF7 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F8))
+            if (GetAsyncKeyState(Keys.F8))
                 KeyboardKeyF8 = true;
             else
                 KeyboardKeyF8 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F9))
+            if (GetAsyncKeyState(Keys.F9))
                 KeyboardKeyF9 = true;
             else
                 KeyboardKeyF9 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F10))
+            if (GetAsyncKeyState(Keys.F10))
                 KeyboardKeyF10 = true;
             else
                 KeyboardKeyF10 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.NumLock))
+            if (GetAsyncKeyState(Keys.NumLock))
                 KeyboardKeyNumberLock = true;
             else
                 KeyboardKeyNumberLock = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Scroll))
+            if (GetAsyncKeyState(Keys.Scroll))
                 KeyboardKeyScrollLock = true;
             else
                 KeyboardKeyScrollLock = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.NumPad7))
+            if (GetAsyncKeyState(Keys.NumPad7))
                 KeyboardKeyNumberPad7 = true;
             else
                 KeyboardKeyNumberPad7 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.NumPad8))
+            if (GetAsyncKeyState(Keys.NumPad8))
                 KeyboardKeyNumberPad8 = true;
             else
                 KeyboardKeyNumberPad8 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.NumPad9))
+            if (GetAsyncKeyState(Keys.NumPad9))
                 KeyboardKeyNumberPad9 = true;
             else
                 KeyboardKeyNumberPad9 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Subtract))
+            if (GetAsyncKeyState(Keys.Subtract))
                 KeyboardKeySubtract = true;
             else
                 KeyboardKeySubtract = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.NumPad4))
+            if (GetAsyncKeyState(Keys.NumPad4))
                 KeyboardKeyNumberPad4 = true;
             else
                 KeyboardKeyNumberPad4 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.NumPad5))
+            if (GetAsyncKeyState(Keys.NumPad5))
                 KeyboardKeyNumberPad5 = true;
             else
                 KeyboardKeyNumberPad5 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.NumPad6))
+            if (GetAsyncKeyState(Keys.NumPad6))
                 KeyboardKeyNumberPad6 = true;
             else
                 KeyboardKeyNumberPad6 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Add))
+            if (GetAsyncKeyState(Keys.Add))
                 KeyboardKeyAdd = true;
             else
                 KeyboardKeyAdd = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.NumPad1))
+            if (GetAsyncKeyState(Keys.NumPad1))
                 KeyboardKeyNumberPad1 = true;
             else
                 KeyboardKeyNumberPad1 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.NumPad2))
+            if (GetAsyncKeyState(Keys.NumPad2))
                 KeyboardKeyNumberPad2 = true;
             else
                 KeyboardKeyNumberPad2 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.NumPad3))
+            if (GetAsyncKeyState(Keys.NumPad3))
                 KeyboardKeyNumberPad3 = true;
             else
                 KeyboardKeyNumberPad3 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.NumPad0))
+            if (GetAsyncKeyState(Keys.NumPad0))
                 KeyboardKeyNumberPad0 = true;
             else
                 KeyboardKeyNumberPad0 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Decimal))
+            if (GetAsyncKeyState(Keys.Decimal))
                 KeyboardKeyDecimal = true;
             else
                 KeyboardKeyDecimal = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.OemPipe))
+            if (GetAsyncKeyState(Keys.OemPipe))
                 KeyboardKeyOem102 = true;
             else
                 KeyboardKeyOem102 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F11))
+            if (GetAsyncKeyState(Keys.F11))
                 KeyboardKeyF11 = true;
             else
                 KeyboardKeyF11 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F12))
+            if (GetAsyncKeyState(Keys.F12))
                 KeyboardKeyF12 = true;
             else
                 KeyboardKeyF12 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F13))
+            if (GetAsyncKeyState(Keys.F13))
                 KeyboardKeyF13 = true;
             else
                 KeyboardKeyF13 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F14))
+            if (GetAsyncKeyState(Keys.F14))
                 KeyboardKeyF14 = true;
             else
                 KeyboardKeyF14 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.F15))
+            if (GetAsyncKeyState(Keys.F15))
                 KeyboardKeyF15 = true;
             else
                 KeyboardKeyF15 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Kana))
+            if (GetAsyncKeyState(Keys.Kana))
                 KeyboardKeyKana = true;
             else
                 KeyboardKeyKana = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.OemAuto))
+            if (GetAsyncKeyState(Keys.OemAuto))
                 KeyboardKeyAbntC1 = true;
             else
                 KeyboardKeyAbntC1 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.ImeConvert))
+            if (GetAsyncKeyState(Keys.ImeConvert))
                 KeyboardKeyConvert = true;
             else
                 KeyboardKeyConvert = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.ImeNoConvert))
+            if (GetAsyncKeyState(Keys.ImeNoConvert))
                 KeyboardKeyNoConvert = true;
             else
                 KeyboardKeyNoConvert = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Kana))
+            if (GetAsyncKeyState(Keys.Kana))
                 KeyboardKeyYen = true;
             else
                 KeyboardKeyYen = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.OemEnlW))
+            if (GetAsyncKeyState(Keys.OemEnlW))
                 KeyboardKeyAbntC2 = true;
             else
                 KeyboardKeyAbntC2 = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.BrowserStop))
+            if (GetAsyncKeyState(Keys.BrowserStop))
                 KeyboardKeyNumberPadEquals = true;
             else
                 KeyboardKeyNumberPadEquals = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.MediaPreviousTrack))
+            if (GetAsyncKeyState(Keys.MediaPreviousTrack))
                 KeyboardKeyPreviousTrack = true;
             else
                 KeyboardKeyPreviousTrack = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Attn))
+            if (GetAsyncKeyState(Keys.Attn))
                 KeyboardKeyAT = true;
             else
                 KeyboardKeyAT = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.OemSemicolon))
+            if (GetAsyncKeyState(Keys.OemSemicolon))
                 KeyboardKeyColon = true;
             else
                 KeyboardKeyColon = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Pa1))
+            if (GetAsyncKeyState(Keys.Pa1))
                 KeyboardKeyUnderline = true;
             else
                 KeyboardKeyUnderline = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Kanji))
+            if (GetAsyncKeyState(Keys.Kanji))
                 KeyboardKeyKanji = true;
             else
                 KeyboardKeyKanji = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.MediaStop))
+            if (GetAsyncKeyState(Keys.MediaStop))
                 KeyboardKeyStop = true;
             else
                 KeyboardKeyStop = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Pause))
+            if (GetAsyncKeyState(Keys.Pause))
                 KeyboardKeyAX = true;
             else
                 KeyboardKeyAX = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Add))
+            if (GetAsyncKeyState(Keys.Add))
                 KeyboardKeyUnlabeled = true;
             else
                 KeyboardKeyUnlabeled = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.MediaNextTrack))
+            if (GetAsyncKeyState(Keys.MediaNextTrack))
                 KeyboardKeyNextTrack = true;
             else
                 KeyboardKeyNextTrack = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.End))
+            if (GetAsyncKeyState(Keys.End))
                 KeyboardKeyNumberPadEnter = true;
             else
                 KeyboardKeyNumberPadEnter = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.RightControl))
+            if (GetAsyncKeyState(Keys.RightControl))
                 KeyboardKeyRightControl = true;
             else
                 KeyboardKeyRightControl = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.VolumeMute))
+            if (GetAsyncKeyState(Keys.VolumeMute))
                 KeyboardKeyMute = true;
             else
                 KeyboardKeyMute = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.CapsLock))
+            if (GetAsyncKeyState(Keys.CapsLock))
                 KeyboardKeyCalculator = true;
             else
                 KeyboardKeyCalculator = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.MediaPlayPause))
+            if (GetAsyncKeyState(Keys.MediaPlayPause))
                 KeyboardKeyPlayPause = true;
             else
                 KeyboardKeyPlayPause = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.MediaStop))
+            if (GetAsyncKeyState(Keys.MediaStop))
                 KeyboardKeyMediaStop = true;
             else
                 KeyboardKeyMediaStop = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.VolumeDown))
+            if (GetAsyncKeyState(Keys.VolumeDown))
                 KeyboardKeyVolumeDown = true;
             else
                 KeyboardKeyVolumeDown = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.VolumeUp))
+            if (GetAsyncKeyState(Keys.VolumeUp))
                 KeyboardKeyVolumeUp = true;
             else
                 KeyboardKeyVolumeUp = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.BrowserHome))
+            if (GetAsyncKeyState(Keys.BrowserHome))
                 KeyboardKeyWebHome = true;
             else
                 KeyboardKeyWebHome = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.OemComma))
+            if (GetAsyncKeyState(Keys.OemComma))
                 KeyboardKeyNumberPadComma = true;
             else
                 KeyboardKeyNumberPadComma = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Divide))
+            if (GetAsyncKeyState(Keys.Divide))
                 KeyboardKeyDivide = true;
             else
                 KeyboardKeyDivide = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.PrintScreen))
+            if (GetAsyncKeyState(Keys.PrintScreen))
                 KeyboardKeyPrintScreen = true;
             else
                 KeyboardKeyPrintScreen = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.RightAlt))
+            if (GetAsyncKeyState(Keys.RightAlt))
                 KeyboardKeyRightAlt = true;
             else
                 KeyboardKeyRightAlt = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Pause))
+            if (GetAsyncKeyState(Keys.Pause))
                 KeyboardKeyPause = true;
             else
                 KeyboardKeyPause = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Home))
+            if (GetAsyncKeyState(Keys.Home))
                 KeyboardKeyHome = true;
             else
                 KeyboardKeyHome = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Up))
+            if (GetAsyncKeyState(Keys.Up))
                 KeyboardKeyUp = true;
             else
                 KeyboardKeyUp = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.PageUp))
+            if (GetAsyncKeyState(Keys.PageUp))
                 KeyboardKeyPageUp = true;
             else
                 KeyboardKeyPageUp = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Left))
+            if (GetAsyncKeyState(Keys.Left))
                 KeyboardKeyLeft = true;
             else
                 KeyboardKeyLeft = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Right))
+            if (GetAsyncKeyState(Keys.Right))
                 KeyboardKeyRight = true;
             else
                 KeyboardKeyRight = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.End))
+            if (GetAsyncKeyState(Keys.End))
                 KeyboardKeyEnd = true;
             else
                 KeyboardKeyEnd = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Down))
+            if (GetAsyncKeyState(Keys.Down))
                 KeyboardKeyDown = true;
             else
                 KeyboardKeyDown = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.PageDown))
+            if (GetAsyncKeyState(Keys.PageDown))
                 KeyboardKeyPageDown = true;
             else
                 KeyboardKeyPageDown = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Insert))
+            if (GetAsyncKeyState(Keys.Insert))
                 KeyboardKeyInsert = true;
             else
                 KeyboardKeyInsert = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Delete))
+            if (GetAsyncKeyState(Keys.Delete))
                 KeyboardKeyDelete = true;
             else
                 KeyboardKeyDelete = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.LeftWindows))
+            if (GetAsyncKeyState(Keys.LeftWindows))
                 KeyboardKeyLeftWindowsKey = true;
             else
                 KeyboardKeyLeftWindowsKey = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.RightWindows))
+            if (GetAsyncKeyState(Keys.RightWindows))
                 KeyboardKeyRightWindowsKey = true;
             else
                 KeyboardKeyRightWindowsKey = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Apps))
+            if (GetAsyncKeyState(Keys.Apps))
                 KeyboardKeyApplications = true;
             else
                 KeyboardKeyApplications = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.ChatPadOrange))
+            if (GetAsyncKeyState(Keys.ChatPadOrange))
                 KeyboardKeyPower = true;
             else
                 KeyboardKeyPower = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Sleep))
+            if (GetAsyncKeyState(Keys.Sleep))
                 KeyboardKeySleep = true;
             else
                 KeyboardKeySleep = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Sleep))
+            if (GetAsyncKeyState(Keys.Sleep))
                 KeyboardKeyWake = true;
             else
                 KeyboardKeyWake = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.BrowserSearch))
+            if (GetAsyncKeyState(Keys.BrowserSearch))
                 KeyboardKeyWebSearch = true;
             else
                 KeyboardKeyWebSearch = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.BrowserFavorites))
+            if (GetAsyncKeyState(Keys.BrowserFavorites))
                 KeyboardKeyWebFavorites = true;
             else
                 KeyboardKeyWebFavorites = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.BrowserRefresh))
+            if (GetAsyncKeyState(Keys.BrowserRefresh))
                 KeyboardKeyWebRefresh = true;
             else
                 KeyboardKeyWebRefresh = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.BrowserStop))
+            if (GetAsyncKeyState(Keys.BrowserStop))
                 KeyboardKeyWebStop = true;
             else
                 KeyboardKeyWebStop = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.BrowserForward))
+            if (GetAsyncKeyState(Keys.BrowserForward))
                 KeyboardKeyWebForward = true;
             else
                 KeyboardKeyWebForward = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.BrowserBack))
+            if (GetAsyncKeyState(Keys.BrowserBack))
                 KeyboardKeyWebBack = true;
             else
                 KeyboardKeyWebBack = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Attn))
+            if (GetAsyncKeyState(Keys.Attn))
                 KeyboardKeyMyComputer = true;
             else
                 KeyboardKeyMyComputer = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.LaunchMail))
+            if (GetAsyncKeyState(Keys.LaunchMail))
                 KeyboardKeyMail = true;
             else
                 KeyboardKeyMail = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.Select))
+            if (GetAsyncKeyState(Keys.Select))
                 KeyboardKeyMediaSelect = true;
             else
                 KeyboardKeyMediaSelect = false;
-            if (keys.Contains(Microsoft.Xna.Framework.Input.Keys.None))
+            if (GetAsyncKeyState(Keys.None))
                 KeyboardKeyUnknown = true;
             else
                 KeyboardKeyUnknown = false;
