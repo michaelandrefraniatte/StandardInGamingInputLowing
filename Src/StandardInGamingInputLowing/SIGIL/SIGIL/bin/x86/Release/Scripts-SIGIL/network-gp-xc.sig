@@ -32,7 +32,7 @@ namespace StringToCode
         private static int sleeptime = 1;
         private XInput xi = new XInput();
         public static Valuechange ValueChange = new Valuechange();
-        public static string localip = "192.168.1.10";
+        public static string localip = "192.168.1.14";
         public static string port = "62000";
         public void Close()
         {

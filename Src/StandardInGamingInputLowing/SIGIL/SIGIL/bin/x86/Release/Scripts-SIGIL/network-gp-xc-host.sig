@@ -34,7 +34,7 @@ namespace StringToCode
         private static int sleeptime = 1;
         private static XBoxController XBC = new XBoxController();
         public static Valuechange ValueChange = new Valuechange();
-        public static string localip = "192.168.1.10";
+        public static string localip = "192.168.1.14";
         public static string port = "62000";
         public static WebSocket wsc;
         public static string[] control;
