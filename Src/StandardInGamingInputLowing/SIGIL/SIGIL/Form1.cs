@@ -3,9 +3,6 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Reflection;
-using FastColoredTextBoxNS;
-using Range = FastColoredTextBoxNS.Range;
-using System.Text.RegularExpressions;
 using System.IO;
 using System.Threading;
 using Microsoft.Win32;
@@ -14,6 +11,9 @@ using OpenWithSingleInstance;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using FastColoredTextBoxNS;
+using Range = FastColoredTextBoxNS.Range;
 using AutocompleteItem = AutocompleteMenuNS.AutocompleteItem;
 using SnippetAutocompleteItem = AutocompleteMenuNS.SnippetAutocompleteItem;
 using MethodAutocompleteItem = AutocompleteMenuNS.MethodAutocompleteItem;
@@ -189,6 +189,10 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"\bValuechange\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bValueChange\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\b_ValueChange\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bValuechangesdelay\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bValuechangedelay\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bValueChangedelay\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\b_ValueChangedelay\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bcontrollers\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bXBoxController\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bXBC\b"));
@@ -1877,6 +1881,10 @@ namespace SIGIL
                 "Valuechange",
                 "ValueChange",
                 "_ValueChange",
+                "Valuechangesdelay",
+                "Valuechangedelay",
+                "ValueChangedelay",
+                "_ValueChangedelay",
                 "controllers",
                 "XBoxController",
                 "XInputsAPI",
@@ -3645,6 +3653,8 @@ namespace SIGIL
                 AddAssembly("Interceptions");
             if (code.Contains("using Valuechanges;"))
                 AddAssembly("Valuechanges");
+            if (code.Contains("using Valuechangesdelay;"))
+                AddAssembly("Valuechangesdelay");
             if (code.Contains("using KeyboardInputsAPI;"))
                 AddAssembly("Keyboardinputs");
             if (code.Contains("using MouseInputsAPI;"))
