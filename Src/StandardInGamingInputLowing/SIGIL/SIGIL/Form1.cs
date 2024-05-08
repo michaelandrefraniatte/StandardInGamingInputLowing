@@ -17,7 +17,6 @@ using System.Collections.Generic;
 using AutocompleteItem = AutocompleteMenuNS.AutocompleteItem;
 using SnippetAutocompleteItem = AutocompleteMenuNS.SnippetAutocompleteItem;
 using MethodAutocompleteItem = AutocompleteMenuNS.MethodAutocompleteItem;
-using System.Security.Cryptography;
 
 namespace SIGIL
 {
@@ -1572,6 +1571,9 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"\bSound\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bPlayer\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bplayer\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bTimersAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bTimer\b"));
+                range.SetStyle(StyleObject, new Regex(@"\btimer\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bpathsound1\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bpathsound2\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bpathsound3\b"));
@@ -1620,6 +1622,9 @@ namespace SIGIL
                 range.SetStyle(StyleOutput, new Regex(@"\btempsound10\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\btempsound11\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\btempsound12\b"));
+                range.SetStyle(StyleInput, new Regex(@"\btimeelapsed\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bMessageBox.Show\b"));
+                range.SetStyle(StyleExtra, new Regex(@"\bToString\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2413,6 +2418,9 @@ namespace SIGIL
                 "Sound",
                 "Player",
                 "player",
+                "TimersAPI",
+                "Timer",
+                "timer",
                 "pathsound1",
                 "pathsound2",
                 "pathsound3",
@@ -2460,7 +2468,8 @@ namespace SIGIL
                 "tempsound9",
                 "tempsound10",
                 "tempsound11",
-                "tempsound12"
+                "tempsound12",
+                "MessageBox.Show"
             };
             string[] methods = { 
                 "ToString()",
@@ -3256,7 +3265,8 @@ namespace SIGIL
                 "WiimoteTaikoDrumStateInnerLeft",
                 "WiimoteTaikoDrumStateOuterLeft",
                 "WiimoteTaikoDrumStateInnerRight",
-                "WiimoteTaikoDrumStateOuterRight"
+                "WiimoteTaikoDrumStateOuterRight",
+                "timeelapsed"
                 };
             string[] snippets = { "if(^)\n{\n}", "if(^)\n{\n}\nelse\n{\n}", "for(^;;)\n{\n}", "while(^)\n{\n}", "do${\n^}while();", "switch(^)\n{\n\tcase : break;\n}" };
             string[] declarationSnippets = {
@@ -3695,6 +3705,8 @@ namespace SIGIL
                 AddAssembly("Wiimoteslibmp");
             if (code.Contains("using Sound;"))
                 AddAssembly("Sound");
+            if (code.Contains("using TimersAPI;"))
+                AddAssembly("Timers");
         }
         private void AddAssembly(string dllName)
         {

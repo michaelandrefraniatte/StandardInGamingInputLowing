@@ -302,6 +302,10 @@
       <Project>{8ed3aed1-4e62-486a-a8d6-7eda69b48559}</Project>
       <Name>Switchprocontrollers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Timers\Timers.csproj">
+      <Project>{c9396dcb-833c-4c2e-8522-e0515a4d4969}</Project>
+      <Name>Timers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Valuechanges\Valuechanges.csproj">
       <Project>{211d48a2-f49f-41ac-bfdb-5d92ac6043dc}</Project>
       <Name>Valuechanges</Name>
