@@ -83,9 +83,10 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                timeelspasedtemp = timeelspased;
-                timeelspased     = timer.timeelapsed;
                 pressed          = ki.KeyboardKeyA;
+                if (pressed)
+                    timeelspasedtemp = timeelspased;
+                timeelspased     = timer.timeelapsed;
                 valchanged(0, pressed);
                 if (wu[0] == 1 & !pressed)
                 {
