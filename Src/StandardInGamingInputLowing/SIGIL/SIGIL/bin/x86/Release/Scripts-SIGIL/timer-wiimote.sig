@@ -103,8 +103,9 @@ namespace StringToCode
                 valchanged(1, ki.KeyboardKeyAdd);
                 if (wd[1] == 1)
                 {
-                    MessageBox.Show("Input latency pressing the key A or Q on French keyboard: " + elapsed.ToString() + " ms.");
+                    MessageBox.Show("Input latency pressing the Wiimote A button: " + elapsed.ToString() + " ms.");
                 }
+                /*wm.ViewData();*/
                 /*timer.ViewData();*/
                 /*ki.ViewData();*/
                 Thread.Sleep(sleeptime);

@@ -101,7 +101,7 @@ namespace StringToCode
                 valchanged(1, ki.KeyboardKeyAdd);
                 if (wd[1] == 1)
                 {
-                    MessageBox.Show("Input latency pressing the key A or Q on French keyboard: " + elapsed.ToString() + " ms.");
+                    MessageBox.Show("Input latency pressing the Xbox A button: " + elapsed.ToString() + " ms.");
                 }
                 /*xi.ViewData();*/
                 /*timer.ViewData();*/
