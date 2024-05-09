@@ -10,9 +10,10 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Diagnostics;
-using KeyboardInputsAPI;
-using Valuechanges;
 using TimersAPI;
+using Valuechanges;
+using WiiMotesAPI;
+
 namespace StringToCode
 {
     public class FooClass 
@@ -25,11 +26,13 @@ namespace StringToCode
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private static bool running;
-        private static int sleeptime = 1;
         private static double delay, elapseddown, elapsedup, elapsed;
-        private KeyboardInput ki = new KeyboardInput();
+        private static int sleeptime = 1;
+        private static int irmode = 2;
+        private static double centery = 80f;
         public static Valuechange ValueChange = new Valuechange();
         private TimersAPI.Timer timer = new TimersAPI.Timer();
+        private WiiMote wm = new WiiMote();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         public static void valchanged(int n, bool val)
@@ -58,7 +61,7 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 timer.Close();
-                ki.Close();
+                wm.Close();
             }
             catch { }
         }
@@ -72,10 +75,10 @@ namespace StringToCode
         private void Start()
         {
             running = true;
+            wm.Scan(irmode, centery);
             timer.Scan();
-            ki.Scan();
+            wm.BeginPolling();
             timer.BeginPolling();
-            ki.BeginPolling();
             Task.Run(() => task());
         }
         private void task()
@@ -84,8 +87,8 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                valchanged(0, ki.KeyboardKeyA);
-                if (ki.KeyboardKeyA)
+                valchanged(0, wm.WiimoteButtonStateA);
+                if (wm.WiimoteButtonStateA)
                 {
                     elapseddown = timer.timeelapsed;
                     elapsed     = 0;
@@ -95,13 +98,14 @@ namespace StringToCode
                     elapsedup = timer.timeelapsed;
                     elapsed   = elapsedup - elapseddown;
                 }
-                ValueChange[0] = !ki.KeyboardKeyA ? elapsed : 0;
+                ValueChange[0] = !wm.WiimoteButtonStateA ? elapsed : 0;
                 if (ValueChange._ValueChange[0] > 0)
                 {
                     delay = ValueChange._ValueChange[0];
-                    MessageBox.Show("Input delay pressing the key A or Q on French keyboard: " + delay.ToString() + " ms.");
+                    MessageBox.Show("Input delay pressing the Wiimote A button: " + delay.ToString() + " ms.");
                 }
-                /*ki.ViewData();*/
+                /*wm.ViewData();*/
+                /*timer.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
         }

@@ -10,9 +10,10 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Diagnostics;
-using KeyboardInputsAPI;
+using MouseInputsAPI;
 using Valuechanges;
 using TimersAPI;
+
 namespace StringToCode
 {
     public class FooClass 
@@ -25,9 +26,9 @@ namespace StringToCode
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private static bool running;
-        private static int sleeptime = 1;
         private static double delay, elapseddown, elapsedup, elapsed;
-        private KeyboardInput ki = new KeyboardInput();
+        private static int sleeptime = 1;
+        private MouseInput mi = new MouseInput();
         public static Valuechange ValueChange = new Valuechange();
         private TimersAPI.Timer timer = new TimersAPI.Timer();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
@@ -58,7 +59,7 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 timer.Close();
-                ki.Close();
+                mi.Close();
             }
             catch { }
         }
@@ -73,9 +74,9 @@ namespace StringToCode
         {
             running = true;
             timer.Scan();
-            ki.Scan();
+            mi.Scan();
             timer.BeginPolling();
-            ki.BeginPolling();
+            mi.BeginPolling();
             Task.Run(() => task());
         }
         private void task()
@@ -84,8 +85,8 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                valchanged(0, ki.KeyboardKeyA);
-                if (ki.KeyboardKeyA)
+                valchanged(0, mi.MouseButtons0);
+                if (mi.MouseButtons0)
                 {
                     elapseddown = timer.timeelapsed;
                     elapsed     = 0;
@@ -95,13 +96,14 @@ namespace StringToCode
                     elapsedup = timer.timeelapsed;
                     elapsed   = elapsedup - elapseddown;
                 }
-                ValueChange[0] = !ki.KeyboardKeyA ? elapsed : 0;
+                ValueChange[0] = !mi.MouseButtons0 ? elapsed : 0;
                 if (ValueChange._ValueChange[0] > 0)
                 {
                     delay = ValueChange._ValueChange[0];
-                    MessageBox.Show("Input delay pressing the key A or Q on French keyboard: " + delay.ToString() + " ms.");
+                    MessageBox.Show("Input delay pressing the mouse left button: " + delay.ToString() + " ms.");
                 }
-                /*ki.ViewData();*/
+                /*mi.ViewData();*/
+                /*timer.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
         }
