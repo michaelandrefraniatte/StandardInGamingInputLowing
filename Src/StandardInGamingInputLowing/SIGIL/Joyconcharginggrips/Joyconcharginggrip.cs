@@ -8,6 +8,7 @@ using Vector3 = System.Numerics.Vector3;
 using Joyconcharginggrips;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 
 namespace JoyconChargingGripsAPI
 {
@@ -97,6 +98,8 @@ namespace JoyconChargingGripsAPI
         private byte[] default_bufLeft = { 0x0, 0x1, 0x40, 0x40, 0x0, 0x1, 0x40, 0x40 };
         private byte[] default_bufRight = { 0x0, 0x1, 0x40, 0x40, 0x0, 0x1, 0x40, 0x40 };
         private Form1 form1 = new Form1();
+        private Stopwatch LeftPollingRate, RightPollingRate;
+        private double leftpollingrateperm = 0, leftpollingratetemp = 0, leftpollingratedisplay = 0, leftpollingrate, rightpollingrateperm = 0, rightpollingratetemp = 0, rightpollingratedisplay = 0, rightpollingrate;
         public JoyconChargingGrip()
         {
             TimeBeginPeriod(1);
@@ -107,6 +110,10 @@ namespace JoyconChargingGripsAPI
         {
             if (!form1.Visible)
             {
+                LeftPollingRate = new Stopwatch();
+                LeftPollingRate.Start();
+                RightPollingRate = new Stopwatch();
+                RightPollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -140,6 +147,14 @@ namespace JoyconChargingGripsAPI
                 catch { Thread.Sleep(10); }
                 if (formvisible)
                 {
+                    leftpollingratedisplay++;
+                    leftpollingratetemp = leftpollingrateperm;
+                    leftpollingrateperm = LeftPollingRate.ElapsedMilliseconds;
+                    if (leftpollingratedisplay > 300)
+                    {
+                        leftpollingrate = leftpollingrateperm - leftpollingratetemp;
+                        leftpollingratedisplay = 0;
+                    }
                     string str = "JoyconLeftStickX : " + JoyconLeftStickX + Environment.NewLine;
                     str += "JoyconLeftStickY : " + JoyconLeftStickY + Environment.NewLine;
                     str += "JoyconLeftButtonSHOULDER_1 : " + JoyconLeftButtonSHOULDER_1 + Environment.NewLine;
@@ -161,6 +176,7 @@ namespace JoyconChargingGripsAPI
                     str += "JoyconLeftAccelY : " + JoyconLeftAccelY + Environment.NewLine;
                     str += "JoyconLeftGyroX : " + JoyconLeftGyroX + Environment.NewLine;
                     str += "JoyconLeftGyroY : " + JoyconLeftGyroY + Environment.NewLine;
+                    str += "PollingRate : " + leftpollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }
@@ -180,6 +196,14 @@ namespace JoyconChargingGripsAPI
                 catch { Thread.Sleep(10); }
                 if (formvisible)
                 {
+                    rightpollingratedisplay++;
+                    rightpollingratetemp = rightpollingrateperm;
+                    rightpollingrateperm = RightPollingRate.ElapsedMilliseconds;
+                    if (rightpollingratedisplay > 300)
+                    {
+                        rightpollingrate = rightpollingrateperm - rightpollingratetemp;
+                        rightpollingratedisplay = 0;
+                    }
                     string str = "JoyconRightStickX : " + JoyconRightStickX + Environment.NewLine;
                     str += "JoyconRightStickY : " + JoyconRightStickY + Environment.NewLine;
                     str += "JoyconRightButtonSHOULDER_1 : " + JoyconRightButtonSHOULDER_1 + Environment.NewLine;
@@ -201,6 +225,7 @@ namespace JoyconChargingGripsAPI
                     str += "JoyconRightAccelY : " + JoyconRightAccelY + Environment.NewLine;
                     str += "JoyconRightGyroX : " + JoyconRightGyroX + Environment.NewLine;
                     str += "JoyconRightGyroY : " + JoyconRightGyroY + Environment.NewLine;
+                    str += "PollingRate : " + rightpollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel2(str);
                 }

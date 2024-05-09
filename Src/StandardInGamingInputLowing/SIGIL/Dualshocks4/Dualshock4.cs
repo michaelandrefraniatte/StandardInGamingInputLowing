@@ -8,6 +8,7 @@ using System.Threading;
 using System.IO;
 using Microsoft.Win32.SafeHandles;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace DualShocks4API
 {
@@ -76,6 +77,8 @@ namespace DualShocks4API
         private static List<string> paths = new List<string>();
         private static List<FileStream> mStreams = new List<FileStream>();
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public DualShock4()
         {
             TimeBeginPeriod(1);
@@ -87,6 +90,8 @@ namespace DualShocks4API
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -201,6 +206,14 @@ namespace DualShocks4API
                 catch { Thread.Sleep(10); }
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "PS4ControllerLeftStickX : " + PS4ControllerLeftStickX + Environment.NewLine;
                     str += "PS4ControllerLeftStickY : " + PS4ControllerLeftStickY + Environment.NewLine;
                     str += "PS4ControllerRightStickX : " + PS4ControllerRightStickX + Environment.NewLine;
@@ -233,6 +246,7 @@ namespace DualShocks4API
                     str += "PS4ControllerButtonLogoPressed : " + PS4ControllerButtonLogoPressed + Environment.NewLine;
                     str += "PS4ControllerButtonTouchpadPressed : " + PS4ControllerButtonTouchpadPressed + Environment.NewLine;
                     str += "PS4ControllerButtonMicPressed : " + PS4ControllerButtonMicPressed + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }

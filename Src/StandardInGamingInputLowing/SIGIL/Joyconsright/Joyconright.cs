@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
 using Joyconsright;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace JoyconsRightAPI
 {
@@ -77,6 +78,8 @@ namespace JoyconsRightAPI
         private static List<string> paths = new List<string>();
         private static List<SafeFileHandle> handles = new List<SafeFileHandle>();
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public JoyconRight()
         {
             TimeBeginPeriod(1);
@@ -87,6 +90,8 @@ namespace JoyconsRightAPI
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -113,6 +118,14 @@ namespace JoyconsRightAPI
                 catch { Thread.Sleep(10); }
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "JoyconRightStickX : " + JoyconRightStickX + Environment.NewLine;
                     str += "JoyconRightStickY : " + JoyconRightStickY + Environment.NewLine;
                     str += "JoyconRightButtonSHOULDER_1 : " + JoyconRightButtonSHOULDER_1 + Environment.NewLine;
@@ -134,6 +147,7 @@ namespace JoyconsRightAPI
                     str += "JoyconRightAccelY : " + JoyconRightAccelY + Environment.NewLine;
                     str += "JoyconRightGyroX : " + JoyconRightGyroX + Environment.NewLine;
                     str += "JoyconRightGyroY : " + JoyconRightGyroY + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }

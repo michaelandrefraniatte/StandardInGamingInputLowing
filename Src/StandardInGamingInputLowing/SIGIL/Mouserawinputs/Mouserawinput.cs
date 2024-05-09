@@ -5,6 +5,7 @@ using Mouserawinputs;
 using SharpDX.Multimedia;
 using SharpDX.RawInput;
 using SharpDX;
+using System.Diagnostics;
 
 namespace MouseRawInputsAPI
 {
@@ -21,6 +22,8 @@ namespace MouseRawInputsAPI
         private int number;
         private MouseInputEventArgs args = new MouseInputEventArgs();
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public MouseRawInputs()
         {
             TimeBeginPeriod(1);
@@ -33,6 +36,8 @@ namespace MouseRawInputsAPI
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -63,6 +68,14 @@ namespace MouseRawInputsAPI
                 catch { }
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "MouseAxisX : " + MouseAxisX + Environment.NewLine;
                     str += "MouseAxisY : " + MouseAxisY + Environment.NewLine;
                     str += "MouseAxisZ : " + MouseAxisZ + Environment.NewLine;
@@ -71,6 +84,7 @@ namespace MouseRawInputsAPI
                     str += "MouseButtons2 : " + MouseButtons2 + Environment.NewLine;
                     str += "MouseButtons3 : " + MouseButtons3 + Environment.NewLine;
                     str += "MouseButtons4 : " + MouseButtons4 + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }

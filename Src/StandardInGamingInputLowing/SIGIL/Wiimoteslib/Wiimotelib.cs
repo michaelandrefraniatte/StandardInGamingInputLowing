@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Wiimoteslib;
 using WiimoteLib;
+using System.Diagnostics;
 
 namespace WiiMotesLibAPI
 {
@@ -42,6 +43,8 @@ namespace WiiMotesLibAPI
         private Wiimote wiimote;
         private static List<Wiimote> wiimotes = new List<Wiimote>();
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public WiiMoteLib()
         {
             TimeBeginPeriod(1);
@@ -60,6 +63,8 @@ namespace WiiMotesLibAPI
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -84,6 +89,14 @@ namespace WiiMotesLibAPI
                 Thread.Sleep(10);
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "irx : " + irx + Environment.NewLine;
                     str += "iry : " + iry + Environment.NewLine;
                     str += "WiimoteButtonStateA : " + WiimoteButtonStateA + Environment.NewLine;
@@ -163,6 +176,7 @@ namespace WiiMotesLibAPI
                     str += "WiimoteDrumsStatePedalVelocity : " + WiimoteDrumsStatePedalVelocity + Environment.NewLine; 
                     str += "WiimoteDrumsStateRawJoystickX : " + WiimoteDrumsStateRawJoystickX + Environment.NewLine; 
                     str += "WiimoteDrumsStateRawJoystickY : " + WiimoteDrumsStateRawJoystickY + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }

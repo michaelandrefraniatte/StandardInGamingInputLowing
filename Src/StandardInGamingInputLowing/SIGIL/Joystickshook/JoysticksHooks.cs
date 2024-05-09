@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Joystickshook;
@@ -32,10 +33,14 @@ namespace JoysticksHooksAPI
         private static List<string> joysticks = new List<string>();
         private string joystick;
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public void ViewData()
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -62,6 +67,14 @@ namespace JoysticksHooksAPI
                 System.Threading.Thread.Sleep(1);
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "JoystickAxisX : " + JoystickAxisX + Environment.NewLine;
                     str += "JoystickAxisY : " + JoystickAxisY + Environment.NewLine;
                     str += "JoystickAxisZ : " + JoystickAxisZ + Environment.NewLine;
@@ -226,6 +239,7 @@ namespace JoysticksHooksAPI
                     str += "JoystickButtons125 : " + JoystickButtons125 + Environment.NewLine;
                     str += "JoystickButtons126 : " + JoystickButtons126 + Environment.NewLine;
                     str += "JoystickButtons127 : " + JoystickButtons127 + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }

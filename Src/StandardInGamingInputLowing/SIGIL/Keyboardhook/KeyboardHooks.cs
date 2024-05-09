@@ -22,6 +22,8 @@ namespace KeyboardHooksAPI
         private int number = 0;
         private bool running, formvisible;
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public KeyboardHooks()
         {
             TimeBeginPeriod(1);
@@ -34,6 +36,8 @@ namespace KeyboardHooksAPI
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -59,6 +63,14 @@ namespace KeyboardHooksAPI
                 Thread.Sleep(1);
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "Key_0 : " + Key_0 + Environment.NewLine;
                     str += "Key_1 : " + Key_1 + Environment.NewLine;
                     str += "Key_2 : " + Key_2 + Environment.NewLine;
@@ -233,6 +245,7 @@ namespace KeyboardHooksAPI
                     str += "Key_NONAME : " + Key_NONAME + Environment.NewLine;
                     str += "Key_PA1 : " + Key_PA1 + Environment.NewLine;
                     str += "Key_OEM_CLEAR : " + Key_OEM_CLEAR + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }

@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Mouseinputs;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace MouseInputsAPI
 {
@@ -22,6 +23,8 @@ namespace MouseInputsAPI
         private static List<Mouse> mouses = new List<Mouse>();
         private Mouse ms;
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public MouseInput()
         {
             TimeBeginPeriod(1);
@@ -32,6 +35,8 @@ namespace MouseInputsAPI
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -52,6 +57,14 @@ namespace MouseInputsAPI
                     Task.Run(() => Init());
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "MouseAxisX : " + MouseAxisX + Environment.NewLine;
                     str += "MouseAxisY : " + MouseAxisY + Environment.NewLine;
                     str += "MouseAxisZ : " + MouseAxisZ + Environment.NewLine;
@@ -63,6 +76,7 @@ namespace MouseInputsAPI
                     str += "MouseButtons5 : " + MouseButtons5 + Environment.NewLine;
                     str += "MouseButtons6 : " + MouseButtons6 + Environment.NewLine;
                     str += "MouseButtons7 : " + MouseButtons7 + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }

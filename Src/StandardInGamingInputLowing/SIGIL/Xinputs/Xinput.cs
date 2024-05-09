@@ -1,6 +1,7 @@
 ﻿using SharpDX.XInput;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Xinputs;
@@ -21,6 +22,8 @@ namespace XInputsAPI
         private static List<Controller> gamepads = new List<Controller>();
         private Controller gp;
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public XInput()
         {
             TimeBeginPeriod(1);
@@ -31,6 +34,8 @@ namespace XInputsAPI
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -49,6 +54,14 @@ namespace XInputsAPI
                 System.Threading.Thread.Sleep(1);
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "ControllerButtonAPressed : " + ControllerButtonAPressed + Environment.NewLine;
                     str += "ControllerButtonBPressed : " + ControllerButtonBPressed + Environment.NewLine;
                     str += "ControllerButtonXPressed : " + ControllerButtonXPressed + Environment.NewLine;
@@ -69,6 +82,7 @@ namespace XInputsAPI
                     str += "ControllerThumbLeftY : " + ControllerThumbLeftY + Environment.NewLine;
                     str += "ControllerThumbRightX : " + ControllerThumbRightX + Environment.NewLine;
                     str += "ControllerThumbRightY : " + ControllerThumbRightY + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
 using Switchprocontrollers;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace SwitchProControllersAPI
 {
@@ -72,6 +73,8 @@ namespace SwitchProControllersAPI
         private static List<string> paths = new List<string>();
         private static List<SafeFileHandle> handles = new List<SafeFileHandle>();
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public SwitchProController()
         {
             TimeBeginPeriod(1);
@@ -82,6 +85,8 @@ namespace SwitchProControllersAPI
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -109,6 +114,14 @@ namespace SwitchProControllersAPI
                 catch { Thread.Sleep(10); }
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "ProControllerLeftStickX : " + ProControllerLeftStickX + Environment.NewLine;
                     str += "ProControllerLeftStickY : " + ProControllerLeftStickY + Environment.NewLine;
                     str += "ProControllerRightStickX : " + ProControllerRightStickX + Environment.NewLine;
@@ -135,6 +148,7 @@ namespace SwitchProControllersAPI
                     str += "ProControllerAccelY : " + ProControllerAccelY + Environment.NewLine;
                     str += "ProControllerGyroX : " + ProControllerGyroX + Environment.NewLine;
                     str += "ProControllerGyroY : " + ProControllerGyroY + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }

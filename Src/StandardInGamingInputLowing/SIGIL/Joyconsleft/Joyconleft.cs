@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Vector3 = System.Numerics.Vector3;
 using Joyconsleft;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace JoyconsLeftAPI
 {
@@ -77,6 +78,8 @@ namespace JoyconsLeftAPI
         private static List<string> paths = new List<string>();
         private static List<SafeFileHandle> handles = new List<SafeFileHandle>();
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public JoyconLeft()
         {
             TimeBeginPeriod(1);
@@ -87,6 +90,8 @@ namespace JoyconsLeftAPI
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -113,6 +118,14 @@ namespace JoyconsLeftAPI
                 catch { Thread.Sleep(10); }
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "JoyconLeftStickX : " + JoyconLeftStickX + Environment.NewLine;
                     str += "JoyconLeftStickY : " + JoyconLeftStickY + Environment.NewLine;
                     str += "JoyconLeftButtonSHOULDER_1 : " + JoyconLeftButtonSHOULDER_1 + Environment.NewLine;
@@ -134,6 +147,7 @@ namespace JoyconsLeftAPI
                     str += "JoyconLeftAccelY : " + JoyconLeftAccelY + Environment.NewLine;
                     str += "JoyconLeftGyroX : " + JoyconLeftGyroX + Environment.NewLine;
                     str += "JoyconLeftGyroY : " + JoyconLeftGyroY + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }

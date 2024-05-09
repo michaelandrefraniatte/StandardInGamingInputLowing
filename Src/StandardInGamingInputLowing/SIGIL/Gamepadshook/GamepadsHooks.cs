@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Gamepadshook;
@@ -20,6 +21,8 @@ namespace GamepadsHooksAPI
         private int number, inc;
         private GamePadState gamepadstate;
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public GamepadsHooks()
         {
             TimeBeginPeriod(1);
@@ -30,6 +33,8 @@ namespace GamepadsHooksAPI
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -48,6 +53,14 @@ namespace GamepadsHooksAPI
                 System.Threading.Thread.Sleep(1);
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "ControllerButtonAPressed : " + ControllerButtonAPressed + Environment.NewLine;
                     str += "ControllerButtonBPressed : " + ControllerButtonBPressed + Environment.NewLine;
                     str += "ControllerButtonXPressed : " + ControllerButtonXPressed + Environment.NewLine;
@@ -68,6 +81,7 @@ namespace GamepadsHooksAPI
                     str += "ControllerThumbLeftY : " + ControllerThumbLeftY + Environment.NewLine;
                     str += "ControllerThumbRightX : " + ControllerThumbRightX + Environment.NewLine;
                     str += "ControllerThumbRightY : " + ControllerThumbRightY + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }

@@ -26,6 +26,8 @@ namespace MouseHooksAPI
         private int number = 0;
         private bool running, formvisible;
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public MouseHooks()
         {
             TimeBeginPeriod(1);
@@ -38,6 +40,8 @@ namespace MouseHooksAPI
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -67,6 +71,14 @@ namespace MouseHooksAPI
                     Task.Run(() => Init());
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "CursorX : " + CursorX + Environment.NewLine;
                     str += "CursorY : " + CursorY + Environment.NewLine;
                     str += "MouseX : " + MouseX + Environment.NewLine;
@@ -77,6 +89,7 @@ namespace MouseHooksAPI
                     str += "MouseMiddleButton : " + MouseMiddleButton + Environment.NewLine;
                     str += "MouseXButton : " + MouseXButton + Environment.NewLine;
                     str += "MouseButtonX : " + MouseButtonX + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }

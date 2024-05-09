@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -65,6 +66,8 @@ namespace WiiMotesAPI
         private static List<string> paths = new List<string>();
         private static List<FileStream> mStreams = new List<FileStream>();
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public WiiMote()
         {
             TimeBeginPeriod(1);
@@ -83,6 +86,8 @@ namespace WiiMotesAPI
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -117,6 +122,14 @@ namespace WiiMotesAPI
                 catch { Thread.Sleep(10); }
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "irx : " + irx + Environment.NewLine;
                     str += "iry : " + iry + Environment.NewLine;
                     str += "WiimoteButtonStateA : " + WiimoteButtonStateA + Environment.NewLine;
@@ -140,6 +153,7 @@ namespace WiiMotesAPI
                     str += "WiimoteNunchuckStateRawValuesZ : " + WiimoteNunchuckStateRawValuesZ + Environment.NewLine;
                     str += "WiimoteNunchuckStateC : " + WiimoteNunchuckStateC + Environment.NewLine;
                     str += "WiimoteNunchuckStateZ : " + WiimoteNunchuckStateZ + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }

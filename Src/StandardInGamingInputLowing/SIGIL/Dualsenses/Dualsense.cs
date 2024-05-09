@@ -8,6 +8,7 @@ using System.Threading;
 using System.IO;
 using Microsoft.Win32.SafeHandles;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace DualSensesAPI
 {
@@ -80,6 +81,8 @@ namespace DualSensesAPI
         private static List<string> paths = new List<string>();
         private static List<FileStream> mStreams = new List<FileStream>();
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public DualSense()
         {
             TimeBeginPeriod(1);
@@ -91,6 +94,8 @@ namespace DualSensesAPI
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -213,6 +218,14 @@ namespace DualSensesAPI
                 catch { Thread.Sleep(10); }
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "PS5ControllerLeftStickX : " + PS5ControllerLeftStickX + Environment.NewLine;
                     str += "PS5ControllerLeftStickY : " + PS5ControllerLeftStickY + Environment.NewLine;
                     str += "PS5ControllerRightStickX : " + PS5ControllerRightStickX + Environment.NewLine;
@@ -249,6 +262,7 @@ namespace DualSensesAPI
                     str += "PS5ControllerButtonBLPPressed : " + PS5ControllerButtonBLPPressed + Environment.NewLine;
                     str += "PS5ControllerButtonBRPPressed : " + PS5ControllerButtonBRPPressed + Environment.NewLine;
                     str += "PS5ControllerButtonMicPressed : " + PS5ControllerButtonMicPressed + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }

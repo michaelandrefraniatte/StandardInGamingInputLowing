@@ -7,6 +7,7 @@ using AForge;
 using AForge.Imaging;
 using System.Drawing;
 using System;
+using System.Diagnostics;
 
 namespace CameraAPI
 {
@@ -37,6 +38,8 @@ namespace CameraAPI
         public double backpointX, posRightX, backpointY, posRightY, camx, camy;
         private int number;
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public CameraToLed()
         {
             TimeBeginPeriod(1);
@@ -47,6 +50,8 @@ namespace CameraAPI
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -77,8 +82,17 @@ namespace CameraAPI
                 {
                     try
                     {
+                        pollingratedisplay++;
+                        pollingratetemp = pollingrateperm;
+                        pollingrateperm = PollingRate.ElapsedMilliseconds;
+                        if (pollingratedisplay > 300)
+                        {
+                            pollingrate = pollingrateperm - pollingratetemp;
+                            pollingratedisplay = 0;
+                        }
                         string str = "camx : " + camx + Environment.NewLine;
                         str += "camy : " + camy + Environment.NewLine;
+                        str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                         str += Environment.NewLine;
                         form1.SetLabel1(str);
                     }

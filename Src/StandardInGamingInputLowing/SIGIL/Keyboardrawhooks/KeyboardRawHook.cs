@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -25,6 +26,8 @@ namespace KeyboardRawHooksAPI
         private const bool CaptureOnlyInForeground = false;
         private static List<string> devicehandle = new List<string>();
         private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         public KeyboardRawHook()
         {
             TimeBeginPeriod(1);
@@ -38,6 +41,8 @@ namespace KeyboardRawHooksAPI
         {
             if (!form1.Visible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -57,6 +62,14 @@ namespace KeyboardRawHooksAPI
                 System.Threading.Thread.Sleep(1);
                 if (formvisible)
                 {
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    if (pollingratedisplay > 300)
+                    {
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
+                    }
                     string str = "Key_0 : " + Key_0 + Environment.NewLine;
                     str += "Key_1 : " + Key_1 + Environment.NewLine;
                     str += "Key_2 : " + Key_2 + Environment.NewLine;
@@ -231,6 +244,7 @@ namespace KeyboardRawHooksAPI
                     str += "Key_NONAME : " + Key_NONAME + Environment.NewLine;
                     str += "Key_PA1 : " + Key_PA1 + Environment.NewLine;
                     str += "Key_OEM_CLEAR : " + Key_OEM_CLEAR + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }
