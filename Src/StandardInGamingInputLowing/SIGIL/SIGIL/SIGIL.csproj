@@ -306,10 +306,6 @@
       <Project>{c9396dcb-833c-4c2e-8522-e0515a4d4969}</Project>
       <Name>Timers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Valuechangesdelay\Valuechangesdelay.csproj">
-      <Project>{a9b8cd85-1930-40ea-b4b5-efdd0da2a64d}</Project>
-      <Name>Valuechangesdelay</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Valuechanges\Valuechanges.csproj">
       <Project>{211d48a2-f49f-41ac-bfdb-5d92ac6043dc}</Project>
       <Name>Valuechanges</Name>

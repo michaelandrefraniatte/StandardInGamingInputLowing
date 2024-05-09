@@ -189,10 +189,6 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"\bValuechange\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bValueChange\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\b_ValueChange\b"));
-                range.SetStyle(StyleLibrary, new Regex(@"\bValuechangesdelay\b"));
-                range.SetStyle(StyleClass, new Regex(@"\bValuechangedelay\b"));
-                range.SetStyle(StyleObject, new Regex(@"\bValueChangedelay\b"));
-                range.SetStyle(StyleMethod, new Regex(@"\b_ValueChangedelay\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bcontrollers\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bXBoxController\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bXBC\b"));
@@ -1627,6 +1623,7 @@ namespace SIGIL
                 range.SetStyle(StyleOutput, new Regex(@"\btempsound11\b"));
                 range.SetStyle(StyleOutput, new Regex(@"\btempsound12\b"));
                 range.SetStyle(StyleInput, new Regex(@"\btimeelapsed\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bdelay\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bMessageBox.Show\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bToString\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
@@ -1881,10 +1878,6 @@ namespace SIGIL
                 "Valuechange",
                 "ValueChange",
                 "_ValueChange",
-                "Valuechangesdelay",
-                "Valuechangedelay",
-                "ValueChangedelay",
-                "_ValueChangedelay",
                 "controllers",
                 "XBoxController",
                 "XInputsAPI",
@@ -2477,7 +2470,8 @@ namespace SIGIL
                 "tempsound10",
                 "tempsound11",
                 "tempsound12",
-                "MessageBox.Show"
+                "MessageBox.Show",
+                "delay"
             };
             string[] methods = { 
                 "ToString()",
@@ -3653,8 +3647,6 @@ namespace SIGIL
                 AddAssembly("Interceptions");
             if (code.Contains("using Valuechanges;"))
                 AddAssembly("Valuechanges");
-            if (code.Contains("using Valuechangesdelay;"))
-                AddAssembly("Valuechangesdelay");
             if (code.Contains("using KeyboardInputsAPI;"))
                 AddAssembly("Keyboardinputs");
             if (code.Contains("using MouseInputsAPI;"))

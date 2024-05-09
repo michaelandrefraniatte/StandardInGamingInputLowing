@@ -11,7 +11,8 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Diagnostics;
 using KeyboardInputsAPI;
-using Valuechangesdelay;
+using Valuechanges;
+using TimersAPI;
 namespace StringToCode
 {
     public class FooClass 
@@ -24,10 +25,11 @@ namespace StringToCode
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private static bool running;
-        private static double delay;
         private static int sleeptime = 1;
+        private static double delay, elapseddown, elapsedup;
         private KeyboardInput ki = new KeyboardInput();
-        public static Valuechangedelay ValueChangedelay = new Valuechangedelay();
+        public static Valuechange ValueChange = new Valuechange();
+        private TimersAPI.Timer timer = new TimersAPI.Timer();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         public static void valchanged(int n, bool val)
@@ -55,6 +57,7 @@ namespace StringToCode
             {
                 running = false;
                 Thread.Sleep(100);
+                timer.Close();
                 ki.Close();
             }
             catch { }
@@ -69,7 +72,9 @@ namespace StringToCode
         private void Start()
         {
             running = true;
+            timer.Scan();
             ki.Scan();
+            timer.BeginPolling();
             ki.BeginPolling();
             Task.Run(() => task());
         }
@@ -79,18 +84,19 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                ValueChangedelay[0] = ki.KeyboardKeyA ? 1 : 0;
-                if (ValueChangedelay._ValueChange[0] > 0f)
+                valchanged(0, ki.KeyboardKeyA);
+                if (ki.KeyboardKeyA)
+                    elapseddown = timer.timeelapsed;
+                if (!ki.KeyboardKeyA)
+                    elapsedup = timer.timeelapsed;
+                ValueChange[0] = ki.KeyboardKeyA ? elapseddown : elapsedup;
+                if (ValueChange._ValueChange[0] > elapsedup - elapseddown)
                 {
-                    delay = ValueChangedelay._ValueChangedelay[0];
-                }
-                valchanged(0, ki.KeyboardKeyAdd);
-                if (wd[0] == 1)
-                {
+                    delay = ValueChange._ValueChange[0];
                     MessageBox.Show("Input delay pressing the key A or Q on French keyboard: " + delay.ToString() + " ms.");
                 }
                 /*ki.ViewData();*/
-                Thread.Sleep(sleeptime);
+                /*Thread.Sleep(sleeptime);*/
             }
         }
     }

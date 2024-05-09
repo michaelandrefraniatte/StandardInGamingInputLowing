@@ -16,7 +16,7 @@ namespace TimersAPI
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        private static Stopwatch watch = new Stopwatch();
+        private Stopwatch watch = new Stopwatch();
         private bool running, formvisible;
         private int number;
         public double timeelapsed;
