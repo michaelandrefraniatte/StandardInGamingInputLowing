@@ -144,7 +144,7 @@ namespace SwitchProControllersAPI
                 {
                     pollingratedisplay++;
                     pollingratetemp = pollingrateperm;
-                    pollingrateperm = PollingRate.ElapsedMilliseconds;
+                    pollingrateperm = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
                     if (pollingratedisplay > 300)
                     {
                         pollingrate = pollingrateperm - pollingratetemp;

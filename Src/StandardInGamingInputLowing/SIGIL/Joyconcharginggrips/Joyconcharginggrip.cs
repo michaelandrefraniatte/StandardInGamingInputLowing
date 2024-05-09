@@ -179,7 +179,7 @@ namespace JoyconChargingGripsAPI
                 {
                     leftpollingratedisplay++;
                     leftpollingratetemp = leftpollingrateperm;
-                    leftpollingrateperm = LeftPollingRate.ElapsedMilliseconds;
+                    leftpollingrateperm = (double)LeftPollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
                     if (leftpollingratedisplay > 300)
                     {
                         leftpollingrate = leftpollingrateperm - leftpollingratetemp;
@@ -256,7 +256,7 @@ namespace JoyconChargingGripsAPI
                 {
                     rightpollingratedisplay++;
                     rightpollingratetemp = rightpollingrateperm;
-                    rightpollingrateperm = RightPollingRate.ElapsedMilliseconds;
+                    rightpollingrateperm = (double)RightPollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
                     if (rightpollingratedisplay > 300)
                     {
                         rightpollingrate = rightpollingrateperm - rightpollingratetemp;
