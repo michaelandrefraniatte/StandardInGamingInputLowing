@@ -27,6 +27,7 @@ namespace StringToCode
         private static uint CurrentResolution = 0;
         private static bool running;
         private static double delay, elapseddown, elapsedup, elapsed;
+        private static bool getstate = false;
         private static int sleeptime = 1;
         public static Valuechange ValueChange = new Valuechange();
         private TimersAPI.Timer timer = new TimersAPI.Timer();
@@ -86,7 +87,13 @@ namespace StringToCode
                 if (!running)
                     break;
                 valchanged(0, xi.ControllerButtonAPressed);
-                if (xi.ControllerButtonAPressed)
+                if (wd[0] == 1)
+                {
+                    getstate = true;
+                }
+                if (!xi.ControllerButtonAPressed)
+                    getstate = false;
+                if (getstate)
                 {
                     elapseddown = timer.timeelapsed;
                     elapsed     = 0;

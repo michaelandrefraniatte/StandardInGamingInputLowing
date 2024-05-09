@@ -27,6 +27,7 @@ namespace StringToCode
         private static bool running;
         private static int sleeptime = 1;
         private static double delay, elapseddown, elapsedup, elapsed;
+        private static bool getstate = false;
         private KeyboardInput ki = new KeyboardInput();
         public static Valuechange ValueChange = new Valuechange();
         private TimersAPI.Timer timer = new TimersAPI.Timer();
@@ -85,7 +86,13 @@ namespace StringToCode
                 if (!running)
                     break;
                 valchanged(0, ki.KeyboardKeyA);
-                if (ki.KeyboardKeyA)
+                if (wd[0] == 1)
+                {
+                    getstate = true;
+                }
+                if (!ki.KeyboardKeyA)
+                    getstate = false;
+                if (getstate)
                 {
                     elapseddown = timer.timeelapsed;
                     elapsed     = 0;

@@ -27,6 +27,7 @@ namespace StringToCode
         private static uint CurrentResolution = 0;
         private static bool running;
         private static double delay, elapseddown, elapsedup, elapsed;
+        private static bool getstate = false;
         private static int sleeptime = 1;
         private static int irmode = 2;
         private static double centery = 80f;
@@ -88,7 +89,13 @@ namespace StringToCode
                 if (!running)
                     break;
                 valchanged(0, wm.WiimoteButtonStateA);
-                if (wm.WiimoteButtonStateA)
+                if (wd[0] == 1)
+                {
+                    getstate = true;
+                }
+                if (!wm.WiimoteButtonStateA)
+                    getstate = false;
+                if (getstate)
                 {
                     elapseddown = timer.timeelapsed;
                     elapsed     = 0;

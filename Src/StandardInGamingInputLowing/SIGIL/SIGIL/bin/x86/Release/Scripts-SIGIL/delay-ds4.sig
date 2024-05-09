@@ -27,6 +27,7 @@ namespace StringToCode
         private static uint CurrentResolution = 0;
         private static bool running;
         private static double delay, elapseddown, elapsedup, elapsed;
+        private static bool getstate = false;
         private static int sleeptime = 1;
         private static string vendor_ds4_id = "54C", product_ds4_id = "9CC", product_ds4_label = "Wireless Controller";
         public static Valuechange ValueChange = new Valuechange();
@@ -87,7 +88,13 @@ namespace StringToCode
                 if (!running)
                     break;
                 valchanged(0, ds4.PS4ControllerButtonCrossPressed);
-                if (ds4.PS4ControllerButtonCrossPressed)
+                if (wd[0] == 1)
+                {
+                    getstate = true;
+                }
+                if (!ds4.PS4ControllerButtonCrossPressed)
+                    getstate = false;
+                if (getstate)
                 {
                     elapseddown = timer.timeelapsed;
                     elapsed     = 0;

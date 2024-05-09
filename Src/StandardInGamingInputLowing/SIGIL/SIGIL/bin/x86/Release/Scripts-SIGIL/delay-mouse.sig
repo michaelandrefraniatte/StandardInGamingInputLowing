@@ -27,6 +27,7 @@ namespace StringToCode
         private static uint CurrentResolution = 0;
         private static bool running;
         private static double delay, elapseddown, elapsedup, elapsed;
+        private static bool getstate = false;
         private static int sleeptime = 1;
         private MouseInput mi = new MouseInput();
         public static Valuechange ValueChange = new Valuechange();
@@ -86,7 +87,13 @@ namespace StringToCode
                 if (!running)
                     break;
                 valchanged(0, mi.MouseButtons0);
-                if (mi.MouseButtons0)
+                if (wd[0] == 1)
+                {
+                    getstate = true;
+                }
+                if (!mi.MouseButtons0)
+                    getstate = false;
+                if (getstate)
                 {
                     elapseddown = timer.timeelapsed;
                     elapsed     = 0;
