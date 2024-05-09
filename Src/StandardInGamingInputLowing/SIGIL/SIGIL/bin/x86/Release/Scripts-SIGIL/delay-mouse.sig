@@ -11,8 +11,6 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Diagnostics;
 using MouseInputsAPI;
-using Valuechanges;
-using TimersAPI;
 
 namespace StringToCode
 {
@@ -26,40 +24,14 @@ namespace StringToCode
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private static bool running;
-        private static double delay, elapseddown, elapsedup, elapsed;
-        private static bool getstate = false;
         private static int sleeptime = 1;
         private MouseInput mi = new MouseInput();
-        public static Valuechange ValueChange = new Valuechange();
-        private TimersAPI.Timer timer = new TimersAPI.Timer();
-        private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        public static void valchanged(int n, bool val)
-        {
-            if (val)
-            {
-                if (wd[n] <= 1)
-                {
-                    wd[n] = wd[n] + 1;
-                }
-                wu[n] = 0;
-            }
-            else
-            {
-                if (wu[n] <= 1)
-                {
-                    wu[n] = wu[n] + 1;
-                }
-                wd[n] = 0;
-            }
-        }
         public void Close()
         {
             try
             {
                 running = false;
                 Thread.Sleep(100);
-                timer.Close();
                 mi.Close();
             }
             catch { }
@@ -74,9 +46,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            timer.Scan();
             mi.Scan();
-            timer.BeginPolling();
             mi.BeginPolling();
             Task.Run(() => task());
         }
@@ -86,31 +56,7 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                valchanged(0, mi.MouseButtons0);
-                if (wd[0] == 1)
-                {
-                    getstate = true;
-                }
-                if (!mi.MouseButtons0)
-                    getstate = false;
-                if (getstate)
-                {
-                    elapseddown = timer.timeelapsed;
-                    elapsed     = 0;
-                }
-                if (wu[0] == 1)
-                {
-                    elapsedup = timer.timeelapsed;
-                    elapsed   = elapsedup - elapseddown;
-                }
-                ValueChange[0] = !mi.MouseButtons0 ? elapsed : 0;
-                if (ValueChange._ValueChange[0] > 0)
-                {
-                    delay = ValueChange._ValueChange[0];
-                    MessageBox.Show("Input delay pressing the mouse left button: " + delay.ToString() + " ms.");
-                }
-                /*mi.ViewData();*/
-                /*timer.ViewData();*/
+                mi.ViewData("MouseButtons0");
                 Thread.Sleep(sleeptime);
             }
         }

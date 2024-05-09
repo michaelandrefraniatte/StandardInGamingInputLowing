@@ -9,3 +9,5 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouseinputs\obj\x86\Release\Mouseinp.1AEA5E1C.Up2Date
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouseinputs\obj\x86\Release\Mouseinputs.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouseinputs\obj\x86\Release\Mouseinputs.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouseinputs\bin\x86\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouseinputs\bin\x86\Release\Valuechanges.pdb

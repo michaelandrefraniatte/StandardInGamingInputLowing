@@ -24,3 +24,5 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\obj\x86\Release\Keyboard.492BAFF2.Up2Date
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\obj\x86\Release\Keyboardrawinputs.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\obj\x86\Release\Keyboardrawinputs.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\bin\x86\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawinputs\bin\x86\Release\Valuechanges.pdb

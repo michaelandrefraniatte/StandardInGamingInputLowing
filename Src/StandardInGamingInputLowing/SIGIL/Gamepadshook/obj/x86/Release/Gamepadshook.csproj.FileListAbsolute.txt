@@ -8,3 +8,5 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Gamepadshook\obj\x86\Release\Gamepads.B2DCD71B.Up2Date
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Gamepadshook\obj\x86\Release\Gamepadshook.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Gamepadshook\obj\x86\Release\Gamepadshook.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Gamepadshook\bin\x86\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Gamepadshook\bin\x86\Release\Valuechanges.pdb

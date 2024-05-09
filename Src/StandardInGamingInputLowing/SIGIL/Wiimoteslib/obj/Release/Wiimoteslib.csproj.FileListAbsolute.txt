@@ -6,3 +6,6 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Wiimoteslib\obj\Release\Wiimoteslib.csproj.CoreCompileInputs.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Wiimoteslib\obj\Release\Wiimoteslib.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Wiimoteslib\obj\Release\Wiimoteslib.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Wiimoteslib\bin\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Wiimoteslib\bin\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Wiimoteslib\obj\Release\Wiimotes.9FEE481B.Up2Date

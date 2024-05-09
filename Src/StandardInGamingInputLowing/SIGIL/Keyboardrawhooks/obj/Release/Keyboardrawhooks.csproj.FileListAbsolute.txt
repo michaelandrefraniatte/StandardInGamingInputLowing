@@ -6,3 +6,6 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawhooks\obj\Release\Keyboardrawhooks.csproj.CoreCompileInputs.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawhooks\obj\Release\Keyboardrawhooks.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawhooks\obj\Release\Keyboardrawhooks.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawhooks\bin\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawhooks\bin\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardrawhooks\obj\Release\Keyboard.998CA6F9.Up2Date

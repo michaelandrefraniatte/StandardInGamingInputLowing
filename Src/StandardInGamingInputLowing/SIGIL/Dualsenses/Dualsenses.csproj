@@ -74,5 +74,11 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Valuechanges\Valuechanges.csproj">
+      <Project>{211d48a2-f49f-41ac-bfdb-5d92ac6043dc}</Project>
+      <Name>Valuechanges</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

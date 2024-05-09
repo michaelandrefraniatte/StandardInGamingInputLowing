@@ -9,6 +9,7 @@ using Joyconcharginggrips;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
+using Valuechanges;
 
 namespace JoyconChargingGripsAPI
 {
@@ -100,20 +101,49 @@ namespace JoyconChargingGripsAPI
         private Form1 form1 = new Form1();
         private Stopwatch LeftPollingRate, RightPollingRate;
         private double leftpollingrateperm = 0, leftpollingratetemp = 0, leftpollingratedisplay = 0, leftpollingrate, rightpollingrateperm = 0, rightpollingratetemp = 0, rightpollingratedisplay = 0, rightpollingrate;
+        private string leftinputdelaybutton = "", leftinputdelay = "", rightinputdelaybutton = "", rightinputdelay = "";
+        public Valuechange LeftValueChange, RightValueChange;
+        private double leftdelay, leftelapseddown, leftelapsedup, leftelapsed, rightdelay, rightelapseddown, rightelapsedup, rightelapsed;
+        private bool leftgetstate = false, rightgetstate = false;
+        private int[] wd = { 2, 2 };
+        private int[] wu = { 2, 2 };
+        public void valchanged(int n, bool val)
+        {
+            if (val)
+            {
+                if (wd[n] <= 1)
+                {
+                    wd[n] = wd[n] + 1;
+                }
+                wu[n] = 0;
+            }
+            else
+            {
+                if (wu[n] <= 1)
+                {
+                    wu[n] = wu[n] + 1;
+                }
+                wd[n] = 0;
+            }
+        }
         public JoyconChargingGrip()
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
             running = true;
         }
-        public void ViewData()
+        public void ViewData(string leftinputdelaybutton = "", string rightinputdelaybutton = "")
         {
             if (!form1.Visible)
             {
                 LeftPollingRate = new Stopwatch();
                 LeftPollingRate.Start();
+                LeftValueChange = new Valuechange();
+                this.leftinputdelaybutton = leftinputdelaybutton;
                 RightPollingRate = new Stopwatch();
                 RightPollingRate.Start();
+                RightValueChange = new Valuechange();
+                this.rightinputdelaybutton = rightinputdelaybutton;
                 formvisible = true;
                 form1.SetVisible();
             }
@@ -177,6 +207,34 @@ namespace JoyconChargingGripsAPI
                     str += "JoyconLeftGyroX : " + JoyconLeftGyroX + Environment.NewLine;
                     str += "JoyconLeftGyroY : " + JoyconLeftGyroY + Environment.NewLine;
                     str += "PollingRate : " + leftpollingrate + " ms" + Environment.NewLine;
+                    string txt = str;
+                    string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                    foreach (string line in lines)
+                        if (line.Contains(leftinputdelaybutton + " : "))
+                            leftinputdelay = line;
+                    valchanged(0, leftinputdelay.Contains("True"));
+                    if (wd[0] == 1)
+                    {
+                        leftgetstate = true;
+                    }
+                    if (leftinputdelay.Contains("False"))
+                        leftgetstate = false;
+                    if (leftgetstate)
+                    {
+                        leftelapseddown = (double)LeftPollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                        leftelapsed = 0;
+                    }
+                    if (wu[0] == 1)
+                    {
+                        leftelapsedup = (double)LeftPollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                        leftelapsed = leftelapsedup - leftelapseddown;
+                    }
+                    LeftValueChange[0] = leftinputdelay.Contains("False") ? leftelapsed : 0;
+                    if (LeftValueChange._ValueChange[0] > 0)
+                    {
+                        leftdelay = LeftValueChange._ValueChange[0];
+                    }
+                    str += "InputDelay : " + leftdelay + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }
@@ -226,6 +284,34 @@ namespace JoyconChargingGripsAPI
                     str += "JoyconRightGyroX : " + JoyconRightGyroX + Environment.NewLine;
                     str += "JoyconRightGyroY : " + JoyconRightGyroY + Environment.NewLine;
                     str += "PollingRate : " + rightpollingrate + " ms" + Environment.NewLine;
+                    string txt = str;
+                    string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                    foreach (string line in lines)
+                        if (line.Contains(rightinputdelaybutton + " : "))
+                            rightinputdelay = line;
+                    valchanged(1, rightinputdelay.Contains("True"));
+                    if (wd[1] == 1)
+                    {
+                        rightgetstate = true;
+                    }
+                    if (rightinputdelay.Contains("False"))
+                        rightgetstate = false;
+                    if (rightgetstate)
+                    {
+                        rightelapseddown = (double)RightPollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                        rightelapsed = 0;
+                    }
+                    if (wu[1] == 1)
+                    {
+                        rightelapsedup = (double)RightPollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                        rightelapsed = rightelapsedup - rightelapseddown;
+                    }
+                    RightValueChange[0] = rightinputdelay.Contains("False") ? rightelapsed : 0;
+                    if (RightValueChange._ValueChange[0] > 0)
+                    {
+                        rightdelay = RightValueChange._ValueChange[0];
+                    }
+                    str += "InputDelay : " + rightdelay + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel2(str);
                 }

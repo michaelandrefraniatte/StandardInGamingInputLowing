@@ -10,8 +10,6 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Diagnostics;
-using TimersAPI;
-using Valuechanges;
 using DualSensesAPI;
 
 namespace StringToCode
@@ -26,41 +24,15 @@ namespace StringToCode
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private static bool running;
-        private static double delay, elapseddown, elapsedup, elapsed;
-        private static bool getstate = false;
         private static int sleeptime = 1;
         private static string vendor_ds_id = "54C", product_ds_id = "CE6", product_ds_label = "DualSense";
-        public static Valuechange ValueChange = new Valuechange();
-        private TimersAPI.Timer timer = new TimersAPI.Timer();
-        public DualSense ds = new DualSense();
-        private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        public static void valchanged(int n, bool val)
-        {
-            if (val)
-            {
-                if (wd[n] <= 1)
-                {
-                    wd[n] = wd[n] + 1;
-                }
-                wu[n] = 0;
-            }
-            else
-            {
-                if (wu[n] <= 1)
-                {
-                    wu[n] = wu[n] + 1;
-                }
-                wd[n] = 0;
-            }
-        }
+        private DualSense ds = new DualSense();
         public void Close()
         {
             try
             {
                 running = false;
                 Thread.Sleep(100);
-                timer.Close();
                 ds.Close();
             }
             catch { }
@@ -75,9 +47,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            timer.Scan();
             ds.Scan(vendor_ds_id, product_ds_id, product_ds_label);
-            timer.BeginPolling();
             ds.BeginPolling();
             Task.Run(() => task());
         }
@@ -87,31 +57,7 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                valchanged(0, ds.PS5ControllerButtonCrossPressed);
-                if (wd[0] == 1)
-                {
-                    getstate = true;
-                }
-                if (!ds.PS5ControllerButtonCrossPressed)
-                    getstate = false;
-                if (getstate)
-                {
-                    elapseddown = timer.timeelapsed;
-                    elapsed     = 0;
-                }
-                if (wu[0] == 1)
-                {
-                    elapsedup = timer.timeelapsed;
-                    elapsed   = elapsedup - elapseddown;
-                }
-                ValueChange[0] = !ds.PS5ControllerButtonCrossPressed ? elapsed : 0;
-                if (ValueChange._ValueChange[0] > 0)
-                {
-                    delay = ValueChange._ValueChange[0];
-                    MessageBox.Show("Input delay pressing the Dualsense Cross button: " + delay.ToString() + " ms.");
-                }
-                /*ds.ViewData();*/
-                /*timer.ViewData();*/
+                ds.ViewData("PS5ControllerButtonCrossPressed");
                 Thread.Sleep(sleeptime);
             }
         }
