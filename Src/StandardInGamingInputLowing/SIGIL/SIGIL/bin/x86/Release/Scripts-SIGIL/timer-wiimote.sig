@@ -10,7 +10,6 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Diagnostics;
-using KeyboardInputsAPI;
 using TimersAPI;
 using WiiMotesAPI;
 
@@ -31,7 +30,6 @@ namespace StringToCode
         private static int sleeptime = 1;
         private static int irmode = 2;
         private static double centery = 80f;
-        private KeyboardInput ki = new KeyboardInput();
         private TimersAPI.Timer timer = new TimersAPI.Timer();
         private WiiMote wm = new WiiMote();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
@@ -62,7 +60,6 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 timer.Close();
-                ki.Close();
                 wm.Close();
             }
             catch { }
@@ -79,10 +76,8 @@ namespace StringToCode
             running = true;
             wm.Scan(irmode, centery);
             timer.Scan();
-            ki.Scan();
             wm.BeginPolling();
             timer.BeginPolling();
-            ki.BeginPolling();
             Task.Run(() => task());
         }
         private void task()
@@ -99,15 +94,10 @@ namespace StringToCode
                 if (wu[0] == 1 & !pressed)
                 {
                     elapsed = timeelspased - timeelspasedtemp;
-                }
-                valchanged(1, ki.KeyboardKeyAdd);
-                if (wd[1] == 1)
-                {
                     MessageBox.Show("Input latency pressing the Wiimote A button: " + elapsed.ToString() + " ms.");
                 }
                 /*wm.ViewData();*/
                 /*timer.ViewData();*/
-                /*ki.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
         }

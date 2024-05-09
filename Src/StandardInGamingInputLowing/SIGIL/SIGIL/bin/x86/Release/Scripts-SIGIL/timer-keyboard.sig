@@ -91,14 +91,10 @@ namespace StringToCode
                 if (wu[0] == 1 & !pressed)
                 {
                     elapsed = timeelspased - timeelspasedtemp;
-                }
-                valchanged(1, ki.KeyboardKeyAdd);
-                if (wd[1] == 1)
-                {
                     MessageBox.Show("Input latency pressing the key A or Q on French keyboard: " + elapsed.ToString() + " ms.");
                 }
-                /*timer.ViewData();*/
                 /*ki.ViewData();*/
+                /*timer.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
         }

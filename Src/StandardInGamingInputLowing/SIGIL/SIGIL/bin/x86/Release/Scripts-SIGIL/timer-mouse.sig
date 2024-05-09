@@ -10,7 +10,6 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Diagnostics;
-using KeyboardInputsAPI;
 using MouseInputsAPI;
 using TimersAPI;
 
@@ -29,7 +28,6 @@ namespace StringToCode
         private static bool pressed;
         private static double timeelspased, timeelspasedtemp, elapsed;
         private static int sleeptime = 1;
-        private KeyboardInput ki = new KeyboardInput();
         private MouseInput mi = new MouseInput();
         private TimersAPI.Timer timer = new TimersAPI.Timer();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
@@ -60,7 +58,6 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 timer.Close();
-                ki.Close();
                 mi.Close();
             }
             catch { }
@@ -77,10 +74,8 @@ namespace StringToCode
             running = true;
             timer.Scan();
             mi.Scan();
-            ki.Scan();
             timer.BeginPolling();
             mi.BeginPolling();
-            ki.BeginPolling();
             Task.Run(() => task());
         }
         private void task()
@@ -97,15 +92,10 @@ namespace StringToCode
                 if (wu[0] == 1 & !pressed)
                 {
                     elapsed = timeelspased - timeelspasedtemp;
-                }
-                valchanged(1, ki.KeyboardKeyAdd);
-                if (wd[1] == 1)
-                {
                     MessageBox.Show("Input latency pressing the mouse left button: " + elapsed.ToString() + " ms.");
                 }
                 /*mi.ViewData();*/
                 /*timer.ViewData();*/
-                /*ki.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
         }

@@ -84,11 +84,14 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                valchanged(0, ki.KeyboardKeyA);
                 if (ki.KeyboardKeyA)
+                {
                     elapseddown = timer.timeelapsed;
+                }
                 if (!ki.KeyboardKeyA)
+                {
                     elapsedup = timer.timeelapsed;
+                }
                 ValueChange[0] = ki.KeyboardKeyA ? elapseddown : elapsedup;
                 if (ValueChange._ValueChange[0] > elapsedup - elapseddown)
                 {

@@ -10,7 +10,6 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Diagnostics;
-using KeyboardInputsAPI;
 using TimersAPI;
 using DualSensesAPI;
 
@@ -30,7 +29,6 @@ namespace StringToCode
         private static double timeelspased, timeelspasedtemp, elapsed;
         private static int sleeptime = 1;
         private static string vendor_ds_id = "54C", product_ds_id = "CE6", product_ds_label = "DualSense";
-        private KeyboardInput ki = new KeyboardInput();
         private TimersAPI.Timer timer = new TimersAPI.Timer();
         public DualSense ds = new DualSense();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
@@ -61,7 +59,6 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 timer.Close();
-                ki.Close();
                 ds.Close();
             }
             catch { }
@@ -77,10 +74,8 @@ namespace StringToCode
         {
             running = true;
             timer.Scan();
-            ki.Scan();
             ds.Scan(vendor_ds_id, product_ds_id, product_ds_label);
             timer.BeginPolling();
-            ki.BeginPolling();
             ds.BeginPolling();
             Task.Run(() => task());
         }
@@ -98,15 +93,10 @@ namespace StringToCode
                 if (wu[0] == 1 & !pressed)
                 {
                     elapsed = timeelspased - timeelspasedtemp;
-                }
-                valchanged(1, ki.KeyboardKeyAdd);
-                if (wd[1] == 1)
-                {
                     MessageBox.Show("Input latency pressing the Dualsense Cross button: " + elapsed.ToString() + " ms.");
                 }
                 /*ds.ViewData();*/
                 /*timer.ViewData();*/
-                /*ki.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
         }

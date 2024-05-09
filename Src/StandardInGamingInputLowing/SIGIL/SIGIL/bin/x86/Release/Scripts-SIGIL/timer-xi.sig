@@ -10,7 +10,6 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Diagnostics;
-using KeyboardInputsAPI;
 using TimersAPI;
 using XInputsAPI;
 
@@ -29,7 +28,6 @@ namespace StringToCode
         private static bool pressed;
         private static double timeelspased, timeelspasedtemp, elapsed;
         private static int sleeptime = 1;
-        private KeyboardInput ki = new KeyboardInput();
         private TimersAPI.Timer timer = new TimersAPI.Timer();
         private XInput xi = new XInput();
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
@@ -60,7 +58,6 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 timer.Close();
-                ki.Close();
                 xi.Close();
             }
             catch { }
@@ -76,10 +73,8 @@ namespace StringToCode
         {
             running = true;
             timer.Scan();
-            ki.Scan();
             xi.Scan();
             timer.BeginPolling();
-            ki.BeginPolling();
             xi.BeginPolling();
             Task.Run(() => task());
         }
@@ -97,15 +92,10 @@ namespace StringToCode
                 if (wu[0] == 1 & !pressed)
                 {
                     elapsed = timeelspased - timeelspasedtemp;
-                }
-                valchanged(1, ki.KeyboardKeyAdd);
-                if (wd[1] == 1)
-                {
                     MessageBox.Show("Input latency pressing the Xbox A button: " + elapsed.ToString() + " ms.");
                 }
                 /*xi.ViewData();*/
                 /*timer.ViewData();*/
-                /*ki.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
         }
