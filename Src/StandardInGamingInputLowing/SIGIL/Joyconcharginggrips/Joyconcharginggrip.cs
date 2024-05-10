@@ -152,10 +152,8 @@ namespace JoyconChargingGripsAPI
         {
             running = false;
             Thread.Sleep(100);
-            SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x05 });
-            SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x06 });
-            SubcommandGripRightController(0x06, new byte[] { 0x80, 0x05 });
-            SubcommandGripRightController(0x06, new byte[] { 0x80, 0x06 });
+            Subcommand3GripLeftController(0x06, new byte[] { 0x01 }, 1);
+            Subcommand3GripRightController(0x06, new byte[] { 0x01 }, 1);
             Lhid_close(handleLeft);
             handleLeft.Close();
             handleLeft.Dispose();
@@ -616,41 +614,56 @@ namespace JoyconChargingGripsAPI
             {
                 handleptrLeft = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                 handleLeft = Lhid_open_path(handleptrLeft);
-                ResetingGripLeftController();
-                SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x02 });
-                SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x03 });
-                SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x02 });
-                SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x04 });
-                SubcommandGripLeftController(0x40, new byte[] { 0x01, 0x01 });
-                SubcommandGripLeftController(0x03, new byte[] { 0x01, 0x30 });
+                Subcommand1GripLeftController(0x06, new byte[] { 0x01 }, 1);
+                Subcommand2GripLeftController(0x40, new byte[] { 0x1 }, 1);
+                Subcommand2GripLeftController(0x3, new byte[] { 0x30 }, 1);
                 return true;
             }
             catch { return false; }
         }
-        private void ResetingGripLeftController()
+        private void Subcommand1GripLeftController(byte sc, byte[] buf, uint len)
         {
-            byte[] a = { 0x0 };
-            a = Enumerable.Repeat((byte)0, (int)report_lenLeft).ToArray();
-            a[0] = 0x80;
-            a[1] = 0x1;
-            Lhid_write(handleLeft, a, new UIntPtr(2));
-            Lhid_read_timeout(handleLeft, a, (UIntPtr)report_lenLeft);
-            if (a[0] != 0x81)
-            {
-                SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x01 });
-            }
+            byte[] buf_Left = new byte[report_lenLeft];
+            System.Array.Copy(buf, 0, buf_Left, 11, len);
+            buf_Left[10] = sc;
+            buf_Left[1] = 0x2;
+            buf_Left[0] = 0x80;
+            Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
+            Lhid_read_timeout(handleLeft, buf_Left, (UIntPtr)report_lenLeft);
+            buf_Left[1] = 0x3;
+            buf_Left[0] = 0x80;
+            Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
+            Lhid_read_timeout(handleLeft, buf_Left, (UIntPtr)report_lenLeft);
+            buf_Left[1] = 0x2;
+            buf_Left[0] = 0x80;
+            Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
+            Lhid_read_timeout(handleLeft, buf_Left, (UIntPtr)report_lenLeft);
+            buf_Left[1] = 0x4;
+            buf_Left[0] = 0x80;
+            Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
+            Lhid_read_timeout(handleLeft, buf_Left, (UIntPtr)report_lenLeft);
         }
-        private void SubcommandGripLeftController(byte sc, byte[] buf)
+        private void Subcommand2GripLeftController(byte sc, byte[] buf, uint len)
         {
-            byte[] buf_ = new byte[report_lenLeft];
-            byte[] response = new byte[report_lenLeft];
-            Array.Copy(default_bufLeft, 0, buf_, 2, 8);
-            Array.Copy(buf, 0, buf_, 11, 1);
-            buf_[10] = sc;
-            buf_[1] = buf[1];
-            buf_[0] = buf[0];
-            Lhid_write(handleLeft, buf_, new UIntPtr(12));
-            Lhid_read_timeout(handleLeft, response, (UIntPtr)report_lenLeft);
+            byte[] buf_Left = new byte[report_lenLeft];
+            System.Array.Copy(buf, 0, buf_Left, 11, len);
+            buf_Left[10] = sc;
+            buf_Left[1] = 0;
+            buf_Left[0] = 0x1;
+            Lhid_write(handleLeft, buf_Left, (UIntPtr)(len + 11));
+            Lhid_read_timeout(handleLeft, buf_Left, (UIntPtr)report_lenLeft);
+        }
+        private void Subcommand3GripLeftController(byte sc, byte[] buf, uint len)
+        {
+            byte[] buf_Left = new byte[report_lenLeft];
+            System.Array.Copy(buf, 0, buf_Left, 11, len);
+            buf_Left[10] = sc;
+            buf_Left[1] = 0x5;
+            buf_Left[0] = 0x80;
+            Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
+            buf_Left[1] = 0x6;
+            buf_Left[0] = 0x80;
+            Lhid_write(handleLeft, buf_Left, new UIntPtr(2));
         }
         private bool AttachGripRightController(string path)
         {
@@ -658,41 +671,56 @@ namespace JoyconChargingGripsAPI
             {
                 handleptrRight = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.ReadWrite, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                 handleRight = Rhid_open_path(handleptrRight);
-                ResetingGripRightController();
-                SubcommandGripRightController(0x06, new byte[] { 0x80, 0x02 });
-                SubcommandGripRightController(0x06, new byte[] { 0x80, 0x03 });
-                SubcommandGripRightController(0x06, new byte[] { 0x80, 0x02 });
-                SubcommandGripRightController(0x06, new byte[] { 0x80, 0x04 });
-                SubcommandGripRightController(0x40, new byte[] { 0x01, 0x01 });
-                SubcommandGripRightController(0x03, new byte[] { 0x01, 0x30 });
+                Subcommand1GripRightController(0x06, new byte[] { 0x01 }, 1);
+                Subcommand2GripRightController(0x40, new byte[] { 0x1 }, 1);
+                Subcommand2GripRightController(0x3, new byte[] { 0x30 }, 1);
                 return true;
             }
             catch { return false; }
         }
-        private void ResetingGripRightController()
+        private void Subcommand1GripRightController(byte sc, byte[] buf, uint len)
         {
-            byte[] a = { 0x0 };
-            a = Enumerable.Repeat((byte)0, (int)report_lenRight).ToArray();
-            a[0] = 0x80;
-            a[1] = 0x1;
-            Rhid_write(handleRight, a, new UIntPtr(2));
-            Rhid_read_timeout(handleRight, a, (UIntPtr)report_lenRight);
-            if (a[0] != 0x81)
-            {
-                SubcommandGripRightController(0x06, new byte[] { 0x80, 0x01 });
-            }
+            byte[] buf_Right = new byte[report_lenRight];
+            System.Array.Copy(buf, 0, buf_Right, 11, len);
+            buf_Right[10] = sc;
+            buf_Right[1] = 0x2;
+            buf_Right[0] = 0x80;
+            Rhid_write(handleRight, buf_Right, new UIntPtr(2));
+            Rhid_read_timeout(handleRight, buf_Right, (UIntPtr)report_lenRight);
+            buf_Right[1] = 0x3;
+            buf_Right[0] = 0x80;
+            Rhid_write(handleRight, buf_Right, new UIntPtr(2));
+            Rhid_read_timeout(handleRight, buf_Right, (UIntPtr)report_lenRight);
+            buf_Right[1] = 0x2;
+            buf_Right[0] = 0x80;
+            Rhid_write(handleRight, buf_Right, new UIntPtr(2));
+            Rhid_read_timeout(handleRight, buf_Right, (UIntPtr)report_lenRight);
+            buf_Right[1] = 0x4;
+            buf_Right[0] = 0x80;
+            Rhid_write(handleRight, buf_Right, new UIntPtr(2));
+            Rhid_read_timeout(handleRight, buf_Right, (UIntPtr)report_lenRight);
         }
-        private void SubcommandGripRightController(byte sc, byte[] buf)
+        private void Subcommand2GripRightController(byte sc, byte[] buf, uint len)
         {
-            byte[] buf_ = new byte[report_lenRight];
-            byte[] response = new byte[report_lenRight];
-            Array.Copy(default_bufRight, 0, buf_, 2, 8);
-            Array.Copy(buf, 0, buf_, 11, 1);
-            buf_[10] = sc;
-            buf_[1] = buf[1];
-            buf_[0] = buf[0];
-            Rhid_write(handleRight, buf_, new UIntPtr(12));
-            Rhid_read_timeout(handleRight, response, (UIntPtr)report_lenRight);
+            byte[] buf_Right = new byte[report_lenRight];
+            System.Array.Copy(buf, 0, buf_Right, 11, len);
+            buf_Right[10] = sc;
+            buf_Right[1] = 0;
+            buf_Right[0] = 0x1;
+            Rhid_write(handleRight, buf_Right, (UIntPtr)(len + 11));
+            Rhid_read_timeout(handleRight, buf_Right, (UIntPtr)report_lenRight);
+        }
+        private void Subcommand3GripRightController(byte sc, byte[] buf, uint len)
+        {
+            byte[] buf_Right = new byte[report_lenRight];
+            System.Array.Copy(buf, 0, buf_Right, 11, len);
+            buf_Right[10] = sc;
+            buf_Right[1] = 0x5;
+            buf_Right[0] = 0x80;
+            Rhid_write(handleRight, buf_Right, new UIntPtr(2));
+            buf_Right[1] = 0x6;
+            buf_Right[0] = 0x80;
+            Rhid_write(handleRight, buf_Right, new UIntPtr(2));
         }
     }
 }
