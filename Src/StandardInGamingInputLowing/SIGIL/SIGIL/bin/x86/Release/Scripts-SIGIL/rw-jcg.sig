@@ -26,7 +26,7 @@ namespace StringToCode
         private static bool running;
         private static bool Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_lefttrigger, Controller_Send_righttrigger, Controller_Send_xbox;
         private static double Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition;
-        private static double statex = 0f, statey = 0f, mousex = 0f, mousey = 0f, mousestatex = 0f, mousestatey = 0f, dzx = 0.0f, dzy = 0.0f, viewpower1x = 0f, viewpower2x = 1f, viewpower3x = 0f, viewpower1y = 0.25f, viewpower2y = 0.75f, viewpower3y = 0f, viewpower05x = 0f, viewpower05y = 0f;
+        private static double statex = 0f, statey = 0f, mousex = 0f, mousey = 0f, mousestatex = 0f, mousestatey = 0f, dzx = 11.0f, dzy = 0.0f, viewpower1x = 0f, viewpower2x = 1f, viewpower3x = 0f, viewpower1y = 0.25f, viewpower2y = 0.75f, viewpower3y = 0f, viewpower05x = 0f, viewpower05y = 0f;
         private static bool getstate;
         private static int sleeptime = 1;
         private XBoxController XBC = new XBoxController();
@@ -55,7 +55,7 @@ namespace StringToCode
             running = true;
             jcg.Scan();
             jcg.BeginPolling();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             jcg.Init();
             XBC.Connect();
             Task.Run(() => task());
@@ -68,10 +68,10 @@ namespace StringToCode
                     break;
                 if (jcg.JoyconRightButtonPLUS)
                     jcg.Init();
-                mousex                 = (jcg.JoyconLeftAccelY - jcg.JoyconRightAccelY) * 13.5f;
-                mousey                 = jcg.JoyconLeftStickY * 32767f * 1.2f;
-                statex                 = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
-                statey                 = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
+                mousex = (jcg.JoyconLeftAccelY - jcg.JoyconRightAccelY) * 25f;
+                mousey = jcg.JoyconLeftStickY * 32767f * 1.2f;
+                statex = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
+                statey = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
                 if (statex > 0f)
                     mousestatex = Scale(statex, 0f, 32767f, dzx / 100f * 32767f, 32767f);
                 if (statex < 0f)
