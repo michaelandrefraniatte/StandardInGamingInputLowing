@@ -74,14 +74,14 @@ namespace CameraAPI
         }
         public void ViewData(string inputdelaybutton = "")
         {
-            if (!form1.Visible)
+            if (!formvisible)
             {
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();
                 this.inputdelaybutton = inputdelaybutton;
                 formvisible = true;
-                form1.SetVisible();
+                Task.Run(() => form1.SetVisible());
             }
         }
         public void Close()

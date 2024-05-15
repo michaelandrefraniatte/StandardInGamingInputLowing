@@ -134,7 +134,7 @@ namespace JoyconChargingGripsAPI
         }
         public void ViewData(string leftinputdelaybutton = "", string rightinputdelaybutton = "")
         {
-            if (!form1.Visible)
+            if (!formvisible)
             {
                 LeftPollingRate = new Stopwatch();
                 LeftPollingRate.Start();
@@ -145,7 +145,7 @@ namespace JoyconChargingGripsAPI
                 RightValueChange = new Valuechange();
                 this.rightinputdelaybutton = rightinputdelaybutton;
                 formvisible = true;
-                form1.SetVisible();
+                Task.Run(() => form1.SetVisible());
             }
         }
         public void Close()
