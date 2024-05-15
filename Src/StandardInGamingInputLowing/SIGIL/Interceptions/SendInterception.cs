@@ -80,6 +80,18 @@ namespace Interceptions
             input.MouseFilterMode = MouseFilterMode.All;
             input.Load();
         }
+        public void ViewData(string inputdelaybutton = "")
+        {
+            if (!formvisible)
+            {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
+                ValueChange = new Valuechange();
+                this.inputdelaybutton = inputdelaybutton;
+                formvisible = true;
+                Task.Run(() => form1.SetVisible());
+            }
+        }
         public void Connect(int number = 0)
         {
         }
@@ -1081,6 +1093,251 @@ namespace Interceptions
                 keyboardkey(input, Keys.NumpadMinus, keyboard_id);
             if (ValueChanges._ValueChange[195] < 0f)
                 keyboardkeyF(input, Keys.NumpadMinus, keyboard_id);
+            if (formvisible)
+            {
+                pollingratedisplay++;
+                pollingratetemp = pollingrateperm;
+                pollingrateperm = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                if (pollingratedisplay > 300)
+                {
+                    pollingrate = pollingrateperm - pollingratetemp;
+                    pollingratedisplay = 0;
+                }
+                string str = "keyboard_id : " + keyboard_id + Environment.NewLine;
+                str += "mouse_id : " + mouse_id + Environment.NewLine;
+                str += "MouseDesktopX : " + MouseDesktopX + Environment.NewLine;
+                str += "MouseDesktopY : " + MouseDesktopY + Environment.NewLine;
+                str += "deltaX : " + deltaX + Environment.NewLine;
+                str += "deltaY : " + deltaY + Environment.NewLine;
+                str += "x : " + x + Environment.NewLine;
+                str += "y : " + y + Environment.NewLine;
+                str += "SendLeftClick : " + SendLeftClick + Environment.NewLine;
+                str += "SendRightClick : " + SendRightClick + Environment.NewLine;
+                str += "SendMiddleClick : " + SendMiddleClick + Environment.NewLine;
+                str += "SendWheelUp : " + SendWheelUp + Environment.NewLine;
+                str += "SendWheelDown : " + SendWheelDown + Environment.NewLine;
+                str += "SendCANCEL : " + SendCANCEL + Environment.NewLine;
+                str += "SendBACK : " + SendBACK + Environment.NewLine;
+                str += "SendTAB : " + SendTAB + Environment.NewLine;
+                str += "SendCLEAR : " + SendCLEAR + Environment.NewLine;
+                str += "SendRETURN : " + SendRETURN + Environment.NewLine;
+                str += "SendSHIFT : " + SendSHIFT + Environment.NewLine;
+                str += "SendCONTROL : " + SendCONTROL + Environment.NewLine;
+                str += "SendMENU : " + SendMENU + Environment.NewLine;
+                str += "SendCAPITAL : " + SendCAPITAL + Environment.NewLine;
+                str += "SendESCAPE : " + SendESCAPE + Environment.NewLine;
+                str += "SendSPACE : " + SendSPACE + Environment.NewLine;
+                str += "SendPRIOR : " + SendPRIOR + Environment.NewLine;
+                str += "SendNEXT : " + SendNEXT + Environment.NewLine;
+                str += "SendEND : " + SendEND + Environment.NewLine;
+                str += "SendHOME : " + SendHOME + Environment.NewLine;
+                str += "SendLEFT : " + SendLEFT + Environment.NewLine;
+                str += "SendUP : " + SendUP + Environment.NewLine;
+                str += "SendRIGHT : " + SendRIGHT + Environment.NewLine;
+                str += "SendDOWN : " + SendDOWN + Environment.NewLine;
+                str += "SendSNAPSHOT : " + SendSNAPSHOT + Environment.NewLine;
+                str += "SendINSERT : " + SendINSERT + Environment.NewLine;
+                str += "SendNUMPADDEL : " + SendNUMPADDEL + Environment.NewLine;
+                str += "SendNUMPADINSERT : " + SendNUMPADINSERT + Environment.NewLine;
+                str += "SendHELP : " + SendHELP + Environment.NewLine;
+                str += "SendAPOSTROPHE : " + SendAPOSTROPHE + Environment.NewLine;
+                str += "SendBACKSPACE : " + SendBACKSPACE + Environment.NewLine;
+                str += "SendPAGEDOWN : " + SendPAGEDOWN + Environment.NewLine;
+                str += "SendPAGEUP : " + SendPAGEUP + Environment.NewLine;
+                str += "SendFIN : " + SendFIN + Environment.NewLine;
+                str += "SendMOUSE : " + SendMOUSE + Environment.NewLine;
+                str += "SendA : " + SendA + Environment.NewLine;
+                str += "SendB : " + SendB + Environment.NewLine;
+                str += "SendC : " + SendC + Environment.NewLine;
+                str += "SendD : " + SendD + Environment.NewLine;
+                str += "SendE : " + SendE + Environment.NewLine;
+                str += "SendF : " + SendF + Environment.NewLine;
+                str += "SendG : " + SendG + Environment.NewLine;
+                str += "SendH : " + SendH + Environment.NewLine;
+                str += "SendI : " + SendI + Environment.NewLine;
+                str += "SendJ : " + SendJ + Environment.NewLine;
+                str += "SendK : " + SendK + Environment.NewLine;
+                str += "SendL : " + SendL + Environment.NewLine;
+                str += "SendM : " + SendM + Environment.NewLine;
+                str += "SendN : " + SendN + Environment.NewLine;
+                str += "SendO : " + SendO + Environment.NewLine;
+                str += "SendP : " + SendP + Environment.NewLine;
+                str += "SendQ : " + SendQ + Environment.NewLine;
+                str += "SendR : " + SendR + Environment.NewLine;
+                str += "SendS : " + SendS + Environment.NewLine;
+                str += "SendT : " + SendT + Environment.NewLine;
+                str += "SendU : " + SendU + Environment.NewLine;
+                str += "SendV : " + SendV + Environment.NewLine;
+                str += "SendX : " + SendX + Environment.NewLine;
+                str += "SendY : " + SendY + Environment.NewLine;
+                str += "SendZ : " + SendZ + Environment.NewLine;
+                str += "SendLWIN : " + SendLWIN + Environment.NewLine;
+                str += "SendRWIN : " + SendRWIN + Environment.NewLine;
+                str += "SendAPPS : " + SendAPPS + Environment.NewLine;
+                str += "SendDELETE : " + SendDELETE + Environment.NewLine;
+                str += "SendNUMPAD0 : " + SendNUMPAD0 + Environment.NewLine;
+                str += "SendNUMPAD1 : " + SendNUMPAD1 + Environment.NewLine;
+                str += "SendNUMPAD2 : " + SendNUMPAD2 + Environment.NewLine;
+                str += "SendNUMPAD3 : " + SendNUMPAD3 + Environment.NewLine;
+                str += "SendNUMPAD4 : " + SendNUMPAD4 + Environment.NewLine;
+                str += "SendNUMPAD5 : " + SendNUMPAD5 + Environment.NewLine;
+                str += "SendNUMPAD6 : " + SendNUMPAD6 + Environment.NewLine;
+                str += "SendNUMPAD7 : " + SendNUMPAD7 + Environment.NewLine;
+                str += "SendNUMPAD8 : " + SendNUMPAD8 + Environment.NewLine;
+                str += "SendNUMPAD9 : " + SendNUMPAD9 + Environment.NewLine;
+                str += "SendMULTIPLY : " + SendMULTIPLY + Environment.NewLine;
+                str += "SendADD : " + SendADD + Environment.NewLine;
+                str += "SendSUBTRACT : " + SendSUBTRACT + Environment.NewLine;
+                str += "SendDECIMAL : " + SendDECIMAL + Environment.NewLine;
+                str += "SendPRINTSCREEN : " + SendPRINTSCREEN + Environment.NewLine;
+                str += "SendDIVIDE : " + SendDIVIDE + Environment.NewLine;
+                str += "SendF1 : " + SendF1 + Environment.NewLine;
+                str += "SendF2 : " + SendF2 + Environment.NewLine;
+                str += "SendF3 : " + SendF3 + Environment.NewLine;
+                str += "SendF4 : " + SendF4 + Environment.NewLine;
+                str += "SendF5 : " + SendF5 + Environment.NewLine;
+                str += "SendF6 : " + SendF6 + Environment.NewLine;
+                str += "SendF7 : " + SendF7 + Environment.NewLine;
+                str += "SendF8 : " + SendF8 + Environment.NewLine;
+                str += "SendF9 : " + SendF9 + Environment.NewLine;
+                str += "SendF10 : " + SendF10 + Environment.NewLine;
+                str += "SendF11 : " + SendF11 + Environment.NewLine;
+                str += "SendF12 : " + SendF12 + Environment.NewLine;
+                str += "SendNUMLOCK : " + SendNUMLOCK + Environment.NewLine;
+                str += "SendSCROLLLOCK : " + SendSCROLLLOCK + Environment.NewLine;
+                str += "SendLEFTSHIFT : " + SendLEFTSHIFT + Environment.NewLine;
+                str += "SendRIGHTSHIFT : " + SendRIGHTSHIFT + Environment.NewLine;
+                str += "SendLEFTCONTROL : " + SendLEFTCONTROL + Environment.NewLine;
+                str += "SendRIGHTCONTROL : " + SendRIGHTCONTROL + Environment.NewLine;
+                str += "SendLEFTALT : " + SendLEFTALT + Environment.NewLine;
+                str += "SendRIGHTALT : " + SendRIGHTALT + Environment.NewLine;
+                str += "SendBROWSER_BACK : " + SendBROWSER_BACK + Environment.NewLine;
+                str += "SendBROWSER_FORWARD : " + SendBROWSER_FORWARD + Environment.NewLine;
+                str += "SendBROWSER_REFRESH : " + SendBROWSER_REFRESH + Environment.NewLine;
+                str += "SendBROWSER_STOP : " + SendBROWSER_STOP + Environment.NewLine;
+                str += "SendBROWSER_SEARCH : " + SendBROWSER_SEARCH + Environment.NewLine;
+                str += "SendBROWSER_FAVORITES : " + SendBROWSER_FAVORITES + Environment.NewLine;
+                str += "SendBROWSER_HOME : " + SendBROWSER_HOME + Environment.NewLine;
+                str += "SendVOLUME_MUTE : " + SendVOLUME_MUTE + Environment.NewLine;
+                str += "SendVOLUME_DOWN : " + SendVOLUME_DOWN + Environment.NewLine;
+                str += "SendVOLUME_UP : " + SendVOLUME_UP + Environment.NewLine;
+                str += "SendMEDIA_NEXT_TRACK : " + SendMEDIA_NEXT_TRACK + Environment.NewLine;
+                str += "SendMEDIA_PREV_TRACK : " + SendMEDIA_PREV_TRACK + Environment.NewLine;
+                str += "SendMEDIA_STOP : " + SendMEDIA_STOP + Environment.NewLine;
+                str += "SendMEDIA_PLAY_PAUSE : " + SendMEDIA_PLAY_PAUSE + Environment.NewLine;
+                str += "SendLAUNCH_MAIL : " + SendLAUNCH_MAIL + Environment.NewLine;
+                str += "SendLAUNCH_MEDIA_SELECT : " + SendLAUNCH_MEDIA_SELECT + Environment.NewLine;
+                str += "SendLAUNCH_APP1 : " + SendLAUNCH_APP1 + Environment.NewLine;
+                str += "SendLAUNCH_APP2 : " + SendLAUNCH_APP2 + Environment.NewLine;
+                str += "SendOEM_1 : " + SendOEM_1 + Environment.NewLine;
+                str += "SendOEM_PLUS : " + SendOEM_PLUS + Environment.NewLine;
+                str += "SendOEM_COMMA : " + SendOEM_COMMA + Environment.NewLine;
+                str += "SendOEM_MINUS : " + SendOEM_MINUS + Environment.NewLine;
+                str += "SendOEM_PERIOD : " + SendOEM_PERIOD + Environment.NewLine;
+                str += "SendOEM_2 : " + SendOEM_2 + Environment.NewLine;
+                str += "SendOEM_3 : " + SendOEM_3 + Environment.NewLine;
+                str += "SendOEM_4 : " + SendOEM_4 + Environment.NewLine;
+                str += "SendOEM_5 : " + SendOEM_5 + Environment.NewLine;
+                str += "SendOEM_6 : " + SendOEM_6 + Environment.NewLine;
+                str += "SendOEM_7 : " + SendOEM_7 + Environment.NewLine;
+                str += "SendOEM_8 : " + SendOEM_8 + Environment.NewLine;
+                str += "SendOEM_102 : " + SendOEM_102 + Environment.NewLine;
+                str += "SendEREOF : " + SendEREOF + Environment.NewLine;
+                str += "SendZOOM : " + SendZOOM + Environment.NewLine;
+                str += "SendEscape : " + SendEscape + Environment.NewLine;
+                str += "SendOne : " + SendOne + Environment.NewLine;
+                str += "SendTwo : " + SendTwo + Environment.NewLine;
+                str += "SendThree : " + SendThree + Environment.NewLine;
+                str += "SendFour : " + SendFour + Environment.NewLine;
+                str += "SendFive : " + SendFive + Environment.NewLine;
+                str += "SendSix : " + SendSix + Environment.NewLine;
+                str += "SendSeven : " + SendSeven + Environment.NewLine;
+                str += "SendEight : " + SendEight + Environment.NewLine;
+                str += "SendNine : " + SendNine + Environment.NewLine;
+                str += "SendZero : " + SendZero + Environment.NewLine;
+                str += "SendDashUnderscore : " + SendDashUnderscore + Environment.NewLine;
+                str += "SendPlusEquals : " + SendPlusEquals + Environment.NewLine;
+                str += "SendBackspace : " + SendBackspace + Environment.NewLine;
+                str += "SendTab : " + SendTab + Environment.NewLine;
+                str += "SendOpenBracketBrace : " + SendOpenBracketBrace + Environment.NewLine;
+                str += "SendCloseBracketBrace : " + SendCloseBracketBrace + Environment.NewLine;
+                str += "SendEnter : " + SendEnter + Environment.NewLine;
+                str += "SendControl : " + SendControl + Environment.NewLine;
+                str += "SendSemicolonColon : " + SendSemicolonColon + Environment.NewLine;
+                str += "SendSingleDoubleQuote : " + SendSingleDoubleQuote + Environment.NewLine;
+                str += "SendTilde : " + SendTilde + Environment.NewLine;
+                str += "SendLeftShift : " + SendLeftShift + Environment.NewLine;
+                str += "SendBackslashPipe : " + SendBackslashPipe + Environment.NewLine;
+                str += "SendCommaLeftArrow : " + SendCommaLeftArrow + Environment.NewLine;
+                str += "SendPeriodRightArrow : " + SendPeriodRightArrow + Environment.NewLine;
+                str += "SendForwardSlashQuestionMark : " + SendForwardSlashQuestionMark + Environment.NewLine;
+                str += "SendRightShift : " + SendRightShift + Environment.NewLine;
+                str += "SendRightAlt : " + SendRightAlt + Environment.NewLine;
+                str += "SendSpace : " + SendSpace + Environment.NewLine;
+                str += "SendCapsLock : " + SendCapsLock + Environment.NewLine;
+                str += "SendUp : " + SendUp + Environment.NewLine;
+                str += "SendDown : " + SendDown + Environment.NewLine;
+                str += "SendRight : " + SendRight + Environment.NewLine;
+                str += "SendLeft : " + SendLeft + Environment.NewLine;
+                str += "SendHome : " + SendHome + Environment.NewLine;
+                str += "SendEnd : " + SendEnd + Environment.NewLine;
+                str += "SendDelete : " + SendDelete + Environment.NewLine;
+                str += "SendPageUp : " + SendPageUp + Environment.NewLine;
+                str += "SendPageDown : " + SendPageDown + Environment.NewLine;
+                str += "SendInsert : " + SendInsert + Environment.NewLine;
+                str += "SendPrintScreen : " + SendPrintScreen + Environment.NewLine;
+                str += "SendNumLock : " + SendNumLock + Environment.NewLine;
+                str += "SendScrollLock : " + SendScrollLock + Environment.NewLine;
+                str += "SendMenu : " + SendMenu + Environment.NewLine;
+                str += "SendWindowsKey : " + SendWindowsKey + Environment.NewLine;
+                str += "SendNumpadDivide : " + SendNumpadDivide + Environment.NewLine;
+                str += "SendNumpadAsterisk : " + SendNumpadAsterisk + Environment.NewLine;
+                str += "SendNumpad7 : " + SendNumpad7 + Environment.NewLine;
+                str += "SendNumpad8 : " + SendNumpad8 + Environment.NewLine;
+                str += "SendNumpad9 : " + SendNumpad9 + Environment.NewLine;
+                str += "SendNumpad4 : " + SendNumpad4 + Environment.NewLine;
+                str += "SendNumpad5 : " + SendNumpad5 + Environment.NewLine;
+                str += "SendNumpad6 : " + SendNumpad6 + Environment.NewLine;
+                str += "SendNumpad1 : " + SendNumpad1 + Environment.NewLine;
+                str += "SendNumpad2 : " + SendNumpad2 + Environment.NewLine;
+                str += "SendNumpad3 : " + SendNumpad3 + Environment.NewLine;
+                str += "SendNumpad0 : " + SendNumpad0 + Environment.NewLine;
+                str += "SendNumpadDelete : " + SendNumpadDelete + Environment.NewLine;
+                str += "SendNumpadEnter : " + SendNumpadEnter + Environment.NewLine;
+                str += "SendNumpadPlus : " + SendNumpadPlus + Environment.NewLine;
+                str += "SendNumpadMinus : " + SendNumpadMinus + Environment.NewLine;
+                str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
+                string txt = str;
+                string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                foreach (string line in lines)
+                    if (line.Contains(inputdelaybutton + " : "))
+                        inputdelay = line;
+                valchanged(0, inputdelay.Contains("True"));
+                if (wd[0] == 1)
+                {
+                    getstate = true;
+                }
+                if (inputdelay.Contains("False"))
+                    getstate = false;
+                if (getstate)
+                {
+                    elapseddown = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                    elapsed = 0;
+                }
+                if (wu[0] == 1)
+                {
+                    elapsedup = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                    elapsed = elapsedup - elapseddown;
+                }
+                ValueChange[0] = inputdelay.Contains("False") ? elapsed : 0;
+                if (ValueChange._ValueChange[0] > 0)
+                {
+                    delay = ValueChange._ValueChange[0];
+                }
+                str += "InputDelay : " + delay + " ms" + Environment.NewLine;
+                str += Environment.NewLine;
+                form1.SetLabel1(str);
+            }
         }
         private void mouseclickleft(Input input, int mouse_id)
         {

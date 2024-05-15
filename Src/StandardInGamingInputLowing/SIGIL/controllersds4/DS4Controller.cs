@@ -1,6 +1,8 @@
 ﻿using System.Runtime.InteropServices;
 using System.Diagnostics;
 using Valuechanges;
+using System.Threading.Tasks;
+using System;
 
 namespace controllersds4
 {
@@ -50,6 +52,18 @@ namespace controllersds4
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
+        }
+        public void ViewData(string inputdelaybutton = "")
+        {
+            if (!formvisible)
+            {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
+                ValueChange = new Valuechange();
+                this.inputdelaybutton = inputdelaybutton;
+                formvisible = true;
+                Task.Run(() => form1.SetVisible());
+            }
         }
         public void Connect(int number = 0)
         {
@@ -119,6 +133,72 @@ namespace controllersds4
             Controller.SetButtonState(DualShock4Button.TriggerRight, ControllerDS4_Send_RightTrigger);
             Controller.SetSliderValue(DualShock4Slider.RightTrigger, (byte)ControllerDS4_Send_RightTriggerPosition);
             Controller.SubmitReport();
+            if (formvisible)
+            {
+                pollingratedisplay++;
+                pollingratetemp = pollingrateperm;
+                pollingrateperm = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                if (pollingratedisplay > 300)
+                {
+                    pollingrate = pollingrateperm - pollingratetemp;
+                    pollingratedisplay = 0;
+                }
+                string str = "ControllerDS4_Send_Options : " + ControllerDS4_Send_Options + Environment.NewLine;
+                str += "ControllerDS4_Send_ThumbLeft : " + ControllerDS4_Send_ThumbLeft + Environment.NewLine;
+                str += "ControllerDS4_Send_ThumbRight : " + ControllerDS4_Send_ThumbRight + Environment.NewLine;
+                str += "ControllerDS4_Send_ShoulderLeft : " + ControllerDS4_Send_ShoulderLeft + Environment.NewLine;
+                str += "ControllerDS4_Send_ShoulderRight : " + ControllerDS4_Send_ShoulderRight + Environment.NewLine;
+                str += "ControllerDS4_Send_Cross : " + ControllerDS4_Send_Cross + Environment.NewLine;
+                str += "ControllerDS4_Send_Circle : " + ControllerDS4_Send_Circle + Environment.NewLine;
+                str += "ControllerDS4_Send_Square : " + ControllerDS4_Send_Square + Environment.NewLine;
+                str += "ControllerDS4_Send_Triangle : " + ControllerDS4_Send_Triangle + Environment.NewLine;
+                str += "ControllerDS4_Send_Ps : " + ControllerDS4_Send_Ps + Environment.NewLine;
+                str += "ControllerDS4_Send_Touchpad : " + ControllerDS4_Send_Touchpad + Environment.NewLine;
+                str += "ControllerDS4_Send_Share : " + ControllerDS4_Send_Share + Environment.NewLine;
+                str += "ControllerDS4_Send_DPadUp : " + ControllerDS4_Send_DPadUp + Environment.NewLine;
+                str += "ControllerDS4_Send_DPadDown : " + ControllerDS4_Send_DPadDown + Environment.NewLine;
+                str += "ControllerDS4_Send_DPadLeft : " + ControllerDS4_Send_DPadLeft + Environment.NewLine;
+                str += "ControllerDS4_Send_DPadRight : " + ControllerDS4_Send_DPadRight + Environment.NewLine;
+                str += "ControllerDS4_Send_LeftThumbX : " + ControllerDS4_Send_LeftThumbX + Environment.NewLine;
+                str += "ControllerDS4_Send_RightThumbX : " + ControllerDS4_Send_RightThumbX + Environment.NewLine;
+                str += "ControllerDS4_Send_LeftThumbY : " + ControllerDS4_Send_LeftThumbY + Environment.NewLine;
+                str += "ControllerDS4_Send_RightThumbY : " + ControllerDS4_Send_RightThumbY + Environment.NewLine;
+                str += "ControllerDS4_Send_LeftTrigger : " + ControllerDS4_Send_LeftTrigger + Environment.NewLine;
+                str += "ControllerDS4_Send_RightTrigger : " + ControllerDS4_Send_RightTrigger + Environment.NewLine;
+                str += "ControllerDS4_Send_LeftTriggerPosition : " + ControllerDS4_Send_LeftTriggerPosition + Environment.NewLine;
+                str += "ControllerDS4_Send_RightTriggerPosition : " + ControllerDS4_Send_RightTriggerPosition + Environment.NewLine;
+                str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
+                string txt = str;
+                string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                foreach (string line in lines)
+                    if (line.Contains(inputdelaybutton + " : "))
+                        inputdelay = line;
+                valchanged(0, inputdelay.Contains("True"));
+                if (wd[0] == 1)
+                {
+                    getstate = true;
+                }
+                if (inputdelay.Contains("False"))
+                    getstate = false;
+                if (getstate)
+                {
+                    elapseddown = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                    elapsed = 0;
+                }
+                if (wu[0] == 1)
+                {
+                    elapsedup = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                    elapsed = elapsedup - elapseddown;
+                }
+                ValueChange[0] = inputdelay.Contains("False") ? elapsed : 0;
+                if (ValueChange._ValueChange[0] > 0)
+                {
+                    delay = ValueChange._ValueChange[0];
+                }
+                str += "InputDelay : " + delay + " ms" + Environment.NewLine;
+                str += Environment.NewLine;
+                form1.SetLabel1(str);
+            }
         }
     }
 }

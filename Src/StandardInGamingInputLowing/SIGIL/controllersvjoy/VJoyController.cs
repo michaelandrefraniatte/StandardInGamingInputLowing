@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using vJoy.Wrapper;
 using Valuechanges;
+using System.Threading.Tasks;
+using System;
 
 namespace controllersvjoy
 {
@@ -50,6 +52,18 @@ namespace controllersvjoy
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
         }
+        public void ViewData(string inputdelaybutton = "")
+        {
+            if (!formvisible)
+            {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
+                ValueChange = new Valuechange();
+                this.inputdelaybutton = inputdelaybutton;
+                formvisible = true;
+                Task.Run(() => form1.SetVisible());
+            }
+        }
         public void Connect(int number = 0)
         {
             this.number = number;
@@ -87,6 +101,70 @@ namespace controllersvjoy
             joystick.SetJoystickHat((int)ControllerVJoy_Send_HatExt2, Hats.HatExt2);
             joystick.SetJoystickHat((int)ControllerVJoy_Send_HatExt3, Hats.HatExt3);
             joystick.Update();
+            if (formvisible)
+            {
+                pollingratedisplay++;
+                pollingratetemp = pollingrateperm;
+                pollingrateperm = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                if (pollingratedisplay > 300)
+                {
+                    pollingrate = pollingrateperm - pollingratetemp;
+                    pollingratedisplay = 0;
+                }
+                string str = "ControllerVJoy_Send_1 : " + ControllerVJoy_Send_1 + Environment.NewLine;
+                str += "ControllerVJoy_Send_2 : " + ControllerVJoy_Send_2 + Environment.NewLine;
+                str += "ControllerVJoy_Send_3 : " + ControllerVJoy_Send_3 + Environment.NewLine;
+                str += "ControllerVJoy_Send_4 : " + ControllerVJoy_Send_4 + Environment.NewLine;
+                str += "ControllerVJoy_Send_5 : " + ControllerVJoy_Send_5 + Environment.NewLine;
+                str += "ControllerVJoy_Send_6 : " + ControllerVJoy_Send_6 + Environment.NewLine;
+                str += "ControllerVJoy_Send_7 : " + ControllerVJoy_Send_7 + Environment.NewLine;
+                str += "ControllerVJoy_Send_8 : " + ControllerVJoy_Send_8 + Environment.NewLine;
+                str += "ControllerVJoy_Send_X : " + ControllerVJoy_Send_X + Environment.NewLine;
+                str += "ControllerVJoy_Send_Y : " + ControllerVJoy_Send_Y + Environment.NewLine;
+                str += "ControllerVJoy_Send_Z : " + ControllerVJoy_Send_Z + Environment.NewLine;
+                str += "ControllerVJoy_Send_WHL : " + ControllerVJoy_Send_WHL + Environment.NewLine;
+                str += "ControllerVJoy_Send_SL0 : " + ControllerVJoy_Send_SL0 + Environment.NewLine;
+                str += "ControllerVJoy_Send_SL1 : " + ControllerVJoy_Send_SL1 + Environment.NewLine;
+                str += "ControllerVJoy_Send_RX : " + ControllerVJoy_Send_RX + Environment.NewLine;
+                str += "ControllerVJoy_Send_RY : " + ControllerVJoy_Send_RY + Environment.NewLine;
+                str += "ControllerVJoy_Send_RZ : " + ControllerVJoy_Send_RZ + Environment.NewLine;
+                str += "ControllerVJoy_Send_POV : " + ControllerVJoy_Send_POV + Environment.NewLine;
+                str += "ControllerVJoy_Send_Hat : " + ControllerVJoy_Send_Hat + Environment.NewLine;
+                str += "ControllerVJoy_Send_HatExt1 : " + ControllerVJoy_Send_HatExt1 + Environment.NewLine;
+                str += "ControllerVJoy_Send_HatExt2 : " + ControllerVJoy_Send_HatExt2 + Environment.NewLine;
+                str += "ControllerVJoy_Send_HatExt3 : " + ControllerVJoy_Send_HatExt3 + Environment.NewLine;
+                str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
+                string txt = str;
+                string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                foreach (string line in lines)
+                    if (line.Contains(inputdelaybutton + " : "))
+                        inputdelay = line;
+                valchanged(0, inputdelay.Contains("True"));
+                if (wd[0] == 1)
+                {
+                    getstate = true;
+                }
+                if (inputdelay.Contains("False"))
+                    getstate = false;
+                if (getstate)
+                {
+                    elapseddown = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                    elapsed = 0;
+                }
+                if (wu[0] == 1)
+                {
+                    elapsedup = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                    elapsed = elapsedup - elapseddown;
+                }
+                ValueChange[0] = inputdelay.Contains("False") ? elapsed : 0;
+                if (ValueChange._ValueChange[0] > 0)
+                {
+                    delay = ValueChange._ValueChange[0];
+                }
+                str += "InputDelay : " + delay + " ms" + Environment.NewLine;
+                str += Environment.NewLine;
+                form1.SetLabel1(str);
+            }
         }
     }
 }

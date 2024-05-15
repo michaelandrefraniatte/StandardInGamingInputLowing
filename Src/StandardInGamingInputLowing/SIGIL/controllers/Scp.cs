@@ -4,6 +4,8 @@ using System;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using Valuechanges;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace controllers
 {
@@ -78,6 +80,23 @@ namespace controllers
                     wu[n] = wu[n] + 1;
                 }
                 wd[n] = 0;
+            }
+        }
+        public XBoxController()
+        {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
+        }
+        public void ViewData(string inputdelaybutton = "")
+        {
+            if (!formvisible)
+            {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
+                ValueChange = new Valuechange();
+                this.inputdelaybutton = inputdelaybutton;
+                formvisible = true;
+                Task.Run(() => form1.SetVisible());
             }
         }
         public void Connect(int number = 0)
@@ -180,11 +199,69 @@ namespace controllers
             LeftTrigger = (byte)lefttriggerposition;
             RightTrigger = (byte)righttriggerposition;
             Report(GetReport(inc));
-        }
-        public XBoxController()
-        {
-            TimeBeginPeriod(1);
-            NtSetTimerResolution(1, true, ref CurrentResolution);
+            if (formvisible)
+            {
+                pollingratedisplay++;
+                pollingratetemp = pollingrateperm;
+                pollingrateperm = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                if (pollingratedisplay > 300)
+                {
+                    pollingrate = pollingrateperm - pollingratetemp;
+                    pollingratedisplay = 0;
+                }
+                string str = "back : " + back + Environment.NewLine;
+                str += "start : " + start + Environment.NewLine;
+                str += "A : " + A + Environment.NewLine;
+                str += "B : " + B + Environment.NewLine;
+                str += "X : " + X + Environment.NewLine;
+                str += "Y : " + Y + Environment.NewLine;
+                str += "up : " + up + Environment.NewLine;
+                str += "left : " + left + Environment.NewLine;
+                str += "down : " + down + Environment.NewLine;
+                str += "right : " + right + Environment.NewLine;
+                str += "leftstick : " + leftstick + Environment.NewLine;
+                str += "rightstick : " + rightstick + Environment.NewLine;
+                str += "leftbumper : " + leftbumper + Environment.NewLine;
+                str += "rightbumper : " + rightbumper + Environment.NewLine;
+                str += "leftstickx : " + leftstickx + Environment.NewLine;
+                str += "leftsticky : " + leftsticky + Environment.NewLine;
+                str += "rightstickx : " + rightstickx + Environment.NewLine;
+                str += "rightsticky : " + rightsticky + Environment.NewLine;
+                str += "lefttriggerposition : " + lefttriggerposition + Environment.NewLine;
+                str += "righttriggerposition : " + righttriggerposition + Environment.NewLine;
+                str += "xbox : " + xbox + Environment.NewLine;
+                str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
+                string txt = str;
+                string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                foreach (string line in lines)
+                    if (line.Contains(inputdelaybutton + " : "))
+                        inputdelay = line;
+                valchanged(0, inputdelay.Contains("True"));
+                if (wd[0] == 1)
+                {
+                    getstate = true;
+                }
+                if (inputdelay.Contains("False"))
+                    getstate = false;
+                if (getstate)
+                {
+                    elapseddown = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                    elapsed = 0;
+                }
+                if (wu[0] == 1)
+                {
+                    elapsedup = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                    elapsed = elapsedup - elapseddown;
+                }
+                ValueChange[0] = inputdelay.Contains("False") ? elapsed : 0;
+                if (ValueChange._ValueChange[0] > 0)
+                {
+                    delay = ValueChange._ValueChange[0];
+                }
+                str += "InputDelay : " + delay + " ms" + Environment.NewLine;
+                str += Environment.NewLine;
+                form1.SetLabel1(str);
+            }
         }
         private bool PlugIn(int controllerNumber)
         {
