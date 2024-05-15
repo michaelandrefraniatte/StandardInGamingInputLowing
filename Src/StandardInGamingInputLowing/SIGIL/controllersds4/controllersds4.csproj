@@ -62,6 +62,12 @@
     <Compile Include="DualShock4Controller.ReportExt.cs" />
     <Compile Include="DualShock4FeedbackReceivedEventArgs.cs" />
     <Compile Include="DualShock4Properties.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="IDualShock4Controller.cs" />
     <Compile Include="IViGEmTarget.cs" />
     <Compile Include="IVirtualGamepad.cs" />
@@ -92,6 +98,17 @@
   <ItemGroup>
     <Folder Include="costura32\" />
     <Folder Include="costura64\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Valuechanges\Valuechanges.csproj">
+      <Project>{211d48a2-f49f-41ac-bfdb-5d92ac6043dc}</Project>
+      <Name>Valuechanges</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

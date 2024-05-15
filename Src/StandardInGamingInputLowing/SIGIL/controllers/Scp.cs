@@ -2,6 +2,8 @@
 using System.Globalization;
 using System;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
+using Valuechanges;
 
 namespace controllers
 {
@@ -44,11 +46,40 @@ namespace controllers
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private int number, inc;
-        private Valuechanges ValueChange = new Valuechanges();
+        private Valuechanges ValueChanges = new Valuechanges();
         private const string SCP_BUS_CLASS_GUID = "{F679F562-3164-42CE-A4DB-E7DDBE723909}";
         private SafeFileHandle _deviceHandle;
         private int transferred = 0;
         private byte[] outputBuffer = null;
+        private bool formvisible;
+        private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
+        private string inputdelaybutton = "", inputdelay = "";
+        public Valuechange ValueChange;
+        private double delay, elapseddown, elapsedup, elapsed;
+        private bool getstate = false;
+        private int[] wd = { 2 };
+        private int[] wu = { 2 };
+        public void valchanged(int n, bool val)
+        {
+            if (val)
+            {
+                if (wd[n] <= 1)
+                {
+                    wd[n] = wd[n] + 1;
+                }
+                wu[n] = 0;
+            }
+            else
+            {
+                if (wu[n] <= 1)
+                {
+                    wu[n] = wu[n] + 1;
+                }
+                wd[n] = 0;
+            }
+        }
         public void Connect(int number = 0)
         {
             this.number = number;
@@ -67,80 +98,80 @@ namespace controllers
         }
         public void Set(bool back, bool start, bool A, bool B, bool X, bool Y, bool up, bool left, bool down, bool right, bool leftstick, bool rightstick, bool leftbumper, bool rightbumper, double leftstickx, double leftsticky, double rightstickx, double rightsticky, double lefttriggerposition, double righttriggerposition, bool xbox)
         {
-            ValueChange[0] = back ? 1 : 0;
-            if (ValueChange._ValueChange[0] > 0f)
+            ValueChanges[0] = back ? 1 : 0;
+            if (ValueChanges._ValueChange[0] > 0f)
                 Buttons ^= X360Buttons.Back;
-            if (ValueChange._ValueChange[0] < 0f)
+            if (ValueChanges._ValueChange[0] < 0f)
                 Buttons &= ~X360Buttons.Back;
-            ValueChange[1] = start ? 1 : 0;
-            if (ValueChange._ValueChange[1] > 0f)
+            ValueChanges[1] = start ? 1 : 0;
+            if (ValueChanges._ValueChange[1] > 0f)
                 Buttons ^= X360Buttons.Start;
-            if (ValueChange._ValueChange[1] < 0f)
+            if (ValueChanges._ValueChange[1] < 0f)
                 Buttons &= ~X360Buttons.Start;
-            ValueChange[2] = A ? 1 : 0;
-            if (ValueChange._ValueChange[2] > 0f)
+            ValueChanges[2] = A ? 1 : 0;
+            if (ValueChanges._ValueChange[2] > 0f)
                 Buttons ^= X360Buttons.A;
-            if (ValueChange._ValueChange[2] < 0f)
+            if (ValueChanges._ValueChange[2] < 0f)
                 Buttons &= ~X360Buttons.A;
-            ValueChange[3] = B ? 1 : 0;
-            if (ValueChange._ValueChange[3] > 0f)
+            ValueChanges[3] = B ? 1 : 0;
+            if (ValueChanges._ValueChange[3] > 0f)
                 Buttons ^= X360Buttons.B;
-            if (ValueChange._ValueChange[3] < 0f)
+            if (ValueChanges._ValueChange[3] < 0f)
                 Buttons &= ~X360Buttons.B;
-            ValueChange[4] = X ? 1 : 0;
-            if (ValueChange._ValueChange[4] > 0f)
+            ValueChanges[4] = X ? 1 : 0;
+            if (ValueChanges._ValueChange[4] > 0f)
                 Buttons ^= X360Buttons.X;
-            if (ValueChange._ValueChange[4] < 0f)
+            if (ValueChanges._ValueChange[4] < 0f)
                 Buttons &= ~X360Buttons.X;
-            ValueChange[5] = Y ? 1 : 0;
-            if (ValueChange._ValueChange[5] > 0f)
+            ValueChanges[5] = Y ? 1 : 0;
+            if (ValueChanges._ValueChange[5] > 0f)
                 Buttons ^= X360Buttons.Y;
-            if (ValueChange._ValueChange[5] < 0f)
+            if (ValueChanges._ValueChange[5] < 0f)
                 Buttons &= ~X360Buttons.Y;
-            ValueChange[6] = up ? 1 : 0;
-            if (ValueChange._ValueChange[6] > 0f)
+            ValueChanges[6] = up ? 1 : 0;
+            if (ValueChanges._ValueChange[6] > 0f)
                 Buttons ^= X360Buttons.Up;
-            if (ValueChange._ValueChange[6] < 0f)
+            if (ValueChanges._ValueChange[6] < 0f)
                 Buttons &= ~X360Buttons.Up;
-            ValueChange[7] = left ? 1 : 0;
-            if (ValueChange._ValueChange[7] > 0f)
+            ValueChanges[7] = left ? 1 : 0;
+            if (ValueChanges._ValueChange[7] > 0f)
                 Buttons ^= X360Buttons.Left;
-            if (ValueChange._ValueChange[7] < 0f)
+            if (ValueChanges._ValueChange[7] < 0f)
                 Buttons &= ~X360Buttons.Left;
-            ValueChange[8] = down ? 1 : 0;
-            if (ValueChange._ValueChange[8] > 0f)
+            ValueChanges[8] = down ? 1 : 0;
+            if (ValueChanges._ValueChange[8] > 0f)
                 Buttons ^= X360Buttons.Down;
-            if (ValueChange._ValueChange[8] < 0f)
+            if (ValueChanges._ValueChange[8] < 0f)
                 Buttons &= ~X360Buttons.Down;
-            ValueChange[9] = right ? 1 : 0;
-            if (ValueChange._ValueChange[9] > 0f)
+            ValueChanges[9] = right ? 1 : 0;
+            if (ValueChanges._ValueChange[9] > 0f)
                 Buttons ^= X360Buttons.Right;
-            if (ValueChange._ValueChange[9] < 0f)
+            if (ValueChanges._ValueChange[9] < 0f)
                 Buttons &= ~X360Buttons.Right;
-            ValueChange[10] = leftstick ? 1 : 0;
-            if (ValueChange._ValueChange[10] > 0f)
+            ValueChanges[10] = leftstick ? 1 : 0;
+            if (ValueChanges._ValueChange[10] > 0f)
                 Buttons ^= X360Buttons.LeftStick;
-            if (ValueChange._ValueChange[10] < 0f)
+            if (ValueChanges._ValueChange[10] < 0f)
                 Buttons &= ~X360Buttons.LeftStick;
-            ValueChange[11] = rightstick ? 1 : 0;
-            if (ValueChange._ValueChange[11] > 0f)
+            ValueChanges[11] = rightstick ? 1 : 0;
+            if (ValueChanges._ValueChange[11] > 0f)
                 Buttons ^= X360Buttons.RightStick;
-            if (ValueChange._ValueChange[11] < 0f)
+            if (ValueChanges._ValueChange[11] < 0f)
                 Buttons &= ~X360Buttons.RightStick;
-            ValueChange[12] = leftbumper ? 1 : 0;
-            if (ValueChange._ValueChange[12] > 0f)
+            ValueChanges[12] = leftbumper ? 1 : 0;
+            if (ValueChanges._ValueChange[12] > 0f)
                 Buttons ^= X360Buttons.LeftBumper;
-            if (ValueChange._ValueChange[12] < 0f)
+            if (ValueChanges._ValueChange[12] < 0f)
                 Buttons &= ~X360Buttons.LeftBumper;
-            ValueChange[13] = rightbumper ? 1 : 0;
-            if (ValueChange._ValueChange[13] > 0f)
+            ValueChanges[13] = rightbumper ? 1 : 0;
+            if (ValueChanges._ValueChange[13] > 0f)
                 Buttons ^= X360Buttons.RightBumper;
-            if (ValueChange._ValueChange[13] < 0f)
+            if (ValueChanges._ValueChange[13] < 0f)
                 Buttons &= ~X360Buttons.RightBumper;
-            ValueChange[14] = xbox ? 1 : 0;
-            if (ValueChange._ValueChange[14] > 0f)
+            ValueChanges[14] = xbox ? 1 : 0;
+            if (ValueChanges._ValueChange[14] > 0f)
                 Buttons ^= X360Buttons.Logo;
-            if (ValueChange._ValueChange[14] < 0f)
+            if (ValueChanges._ValueChange[14] < 0f)
                 Buttons &= ~X360Buttons.Logo;
             LeftStickX = (short)leftstickx;
             LeftStickY = (short)leftsticky;

@@ -1,5 +1,7 @@
 ﻿using System.Runtime.InteropServices;
+using System.Diagnostics;
 using vJoy.Wrapper;
+using Valuechanges;
 
 namespace controllersvjoy
 {
@@ -14,6 +16,35 @@ namespace controllersvjoy
         private static uint CurrentResolution = 0;
         private int number;
         private VirtualJoystick joystick;
+        private bool formvisible;
+        private Form1 form1 = new Form1();
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
+        private string inputdelaybutton = "", inputdelay = "";
+        public Valuechange ValueChange;
+        private double delay, elapseddown, elapsedup, elapsed;
+        private bool getstate = false;
+        private int[] wd = { 2 };
+        private int[] wu = { 2 };
+        public void valchanged(int n, bool val)
+        {
+            if (val)
+            {
+                if (wd[n] <= 1)
+                {
+                    wd[n] = wd[n] + 1;
+                }
+                wu[n] = 0;
+            }
+            else
+            {
+                if (wu[n] <= 1)
+                {
+                    wu[n] = wu[n] + 1;
+                }
+                wd[n] = 0;
+            }
+        }
         public VJoyController()
         {
             TimeBeginPeriod(1);
