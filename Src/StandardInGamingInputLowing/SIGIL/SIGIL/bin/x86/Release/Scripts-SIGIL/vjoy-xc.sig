@@ -93,6 +93,7 @@ namespace StringToCode
                 ControllerVJoy_Send_Z   = xi.ControllerTriggerLeftPosition;
                 ControllerVJoy_Send_WHL = xi.ControllerTriggerRightPosition;
                 VJoy.Set(ControllerVJoy_Send_1, ControllerVJoy_Send_2, ControllerVJoy_Send_3, ControllerVJoy_Send_4, ControllerVJoy_Send_5, ControllerVJoy_Send_6, ControllerVJoy_Send_7, ControllerVJoy_Send_8, ControllerVJoy_Send_X, ControllerVJoy_Send_Y, ControllerVJoy_Send_Z, ControllerVJoy_Send_WHL, ControllerVJoy_Send_SL0, ControllerVJoy_Send_SL1, ControllerVJoy_Send_RX, ControllerVJoy_Send_RY, ControllerVJoy_Send_RZ, ControllerVJoy_Send_POV, ControllerVJoy_Send_Hat, ControllerVJoy_Send_HatExt1, ControllerVJoy_Send_HatExt2, ControllerVJoy_Send_HatExt3);
+                /*VJoy.ViewData();*/
                 /*xi.ViewData();*/
                 Thread.Sleep(sleeptime);
             }

@@ -93,6 +93,7 @@ namespace StringToCode
                 sound1     = ki.KeyboardKeyA;
                 tempsound1 = ki.KeyboardKeyS;
                 player.Set(sound1, false, false, false, false, false, false, false, false, false, false, false, tempsound1, false, false, false, false, false, false, false, false, false, false, false);
+                /*player.ViewData();*/
                 /*mi.ViewData();*/
                 /*ki.ViewData();*/
                 Thread.Sleep(sleeptime);

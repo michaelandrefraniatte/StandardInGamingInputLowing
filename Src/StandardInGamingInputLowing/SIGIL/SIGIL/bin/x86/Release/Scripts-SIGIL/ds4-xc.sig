@@ -92,6 +92,7 @@ namespace StringToCode
                 ControllerDS4_Send_LeftTriggerPosition  = xi.ControllerTriggerLeftPosition;
                 ControllerDS4_Send_RightTriggerPosition = xi.ControllerTriggerRightPosition;
                 DS4.Set(ControllerDS4_Send_Options, ControllerDS4_Send_ThumbLeft, ControllerDS4_Send_ThumbRight, ControllerDS4_Send_ShoulderLeft, ControllerDS4_Send_ShoulderRight, ControllerDS4_Send_Cross, ControllerDS4_Send_Circle, ControllerDS4_Send_Square, ControllerDS4_Send_Triangle, ControllerDS4_Send_Ps, ControllerDS4_Send_Touchpad, ControllerDS4_Send_Share, ControllerDS4_Send_DPadUp, ControllerDS4_Send_DPadDown, ControllerDS4_Send_DPadLeft, ControllerDS4_Send_DPadRight, ControllerDS4_Send_LeftThumbX, ControllerDS4_Send_RightThumbX, ControllerDS4_Send_LeftThumbY, ControllerDS4_Send_RightThumbY, ControllerDS4_Send_LeftTrigger, ControllerDS4_Send_RightTrigger, ControllerDS4_Send_LeftTriggerPosition, ControllerDS4_Send_RightTriggerPosition);
+                /*DS4.ViewData();*/
                 /*xi.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
