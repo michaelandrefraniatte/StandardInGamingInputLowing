@@ -7,28 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
-using System.Runtime.InteropServices;
-namespace InterceptionTest
+using InterceptionTest;
+
+namespace SIGIL
 {
-    public partial class Form1 : Form
+    public partial class Form3 : Form
     {
-        public Form1()
+        public Form3()
         {
             InitializeComponent();
         }
         Input input = new Input();
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form3_Load(object sender, EventArgs e)
         {
             input.KeyboardFilterMode = KeyboardFilterMode.All;
             input.MouseFilterMode = MouseFilterMode.All;
-            input.Load(); 
+            input.Load();
         }
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
             input.Unload();
         }
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void Form3_KeyDown(object sender, KeyEventArgs e)
         {
             OnKeyDown(e.KeyData);
         }
@@ -60,6 +60,12 @@ namespace InterceptionTest
             {
                 this.Close();
             }
+        }
+        private void Form3_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            if (!Form1.close)
+                e.Cancel = true;
         }
     }
 }

@@ -17,11 +17,22 @@ using Range = FastColoredTextBoxNS.Range;
 using AutocompleteItem = AutocompleteMenuNS.AutocompleteItem;
 using SnippetAutocompleteItem = AutocompleteMenuNS.SnippetAutocompleteItem;
 using MethodAutocompleteItem = AutocompleteMenuNS.MethodAutocompleteItem;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace SIGIL
 {
     public partial class Form1 : Form
     {
+        [DllImport("user32.dll")]
+        public static extern bool GetAsyncKeyState(Keys vKey);
+        [DllImport("USER32.DLL")]
+        public static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
+        [DllImport("user32.dll")]
+        static extern bool DrawMenuBar(IntPtr hWnd);
+        [DllImport("user32.dll", EntryPoint = "SetWindowPos")]
+        public static extern IntPtr SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int Y, int cx, int cy, int wFlags);
+        [DllImport("user32.dll")]
+        static extern IntPtr GetForegroundWindow();
         [DllImport("user32.dll", SetLastError = true)]
         private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
         [DllImport("user32.dll")]
@@ -35,11 +46,22 @@ namespace SIGIL
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
+        private const int GWL_STYLE = -16;
+        private const uint WS_BORDER = 0x00800000;
+        private const uint WS_CAPTION = 0x00C00000;
+        private const uint WS_SYSMENU = 0x00080000;
+        private const uint WS_MINIMIZEBOX = 0x00020000;
+        private const uint WS_MAXIMIZEBOX = 0x00010000;
+        private const uint WS_OVERLAPPED = 0x00000000;
+        private const uint WS_POPUP = 0x80000000;
+        private const uint WS_TABSTOP = 0x00010000;
+        private const uint WS_VISIBLE = 0x10000000;
+        private static int width, height;
         private static DialogResult result;
         private static ContextMenu contextMenu = new ContextMenu();
         private static MenuItem menuItem;
         private static bool justSaved = true, onopenwith = false, runstopbool = false, closeonicon = false;
-        public static bool replaceformvisible = false;
+        public static bool replaceformvisible = false, removewindowtitle = false, close = false;
         private static string filename = "", fastColoredTextBoxSaved = "", code = "";
         public static ReplaceForm replaceform;
         private static Range range;
@@ -51,6 +73,28 @@ namespace SIGIL
         private Microsoft.CSharp.CSharpCodeProvider provider;
         private System.CodeDom.Compiler.CompilerParameters parameters;
         private static Form2 form2 = new Form2();
+        private static Form3 form3 = new Form3();
+        private static int[] wd = { 2, 2 };
+        private static int[] wu = { 2, 2 };
+        public static void valchanged(int n, bool val)
+        {
+            if (val)
+            {
+                if (wd[n] <= 1)
+                {
+                    wd[n] = wd[n] + 1;
+                }
+                wu[n] = 0;
+            }
+            else
+            {
+                if (wu[n] <= 1)
+                {
+                    wu[n] = wu[n] + 1;
+                }
+                wd[n] = 0;
+            }
+        }
         public Form1(string filePath)
         {
             InitializeComponent();
@@ -3427,6 +3471,7 @@ namespace SIGIL
                         minimizeToSystrayAtBootToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         associateFileExtensionToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         showATransparentClickableOverlayToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
+                        removeWindowTitleToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                     }
                     if (filename != "" & File.Exists(filename))
                     {
@@ -3481,7 +3526,10 @@ namespace SIGIL
                 createdfile.WriteLine(minimizeToSystrayAtBootToolStripMenuItem.Checked);
                 createdfile.WriteLine(associateFileExtensionToolStripMenuItem.Checked);
                 createdfile.WriteLine(showATransparentClickableOverlayToolStripMenuItem.Checked);
+                createdfile.WriteLine(removeWindowTitleToolStripMenuItem.Checked);
             }
+            removewindowtitle = false;
+            close = true;
         }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -3913,6 +3961,54 @@ namespace SIGIL
                     form2.Hide();
                 }
                 catch { }
+            }
+        }
+        private void enumerateDevicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string message = EnumerateDevices.GetDevices();
+            string caption = "Device paths";
+            MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void interceptionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form3.Visible = true;
+            }
+            catch { }
+        }
+        private void removeWindowTitleToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (removeWindowTitleToolStripMenuItem.Checked)
+            {
+                removewindowtitle = true;
+                Task.Run(() => RemoveWindowTitle());
+            }
+            else
+                removewindowtitle = false;
+        }
+        private void RemoveWindowTitle()
+        {
+            while (removewindowtitle)
+            {
+                valchanged(0, GetAsyncKeyState(Keys.PageDown));
+                if (wu[0] == 1)
+                {
+                    width = Screen.PrimaryScreen.Bounds.Width;
+                    height = Screen.PrimaryScreen.Bounds.Height;
+                    IntPtr window = GetForegroundWindow();
+                    SetWindowLong(window, GWL_STYLE, WS_SYSMENU);
+                    SetWindowPos(window, -2, 0, 0, width, height, 0x0040);
+                    DrawMenuBar(window);
+                }
+                valchanged(1, GetAsyncKeyState(Keys.PageUp));
+                if (wu[1] == 1)
+                {
+                    IntPtr window = GetForegroundWindow();
+                    SetWindowLong(window, GWL_STYLE, WS_CAPTION | WS_POPUP | WS_BORDER | WS_SYSMENU | WS_TABSTOP | WS_VISIBLE | WS_OVERLAPPED | WS_MINIMIZEBOX | WS_MAXIMIZEBOX);
+                    DrawMenuBar(window);
+                }
+                System.Threading.Thread.Sleep(100);
             }
         }
     }

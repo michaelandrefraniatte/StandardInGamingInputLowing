@@ -52,6 +52,9 @@
             this.minimizeToSystrayAtBootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.associateFileExtensionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showATransparentClickableOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeWindowTitleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.interceptionTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enumerateDevicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -203,7 +206,10 @@
             this.minimizeToSystrayAtCloseToolStripMenuItem,
             this.minimizeToSystrayAtBootToolStripMenuItem,
             this.associateFileExtensionToolStripMenuItem,
-            this.showATransparentClickableOverlayToolStripMenuItem});
+            this.showATransparentClickableOverlayToolStripMenuItem,
+            this.removeWindowTitleToolStripMenuItem,
+            this.interceptionTestToolStripMenuItem,
+            this.enumerateDevicesToolStripMenuItem});
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             this.optionToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
             this.optionToolStripMenuItem.Text = "Option";
@@ -252,6 +258,28 @@
             this.showATransparentClickableOverlayToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.showATransparentClickableOverlayToolStripMenuItem.Text = "Show a clickable overlay";
             this.showATransparentClickableOverlayToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.showATransparentClickableOverlayToolStripMenuItem_CheckStateChanged);
+            // 
+            // removeWindowTitleToolStripMenuItem
+            // 
+            this.removeWindowTitleToolStripMenuItem.CheckOnClick = true;
+            this.removeWindowTitleToolStripMenuItem.Name = "removeWindowTitleToolStripMenuItem";
+            this.removeWindowTitleToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
+            this.removeWindowTitleToolStripMenuItem.Text = "Remove window title";
+            this.removeWindowTitleToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.removeWindowTitleToolStripMenuItem_CheckStateChanged);
+            // 
+            // interceptionTestToolStripMenuItem
+            // 
+            this.interceptionTestToolStripMenuItem.Name = "interceptionTestToolStripMenuItem";
+            this.interceptionTestToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
+            this.interceptionTestToolStripMenuItem.Text = "Interception test";
+            this.interceptionTestToolStripMenuItem.Click += new System.EventHandler(this.interceptionTestToolStripMenuItem_Click);
+            // 
+            // enumerateDevicesToolStripMenuItem
+            // 
+            this.enumerateDevicesToolStripMenuItem.Name = "enumerateDevicesToolStripMenuItem";
+            this.enumerateDevicesToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
+            this.enumerateDevicesToolStripMenuItem.Text = "Enumerate devices";
+            this.enumerateDevicesToolStripMenuItem.Click += new System.EventHandler(this.enumerateDevicesToolStripMenuItem_Click);
             // 
             // processToolStripMenuItem
             // 
@@ -415,6 +443,9 @@
         private System.Windows.Forms.ToolStripMenuItem showATransparentClickableOverlayToolStripMenuItem;
         private AutocompleteMenuNS.AutocompleteMenu autocompleteMenu1;
         private FastColoredTextBoxNS.FastColoredTextBox fastColoredTextBox1;
+        private System.Windows.Forms.ToolStripMenuItem removeWindowTitleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem interceptionTestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem enumerateDevicesToolStripMenuItem;
     }
 }
 

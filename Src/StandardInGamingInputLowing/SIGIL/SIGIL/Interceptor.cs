@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Runtime.InteropServices;
+using SIGIL;
+
 namespace InterceptionTest
 {
     public class Input
@@ -60,7 +62,7 @@ namespace InterceptionTest
         }
         private void DriverCallback()
         {
-            Form1 form = (Form1)Application.OpenForms["Form1"];
+            Form3 form = (Form3)Application.OpenForms["Form3"];
             InterceptionDriver.SetFilter(context, InterceptionDriver.IsKeyboard, (Int32)KeyboardFilterMode);
             InterceptionDriver.SetFilter(context, InterceptionDriver.IsMouse, (Int32)MouseFilterMode);
             Stroke stroke = new Stroke();
