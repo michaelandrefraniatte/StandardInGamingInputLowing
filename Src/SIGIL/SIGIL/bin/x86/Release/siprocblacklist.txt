@@ -3,9 +3,6 @@ DsmUserTask
 ShellExperienceHost
 taskhostw
 GameBarPresenceWriter
-sc
-csc
-cvtres
 MpCmdRun
 UsoClient
 TiWorker
