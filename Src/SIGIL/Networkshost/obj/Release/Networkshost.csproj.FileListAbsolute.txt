@@ -1,0 +1,7 @@
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networkshost\bin\Release\Networkshost.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networkshost\bin\Release\Networkshost.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networkshost\obj\Release\Networkshost.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networkshost\obj\Release\Networkshost.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networkshost\obj\Release\Networks.ED80067C.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networkshost\obj\Release\Networkshost.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networkshost\obj\Release\Networkshost.pdb

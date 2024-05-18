@@ -664,3 +664,5 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.csproj.Up2Date
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.exe
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Networkshost.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Networkshost.pdb

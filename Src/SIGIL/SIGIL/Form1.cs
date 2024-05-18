@@ -1487,6 +1487,8 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"\bMouseButtonX\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bbyteArrayToControl\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bcontrolToByteArray\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bNetworkshost\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bNetworkHost\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bNetworks\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bNetwork\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bWebSocketSharp\b"));
@@ -2425,6 +2427,8 @@ namespace SIGIL
                 "JoysticksHooks",
                 "byteArrayToControl",
                 "controlToByteArray",
+                "Networkshost",
+                "NetworkHost",
                 "Networks",
                 "Network",
                 "WebSocketSharp",
@@ -2433,12 +2437,10 @@ namespace SIGIL
                 "wsc",
                 "object",
                 "MessageEventArgs",
-                "rawdataavailable",
                 "byteArrayIn",
                 "control",
                 "Encoding.ASCII.GetString",
                 "str",
-                "RawData",
                 "localip",
                 "port",
                 "Text",
@@ -3321,7 +3323,9 @@ namespace SIGIL
                 "WiimoteTaikoDrumStateOuterLeft",
                 "WiimoteTaikoDrumStateInnerRight",
                 "WiimoteTaikoDrumStateOuterRight",
-                "timeelapsed"
+                "timeelapsed",
+                "rawdataavailable",
+                "RawData"
                 };
             string[] snippets = { "if(^)\n{\n}", "if(^)\n{\n}\nelse\n{\n}", "for(^;;)\n{\n}", "while(^)\n{\n}", "do${\n^}while();", "switch(^)\n{\n\tcase : break;\n}" };
             string[] declarationSnippets = {
@@ -3742,6 +3746,8 @@ namespace SIGIL
                 AddAssembly("Gamepadshook");
             if (code.Contains("using JoysticksHooksAPI;"))
                 AddAssembly("Joystickshook");
+            if (code.Contains("using Networkshost;"))
+                AddAssembly("Networkshost");
             if (code.Contains("using Networks;"))
                 AddAssembly("Networks");
             if (code.Contains("using WebSocketSharp;"))

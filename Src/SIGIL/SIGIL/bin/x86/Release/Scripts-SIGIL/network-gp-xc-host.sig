@@ -13,7 +13,7 @@ using System.Reflection;
 using controllers;
 using System.Diagnostics;
 using Valuechanges;
-using WebSocketSharp;
+using Networkshost;
 
 namespace StringToCode
 {
@@ -36,14 +36,14 @@ namespace StringToCode
         public static Valuechange ValueChange = new Valuechange();
         public static string localip = "192.168.1.14";
         public static string port = "62000";
-        public static WebSocket wsc;
-        public static string[] control;
+        public static string[] control = new string[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
         public void Close()
         {
             try
             {
                 running = false;
                 Thread.Sleep(100);
+                NetworkHost.Disconnect();
                 XBC.Disconnect();
             }
             catch { }
@@ -58,77 +58,50 @@ namespace StringToCode
         private void Start()
         {
             running = true;
+            NetworkHost.Connect(localip, port);
             XBC.Connect();
-            Task.Run(() => Connect());
+            Task.Run(() => task());
         }
-        public static void Connect()
+        private void task()
         {
-            System.Threading.Thread.Sleep(2000);
-            string connectionString = "ws://" + localip + ":" + port + "/Control";
-            wsc                     = new WebSocket(connectionString);
-            wsc.OnMessage += Ws_OnMessage;
-            while (!wsc.IsAlive & running)
+            for (; ; )
             {
-                try
+                if (!running)
+                    break;
+                if (NetworkHost.rawdataavailable != null)
                 {
-                    wsc.Connect();
-                    wsc.Send("Hello from client");
+                    control = byteArrayToControl(NetworkHost.rawdataavailable);
+                    mousex  = Convert.ToSingle(control[0]);
+                    mousey  = Convert.ToSingle(control[1]);
+                    statex = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
+                    statey = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
+                    Controller_Send_rightstickx          = statex;
+                    Controller_Send_rightsticky          = statey;
+                    mousex                               = Convert.ToSingle(control[2]);
+                    mousey                               = Convert.ToSingle(control[3]);
+                    Controller_Send_leftstickx           = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
+                    Controller_Send_leftsticky           = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
+                    Controller_Send_up                   = bool.Parse(control[4]);
+                    Controller_Send_left                 = bool.Parse(control[5]);
+                    Controller_Send_down                 = bool.Parse(control[6]);
+                    Controller_Send_right                = bool.Parse(control[7]);
+                    Controller_Send_back                 = bool.Parse(control[8]);
+                    Controller_Send_start                = bool.Parse(control[9]);
+                    Controller_Send_leftstick            = bool.Parse(control[10]);
+                    Controller_Send_leftbumper           = bool.Parse(control[11]);
+                    Controller_Send_rightbumper          = bool.Parse(control[12]);
+                    Controller_Send_A                    = bool.Parse(control[13]);
+                    Controller_Send_B                    = bool.Parse(control[14]);
+                    Controller_Send_X                    = bool.Parse(control[15]);
+                    Controller_Send_Y                    = bool.Parse(control[16]);
+                    Controller_Send_rightstick           = bool.Parse(control[17]);
+                    Controller_Send_lefttriggerposition  = Convert.ToSingle(control[18]);
+                    Controller_Send_righttriggerposition = Convert.ToSingle(control[19]);
+                    XBC.Set(Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition, Controller_Send_xbox);
+                    /*XBC.ViewData();*/
                 }
-                catch { }
-                System.Threading.Thread.Sleep(1);
+                Thread.Sleep(sleeptime);
             }
-            while (wsc.IsAlive & running)
-            {
-                System.Threading.Thread.Sleep(1);
-            }
-            try
-            {
-                Disconnect();
-                if (running)
-                    Task.Run(() => Connect());
-            } 
-            catch { }
-        }
-        public static void Disconnect()
-        {
-            wsc.OnMessage -= Ws_OnMessage;
-            wsc.Close();
-        }
-        private static void Ws_OnMessage(object sender, MessageEventArgs e)
-        {
-            control = byteArrayToControl(e.RawData);
-            try
-            {
-                mousex                               = Convert.ToSingle(control[0]);
-                mousey                               = Convert.ToSingle(control[1]);
-                statex                               = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
-                statey                               = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
-                Controller_Send_rightstickx          = statex;
-                Controller_Send_rightsticky          = statey;
-                mousex                               = Convert.ToSingle(control[2]);
-                mousey                               = Convert.ToSingle(control[3]);
-                Controller_Send_leftstickx           = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
-                Controller_Send_leftsticky           = Math.Abs(mousey) <= 32767f ? mousey : Math.Sign(mousey) * 32767f;
-                Controller_Send_up                   = bool.Parse(control[4]);
-                Controller_Send_left                 = bool.Parse(control[5]);
-                Controller_Send_down                 = bool.Parse(control[6]);
-                Controller_Send_right                = bool.Parse(control[7]);
-                Controller_Send_back                 = bool.Parse(control[8]);
-                Controller_Send_start                = bool.Parse(control[9]);
-                Controller_Send_leftstick            = bool.Parse(control[10]);
-                Controller_Send_leftbumper           = bool.Parse(control[11]);
-                Controller_Send_rightbumper          = bool.Parse(control[12]);
-                Controller_Send_A                    = bool.Parse(control[13]);
-                Controller_Send_B                    = bool.Parse(control[14]);
-                Controller_Send_X                    = bool.Parse(control[15]);
-                Controller_Send_Y                    = bool.Parse(control[16]);
-                Controller_Send_rightstick           = bool.Parse(control[17]);
-                Controller_Send_lefttriggerposition  = Convert.ToSingle(control[18]);
-                Controller_Send_righttriggerposition = Convert.ToSingle(control[19]);
-                XBC.Set(Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition, Controller_Send_xbox);
-            }
-            catch { }
-            /*XBC.ViewData();*/
         }
         public static string[] byteArrayToControl(byte[] byteArrayIn)
         {
@@ -152,11 +125,6 @@ namespace StringToCode
                 newsplitstring.Add(newvaluestring);
             }
             return newsplitstring.ToArray();
-        }
-        private double Scale(double value, double min, double max, double minScale, double maxScale)
-        {
-            double scaled = minScale + (double)(value - min) / (max - min) * (maxScale - minScale);
-            return scaled;
         }
     }
 }

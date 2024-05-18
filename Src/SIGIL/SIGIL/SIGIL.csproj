@@ -292,6 +292,10 @@
       <Project>{937a14a0-761f-4ff9-ba25-ee25d8e700ef}</Project>
       <Name>Mousexnahook</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Networkshost\Networkshost.csproj">
+      <Project>{c6bc2db5-1cd3-48e6-b8fc-159b2ee921f3}</Project>
+      <Name>Networkshost</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Networks\Networks.csproj">
       <Project>{a9cd3113-f7ac-4584-9d53-c80229df6f6b}</Project>
       <Name>Networks</Name>
