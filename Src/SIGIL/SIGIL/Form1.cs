@@ -65,7 +65,7 @@ namespace SIGIL
         private static ContextMenu contextMenu = new ContextMenu();
         private static MenuItem menuItem;
         private static bool justSaved = true, onopenwith = false, runstopbool = false, closeonicon = false;
-        public static bool replaceformvisible = false, removewindowtitle = false, optimizewindows = false, closed = false;
+        public static bool replaceformvisible = false, removewindowtitle = false, optimizewindows = false;
         private static string filename = "", fastColoredTextBoxSaved = "", code = "";
         public static ReplaceForm replaceform;
         private static Range range;
@@ -3541,7 +3541,6 @@ namespace SIGIL
             }
             removewindowtitle = false;
             optimizewindows = false;
-            closed = true;
         }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -3987,7 +3986,8 @@ namespace SIGIL
         {
             try
             {
-                form3.Visible = true;
+                form3 = new Form3();
+                form3.Show();
             }
             catch { }
         }
