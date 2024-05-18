@@ -207,6 +207,17 @@ namespace CameraAPI
                         backpointY = blobs[0].CenterOfGravity.Y;
                     }
                 }
+                if (formvisible)
+                {
+                    try
+                    {
+                        EditableImg = new Bitmap(ClonedImg);
+                        EditableImg.MakeTransparent();
+                        DrawLines(ref EditableImg, new System.Drawing.Point((int)backpointX, (int)backpointY));
+                        form1.SetPictureBox1(EditableImg);
+                    }
+                    catch { }
+                }
                 posRightX = backpointX - ClonedImg.Width / 2f;
                 posRightY = backpointY - ClonedImg.Height / 2f;
                 camx = posRightX / (ClonedImg.Width / 2f) * 1024f;
@@ -215,6 +226,20 @@ namespace CameraAPI
             }
             catch { }
             Thread.Sleep(1);
+        }
+        public void DrawLines(ref Bitmap image, System.Drawing.Point p)
+        {
+            Graphics g = Graphics.FromImage(image);
+            Pen p1 = new Pen(System.Drawing.Color.Red, 2);
+            System.Drawing.Point ph = new System.Drawing.Point(image.Width, p.Y);
+            System.Drawing.Point ph2 = new System.Drawing.Point(0, p.Y);
+            g.DrawLine(p1, p, ph);
+            g.DrawLine(p1, p, ph2);
+            ph = new System.Drawing.Point(p.X, 0);
+            ph2 = new System.Drawing.Point(p.X, image.Height);
+            g.DrawLine(p1, p, ph);
+            g.DrawLine(p1, p, ph2);
+            g.Dispose();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Camera
@@ -20,6 +21,10 @@ namespace Camera
         {
             this.label1.Text = str;
         }
+        public void SetPictureBox1(Bitmap bmp)
+        {
+            this.pictureBox1.Image = bmp;
+        }
         public void SetVisible()
         {
             this.ShowDialog();
@@ -37,6 +42,7 @@ namespace Camera
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
+            this.pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
