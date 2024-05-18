@@ -17,12 +17,16 @@ using Range = FastColoredTextBoxNS.Range;
 using AutocompleteItem = AutocompleteMenuNS.AutocompleteItem;
 using SnippetAutocompleteItem = AutocompleteMenuNS.SnippetAutocompleteItem;
 using MethodAutocompleteItem = AutocompleteMenuNS.MethodAutocompleteItem;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
+using System.ServiceProcess;
+using System.Linq;
 
 namespace SIGIL
 {
     public partial class Form1 : Form
     {
+        [DllImport("stopitkills.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode, EntryPoint = "killProcessByNames")]
+        [return: MarshalAs(UnmanagedType.BStr)]
+        public static extern string killProcessByNames(string processnames);
         [DllImport("user32.dll")]
         public static extern bool GetAsyncKeyState(Keys vKey);
         [DllImport("USER32.DLL")]
@@ -61,7 +65,7 @@ namespace SIGIL
         private static ContextMenu contextMenu = new ContextMenu();
         private static MenuItem menuItem;
         private static bool justSaved = true, onopenwith = false, runstopbool = false, closeonicon = false;
-        public static bool replaceformvisible = false, removewindowtitle = false, close = false;
+        public static bool replaceformvisible = false, removewindowtitle = false, optimizewindows = false, closed = false;
         private static string filename = "", fastColoredTextBoxSaved = "", code = "";
         public static ReplaceForm replaceform;
         private static Range range;
@@ -74,6 +78,11 @@ namespace SIGIL
         private System.CodeDom.Compiler.CompilerParameters parameters;
         private static Form2 form2 = new Form2();
         private static Form3 form3 = new Form3();
+        public static int processid = 0;
+        private static List<string> servBLs = new List<string>();
+        private static string procnamesbl = "", servNames = "";
+        private static ServiceController[] services;
+        private static TimeSpan timeout = new TimeSpan(0, 0, 1);
         private static int[] wd = { 2, 2 };
         private static int[] wu = { 2, 2 };
         public static void valchanged(int n, bool val)
@@ -3471,6 +3480,7 @@ namespace SIGIL
                         minimizeToSystrayAtBootToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         associateFileExtensionToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         showATransparentClickableOverlayToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
+                        optimizeByStopingProcessAndServiceToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         removeWindowTitleToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                     }
                     if (filename != "" & File.Exists(filename))
@@ -3526,10 +3536,12 @@ namespace SIGIL
                 createdfile.WriteLine(minimizeToSystrayAtBootToolStripMenuItem.Checked);
                 createdfile.WriteLine(associateFileExtensionToolStripMenuItem.Checked);
                 createdfile.WriteLine(showATransparentClickableOverlayToolStripMenuItem.Checked);
+                createdfile.WriteLine(optimizeByStopingProcessAndServiceToolStripMenuItem.Checked);
                 createdfile.WriteLine(removeWindowTitleToolStripMenuItem.Checked);
             }
             removewindowtitle = false;
-            close = true;
+            optimizewindows = false;
+            closed = true;
         }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -3914,6 +3926,8 @@ namespace SIGIL
         }
         private void startProgramAtBootToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
+            if (startProgramAtBootToolStripMenuItem.Checked & optimizeByStopingProcessAndServiceToolStripMenuItem.Checked)
+                optimizeByStopingProcessAndServiceToolStripMenuItem.Checked = false;
             RegistryKey rk;
             rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
             if (startProgramAtBootToolStripMenuItem.Checked)
@@ -4009,6 +4023,91 @@ namespace SIGIL
                     DrawMenuBar(window);
                 }
                 System.Threading.Thread.Sleep(100);
+            }
+        }
+        private void optimizeByStopingProcessAndServiceToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (startProgramAtBootToolStripMenuItem.Checked & optimizeByStopingProcessAndServiceToolStripMenuItem.Checked)
+                startProgramAtBootToolStripMenuItem.Checked = false;
+            if (optimizeByStopingProcessAndServiceToolStripMenuItem.Checked)
+            {
+                optimizewindows = true;
+                Task.Run(() => StartStopItBlockProc());
+                Task.Run(() => StartStopItBlockServ());
+            }
+            else
+                optimizewindows = false;
+        }
+        public void StartStopItBlockProc()
+        {
+            using (StreamReader file = new StreamReader("siprocblacklist.txt"))
+            {
+                while (optimizewindows)
+                {
+                    string procName = file.ReadLine();
+                    if (procName == "")
+                    {
+                        file.Close();
+                        break;
+                    }
+                    else
+                    {
+                        procnamesbl += procName + ".exe ";
+                    }
+                }
+            }
+            for (; ; )
+            {
+                if (!optimizewindows)
+                    break;
+                if (procnamesbl != "")
+                    killProcessByNames(procnamesbl);
+                Thread.Sleep(1000);
+            }
+        }
+        public void StartStopItBlockServ()
+        {
+            using (StreamReader file = new StreamReader("siservblacklist.txt"))
+            {
+                while (optimizewindows)
+                {
+                    string servName = file.ReadLine();
+                    if (servName == "")
+                    {
+                        file.Close();
+                        break;
+                    }
+                    else
+                    {
+                        servBLs.Add(servName);
+                    }
+                }
+            }
+            for (; ; )
+            {
+                if (!optimizewindows)
+                    break;
+                services = ServiceController.GetServices();
+                foreach (ServiceController service in services)
+                {
+                    try
+                    {
+                        if (service.Status == ServiceControllerStatus.Running)
+                        {
+                            servNames = service.ServiceName;
+                            if (servNames.Length > 7)
+                                servNames = servNames.Substring(0, 7);
+                            if (servBLs.Any(n => n.StartsWith(servNames)))
+                            {
+                                service.Stop();
+                                service.WaitForStatus(ServiceControllerStatus.Stopped, timeout);
+                            }
+                        }
+                    }
+                    catch { }
+                    Thread.Sleep(1);
+                }
+                Thread.Sleep(1000);
             }
         }
     }

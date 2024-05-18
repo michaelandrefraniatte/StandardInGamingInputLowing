@@ -85,6 +85,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\x86\Release\System.Numerics.Vectors.dll</HintPath>
     </Reference>
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Threading">
       <Private>True</Private>
     </Reference>

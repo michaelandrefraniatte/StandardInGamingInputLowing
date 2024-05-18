@@ -64,6 +64,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.autocompleteMenu1 = new AutocompleteMenuNS.AutocompleteMenu();
             this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.optimizeByStopingProcessAndServiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
             this.SuspendLayout();
@@ -207,6 +208,7 @@
             this.minimizeToSystrayAtBootToolStripMenuItem,
             this.associateFileExtensionToolStripMenuItem,
             this.showATransparentClickableOverlayToolStripMenuItem,
+            this.optimizeByStopingProcessAndServiceToolStripMenuItem,
             this.removeWindowTitleToolStripMenuItem,
             this.interceptionTestToolStripMenuItem,
             this.enumerateDevicesToolStripMenuItem});
@@ -372,6 +374,7 @@
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.CSharp;
             this.fastColoredTextBox1.LeftBracket = '(';
@@ -388,6 +391,14 @@
             this.fastColoredTextBox1.TabIndex = 4;
             this.fastColoredTextBox1.Zoom = 100;
             this.fastColoredTextBox1.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.fastColoredTextBox1_TextChanged);
+            // 
+            // optimizeByStopingProcessAndServiceToolStripMenuItem
+            // 
+            this.optimizeByStopingProcessAndServiceToolStripMenuItem.CheckOnClick = true;
+            this.optimizeByStopingProcessAndServiceToolStripMenuItem.Name = "optimizeByStopingProcessAndServiceToolStripMenuItem";
+            this.optimizeByStopingProcessAndServiceToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
+            this.optimizeByStopingProcessAndServiceToolStripMenuItem.Text = "Optimize Windows";
+            this.optimizeByStopingProcessAndServiceToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.optimizeByStopingProcessAndServiceToolStripMenuItem_CheckStateChanged);
             // 
             // Form1
             // 
@@ -446,6 +457,7 @@
         private System.Windows.Forms.ToolStripMenuItem removeWindowTitleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem interceptionTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enumerateDevicesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optimizeByStopingProcessAndServiceToolStripMenuItem;
     }
 }
 

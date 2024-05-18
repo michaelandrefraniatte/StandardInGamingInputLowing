@@ -64,7 +64,7 @@ namespace SIGIL
         private void Form3_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Hide();
-            if (!Form1.close)
+            if (!Form1.closed)
                 e.Cancel = true;
         }
     }
