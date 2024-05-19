@@ -22,7 +22,7 @@ namespace controllersvjoy
         private Form1 form1 = new Form1();
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
-        private string inputdelaybutton = "", inputdelay = "";
+        private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
         public Valuechange ValueChange;
         private double delay, elapseddown, elapsedup, elapsed;
         private bool getstate = false;
@@ -138,13 +138,16 @@ namespace controllersvjoy
                 string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
                 foreach (string line in lines)
                     if (line.Contains(inputdelaybutton + " : "))
+                    {
+                        inputdelaytemp = inputdelay;
                         inputdelay = line;
-                valchanged(0, inputdelay.Contains("True"));
+                    }
+                valchanged(0, inputdelay.Contains("True") | (!inputdelay.Contains("True") & !inputdelay.Contains("False") & inputdelay != inputdelaytemp));
                 if (wd[0] == 1)
                 {
                     getstate = true;
                 }
-                if (inputdelay.Contains("False"))
+                if (inputdelay.Contains("False") | (!inputdelay.Contains("True") & !inputdelay.Contains("False") & inputdelay == inputdelaytemp))
                     getstate = false;
                 if (getstate)
                 {
@@ -156,7 +159,7 @@ namespace controllersvjoy
                     elapsedup = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
                     elapsed = elapsedup - elapseddown;
                 }
-                ValueChange[0] = inputdelay.Contains("False") ? elapsed : 0;
+                ValueChange[0] = inputdelay.Contains("False") | (!inputdelay.Contains("True") & !inputdelay.Contains("False") & inputdelay == inputdelaytemp) ? elapsed : 0;
                 if (ValueChange._ValueChange[0] > 0)
                 {
                     delay = ValueChange._ValueChange[0];

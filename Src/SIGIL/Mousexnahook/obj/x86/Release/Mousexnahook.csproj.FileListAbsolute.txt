@@ -10,3 +10,15 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mousexnahook\obj\x86\Release\Mousexnahook.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mousexnahook\bin\x86\Release\Valuechanges.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mousexnahook\bin\x86\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mousexnahook\bin\x86\Release\Mousexnahook.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mousexnahook\bin\x86\Release\Mousexnahook.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mousexnahook\bin\x86\Release\Microsoft.Xna.Framework.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mousexnahook\bin\x86\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mousexnahook\bin\x86\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mousexnahook\obj\x86\Release\Mousexnahook.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mousexnahook\obj\x86\Release\Mousexnahook.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mousexnahook\obj\x86\Release\Mousexnahook.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mousexnahook\obj\x86\Release\Mousexnahook.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mousexnahook\obj\x86\Release\Mousexna.E86EFA14.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mousexnahook\obj\x86\Release\Mousexnahook.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mousexnahook\obj\x86\Release\Mousexnahook.pdb

@@ -101,7 +101,7 @@ namespace JoyconChargingGripsAPI
         private Form1 form1 = new Form1();
         private Stopwatch LeftPollingRate, RightPollingRate;
         private double leftpollingrateperm = 0, leftpollingratetemp = 0, leftpollingratedisplay = 0, leftpollingrate, rightpollingrateperm = 0, rightpollingratetemp = 0, rightpollingratedisplay = 0, rightpollingrate;
-        private string leftinputdelaybutton = "", leftinputdelay = "", rightinputdelaybutton = "", rightinputdelay = "";
+        private string leftinputdelaybutton = "", leftinputdelay = "", leftinputdelaytemp = "", rightinputdelaybutton = "", rightinputdelay = "", rightinputdelaytemp = "";
         public Valuechange LeftValueChange, RightValueChange;
         private double leftdelay, leftelapseddown, leftelapsedup, leftelapsed, rightdelay, rightelapseddown, rightelapsedup, rightelapsed;
         private bool leftgetstate = false, rightgetstate = false;
@@ -211,13 +211,16 @@ namespace JoyconChargingGripsAPI
                     string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
                     foreach (string line in lines)
                         if (line.Contains(leftinputdelaybutton + " : "))
+                        {
+                            leftinputdelaytemp = leftinputdelay;
                             leftinputdelay = line;
-                    valchanged(0, leftinputdelay.Contains("True"));
+                        }
+                    valchanged(0, leftinputdelay.Contains("True") | (!leftinputdelay.Contains("True") & !leftinputdelay.Contains("False") & leftinputdelay != leftinputdelaytemp));
                     if (wd[0] == 1)
                     {
                         leftgetstate = true;
                     }
-                    if (leftinputdelay.Contains("False"))
+                    if (leftinputdelay.Contains("False") | (!leftinputdelay.Contains("True") & !leftinputdelay.Contains("False") & leftinputdelay == leftinputdelaytemp))
                         leftgetstate = false;
                     if (leftgetstate)
                     {
@@ -229,7 +232,7 @@ namespace JoyconChargingGripsAPI
                         leftelapsedup = (double)LeftPollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
                         leftelapsed = leftelapsedup - leftelapseddown;
                     }
-                    LeftValueChange[0] = leftinputdelay.Contains("False") ? leftelapsed : 0;
+                    LeftValueChange[0] = leftinputdelay.Contains("False") | (!leftinputdelay.Contains("True") & !leftinputdelay.Contains("False") & leftinputdelay == leftinputdelaytemp) ? leftelapsed : 0;
                     if (LeftValueChange._ValueChange[0] > 0)
                     {
                         leftdelay = LeftValueChange._ValueChange[0];
@@ -288,13 +291,16 @@ namespace JoyconChargingGripsAPI
                     string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
                     foreach (string line in lines)
                         if (line.Contains(rightinputdelaybutton + " : "))
+                        {
+                            rightinputdelaytemp = rightinputdelay;
                             rightinputdelay = line;
-                    valchanged(1, rightinputdelay.Contains("True"));
+                        }
+                    valchanged(1, rightinputdelay.Contains("True") | (!rightinputdelay.Contains("True") & !rightinputdelay.Contains("False") & rightinputdelay != rightinputdelaytemp));
                     if (wd[1] == 1)
                     {
                         rightgetstate = true;
                     }
-                    if (rightinputdelay.Contains("False"))
+                    if (rightinputdelay.Contains("False") | (!rightinputdelay.Contains("True") & !rightinputdelay.Contains("False") & rightinputdelay == rightinputdelaytemp))
                         rightgetstate = false;
                     if (rightgetstate)
                     {
@@ -306,7 +312,7 @@ namespace JoyconChargingGripsAPI
                         rightelapsedup = (double)RightPollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
                         rightelapsed = rightelapsedup - rightelapseddown;
                     }
-                    RightValueChange[0] = rightinputdelay.Contains("False") ? rightelapsed : 0;
+                    RightValueChange[0] = rightinputdelay.Contains("False") | (!rightinputdelay.Contains("True") & !rightinputdelay.Contains("False") & rightinputdelay == rightinputdelaytemp) ? rightelapsed : 0;
                     if (RightValueChange._ValueChange[0] > 0)
                     {
                         rightdelay = RightValueChange._ValueChange[0];

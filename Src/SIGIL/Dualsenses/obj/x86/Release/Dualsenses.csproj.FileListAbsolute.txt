@@ -10,3 +10,15 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualsenses\bin\x86\Release\Valuechanges.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualsenses\bin\x86\Release\Valuechanges.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Dualsenses\obj\x86\Release\Dualsenses.csproj.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsenses\bin\x86\Release\Dualsenses.dll.config
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsenses\bin\x86\Release\Dualsenses.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsenses\bin\x86\Release\Dualsenses.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsenses\bin\x86\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsenses\bin\x86\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsenses\obj\x86\Release\Dualsenses.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsenses\obj\x86\Release\Dualsenses.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsenses\obj\x86\Release\Dualsenses.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsenses\obj\x86\Release\Dualsenses.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsenses\obj\x86\Release\Dualsenses.csproj.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsenses\obj\x86\Release\Dualsenses.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsenses\obj\x86\Release\Dualsenses.pdb

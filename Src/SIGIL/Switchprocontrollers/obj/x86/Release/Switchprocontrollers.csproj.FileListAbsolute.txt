@@ -10,3 +10,15 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Switchprocontrollers\obj\x86\Release\Switchprocontrollers.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Switchprocontrollers\bin\x86\Release\Valuechanges.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Switchprocontrollers\bin\x86\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Switchprocontrollers\bin\x86\Release\Switchprocontrollers.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Switchprocontrollers\bin\x86\Release\Switchprocontrollers.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Switchprocontrollers\bin\x86\Release\System.Numerics.Vectors.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Switchprocontrollers\bin\x86\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Switchprocontrollers\bin\x86\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Switchprocontrollers\obj\x86\Release\Switchprocontrollers.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Switchprocontrollers\obj\x86\Release\Switchprocontrollers.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Switchprocontrollers\obj\x86\Release\Switchprocontrollers.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Switchprocontrollers\obj\x86\Release\Switchprocontrollers.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Switchprocontrollers\obj\x86\Release\Switchpr.43D65E39.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Switchprocontrollers\obj\x86\Release\Switchprocontrollers.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Switchprocontrollers\obj\x86\Release\Switchprocontrollers.pdb

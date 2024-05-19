@@ -9,3 +9,14 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouserawhooks\bin\Release\Valuechanges.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouserawhooks\bin\Release\Valuechanges.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mouserawhooks\obj\Release\Mouseraw.8126CCDB.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawhooks\bin\Release\Mouserawhooks.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawhooks\bin\Release\Mouserawhooks.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawhooks\bin\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawhooks\bin\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawhooks\obj\Release\Mouserawhooks.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawhooks\obj\Release\Mouserawhooks.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawhooks\obj\Release\Mouserawhooks.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawhooks\obj\Release\Mouserawhooks.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawhooks\obj\Release\Mouseraw.8126CCDB.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawhooks\obj\Release\Mouserawhooks.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawhooks\obj\Release\Mouserawhooks.pdb

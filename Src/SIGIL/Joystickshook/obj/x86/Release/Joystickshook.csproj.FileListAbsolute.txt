@@ -11,3 +11,16 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joystickshook\obj\x86\Release\Joystickshook.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joystickshook\bin\x86\Release\Valuechanges.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Joystickshook\bin\x86\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Joystickshook\bin\x86\Release\Joystickshook.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Joystickshook\bin\x86\Release\Joystickshook.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Joystickshook\bin\x86\Release\Microsoft.DirectX.DirectInput.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Joystickshook\bin\x86\Release\Microsoft.DirectX.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Joystickshook\bin\x86\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Joystickshook\bin\x86\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Joystickshook\obj\x86\Release\Joystickshook.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Joystickshook\obj\x86\Release\Joystickshook.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Joystickshook\obj\x86\Release\Joystickshook.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Joystickshook\obj\x86\Release\Joystickshook.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Joystickshook\obj\x86\Release\Joystick.9860B71D.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Joystickshook\obj\x86\Release\Joystickshook.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Joystickshook\obj\x86\Release\Joystickshook.pdb

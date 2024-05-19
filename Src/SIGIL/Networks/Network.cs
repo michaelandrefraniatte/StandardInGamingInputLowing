@@ -23,7 +23,7 @@ namespace Networks
         public static Form1 form1 = new Form1();
         public static Stopwatch PollingRate;
         public static double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
-        public static string inputdelaybutton = "", inputdelay = "";
+        public static string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
         public static Valuechange ValueChange;
         public static double delay, elapseddown, elapsedup, elapsed;
         public static bool getstate = false;
@@ -106,13 +106,16 @@ namespace Networks
                         string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
                         foreach (string line in lines)
                             if (line.Contains(Network.inputdelaybutton + " : "))
+                            {
+                                Network.inputdelaytemp = Network.inputdelay;
                                 Network.inputdelay = line;
-                        Network.valchanged(0, Network.inputdelay.Contains("True"));
+                            }
+                        Network.valchanged(0, Network.inputdelay.Contains("True") | (!Network.inputdelay.Contains("True") & !Network.inputdelay.Contains("False") & Network.inputdelay != Network.inputdelaytemp));
                         if (Network.wd[0] == 1)
                         {
                             Network.getstate = true;
                         }
-                        if (Network.inputdelay.Contains("False"))
+                        if (Network.inputdelay.Contains("False") | (!Network.inputdelay.Contains("True") & !Network.inputdelay.Contains("False") & Network.inputdelay == Network.inputdelaytemp))
                             Network.getstate = false;
                         if (Network.getstate)
                         {
@@ -124,7 +127,7 @@ namespace Networks
                             Network.elapsedup = (double)Network.PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
                             Network.elapsed = Network.elapsedup - Network.elapseddown;
                         }
-                        Network.ValueChange[0] = Network.inputdelay.Contains("False") ? Network.elapsed : 0;
+                        Network.ValueChange[0] = Network.inputdelay.Contains("False") | (!Network.inputdelay.Contains("True") & !Network.inputdelay.Contains("False") & Network.inputdelay == Network.inputdelaytemp) ? Network.elapsed : 0;
                         if (Network.ValueChange._ValueChange[0] > 0)
                         {
                             Network.delay = Network.ValueChange._ValueChange[0];

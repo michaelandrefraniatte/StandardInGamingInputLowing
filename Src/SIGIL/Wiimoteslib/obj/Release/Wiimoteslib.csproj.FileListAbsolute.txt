@@ -9,3 +9,14 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Wiimoteslib\bin\Release\Valuechanges.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Wiimoteslib\bin\Release\Valuechanges.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Wiimoteslib\obj\Release\Wiimotes.9FEE481B.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimoteslib\bin\Release\Wiimoteslib.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimoteslib\bin\Release\Wiimoteslib.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimoteslib\bin\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimoteslib\bin\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimoteslib\obj\Release\Wiimoteslib.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimoteslib\obj\Release\Wiimoteslib.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimoteslib\obj\Release\Wiimoteslib.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimoteslib\obj\Release\Wiimoteslib.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimoteslib\obj\Release\Wiimotes.9FEE481B.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimoteslib\obj\Release\Wiimoteslib.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimoteslib\obj\Release\Wiimoteslib.pdb

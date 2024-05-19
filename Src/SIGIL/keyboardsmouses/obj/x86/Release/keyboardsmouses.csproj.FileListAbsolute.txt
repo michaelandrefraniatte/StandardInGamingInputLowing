@@ -10,3 +10,15 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\bin\x86\Release\Valuechanges.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\obj\x86\Release\keyboardsmouses.Form1.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\keyboardsmouses\obj\x86\Release\keyboardsmouses.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\keyboardsmouses\bin\x86\Release\keyboardsmouses.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\keyboardsmouses\bin\x86\Release\keyboardsmouses.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\keyboardsmouses\bin\x86\Release\Microsoft.Xna.Framework.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\keyboardsmouses\bin\x86\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\keyboardsmouses\bin\x86\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\keyboardsmouses\obj\x86\Release\keyboardsmouses.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\keyboardsmouses\obj\x86\Release\keyboardsmouses.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\keyboardsmouses\obj\x86\Release\keyboardsmouses.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\keyboardsmouses\obj\x86\Release\keyboardsmouses.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\keyboardsmouses\obj\x86\Release\keyboard.96FAC8DE.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\keyboardsmouses\obj\x86\Release\keyboardsmouses.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\keyboardsmouses\obj\x86\Release\keyboardsmouses.pdb

@@ -9,3 +9,14 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardhook\bin\x86\Release\Valuechanges.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardhook\bin\x86\Release\Valuechanges.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Keyboardhook\obj\x86\Release\Keyboard.C221A652.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Keyboardhook\bin\x86\Release\Keyboardhook.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Keyboardhook\bin\x86\Release\Keyboardhook.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Keyboardhook\bin\x86\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Keyboardhook\bin\x86\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Keyboardhook\obj\x86\Release\Keyboardhook.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Keyboardhook\obj\x86\Release\Keyboardhook.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Keyboardhook\obj\x86\Release\Keyboardhook.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Keyboardhook\obj\x86\Release\Keyboardhook.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Keyboardhook\obj\x86\Release\Keyboard.C221A652.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Keyboardhook\obj\x86\Release\Keyboardhook.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Keyboardhook\obj\x86\Release\Keyboardhook.pdb
