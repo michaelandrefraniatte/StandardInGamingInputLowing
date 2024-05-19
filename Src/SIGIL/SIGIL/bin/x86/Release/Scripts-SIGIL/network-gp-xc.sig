@@ -66,21 +66,12 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                string control           = xi.ControllerThumbRightX + "," + xi.ControllerThumbRightY + "," + xi.ControllerThumbLeftX + "," + xi.ControllerThumbLeftY + "," + xi.ControllerButtonUpPressed + "," + xi.ControllerButtonLeftPressed + "," + xi.ControllerButtonDownPressed + "," + xi.ControllerButtonRightPressed + "," + xi.ControllerButtonBackPressed + "," + xi.ControllerButtonStartPressed + "," + xi.ControllerThumbpadLeftPressed + "," + xi.ControllerButtonShoulderLeftPressed + "," + xi.ControllerButtonShoulderRightPressed + "," + xi.ControllerButtonAPressed + "," + xi.ControllerButtonBPressed + "," + xi.ControllerButtonXPressed + "," + xi.ControllerButtonYPressed + "," + xi.ControllerThumbpadRightPressed + "," + xi.ControllerTriggerLeftPosition + "," + xi.ControllerTriggerRightPosition + ",end";
-                Network.rawdataavailable = controlToByteArray(control);
+                string control           = Convert.ToInt32(xi.ControllerThumbRightX) + "," + Convert.ToInt32(xi.ControllerThumbRightY) + "," + Convert.ToInt32(xi.ControllerThumbLeftX) + "," + Convert.ToInt32(xi.ControllerThumbLeftY) + "," + xi.ControllerButtonUpPressed + "," + xi.ControllerButtonLeftPressed + "," + xi.ControllerButtonDownPressed + "," + xi.ControllerButtonRightPressed + "," + xi.ControllerButtonBackPressed + "," + xi.ControllerButtonStartPressed + "," + xi.ControllerThumbpadLeftPressed + "," + xi.ControllerButtonShoulderLeftPressed + "," + xi.ControllerButtonShoulderRightPressed + "," + xi.ControllerButtonAPressed + "," + xi.ControllerButtonBPressed + "," + xi.ControllerButtonXPressed + "," + xi.ControllerButtonYPressed + "," + xi.ControllerThumbpadRightPressed + "," + Convert.ToInt32(xi.ControllerTriggerLeftPosition) + "," + Convert.ToInt32(xi.ControllerTriggerRightPosition) + ",end";
+                Network.rawdataavailable = control;
+                /*Network.ViewData();*/
                 /*xi.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
-        }
-        public static byte[] controlToByteArray(string control)
-        {
-            byte[] data = Encoding.ASCII.GetBytes(control);
-            return data;
-        }
-        private double Scale(double value, double min, double max, double minScale, double maxScale)
-        {
-            double scaled = minScale + (double)(value - min) / (max - min) * (maxScale - minScale);
-            return scaled;
         }
     }
 }

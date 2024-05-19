@@ -14,8 +14,9 @@ namespace Networkshost
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         public static WebSocket wsc;
-        public static byte[] rawdataavailable = null;
-        public static bool running = true;
+        public static string rawdataavailable = "";
+        public static bool running = true, formvisible;
+        private static Form1 form1 = new Form1();
         public static void Connect(string localip, string port, int number = 0)
         {
             TimeBeginPeriod(1);
@@ -59,9 +60,21 @@ namespace Networkshost
             wsc.OnMessage -= Ws_OnMessage;
             wsc.Close();
         }
+        public static void ViewData(string inputdelaybutton = "")
+        {
+            if (!formvisible)
+            {
+                formvisible = true;
+                Task.Run(() => form1.SetVisible());
+            }
+        }
         private static void Ws_OnMessage(object sender, MessageEventArgs e)
         {
-            rawdataavailable = e.RawData;
+            rawdataavailable = e.Data;
+            if (formvisible)
+            {
+                form1.SetLabel1("rawdataavailable : " + rawdataavailable);
+            }
         }
     }
 }

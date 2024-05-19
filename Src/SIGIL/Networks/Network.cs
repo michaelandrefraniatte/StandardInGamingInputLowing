@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using WebSocketSharp;
 using WebSocketSharp.Server;
 
@@ -15,15 +17,15 @@ namespace Networks
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         public static WebSocketServer wss;
-        public static byte[] rawdataavailable;
-        public static bool running = false;
+        public static string rawdataavailable = "";
+        public static bool running = true, formvisible;
+        public static Form1 form1 = new Form1();
         public static void Connect(string localip, string port, int number = 0)
         {
             try
             {
                 TimeBeginPeriod(1);
                 NtSetTimerResolution(1, true, ref CurrentResolution);
-                running = true;
                 String connectionString = "ws://" + localip + ":" + port;
                 wss = new WebSocketServer(connectionString);
                 wss.AddWebSocketService<Control>("/Control");
@@ -37,6 +39,14 @@ namespace Networks
             wss.RemoveWebSocketService("/Control");
             wss.Stop();
         }
+        public static void ViewData(string inputdelaybutton = "")
+        {
+            if (!formvisible)
+            {
+                formvisible = true;
+                Task.Run(() => form1.SetVisible());
+            }
+        }
     }
     public class Control : WebSocketBehavior
     {
@@ -48,6 +58,10 @@ namespace Networks
                 try
                 {
                     Send(Network.rawdataavailable);
+                    if (Network.formvisible)
+                    {
+                        Network.form1.SetLabel1("rawdataavailable : " + Network.rawdataavailable);
+                    }
                 }
                 catch
                 {

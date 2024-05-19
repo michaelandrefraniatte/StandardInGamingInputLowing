@@ -6,3 +6,13 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Networks\obj\x86\Release\Networks.csproj.Up2Date
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Networks\obj\x86\Release\Networks.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Networks\obj\x86\Release\Networks.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\bin\x86\Release\Networks.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\bin\x86\Release\Networks.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\bin\x86\Release\websocket-sharp.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\obj\x86\Release\Networks.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\obj\x86\Release\Networks.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\obj\x86\Release\Networks.csproj.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\obj\x86\Release\Networks.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\obj\x86\Release\Networks.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\obj\x86\Release\Networks.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\obj\x86\Release\Networks.csproj.GenerateResource.cache

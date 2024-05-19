@@ -230,6 +230,7 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"\bAverage\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bCount\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bClear\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bToInt32\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bRemoveAt\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bAverage\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bViewData\b"));
@@ -1487,6 +1488,7 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"\bMouseButtonX\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bbyteArrayToControl\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bcontrolToByteArray\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bstringToControl\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bNetworkshost\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bNetworkHost\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bNetworks\b"));
@@ -1520,6 +1522,7 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"\bEncoding.ASCII.GetBytes\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bIndexOf\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bdata\b"));
+                range.SetStyle(StyleInput, new Regex(@"\bunsplitstring\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bsplitstring\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bnewsplitstring\b"));
                 range.SetStyle(StyleInput, new Regex(@"\bvaluestring\b"));
@@ -2427,6 +2430,7 @@ namespace SIGIL
                 "JoysticksHooks",
                 "byteArrayToControl",
                 "controlToByteArray",
+                "stringToControl",
                 "Networkshost",
                 "NetworkHost",
                 "Networks",
@@ -2450,6 +2454,7 @@ namespace SIGIL
                 "connectionString",
                 "data",
                 "Encoding.ASCII.GetBytes",
+                "unsplitstring",
                 "splitstring",
                 "newsplitstring",
                 "valuestring",
@@ -2528,7 +2533,8 @@ namespace SIGIL
                 "MessageBox.Show",
                 "delay"
             };
-            string[] methods = { 
+            string[] methods = {
+                "ToInt32",
                 "ToString()",
                 "RemoveAt(0)",
                 "Count",

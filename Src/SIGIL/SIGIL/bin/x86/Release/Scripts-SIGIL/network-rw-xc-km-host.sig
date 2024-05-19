@@ -68,9 +68,9 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                if (NetworkHost.rawdataavailable != null)
+                if (NetworkHost.rawdataavailable != "")
                 {
-                    control = byteArrayToControl(NetworkHost.rawdataavailable);
+                    control = stringToControl(NetworkHost.rawdataavailable);
                     mousex  = Convert.ToSingle(control[0]);
                     mousey  = Convert.ToSingle(control[1]);
                     statex = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;
@@ -98,31 +98,19 @@ namespace StringToCode
                     Controller_Send_lefttriggerposition  = Convert.ToSingle(control[18]);
                     Controller_Send_righttriggerposition = Convert.ToSingle(control[19]);
                     XBC.Set(Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition, Controller_Send_xbox);
+                    /*NetworkHost.ViewData();*/
                     /*XBC.ViewData();*/
                 }
                 Thread.Sleep(sleeptime);
             }
         }
-        public static string[] byteArrayToControl(byte[] byteArrayIn)
+        public static string[] stringToControl(string unsplitstring)
         {
-            string str = Encoding.ASCII.GetString(byteArrayIn);
-            string[] splitstring = str.Split(',');
+            string[] splitstring = unsplitstring.Split(',');
             List<string> newsplitstring = new List<string>();
             foreach (string valuestring in splitstring)
             {
-                int pFrom = valuestring.IndexOf(".");
-                string newvaluestring;
-                if (pFrom > 0)
-                {
-                    int pTo = valuestring.Length;
-                    string result = valuestring.Substring(pFrom, pTo - pFrom);
-                    newvaluestring = valuestring.Replace(result, "");
-                }
-                else
-                {
-                    newvaluestring = valuestring;
-                }
-                newsplitstring.Add(newvaluestring);
+                newsplitstring.Add(valuestring);
             }
             return newsplitstring.ToArray();
         }

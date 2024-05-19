@@ -199,8 +199,9 @@ namespace StringToCode
                     Controller_Send_righttriggerposition = 0;
                 }
                 XBC.Set(Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition, Controller_Send_xbox);
-                string control           = xi.ControllerThumbRightX + "," + xi.ControllerThumbRightY + "," + xi.ControllerThumbLeftX + "," + xi.ControllerThumbLeftY + "," + xi.ControllerButtonUpPressed + "," + xi.ControllerButtonLeftPressed + "," + xi.ControllerButtonDownPressed + "," + xi.ControllerButtonRightPressed + "," + xi.ControllerButtonBackPressed + "," + xi.ControllerButtonStartPressed + "," + xi.ControllerThumbpadLeftPressed + "," + xi.ControllerButtonShoulderLeftPressed + "," + xi.ControllerButtonShoulderRightPressed + "," + xi.ControllerButtonAPressed + "," + xi.ControllerButtonBPressed + "," + xi.ControllerButtonXPressed + "," + xi.ControllerButtonYPressed + "," + xi.ControllerThumbpadRightPressed + "," + xi.ControllerTriggerLeftPosition + "," + xi.ControllerTriggerRightPosition + ",end";
-                Network.rawdataavailable = controlToByteArray(control);
+                string control           = Convert.ToInt32(xi.ControllerThumbRightX) + "," + Convert.ToInt32(xi.ControllerThumbRightY) + "," + Convert.ToInt32(xi.ControllerThumbLeftX) + "," + Convert.ToInt32(xi.ControllerThumbLeftY) + "," + xi.ControllerButtonUpPressed + "," + xi.ControllerButtonLeftPressed + "," + xi.ControllerButtonDownPressed + "," + xi.ControllerButtonRightPressed + "," + xi.ControllerButtonBackPressed + "," + xi.ControllerButtonStartPressed + "," + xi.ControllerThumbpadLeftPressed + "," + xi.ControllerButtonShoulderLeftPressed + "," + xi.ControllerButtonShoulderRightPressed + "," + xi.ControllerButtonAPressed + "," + xi.ControllerButtonBPressed + "," + xi.ControllerButtonXPressed + "," + xi.ControllerButtonYPressed + "," + xi.ControllerThumbpadRightPressed + "," + Convert.ToInt32(xi.ControllerTriggerLeftPosition) + "," + Convert.ToInt32(xi.ControllerTriggerRightPosition) + ",end";
+                Network.rawdataavailable = control;
+                /*Network.ViewData();*/
                 /*XBC.ViewData();*/
                 /*mh.ViewData();*/
                 /*kh.ViewData();*/
@@ -208,11 +209,6 @@ namespace StringToCode
                 /*sf.ViewData();*/
                 Thread.Sleep(sleeptime);
             }
-        }
-        public static byte[] controlToByteArray(string control)
-        {
-            byte[] data = Encoding.ASCII.GetBytes(control);
-            return data;
         }
         private double Scale(double value, double min, double max, double minScale, double maxScale)
         {
