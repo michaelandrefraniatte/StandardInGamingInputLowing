@@ -1,5 +1,8 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Valuechanges;
 using WebSocketSharp;
 
 namespace Networkshost
@@ -17,6 +20,33 @@ namespace Networkshost
         public static string rawdataavailable = "";
         public static bool running = true, formvisible;
         private static Form1 form1 = new Form1();
+        private static Stopwatch PollingRate;
+        private static double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
+        private static string inputdelaybutton = "", inputdelay = "";
+        public static Valuechange ValueChange;
+        private static double delay, elapseddown, elapsedup, elapsed;
+        private static bool getstate = false;
+        private static int[] wd = { 2 };
+        private static int[] wu = { 2 };
+        public static void valchanged(int n, bool val)
+        {
+            if (val)
+            {
+                if (wd[n] <= 1)
+                {
+                    wd[n] = wd[n] + 1;
+                }
+                wu[n] = 0;
+            }
+            else
+            {
+                if (wu[n] <= 1)
+                {
+                    wu[n] = wu[n] + 1;
+                }
+                wd[n] = 0;
+            }
+        }
         public static void Connect(string localip, string port, int number = 0)
         {
             TimeBeginPeriod(1);
@@ -64,6 +94,10 @@ namespace Networkshost
         {
             if (!formvisible)
             {
+                PollingRate = new Stopwatch();
+                PollingRate.Start();
+                ValueChange = new Valuechange();
+                NetworkHost.inputdelaybutton = inputdelaybutton;
                 formvisible = true;
                 Task.Run(() => form1.SetVisible());
             }
@@ -73,7 +107,46 @@ namespace Networkshost
             rawdataavailable = e.Data;
             if (formvisible)
             {
-                form1.SetLabel1("rawdataavailable : " + rawdataavailable);
+                pollingratedisplay++;
+                pollingratetemp = pollingrateperm;
+                pollingrateperm = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                if (pollingratedisplay > 300)
+                {
+                    pollingrate = pollingrateperm - pollingratetemp;
+                    pollingratedisplay = 0;
+                }
+                string str = "rawdataavailable : " + rawdataavailable + Environment.NewLine;
+                str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
+                string txt = str;
+                string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                foreach (string line in lines)
+                    if (line.Contains(inputdelaybutton + " : "))
+                        inputdelay = line;
+                valchanged(0, inputdelay.Contains("True"));
+                if (wd[0] == 1)
+                {
+                    getstate = true;
+                }
+                if (inputdelay.Contains("False"))
+                    getstate = false;
+                if (getstate)
+                {
+                    elapseddown = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                    elapsed = 0;
+                }
+                if (wu[0] == 1)
+                {
+                    elapsedup = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                    elapsed = elapsedup - elapseddown;
+                }
+                ValueChange[0] = inputdelay.Contains("False") ? elapsed : 0;
+                if (ValueChange._ValueChange[0] > 0)
+                {
+                    delay = ValueChange._ValueChange[0];
+                }
+                str += "InputDelay : " + delay + " ms" + Environment.NewLine;
+                str += Environment.NewLine;
+                form1.SetLabel1(str);
             }
         }
     }

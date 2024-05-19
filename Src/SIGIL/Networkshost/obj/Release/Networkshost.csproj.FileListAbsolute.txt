@@ -7,3 +7,5 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networksho
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networkshost\obj\Release\Networkshost.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networkshost\obj\Release\Networkshost.Form1.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networkshost\obj\Release\Networkshost.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networkshost\bin\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networkshost\bin\Release\Valuechanges.pdb

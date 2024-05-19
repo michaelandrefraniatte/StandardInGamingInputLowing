@@ -16,3 +16,5 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\o
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\obj\x86\Release\Networks.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\obj\x86\Release\Networks.Form1.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\obj\x86\Release\Networks.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\bin\x86\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Networks\bin\x86\Release\Valuechanges.pdb
