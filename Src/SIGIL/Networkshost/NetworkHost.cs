@@ -51,6 +51,7 @@ namespace Networkshost
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
+            System.Threading.Thread.Sleep(2000);
             Task.Run(() => taskN(localip, port, number));
         }
         private static void taskN(string localip, string port, int number = 0)
@@ -74,11 +75,14 @@ namespace Networkshost
             }
             try
             {
-                wsc.OnMessage -= Ws_OnMessage;
-                wsc.Close();
                 if (running)
                 {
-                    System.Threading.Thread.Sleep(2000);
+                    try
+                    {
+                        wsc.OnMessage -= Ws_OnMessage;
+                        wsc.Close();
+                    }
+                    catch { }
                     Task.Run(() => Connect(localip, port, number));
                 }
             }
@@ -87,8 +91,12 @@ namespace Networkshost
         public static void Disconnect()
         {
             running = false;
-            wsc.OnMessage -= Ws_OnMessage;
-            wsc.Close();
+            try
+            {
+                wsc.OnMessage -= Ws_OnMessage;
+                wsc.Close();
+            }
+            catch { }
         }
         public static void ViewData(string inputdelaybutton = "")
         {
