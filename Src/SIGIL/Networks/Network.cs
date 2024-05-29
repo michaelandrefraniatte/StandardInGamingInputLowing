@@ -27,25 +27,40 @@ namespace Networks
         public static Valuechange ValueChange;
         public static double delay, elapseddown, elapsedup, elapsed;
         public static bool getstate = false;
-        public static int[] wd = { 2 };
-        public static int[] wu = { 2 };
+        public static bool[] wd = { false };
+        public static bool[] wu = { false };
+        private static bool[] ws = { false };
         public static void valchanged(int n, bool val)
         {
             if (val)
             {
-                if (wd[n] <= 1)
+                if (!wd[n] & !ws[n])
                 {
-                    wd[n] = wd[n] + 1;
+                    wd[n] = true;
+                    ws[n] = true;
+                    return;
                 }
-                wu[n] = 0;
+                if (wd[n] & ws[n])
+                {
+                    wd[n] = false;
+                }
+                ws[n] = true;
+                wu[n] = false;
             }
-            else
+            if (!val)
             {
-                if (wu[n] <= 1)
+                if (!wu[n] & ws[n])
                 {
-                    wu[n] = wu[n] + 1;
+                    wu[n] = true;
+                    ws[n] = false;
+                    return;
                 }
-                wd[n] = 0;
+                if (wu[n] & !ws[n])
+                {
+                    wu[n] = false;
+                }
+                ws[n] = false;
+                wd[n] = false;
             }
         }
         public static void Connect(string localip, string port, int number = 0)
@@ -111,7 +126,7 @@ namespace Networks
                                 Network.inputdelay = line;
                             }
                         Network.valchanged(0, Network.inputdelay != Network.inputdelaytemp);
-                        if (Network.wd[0] == 1)
+                        if (Network.wd[0])
                         {
                             Network.getstate = true;
                         }
@@ -122,7 +137,7 @@ namespace Networks
                             Network.elapseddown = (double)Network.PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
                             Network.elapsed = 0;
                         }
-                        if (Network.wu[0] == 1)
+                        if (Network.wu[0])
                         {
                             Network.elapsedup = (double)Network.PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
                             Network.elapsed = Network.elapsedup - Network.elapseddown;

@@ -83,25 +83,40 @@ namespace SIGIL
         private static string procnamesbl = "", servNames = "";
         private static ServiceController[] services;
         private static TimeSpan timeout = new TimeSpan(0, 0, 1);
-        private static int[] wd = { 2, 2 };
-        private static int[] wu = { 2, 2 };
-        public static void valchanged(int n, bool val)
+        private bool[] wd = { false, false };
+        private bool[] wu = { false, false };
+        private bool[] ws = { false, false };
+        private void valchanged(int n, bool val)
         {
             if (val)
             {
-                if (wd[n] <= 1)
+                if (!wd[n] & !ws[n])
                 {
-                    wd[n] = wd[n] + 1;
+                    wd[n] = true;
+                    ws[n] = true;
+                    return;
                 }
-                wu[n] = 0;
+                if (wd[n] & ws[n])
+                {
+                    wd[n] = false;
+                }
+                ws[n] = true;
+                wu[n] = false;
             }
-            else
+            if (!val)
             {
-                if (wu[n] <= 1)
+                if (!wu[n] & ws[n])
                 {
-                    wu[n] = wu[n] + 1;
+                    wu[n] = true;
+                    ws[n] = false;
+                    return;
                 }
-                wd[n] = 0;
+                if (wu[n] & !ws[n])
+                {
+                    wu[n] = false;
+                }
+                ws[n] = false;
+                wd[n] = false;
             }
         }
         public Form1(string filePath)
@@ -4018,7 +4033,7 @@ namespace SIGIL
             while (removewindowtitle)
             {
                 valchanged(0, GetAsyncKeyState(Keys.PageDown));
-                if (wu[0] == 1)
+                if (wu[0])
                 {
                     width = Screen.PrimaryScreen.Bounds.Width;
                     height = Screen.PrimaryScreen.Bounds.Height;
@@ -4028,7 +4043,7 @@ namespace SIGIL
                     DrawMenuBar(window);
                 }
                 valchanged(1, GetAsyncKeyState(Keys.PageUp));
-                if (wu[1] == 1)
+                if (wu[1])
                 {
                     IntPtr window = GetForegroundWindow();
                     SetWindowLong(window, GWL_STYLE, WS_CAPTION | WS_POPUP | WS_BORDER | WS_SYSMENU | WS_TABSTOP | WS_VISIBLE | WS_OVERLAPPED | WS_MINIMIZEBOX | WS_MAXIMIZEBOX);

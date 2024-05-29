@@ -27,25 +27,40 @@ namespace MouseXnaHookAPI
         public Valuechange ValueChange;
         private double delay, elapseddown, elapsedup, elapsed;
         private bool getstate = false;
-        private int[] wd = { 2 };
-        private int[] wu = { 2 };
-        public void valchanged(int n, bool val)
+        private bool[] wd = { false };
+        private bool[] wu = { false };
+        private bool[] ws = { false };
+        private void valchanged(int n, bool val)
         {
             if (val)
             {
-                if (wd[n] <= 1)
+                if (!wd[n] & !ws[n])
                 {
-                    wd[n] = wd[n] + 1;
+                    wd[n] = true;
+                    ws[n] = true;
+                    return;
                 }
-                wu[n] = 0;
+                if (wd[n] & ws[n])
+                {
+                    wd[n] = false;
+                }
+                ws[n] = true;
+                wu[n] = false;
             }
-            else
+            if (!val)
             {
-                if (wu[n] <= 1)
+                if (!wu[n] & ws[n])
                 {
-                    wu[n] = wu[n] + 1;
+                    wu[n] = true;
+                    ws[n] = false;
+                    return;
                 }
-                wd[n] = 0;
+                if (wu[n] & !ws[n])
+                {
+                    wu[n] = false;
+                }
+                ws[n] = false;
+                wd[n] = false;
             }
         }
         public MouseXnaHook()
@@ -111,7 +126,7 @@ namespace MouseXnaHookAPI
                             inputdelay = line;
                         }
                     valchanged(0, inputdelay.Contains("True") | (!inputdelay.Contains("True") & !inputdelay.Contains("False") & inputdelay != inputdelaytemp));
-                    if (wd[0] == 1)
+                    if (wd[0])
                     {
                         getstate = true;
                     }
@@ -122,7 +137,7 @@ namespace MouseXnaHookAPI
                         elapseddown = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
                         elapsed = 0;
                     }
-                    if (wu[0] == 1)
+                    if (wu[0])
                     {
                         elapsedup = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
                         elapsed = elapsedup - elapseddown;
