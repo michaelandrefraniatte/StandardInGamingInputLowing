@@ -5,7 +5,6 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using Valuechanges;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace controllers
 {
@@ -18,22 +17,22 @@ namespace controllers
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public double[] _valuechange = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-        public double[] _ValueChange = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        public bool[] _valuechange = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+        public bool[] _ValueChange = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
         public Valuechanges()
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
         }
-        public double this[int index]
+        public bool this[int index]
         {
             get { return _ValueChange[index]; }
             set
             {
                 if (_valuechange[index] != value)
-                    _ValueChange[index] = value - _valuechange[index];
+                    _ValueChange[index] = true;
                 else
-                    _ValueChange[index] = 0;
+                    _ValueChange[index] = false;
                 _valuechange[index] = value;
             }
         }
@@ -132,80 +131,80 @@ namespace controllers
         }
         public void Set(bool back, bool start, bool A, bool B, bool X, bool Y, bool up, bool left, bool down, bool right, bool leftstick, bool rightstick, bool leftbumper, bool rightbumper, double leftstickx, double leftsticky, double rightstickx, double rightsticky, double lefttriggerposition, double righttriggerposition, bool xbox)
         {
-            ValueChanges[0] = back ? 1 : 0;
-            if (ValueChanges._ValueChange[0] > 0f)
+            ValueChanges[0] = back;
+            if (ValueChanges._ValueChange[0] & ValueChanges._valuechange[0])
                 Buttons ^= X360Buttons.Back;
-            if (ValueChanges._ValueChange[0] < 0f)
+            if (ValueChanges._ValueChange[0] & !ValueChanges._valuechange[0])
                 Buttons &= ~X360Buttons.Back;
-            ValueChanges[1] = start ? 1 : 0;
-            if (ValueChanges._ValueChange[1] > 0f)
+            ValueChanges[1] = start;
+            if (ValueChanges._ValueChange[1] & ValueChanges._valuechange[1])
                 Buttons ^= X360Buttons.Start;
-            if (ValueChanges._ValueChange[1] < 0f)
+            if (ValueChanges._ValueChange[1] & !ValueChanges._valuechange[1])
                 Buttons &= ~X360Buttons.Start;
-            ValueChanges[2] = A ? 1 : 0;
-            if (ValueChanges._ValueChange[2] > 0f)
+            ValueChanges[2] = A;
+            if (ValueChanges._ValueChange[2] & ValueChanges._valuechange[2])
                 Buttons ^= X360Buttons.A;
-            if (ValueChanges._ValueChange[2] < 0f)
+            if (ValueChanges._ValueChange[2] & !ValueChanges._valuechange[2])
                 Buttons &= ~X360Buttons.A;
-            ValueChanges[3] = B ? 1 : 0;
-            if (ValueChanges._ValueChange[3] > 0f)
+            ValueChanges[3] = B;
+            if (ValueChanges._ValueChange[3] & ValueChanges._valuechange[3])
                 Buttons ^= X360Buttons.B;
-            if (ValueChanges._ValueChange[3] < 0f)
+            if (ValueChanges._ValueChange[3] & !ValueChanges._valuechange[3])
                 Buttons &= ~X360Buttons.B;
-            ValueChanges[4] = X ? 1 : 0;
-            if (ValueChanges._ValueChange[4] > 0f)
+            ValueChanges[4] = X;
+            if (ValueChanges._ValueChange[4] & ValueChanges._valuechange[4])
                 Buttons ^= X360Buttons.X;
-            if (ValueChanges._ValueChange[4] < 0f)
+            if (ValueChanges._ValueChange[4] & !ValueChanges._valuechange[4])
                 Buttons &= ~X360Buttons.X;
-            ValueChanges[5] = Y ? 1 : 0;
-            if (ValueChanges._ValueChange[5] > 0f)
+            ValueChanges[5] = Y;
+            if (ValueChanges._ValueChange[5] & ValueChanges._valuechange[5])
                 Buttons ^= X360Buttons.Y;
-            if (ValueChanges._ValueChange[5] < 0f)
+            if (ValueChanges._ValueChange[5] & !ValueChanges._valuechange[5])
                 Buttons &= ~X360Buttons.Y;
-            ValueChanges[6] = up ? 1 : 0;
-            if (ValueChanges._ValueChange[6] > 0f)
+            ValueChanges[6] = up;
+            if (ValueChanges._ValueChange[6] & ValueChanges._valuechange[6])
                 Buttons ^= X360Buttons.Up;
-            if (ValueChanges._ValueChange[6] < 0f)
+            if (ValueChanges._ValueChange[6] & !ValueChanges._valuechange[6])
                 Buttons &= ~X360Buttons.Up;
-            ValueChanges[7] = left ? 1 : 0;
-            if (ValueChanges._ValueChange[7] > 0f)
+            ValueChanges[7] = left;
+            if (ValueChanges._ValueChange[7] & ValueChanges._valuechange[7])
                 Buttons ^= X360Buttons.Left;
-            if (ValueChanges._ValueChange[7] < 0f)
+            if (ValueChanges._ValueChange[7] & !ValueChanges._valuechange[7])
                 Buttons &= ~X360Buttons.Left;
-            ValueChanges[8] = down ? 1 : 0;
-            if (ValueChanges._ValueChange[8] > 0f)
+            ValueChanges[8] = down;
+            if (ValueChanges._ValueChange[8] & ValueChanges._valuechange[8])
                 Buttons ^= X360Buttons.Down;
-            if (ValueChanges._ValueChange[8] < 0f)
+            if (ValueChanges._ValueChange[8] & !ValueChanges._valuechange[8])
                 Buttons &= ~X360Buttons.Down;
-            ValueChanges[9] = right ? 1 : 0;
-            if (ValueChanges._ValueChange[9] > 0f)
+            ValueChanges[9] = right;
+            if (ValueChanges._ValueChange[9] & ValueChanges._valuechange[9])
                 Buttons ^= X360Buttons.Right;
-            if (ValueChanges._ValueChange[9] < 0f)
+            if (ValueChanges._ValueChange[9] & !ValueChanges._valuechange[9])
                 Buttons &= ~X360Buttons.Right;
-            ValueChanges[10] = leftstick ? 1 : 0;
-            if (ValueChanges._ValueChange[10] > 0f)
+            ValueChanges[10] = leftstick;
+            if (ValueChanges._ValueChange[10] & ValueChanges._valuechange[10])
                 Buttons ^= X360Buttons.LeftStick;
-            if (ValueChanges._ValueChange[10] < 0f)
+            if (ValueChanges._ValueChange[10] & !ValueChanges._valuechange[10])
                 Buttons &= ~X360Buttons.LeftStick;
-            ValueChanges[11] = rightstick ? 1 : 0;
-            if (ValueChanges._ValueChange[11] > 0f)
+            ValueChanges[11] = rightstick;
+            if (ValueChanges._ValueChange[11] & ValueChanges._valuechange[11])
                 Buttons ^= X360Buttons.RightStick;
-            if (ValueChanges._ValueChange[11] < 0f)
+            if (ValueChanges._ValueChange[11] & !ValueChanges._valuechange[11])
                 Buttons &= ~X360Buttons.RightStick;
-            ValueChanges[12] = leftbumper ? 1 : 0;
-            if (ValueChanges._ValueChange[12] > 0f)
+            ValueChanges[12] = leftbumper;
+            if (ValueChanges._ValueChange[12] & ValueChanges._valuechange[12])
                 Buttons ^= X360Buttons.LeftBumper;
-            if (ValueChanges._ValueChange[12] < 0f)
+            if (ValueChanges._ValueChange[12] & !ValueChanges._valuechange[12])
                 Buttons &= ~X360Buttons.LeftBumper;
-            ValueChanges[13] = rightbumper ? 1 : 0;
-            if (ValueChanges._ValueChange[13] > 0f)
+            ValueChanges[13] = rightbumper;
+            if (ValueChanges._ValueChange[13] & ValueChanges._valuechange[13])
                 Buttons ^= X360Buttons.RightBumper;
-            if (ValueChanges._ValueChange[13] < 0f)
+            if (ValueChanges._ValueChange[13] & !ValueChanges._valuechange[13])
                 Buttons &= ~X360Buttons.RightBumper;
-            ValueChanges[14] = xbox ? 1 : 0;
-            if (ValueChanges._ValueChange[14] > 0f)
+            ValueChanges[14] = xbox;
+            if (ValueChanges._ValueChange[14] & ValueChanges._valuechange[14])
                 Buttons ^= X360Buttons.Logo;
-            if (ValueChanges._ValueChange[14] < 0f)
+            if (ValueChanges._ValueChange[14] & !ValueChanges._valuechange[14])
                 Buttons &= ~X360Buttons.Logo;
             LeftStickX = (short)leftstickx;
             LeftStickY = (short)leftsticky;
