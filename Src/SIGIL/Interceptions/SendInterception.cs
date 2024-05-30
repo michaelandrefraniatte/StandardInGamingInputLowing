@@ -156,7 +156,7 @@ namespace Interceptions
             if (ValueChanges._ValueChange[4] & ValueChanges._valuechange[4])
                 mousewheelup(input, mouse_id);
             ValueChanges[5] = SendWheelDown;
-            if (ValueChanges._ValueChange[5] & !ValueChanges._valuechange[5])
+            if (ValueChanges._ValueChange[5] & ValueChanges._valuechange[5])
                 mousewheeldown(input, mouse_id);
             ValueChanges[6] = SendCANCEL;
             if (ValueChanges._ValueChange[6] & ValueChanges._valuechange[6])
