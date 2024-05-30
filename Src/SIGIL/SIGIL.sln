@@ -83,6 +83,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timers", "Timers\Timers.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Networkshost", "Networkshost\Networkshost.csproj", "{C6BC2DB5-1CD3-48E6-B8FC-159B2EE921F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valuestatechanges", "Valuestatechanges\Valuestatechanges.csproj", "{9AEA6BBC-0BD8-4171-BCBA-0ABC481C3E3F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -411,6 +413,14 @@ Global
 		{C6BC2DB5-1CD3-48E6-B8FC-159B2EE921F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C6BC2DB5-1CD3-48E6-B8FC-159B2EE921F3}.Release|x86.ActiveCfg = Release|Any CPU
 		{C6BC2DB5-1CD3-48E6-B8FC-159B2EE921F3}.Release|x86.Build.0 = Release|Any CPU
+		{9AEA6BBC-0BD8-4171-BCBA-0ABC481C3E3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AEA6BBC-0BD8-4171-BCBA-0ABC481C3E3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AEA6BBC-0BD8-4171-BCBA-0ABC481C3E3F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9AEA6BBC-0BD8-4171-BCBA-0ABC481C3E3F}.Debug|x86.Build.0 = Debug|Any CPU
+		{9AEA6BBC-0BD8-4171-BCBA-0ABC481C3E3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AEA6BBC-0BD8-4171-BCBA-0ABC481C3E3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AEA6BBC-0BD8-4171-BCBA-0ABC481C3E3F}.Release|x86.ActiveCfg = Release|Any CPU
+		{9AEA6BBC-0BD8-4171-BCBA-0ABC481C3E3F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

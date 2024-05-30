@@ -1,0 +1,34 @@
+﻿using System.Runtime.InteropServices;
+
+namespace Valuestatechanges
+{
+    public class Valuestatechange
+    {
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
+        public bool[] _valuestatechange = { false, false, false, false, false, false, false, false, false, false, false, false };
+        public bool[] _ValueStateChange = { false, false, false, false, false, false, false, false, false, false, false, false };
+        public Valuestatechange()
+        {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
+        }
+        public bool this[int index]
+        {
+            get { return _ValueStateChange[index]; }
+            set
+            {
+                if (_valuestatechange[index] != value)
+                    _ValueStateChange[index] = true;
+                else
+                    _ValueStateChange[index] = false;
+                _valuestatechange[index] = value;
+            }
+        }
+    }
+}

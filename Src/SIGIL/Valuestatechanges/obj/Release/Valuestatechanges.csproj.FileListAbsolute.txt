@@ -1,0 +1,6 @@
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Valuestatechanges\bin\Release\Valuestatechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Valuestatechanges\bin\Release\Valuestatechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Valuestatechanges\obj\Release\Valuestatechanges.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Valuestatechanges\obj\Release\Valuestatechanges.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Valuestatechanges\obj\Release\Valuestatechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Valuestatechanges\obj\Release\Valuestatechanges.pdb

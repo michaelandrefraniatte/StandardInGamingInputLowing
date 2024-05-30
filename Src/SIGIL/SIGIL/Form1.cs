@@ -256,7 +256,13 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"\bSet\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bValuechanges\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bValuechange\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bValuestatechanges\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bValuestatechange\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bValueStateChange\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bValueChange\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\b_valuestatechange\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\b_ValueStateChange\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\b_valuechange\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\b_ValueChange\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bcontrollers\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bXBoxController\b"));
@@ -1947,10 +1953,12 @@ namespace SIGIL
                 "Core",
                 "valListX",
                 "valListY",
+                "Valuestatechanges",
+                "Valuestatechange",
+                "ValueStateChange",
                 "Valuechanges",
                 "Valuechange",
                 "ValueChange",
-                "_ValueChange",
                 "controllers",
                 "XBoxController",
                 "XInputsAPI",
@@ -3346,7 +3354,11 @@ namespace SIGIL
                 "WiimoteTaikoDrumStateOuterRight",
                 "timeelapsed",
                 "rawdataavailable",
-                "RawData"
+                "RawData",
+                "_valuestatechange",
+                "_ValueStateChange",
+                "_valuechange",
+                "_ValueChange"
                 };
             string[] snippets = { "if(^)\n{\n}", "if(^)\n{\n}\nelse\n{\n}", "for(^;;)\n{\n}", "while(^)\n{\n}", "do${\n^}while();", "switch(^)\n{\n\tcase : break;\n}" };
             string[] declarationSnippets = {
@@ -3731,6 +3743,8 @@ namespace SIGIL
                 AddAssembly("Interceptions");
             if (code.Contains("using Valuechanges;"))
                 AddAssembly("Valuechanges");
+            if (code.Contains("using Valuestatechanges;"))
+                AddAssembly("Valuestatechanges");
             if (code.Contains("using KeyboardInputsAPI;"))
                 AddAssembly("Keyboardinputs");
             if (code.Contains("using MouseInputsAPI;"))
