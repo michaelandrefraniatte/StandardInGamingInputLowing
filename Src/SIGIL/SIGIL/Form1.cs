@@ -83,42 +83,7 @@ namespace SIGIL
         private static string procnamesbl = "", servNames = "";
         private static ServiceController[] services;
         private static TimeSpan timeout = new TimeSpan(0, 0, 1);
-        private bool[] wd = { false, false };
-        private bool[] wu = { false, false };
-        private bool[] ws = { false, false };
-        private void valchanged(int n, bool val)
-        {
-            if (val)
-            {
-                if (!wd[n] & !ws[n])
-                {
-                    wd[n] = true;
-                    ws[n] = true;
-                    return;
-                }
-                if (wd[n] & ws[n])
-                {
-                    wd[n] = false;
-                }
-                ws[n] = true;
-                wu[n] = false;
-            }
-            if (!val)
-            {
-                if (!wu[n] & ws[n])
-                {
-                    wu[n] = true;
-                    ws[n] = false;
-                    return;
-                }
-                if (wu[n] & !ws[n])
-                {
-                    wu[n] = false;
-                }
-                ws[n] = false;
-                wd[n] = false;
-            }
-        }
+        private static Valuechanges ValueChanges = new Valuechanges();
         public Form1(string filePath)
         {
             InitializeComponent();
@@ -3895,7 +3860,7 @@ namespace SIGIL
                 using System.IO;
                 using System.Runtime.InteropServices;
                 using System.Threading;
-                using System.Threading.Tasks;
+                using Tasks;
                 using System.Reflection;
                 namespace StringToCode
                 {
@@ -4046,8 +4011,8 @@ namespace SIGIL
         {
             while (removewindowtitle)
             {
-                valchanged(0, GetAsyncKeyState(Keys.PageDown));
-                if (wu[0])
+                ValueChanges[0] = GetAsyncKeyState(Keys.PageDown);
+                if (ValueChanges._ValueChange[0] & !ValueChanges._valuechange[0])
                 {
                     width = Screen.PrimaryScreen.Bounds.Width;
                     height = Screen.PrimaryScreen.Bounds.Height;
@@ -4056,14 +4021,14 @@ namespace SIGIL
                     SetWindowPos(window, -2, 0, 0, width, height, 0x0040);
                     DrawMenuBar(window);
                 }
-                valchanged(1, GetAsyncKeyState(Keys.PageUp));
-                if (wu[1])
+                ValueChanges[1] = GetAsyncKeyState(Keys.PageUp);
+                if (ValueChanges._ValueChange[1] & !ValueChanges._valuechange[1])
                 {
                     IntPtr window = GetForegroundWindow();
                     SetWindowLong(window, GWL_STYLE, WS_CAPTION | WS_POPUP | WS_BORDER | WS_SYSMENU | WS_TABSTOP | WS_VISIBLE | WS_OVERLAPPED | WS_MINIMIZEBOX | WS_MAXIMIZEBOX);
                     DrawMenuBar(window);
                 }
-                System.Threading.Thread.Sleep(100);
+                Thread.Sleep(100);
             }
         }
         private void optimizeByStopingProcessAndServiceToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
@@ -4149,6 +4114,35 @@ namespace SIGIL
                     Thread.Sleep(1);
                 }
                 Thread.Sleep(1000);
+            }
+        }
+    }
+    public class Valuechanges
+    {
+        [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
+        private static extern uint TimeBeginPeriod(uint ms);
+        [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
+        private static extern uint TimeEndPeriod(uint ms);
+        [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
+        private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
+        private static uint CurrentResolution = 0;
+        public bool[] _valuechange = { false, false };
+        public bool[] _ValueChange = { false, false };
+        public Valuechanges()
+        {
+            TimeBeginPeriod(1);
+            NtSetTimerResolution(1, true, ref CurrentResolution);
+        }
+        public bool this[int index]
+        {
+            get { return _ValueChange[index]; }
+            set
+            {
+                if (_valuechange[index] != value)
+                    _ValueChange[index] = true;
+                else
+                    _ValueChange[index] = false;
+                _valuechange[index] = value;
             }
         }
     }
