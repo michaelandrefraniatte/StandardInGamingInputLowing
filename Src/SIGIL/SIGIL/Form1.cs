@@ -4056,7 +4056,7 @@ namespace SIGIL
             if (captureScreenToolStripMenuItem.Checked)
             {
                 capturescreen = true;
-                using (StreamReader createdfile = new StreamReader("params.txt"))
+                using (StreamReader createdfile = new StreamReader(Application.StartupPath + @"\params.txt"))
                 {
                     createdfile.ReadLine();
                     cpuorgpu = createdfile.ReadLine();
@@ -4071,7 +4071,7 @@ namespace SIGIL
                 TimeSpan time = TimeSpan.FromMilliseconds(ticks);
                 DateTime datetime = new DateTime(time.Ticks);
                 ss = datetime.ToString("HH:mm:ss.fff");
-                if (!File.Exists("ffmpeg.exe"))
+                if (!File.Exists(Application.StartupPath + @"\ffmpeg.exe"))
                 {
                     MessageBox.Show("Not existing ffmpeg.exe! Please copy/paste ffmpeg.exe from the zip folder in this program folder, sorry closing.");
                 }
@@ -4152,7 +4152,7 @@ namespace SIGIL
                 processcapturevideo.StartInfo.ErrorDialog = false;
                 processcapturevideo.StartInfo.RedirectStandardInput = true;
                 processcapturevideo.StartInfo.RedirectStandardError = true;
-                processcapturevideo.StartInfo.FileName = "ffmpeg.exe";
+                processcapturevideo.StartInfo.FileName = Application.StartupPath + @"\ffmpeg.exe";
                 object[] args = new object[] { outputvideo };
                 if (cpuorgpu == "CPU")
                     processcapturevideo.StartInfo.Arguments = String.Format(commandcpu, args);
@@ -4191,7 +4191,7 @@ namespace SIGIL
             processmerge.StartInfo.ErrorDialog = false;
             processmerge.StartInfo.RedirectStandardInput = false;
             processmerge.StartInfo.RedirectStandardError = false;
-            processmerge.StartInfo.FileName = "ffmpeg.exe";
+            processmerge.StartInfo.FileName = Application.StartupPath + @"\ffmpeg.exe";
             processmerge.StartInfo.Arguments = @"-ss " + ss + " -i " + outputvideotemp + " -i " + outputaudiotemp + " -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 " + outputtemp;
             processmerge.Start();
         }
