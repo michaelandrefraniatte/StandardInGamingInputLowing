@@ -19,6 +19,9 @@ using SnippetAutocompleteItem = AutocompleteMenuNS.SnippetAutocompleteItem;
 using MethodAutocompleteItem = AutocompleteMenuNS.MethodAutocompleteItem;
 using System.ServiceProcess;
 using System.Linq;
+using NAudio.CoreAudioApi;
+using NAudio.Wave;
+using NAudio.Extras;
 
 namespace SIGIL
 {
@@ -65,7 +68,7 @@ namespace SIGIL
         private static ContextMenu contextMenu = new ContextMenu();
         private static MenuItem menuItem;
         private static bool justSaved = true, onopenwith = false, runstopbool = false, closeonicon = false;
-        public static bool replaceformvisible = false, removewindowtitle = false, optimizewindows = false;
+        public static bool replaceformvisible = false, removewindowtitle = false, capturescreen = false, echoboost = false, optimizewindows = false;
         private static string filename = "", fastColoredTextBoxSaved = "", code = "";
         public static ReplaceForm replaceform;
         private static Range range;
@@ -78,11 +81,26 @@ namespace SIGIL
         private System.CodeDom.Compiler.CompilerParameters parameters;
         private static Form2 form2 = new Form2();
         private static Form3 form3 = new Form3();
+        private static Form4 form4 = new Form4();
         public static int processid = 0;
         private static List<string> servBLs = new List<string>();
         private static string procnamesbl = "", servNames = "";
         private static ServiceController[] services;
         private static TimeSpan timeout = new TimeSpan(0, 0, 1);
+        private static string outputvideo, outputaudio, output, outputvideotemp, outputaudiotemp, outputtemp, cpuorgpu, commandcpu, commandgpu, videodelay, ss;
+        private static bool capturing;
+        private static NAudio.Wave.MediaFoundationReader audioFileReader;
+        private static NAudio.Wave.IWavePlayer waveOutDevice;
+        private static CSCore.SoundIn.WasapiCapture captureaudio;
+        private static CSCore.Codecs.WAV.WaveWriter wavewriter;
+        private static StreamReader errorreadermerge;
+        private static Process processcapturevideo, processmerge;
+        private static bool closed, capturedevicefirst, ison;
+        private NAudio.Wave.WasapiLoopbackCapture waveIn = null;
+        private BufferedWaveProvider waveProvider = null;
+        private NAudio.Wave.WasapiOut waveOut = null;
+        private Equalizer equalizer;
+        private EqualizerBand[] bands;
         private static Valuechanges ValueChanges = new Valuechanges();
         public Form1(string filePath)
         {
@@ -3484,6 +3502,8 @@ namespace SIGIL
                         showATransparentClickableOverlayToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         optimizeByStopingProcessAndServiceToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         removeWindowTitleToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
+                        captureScreenToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
+                        echoBoostToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                     }
                     if (filename != "" & File.Exists(filename))
                     {
@@ -3529,6 +3549,16 @@ namespace SIGIL
                     return;
                 }
             }
+            if (capturing)
+            {
+                capturing = false;
+                StopCapture();
+            }
+            if (echoboost)
+            {
+                echoboost = false;
+                CloseWaves();
+            }
             using (StreamWriter createdfile = new StreamWriter(Application.StartupPath + @"\tempsave"))
             {
                 createdfile.WriteLine(filename);
@@ -3540,9 +3570,14 @@ namespace SIGIL
                 createdfile.WriteLine(showATransparentClickableOverlayToolStripMenuItem.Checked);
                 createdfile.WriteLine(optimizeByStopingProcessAndServiceToolStripMenuItem.Checked);
                 createdfile.WriteLine(removeWindowTitleToolStripMenuItem.Checked);
+                createdfile.WriteLine(captureScreenToolStripMenuItem.Checked);
+                createdfile.WriteLine(echoBoostToolStripMenuItem.Checked);
             }
             removewindowtitle = false;
+            capturescreen = false;
             optimizewindows = false;
+            echoboost = false;
+            closed = true;
         }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -3997,39 +4032,277 @@ namespace SIGIL
             }
             catch { }
         }
+        private void showAWebcamOverlayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form4 = new Form4();
+                form4.Show();
+            }
+            catch { }
+        }
         private void removeWindowTitleToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
             if (removeWindowTitleToolStripMenuItem.Checked)
             {
                 removewindowtitle = true;
-                Task.Run(() => RemoveWindowTitle());
+                Task.Run(() => RemoveWindowTitleAndCaptureScreen());
             }
             else
                 removewindowtitle = false;
         }
-        private void RemoveWindowTitle()
+        private void captureScreenToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
-            while (removewindowtitle)
+            if (captureScreenToolStripMenuItem.Checked)
             {
-                ValueChanges[0] = GetAsyncKeyState(Keys.PageDown);
-                if (ValueChanges._ValueChange[0] & !ValueChanges._valuechange[0])
+                capturescreen = true;
+                using (StreamReader createdfile = new StreamReader("params.txt"))
                 {
-                    width = Screen.PrimaryScreen.Bounds.Width;
-                    height = Screen.PrimaryScreen.Bounds.Height;
-                    IntPtr window = GetForegroundWindow();
-                    SetWindowLong(window, GWL_STYLE, WS_SYSMENU);
-                    SetWindowPos(window, -2, 0, 0, width, height, 0x0040);
-                    DrawMenuBar(window);
+                    createdfile.ReadLine();
+                    cpuorgpu = createdfile.ReadLine();
+                    createdfile.ReadLine();
+                    commandcpu = createdfile.ReadLine();
+                    createdfile.ReadLine();
+                    commandgpu = createdfile.ReadLine();
+                    createdfile.ReadLine();
+                    videodelay = createdfile.ReadLine();
                 }
-                ValueChanges[1] = GetAsyncKeyState(Keys.PageUp);
-                if (ValueChanges._ValueChange[1] & !ValueChanges._valuechange[1])
+                double ticks = double.Parse(videodelay);
+                TimeSpan time = TimeSpan.FromMilliseconds(ticks);
+                DateTime datetime = new DateTime(time.Ticks);
+                ss = datetime.ToString("HH:mm:ss.fff");
+                if (!File.Exists("ffmpeg.exe"))
                 {
-                    IntPtr window = GetForegroundWindow();
-                    SetWindowLong(window, GWL_STYLE, WS_CAPTION | WS_POPUP | WS_BORDER | WS_SYSMENU | WS_TABSTOP | WS_VISIBLE | WS_OVERLAPPED | WS_MINIMIZEBOX | WS_MAXIMIZEBOX);
-                    DrawMenuBar(window);
+                    MessageBox.Show("Not existing ffmpeg.exe! Please copy/paste ffmpeg.exe from the zip folder in this program folder, sorry closing.");
                 }
-                Thread.Sleep(100);
+                else
+                    Task.Run(() => RemoveWindowTitleAndCaptureScreen());
             }
+            else
+                capturescreen = false;
+        }
+        private void RemoveWindowTitleAndCaptureScreen()
+        {
+            while (removewindowtitle | capturescreen)
+            {
+                if (removewindowtitle)
+                {
+                    ValueChanges[0] = GetAsyncKeyState(Keys.PageDown);
+                    if (ValueChanges._ValueChange[0] & !ValueChanges._valuechange[0])
+                    {
+                        width = Screen.PrimaryScreen.Bounds.Width;
+                        height = Screen.PrimaryScreen.Bounds.Height;
+                        IntPtr window = GetForegroundWindow();
+                        SetWindowLong(window, GWL_STYLE, WS_SYSMENU);
+                        SetWindowPos(window, -2, 0, 0, width, height, 0x0040);
+                        DrawMenuBar(window);
+                    }
+                    ValueChanges[1] = GetAsyncKeyState(Keys.PageUp);
+                    if (ValueChanges._ValueChange[1] & !ValueChanges._valuechange[1])
+                    {
+                        IntPtr window = GetForegroundWindow();
+                        SetWindowLong(window, GWL_STYLE, WS_CAPTION | WS_POPUP | WS_BORDER | WS_SYSMENU | WS_TABSTOP | WS_VISIBLE | WS_OVERLAPPED | WS_MINIMIZEBOX | WS_MAXIMIZEBOX);
+                        DrawMenuBar(window);
+                    }
+                }
+                if (capturescreen)
+                {
+                    ValueChanges[2] = GetAsyncKeyState(Keys.Decimal);
+                    ValueChanges[3] = GetAsyncKeyState(Keys.NumPad0);
+                    if (ValueChanges._ValueChange[2] & !ValueChanges._valuechange[2] & !capturing)
+                    {
+                        capturing = true;
+                        string localDate = DateTime.Now.ToString();
+                        string name = localDate.Replace(" ", "-").Replace("/", "-").Replace(":", "-");
+                        outputvideo = name + ".mkv";
+                        outputaudio = name + ".wav";
+                        output = name + ".mp4";
+                        Task.Run(() => StartCapture());
+                    }
+                    else
+                    {
+                        if (ValueChanges._ValueChange[3] & !ValueChanges._valuechange[3] & capturing)
+                        {
+                            capturing = false;
+                            Task.Run(() => StopCapture());
+                        }
+                    }
+                }
+                Thread.Sleep(70);
+            }
+        }
+        private static void StartCapture()
+        {
+            audioFileReader = new NAudio.Wave.MediaFoundationReader("1-hour-and-20-minutes-of-silence.mp3");
+            waveOutDevice = new NAudio.Wave.WaveOut();
+            waveOutDevice.Init(audioFileReader);
+            waveOutDevice.Play();
+            Task.Run(() =>
+            {
+                captureaudio = new CSCore.SoundIn.WasapiLoopbackCapture();
+                captureaudio.Initialize();
+                wavewriter = new CSCore.Codecs.WAV.WaveWriter(outputaudio, captureaudio.WaveFormat);
+                captureaudio.DataAvailable += (sound, card) =>
+                {
+                    wavewriter.Write(card.Data, card.Offset, card.ByteCount);
+                };
+                processcapturevideo = new Process();
+                processcapturevideo.StartInfo.CreateNoWindow = true;
+                processcapturevideo.StartInfo.UseShellExecute = false;
+                processcapturevideo.StartInfo.ErrorDialog = false;
+                processcapturevideo.StartInfo.RedirectStandardInput = true;
+                processcapturevideo.StartInfo.RedirectStandardError = true;
+                processcapturevideo.StartInfo.FileName = "ffmpeg.exe";
+                object[] args = new object[] { outputvideo };
+                if (cpuorgpu == "CPU")
+                    processcapturevideo.StartInfo.Arguments = String.Format(commandcpu, args);
+                if (cpuorgpu == "GPU")
+                    processcapturevideo.StartInfo.Arguments = String.Format(commandgpu, args);
+                processcapturevideo.ErrorDataReceived += ErrorDataReceived;
+                processcapturevideo.EnableRaisingEvents = true;
+                processcapturevideo.Start();
+                processcapturevideo.BeginErrorReadLine();
+            });
+        }
+        private static void ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            if (e.Data.IndexOf("frame= ") != -1 & capturing)
+            {
+                captureaudio.Start();
+                processcapturevideo.CancelErrorRead();
+            }
+        }
+        private static void StopCapture()
+        {
+            outputaudiotemp = outputaudio;
+            outputvideotemp = outputvideo;
+            outputtemp = output;
+            Task.Run(() => processcapturevideo.StandardInput.WriteLine('q'));
+            Task.Run(() =>
+            {
+                captureaudio.Stop();
+                wavewriter.Dispose();
+                waveOutDevice.Stop();
+            });
+            Thread.Sleep(20000);
+            processmerge = new Process();
+            processmerge.StartInfo.CreateNoWindow = true;
+            processmerge.StartInfo.UseShellExecute = false;
+            processmerge.StartInfo.ErrorDialog = false;
+            processmerge.StartInfo.RedirectStandardInput = false;
+            processmerge.StartInfo.RedirectStandardError = false;
+            processmerge.StartInfo.FileName = "ffmpeg.exe";
+            processmerge.StartInfo.Arguments = @"-ss " + ss + " -i " + outputvideotemp + " -i " + outputaudiotemp + " -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 " + outputtemp;
+            processmerge.Start();
+        }
+        private void echoBoostToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (echoBoostToolStripMenuItem.Checked)
+            {
+                echoboost = true;
+                Task.Run(() => StartEchoBoost());
+            }
+            else
+            {   
+                echoboost = false;
+                CloseWaves();
+            }
+        }
+        private void StartEchoBoost()
+        {
+            if (File.Exists(Application.StartupPath + @"\tempecho"))
+                using (StreamReader file = new StreamReader(Application.StartupPath + @"\tempecho"))
+                {
+                    capturedevicefirst = bool.Parse(file.ReadLine());
+                }
+            int inc = 0;
+            Task.Run(() => {
+                do
+                {
+                    try
+                    {
+                        bands = new EqualizerBand[]
+                                {
+                        new EqualizerBand {Bandwidth = 0.8f, Frequency = 50, Gain = 5},
+                        new EqualizerBand {Bandwidth = 0.8f, Frequency = 100, Gain = 4},
+                        new EqualizerBand {Bandwidth = 0.8f, Frequency = 200, Gain = 3},
+                        new EqualizerBand {Bandwidth = 0.8f, Frequency = 400, Gain = 2},
+                        new EqualizerBand {Bandwidth = 0.8f, Frequency = 800, Gain = 1},
+                        new EqualizerBand {Bandwidth = 0.8f, Frequency = 1200, Gain = 0},
+                        new EqualizerBand {Bandwidth = 0.8f, Frequency = 2400, Gain = -1},
+                        new EqualizerBand {Bandwidth = 0.8f, Frequency = 4800, Gain = -2},
+                        new EqualizerBand {Bandwidth = 0.8f, Frequency = 9600, Gain = -3},
+                        new EqualizerBand {Bandwidth = 0.8f, Frequency = 13500, Gain = -4},
+                        new EqualizerBand {Bandwidth = 0.8f, Frequency = 21000, Gain = -5},
+                                };
+                        var enumerator = new MMDeviceEnumerator();
+                        MMDevice wasapi = null;
+                        foreach (var mmdevice in enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active))
+                        {
+                            wasapi = mmdevice;
+                            if (!capturedevicefirst)
+                                break;
+                        }
+                        waveIn = new NAudio.Wave.WasapiLoopbackCapture();
+                        waveOut = new NAudio.Wave.WasapiOut(wasapi, AudioClientShareMode.Exclusive, false, 2);
+                        waveProvider = new BufferedWaveProvider(WaveFormat.CreateCustomFormat(waveIn.WaveFormat.Encoding, waveIn.WaveFormat.SampleRate, waveIn.WaveFormat.Channels, waveIn.WaveFormat.AverageBytesPerSecond, waveIn.WaveFormat.BlockAlign, waveIn.WaveFormat.BitsPerSample));
+                        equalizer = new Equalizer(waveProvider.ToSampleProvider(), bands);
+                        waveProvider.DiscardOnBufferOverflow = true;
+                        waveProvider.BufferDuration = TimeSpan.FromMilliseconds(80);
+                        waveProvider.BufferLength = waveIn.WaveFormat.AverageBytesPerSecond * 80 / 1000;
+                        waveOut.Init(equalizer);
+                        waveOut.Play();
+                        waveIn.DataAvailable += waveIn_DataAvailable;
+                        waveIn.StartRecording();
+                        ison = true;
+                    }
+                    catch
+                    {
+                        CloseWaves();
+                        if (!capturedevicefirst)
+                            capturedevicefirst = true;
+                        else
+                            capturedevicefirst = false;
+                        ison = false;
+                        inc++;
+                        if (inc > 1)
+                        {
+                            MessageBox.Show("Closing echo! You don't have a second audio card enable.");
+                            break;
+                        }
+                    }
+                    finally
+                    {
+                        Thread.Sleep(1000);
+                    }
+                }
+                while (!ison & !closed);
+            });
+        }
+        private void CloseWaves()
+        {
+            try
+            {
+                if (waveIn != null)
+                {
+                    waveIn.StopRecording();
+                    waveIn.Dispose();
+                }
+                if (waveOut != null)
+                {
+                    waveOut.Stop();
+                    waveOut.Dispose();
+                }
+                if (waveProvider != null)
+                {
+                    waveProvider = null;
+                }
+            }
+            catch { }
+        }
+        private void waveIn_DataAvailable(object sender, WaveInEventArgs e)
+        {
+            waveProvider.AddSamples(e.Buffer, 0, e.BytesRecorded);
         }
         private void optimizeByStopingProcessAndServiceToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
@@ -4126,8 +4399,8 @@ namespace SIGIL
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public bool[] _valuechange = { false, false };
-        public bool[] _ValueChange = { false, false };
+        public bool[] _valuechange = { false, false, false, false };
+        public bool[] _ValueChange = { false, false, false, false };
         public Valuechanges()
         {
             TimeBeginPeriod(1);

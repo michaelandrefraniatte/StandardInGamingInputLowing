@@ -52,7 +52,10 @@
             this.minimizeToSystrayAtBootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.associateFileExtensionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showATransparentClickableOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optimizeByStopingProcessAndServiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeWindowTitleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.captureScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showAWebcamOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.interceptionTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enumerateDevicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +67,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.autocompleteMenu1 = new AutocompleteMenuNS.AutocompleteMenu();
             this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
-            this.optimizeByStopingProcessAndServiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.echoBoostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
             this.SuspendLayout();
@@ -209,7 +212,10 @@
             this.associateFileExtensionToolStripMenuItem,
             this.showATransparentClickableOverlayToolStripMenuItem,
             this.optimizeByStopingProcessAndServiceToolStripMenuItem,
+            this.echoBoostToolStripMenuItem,
             this.removeWindowTitleToolStripMenuItem,
+            this.captureScreenToolStripMenuItem,
+            this.showAWebcamOverlayToolStripMenuItem,
             this.interceptionTestToolStripMenuItem,
             this.enumerateDevicesToolStripMenuItem});
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
@@ -261,6 +267,14 @@
             this.showATransparentClickableOverlayToolStripMenuItem.Text = "Show a clickable overlay";
             this.showATransparentClickableOverlayToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.showATransparentClickableOverlayToolStripMenuItem_CheckStateChanged);
             // 
+            // optimizeByStopingProcessAndServiceToolStripMenuItem
+            // 
+            this.optimizeByStopingProcessAndServiceToolStripMenuItem.CheckOnClick = true;
+            this.optimizeByStopingProcessAndServiceToolStripMenuItem.Name = "optimizeByStopingProcessAndServiceToolStripMenuItem";
+            this.optimizeByStopingProcessAndServiceToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
+            this.optimizeByStopingProcessAndServiceToolStripMenuItem.Text = "Optimize Windows";
+            this.optimizeByStopingProcessAndServiceToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.optimizeByStopingProcessAndServiceToolStripMenuItem_CheckStateChanged);
+            // 
             // removeWindowTitleToolStripMenuItem
             // 
             this.removeWindowTitleToolStripMenuItem.CheckOnClick = true;
@@ -268,6 +282,21 @@
             this.removeWindowTitleToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.removeWindowTitleToolStripMenuItem.Text = "Remove window title";
             this.removeWindowTitleToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.removeWindowTitleToolStripMenuItem_CheckStateChanged);
+            // 
+            // captureScreenToolStripMenuItem
+            // 
+            this.captureScreenToolStripMenuItem.CheckOnClick = true;
+            this.captureScreenToolStripMenuItem.Name = "captureScreenToolStripMenuItem";
+            this.captureScreenToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
+            this.captureScreenToolStripMenuItem.Text = "Capture screen";
+            this.captureScreenToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.captureScreenToolStripMenuItem_CheckStateChanged);
+            // 
+            // showAWebcamOverlayToolStripMenuItem
+            // 
+            this.showAWebcamOverlayToolStripMenuItem.Name = "showAWebcamOverlayToolStripMenuItem";
+            this.showAWebcamOverlayToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
+            this.showAWebcamOverlayToolStripMenuItem.Text = "Show a webcam overlay";
+            this.showAWebcamOverlayToolStripMenuItem.Click += new System.EventHandler(this.showAWebcamOverlayToolStripMenuItem_Click);
             // 
             // interceptionTestToolStripMenuItem
             // 
@@ -374,7 +403,6 @@
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.CSharp;
             this.fastColoredTextBox1.LeftBracket = '(';
@@ -392,13 +420,13 @@
             this.fastColoredTextBox1.Zoom = 100;
             this.fastColoredTextBox1.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.fastColoredTextBox1_TextChanged);
             // 
-            // optimizeByStopingProcessAndServiceToolStripMenuItem
+            // echoBoostToolStripMenuItem
             // 
-            this.optimizeByStopingProcessAndServiceToolStripMenuItem.CheckOnClick = true;
-            this.optimizeByStopingProcessAndServiceToolStripMenuItem.Name = "optimizeByStopingProcessAndServiceToolStripMenuItem";
-            this.optimizeByStopingProcessAndServiceToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
-            this.optimizeByStopingProcessAndServiceToolStripMenuItem.Text = "Optimize Windows";
-            this.optimizeByStopingProcessAndServiceToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.optimizeByStopingProcessAndServiceToolStripMenuItem_CheckStateChanged);
+            this.echoBoostToolStripMenuItem.CheckOnClick = true;
+            this.echoBoostToolStripMenuItem.Name = "echoBoostToolStripMenuItem";
+            this.echoBoostToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
+            this.echoBoostToolStripMenuItem.Text = "Echo boost";
+            this.echoBoostToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.echoBoostToolStripMenuItem_CheckStateChanged);
             // 
             // Form1
             // 
@@ -458,6 +486,9 @@
         private System.Windows.Forms.ToolStripMenuItem interceptionTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enumerateDevicesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optimizeByStopingProcessAndServiceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem captureScreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showAWebcamOverlayToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem echoBoostToolStripMenuItem;
     }
 }
 
