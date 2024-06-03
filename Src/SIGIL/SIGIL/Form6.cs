@@ -128,9 +128,8 @@ namespace SIGIL
             {
                 if (imageBytes.Length > 300)
                 {
-                    using (var stream = new MemoryStream(imageBytes))
+                    using (MemoryStream stream = new MemoryStream(imageBytes))
                     {
-                        stream.Seek(0, SeekOrigin.Begin);
                         System.Drawing.Bitmap bitmap = System.Drawing.Image.FromStream(stream) as System.Drawing.Bitmap;
                         bitmap = new System.Drawing.Bitmap(bitmap, new Size(width, height));
                         return bitmap;
