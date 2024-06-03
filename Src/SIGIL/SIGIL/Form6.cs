@@ -9,6 +9,7 @@ using SharpDX.Direct2D1;
 using System.Drawing;
 using SharpDX;
 using SharpDX.DXGI;
+using SharpDX.WIC;
 
 namespace SIGIL
 {
@@ -61,9 +62,7 @@ namespace SIGIL
             }
             width = Screen.PrimaryScreen.Bounds.Width;
             height = Screen.PrimaryScreen.Bounds.Height;
-            this.Size = new Size(width, height);
-            this.ClientSize = new Size(width, height);
-            this.Location = new System.Drawing.Point(0, 0);
+            Resizing();
             imgwidth = width;
             imgheight = height;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -132,8 +131,9 @@ namespace SIGIL
                     using (var stream = new MemoryStream(imageBytes))
                     {
                         stream.Seek(0, SeekOrigin.Begin);
-                        System.Drawing.Bitmap tx = System.Drawing.Image.FromStream(stream) as System.Drawing.Bitmap;
-                        return tx;
+                        System.Drawing.Bitmap bitmap = System.Drawing.Image.FromStream(stream) as System.Drawing.Bitmap;
+                        bitmap = new System.Drawing.Bitmap(bitmap, new Size(width, height));
+                        return bitmap;
                     }
                 }
                 else
@@ -220,8 +220,17 @@ namespace SIGIL
             bmp.Dispose();
             target.BeginDraw();
             target.Clear(new SharpDX.Mathematics.Interop.RawColor4(0, 0, 0, 1f));
-            target.DrawBitmap(result, 1.0f, BitmapInterpolationMode.NearestNeighbor);
+            target.DrawBitmap(result, 1.0f, SharpDX.Direct2D1.BitmapInterpolationMode.NearestNeighbor);
             target.EndDraw();
+        }
+        private void Form6_SizeChanged(object sender, EventArgs e)
+        {
+            Resizing();
+        }
+        private void Resizing()
+        {
+            this.Location = new System.Drawing.Point(0, 0);
+            this.Size = new System.Drawing.Size(width, height);
         }
     }
 }

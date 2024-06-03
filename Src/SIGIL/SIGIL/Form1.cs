@@ -95,7 +95,6 @@ namespace SIGIL
         private static NAudio.Wave.IWavePlayer waveOutDevice;
         private static CSCore.SoundIn.WasapiCapture captureaudio;
         private static CSCore.Codecs.WAV.WaveWriter wavewriter;
-        private static StreamReader errorreadermerge;
         private static Process processcapturevideo, processmerge;
         private static bool closed, capturedevicefirst, ison;
         private NAudio.Wave.WasapiLoopbackCapture waveIn = null;

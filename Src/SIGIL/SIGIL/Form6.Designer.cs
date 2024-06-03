@@ -54,6 +54,7 @@
             this.Text = "Remote Gameplay";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form6_FormClosed);
             this.Shown += new System.EventHandler(this.Form6_Shown);
+            this.SizeChanged += new System.EventHandler(this.Form6_SizeChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form6_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
