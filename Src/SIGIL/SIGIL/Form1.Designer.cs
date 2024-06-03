@@ -53,6 +53,7 @@
             this.associateFileExtensionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showATransparentClickableOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optimizeByStopingProcessAndServiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.echoBoostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeWindowTitleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.captureScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showAWebcamOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +68,8 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.autocompleteMenu1 = new AutocompleteMenuNS.AutocompleteMenu();
             this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
-            this.echoBoostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.remoteGameplayHostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.remoteGameplayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
             this.SuspendLayout();
@@ -217,7 +219,9 @@
             this.captureScreenToolStripMenuItem,
             this.showAWebcamOverlayToolStripMenuItem,
             this.interceptionTestToolStripMenuItem,
-            this.enumerateDevicesToolStripMenuItem});
+            this.enumerateDevicesToolStripMenuItem,
+            this.remoteGameplayHostToolStripMenuItem,
+            this.remoteGameplayToolStripMenuItem});
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             this.optionToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
             this.optionToolStripMenuItem.Text = "Option";
@@ -274,6 +278,14 @@
             this.optimizeByStopingProcessAndServiceToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.optimizeByStopingProcessAndServiceToolStripMenuItem.Text = "Optimize Windows";
             this.optimizeByStopingProcessAndServiceToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.optimizeByStopingProcessAndServiceToolStripMenuItem_CheckStateChanged);
+            // 
+            // echoBoostToolStripMenuItem
+            // 
+            this.echoBoostToolStripMenuItem.CheckOnClick = true;
+            this.echoBoostToolStripMenuItem.Name = "echoBoostToolStripMenuItem";
+            this.echoBoostToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
+            this.echoBoostToolStripMenuItem.Text = "Echo boost";
+            this.echoBoostToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.echoBoostToolStripMenuItem_CheckStateChanged);
             // 
             // removeWindowTitleToolStripMenuItem
             // 
@@ -403,6 +415,7 @@
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.CSharp;
             this.fastColoredTextBox1.LeftBracket = '(';
@@ -420,13 +433,19 @@
             this.fastColoredTextBox1.Zoom = 100;
             this.fastColoredTextBox1.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.fastColoredTextBox1_TextChanged);
             // 
-            // echoBoostToolStripMenuItem
+            // remoteGameplayHostToolStripMenuItem
             // 
-            this.echoBoostToolStripMenuItem.CheckOnClick = true;
-            this.echoBoostToolStripMenuItem.Name = "echoBoostToolStripMenuItem";
-            this.echoBoostToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
-            this.echoBoostToolStripMenuItem.Text = "Echo boost";
-            this.echoBoostToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.echoBoostToolStripMenuItem_CheckStateChanged);
+            this.remoteGameplayHostToolStripMenuItem.Name = "remoteGameplayHostToolStripMenuItem";
+            this.remoteGameplayHostToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
+            this.remoteGameplayHostToolStripMenuItem.Text = "Remote gameplay host";
+            this.remoteGameplayHostToolStripMenuItem.Click += new System.EventHandler(this.remoteGameplayHostToolStripMenuItem_Click);
+            // 
+            // remoteGameplayToolStripMenuItem
+            // 
+            this.remoteGameplayToolStripMenuItem.Name = "remoteGameplayToolStripMenuItem";
+            this.remoteGameplayToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
+            this.remoteGameplayToolStripMenuItem.Text = "Remote gameplay";
+            this.remoteGameplayToolStripMenuItem.Click += new System.EventHandler(this.remoteGameplayToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -489,6 +508,8 @@
         private System.Windows.Forms.ToolStripMenuItem captureScreenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showAWebcamOverlayToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem echoBoostToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem remoteGameplayHostToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem remoteGameplayToolStripMenuItem;
     }
 }
 

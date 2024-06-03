@@ -82,6 +82,8 @@ namespace SIGIL
         private static Form2 form2 = new Form2();
         private static Form3 form3 = new Form3();
         private static Form4 form4 = new Form4();
+        private static Form5 form5 = new Form5();
+        private static Form6 form6 = new Form6();
         public static int processid = 0;
         private static List<string> servBLs = new List<string>();
         private static string procnamesbl = "", servNames = "";
@@ -4388,6 +4390,24 @@ namespace SIGIL
                 }
                 Thread.Sleep(1000);
             }
+        }
+        private void remoteGameplayHostToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form5 = new Form5();
+                form5.Show();
+            }
+            catch { }
+        }
+        private void remoteGameplayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form6 = new Form6();
+                form6.Show();
+            }
+            catch { }
         }
     }
     public class Valuechanges

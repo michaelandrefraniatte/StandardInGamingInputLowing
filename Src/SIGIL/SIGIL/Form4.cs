@@ -11,7 +11,6 @@ using AlphaMode = SharpDX.Direct2D1.AlphaMode;
 using Bitmap = System.Drawing.Bitmap;
 using Point = System.Drawing.Point;
 using System.Drawing.Drawing2D;
-using System.Threading.Tasks;
 
 namespace SIGIL
 {
@@ -43,7 +42,6 @@ namespace SIGIL
         private VideoCaptureDevice FinalFrame;
         private VideoCapabilities[] videoCapabilities;
         private static int height = 300, width, imgheight, imgwidth;
-        private static bool getstate = false;
         private static double ratio, border;
         private static WindowRenderTarget target;
         private static SharpDX.Direct2D1.Factory1 fact = new SharpDX.Direct2D1.Factory1();

@@ -1,8 +1,14 @@
-// Use CPU or GPU
+// Use CPU or GPU for screen capture
 GPU
-// Command CPU
+// Command CPU for screen capture
 -filter_complex ddagrab=0,hwdownload,format=bgra -framerate 30 -offset_x 0 -offset_y 0 -video_size 1920x1080 -c:v libx264 -cq:v 20 {0}
-// Command GPU
+// Command GPU for screen capture
 -filter_complex ddagrab=0,hwdownload,format=bgra -framerate 30 -offset_x 0 -offset_y 0 -video_size 1920x1080 -c:v h264_nvenc -cq:v 20 {0}
-// Video delay
+// Video delay for screen capture
 500
+// IP of the remote computer host for remote gameplay
+192.168.1.12
+// Port for display for remote gameplay
+61000
+// Port for audio for remote gameplay
+63000
