@@ -590,13 +590,11 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Wiimoteslibmp.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Xinputs.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\vJoyInterfaceWrap.dll
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\SharpDX.DirectInput.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Microsoft.Xna.Framework.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Microsoft.DirectX.DirectInput.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\SharpDX.RawInput.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\websocket-sharp.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\OzekiSDK.dll
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\SharpDX.XInput.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Microsoft.DirectX.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\AutocompleteMenu.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\FastColoredTextBox.pdb
@@ -665,3 +663,12 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form6.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form7.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form8.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form10.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form11.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form12.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form13.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form14.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form15.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form16.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form17.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form9.resources

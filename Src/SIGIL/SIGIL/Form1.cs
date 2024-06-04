@@ -86,6 +86,15 @@ namespace SIGIL
         private static Form6 form6 = new Form6();
         private static Form7 form7 = new Form7();
         private static Form8 form8 = new Form8();
+        private static Form9 form9 = new Form9();
+        private static Form10 form10 = new Form10();
+        private static Form11 form11 = new Form11();
+        private static Form12 form12 = new Form12();
+        private static Form13 form13 = new Form13();
+        private static Form14 form14 = new Form14();
+        private static Form15 form15 = new Form15();
+        private static Form16 form16 = new Form16();
+        private static Form17 form17 = new Form17();
         public static int processid = 0;
         private static List<string> servBLs = new List<string>();
         private static string procnamesbl = "", servNames = "";
@@ -4425,6 +4434,87 @@ namespace SIGIL
             {
                 form8 = new Form8();
                 form8.Show();
+            }
+            catch { }
+        }
+        private void crossAirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form9 = new Form9();
+                form9.Show();
+            }
+            catch { }
+        }
+        private void aimsightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form10 = new Form10();
+                form10.Show();
+            }
+            catch { }
+        }
+        private void kMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form11 = new Form11();
+                form11.Show();
+            }
+            catch { }
+        }
+        private void xboxControllerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form12 = new Form12();
+                form12.Show();
+            }
+            catch { }
+        }
+        private void mouseTrackerOverlayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form13 = new Form13();
+                form13.Show();
+            }
+            catch { }
+        }
+        private void aimAmplifierToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form14 = new Form14();
+                form14.Show();
+            }
+            catch { }
+        }
+        private void resizedVisionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form15 = new Form15();
+                form15.Show();
+            }
+            catch { }
+        }
+        private void audioVisionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form16 = new Form16();
+                form16.Show();
+            }
+            catch { }
+        }
+        private void performanceWatcherToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form17 = new Form17();
+                form17.Show();
             }
             catch { }
         }

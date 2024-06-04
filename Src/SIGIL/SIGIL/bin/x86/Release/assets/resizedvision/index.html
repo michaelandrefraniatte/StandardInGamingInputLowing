@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            padding: 0;
+        }
+        img {
+            position: fixed;
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <img src='' />
+
+    <script>
+
+        var img = document.getElementsByTagName('img')[0];
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+
+        function setMouse(mousex, mousey, width, height, base64image) {
+            try {
+                var ratiox = width / w;
+                var ratioy = height / h;
+                img.style.left = (mousex / ratiox - 150) + "px";
+                img.style.top = (mousey / ratioy - 150) + "px";
+                img.src = 'data:image/jpg;base64, ' + base64image;
+            }
+            catch { }
+        }
+
+    </script>
+
+</body>
+</html>
