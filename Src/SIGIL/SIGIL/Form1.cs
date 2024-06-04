@@ -84,6 +84,8 @@ namespace SIGIL
         private static Form4 form4 = new Form4();
         private static Form5 form5 = new Form5();
         private static Form6 form6 = new Form6();
+        private static Form7 form7 = new Form7();
+        private static Form8 form8 = new Form8();
         public static int processid = 0;
         private static List<string> servBLs = new List<string>();
         private static string procnamesbl = "", servNames = "";
@@ -4405,6 +4407,24 @@ namespace SIGIL
             {
                 form6 = new Form6();
                 form6.Show();
+            }
+            catch { }
+        }
+        private void mouseControlTesterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form7 = new Form7();
+                form7.Show();
+            }
+            catch { }
+        }
+        private void controllerDeadzoneFinderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form8 = new Form8();
+                form8.Show();
             }
             catch { }
         }

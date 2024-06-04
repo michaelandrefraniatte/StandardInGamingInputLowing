@@ -663,3 +663,5 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form4.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form5.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form6.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form7.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\obj\x86\Release\SIGIL.Form8.resources

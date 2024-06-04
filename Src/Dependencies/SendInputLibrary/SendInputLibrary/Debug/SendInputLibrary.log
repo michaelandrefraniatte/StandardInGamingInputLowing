@@ -1,0 +1,17 @@
+﻿Build started 26/03/2018 19:19:20.
+     1>Project "C:\Users\Mic\Documents\Visual Studio 2012\Projects\WiimoteByMic - C#\SendInputLibrary\SendInputLibrary\SendInputLibrary.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D SENDINPUTLIBRARY_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\SendInputLibrary.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt SendInputLibrary.cpp
+         SendInputLibrary.cpp
+     1>c:\users\mic\documents\visual studio 2012\projects\wiimotebymic - c#\sendinputlibrary\sendinputlibrary\sendinputlibrary.cpp(25): warning C4554: '|' : check operator precedence for possible error; use parentheses to clarify precedence
+     1>c:\users\mic\documents\visual studio 2012\projects\wiimotebymic - c#\sendinputlibrary\sendinputlibrary\sendinputlibrary.cpp(37): warning C4554: '|' : check operator precedence for possible error; use parentheses to clarify precedence
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Mic\Documents\Visual Studio 2012\Projects\WiimoteByMic - C#\SendInputLibrary\Debug\SendInputLibrary.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Mic\Documents\Visual Studio 2012\Projects\WiimoteByMic - C#\SendInputLibrary\Debug\SendInputLibrary.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Mic\Documents\Visual Studio 2012\Projects\WiimoteByMic - C#\SendInputLibrary\Debug\SendInputLibrary.lib" /MACHINE:X86 /DLL Debug\dllmain.obj
+         Debug\SendInputLibrary.obj
+         Debug\stdafx.obj
+         SendInputLibrary.vcxproj -> C:\Users\Mic\Documents\Visual Studio 2012\Projects\WiimoteByMic - C#\SendInputLibrary\Debug\SendInputLibrary.dll
+     1>Done Building Project "C:\Users\Mic\Documents\Visual Studio 2012\Projects\WiimoteByMic - C#\SendInputLibrary\SendInputLibrary\SendInputLibrary.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.30
