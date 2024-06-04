@@ -79,22 +79,22 @@ namespace SIGIL
         private System.CodeDom.Compiler.CompilerResults results;
         private Microsoft.CSharp.CSharpCodeProvider provider;
         private System.CodeDom.Compiler.CompilerParameters parameters;
-        private static Form2 form2 = new Form2();
-        private static Form3 form3 = new Form3();
-        private static Form4 form4 = new Form4();
-        private static Form5 form5 = new Form5();
-        private static Form6 form6 = new Form6();
-        private static Form7 form7 = new Form7();
-        private static Form8 form8 = new Form8();
-        private static Form9 form9 = new Form9();
-        private static Form10 form10 = new Form10();
-        private static Form11 form11 = new Form11();
-        private static Form12 form12 = new Form12();
-        private static Form13 form13 = new Form13();
-        private static Form14 form14 = new Form14();
-        private static Form15 form15 = new Form15();
-        private static Form16 form16 = new Form16();
-        private static Form17 form17 = new Form17();
+        private static Form2 form2;
+        private static Form3 form3;
+        private static Form4 form4;
+        private static Form5 form5;
+        private static Form6 form6;
+        private static Form7 form7;
+        private static Form8 form8;
+        private static Form9 form9;
+        private static Form10 form10;
+        private static Form11 form11;
+        private static Form12 form12;
+        private static Form13 form13;
+        private static Form14 form14;
+        private static Form15 form15;
+        private static Form16 form16;
+        private static Form17 form17;
         public static int processid = 0;
         private static List<string> servBLs = new List<string>();
         private static string procnamesbl = "", servNames = "";
@@ -3511,7 +3511,6 @@ namespace SIGIL
                         minimizeToSystrayAtCloseToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         minimizeToSystrayAtBootToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         associateFileExtensionToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
-                        showATransparentClickableOverlayToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         optimizeByStopingProcessAndServiceToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         removeWindowTitleToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                         captureScreenToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
@@ -3579,7 +3578,6 @@ namespace SIGIL
                 createdfile.WriteLine(minimizeToSystrayAtCloseToolStripMenuItem.Checked);
                 createdfile.WriteLine(minimizeToSystrayAtBootToolStripMenuItem.Checked);
                 createdfile.WriteLine(associateFileExtensionToolStripMenuItem.Checked);
-                createdfile.WriteLine(showATransparentClickableOverlayToolStripMenuItem.Checked);
                 createdfile.WriteLine(optimizeByStopingProcessAndServiceToolStripMenuItem.Checked);
                 createdfile.WriteLine(removeWindowTitleToolStripMenuItem.Checked);
                 createdfile.WriteLine(captureScreenToolStripMenuItem.Checked);
@@ -4010,30 +4008,20 @@ namespace SIGIL
             else
                 FileAssociationHelper.RemoveFileAssociation(".sig", "ScriptSIGILFile");
         }
-        private void showATransparentClickableOverlayToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
-        {
-            if (showATransparentClickableOverlayToolStripMenuItem.Checked)
-            {
-                try
-                {
-                    form2.Visible = true;
-                }
-                catch { }
-            }
-            else
-            {
-                try
-                {
-                    form2.Hide();
-                }
-                catch { }
-            }
-        }
         private void enumerateDevicesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string message = EnumerateDevices.GetDevices();
             string caption = "Device paths";
             MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void clickableOverlayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form2 = new Form2();
+                form2.Show();
+            }
+            catch { }
         }
         private void interceptionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -51,7 +51,6 @@
             this.minimizeToSystrayAtCloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToSystrayAtBootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.associateFileExtensionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showATransparentClickableOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optimizeByStopingProcessAndServiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.echoBoostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeWindowTitleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,15 +62,6 @@
             this.remoteGameplayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mouseControlTesterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controllerDeadzoneFinderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.autocompleteMenu1 = new AutocompleteMenuNS.AutocompleteMenu();
-            this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
             this.accessibilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crossAirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aimsightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +72,16 @@
             this.resizedVisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.audioVisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.performanceWatcherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.autocompleteMenu1 = new AutocompleteMenuNS.AutocompleteMenu();
+            this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.clickableOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
             this.SuspendLayout();
@@ -225,7 +225,6 @@
             this.minimizeToSystrayAtCloseToolStripMenuItem,
             this.minimizeToSystrayAtBootToolStripMenuItem,
             this.associateFileExtensionToolStripMenuItem,
-            this.showATransparentClickableOverlayToolStripMenuItem,
             this.optimizeByStopingProcessAndServiceToolStripMenuItem,
             this.echoBoostToolStripMenuItem,
             this.removeWindowTitleToolStripMenuItem,
@@ -277,14 +276,6 @@
             this.associateFileExtensionToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.associateFileExtensionToolStripMenuItem.Text = "Associate file extension";
             this.associateFileExtensionToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.associateFileExtensionToolStripMenuItem_CheckStateChanged);
-            // 
-            // showATransparentClickableOverlayToolStripMenuItem
-            // 
-            this.showATransparentClickableOverlayToolStripMenuItem.CheckOnClick = true;
-            this.showATransparentClickableOverlayToolStripMenuItem.Name = "showATransparentClickableOverlayToolStripMenuItem";
-            this.showATransparentClickableOverlayToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
-            this.showATransparentClickableOverlayToolStripMenuItem.Text = "Show a clickable overlay";
-            this.showATransparentClickableOverlayToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.showATransparentClickableOverlayToolStripMenuItem_CheckStateChanged);
             // 
             // optimizeByStopingProcessAndServiceToolStripMenuItem
             // 
@@ -366,6 +357,86 @@
             this.controllerDeadzoneFinderToolStripMenuItem.Size = new System.Drawing.Size(274, 26);
             this.controllerDeadzoneFinderToolStripMenuItem.Text = "Controller deadzone finder";
             this.controllerDeadzoneFinderToolStripMenuItem.Click += new System.EventHandler(this.controllerDeadzoneFinderToolStripMenuItem_Click);
+            // 
+            // accessibilityToolStripMenuItem
+            // 
+            this.accessibilityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clickableOverlayToolStripMenuItem,
+            this.crossAirToolStripMenuItem,
+            this.aimsightToolStripMenuItem,
+            this.kMToolStripMenuItem,
+            this.xboxControllerToolStripMenuItem,
+            this.mouseTrackerOverlayToolStripMenuItem,
+            this.aimAmplifierToolStripMenuItem,
+            this.resizedVisionToolStripMenuItem,
+            this.audioVisionToolStripMenuItem,
+            this.performanceWatcherToolStripMenuItem});
+            this.accessibilityToolStripMenuItem.Name = "accessibilityToolStripMenuItem";
+            this.accessibilityToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
+            this.accessibilityToolStripMenuItem.Text = "Accessibility";
+            // 
+            // crossAirToolStripMenuItem
+            // 
+            this.crossAirToolStripMenuItem.Name = "crossAirToolStripMenuItem";
+            this.crossAirToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.crossAirToolStripMenuItem.Text = "Crossair";
+            this.crossAirToolStripMenuItem.Click += new System.EventHandler(this.crossAirToolStripMenuItem_Click);
+            // 
+            // aimsightToolStripMenuItem
+            // 
+            this.aimsightToolStripMenuItem.Name = "aimsightToolStripMenuItem";
+            this.aimsightToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.aimsightToolStripMenuItem.Text = "Aimsight";
+            this.aimsightToolStripMenuItem.Click += new System.EventHandler(this.aimsightToolStripMenuItem_Click);
+            // 
+            // kMToolStripMenuItem
+            // 
+            this.kMToolStripMenuItem.Name = "kMToolStripMenuItem";
+            this.kMToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.kMToolStripMenuItem.Text = "KM overlay";
+            this.kMToolStripMenuItem.Click += new System.EventHandler(this.kMToolStripMenuItem_Click);
+            // 
+            // xboxControllerToolStripMenuItem
+            // 
+            this.xboxControllerToolStripMenuItem.Name = "xboxControllerToolStripMenuItem";
+            this.xboxControllerToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.xboxControllerToolStripMenuItem.Text = "Xbox controller overlay";
+            this.xboxControllerToolStripMenuItem.Click += new System.EventHandler(this.xboxControllerToolStripMenuItem_Click);
+            // 
+            // mouseTrackerOverlayToolStripMenuItem
+            // 
+            this.mouseTrackerOverlayToolStripMenuItem.Name = "mouseTrackerOverlayToolStripMenuItem";
+            this.mouseTrackerOverlayToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.mouseTrackerOverlayToolStripMenuItem.Text = "Mouse tracker overlay";
+            this.mouseTrackerOverlayToolStripMenuItem.Click += new System.EventHandler(this.mouseTrackerOverlayToolStripMenuItem_Click);
+            // 
+            // aimAmplifierToolStripMenuItem
+            // 
+            this.aimAmplifierToolStripMenuItem.Name = "aimAmplifierToolStripMenuItem";
+            this.aimAmplifierToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.aimAmplifierToolStripMenuItem.Text = "Aim amplifier";
+            this.aimAmplifierToolStripMenuItem.Click += new System.EventHandler(this.aimAmplifierToolStripMenuItem_Click);
+            // 
+            // resizedVisionToolStripMenuItem
+            // 
+            this.resizedVisionToolStripMenuItem.Name = "resizedVisionToolStripMenuItem";
+            this.resizedVisionToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.resizedVisionToolStripMenuItem.Text = "Resized vision";
+            this.resizedVisionToolStripMenuItem.Click += new System.EventHandler(this.resizedVisionToolStripMenuItem_Click);
+            // 
+            // audioVisionToolStripMenuItem
+            // 
+            this.audioVisionToolStripMenuItem.Name = "audioVisionToolStripMenuItem";
+            this.audioVisionToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.audioVisionToolStripMenuItem.Text = "Audio vision";
+            this.audioVisionToolStripMenuItem.Click += new System.EventHandler(this.audioVisionToolStripMenuItem_Click);
+            // 
+            // performanceWatcherToolStripMenuItem
+            // 
+            this.performanceWatcherToolStripMenuItem.Name = "performanceWatcherToolStripMenuItem";
+            this.performanceWatcherToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.performanceWatcherToolStripMenuItem.Text = "Performance watcher";
+            this.performanceWatcherToolStripMenuItem.Click += new System.EventHandler(this.performanceWatcherToolStripMenuItem_Click);
             // 
             // processToolStripMenuItem
             // 
@@ -458,7 +529,6 @@
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.CSharp;
             this.fastColoredTextBox1.LeftBracket = '(';
@@ -476,84 +546,12 @@
             this.fastColoredTextBox1.Zoom = 100;
             this.fastColoredTextBox1.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.fastColoredTextBox1_TextChanged);
             // 
-            // accessibilityToolStripMenuItem
+            // clickableOverlayToolStripMenuItem
             // 
-            this.accessibilityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.crossAirToolStripMenuItem,
-            this.aimsightToolStripMenuItem,
-            this.kMToolStripMenuItem,
-            this.xboxControllerToolStripMenuItem,
-            this.mouseTrackerOverlayToolStripMenuItem,
-            this.aimAmplifierToolStripMenuItem,
-            this.resizedVisionToolStripMenuItem,
-            this.audioVisionToolStripMenuItem,
-            this.performanceWatcherToolStripMenuItem});
-            this.accessibilityToolStripMenuItem.Name = "accessibilityToolStripMenuItem";
-            this.accessibilityToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
-            this.accessibilityToolStripMenuItem.Text = "Accessibility";
-            // 
-            // crossAirToolStripMenuItem
-            // 
-            this.crossAirToolStripMenuItem.Name = "crossAirToolStripMenuItem";
-            this.crossAirToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
-            this.crossAirToolStripMenuItem.Text = "Crossair";
-            this.crossAirToolStripMenuItem.Click += new System.EventHandler(this.crossAirToolStripMenuItem_Click);
-            // 
-            // aimsightToolStripMenuItem
-            // 
-            this.aimsightToolStripMenuItem.Name = "aimsightToolStripMenuItem";
-            this.aimsightToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
-            this.aimsightToolStripMenuItem.Text = "Aimsight";
-            this.aimsightToolStripMenuItem.Click += new System.EventHandler(this.aimsightToolStripMenuItem_Click);
-            // 
-            // kMToolStripMenuItem
-            // 
-            this.kMToolStripMenuItem.Name = "kMToolStripMenuItem";
-            this.kMToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
-            this.kMToolStripMenuItem.Text = "KM overlay";
-            this.kMToolStripMenuItem.Click += new System.EventHandler(this.kMToolStripMenuItem_Click);
-            // 
-            // xboxControllerToolStripMenuItem
-            // 
-            this.xboxControllerToolStripMenuItem.Name = "xboxControllerToolStripMenuItem";
-            this.xboxControllerToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
-            this.xboxControllerToolStripMenuItem.Text = "Xbox controller overlay";
-            this.xboxControllerToolStripMenuItem.Click += new System.EventHandler(this.xboxControllerToolStripMenuItem_Click);
-            // 
-            // mouseTrackerOverlayToolStripMenuItem
-            // 
-            this.mouseTrackerOverlayToolStripMenuItem.Name = "mouseTrackerOverlayToolStripMenuItem";
-            this.mouseTrackerOverlayToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
-            this.mouseTrackerOverlayToolStripMenuItem.Text = "Mouse tracker overlay";
-            this.mouseTrackerOverlayToolStripMenuItem.Click += new System.EventHandler(this.mouseTrackerOverlayToolStripMenuItem_Click);
-            // 
-            // aimAmplifierToolStripMenuItem
-            // 
-            this.aimAmplifierToolStripMenuItem.Name = "aimAmplifierToolStripMenuItem";
-            this.aimAmplifierToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
-            this.aimAmplifierToolStripMenuItem.Text = "Aim amplifier";
-            this.aimAmplifierToolStripMenuItem.Click += new System.EventHandler(this.aimAmplifierToolStripMenuItem_Click);
-            // 
-            // resizedVisionToolStripMenuItem
-            // 
-            this.resizedVisionToolStripMenuItem.Name = "resizedVisionToolStripMenuItem";
-            this.resizedVisionToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
-            this.resizedVisionToolStripMenuItem.Text = "Resized vision";
-            this.resizedVisionToolStripMenuItem.Click += new System.EventHandler(this.resizedVisionToolStripMenuItem_Click);
-            // 
-            // audioVisionToolStripMenuItem
-            // 
-            this.audioVisionToolStripMenuItem.Name = "audioVisionToolStripMenuItem";
-            this.audioVisionToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
-            this.audioVisionToolStripMenuItem.Text = "Audio vision";
-            this.audioVisionToolStripMenuItem.Click += new System.EventHandler(this.audioVisionToolStripMenuItem_Click);
-            // 
-            // performanceWatcherToolStripMenuItem
-            // 
-            this.performanceWatcherToolStripMenuItem.Name = "performanceWatcherToolStripMenuItem";
-            this.performanceWatcherToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
-            this.performanceWatcherToolStripMenuItem.Text = "Performance watcher";
-            this.performanceWatcherToolStripMenuItem.Click += new System.EventHandler(this.performanceWatcherToolStripMenuItem_Click);
+            this.clickableOverlayToolStripMenuItem.Name = "clickableOverlayToolStripMenuItem";
+            this.clickableOverlayToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.clickableOverlayToolStripMenuItem.Text = "Clickable overlay";
+            this.clickableOverlayToolStripMenuItem.Click += new System.EventHandler(this.clickableOverlayToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -606,7 +604,6 @@
         private System.Windows.Forms.ToolStripMenuItem associateFileExtensionToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem replaceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showATransparentClickableOverlayToolStripMenuItem;
         private AutocompleteMenuNS.AutocompleteMenu autocompleteMenu1;
         private FastColoredTextBoxNS.FastColoredTextBox fastColoredTextBox1;
         private System.Windows.Forms.ToolStripMenuItem removeWindowTitleToolStripMenuItem;
@@ -630,6 +627,7 @@
         private System.Windows.Forms.ToolStripMenuItem resizedVisionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem audioVisionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem performanceWatcherToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clickableOverlayToolStripMenuItem;
     }
 }
 
