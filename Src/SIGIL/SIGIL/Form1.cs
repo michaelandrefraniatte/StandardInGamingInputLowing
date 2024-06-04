@@ -4014,33 +4014,6 @@ namespace SIGIL
             string caption = "Device paths";
             MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        private void clickableOverlayToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                form2 = new Form2();
-                form2.Show();
-            }
-            catch { }
-        }
-        private void interceptionTestToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                form3 = new Form3();
-                form3.Show();
-            }
-            catch { }
-        }
-        private void showAWebcamOverlayToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                form4 = new Form4();
-                form4.Show();
-            }
-            catch { }
-        }
         private void removeWindowTitleToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
             if (removeWindowTitleToolStripMenuItem.Checked)
@@ -4388,6 +4361,33 @@ namespace SIGIL
                 }
                 Thread.Sleep(1000);
             }
+        }
+        private void clickableOverlayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form2 = new Form2();
+                form2.Show();
+            }
+            catch { }
+        }
+        private void interceptionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form3 = new Form3();
+                form3.Show();
+            }
+            catch { }
+        }
+        private void webcamOverlayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form4 = new Form4();
+                form4.Show();
+            }
+            catch { }
         }
         private void remoteGameplayHostToolStripMenuItem_Click(object sender, EventArgs e)
         {
