@@ -12,3 +12,11 @@ GPU
 61000
 // Port for audio for remote gameplay
 63000
+// Desktop Mouse for KM overlay
+False
+// French Keyboard for KM overlay
+False
+// Sensitivity X for KM overlay
+1
+// Sensitivity Y for KM overlay
+1
