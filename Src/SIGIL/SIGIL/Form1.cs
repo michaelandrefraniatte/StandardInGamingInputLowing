@@ -4364,147 +4364,163 @@ namespace SIGIL
         }
         private void clickableOverlayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form2 = new Form2();
-                form2.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form2"] == null)
+                try
+                {
+                    form2 = new Form2();
+                    form2.Show();
+                }
+                catch { }
         }
         private void interceptionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form3 = new Form3();
-                form3.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form3"] == null)
+                try
+                {
+                    form3 = new Form3();
+                    form3.Show();
+                }
+                catch { }
         }
         private void webcamOverlayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form4 = new Form4();
-                form4.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form4"] == null)
+                try
+                {
+                    form4 = new Form4();
+                    form4.Show();
+                }
+                catch { }
         }
         private void remoteGameplayHostToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form5 = new Form5();
-                form5.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form5"] == null)
+                try
+                {
+                    form5 = new Form5();
+                    form5.Show();
+                }
+                catch { }
         }
         private void remoteGameplayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form6 = new Form6();
-                form6.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form6"] == null)
+                try
+                {
+                    form6 = new Form6();
+                    form6.Show();
+                }
+                catch { }
         }
         private void mouseControlTesterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form7 = new Form7();
-                form7.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form7"] == null)
+                try
+                {
+                    form7 = new Form7();
+                    form7.Show();
+                }
+                catch { }
         }
         private void controllerDeadzoneFinderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form8 = new Form8();
-                form8.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form8"] == null)
+                try
+                {
+                    form8 = new Form8();
+                    form8.Show();
+                }
+                catch { }
         }
         private void crossAirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form9 = new Form9();
-                form9.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form9"] == null)
+                try
+                {
+                    form9 = new Form9();
+                    form9.Show();
+                }
+                catch { }
         }
         private void aimsightToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form10 = new Form10();
-                form10.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form10"] == null)
+                try
+                {
+                    form10 = new Form10();
+                    form10.Show();
+                }
+                catch { }
         }
         private void kMToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form11 = new Form11();
-                form11.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form11"] == null)
+                try
+                {
+                    form11 = new Form11();
+                    form11.Show();
+                }
+                catch { }
         }
         private void xboxControllerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form12 = new Form12();
-                form12.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form12"] == null)
+                try
+                {
+                    form12 = new Form12();
+                    form12.Show();
+                }
+                catch { }
         }
         private void mouseTrackerOverlayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form13 = new Form13();
-                form13.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form13"] == null)
+                try
+                {
+                    form13 = new Form13();
+                    form13.Show();
+                }
+                catch { }
         }
         private void aimAmplifierToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form14 = new Form14();
-                form14.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form14"] == null)
+                try
+                {
+                    form14 = new Form14();
+                    form14.Show();
+                }
+                catch { }
         }
         private void resizedVisionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form15 = new Form15();
-                form15.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form15"] == null)
+                try
+                {
+                    form15 = new Form15();
+                    form15.Show();
+                }
+                catch { }
         }
         private void audioVisionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form16 = new Form16();
-                form16.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form16"] == null)
+                try
+                {
+                    form16 = new Form16();
+                    form16.Show();
+                }
+                catch { }
         }
         private void performanceWatcherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                form17 = new Form17();
-                form17.Show();
-            }
-            catch { }
+            if (Application.OpenForms["Form17"] == null)
+                try
+                {
+                    form17 = new Form17();
+                    form17.Show();
+                }
+                catch { }
         }
     }
     public class Valuechanges
