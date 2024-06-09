@@ -63,6 +63,7 @@
             this.controllerDeadzoneFinderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accessibilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clickableOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.webcamOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crossAirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aimsightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +73,6 @@
             this.resizedVisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.audioVisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.performanceWatcherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.webcamOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +82,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.autocompleteMenu1 = new AutocompleteMenuNS.AutocompleteMenu();
             this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.virtualKeyboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
             this.SuspendLayout();
@@ -363,7 +364,8 @@
             this.aimAmplifierToolStripMenuItem,
             this.resizedVisionToolStripMenuItem,
             this.audioVisionToolStripMenuItem,
-            this.performanceWatcherToolStripMenuItem});
+            this.performanceWatcherToolStripMenuItem,
+            this.virtualKeyboardToolStripMenuItem});
             this.accessibilityToolStripMenuItem.Name = "accessibilityToolStripMenuItem";
             this.accessibilityToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
             this.accessibilityToolStripMenuItem.Text = "Accessibility";
@@ -374,6 +376,13 @@
             this.clickableOverlayToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
             this.clickableOverlayToolStripMenuItem.Text = "Clickable overlay";
             this.clickableOverlayToolStripMenuItem.Click += new System.EventHandler(this.clickableOverlayToolStripMenuItem_Click);
+            // 
+            // webcamOverlayToolStripMenuItem
+            // 
+            this.webcamOverlayToolStripMenuItem.Name = "webcamOverlayToolStripMenuItem";
+            this.webcamOverlayToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.webcamOverlayToolStripMenuItem.Text = "Webcam overlay";
+            this.webcamOverlayToolStripMenuItem.Click += new System.EventHandler(this.webcamOverlayToolStripMenuItem_Click);
             // 
             // crossAirToolStripMenuItem
             // 
@@ -437,13 +446,6 @@
             this.performanceWatcherToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
             this.performanceWatcherToolStripMenuItem.Text = "Performance watcher";
             this.performanceWatcherToolStripMenuItem.Click += new System.EventHandler(this.performanceWatcherToolStripMenuItem_Click);
-            // 
-            // webcamOverlayToolStripMenuItem
-            // 
-            this.webcamOverlayToolStripMenuItem.Name = "webcamOverlayToolStripMenuItem";
-            this.webcamOverlayToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
-            this.webcamOverlayToolStripMenuItem.Text = "Webcam overlay";
-            this.webcamOverlayToolStripMenuItem.Click += new System.EventHandler(this.webcamOverlayToolStripMenuItem_Click);
             // 
             // processToolStripMenuItem
             // 
@@ -536,6 +538,7 @@
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.CSharp;
             this.fastColoredTextBox1.LeftBracket = '(';
@@ -552,6 +555,13 @@
             this.fastColoredTextBox1.TabIndex = 4;
             this.fastColoredTextBox1.Zoom = 100;
             this.fastColoredTextBox1.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.fastColoredTextBox1_TextChanged);
+            // 
+            // virtualKeyboardToolStripMenuItem
+            // 
+            this.virtualKeyboardToolStripMenuItem.Name = "virtualKeyboardToolStripMenuItem";
+            this.virtualKeyboardToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.virtualKeyboardToolStripMenuItem.Text = "Virtual keyboard";
+            this.virtualKeyboardToolStripMenuItem.Click += new System.EventHandler(this.virtualKeyboardToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -628,6 +638,7 @@
         private System.Windows.Forms.ToolStripMenuItem performanceWatcherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clickableOverlayToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem webcamOverlayToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem virtualKeyboardToolStripMenuItem;
     }
 }
 

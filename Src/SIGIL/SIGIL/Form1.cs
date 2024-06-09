@@ -95,6 +95,7 @@ namespace SIGIL
         private static Form15 form15;
         private static Form16 form16;
         private static Form17 form17;
+        private static Form18 form18;
         public static int processid = 0;
         private static List<string> servBLs = new List<string>();
         private static string procnamesbl = "", servNames = "";
@@ -3484,7 +3485,7 @@ namespace SIGIL
         {
             if (File.Exists(Application.StartupPath + @"\temphandle"))
             {
-                using (System.IO.StreamReader file = new System.IO.StreamReader(Application.StartupPath + @"\temphandle"))
+                using (StreamReader file = new StreamReader(Application.StartupPath + @"\temphandle"))
                 {
                     IntPtr handle = new IntPtr(int.Parse(file.ReadLine()));
                     ShowWindow(handle, 9);
@@ -3528,7 +3529,7 @@ namespace SIGIL
                     }
                 }
             }
-            using (System.IO.StreamWriter createdfile = new System.IO.StreamWriter(Application.StartupPath + @"\temphandle"))
+            using (StreamWriter createdfile = new StreamWriter(Application.StartupPath + @"\temphandle"))
             {
                 createdfile.WriteLine(Process.GetCurrentProcess().MainWindowHandle);
                 createdfile.WriteLine(this.Text);
@@ -4519,6 +4520,16 @@ namespace SIGIL
                 {
                     form17 = new Form17();
                     form17.Show();
+                }
+                catch { }
+        }
+        private void virtualKeyboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["Form18"] == null)
+                try
+                {
+                    form18 = new Form18();
+                    form18.Show();
                 }
                 catch { }
         }
