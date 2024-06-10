@@ -1523,19 +1523,18 @@ namespace SIGIL
         }
         public void DeactivateForm()
         {
-            var borderHeight = this.Bounds.Height - this.ClientRectangle.Height;
             this.FormBorderStyle = FormBorderStyle.None;
         }
         public void ActivateForm()
         {
-            if (this.FormBorderStyle == FormBorderStyle.FixedToolWindow)
+            if (this.FormBorderStyle == FormBorderStyle.Sizable)
                 return;
             if (x != 0 & y != 0)
             {
                 this.Left = x;
                 this.Top = y;
             }
-            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
         }
         private void Form18_FormClosed(object sender, FormClosedEventArgs e)
         {
