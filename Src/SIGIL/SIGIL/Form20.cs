@@ -105,9 +105,9 @@ namespace SIGIL
             {
                 if (!onopenwith)
                 {
-                    if (File.Exists(Application.StartupPath + @"\tempsave"))
+                    if (File.Exists(Application.StartupPath + @"\tempreplaycontroller"))
                     {
-                        using (System.IO.StreamReader file = new System.IO.StreamReader(Application.StartupPath + @"\tempsave"))
+                        using (System.IO.StreamReader file = new System.IO.StreamReader(Application.StartupPath + @"\tempreplaycontroller"))
                         {
                             filename = file.ReadLine();
                         }
@@ -317,7 +317,7 @@ namespace SIGIL
             }
             if (filename != "")
             {
-                using (System.IO.StreamWriter createdfile = new System.IO.StreamWriter(Application.StartupPath + @"\tempsave"))
+                using (System.IO.StreamWriter createdfile = new System.IO.StreamWriter(Application.StartupPath + @"\tempreplaycontroller"))
                 {
                     createdfile.WriteLine(filename);
                 }
