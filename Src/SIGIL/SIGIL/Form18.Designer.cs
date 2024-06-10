@@ -177,7 +177,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::SIGIL.Properties.Resources.vk1;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
@@ -1040,7 +1039,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Magenta;
-            this.BackgroundImage = global::SIGIL.Properties.Resources.vk1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1396, 383);
             this.Controls.Add(this.pbslash);
