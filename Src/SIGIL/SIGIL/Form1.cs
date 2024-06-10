@@ -96,6 +96,8 @@ namespace SIGIL
         private static Form16 form16;
         private static Form17 form17;
         private static Form18 form18;
+        private static Form19 form19;
+        private static Form20 form20;
         public static int processid = 0;
         private static List<string> servBLs = new List<string>();
         private static string procnamesbl = "", servNames = "";
@@ -4530,6 +4532,26 @@ namespace SIGIL
                 {
                     form18 = new Form18();
                     form18.Show();
+                }
+                catch { }
+        }
+        private void playAndReplayKMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["Form19"] == null)
+                try
+                {
+                    form19 = new Form19();
+                    form19.Show();
+                }
+                catch { }
+        }
+        private void playAndReplayControllerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["Form20"] == null)
+                try
+                {
+                    form20 = new Form20();
+                    form20.Show();
                 }
                 catch { }
         }

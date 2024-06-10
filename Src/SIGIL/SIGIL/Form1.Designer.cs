@@ -73,6 +73,7 @@
             this.resizedVisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.audioVisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.performanceWatcherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.virtualKeyboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,7 +83,8 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.autocompleteMenu1 = new AutocompleteMenuNS.AutocompleteMenu();
             this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
-            this.virtualKeyboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playAndReplayKMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playAndReplayControllerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
             this.SuspendLayout();
@@ -365,7 +367,9 @@
             this.resizedVisionToolStripMenuItem,
             this.audioVisionToolStripMenuItem,
             this.performanceWatcherToolStripMenuItem,
-            this.virtualKeyboardToolStripMenuItem});
+            this.virtualKeyboardToolStripMenuItem,
+            this.playAndReplayKMToolStripMenuItem,
+            this.playAndReplayControllerToolStripMenuItem});
             this.accessibilityToolStripMenuItem.Name = "accessibilityToolStripMenuItem";
             this.accessibilityToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
             this.accessibilityToolStripMenuItem.Text = "Accessibility";
@@ -373,79 +377,86 @@
             // clickableOverlayToolStripMenuItem
             // 
             this.clickableOverlayToolStripMenuItem.Name = "clickableOverlayToolStripMenuItem";
-            this.clickableOverlayToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.clickableOverlayToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.clickableOverlayToolStripMenuItem.Text = "Clickable overlay";
             this.clickableOverlayToolStripMenuItem.Click += new System.EventHandler(this.clickableOverlayToolStripMenuItem_Click);
             // 
             // webcamOverlayToolStripMenuItem
             // 
             this.webcamOverlayToolStripMenuItem.Name = "webcamOverlayToolStripMenuItem";
-            this.webcamOverlayToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.webcamOverlayToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.webcamOverlayToolStripMenuItem.Text = "Webcam overlay";
             this.webcamOverlayToolStripMenuItem.Click += new System.EventHandler(this.webcamOverlayToolStripMenuItem_Click);
             // 
             // crossAirToolStripMenuItem
             // 
             this.crossAirToolStripMenuItem.Name = "crossAirToolStripMenuItem";
-            this.crossAirToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.crossAirToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.crossAirToolStripMenuItem.Text = "Crossair";
             this.crossAirToolStripMenuItem.Click += new System.EventHandler(this.crossAirToolStripMenuItem_Click);
             // 
             // aimsightToolStripMenuItem
             // 
             this.aimsightToolStripMenuItem.Name = "aimsightToolStripMenuItem";
-            this.aimsightToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.aimsightToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.aimsightToolStripMenuItem.Text = "Aimsight";
             this.aimsightToolStripMenuItem.Click += new System.EventHandler(this.aimsightToolStripMenuItem_Click);
             // 
             // kMToolStripMenuItem
             // 
             this.kMToolStripMenuItem.Name = "kMToolStripMenuItem";
-            this.kMToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.kMToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.kMToolStripMenuItem.Text = "KM overlay";
             this.kMToolStripMenuItem.Click += new System.EventHandler(this.kMToolStripMenuItem_Click);
             // 
             // xboxControllerToolStripMenuItem
             // 
             this.xboxControllerToolStripMenuItem.Name = "xboxControllerToolStripMenuItem";
-            this.xboxControllerToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.xboxControllerToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.xboxControllerToolStripMenuItem.Text = "Xbox controller overlay";
             this.xboxControllerToolStripMenuItem.Click += new System.EventHandler(this.xboxControllerToolStripMenuItem_Click);
             // 
             // mouseTrackerOverlayToolStripMenuItem
             // 
             this.mouseTrackerOverlayToolStripMenuItem.Name = "mouseTrackerOverlayToolStripMenuItem";
-            this.mouseTrackerOverlayToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.mouseTrackerOverlayToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.mouseTrackerOverlayToolStripMenuItem.Text = "Mouse tracker overlay";
             this.mouseTrackerOverlayToolStripMenuItem.Click += new System.EventHandler(this.mouseTrackerOverlayToolStripMenuItem_Click);
             // 
             // aimAmplifierToolStripMenuItem
             // 
             this.aimAmplifierToolStripMenuItem.Name = "aimAmplifierToolStripMenuItem";
-            this.aimAmplifierToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.aimAmplifierToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.aimAmplifierToolStripMenuItem.Text = "Aim amplifier";
             this.aimAmplifierToolStripMenuItem.Click += new System.EventHandler(this.aimAmplifierToolStripMenuItem_Click);
             // 
             // resizedVisionToolStripMenuItem
             // 
             this.resizedVisionToolStripMenuItem.Name = "resizedVisionToolStripMenuItem";
-            this.resizedVisionToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.resizedVisionToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.resizedVisionToolStripMenuItem.Text = "Resized vision";
             this.resizedVisionToolStripMenuItem.Click += new System.EventHandler(this.resizedVisionToolStripMenuItem_Click);
             // 
             // audioVisionToolStripMenuItem
             // 
             this.audioVisionToolStripMenuItem.Name = "audioVisionToolStripMenuItem";
-            this.audioVisionToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.audioVisionToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.audioVisionToolStripMenuItem.Text = "Audio vision";
             this.audioVisionToolStripMenuItem.Click += new System.EventHandler(this.audioVisionToolStripMenuItem_Click);
             // 
             // performanceWatcherToolStripMenuItem
             // 
             this.performanceWatcherToolStripMenuItem.Name = "performanceWatcherToolStripMenuItem";
-            this.performanceWatcherToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.performanceWatcherToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.performanceWatcherToolStripMenuItem.Text = "Performance watcher";
             this.performanceWatcherToolStripMenuItem.Click += new System.EventHandler(this.performanceWatcherToolStripMenuItem_Click);
+            // 
+            // virtualKeyboardToolStripMenuItem
+            // 
+            this.virtualKeyboardToolStripMenuItem.Name = "virtualKeyboardToolStripMenuItem";
+            this.virtualKeyboardToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
+            this.virtualKeyboardToolStripMenuItem.Text = "Virtual keyboard";
+            this.virtualKeyboardToolStripMenuItem.Click += new System.EventHandler(this.virtualKeyboardToolStripMenuItem_Click);
             // 
             // processToolStripMenuItem
             // 
@@ -538,7 +549,6 @@
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.CSharp;
             this.fastColoredTextBox1.LeftBracket = '(';
@@ -556,12 +566,19 @@
             this.fastColoredTextBox1.Zoom = 100;
             this.fastColoredTextBox1.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.fastColoredTextBox1_TextChanged);
             // 
-            // virtualKeyboardToolStripMenuItem
+            // playAndReplayKMToolStripMenuItem
             // 
-            this.virtualKeyboardToolStripMenuItem.Name = "virtualKeyboardToolStripMenuItem";
-            this.virtualKeyboardToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
-            this.virtualKeyboardToolStripMenuItem.Text = "Virtual keyboard";
-            this.virtualKeyboardToolStripMenuItem.Click += new System.EventHandler(this.virtualKeyboardToolStripMenuItem_Click);
+            this.playAndReplayKMToolStripMenuItem.Name = "playAndReplayKMToolStripMenuItem";
+            this.playAndReplayKMToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
+            this.playAndReplayKMToolStripMenuItem.Text = "Play and replay KM";
+            this.playAndReplayKMToolStripMenuItem.Click += new System.EventHandler(this.playAndReplayKMToolStripMenuItem_Click);
+            // 
+            // playAndReplayControllerToolStripMenuItem
+            // 
+            this.playAndReplayControllerToolStripMenuItem.Name = "playAndReplayControllerToolStripMenuItem";
+            this.playAndReplayControllerToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
+            this.playAndReplayControllerToolStripMenuItem.Text = "Play and replay controller";
+            this.playAndReplayControllerToolStripMenuItem.Click += new System.EventHandler(this.playAndReplayControllerToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -639,6 +656,8 @@
         private System.Windows.Forms.ToolStripMenuItem clickableOverlayToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem webcamOverlayToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem virtualKeyboardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem playAndReplayKMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem playAndReplayControllerToolStripMenuItem;
     }
 }
 
