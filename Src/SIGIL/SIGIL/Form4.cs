@@ -17,14 +17,6 @@ namespace SIGIL
         {
             InitializeComponent();
         }
-        [DllImport("USER32.DLL")]
-        public static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
-        [DllImport("user32.dll")]
-        static extern bool DrawMenuBar(IntPtr hWnd);
-        [DllImport("user32.dll", EntryPoint = "SetWindowPos")]
-        public static extern IntPtr SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int Y, int cx, int cy, int wFlags);
-        [DllImport("user32.dll")]
-        static extern IntPtr GetForegroundWindow();
         [DllImport("user32.dll")]
         public static extern bool GetAsyncKeyState(System.Windows.Forms.Keys vKey);
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
@@ -38,23 +30,13 @@ namespace SIGIL
         private FilterInfoCollection CaptureDevice;
         private VideoCaptureDevice FinalFrame;
         private VideoCapabilities[] videoCapabilities;
-        private static int height = 300, width, imgheight, imgwidth;
+        private static int height = 300, width;
         private static double initratio, ratio, border;
         private Region rg;
         private GraphicsPath gp;
         private static bool getstateminus, getstateplus;
-        private const int GWL_STYLE = -16;
-        private const uint WS_BORDER = 0x00800000;
-        private const uint WS_CAPTION = 0x00C00000;
-        private const uint WS_SYSMENU = 0x00080000;
-        private const uint WS_MINIMIZEBOX = 0x00020000;
-        private const uint WS_MAXIMIZEBOX = 0x00010000;
-        private const uint WS_OVERLAPPED = 0x00000000;
-        private const uint WS_POPUP = 0x80000000;
-        private const uint WS_TABSTOP = 0x00010000;
-        private const uint WS_VISIBLE = 0x10000000;
-        private static int[] wd = { 2, 2, 2, 2 };
-        private static int[] wu = { 2, 2, 2, 2 };
+        private static int[] wd = { 2, 2 };
+        private static int[] wu = { 2, 2 };
         public static void valchanged(int n, bool val)
         {
             if (val)
@@ -130,36 +112,19 @@ namespace SIGIL
         {
             while (true)
             {
-                valchanged(0, GetAsyncKeyState(Keys.PageDown));
-                if (wu[0] == 1)
-                {
-                    int width = Screen.PrimaryScreen.Bounds.Width;
-                    int height = Screen.PrimaryScreen.Bounds.Height;
-                    IntPtr window = GetForegroundWindow();
-                    SetWindowLong(window, GWL_STYLE, WS_SYSMENU);
-                    SetWindowPos(window, -2, 0, 0, width, height, 0x0040);
-                    DrawMenuBar(window);
-                }
-                valchanged(1, GetAsyncKeyState(Keys.PageUp));
-                if (wu[1] == 1)
-                {
-                    IntPtr window = GetForegroundWindow();
-                    SetWindowLong(window, GWL_STYLE, WS_CAPTION | WS_POPUP | WS_BORDER | WS_SYSMENU | WS_TABSTOP | WS_VISIBLE | WS_OVERLAPPED | WS_MINIMIZEBOX | WS_MAXIMIZEBOX);
-                    DrawMenuBar(window);
-                }
-                valchanged(2, GetAsyncKeyState(Keys.Subtract));
-                if (wu[2] == 1 & !getstateminus)
+                valchanged(0, GetAsyncKeyState(Keys.Subtract));
+                if (wu[0] == 1 & !getstateminus)
                 {
                     getstateminus = true;
                     this.Opacity = 1;
                 }
-                else if (wu[2] == 1 & getstateminus)
+                else if (wu[0] == 1 & getstateminus)
                 {
                     getstateminus = false;
                     this.Opacity = 0.75D;
                 }
-                valchanged(3, GetAsyncKeyState(Keys.Add));
-                if (wu[3] == 1 & !getstateplus)
+                valchanged(1, GetAsyncKeyState(Keys.Add));
+                if (wu[1] == 1 & !getstateplus)
                 {
                     getstateplus = true;
                     gp = new GraphicsPath();
@@ -167,7 +132,7 @@ namespace SIGIL
                     rg = new Region(gp);
                     pictureBox1.Region = rg;
                 }
-                else if (wu[3] == 1 & getstateplus)
+                else if (wu[1] == 1 & getstateplus)
                 {
                     getstateplus = false;
                     System.Drawing.Rectangle r = new System.Drawing.Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height);
