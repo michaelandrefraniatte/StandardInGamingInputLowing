@@ -3544,6 +3544,7 @@ namespace SIGIL
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            CloseAllForms();
             if (!closeonicon & minimizeToSystrayAtCloseToolStripMenuItem.Checked)
             {
                 e.Cancel = true;
@@ -3553,7 +3554,7 @@ namespace SIGIL
             if (runstopbool)
                 StopProcess();
             Thread.Sleep(100);
-            DisconnectControllers();
+            DisconnectControllers(); 
             if (!justSaved)
             {
                 result = MessageBox.Show("Content will be lost! Are you sure?", "Exit", MessageBoxButtons.OKCancel);
@@ -3587,9 +3588,7 @@ namespace SIGIL
                 createdfile.WriteLine(echoBoostToolStripMenuItem.Checked);
             }
             removewindowtitle = false;
-            capturescreen = false;
             optimizewindows = false;
-            echoboost = false;
             closed = true;
         }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -4554,6 +4553,51 @@ namespace SIGIL
                     form20.Show();
                 }
                 catch { }
+        }
+        private void CloseAllForms()
+        {
+            try
+            {
+                if (Application.OpenForms["Form2"] != null)
+                    form2.Close();
+                if (Application.OpenForms["Form3"] != null)
+                    form3.Close();
+                if (Application.OpenForms["Form4"] != null)
+                    form4.Close();
+                if (Application.OpenForms["Form5"] != null)
+                    form5.Close();
+                if (Application.OpenForms["Form6"] != null)
+                    form6.Close();
+                if (Application.OpenForms["Form7"] != null)
+                    form7.Close();
+                if (Application.OpenForms["Form8"] != null)
+                    form8.Close();
+                if (Application.OpenForms["Form9"] != null)
+                    form9.Close();
+                if (Application.OpenForms["Form10"] != null)
+                    form10.Close();
+                if (Application.OpenForms["Form11"] != null)
+                    form11.Close();
+                if (Application.OpenForms["Form12"] != null)
+                    form12.Close();
+                if (Application.OpenForms["Form13"] != null)
+                    form13.Close();
+                if (Application.OpenForms["Form14"] != null)
+                    form14.Close();
+                if (Application.OpenForms["Form15"] != null)
+                    form15.Close();
+                if (Application.OpenForms["Form16"] != null)
+                    form16.Close();
+                if (Application.OpenForms["Form17"] != null)
+                    form17.Close();
+                if (Application.OpenForms["Form18"] != null)
+                    form18.Close();
+                if (Application.OpenForms["Form19"] != null)
+                    form19.Close();
+                if (Application.OpenForms["Form20"] != null)
+                    form20.Close();
+            }
+            catch { }
         }
     }
     public class Valuechanges

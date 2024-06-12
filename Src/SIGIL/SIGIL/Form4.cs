@@ -33,7 +33,6 @@ namespace SIGIL
         private VideoCapabilities[] videoCapabilities;
         private static int height = 300, width;
         private static double initratio, ratio, border;
-        private Region rg;
         private GraphicsPath gp;
         private Bitmap image, shadowrounded, shadowcircle;
         private static bool getstateminus, getstateplus;
@@ -83,8 +82,8 @@ namespace SIGIL
                 this.Size = new Size(width, height);
                 this.ClientSize = new Size(width, height);
                 this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - width - (int)border, (int)border);
-                this.pictureBox1.Size = new Size(width - 20, height - 20);
-                this.pictureBox1.Location = new Point(10, 10);
+                this.pictureBox1.Size = new Size(width - 30, height - 30);
+                this.pictureBox1.Location = new Point(15, 15);
                 FinalFrame.DesiredFrameSize = new Size((int)(height * ratio), height);
                 FinalFrame.SetCameraProperty(CameraControlProperty.Zoom, 0, CameraControlFlags.Manual);
                 FinalFrame.SetCameraProperty(CameraControlProperty.Focus, 0, CameraControlFlags.Manual);
@@ -106,8 +105,36 @@ namespace SIGIL
                 pictureBox1.Region = new Region(gp);
                 shadowrounded = Image.FromFile(Application.StartupPath + @"\shadowrounded.png") as Bitmap;
                 shadowrounded.MakeTransparent(Color.White);
+                image = shadowrounded;
+                for (int w = 0; w < image.Width; w++)
+                {
+                    for (int h = 0; h < image.Height; h++)
+                    {
+                        Color c = image.GetPixel(w, h);
+                        if (c != Color.Transparent)
+                        {
+                            Color newC = Color.FromArgb(c.A / 2, c.R / 2, c.G / 2, c.B / 2);
+                            image.SetPixel(w, h, newC);
+                        }
+                    }
+                }
+                shadowrounded = image;
                 shadowcircle = Image.FromFile(Application.StartupPath + @"\shadowcircle.png") as Bitmap;
                 shadowcircle.MakeTransparent(Color.White);
+                image = shadowcircle;
+                for (int w = 0; w < image.Width; w++)
+                {
+                    for (int h = 0; h < image.Height; h++)
+                    {
+                        Color c = image.GetPixel(w, h);
+                        if (c != Color.Transparent)
+                        {
+                            Color newC = Color.FromArgb(c.A / 2, c.R / 2, c.G / 2, c.B / 2);
+                            image.SetPixel(w, h, newC);
+                        }
+                    }
+                }
+                shadowcircle = image;
                 this.pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
                 this.pictureBox2.Image = shadowrounded;
             }
@@ -137,8 +164,7 @@ namespace SIGIL
                     getstateplus = true;
                     gp = new GraphicsPath();
                     gp.AddEllipse(pictureBox1.DisplayRectangle);
-                    rg = new Region(gp);
-                    pictureBox1.Region = rg;
+                    pictureBox1.Region = new Region(gp);
                     this.pictureBox2.Image = shadowcircle;
                 }
                 else if (wu[1] == 1 & getstateplus)
