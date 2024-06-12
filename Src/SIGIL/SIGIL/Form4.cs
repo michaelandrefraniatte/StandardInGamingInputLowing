@@ -8,7 +8,6 @@ using Bitmap = System.Drawing.Bitmap;
 using Point = System.Drawing.Point;
 using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
-using NAudio.SoundFont;
 
 namespace SIGIL
 {
@@ -31,9 +30,10 @@ namespace SIGIL
         private FilterInfoCollection CaptureDevice;
         private VideoCaptureDevice FinalFrame;
         private VideoCapabilities[] videoCapabilities;
-        private static int height = 300, width;
+        private static int height = 300, width, d = 66;
         private static double initratio, ratio, border;
         private GraphicsPath gp;
+        private Rectangle rectangle;
         private Bitmap image, shadowrounded, shadowcircle;
         private static bool getstateminus, getstateplus;
         private static int[] wd = { 2, 2 };
@@ -84,6 +84,8 @@ namespace SIGIL
                 this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - width - (int)border, (int)border);
                 this.pictureBox1.Size = new Size(width - 30, height - 30);
                 this.pictureBox1.Location = new Point(15, 15);
+                this.pictureBox2.Size = new Size(width, height);
+                this.pictureBox2.Location = new Point(0, 0);
                 FinalFrame.DesiredFrameSize = new Size((int)(height * ratio), height);
                 FinalFrame.SetCameraProperty(CameraControlProperty.Zoom, 0, CameraControlFlags.Manual);
                 FinalFrame.SetCameraProperty(CameraControlProperty.Focus, 0, CameraControlFlags.Manual);
@@ -95,14 +97,20 @@ namespace SIGIL
                 FinalFrame.NewFrame += FinalFrame_NewFrame;
                 FinalFrame.Start();
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                Rectangle r = new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height);
-                GraphicsPath gp = new GraphicsPath();
-                int d = 50;
-                gp.AddArc(r.X, r.Y, d, d, 180, 90);
-                gp.AddArc(r.X + r.Width - d, r.Y, d, d, 270, 90);
-                gp.AddArc(r.X + r.Width - d, r.Y + r.Height - d, d, d, 0, 90);
-                gp.AddArc(r.X, r.Y + r.Height - d, d, d, 90, 90);
+                rectangle = new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height);
+                gp = new GraphicsPath();
+                gp.AddArc(rectangle.X, rectangle.Y, d, d, 180, 90);
+                gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y, d, d, 270, 90);
+                gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y + rectangle.Height - d, d, d, 0, 90);
+                gp.AddArc(rectangle.X, rectangle.Y + rectangle.Height - d, d, d, 90, 90);
                 pictureBox1.Region = new Region(gp);
+                rectangle = new Rectangle(0, 0, pictureBox2.Width, pictureBox2.Height);
+                gp = new GraphicsPath();
+                gp.AddArc(rectangle.X, rectangle.Y, d, d, 180, 90);
+                gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y, d, d, 270, 90);
+                gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y + rectangle.Height - d, d, d, 0, 90);
+                gp.AddArc(rectangle.X, rectangle.Y + rectangle.Height - d, d, d, 90, 90);
+                pictureBox2.Region = new Region(gp);
                 shadowrounded = Image.FromFile(Application.StartupPath + @"\shadowrounded.png") as Bitmap;
                 shadowrounded.MakeTransparent(Color.White);
                 image = shadowrounded;
@@ -165,19 +173,28 @@ namespace SIGIL
                     gp = new GraphicsPath();
                     gp.AddEllipse(pictureBox1.DisplayRectangle);
                     pictureBox1.Region = new Region(gp);
+                    gp = new GraphicsPath();
+                    gp.AddEllipse(pictureBox2.DisplayRectangle);
+                    pictureBox2.Region = new Region(gp);
                     this.pictureBox2.Image = shadowcircle;
                 }
                 else if (wu[1] == 1 & getstateplus)
                 {
                     getstateplus = false;
-                    Rectangle r = new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height);
-                    GraphicsPath gp = new GraphicsPath();
-                    int d = 50;
-                    gp.AddArc(r.X, r.Y, d, d, 180, 90);
-                    gp.AddArc(r.X + r.Width - d, r.Y, d, d, 270, 90);
-                    gp.AddArc(r.X + r.Width - d, r.Y + r.Height - d, d, d, 0, 90);
-                    gp.AddArc(r.X, r.Y + r.Height - d, d, d, 90, 90);
+                    rectangle = new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height);
+                    gp = new GraphicsPath();
+                    gp.AddArc(rectangle.X, rectangle.Y, d, d, 180, 90);
+                    gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y, d, d, 270, 90);
+                    gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y + rectangle.Height - d, d, d, 0, 90);
+                    gp.AddArc(rectangle.X, rectangle.Y + rectangle.Height - d, d, d, 90, 90);
                     pictureBox1.Region = new Region(gp);
+                    rectangle = new Rectangle(0, 0, pictureBox2.Width, pictureBox2.Height);
+                    gp = new GraphicsPath();
+                    gp.AddArc(rectangle.X, rectangle.Y, d, d, 180, 90);
+                    gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y, d, d, 270, 90);
+                    gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y + rectangle.Height - d, d, d, 0, 90);
+                    gp.AddArc(rectangle.X, rectangle.Y + rectangle.Height - d, d, d, 90, 90);
+                    pictureBox2.Region = new Region(gp);
                     this.pictureBox2.Image = shadowrounded;
                 }
                 System.Threading.Thread.Sleep(100);
