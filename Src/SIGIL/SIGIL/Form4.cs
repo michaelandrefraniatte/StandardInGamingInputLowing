@@ -8,6 +8,7 @@ using Bitmap = System.Drawing.Bitmap;
 using Point = System.Drawing.Point;
 using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
+using NAudio.SoundFont;
 
 namespace SIGIL
 {
@@ -34,6 +35,7 @@ namespace SIGIL
         private static double initratio, ratio, border;
         private Region rg;
         private GraphicsPath gp;
+        private Bitmap image, shadowrounded, shadowcircle;
         private static bool getstateminus, getstateplus;
         private static int[] wd = { 2, 2 };
         private static int[] wu = { 2, 2 };
@@ -81,8 +83,8 @@ namespace SIGIL
                 this.Size = new Size(width, height);
                 this.ClientSize = new Size(width, height);
                 this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - width - (int)border, (int)border);
-                this.pictureBox1.Size = new Size(width, height);
-                this.pictureBox1.Location = new Point(0, 0);
+                this.pictureBox1.Size = new Size(width - 20, height - 20);
+                this.pictureBox1.Location = new Point(10, 10);
                 FinalFrame.DesiredFrameSize = new Size((int)(height * ratio), height);
                 FinalFrame.SetCameraProperty(CameraControlProperty.Zoom, 0, CameraControlFlags.Manual);
                 FinalFrame.SetCameraProperty(CameraControlProperty.Focus, 0, CameraControlFlags.Manual);
@@ -94,14 +96,20 @@ namespace SIGIL
                 FinalFrame.NewFrame += FinalFrame_NewFrame;
                 FinalFrame.Start();
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                System.Drawing.Rectangle r = new System.Drawing.Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height);
+                Rectangle r = new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height);
                 GraphicsPath gp = new GraphicsPath();
                 int d = 50;
                 gp.AddArc(r.X, r.Y, d, d, 180, 90);
                 gp.AddArc(r.X + r.Width - d, r.Y, d, d, 270, 90);
                 gp.AddArc(r.X + r.Width - d, r.Y + r.Height - d, d, d, 0, 90);
                 gp.AddArc(r.X, r.Y + r.Height - d, d, d, 90, 90);
-                this.Region = new Region(gp);
+                pictureBox1.Region = new Region(gp);
+                shadowrounded = Image.FromFile(Application.StartupPath + @"\shadowrounded.png") as Bitmap;
+                shadowrounded.MakeTransparent(Color.White);
+                shadowcircle = Image.FromFile(Application.StartupPath + @"\shadowcircle.png") as Bitmap;
+                shadowcircle.MakeTransparent(Color.White);
+                this.pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+                this.pictureBox2.Image = shadowrounded;
             }
             catch
             {
@@ -131,11 +139,12 @@ namespace SIGIL
                     gp.AddEllipse(pictureBox1.DisplayRectangle);
                     rg = new Region(gp);
                     pictureBox1.Region = rg;
+                    this.pictureBox2.Image = shadowcircle;
                 }
                 else if (wu[1] == 1 & getstateplus)
                 {
                     getstateplus = false;
-                    System.Drawing.Rectangle r = new System.Drawing.Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height);
+                    Rectangle r = new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height);
                     GraphicsPath gp = new GraphicsPath();
                     int d = 50;
                     gp.AddArc(r.X, r.Y, d, d, 180, 90);
@@ -143,6 +152,7 @@ namespace SIGIL
                     gp.AddArc(r.X + r.Width - d, r.Y + r.Height - d, d, d, 0, 90);
                     gp.AddArc(r.X, r.Y + r.Height - d, d, d, 90, 90);
                     pictureBox1.Region = new Region(gp);
+                    this.pictureBox2.Image = shadowrounded;
                 }
                 System.Threading.Thread.Sleep(100);
             }
