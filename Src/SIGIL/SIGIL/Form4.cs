@@ -8,6 +8,8 @@ using Bitmap = System.Drawing.Bitmap;
 using Point = System.Drawing.Point;
 using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Drawing.Imaging;
 
 namespace SIGIL
 {
@@ -36,6 +38,8 @@ namespace SIGIL
         private Rectangle rectangle;
         private Bitmap image, shadowrounded, shadowcircle;
         private static bool getstateminus, getstateplus;
+        private static List<Control> shadowControls = new List<Control>();
+        private static Bitmap shadowBmp = null;
         private static int[] wd = { 2, 2 };
         private static int[] wu = { 2, 2 };
         public static void valchanged(int n, bool val)
@@ -84,8 +88,8 @@ namespace SIGIL
                 this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - width - (int)border, (int)border);
                 this.pictureBox1.Size = new Size(width - 30, height - 30);
                 this.pictureBox1.Location = new Point(15, 15);
-                this.pictureBox2.Size = new Size(width, height);
-                this.pictureBox2.Location = new Point(0, 0);
+                this.pictureBox2.Size = new Size(width - 10, height - 10);
+                this.pictureBox2.Location = new Point(5, 5);
                 FinalFrame.DesiredFrameSize = new Size((int)(height * ratio), height);
                 FinalFrame.SetCameraProperty(CameraControlProperty.Zoom, 0, CameraControlFlags.Manual);
                 FinalFrame.SetCameraProperty(CameraControlProperty.Focus, 0, CameraControlFlags.Manual);
@@ -145,6 +149,9 @@ namespace SIGIL
                 shadowcircle = image;
                 this.pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
                 this.pictureBox2.Image = shadowrounded;
+                shadowControls.Add(pictureBox1);
+                shadowControls.Add(pictureBox2);
+                this.Refresh();
             }
             catch
             {
@@ -177,6 +184,7 @@ namespace SIGIL
                     gp.AddEllipse(pictureBox2.DisplayRectangle);
                     pictureBox2.Region = new Region(gp);
                     this.pictureBox2.Image = shadowcircle;
+                    this.Refresh();
                 }
                 else if (wu[1] == 1 & getstateplus)
                 {
@@ -196,8 +204,47 @@ namespace SIGIL
                     gp.AddArc(rectangle.X, rectangle.Y + rectangle.Height - d, d, d, 90, 90);
                     pictureBox2.Region = new Region(gp);
                     this.pictureBox2.Image = shadowrounded;
+                    this.Refresh();
                 }
                 System.Threading.Thread.Sleep(100);
+            }
+        }
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            if (shadowBmp == null || shadowBmp.Size != this.Size)
+            {
+                shadowBmp?.Dispose();
+                shadowBmp = new Bitmap(this.Width, this.Height, PixelFormat.Format32bppArgb);
+            }
+            foreach (Control control in shadowControls)
+            {
+                using (GraphicsPath gp = new GraphicsPath())
+                {
+                    gp.AddRectangle(new Rectangle(control.Location.X, control.Location.Y, control.Size.Width, control.Size.Height));
+                    DrawShadowSmooth(gp, 100, 60, shadowBmp);
+                }
+                e.Graphics.DrawImage(shadowBmp, new Point(0, 0));
+            }
+        }
+        private static void DrawShadowSmooth(GraphicsPath gp, int intensity, int radius, Bitmap dest)
+        {
+            using (Graphics g = Graphics.FromImage(dest))
+            {
+                g.Clear(Color.Transparent);
+                g.CompositingMode = CompositingMode.SourceCopy;
+                double alpha = 0;
+                double astep = 0;
+                double astepstep = (double)intensity / radius / (radius / 2D);
+                for (int thickness = radius; thickness > 0; thickness--)
+                {
+                    using (Pen p = new Pen(Color.FromArgb((int)alpha, 0, 0, 0), thickness))
+                    {
+                        p.LineJoin = LineJoin.Round;
+                        g.DrawPath(p, gp);
+                    }
+                    alpha += astep;
+                    astep += astepstep;
+                }
             }
         }
         private void Form4_KeyDown(object sender, KeyEventArgs e)
