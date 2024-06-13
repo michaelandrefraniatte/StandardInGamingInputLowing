@@ -32,8 +32,8 @@ namespace SIGIL
         private FilterInfoCollection CaptureDevice;
         private VideoCaptureDevice FinalFrame;
         private VideoCapabilities[] videoCapabilities;
-        private static int height = 300, width, d = 66;
-        private static double initratio, ratio, border;
+        private static int height = 300, width = 300, border = 0, d = 66;
+        private static double initratio, ratio = 1f;
         private GraphicsPath gp;
         private Rectangle rectangle;
         private Bitmap image, shadowrounded, shadowcircle;
@@ -79,13 +79,10 @@ namespace SIGIL
                 videoCapabilities = FinalFrame.VideoCapabilities;
                 FinalFrame.VideoResolution = videoCapabilities[1];
                 initratio = Convert.ToDouble(FinalFrame.VideoResolution.FrameSize.Width) / Convert.ToDouble(FinalFrame.VideoResolution.FrameSize.Height);
-                ratio = 1;
-                border = 10f;
-                height = 300;
                 width = (int)(height * ratio);
                 this.Size = new Size(width, height);
                 this.ClientSize = new Size(width, height);
-                this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - width - (int)border, (int)border);
+                this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - width - border, border);
                 this.pictureBox1.Size = new Size(width - 30, height - 30);
                 this.pictureBox1.Location = new Point(15, 15);
                 this.pictureBox2.Size = new Size(width - 10, height - 10);
@@ -307,7 +304,6 @@ namespace SIGIL
             try
             {
                 FinalFrame.NewFrame -= FinalFrame_NewFrame;
-                System.Threading.Thread.Sleep(1000);
                 if (FinalFrame.IsRunning)
                     FinalFrame.Stop();
             }
