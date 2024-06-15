@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .rounded {
+            display: float;
+            float: left;
+            position: absolute;
+            width: 290px;
+            height: 290px;
+            background-color: transparent;
+            top: 5px;
+            left: 5px;
+            border-radius: 50px;
+            box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+        }
+        .circle {
+            display: float;
+            float: left;
+            position: absolute;
+            width: 290px;
+            height: 290px;
+            background-color: transparent;
+            top: 5px;
+            left: 5px;
+            border-radius: 145px;
+            box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+        }
+    </style>
+
+</head>
+
+<body>
+    
+    <div class='rounded' id="shadow"></div>
+
+    <script>
+
+        var shadow = document.getElementById("shadow");
+
+        function setShadowRounded() {
+            shadow.classList.remove("circle");
+            shadow.classList.add("rounded");
+        }
+
+        function setShadowCircle() {
+            shadow.classList.remove("rounded");
+            shadow.classList.add("circle");
+        }
+
+    </script>
+
+</body>
+</html>

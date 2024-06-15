@@ -7,9 +7,11 @@ using System.Runtime.InteropServices;
 using Bitmap = System.Drawing.Bitmap;
 using Point = System.Drawing.Point;
 using System.Drawing.Drawing2D;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
+using WebView2 = Microsoft.Web.WebView2.WinForms.WebView2;
+using Microsoft.Web.WebView2.Core;
+using System.Threading.Tasks;
 
 namespace SIGIL
 {
@@ -40,6 +42,7 @@ namespace SIGIL
         private static bool getstateminus, getstateplus;
         private static List<Control> shadowControls = new List<Control>();
         private static Bitmap shadowBmp = null;
+        private WebView2 webView21 = new WebView2();
         private static int[] wd = { 2, 2 };
         private static int[] wu = { 2, 2 };
         public static void valchanged(int n, bool val)
@@ -62,13 +65,12 @@ namespace SIGIL
             }
         }
         [Obsolete]
-        private void Form4_Shown(object sender, EventArgs e)
+        private async void Form4_Shown(object sender, EventArgs e)
         {
             try
             {
                 TimeBeginPeriod(1);
                 NtSetTimerResolution(1, true, ref CurrentResolution);
-                Task.Run(() => Start());
                 AppDomain.CurrentDomain.UnhandledException += new System.UnhandledExceptionEventHandler(AppDomain_UnhandledException);
                 System.Windows.Forms.Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
                 this.TopMost = true;
@@ -149,62 +151,81 @@ namespace SIGIL
                 shadowControls.Add(pictureBox1);
                 shadowControls.Add(pictureBox2);
                 this.Refresh();
+                CoreWebView2EnvironmentOptions options = new CoreWebView2EnvironmentOptions("--disable-web-security --allow-file-access-from-files --allow-file-access", "en");
+                CoreWebView2Environment environment = await CoreWebView2Environment.CreateAsync(null, null, options);
+                await webView21.EnsureCoreWebView2Async(environment);
+                webView21.CoreWebView2.SetVirtualHostNameToFolderMapping("appassets", "assets", CoreWebView2HostResourceAccessKind.DenyCors);
+                webView21.CoreWebView2.Settings.AreDevToolsEnabled = false;
+                webView21.KeyDown += WebView21_KeyDown;
+                webView21.Source = new Uri("https://appassets/webcam/index.html");
+                webView21.Dock = DockStyle.Fill;
+                webView21.DefaultBackgroundColor = Color.Transparent;
+                this.Controls.Add(webView21);
             }
             catch
             {
                 this.Close();
             }
         }
-        private void Start()
+        private async void timer1_Tick(object sender, EventArgs e)
         {
-            while (true)
+            valchanged(0, GetAsyncKeyState(Keys.Subtract));
+            if (wu[0] == 1 & !getstateminus)
             {
-                valchanged(0, GetAsyncKeyState(Keys.Subtract));
-                if (wu[0] == 1 & !getstateminus)
-                {
-                    getstateminus = true;
-                    this.Opacity = 1;
-                }
-                else if (wu[0] == 1 & getstateminus)
-                {
-                    getstateminus = false;
-                    this.Opacity = 0.75D;
-                }
-                valchanged(1, GetAsyncKeyState(Keys.Add));
-                if (wu[1] == 1 & !getstateplus)
-                {
-                    getstateplus = true;
-                    gp = new GraphicsPath();
-                    gp.AddEllipse(pictureBox1.DisplayRectangle);
-                    pictureBox1.Region = new Region(gp);
-                    gp = new GraphicsPath();
-                    gp.AddEllipse(pictureBox2.DisplayRectangle);
-                    pictureBox2.Region = new Region(gp);
-                    this.pictureBox2.Image = shadowcircle;
-                    this.Refresh();
-                }
-                else if (wu[1] == 1 & getstateplus)
-                {
-                    getstateplus = false;
-                    rectangle = new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height);
-                    gp = new GraphicsPath();
-                    gp.AddArc(rectangle.X, rectangle.Y, d, d, 180, 90);
-                    gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y, d, d, 270, 90);
-                    gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y + rectangle.Height - d, d, d, 0, 90);
-                    gp.AddArc(rectangle.X, rectangle.Y + rectangle.Height - d, d, d, 90, 90);
-                    pictureBox1.Region = new Region(gp);
-                    rectangle = new Rectangle(0, 0, pictureBox2.Width, pictureBox2.Height);
-                    gp = new GraphicsPath();
-                    gp.AddArc(rectangle.X, rectangle.Y, d, d, 180, 90);
-                    gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y, d, d, 270, 90);
-                    gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y + rectangle.Height - d, d, d, 0, 90);
-                    gp.AddArc(rectangle.X, rectangle.Y + rectangle.Height - d, d, d, 90, 90);
-                    pictureBox2.Region = new Region(gp);
-                    this.pictureBox2.Image = shadowrounded;
-                    this.Refresh();
-                }
-                System.Threading.Thread.Sleep(100);
+                getstateminus = true;
+                this.Opacity = 1;
             }
+            else if (wu[0] == 1 & getstateminus)
+            {
+                getstateminus = false;
+                this.Opacity = 0.75D;
+            }
+            valchanged(1, GetAsyncKeyState(Keys.Add));
+            if (wu[1] == 1 & !getstateplus)
+            {
+                getstateplus = true;
+                gp = new GraphicsPath();
+                gp.AddEllipse(pictureBox1.DisplayRectangle);
+                pictureBox1.Region = new Region(gp);
+                gp = new GraphicsPath();
+                gp.AddEllipse(pictureBox2.DisplayRectangle);
+                pictureBox2.Region = new Region(gp);
+                this.pictureBox2.Image = shadowcircle;
+                this.Controls.Remove(webView21);
+                this.Controls.Add(webView21);
+                webView21.Refresh();
+                this.Refresh();
+                await execScriptHelper("setShadowCircle()");
+            }
+            else if (wu[1] == 1 & getstateplus)
+            {
+                getstateplus = false;
+                rectangle = new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height);
+                gp = new GraphicsPath();
+                gp.AddArc(rectangle.X, rectangle.Y, d, d, 180, 90);
+                gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y, d, d, 270, 90);
+                gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y + rectangle.Height - d, d, d, 0, 90);
+                gp.AddArc(rectangle.X, rectangle.Y + rectangle.Height - d, d, d, 90, 90);
+                pictureBox1.Region = new Region(gp);
+                rectangle = new Rectangle(0, 0, pictureBox2.Width, pictureBox2.Height);
+                gp = new GraphicsPath();
+                gp.AddArc(rectangle.X, rectangle.Y, d, d, 180, 90);
+                gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y, d, d, 270, 90);
+                gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y + rectangle.Height - d, d, d, 0, 90);
+                gp.AddArc(rectangle.X, rectangle.Y + rectangle.Height - d, d, d, 90, 90);
+                pictureBox2.Region = new Region(gp);
+                this.pictureBox2.Image = shadowrounded;
+                this.Controls.Remove(webView21);
+                this.Controls.Add(webView21);
+                webView21.Refresh();
+                this.Refresh();
+                await execScriptHelper("setShadowRounded()");
+            }
+        }
+        private async Task<String> execScriptHelper(String script)
+        {
+            var x = await webView21.ExecuteScriptAsync(script).ConfigureAwait(false);
+            return x;
         }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
@@ -243,6 +264,10 @@ namespace SIGIL
                     astep += astepstep;
                 }
             }
+        }
+        private void WebView21_KeyDown(object sender, KeyEventArgs e)
+        {
+            OnKeyDown(e.KeyData);
         }
         private void Form4_KeyDown(object sender, KeyEventArgs e)
         {
