@@ -7,8 +7,6 @@ using System.Runtime.InteropServices;
 using Bitmap = System.Drawing.Bitmap;
 using Point = System.Drawing.Point;
 using System.Drawing.Drawing2D;
-using System.Collections.Generic;
-using System.Drawing.Imaging;
 using WebView2 = Microsoft.Web.WebView2.WinForms.WebView2;
 using Microsoft.Web.WebView2.Core;
 using System.Threading.Tasks;
@@ -40,8 +38,6 @@ namespace SIGIL
         private Rectangle rectangle;
         private Bitmap image, shadowrounded, shadowcircle;
         private static bool getstateminus, getstateplus;
-        private static List<Control> shadowControls = new List<Control>();
-        private static Bitmap shadowBmp = null;
         private WebView2 webView21 = new WebView2();
         private static int[] wd = { 2, 2 };
         private static int[] wu = { 2, 2 };
@@ -114,43 +110,10 @@ namespace SIGIL
                 gp.AddArc(rectangle.X + rectangle.Width - d, rectangle.Y + rectangle.Height - d, d, d, 0, 90);
                 gp.AddArc(rectangle.X, rectangle.Y + rectangle.Height - d, d, d, 90, 90);
                 pictureBox2.Region = new Region(gp);
-                shadowrounded = Image.FromFile(Application.StartupPath + @"\shadowrounded.png") as Bitmap;
-                shadowrounded.MakeTransparent(Color.White);
-                image = shadowrounded;
-                for (int w = 0; w < image.Width; w++)
-                {
-                    for (int h = 0; h < image.Height; h++)
-                    {
-                        Color c = image.GetPixel(w, h);
-                        if (c != Color.Transparent)
-                        {
-                            Color newC = Color.FromArgb(c.A / 2, c.R / 2, c.G / 2, c.B / 2);
-                            image.SetPixel(w, h, newC);
-                        }
-                    }
-                }
-                shadowrounded = image;
-                shadowcircle = Image.FromFile(Application.StartupPath + @"\shadowcircle.png") as Bitmap;
-                shadowcircle.MakeTransparent(Color.White);
-                image = shadowcircle;
-                for (int w = 0; w < image.Width; w++)
-                {
-                    for (int h = 0; h < image.Height; h++)
-                    {
-                        Color c = image.GetPixel(w, h);
-                        if (c != Color.Transparent)
-                        {
-                            Color newC = Color.FromArgb(c.A / 2, c.R / 2, c.G / 2, c.B / 2);
-                            image.SetPixel(w, h, newC);
-                        }
-                    }
-                }
-                shadowcircle = image;
+                shadowrounded = new Bitmap(Application.StartupPath + @"\shadowrounded.gif");
+                shadowcircle = new Bitmap(Application.StartupPath + @"\shadowcircle.gif");
                 this.pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
                 this.pictureBox2.Image = shadowrounded;
-                shadowControls.Add(pictureBox1);
-                shadowControls.Add(pictureBox2);
-                this.Refresh();
                 CoreWebView2EnvironmentOptions options = new CoreWebView2EnvironmentOptions("--disable-web-security --allow-file-access-from-files --allow-file-access", "en");
                 CoreWebView2Environment environment = await CoreWebView2Environment.CreateAsync(null, null, options);
                 await webView21.EnsureCoreWebView2Async(environment);
@@ -193,8 +156,6 @@ namespace SIGIL
                 this.pictureBox2.Image = shadowcircle;
                 this.Controls.Remove(webView21);
                 this.Controls.Add(webView21);
-                webView21.Refresh();
-                this.Refresh();
                 await execScriptHelper("setShadowCircle()");
             }
             else if (wu[1] == 1 & getstateplus)
@@ -217,8 +178,6 @@ namespace SIGIL
                 this.pictureBox2.Image = shadowrounded;
                 this.Controls.Remove(webView21);
                 this.Controls.Add(webView21);
-                webView21.Refresh();
-                this.Refresh();
                 await execScriptHelper("setShadowRounded()");
             }
         }
@@ -226,44 +185,6 @@ namespace SIGIL
         {
             var x = await webView21.ExecuteScriptAsync(script).ConfigureAwait(false);
             return x;
-        }
-        private void Form1_Paint(object sender, PaintEventArgs e)
-        {
-            if (shadowBmp == null || shadowBmp.Size != this.Size)
-            {
-                shadowBmp?.Dispose();
-                shadowBmp = new Bitmap(this.Width, this.Height, PixelFormat.Format32bppArgb);
-            }
-            foreach (Control control in shadowControls)
-            {
-                using (GraphicsPath gp = new GraphicsPath())
-                {
-                    gp.AddRectangle(new Rectangle(control.Location.X, control.Location.Y, control.Size.Width, control.Size.Height));
-                    DrawShadowSmooth(gp, 100, 60, shadowBmp);
-                }
-                e.Graphics.DrawImage(shadowBmp, new Point(0, 0));
-            }
-        }
-        private static void DrawShadowSmooth(GraphicsPath gp, int intensity, int radius, Bitmap dest)
-        {
-            using (Graphics g = Graphics.FromImage(dest))
-            {
-                g.Clear(Color.Transparent);
-                g.CompositingMode = CompositingMode.SourceCopy;
-                double alpha = 0;
-                double astep = 0;
-                double astepstep = (double)intensity / radius / (radius / 2D);
-                for (int thickness = radius; thickness > 0; thickness--)
-                {
-                    using (Pen p = new Pen(Color.FromArgb((int)alpha, 0, 0, 0), thickness))
-                    {
-                        p.LineJoin = LineJoin.Round;
-                        g.DrawPath(p, gp);
-                    }
-                    alpha += astep;
-                    astep += astepstep;
-                }
-            }
         }
         private void WebView21_KeyDown(object sender, KeyEventArgs e)
         {
