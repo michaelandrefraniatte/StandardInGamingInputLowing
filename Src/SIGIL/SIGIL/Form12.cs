@@ -17,6 +17,8 @@ namespace SIGIL
         {
             InitializeComponent();
         }
+        [DllImport("user32.dll")]
+        public static extern bool GetAsyncKeyState(System.Windows.Forms.Keys vKey);
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         public static extern uint TimeBeginPeriod(uint ms);
         [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
@@ -53,6 +55,27 @@ namespace SIGIL
         public static double Controller1ThumbLeftY;
         public static double Controller1ThumbRightX;
         public static double Controller1ThumbRightY;
+        private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2 };
+        private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2 };
+        public static void valchanged(int n, bool val)
+        {
+            if (val)
+            {
+                if (wd[n] <= 1)
+                {
+                    wd[n] = wd[n] + 1;
+                }
+                wu[n] = 0;
+            }
+            else
+            {
+                if (wu[n] <= 1)
+                {
+                    wu[n] = wu[n] + 1;
+                }
+                wd[n] = 0;
+            }
+        }
         private async void Form12_Shown(object sender, EventArgs e)
         {
             TimeBeginPeriod(1);
@@ -113,6 +136,46 @@ namespace SIGIL
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            valchanged(0, GetAsyncKeyState(Keys.NumPad1));
+            if (wu[0] == 1)
+            {
+                this.Location = new Point(0, Height - this.Size.Height);
+            }
+            valchanged(1, GetAsyncKeyState(Keys.NumPad4));
+            if (wu[1] == 1)
+            {
+                this.Location = new Point(0, (Height - this.Size.Height) / 2);
+            }
+            valchanged(2, GetAsyncKeyState(Keys.NumPad7));
+            if (wu[2] == 1)
+            {
+                this.Location = new Point(0, 0);
+            }
+            valchanged(3, GetAsyncKeyState(Keys.NumPad8));
+            if (wu[3] == 1)
+            {
+                this.Location = new Point((Width - this.Size.Width) / 2, 0);
+            }
+            valchanged(4, GetAsyncKeyState(Keys.NumPad9));
+            if (wu[4] == 1)
+            {
+                this.Location = new Point(Width - this.Size.Width, 0);
+            }
+            valchanged(5, GetAsyncKeyState(Keys.NumPad6));
+            if (wu[5] == 1)
+            {
+                this.Location = new Point(Width - this.Size.Width, (Height - this.Size.Height) / 2);
+            }
+            valchanged(6, GetAsyncKeyState(Keys.NumPad3));
+            if (wu[6] == 1)
+            {
+                this.Location = new Point(Width - this.Size.Width, Height - this.Size.Height);
+            }
+            valchanged(7, GetAsyncKeyState(Keys.NumPad2));
+            if (wu[7] == 1)
+            {
+                this.Location = new Point((Width - this.Size.Width) / 2, Height - this.Size.Height);
+            }
             taskEmulate();
         }
         private static double Scale(double value, double min, double max, double minScale, double maxScale)
