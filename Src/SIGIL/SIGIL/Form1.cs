@@ -106,10 +106,9 @@ namespace SIGIL
         private static TimeSpan timeout = new TimeSpan(0, 0, 1);
         private static string outputvideo, outputaudio, output, outputvideotemp, outputaudiotemp, outputtemp, cpuorgpu, commandcpu, commandgpu, videodelay, ss;
         private static bool capturing;
-        private static NAudio.Wave.MediaFoundationReader audioFileReader;
-        private static NAudio.Wave.IWavePlayer waveOutDevice;
-        private static CSCore.SoundIn.WasapiCapture captureaudio;
-        private static CSCore.Codecs.WAV.WaveWriter wavewriter;
+        private static WasapiOut wasapiOut;
+        private static WasapiLoopbackCapture capture;
+        private static WaveFileWriter writer;
         private static Process processcapturevideo, processmerge;
         private static bool closed, capturedevicefirst, ison;
         private NAudio.Wave.WasapiLoopbackCapture waveIn = null;
@@ -4109,19 +4108,27 @@ namespace SIGIL
         }
         private static void StartCapture()
         {
-            audioFileReader = new NAudio.Wave.MediaFoundationReader("1-hour-and-20-minutes-of-silence.mp3");
-            waveOutDevice = new NAudio.Wave.WaveOut();
-            waveOutDevice.Init(audioFileReader);
-            waveOutDevice.Play();
             Task.Run(() =>
             {
-                captureaudio = new CSCore.SoundIn.WasapiLoopbackCapture();
-                captureaudio.Initialize();
-                wavewriter = new CSCore.Codecs.WAV.WaveWriter(outputaudio, captureaudio.WaveFormat);
-                captureaudio.DataAvailable += (sound, card) =>
+                capture = new NAudio.Wave.WasapiLoopbackCapture();
+                writer = new WaveFileWriter(outputaudio, capture.WaveFormat);
+                capture.DataAvailable += (s, a) =>
                 {
-                    wavewriter.Write(card.Data, card.Offset, card.ByteCount);
+                    writer.Write(a.Buffer, 0, a.BytesRecorded);
+                    writer.Flush();
                 };
+                capture.RecordingStopped += (s, a) =>
+                {
+                    writer.Dispose();
+                    writer = null;
+                    capture.Dispose();
+                    wasapiOut.Stop();
+                };
+                var device = new MMDeviceEnumerator().GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+                var silenceProvider = new SilenceProvider(capture.WaveFormat);
+                wasapiOut = new WasapiOut(device, AudioClientShareMode.Shared, false, 250);
+                wasapiOut.Init(silenceProvider);
+                wasapiOut.Play();
                 processcapturevideo = new Process();
                 processcapturevideo.StartInfo.CreateNoWindow = true;
                 processcapturevideo.StartInfo.UseShellExecute = false;
@@ -4144,7 +4151,7 @@ namespace SIGIL
         {
             if (e.Data.IndexOf("frame= ") != -1 & capturing)
             {
-                captureaudio.Start();
+                capture.StartRecording();
                 processcapturevideo.CancelErrorRead();
             }
         }
@@ -4154,12 +4161,7 @@ namespace SIGIL
             outputvideotemp = outputvideo;
             outputtemp = output;
             Task.Run(() => processcapturevideo.StandardInput.WriteLine('q'));
-            Task.Run(() =>
-            {
-                captureaudio.Stop();
-                wavewriter.Dispose();
-                waveOutDevice.Stop();
-            });
+            Task.Run(() => capture.StopRecording());
             Thread.Sleep(20000);
             processmerge = new Process();
             processmerge.StartInfo.CreateNoWindow = true;
