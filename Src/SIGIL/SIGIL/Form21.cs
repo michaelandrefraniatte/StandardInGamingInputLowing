@@ -37,9 +37,9 @@ namespace SIGIL
         private static WasapiOut wasapiOut;
         private static WasapiLoopbackCapture capture;
         private static WaveFileWriter writer;
-        public static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        public static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        public static bool[] ws = { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+        public static int[] wd = { 2, 2 };
+        public static int[] wu = { 2, 2 };
+        public static bool[] ws = { false, false };
         static void valchanged(int n, bool val)
         {
             if (val)
@@ -123,10 +123,10 @@ namespace SIGIL
             button1.Text = "Start";
             recording = false;
             Thread.Sleep(5000);
-            ConvertWavMP3(audioName);
+            ConvertWavMP3(Path.Combine(Application.StartupPath, audioName));
             this.WindowState = FormWindowState.Minimized;
             Task.Factory.StartNew(() => openDirectory());
-            File.Delete(audioName);
+            File.Delete(Path.Combine(Application.StartupPath, audioName));
         }
         private void recordingSound()
         {
