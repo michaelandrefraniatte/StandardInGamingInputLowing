@@ -74,6 +74,8 @@
             this.audioVisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.performanceWatcherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.virtualKeyboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playAndReplayKMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playAndReplayControllerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,8 +85,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.autocompleteMenu1 = new AutocompleteMenuNS.AutocompleteMenu();
             this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
-            this.playAndReplayKMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.playAndReplayControllerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.songCaptureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
             this.SuspendLayout();
@@ -369,7 +370,8 @@
             this.performanceWatcherToolStripMenuItem,
             this.virtualKeyboardToolStripMenuItem,
             this.playAndReplayKMToolStripMenuItem,
-            this.playAndReplayControllerToolStripMenuItem});
+            this.playAndReplayControllerToolStripMenuItem,
+            this.songCaptureToolStripMenuItem});
             this.accessibilityToolStripMenuItem.Name = "accessibilityToolStripMenuItem";
             this.accessibilityToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
             this.accessibilityToolStripMenuItem.Text = "Accessibility";
@@ -457,6 +459,20 @@
             this.virtualKeyboardToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.virtualKeyboardToolStripMenuItem.Text = "Virtual keyboard";
             this.virtualKeyboardToolStripMenuItem.Click += new System.EventHandler(this.virtualKeyboardToolStripMenuItem_Click);
+            // 
+            // playAndReplayKMToolStripMenuItem
+            // 
+            this.playAndReplayKMToolStripMenuItem.Name = "playAndReplayKMToolStripMenuItem";
+            this.playAndReplayKMToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
+            this.playAndReplayKMToolStripMenuItem.Text = "Play and replay KM";
+            this.playAndReplayKMToolStripMenuItem.Click += new System.EventHandler(this.playAndReplayKMToolStripMenuItem_Click);
+            // 
+            // playAndReplayControllerToolStripMenuItem
+            // 
+            this.playAndReplayControllerToolStripMenuItem.Name = "playAndReplayControllerToolStripMenuItem";
+            this.playAndReplayControllerToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
+            this.playAndReplayControllerToolStripMenuItem.Text = "Play and replay controller";
+            this.playAndReplayControllerToolStripMenuItem.Click += new System.EventHandler(this.playAndReplayControllerToolStripMenuItem_Click);
             // 
             // processToolStripMenuItem
             // 
@@ -549,6 +565,7 @@
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.CSharp;
             this.fastColoredTextBox1.LeftBracket = '(';
@@ -566,19 +583,12 @@
             this.fastColoredTextBox1.Zoom = 100;
             this.fastColoredTextBox1.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.fastColoredTextBox1_TextChanged);
             // 
-            // playAndReplayKMToolStripMenuItem
+            // songCaptureToolStripMenuItem
             // 
-            this.playAndReplayKMToolStripMenuItem.Name = "playAndReplayKMToolStripMenuItem";
-            this.playAndReplayKMToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
-            this.playAndReplayKMToolStripMenuItem.Text = "Play and replay KM";
-            this.playAndReplayKMToolStripMenuItem.Click += new System.EventHandler(this.playAndReplayKMToolStripMenuItem_Click);
-            // 
-            // playAndReplayControllerToolStripMenuItem
-            // 
-            this.playAndReplayControllerToolStripMenuItem.Name = "playAndReplayControllerToolStripMenuItem";
-            this.playAndReplayControllerToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
-            this.playAndReplayControllerToolStripMenuItem.Text = "Play and replay controller";
-            this.playAndReplayControllerToolStripMenuItem.Click += new System.EventHandler(this.playAndReplayControllerToolStripMenuItem_Click);
+            this.songCaptureToolStripMenuItem.Name = "songCaptureToolStripMenuItem";
+            this.songCaptureToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
+            this.songCaptureToolStripMenuItem.Text = "Song capture";
+            this.songCaptureToolStripMenuItem.Click += new System.EventHandler(this.songCaptureToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -658,6 +668,7 @@
         private System.Windows.Forms.ToolStripMenuItem virtualKeyboardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem playAndReplayKMToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem playAndReplayControllerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem songCaptureToolStripMenuItem;
     }
 }
 

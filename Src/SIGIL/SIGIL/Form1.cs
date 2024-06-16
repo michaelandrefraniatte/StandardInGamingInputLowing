@@ -98,6 +98,7 @@ namespace SIGIL
         private static Form18 form18;
         private static Form19 form19;
         private static Form20 form20;
+        private static Form21 form21;
         public static int processid = 0;
         private static List<string> servBLs = new List<string>();
         private static string procnamesbl = "", servNames = "";
@@ -4554,6 +4555,16 @@ namespace SIGIL
                 }
                 catch { }
         }
+        private void songCaptureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["Form21"] == null)
+                try
+                {
+                    form21 = new Form21();
+                    form21.Show();
+                }
+                catch { }
+        }
         private void CloseAllForms()
         {
             try
@@ -4596,6 +4607,8 @@ namespace SIGIL
                     form19.Close();
                 if (Application.OpenForms["Form20"] != null)
                     form20.Close();
+                if (Application.OpenForms["Form21"] != null)
+                    form21.Close();
             }
             catch { }
         }
