@@ -56,6 +56,7 @@ namespace WiiMotesAPI
         private bool running, formvisible;
         private int irmode;
         private List<double> vallistirx = new List<double>(), vallistiry = new List<double>();
+        public double ir1x, ir1y, ir2x, ir2y;
         private double irxc, iryc, irx0, iry0, irx1, iry1, irx2, iry2, irx3, iry3, WiimoteIRSensors0X, WiimoteIRSensors0Y, WiimoteIRSensors1X, WiimoteIRSensors1Y, calibrationinit, WiimoteIRSensors0Xcam, WiimoteIRSensors0Ycam, WiimoteIRSensors1Xcam, WiimoteIRSensors1Ycam, WiimoteIRSensorsXcam, WiimoteIRSensorsYcam;
         public double irx, iry, WiimoteRawValuesX, WiimoteRawValuesY, WiimoteRawValuesZ;
         public bool WiimoteButtonStateA, WiimoteButtonStateB, WiimoteButtonStateMinus, WiimoteButtonStateHome, WiimoteButtonStatePlus, WiimoteButtonStateOne, WiimoteButtonStateTwo, WiimoteButtonStateUp, WiimoteButtonStateDown, WiimoteButtonStateLeft, WiimoteButtonStateRight, WiimoteNunchuckStateC, WiimoteNunchuckStateZ;
@@ -67,6 +68,7 @@ namespace WiiMotesAPI
         private static List<string> paths = new List<string>();
         private static List<FileStream> mStreams = new List<FileStream>();
         private Form1 form1 = new Form1();
+        private Form2 form2 = new Form2();
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
@@ -133,6 +135,7 @@ namespace WiiMotesAPI
                 this.inputdelaybutton = inputdelaybutton;
                 formvisible = true;
                 Task.Run(() => form1.SetVisible());
+                Task.Run(() => form2.SetVisible());
             }
         }
         public void Close()
@@ -230,6 +233,10 @@ namespace WiiMotesAPI
                     str += "InputDelay : " + delay + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
+                    Form2.ir1x = ir1x;
+                    Form2.ir1y = ir1y;
+                    Form2.ir2x = ir2x;
+                    Form2.ir2y = ir2y;
                 }
             }
         }
@@ -285,6 +292,10 @@ namespace WiiMotesAPI
                     irx1 = 2 * WiimoteIRSensors1Xcam - WiimoteIRSensorsXcam;
                     iry1 = 2 * WiimoteIRSensors1Ycam - WiimoteIRSensorsYcam;
                 }
+                ir1x = irx0;
+                ir1y = iry0;
+                ir2x = irx1;
+                ir2y = iry1;
                 irxc = irx0 + irx1;
                 iryc = iry0 + iry1;
             }
@@ -361,6 +372,10 @@ namespace WiiMotesAPI
                     irx2 = WiimoteIRSensors1Xcam + WiimoteIRSensorsXcam;
                     iry2 = WiimoteIRSensors1Ycam + WiimoteIRSensorsYcam;
                 }
+                ir1x = irx2;
+                ir1y = iry2;
+                ir2x = irx3;
+                ir2y = iry3;
                 irxc = irx2 + irx3;
                 iryc = iry2 + iry3;
             }
@@ -379,6 +394,10 @@ namespace WiiMotesAPI
                     irx3 = WiimoteIRSensors1X - 512f;
                     iry3 = WiimoteIRSensors1Y - 384f;
                 }
+                ir1x = irx2;
+                ir1y = iry2;
+                ir2x = irx3;
+                ir2y = iry3;
                 irxc = (irx2 + irx3) / 512f * 1346f;
                 iryc = (iry2 + iry3) / 768f * 782f;
             }
