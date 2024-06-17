@@ -22,7 +22,7 @@ namespace KeyboardHooksAPI
         public static bool KeyboardHookButtonDown, KeyboardHookButtonUp;
         private int number = 0;
         private bool running, formvisible;
-        private Form1 form1 = new Form1();
+        private Form1 form1;
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
@@ -77,6 +77,7 @@ namespace KeyboardHooksAPI
         {
             if (!formvisible)
             {
+                form1 = new Form1();
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();

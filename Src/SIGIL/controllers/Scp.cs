@@ -53,7 +53,7 @@ namespace controllers
         private int transferred = 0;
         private byte[] outputBuffer = null;
         private bool formvisible;
-        private Form1 form1 = new Form1();
+        private Form1 form1;
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
@@ -105,6 +105,7 @@ namespace controllers
         {
             if (!formvisible)
             {
+                form1 = new Form1();
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();

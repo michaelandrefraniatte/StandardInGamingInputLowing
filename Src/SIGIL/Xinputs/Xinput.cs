@@ -22,7 +22,7 @@ namespace XInputsAPI
         private int number, inc;
         private static List<Controller> gamepads = new List<Controller>();
         private Controller gp;
-        private Form1 form1 = new Form1();
+        private Form1 form1;
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
@@ -75,6 +75,7 @@ namespace XInputsAPI
         {
             if (!formvisible)
             {
+                form1 = new Form1();
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();

@@ -21,7 +21,7 @@ namespace GamepadsHooksAPI
         private bool running, formvisible;
         private int number, inc;
         private GamePadState gamepadstate;
-        private Form1 form1 = new Form1();
+        private Form1 form1;
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
@@ -74,6 +74,7 @@ namespace GamepadsHooksAPI
         {
             if (!formvisible)
             {
+                form1 = new Form1();
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();

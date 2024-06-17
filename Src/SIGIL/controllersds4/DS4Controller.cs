@@ -20,7 +20,7 @@ namespace controllersds4
         private ViGEmClient client = new ViGEmClient();
         private string vendorid = "54C", productid = "9CC";
         private bool formvisible;
-        private Form1 form1 = new Form1();
+        private Form1 form1;
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
@@ -72,6 +72,7 @@ namespace controllersds4
         {
             if (!formvisible)
             {
+                form1 = new Form1();
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();

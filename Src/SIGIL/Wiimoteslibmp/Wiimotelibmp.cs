@@ -44,7 +44,7 @@ namespace WiiMotesLibMPAPI
         private WiimoteCollection mWC;
         private Wiimote wiimote;
         private static List<Wiimote> wiimotes = new List<Wiimote>();
-        private Form1 form1 = new Form1();
+        private Form1 form1;
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
@@ -105,6 +105,7 @@ namespace WiiMotesLibMPAPI
         {
             if (!formvisible)
             {
+                form1 = new Form1();
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();

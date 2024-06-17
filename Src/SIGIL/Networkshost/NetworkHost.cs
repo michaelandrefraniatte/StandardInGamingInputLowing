@@ -19,7 +19,7 @@ namespace Networkshost
         public static WebSocket wsc;
         public static string rawdataavailable = "";
         private static bool running = true, formvisible;
-        private static Form1 form1 = new Form1();
+        private static Form1 form1;
         private static Stopwatch PollingRate;
         private static double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private static string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
@@ -117,6 +117,7 @@ namespace Networkshost
         {
             if (!formvisible)
             {
+                form1 = new Form1();
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();

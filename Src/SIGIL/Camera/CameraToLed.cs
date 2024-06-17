@@ -38,7 +38,7 @@ namespace CameraAPI
         private int radius = 175, brightness = -50, red = 0, green = 205, blue = 205;
         public double backpointX, posRightX, backpointY, posRightY, camx, camy;
         private int number;
-        private Form1 form1 = new Form1();
+        private Form1 form1;
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
@@ -91,6 +91,7 @@ namespace CameraAPI
         {
             if (!formvisible)
             {
+                form1 = new Form1();
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();

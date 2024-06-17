@@ -77,7 +77,7 @@ namespace DualShocks4API
         private bool running, formvisible, littleendian;
         private static List<string> paths = new List<string>();
         private static List<FileStream> mStreams = new List<FileStream>();
-        private Form1 form1 = new Form1();
+        private Form1 form1;
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
@@ -131,6 +131,7 @@ namespace DualShocks4API
         {
             if (!formvisible)
             {
+                form1 = new Form1();
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();

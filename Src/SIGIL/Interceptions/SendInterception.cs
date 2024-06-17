@@ -44,7 +44,7 @@ namespace Interceptions
         private List<int> keyboard_ids = new List<int>(), mouse_ids = new List<int>();
         private bool keyboard_id_alreadyexist, mouse_id_alreadyexist;
         private bool formvisible;
-        private Form1 form1 = new Form1();
+        private Form1 form1;
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
@@ -99,6 +99,7 @@ namespace Interceptions
         {
             if (!formvisible)
             {
+                form1 = new Form1();
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();

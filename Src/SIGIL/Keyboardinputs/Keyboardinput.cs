@@ -23,7 +23,7 @@ namespace KeyboardInputsAPI
         private int number, inc;
         private static List<Keyboard> keyboards = new List<Keyboard>();
         private Keyboard kb;
-        private Form1 form1 = new Form1();
+        private Form1 form1;
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
@@ -76,6 +76,7 @@ namespace KeyboardInputsAPI
         {
             if (!formvisible)
             {
+                form1 = new Form1();
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();

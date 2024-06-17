@@ -98,7 +98,7 @@ namespace JoyconChargingGripsAPI
         private static List<SafeFileHandle> handlesLeft = new List<SafeFileHandle>(), handlesRight = new List<SafeFileHandle>();
         private byte[] default_bufLeft = { 0x0, 0x1, 0x40, 0x40, 0x0, 0x1, 0x40, 0x40 };
         private byte[] default_bufRight = { 0x0, 0x1, 0x40, 0x40, 0x0, 0x1, 0x40, 0x40 };
-        private Form1 form1 = new Form1();
+        private Form1 form1;
         private Stopwatch LeftPollingRate, RightPollingRate;
         private double leftpollingrateperm = 0, leftpollingratetemp = 0, leftpollingratedisplay = 0, leftpollingrate, rightpollingrateperm = 0, rightpollingratetemp = 0, rightpollingratedisplay = 0, rightpollingrate;
         private string leftinputdelaybutton = "", leftinputdelay = "", leftinputdelaytemp = "", rightinputdelaybutton = "", rightinputdelay = "", rightinputdelaytemp = "";
@@ -151,6 +151,7 @@ namespace JoyconChargingGripsAPI
         {
             if (!formvisible)
             {
+                form1 = new Form1();
                 LeftPollingRate = new Stopwatch();
                 LeftPollingRate.Start();
                 LeftValueChange = new Valuechange();

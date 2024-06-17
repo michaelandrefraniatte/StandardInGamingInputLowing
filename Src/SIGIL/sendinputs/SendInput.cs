@@ -396,7 +396,7 @@ namespace SendInputs
         private string drivertype;
         private Valuechanges ValueChanges = new Valuechanges();
         private bool formvisible;
-        private Form1 form1 = new Form1();
+        private Form1 form1;
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
@@ -448,6 +448,7 @@ namespace SendInputs
         {
             if (!formvisible)
             {
+                form1 = new Form1();
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();

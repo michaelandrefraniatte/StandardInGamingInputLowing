@@ -26,7 +26,7 @@ namespace KeyboardRawHooksAPI
         private RawInput _rawinput;
         private const bool CaptureOnlyInForeground = false;
         private static List<string> devicehandle = new List<string>();
-        private Form1 form1 = new Form1();
+        private Form1 form1;
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
@@ -82,6 +82,7 @@ namespace KeyboardRawHooksAPI
         {
             if (!formvisible)
             {
+                form1 = new Form1();
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();
