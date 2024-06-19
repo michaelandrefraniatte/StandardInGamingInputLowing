@@ -79,44 +79,44 @@ namespace SIGIL
         private System.CodeDom.Compiler.CompilerResults results;
         private Microsoft.CSharp.CSharpCodeProvider provider;
         private System.CodeDom.Compiler.CompilerParameters parameters;
-        private static Form2 form2;
-        private static Form3 form3;
-        private static Form4 form4;
-        private static Form5 form5;
-        private static Form6 form6;
-        private static Form7 form7;
-        private static Form8 form8;
-        private static Form9 form9;
-        private static Form10 form10;
-        private static Form11 form11;
-        private static Form12 form12;
-        private static Form13 form13;
-        private static Form14 form14;
-        private static Form15 form15;
-        private static Form16 form16;
-        private static Form17 form17;
-        private static Form18 form18;
-        private static Form19 form19;
-        private static Form20 form20;
-        private static Form21 form21;
-        public static int processid = 0;
-        private static List<string> servBLs = new List<string>();
-        private static string procnamesbl = "", servNames = "";
-        private static ServiceController[] services;
-        private static TimeSpan timeout = new TimeSpan(0, 0, 1);
-        private static string outputvideo, outputaudio, output, outputvideotemp, outputaudiotemp, outputtemp, cpuorgpu, commandcpu, commandgpu, videodelay, ss;
-        private static bool capturing;
-        private static WasapiOut wasapiOut;
-        private static WasapiLoopbackCapture capture;
-        private static WaveFileWriter writer;
-        private static Process processcapturevideo, processmerge;
-        private static bool closed, capturedevicefirst, ison;
+        private Form2 form2;
+        private Form3 form3;
+        private Form4 form4;
+        private Form5 form5;
+        private Form6 form6;
+        private Form7 form7;
+        private Form8 form8;
+        private Form9 form9;
+        private Form10 form10;
+        private Form11 form11;
+        private Form12 form12;
+        private Form13 form13;
+        private Form14 form14;
+        private Form15 form15;
+        private Form16 form16;
+        private Form17 form17;
+        private Form18 form18;
+        private Form19 form19;
+        private Form20 form20;
+        private Form21 form21;
+        public int processid = 0;
+        private List<string> servBLs = new List<string>();
+        private string procnamesbl = "", servNames = "";
+        private ServiceController[] services;
+        private TimeSpan timeout = new TimeSpan(0, 0, 1);
+        private string outputvideo, outputaudio, output, outputvideotemp, outputaudiotemp, outputtemp, cpuorgpu, commandcpu, commandgpu, videodelay, ss;
+        private bool capturing;
+        private WasapiOut wasapiOut;
+        private WasapiLoopbackCapture capture;
+        private WaveFileWriter writer;
+        private Process processcapturevideo, processmerge;
+        private bool closed, capturedevicefirst, ison;
         private NAudio.Wave.WasapiLoopbackCapture waveIn = null;
         private BufferedWaveProvider waveProvider = null;
         private NAudio.Wave.WasapiOut waveOut = null;
         private Equalizer equalizer;
         private EqualizerBand[] bands;
-        private static Valuechanges ValueChanges = new Valuechanges();
+        private Valuechanges ValueChanges = new Valuechanges();
         public Form1(string filePath)
         {
             InitializeComponent();
@@ -4106,7 +4106,7 @@ namespace SIGIL
                 Thread.Sleep(70);
             }
         }
-        private static void StartCapture()
+        private void StartCapture()
         {
             Task.Run(() =>
             {
@@ -4147,7 +4147,7 @@ namespace SIGIL
                 processcapturevideo.BeginErrorReadLine();
             });
         }
-        private static void ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        private void ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
             if (e.Data.IndexOf("frame= ") != -1 & capturing)
             {
@@ -4155,7 +4155,7 @@ namespace SIGIL
                 processcapturevideo.CancelErrorRead();
             }
         }
-        private static void StopCapture()
+        private void StopCapture()
         {
             outputaudiotemp = outputaudio;
             outputvideotemp = outputvideo;

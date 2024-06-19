@@ -26,17 +26,17 @@ namespace SIGIL
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         public static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         public static uint CurrentResolution = 0;
-        private static int height, width, heightstart, widthstart, itemIndex = 0, pollingcount, fpscount = 1, fpscountmin = 300, fpscountmax = 1;
-        private static double watchM = 50, watchM1 = 2, watchM2 = 0;
-        private static string text = "", lastkey = "F2";
+        private int height, width, heightstart, widthstart, itemIndex = 0, pollingcount, fpscount = 1, fpscountmin = 300, fpscountmax = 1;
+        private double watchM = 50, watchM1 = 2, watchM2 = 0;
+        private string text = "", lastkey = "F2";
         public ohmDataTree ohmdt = new ohmDataTree();
         public const string noSenseText = "No sensors";
-        public static List<string> lvg = new List<string>();
-        private static Stopwatch diffM = new Stopwatch();
-        private static Bitmap screenshotstart = null, screenshot = null;
-        private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        private static void valchanged(int n, bool val)
+        public List<string> lvg = new List<string>();
+        private Stopwatch diffM = new Stopwatch();
+        private Bitmap screenshotstart = null, screenshot = null;
+        private int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
+        private int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
+        private void valchanged(int n, bool val)
         {
             if (val)
             {

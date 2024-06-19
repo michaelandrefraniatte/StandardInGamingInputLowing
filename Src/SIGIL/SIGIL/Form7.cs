@@ -30,11 +30,11 @@ namespace SIGIL
         public static extern void MouseMW3(int x, int y);
         [DllImport("SendInputLibrary.dll", EntryPoint = "MouseBrink", CallingConvention = CallingConvention.Cdecl)]
         public static extern void MouseBrink(int x, int y);
-        public static bool[] _Valuechanged = new bool[36], _valuechanged = new bool[36];
-        public static uint hDevInfo, CurrentResolution = 0;
-        private static bool endinvoke;
-        public static double WidthS, HeightS, mousex, mousey, mousexp, mouseyp, slowing, slowinglimit = 20, dividing = 1.5f, adding = 0.15f;
-        public static bool up, down, left, right;
+        public bool[] _Valuechanged = new bool[36], _valuechanged = new bool[36];
+        public uint hDevInfo, CurrentResolution = 0;
+        private bool endinvoke;
+        public double WidthS, HeightS, mousex, mousey, mousexp, mouseyp, slowing, slowinglimit = 20, dividing = 1.5f, adding = 0.15f;
+        public bool up, down, left, right;
         public bool this[int i]
         {
             get { return _valuechanged[i]; }

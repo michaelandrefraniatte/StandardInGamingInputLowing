@@ -47,10 +47,10 @@ namespace SIGIL
         public BasicSpectrumProvider spectrumProviderLeft;
         public BasicSpectrumProvider spectrumProviderRight;
         public CSCore.IWaveSource finalSource;
-        public static int x, y;
+        public int x, y;
         public WebView2 webView21 = new WebView2();
-        private static int width = Screen.PrimaryScreen.Bounds.Width;
-        private static int height = Screen.PrimaryScreen.Bounds.Height;
+        private int width = Screen.PrimaryScreen.Bounds.Width;
+        private int height = Screen.PrimaryScreen.Bounds.Height;
         private void Form16_Load(object sender, EventArgs e)
         {
             TimeBeginPeriod(1);

@@ -13,10 +13,10 @@ namespace SIGIL
             InitializeComponent();
         }
         public WebView2 webView21 = new WebView2();
-        private static int width = Screen.PrimaryScreen.Bounds.Width;
-        private static int height = Screen.PrimaryScreen.Bounds.Height;
-        private static int picwidth = Screen.PrimaryScreen.Bounds.Width;
-        private static int picheight = Screen.PrimaryScreen.Bounds.Height;
+        private int width = Screen.PrimaryScreen.Bounds.Width;
+        private int height = Screen.PrimaryScreen.Bounds.Height;
+        private int picwidth = Screen.PrimaryScreen.Bounds.Width;
+        private int picheight = Screen.PrimaryScreen.Bounds.Height;
         private void Form9_Load(object sender, EventArgs e)
         {
         }

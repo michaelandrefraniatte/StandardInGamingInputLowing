@@ -18,29 +18,27 @@ namespace SIGIL
         {
             InitializeComponent();
         }
-        [DllImport("advapi32.dll")]
-        private static extern bool LogonUser(string lpszUsername, string lpszDomain, string lpszPassword, int dwLogonType, int dwLogonProvider, out IntPtr phToken);
+        [DllImport("user32.dll")]
+        public static extern bool GetAsyncKeyState(Keys vKey);
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         public static extern uint TimeBeginPeriod(uint ms);
         [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
         public static extern uint TimeEndPeriod(uint ms);
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         public static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
-        [DllImport("user32.dll")]
-        public static extern bool GetAsyncKeyState(Keys vKey);
-        public static ThreadStart threadstart;
-        public static Thread thread;
         public static uint CurrentResolution = 0;
-        private static bool closed = false, recording = false;
-        private static string audioName;
-        private static List<MMDevice> wasapis = new List<MMDevice>();
-        private static WasapiOut wasapiOut;
-        private static WasapiLoopbackCapture capture;
-        private static WaveFileWriter writer;
-        public static int[] wd = { 2, 2 };
-        public static int[] wu = { 2, 2 };
-        public static bool[] ws = { false, false };
-        static void valchanged(int n, bool val)
+        public ThreadStart threadstart;
+        public Thread thread;
+        private bool closed = false, recording = false;
+        private string audioName;
+        private List<MMDevice> wasapis = new List<MMDevice>();
+        private WasapiOut wasapiOut;
+        private WasapiLoopbackCapture capture;
+        private WaveFileWriter writer;
+        private int[] wd = { 2, 2 };
+        private int[] wu = { 2, 2 };
+        private bool[] ws = { false, false };
+        private void valchanged(int n, bool val)
         {
             if (val)
             {

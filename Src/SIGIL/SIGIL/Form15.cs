@@ -41,10 +41,10 @@ namespace SIGIL
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private WebView2 webView21 = new WebView2();
-        private static int mousex, mousey;
-        private static int width = Screen.PrimaryScreen.Bounds.Width, height = Screen.PrimaryScreen.Bounds.Height;
-        private static string windowtitle, base64image;
-        private static IntPtr findwindow;
+        private int mousex, mousey;
+        private int width = Screen.PrimaryScreen.Bounds.Width, height = Screen.PrimaryScreen.Bounds.Height;
+        private string windowtitle, base64image;
+        private IntPtr findwindow;
         private static uint PW_CLIENTONLY = 0x1;
         private static uint PW_RENDERFULLCONTENT = 0x2;
         private static uint flags = PW_CLIENTONLY | PW_RENDERFULLCONTENT;

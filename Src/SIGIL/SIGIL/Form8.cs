@@ -23,11 +23,11 @@ namespace SIGIL
         private static extern uint TimeEndPeriod(uint ms);
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
-        private static bool back, start, A, B, X, Y, leftstick, rightstick, leftbumper, rightbumper, lefttrigger, righttrigger;
-        private static double leftstickx, leftsticky, rightstickx, rightsticky;
-        private static double irx, iry, mousex, mousey, viewpower05x = 0f, viewpower1x = 0f, viewpower2x = 1.0f, viewpower3x = 0f, viewpower05y = 0f, viewpower1y = 0f, viewpower2y = 1.0f, viewpower3y = 0f, dzx = 2.0f, dzy = 2.0f;
-        private static bool running;
         private static uint CurrentResolution = 0;
+        private bool back, start, A, B, X, Y, leftstick, rightstick, leftbumper, rightbumper, lefttrigger, righttrigger;
+        private double leftstickx, leftsticky, rightstickx, rightsticky;
+        private double irx, iry, mousex, mousey, viewpower05x = 0f, viewpower1x = 0f, viewpower2x = 1.0f, viewpower3x = 0f, viewpower05y = 0f, viewpower1y = 0f, viewpower2y = 1.0f, viewpower3y = 0f, dzx = 2.0f, dzy = 2.0f;
+        private bool running;
         public Form8()
         {
             InitializeComponent();
@@ -57,15 +57,15 @@ namespace SIGIL
                 this.Close();
             }
         }
-        public static void AppDomain_UnhandledException(object sender, System.UnhandledExceptionEventArgs e)
+        public void AppDomain_UnhandledException(object sender, System.UnhandledExceptionEventArgs e)
         {
             CloseControl();
         }
-        public static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        public void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
             CloseControl();
         }
-        private static bool AlreadyRunning()
+        private bool AlreadyRunning()
         {
             Process[] processes = Process.GetProcessesByName("ControllerDeadzoneFinder");
             if (processes.Length > 1)
@@ -147,7 +147,7 @@ namespace SIGIL
                 Thread.Sleep(10);
             }
         }
-        private static double Scale(double value, double min, double max, double minScale, double maxScale)
+        private double Scale(double value, double min, double max, double minScale, double maxScale)
         {
             double scaled = minScale + (double)(value - min) / (max - min) * (maxScale - minScale);
             return scaled;
@@ -156,7 +156,7 @@ namespace SIGIL
         {
             CloseControl();
         }
-        private static void CloseControl()
+        private void CloseControl()
         {
             if (!AlreadyRunning())
             {

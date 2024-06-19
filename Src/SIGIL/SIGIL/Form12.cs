@@ -26,38 +26,38 @@ namespace SIGIL
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         public static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         public static uint CurrentResolution = 0;
-        public static bool closed = false;
-        public static int x, y, Width, Height;
+        public bool closed = false;
+        public int x, y, Width, Height;
         public WebView2 webView21 = new WebView2();
-        public static List<double> List_A = new List<double>(), List_B = new List<double>(), List_X = new List<double>(), List_Y = new List<double>(), List_LB = new List<double>(), List_RB = new List<double>(), List_LT = new List<double>(), List_RT = new List<double>(), List_MAP = new List<double>(), List_MENU = new List<double>(), List_LSTICK = new List<double>(), List_RSTICK = new List<double>(), List_DU = new List<double>(), List_DD = new List<double>(), List_DL = new List<double>(), List_DR = new List<double>(), List_XBOX = new List<double>();
-        public static bool Controller_A, Controller_B, Controller_X, Controller_Y, Controller_LB, Controller_RB, Controller_MAP, Controller_MENU, Controller_LSTICK, Controller_RSTICK, Controller_DU, Controller_DD, Controller_DL, Controller_DR, Controller_XBOX;
-        public static double Controller_LT, Controller_RT, Controller_LX, Controller_LY, Controller_RX, Controller_RY;
-        private static Controller[] controller = new Controller[] { null };
-        public static int xnum;
-        private static State state;
-        public static bool Controller1ButtonAPressed;
-        public static bool Controller1ButtonBPressed;
-        public static bool Controller1ButtonXPressed;
-        public static bool Controller1ButtonYPressed;
-        public static bool Controller1ButtonStartPressed;
-        public static bool Controller1ButtonBackPressed;
-        public static bool Controller1ButtonDownPressed;
-        public static bool Controller1ButtonUpPressed;
-        public static bool Controller1ButtonLeftPressed;
-        public static bool Controller1ButtonRightPressed;
-        public static bool Controller1ButtonShoulderLeftPressed;
-        public static bool Controller1ButtonShoulderRightPressed;
-        public static bool Controller1ThumbpadLeftPressed;
-        public static bool Controller1ThumbpadRightPressed;
-        public static double Controller1TriggerLeftPosition;
-        public static double Controller1TriggerRightPosition;
-        public static double Controller1ThumbLeftX;
-        public static double Controller1ThumbLeftY;
-        public static double Controller1ThumbRightX;
-        public static double Controller1ThumbRightY;
-        private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2 };
-        private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2 };
-        public static void valchanged(int n, bool val)
+        public List<double> List_A = new List<double>(), List_B = new List<double>(), List_X = new List<double>(), List_Y = new List<double>(), List_LB = new List<double>(), List_RB = new List<double>(), List_LT = new List<double>(), List_RT = new List<double>(), List_MAP = new List<double>(), List_MENU = new List<double>(), List_LSTICK = new List<double>(), List_RSTICK = new List<double>(), List_DU = new List<double>(), List_DD = new List<double>(), List_DL = new List<double>(), List_DR = new List<double>(), List_XBOX = new List<double>();
+        public bool Controller_A, Controller_B, Controller_X, Controller_Y, Controller_LB, Controller_RB, Controller_MAP, Controller_MENU, Controller_LSTICK, Controller_RSTICK, Controller_DU, Controller_DD, Controller_DL, Controller_DR, Controller_XBOX;
+        public double Controller_LT, Controller_RT, Controller_LX, Controller_LY, Controller_RX, Controller_RY;
+        private Controller[] controller = new Controller[] { null };
+        public int xnum;
+        private State state;
+        public bool Controller1ButtonAPressed;
+        public bool Controller1ButtonBPressed;
+        public bool Controller1ButtonXPressed;
+        public bool Controller1ButtonYPressed;
+        public bool Controller1ButtonStartPressed;
+        public bool Controller1ButtonBackPressed;
+        public bool Controller1ButtonDownPressed;
+        public bool Controller1ButtonUpPressed;
+        public bool Controller1ButtonLeftPressed;
+        public bool Controller1ButtonRightPressed;
+        public bool Controller1ButtonShoulderLeftPressed;
+        public bool Controller1ButtonShoulderRightPressed;
+        public bool Controller1ThumbpadLeftPressed;
+        public bool Controller1ThumbpadRightPressed;
+        public double Controller1TriggerLeftPosition;
+        public double Controller1TriggerRightPosition;
+        public double Controller1ThumbLeftX;
+        public double Controller1ThumbLeftY;
+        public double Controller1ThumbRightX;
+        public double Controller1ThumbRightY;
+        private int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2 };
+        private int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2 };
+        public void valchanged(int n, bool val)
         {
             if (val)
             {
@@ -178,7 +178,7 @@ namespace SIGIL
             }
             taskEmulate();
         }
-        private static double Scale(double value, double min, double max, double minScale, double maxScale)
+        private double Scale(double value, double min, double max, double minScale, double maxScale)
         {
             double scaled = minScale + (double)(value - min) / (max - min) * (maxScale - minScale);
             return scaled;

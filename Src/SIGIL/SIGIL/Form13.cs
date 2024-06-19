@@ -25,14 +25,14 @@ namespace SIGIL
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        private static bool running;
+        private bool running;
         private MouseHooks mh = new MouseHooks();
-        private static int x, y, mousex, mousey;
-        private static bool mouseclick;
+        private int x, y, mousex, mousey;
+        private bool mouseclick;
         private WebView2 webView21 = new WebView2();
-        private static int width = Screen.PrimaryScreen.Bounds.Width;
-        private static int height = Screen.PrimaryScreen.Bounds.Height;
-        private static double ratiox, ratioy;
+        private int width = Screen.PrimaryScreen.Bounds.Width;
+        private int height = Screen.PrimaryScreen.Bounds.Height;
+        private double ratiox, ratioy;
         private void Form13_Load(object sender, EventArgs e)
         {
             TimeBeginPeriod(1);

@@ -34,11 +34,11 @@ namespace SIGIL
         private BufferedWaveProvider src;
         private WasapiOut soundOut;
         private bool closed = false;
-        private static WindowRenderTarget target;
-        private static SharpDX.Direct2D1.Factory1 fact = new SharpDX.Direct2D1.Factory1();
-        private static RenderTargetProperties renderProp;
-        private static HwndRenderTargetProperties winProp;
-        private static int imgheight, imgwidth;
+        private WindowRenderTarget target;
+        private SharpDX.Direct2D1.Factory1 fact = new SharpDX.Direct2D1.Factory1();
+        private RenderTargetProperties renderProp;
+        private HwndRenderTargetProperties winProp;
+        private int imgheight, imgwidth;
         private void Form6_Shown(object sender, EventArgs e)
         {
             TimeBeginPeriod(1);
@@ -188,7 +188,7 @@ namespace SIGIL
             wscaudio.Close();
             soundOut.Stop();
         }
-        private static void InitDisplayCapture(IntPtr handle)
+        private void InitDisplayCapture(IntPtr handle)
         {
             renderProp = new RenderTargetProperties()
             {
@@ -207,7 +207,7 @@ namespace SIGIL
             };
             target = new WindowRenderTarget(fact, renderProp, winProp);
         }
-        private static void DisplayCapture(System.Drawing.Bitmap bmp)
+        private void DisplayCapture(System.Drawing.Bitmap bmp)
         {
             System.Drawing.Imaging.BitmapData bmpData = bmp.LockBits(new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
             SharpDX.DataStream stream = new SharpDX.DataStream(bmpData.Scan0, bmpData.Stride * bmpData.Height, true, false);

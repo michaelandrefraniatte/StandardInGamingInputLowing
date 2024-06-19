@@ -23,23 +23,23 @@ namespace SIGIL
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         public static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         public static uint CurrentResolution = 0;
-        private static string openFilePath = "", fileTextSaved = "";
-        private static bool justSaved = true, onopenwith = false;
-        private static DialogResult result;
-        private static string filename = "", linereplay;
-        private static bool play, replay, running, enablesticks;
-        private static Stopwatch watchplay = new Stopwatch(), watchreplay = new Stopwatch(), watchrepeat = new Stopwatch();
-        private static double elapseplay, elapsereplay, elapserepeat;
-        private static bool Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_lefttrigger, Controller_Send_righttrigger, Controller_Send_xbox;
-        private static double Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition;
+        private string openFilePath = "", fileTextSaved = "";
+        private bool justSaved = true, onopenwith = false;
+        private DialogResult result;
+        private string filename = "", linereplay;
+        private bool play, replay, running, enablesticks;
+        private Stopwatch watchplay = new Stopwatch(), watchreplay = new Stopwatch(), watchrepeat = new Stopwatch();
+        private double elapseplay, elapsereplay, elapserepeat;
+        private bool Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_lefttrigger, Controller_Send_righttrigger, Controller_Send_xbox;
+        private double Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition;
         private int linecount = 0;
         private KeyboardHooks kh = new KeyboardHooks();
         private XBoxController XBC = new XBoxController();
         private XInput xi = new XInput();
-        public static Valuechange ValueChange = new Valuechange();
-        private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-        public static void valchanged(int n, bool val)
+        public Valuechange ValueChange = new Valuechange();
+        private int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
+        private int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
+        public void valchanged(int n, bool val)
         {
             if (val)
             {

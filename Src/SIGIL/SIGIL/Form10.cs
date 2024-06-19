@@ -23,16 +23,16 @@ namespace SIGIL
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         public static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         public static uint CurrentResolution = 0;
-        public static bool closed = false;
-        public static int x, y, Width, Height;
+        public bool closed = false;
+        public int x, y, Width, Height;
         public WebView2 webView21 = new WebView2();
-        public static List<double> List_A = new List<double>(), List_B = new List<double>(), List_X = new List<double>(), List_Y = new List<double>(), List_LB = new List<double>(), List_RB = new List<double>(), List_LT = new List<double>(), List_RT = new List<double>(), List_MAP = new List<double>(), List_MENU = new List<double>(), List_LSTICK = new List<double>(), List_RSTICK = new List<double>(), List_DU = new List<double>(), List_DD = new List<double>(), List_DL = new List<double>(), List_DR = new List<double>(), List_XBOX = new List<double>();
-        public static double Controller_RX, Controller_RY;
-        private static Controller[] controller = new Controller[] { null };
-        public static int xnum;
-        private static State state;
-        public static double Controller1ThumbRightX;
-        public static double Controller1ThumbRightY;
+        public List<double> List_A = new List<double>(), List_B = new List<double>(), List_X = new List<double>(), List_Y = new List<double>(), List_LB = new List<double>(), List_RB = new List<double>(), List_LT = new List<double>(), List_RT = new List<double>(), List_MAP = new List<double>(), List_MENU = new List<double>(), List_LSTICK = new List<double>(), List_RSTICK = new List<double>(), List_DU = new List<double>(), List_DD = new List<double>(), List_DL = new List<double>(), List_DR = new List<double>(), List_XBOX = new List<double>();
+        public double Controller_RX, Controller_RY;
+        private Controller[] controller = new Controller[] { null };
+        public int xnum;
+        private State state;
+        public double Controller1ThumbRightX;
+        public double Controller1ThumbRightY;
         private async void Form10_Shown(object sender, EventArgs e)
         {
             TimeBeginPeriod(1);

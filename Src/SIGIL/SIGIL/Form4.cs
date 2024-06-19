@@ -28,20 +28,20 @@ namespace SIGIL
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         public static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         public static uint CurrentResolution = 0;
-        public static Bitmap img;
+        public Bitmap img;
         private FilterInfoCollection CaptureDevice;
         private VideoCaptureDevice FinalFrame;
         private VideoCapabilities[] videoCapabilities;
-        private static int height = 300, width = 300, border = 0, d = 66;
-        private static double initratio, ratio = 1f;
+        private int height = 300, width = 300, border = 0, d = 66;
+        private double initratio, ratio = 1f;
         private GraphicsPath gp;
         private Rectangle rectangle;
         private Bitmap image, shadowrounded, shadowcircle;
-        private static bool getstateminus, getstateplus;
+        private bool getstateminus, getstateplus;
         private WebView2 webView21 = new WebView2();
-        private static int[] wd = { 2, 2 };
-        private static int[] wu = { 2, 2 };
-        public static void valchanged(int n, bool val)
+        private int[] wd = { 2, 2 };
+        private int[] wu = { 2, 2 };
+        public void valchanged(int n, bool val)
         {
             if (val)
             {
