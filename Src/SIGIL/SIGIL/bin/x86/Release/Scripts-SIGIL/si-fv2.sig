@@ -62,6 +62,8 @@ namespace StringToCode
                 Thread.Sleep(100);
                 di.Close();
                 sendinput.Disconnect();
+                di.Dispose();
+                sendinput.Dispose();
             }
             catch { }
         }

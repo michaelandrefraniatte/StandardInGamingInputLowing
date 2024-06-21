@@ -68,6 +68,10 @@ namespace StringToCode
                 kh.Close();
                 XBC.Disconnect();
                 sf.Close();
+                mh.Dispose();
+                kh.Dispose();
+                XBC.Dispose();
+                sf.Dispose();
             }
             catch { }
         }

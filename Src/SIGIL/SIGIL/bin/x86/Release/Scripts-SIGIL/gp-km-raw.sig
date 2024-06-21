@@ -63,6 +63,9 @@ namespace StringToCode
                 mri.Close();
                 kri.Close();
                 XBC.Disconnect();
+                mri.Dispose();
+                kri.Dispose();
+                XBC.Dispose();
             }
             catch { }
         }

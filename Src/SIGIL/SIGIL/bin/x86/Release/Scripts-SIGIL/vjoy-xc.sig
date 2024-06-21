@@ -40,6 +40,8 @@ namespace StringToCode
                 Thread.Sleep(100);
                 xi.Close();
                 VJoy.Disconnect();
+                xi.Dispose();
+                VJoy.Dispose();
             }
             catch { }
         }

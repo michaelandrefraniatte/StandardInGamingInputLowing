@@ -34,6 +34,7 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 ds.Close();
+                ds.Dispose();
             }
             catch { }
         }

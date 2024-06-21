@@ -33,6 +33,7 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 jcg.Close();
+                jcg.Dispose();
             }
             catch { }
         }

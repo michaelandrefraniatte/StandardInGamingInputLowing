@@ -60,6 +60,8 @@ namespace StringToCode
                 Thread.Sleep(100);
                 timer.Close();
                 ds4.Close();
+                timer.Dispose();
+                ds4.Dispose();
             }
             catch { }
         }

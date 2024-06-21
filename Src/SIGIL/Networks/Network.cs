@@ -8,7 +8,7 @@ using WebSocketSharp.Server;
 
 namespace Networks
 {
-    public class Network : IDisposable
+    public class Network
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -95,10 +95,10 @@ namespace Networks
                 Task.Run(() => form1.SetVisible());
             }
         }
-        public void Dispose()
+        public static void Dispose()
         {
             GC.Collect();
-            GC.SuppressFinalize(this);
+            GC.WaitForPendingFinalizers();
         }
     }
     public class Control : WebSocketBehavior

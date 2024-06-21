@@ -63,6 +63,8 @@ namespace StringToCode
                 Thread.Sleep(100);
                 ds4.Close();
                 SKM.Disconnect();
+                ds4.Dispose();
+                SKM.Dispose();
             }
             catch { }
         }

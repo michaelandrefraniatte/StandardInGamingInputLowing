@@ -63,6 +63,8 @@ namespace StringToCode
                 Thread.Sleep(100);
                 di.Close();
                 XBC.Disconnect();
+                di.Dispose();
+                XBC.Dispose();
             }
             catch { }
         }

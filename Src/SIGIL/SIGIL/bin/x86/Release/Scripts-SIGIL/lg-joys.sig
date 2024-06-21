@@ -65,6 +65,9 @@ namespace StringToCode
                 jl.Close();
                 jr.Close();
                 SKM.Disconnect();
+                jl.Dispose();
+                jr.Dispose();
+                SKM.Dispose();
             }
             catch { }
         }

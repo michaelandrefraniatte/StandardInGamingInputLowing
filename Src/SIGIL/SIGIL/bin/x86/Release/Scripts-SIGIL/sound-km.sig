@@ -64,6 +64,9 @@ namespace StringToCode
                 mi.Close();
                 ki.Close();
                 player.Disconnect();
+                mi.Dispose();
+                ki.Dispose();
+                player.Dispose();
             }
             catch { }
         }

@@ -64,6 +64,9 @@ namespace StringToCode
                 mi.Close();
                 ki.Close();
                 XBC.Disconnect();
+                mi.Dispose();
+                ki.Dispose();
+                XBC.Dispose();
             }
             catch { }
         }

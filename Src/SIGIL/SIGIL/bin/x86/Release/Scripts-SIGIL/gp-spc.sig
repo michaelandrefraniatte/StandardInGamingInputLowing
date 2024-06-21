@@ -40,6 +40,8 @@ namespace StringToCode
                 Thread.Sleep(100);
                 spc.Close();
                 XBC.Disconnect();
+                spc.Dispose();
+                XBC.Dispose();
             }
             catch { }
         }

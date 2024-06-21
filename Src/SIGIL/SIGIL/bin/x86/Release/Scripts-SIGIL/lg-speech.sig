@@ -62,6 +62,8 @@ namespace StringToCode
                 Thread.Sleep(100);
                 speech.Close();
                 SKM.Disconnect();
+                speech.Dispose();
+                SKM.Dispose();
             }
             catch { }
         }

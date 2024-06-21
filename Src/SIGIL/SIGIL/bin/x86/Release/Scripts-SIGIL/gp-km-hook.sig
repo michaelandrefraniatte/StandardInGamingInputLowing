@@ -63,6 +63,9 @@ namespace StringToCode
                 mrh.Close();
                 krh.Close();
                 XBC.Disconnect();
+                mrh.Dispose();
+                krh.Dispose();
+                XBC.Dispose();
             }
             catch { }
         }

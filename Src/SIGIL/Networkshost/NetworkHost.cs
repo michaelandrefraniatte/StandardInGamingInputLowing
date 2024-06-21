@@ -7,7 +7,7 @@ using WebSocketSharp;
 
 namespace Networkshost
 {
-    public class NetworkHost : IDisposable
+    public class NetworkHost
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -176,10 +176,10 @@ namespace Networkshost
                 form1.SetLabel1(str);
             }
         }
-        public void Dispose()
+        public static void Dispose()
         {
             GC.Collect();
-            GC.SuppressFinalize(this);
+            GC.WaitForPendingFinalizers();
         }
     }
 }

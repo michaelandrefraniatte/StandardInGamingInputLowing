@@ -40,6 +40,8 @@ namespace StringToCode
                 Thread.Sleep(100);
                 jl.Close();
                 XBC.Disconnect();
+                jl.Dispose();
+                XBC.Dispose();
             }
             catch { }
         }

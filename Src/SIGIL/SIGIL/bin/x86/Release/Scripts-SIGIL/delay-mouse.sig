@@ -33,6 +33,7 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 mi.Close();
+                mi.Dispose();
             }
             catch { }
         }

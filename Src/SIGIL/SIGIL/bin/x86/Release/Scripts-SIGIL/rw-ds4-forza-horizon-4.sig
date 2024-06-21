@@ -41,6 +41,8 @@ namespace StringToCode
                 Thread.Sleep(100);
                 ds4.Close();
                 XBC.Disconnect();
+                ds4.Dispose();
+                XBC.Dispose();
             }
             catch { }
         }

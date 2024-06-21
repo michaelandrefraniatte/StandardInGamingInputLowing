@@ -62,6 +62,8 @@ namespace StringToCode
                 Thread.Sleep(100);
                 camera.Close();
                 SKM.Disconnect();
+                camera.Dispose();
+                SKM.Dispose();
             }
             catch { }
         }

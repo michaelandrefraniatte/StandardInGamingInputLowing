@@ -64,6 +64,9 @@ namespace StringToCode
                 mxh.Close();
                 kxh.Close();
                 XBC.Disconnect();
+                mxh.Dispose();
+                kxh.Dispose();
+                XBC.Dispose();
             }
             catch { }
         }

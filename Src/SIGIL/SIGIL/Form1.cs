@@ -251,6 +251,7 @@ namespace SIGIL
                 range.SetStyle(StyleMethod, new Regex(@"\bBeginPolling\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bConnect\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bDisconnect\b"));
+                range.SetStyle(StyleMethod, new Regex(@"\bDispose\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bSet\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bValuechanges\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bValuechange\b"));
@@ -2569,6 +2570,7 @@ namespace SIGIL
                 "BeginPolling",
                 "Connect",
                 "Disconnect",
+                "Dispose",
                 "Set",
                 "Run",
                 "Scan",
@@ -3554,7 +3556,7 @@ namespace SIGIL
             if (runstopbool)
                 StopProcess();
             Thread.Sleep(100);
-            DisconnectControllers(); 
+            DisconnectControllers();
             if (!justSaved)
             {
                 result = MessageBox.Show("Content will be lost! Are you sure?", "Exit", MessageBoxButtons.OKCancel);

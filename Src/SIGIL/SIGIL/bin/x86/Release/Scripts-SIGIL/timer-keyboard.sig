@@ -58,6 +58,8 @@ namespace StringToCode
                 Thread.Sleep(100);
                 timer.Close();
                 ki.Close();
+                timer.Dispose();
+                ki.Dispose();
             }
             catch { }
         }

@@ -42,6 +42,8 @@ namespace StringToCode
                 Thread.Sleep(100);
                 Network.Disconnect();
                 xi.Close();
+                Network.Dispose();
+                xi.Dispose();
             }
             catch { }
         }

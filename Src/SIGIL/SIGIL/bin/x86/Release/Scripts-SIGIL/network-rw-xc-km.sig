@@ -79,6 +79,12 @@ namespace StringToCode
                 XBC.Disconnect();
                 xi.Close();
                 sf.Close();
+                Network.Dispose();
+                mh.Dispose();
+                kh.Dispose();
+                XBC.Dispose();
+                xi.Dispose();
+                sf.Dispose();
             }
             catch { }
         }

@@ -62,6 +62,8 @@ namespace StringToCode
                 Thread.Sleep(100);
                 jcg.Close();
                 SKM.Disconnect();
+                jcg.Dispose();
+                SKM.Dispose();
             }
             catch { }
         }

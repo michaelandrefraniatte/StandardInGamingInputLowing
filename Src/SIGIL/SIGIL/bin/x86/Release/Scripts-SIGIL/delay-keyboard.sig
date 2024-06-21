@@ -32,6 +32,7 @@ namespace StringToCode
                 running = false;
                 Thread.Sleep(100);
                 ki.Close();
+                ki.Dispose();
             }
             catch { }
         }
