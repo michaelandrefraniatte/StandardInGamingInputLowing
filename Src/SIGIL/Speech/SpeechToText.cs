@@ -8,7 +8,7 @@ using Valuechanges;
 
 namespace SpeechAPI
 {
-    public class SpeechToText
+    public class SpeechToText : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -200,6 +200,11 @@ namespace SpeechAPI
                 microphone.Stop();
             }
             catch { }
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

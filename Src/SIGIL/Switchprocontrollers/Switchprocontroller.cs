@@ -12,7 +12,7 @@ using Valuechanges;
 
 namespace SwitchProControllersAPI
 {
-    public class SwitchProController
+    public class SwitchProController : IDisposable
     {
         [DllImport("hid.dll")]
         private static extern void HidD_GetHidGuid(out Guid gHid);
@@ -484,6 +484,11 @@ namespace SwitchProControllersAPI
             buf_Pro[1] = 0x6;
             buf_Pro[0] = 0x80;
             Prohid_write(handlePro, buf_Pro, new UIntPtr(2));
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

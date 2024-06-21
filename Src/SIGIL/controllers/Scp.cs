@@ -37,7 +37,7 @@ namespace controllers
             }
         }
     }
-    public class XBoxController
+    public class XBoxController : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -435,6 +435,11 @@ namespace controllers
             B = 1 << 13,
             X = 1 << 14,
             Y = 1 << 15,
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

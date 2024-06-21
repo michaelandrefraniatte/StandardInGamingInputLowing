@@ -9,7 +9,7 @@ using Valuechanges;
 
 namespace KeyboardInputsAPI
 {
-    public class KeyboardInput
+    public class KeyboardInput : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -1061,6 +1061,11 @@ namespace KeyboardInputsAPI
                 if (state.IsReleased & state.Key == Key.Unknown)
                     KeyboardKeyUnknown = false;
             }
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

@@ -8,7 +8,7 @@ using Valuechanges;
 
 namespace MouseXnaHookAPI
 {
-    public class MouseXnaHook
+    public class MouseXnaHook : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -190,6 +190,11 @@ namespace MouseXnaHookAPI
             MouseAxisX = mousestate.X;
             MouseAxisY = mousestate.Y;
             MouseAxisZ = mousestate.ScrollWheelValue;
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

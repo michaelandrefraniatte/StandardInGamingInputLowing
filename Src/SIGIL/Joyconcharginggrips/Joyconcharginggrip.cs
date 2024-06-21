@@ -13,7 +13,7 @@ using Valuechanges;
 
 namespace JoyconChargingGripsAPI
 {
-    public class JoyconChargingGrip
+    public class JoyconChargingGrip : IDisposable
     {
         [DllImport("hid.dll")]
         private static extern void HidD_GetHidGuid(out Guid gHid);
@@ -715,6 +715,11 @@ namespace JoyconChargingGripsAPI
             buf_[0] = buf[0];
             Rhid_write(handleRight, buf_, new UIntPtr(12));
             Rhid_read_timeout(handleRight, response, (UIntPtr)report_lenRight);
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

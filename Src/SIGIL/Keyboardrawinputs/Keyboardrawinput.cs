@@ -10,7 +10,7 @@ using Valuechanges;
 
 namespace KeyboardRawInputsAPI
 {
-    public class KeyboardRawInputs
+    public class KeyboardRawInputs : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -1393,6 +1393,11 @@ namespace KeyboardRawInputsAPI
                 if (args.MakeCode == S_OEM_CLEAR)
                     Key_OEM_CLEAR = false;
             }
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

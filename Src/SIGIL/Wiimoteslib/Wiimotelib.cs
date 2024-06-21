@@ -11,7 +11,7 @@ using Valuechanges;
 
 namespace WiiMotesLibAPI
 {
-    public class WiiMoteLib
+    public class WiiMoteLib : IDisposable
     {
         [DllImport("MotionInputPairing.dll", EntryPoint = "wiimoteconnect")]
         private static extern bool wiimoteconnect();
@@ -548,6 +548,11 @@ namespace WiiMotesLibAPI
                 ((Wiimote)sender).SetReportType(InputReport.IRExtensionAccel, true);
             else
                 ((Wiimote)sender).SetReportType(InputReport.IRAccel, true);
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

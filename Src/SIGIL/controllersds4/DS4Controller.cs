@@ -6,7 +6,7 @@ using System;
 
 namespace controllersds4
 {
-    public class DS4Controller
+    public class DS4Controller : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -218,6 +218,11 @@ namespace controllersds4
                 str += Environment.NewLine;
                 form1.SetLabel1(str);
             }
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

@@ -9,7 +9,7 @@ using Valuechanges;
 
 namespace KeyboardXnaHookAPI
 {
-    public class KeyboardXnaHook
+    public class KeyboardXnaHook : IDisposable
     {
         [DllImport("user32.dll")]
         public static extern bool GetAsyncKeyState(Keys vKey);
@@ -1028,6 +1028,11 @@ namespace KeyboardXnaHookAPI
                 KeyboardKeyUnknown = true;
             else
                 KeyboardKeyUnknown = false;
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

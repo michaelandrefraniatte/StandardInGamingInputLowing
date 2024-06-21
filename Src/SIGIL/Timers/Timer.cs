@@ -8,7 +8,7 @@ using Valuechanges;
 
 namespace TimersAPI
 {
-    public class Timer
+    public class Timer : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -164,6 +164,11 @@ namespace TimersAPI
             this.number = number;
             watch = new Stopwatch();
             watch.Start();
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

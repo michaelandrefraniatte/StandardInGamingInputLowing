@@ -24,7 +24,7 @@ namespace SendInputs
             }
         }
     }
-    public class Sendinput
+    public class Sendinput : IDisposable
     {
         [DllImport("user32.dll")]
         private static extern void SendInput(uint numberOfInputs, INPUT[] inputs, int sizeOfInputStructure);
@@ -1663,6 +1663,11 @@ namespace SendInputs
             public uint Flags;
             public uint Time;
             public IntPtr ExtraInfo;
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

@@ -9,7 +9,7 @@ using Valuechanges;
 
 namespace MouseInputsAPI
 {
-    public class MouseInput
+    public class MouseInput : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -255,6 +255,11 @@ namespace MouseInputsAPI
                 if (state.Offset == MouseOffset.Buttons7 & state.Value == 0)
                     MouseButtons7 = false;
             }
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

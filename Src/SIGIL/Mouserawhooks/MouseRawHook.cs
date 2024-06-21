@@ -12,7 +12,7 @@ using Valuechanges;
 
 namespace MouseRawHooksAPI
 {
-    public class MouseRawHook
+    public class MouseRawHook : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -219,6 +219,11 @@ namespace MouseRawHooksAPI
                 if (e.ButtonPressEvent.ulButtons == 128)
                     MouseButtons4 = false;
             }
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

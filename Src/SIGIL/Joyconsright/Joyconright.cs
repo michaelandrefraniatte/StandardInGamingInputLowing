@@ -12,7 +12,7 @@ using Valuechanges;
 
 namespace JoyconsRightAPI
 {
-    public class JoyconRight
+    public class JoyconRight : IDisposable
     {
         [DllImport("MotionInputPairing.dll", EntryPoint = "joyconrightconnect")]
         private static extern bool joyconrightconnect();
@@ -424,6 +424,11 @@ namespace JoyconsRightAPI
             buf_Right[0] = 0x1;
             Rhid_write(handleRight, buf_Right, (UIntPtr)(len + 11));
             Rhid_read_timeout(handleRight, buf_Right, (UIntPtr)report_lenRight);
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

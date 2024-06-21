@@ -8,7 +8,7 @@ using Valuechanges;
 
 namespace MouseHooksAPI
 {
-    public class MouseHooks
+    public class MouseHooks : IDisposable
     {
         [DllImport("User32.dll")]
         private static extern bool GetCursorPos(out int x, out int y);
@@ -189,6 +189,11 @@ namespace MouseHooksAPI
             MouseMiddleButton = MouseHookMiddleButton;
             MouseXButton = MouseHookXButton;
             MouseButtonX = MouseHookButtonX;
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
     public class MouseHook

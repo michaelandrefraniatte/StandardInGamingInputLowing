@@ -13,7 +13,7 @@ using Valuechanges;
 
 namespace DualSensesAPI
 {
-    public class DualSense
+    public class DualSense : IDisposable
     {
         [DllImport("hid.dll")]
         private static extern void HidD_GetHidGuid(out Guid gHid);
@@ -562,6 +562,11 @@ namespace DualSensesAPI
                 return true;
             }
             catch { return false; }
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
     internal static class DualShock4ByteConverterExtensions

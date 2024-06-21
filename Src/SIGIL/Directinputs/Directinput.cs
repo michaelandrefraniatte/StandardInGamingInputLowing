@@ -9,7 +9,7 @@ using Valuechanges;
 
 namespace DirectInputsAPI
 {
-    public class DirectInput
+    public class DirectInput : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -1008,6 +1008,11 @@ namespace DirectInputsAPI
                 if (state.Offset == JoystickOffset.Buttons127 & state.Value == 0)
                     JoystickButtons127 = false;
             }
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

@@ -12,7 +12,7 @@ using Valuechanges;
 
 namespace KeyboardRawHooksAPI
 {
-    public class KeyboardRawHook
+    public class KeyboardRawHook : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -1047,6 +1047,11 @@ namespace KeyboardRawHooksAPI
                         Key_OEM_CLEAR = false;
                 }
             }
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
         private const int VK_LBUTTON = (int)0x01;
         private const int VK_RBUTTON = (int)0x02;

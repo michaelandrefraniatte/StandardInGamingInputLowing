@@ -24,7 +24,7 @@ namespace Interceptions
             }
         }
     }
-    public class SendInterception
+    public class SendInterception : IDisposable
     {
         [DllImport("user32.dll")]
         private static extern void SetPhysicalCursorPos(int X, int Y);
@@ -1405,6 +1405,11 @@ namespace Interceptions
         private void MoveMouseTo(Input input, int x, int y, int mouseId)
         {
             Task.Run(() => input.MoveMouseTo(x, y, mouseId));
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
     public class Input

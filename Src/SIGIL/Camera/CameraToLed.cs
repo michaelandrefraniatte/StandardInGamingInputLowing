@@ -12,7 +12,7 @@ using Valuechanges;
 
 namespace CameraAPI
 {
-    public class CameraToLed
+    public class CameraToLed : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -48,6 +48,8 @@ namespace CameraAPI
         private bool[] wd = { false };
         private bool[] wu = { false };
         private bool[] ws = { false };
+        private bool disposedValue;
+
         private void valchanged(int n, bool val)
         {
             if (val)
@@ -259,6 +261,11 @@ namespace CameraAPI
             g.DrawLine(p1, p, ph);
             g.DrawLine(p1, p, ph2);
             g.Dispose();
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

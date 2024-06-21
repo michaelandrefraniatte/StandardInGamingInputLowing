@@ -7,7 +7,7 @@ using System;
 
 namespace controllersvjoy
 {
-    public class VJoyController
+    public class VJoyController : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -184,6 +184,11 @@ namespace controllersvjoy
                 str += Environment.NewLine;
                 form1.SetLabel1(str);
             }
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

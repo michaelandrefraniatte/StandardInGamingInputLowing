@@ -13,7 +13,7 @@ using Valuechanges;
 
 namespace DualShocks4API
 {
-    public class DualShock4
+    public class DualShock4 : IDisposable
     {
         [DllImport("hid.dll")]
         private static extern void HidD_GetHidGuid(out Guid gHid);
@@ -538,6 +538,11 @@ namespace DualShocks4API
                 return true;
             }
             catch { return false; }
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
     internal static class DualShock4ByteConverterExtensions

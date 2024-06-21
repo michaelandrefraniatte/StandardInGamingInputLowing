@@ -9,7 +9,7 @@ using Valuechanges;
 
 namespace GamepadsHooksAPI
 {
-    public class GamepadsHooks
+    public class GamepadsHooks : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -226,6 +226,11 @@ namespace GamepadsHooksAPI
             ControllerThumbRightY = gamepadstate.ThumbSticks.Right.Y * 32767f;
             ControllerTriggerLeftPosition = gamepadstate.Triggers.Left * 255f;
             ControllerTriggerRightPosition = gamepadstate.Triggers.Right * 255f;
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

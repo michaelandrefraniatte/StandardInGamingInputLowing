@@ -8,7 +8,7 @@ using Valuechanges;
 
 namespace KeyboardHooksAPI
 {
-    public class KeyboardHooks
+    public class KeyboardHooks : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -1560,6 +1560,11 @@ namespace KeyboardHooksAPI
                 if (scanCode == S_OEM_CLEAR & vkCode == VK_OEM_CLEAR)
                     Key_OEM_CLEAR = false;
             }
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
     public class KeyboardHook

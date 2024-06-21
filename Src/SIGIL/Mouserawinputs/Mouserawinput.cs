@@ -10,7 +10,7 @@ using Valuechanges;
 
 namespace MouseRawInputsAPI
 {
-    public class MouseRawInputs
+    public class MouseRawInputs : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -216,6 +216,11 @@ namespace MouseRawInputsAPI
                 MouseButtons4 = true;
             if (args.ButtonFlags == MouseButtonFlags.Button5Up)
                 MouseButtons4 = false;
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

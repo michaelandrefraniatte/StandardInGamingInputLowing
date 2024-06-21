@@ -12,7 +12,7 @@ using Valuechanges;
 
 namespace WiiMotesAPI
 {
-    public class WiiMote
+    public class WiiMote : IDisposable
     {
         [DllImport("MotionInputPairing.dll", EntryPoint = "wiimoteconnect")]
         private static extern bool wiimoteconnect();
@@ -609,6 +609,11 @@ namespace WiiMotesAPI
             mBuff[5] = (byte)size;
             Array.Copy(buff, 0, mBuff, 6, 1);
             HidD_SetOutputReport(_hFile.DangerousGetHandle(), mBuff, 22);
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

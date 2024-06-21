@@ -9,7 +9,7 @@ using Valuechanges;
 
 namespace XInputsAPI
 {
-    public class XInput
+    public class XInput : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -287,6 +287,11 @@ namespace XInputsAPI
             ControllerThumbLeftY = xistate.Gamepad.LeftThumbY;
             ControllerThumbRightX = xistate.Gamepad.RightThumbX;
             ControllerThumbRightY = xistate.Gamepad.RightThumbY;
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

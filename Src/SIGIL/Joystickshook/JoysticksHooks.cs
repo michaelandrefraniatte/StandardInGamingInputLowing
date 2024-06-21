@@ -9,7 +9,7 @@ using Valuechanges;
 
 namespace JoysticksHooksAPI
 {
-    public class JoysticksHooks
+    public class JoysticksHooks : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -619,6 +619,11 @@ namespace JoysticksHooksAPI
             JoystickButtons125 = buttons[125];
             JoystickButtons126 = buttons[126];
             JoystickButtons127 = buttons[127];
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

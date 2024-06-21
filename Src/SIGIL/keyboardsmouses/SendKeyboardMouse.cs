@@ -23,7 +23,7 @@ namespace keyboardsmouses
             }
         }
     }
-    public class SendKeyboardMouse
+    public class SendKeyboardMouse : IDisposable
     {
         [DllImport("keyboardmouse.dll", EntryPoint = "MoveMouseTo", CallingConvention = CallingConvention.Cdecl)]
         private static extern void MoveMouseTo(int x, int y);
@@ -1519,6 +1519,11 @@ namespace keyboardsmouses
                 Task.Run(() => SendKeyArrowsF(bVk, bScan));
             else
                 Task.Run(() => SimulateKeyUpArrows(bVk, bScan));
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }

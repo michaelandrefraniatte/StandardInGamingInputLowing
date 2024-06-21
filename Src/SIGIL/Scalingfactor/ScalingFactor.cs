@@ -8,7 +8,7 @@ using Valuechanges;
 
 namespace ScalingFactorAPI
 {
-    public class ScalingFactor
+    public class ScalingFactor : IDisposable
     {
         [DllImport("user32.dll")]
         public static extern bool EnumDisplaySettings(string lpszDeviceName, int iModeNum, ref DEVMODE lpDevMode);
@@ -207,6 +207,11 @@ namespace ScalingFactorAPI
             public int dmReserved2;
             public int dmPanningWidth;
             public int dmPanningHeight;
+        }
+        public void Dispose()
+        {
+            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }
