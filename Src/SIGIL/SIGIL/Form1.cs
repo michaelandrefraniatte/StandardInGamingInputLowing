@@ -346,6 +346,8 @@ namespace SIGIL
                 range.SetStyle(StyleObject, new Regex(@"\bki1\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bmi2\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bki2\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bnetwork\b"));
+                range.SetStyle(StyleObject, new Regex(@"\bnetworkhost\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bkeyboardsmouses\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bSendKeyboardMouse\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bSKM\b"));
@@ -1864,6 +1866,8 @@ namespace SIGIL
                 "mi1",
                 "ki1",
                 "mi2",
+                "network",
+                "networkhost",
                 "ki2",
                 "SKM",
                 "kh",

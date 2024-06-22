@@ -7,7 +7,7 @@ using WebSocketSharp;
 
 namespace Networkshost
 {
-    public class NetworkHost
+    public class NetworkHost : IDisposable
     {
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
@@ -16,20 +16,20 @@ namespace Networkshost
         [DllImport("ntdll.dll", EntryPoint = "NtSetTimerResolution")]
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
-        public static WebSocket wsc;
-        public static string rawdataavailable = "";
-        private static bool running = true, formvisible;
-        private static Form1 form1;
-        private static Stopwatch PollingRate;
-        private static double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
-        private static string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
-        private static Valuechange ValueChange;
-        private static double delay, elapseddown, elapsedup, elapsed;
-        private static bool getstate = false;
-        private static bool[] wd = { false };
-        private static bool[] wu = { false };
-        private static bool[] ws = { false };
-        private static void valchanged(int n, bool val)
+        public WebSocket wsc;
+        public string rawdataavailable = "";
+        private bool running = true, formvisible;
+        private Form1 form1;
+        private Stopwatch PollingRate;
+        private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
+        private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";
+        private Valuechange ValueChange;
+        private double delay, elapseddown, elapsedup, elapsed;
+        private bool getstate = false;
+        private bool[] wd = { false };
+        private bool[] wu = { false };
+        private bool[] ws = { false };
+        private void valchanged(int n, bool val)
         {
             if (val)
             {
@@ -62,13 +62,13 @@ namespace Networkshost
                 wd[n] = false;
             }
         }
-        public static void Connect(string localip, string port, int number = 0)
+        public void Connect(string localip, string port, int number = 0)
         {
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
             Task.Run(() => taskN(localip, port, number));
         }
-        private static void taskN(string localip, string port, int number = 0)
+        private void taskN(string localip, string port, int number = 0)
         {
             string connectionString = "ws://" + localip + ":" + port + "/Control";
             wsc = new WebSocket(connectionString);
@@ -103,7 +103,7 @@ namespace Networkshost
             }
             catch { }
         }
-        public static void Disconnect()
+        public void Disconnect()
         {
             running = false;
             try
@@ -113,7 +113,7 @@ namespace Networkshost
             }
             catch { }
         }
-        public static void ViewData(string inputdelaybutton = "")
+        public void ViewData(string inputdelaybutton = "")
         {
             if (!formvisible)
             {
@@ -121,12 +121,12 @@ namespace Networkshost
                 PollingRate = new Stopwatch();
                 PollingRate.Start();
                 ValueChange = new Valuechange();
-                NetworkHost.inputdelaybutton = inputdelaybutton;
+                this.inputdelaybutton = inputdelaybutton;
                 formvisible = true;
                 Task.Run(() => form1.SetVisible());
             }
         }
-        private static void Ws_OnMessage(object sender, MessageEventArgs e)
+        private void Ws_OnMessage(object sender, MessageEventArgs e)
         {
             rawdataavailable = e.Data;
             if (formvisible)
@@ -176,10 +176,11 @@ namespace Networkshost
                 form1.SetLabel1(str);
             }
         }
-        public static void Dispose()
+        public void Dispose()
         {
             GC.Collect();
             GC.WaitForPendingFinalizers();
+            GC.SuppressFinalize(this);
         }
     }
 }

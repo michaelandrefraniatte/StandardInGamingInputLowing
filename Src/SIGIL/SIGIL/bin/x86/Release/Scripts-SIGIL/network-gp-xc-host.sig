@@ -32,6 +32,7 @@ namespace StringToCode
         private static double statex = 0f, statey = 0f, mousex = 0f, mousey = 0f, mousestatex = 0f, mousestatey = 0f, dzx = 0.0f, dzy = 0.0f, viewpower1x = 0f, viewpower2x = 1f, viewpower3x = 0f, viewpower1y = 0.25f, viewpower2y = 0.75f, viewpower3y = 0f, viewpower05x = 0f, viewpower05y = 0f;
         private static bool getstate;
         private static int sleeptime = 1;
+        private NetworkHost networkhost = new NetworkHost();
         private static XBoxController XBC = new XBoxController();
         public static Valuechange ValueChange = new Valuechange();
         public static string localip = "192.168.1.14";
@@ -43,9 +44,9 @@ namespace StringToCode
             {
                 running = false;
                 Thread.Sleep(100);
-                NetworkHost.Disconnect();
+                networkhost.Disconnect();
                 XBC.Disconnect();
-                NetworkHost.Dispose();
+                networkhost.Dispose();
                 XBC.Dispose();
             }
             catch { }
@@ -60,7 +61,7 @@ namespace StringToCode
         private void Start()
         {
             running = true;
-            NetworkHost.Connect(localip, port);
+            networkhost.Connect(localip, port);
             XBC.Connect();
             Task.Run(() => task());
         }
@@ -70,9 +71,9 @@ namespace StringToCode
             {
                 if (!running)
                     break;
-                if (NetworkHost.rawdataavailable != "")
+                if (networkhost.rawdataavailable != "")
                 {
-                    control = stringToControl(NetworkHost.rawdataavailable);
+                    control = stringToControl(networkhost.rawdataavailable);
                     mousex  = Convert.ToSingle(control[0]);
                     mousey  = Convert.ToSingle(control[1]);
                     statex = Math.Abs(mousex) <= 32767f ? mousex : Math.Sign(mousex) * 32767f;

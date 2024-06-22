@@ -41,6 +41,7 @@ namespace StringToCode
         public static string port = "62000";
         private static bool[] getstate = new bool[12];
         private static int sleeptime = 1;
+        private Network network = new Network();
         private XBoxController XBC = new XBoxController();
         private MouseHooks mh = new MouseHooks();
         private KeyboardHooks kh = new KeyboardHooks();
@@ -73,13 +74,13 @@ namespace StringToCode
             {
                 running = false;
                 Thread.Sleep(100);
-                Network.Disconnect();
+                network.Disconnect();
                 mh.Close();
                 kh.Close();
                 XBC.Disconnect();
                 xi.Close();
                 sf.Close();
-                Network.Dispose();
+                network.Dispose();
                 mh.Dispose();
                 kh.Dispose();
                 XBC.Dispose();
@@ -109,7 +110,7 @@ namespace StringToCode
             xi.BeginPolling();
             sf.Scan();
             sf.BeginPolling();
-            Network.Connect(localip, port);
+            network.Connect(localip, port);
             Task.Run(() => task());
         }
         private void task()
@@ -206,7 +207,7 @@ namespace StringToCode
                 }
                 XBC.Set(Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition, Controller_Send_xbox);
                 string control           = Convert.ToInt32(xi.ControllerThumbRightX) + "," + Convert.ToInt32(xi.ControllerThumbRightY) + "," + Convert.ToInt32(xi.ControllerThumbLeftX) + "," + Convert.ToInt32(xi.ControllerThumbLeftY) + "," + xi.ControllerButtonUpPressed + "," + xi.ControllerButtonLeftPressed + "," + xi.ControllerButtonDownPressed + "," + xi.ControllerButtonRightPressed + "," + xi.ControllerButtonBackPressed + "," + xi.ControllerButtonStartPressed + "," + xi.ControllerThumbpadLeftPressed + "," + xi.ControllerButtonShoulderLeftPressed + "," + xi.ControllerButtonShoulderRightPressed + "," + xi.ControllerButtonAPressed + "," + xi.ControllerButtonBPressed + "," + xi.ControllerButtonXPressed + "," + xi.ControllerButtonYPressed + "," + xi.ControllerThumbpadRightPressed + "," + Convert.ToInt32(xi.ControllerTriggerLeftPosition) + "," + Convert.ToInt32(xi.ControllerTriggerRightPosition) + ",end";
-                Network.rawdataavailable = control;
+                network.rawdataavailable = control;
                 /*Network.ViewData();*/
                 /*XBC.ViewData();*/
                 /*mh.ViewData();*/

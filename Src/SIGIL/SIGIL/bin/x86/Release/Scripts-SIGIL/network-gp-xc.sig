@@ -31,6 +31,7 @@ namespace StringToCode
         private static bool getstate;
         private static int sleeptime = 1;
         private XInput xi = new XInput();
+        private Network network = new Network();
         public static Valuechange ValueChange = new Valuechange();
         public static string localip = "192.168.1.14";
         public static string port = "62000";
@@ -40,9 +41,9 @@ namespace StringToCode
             {
                 running = false;
                 Thread.Sleep(100);
-                Network.Disconnect();
+                network.Disconnect();
                 xi.Close();
-                Network.Dispose();
+                network.Dispose();
                 xi.Dispose();
             }
             catch { }
@@ -59,7 +60,7 @@ namespace StringToCode
             running = true;
             xi.Scan();
             xi.BeginPolling();
-            Network.Connect(localip, port);
+            network.Connect(localip, port);
             Task.Run(() => task());
         }
         private void task()
@@ -69,7 +70,7 @@ namespace StringToCode
                 if (!running)
                     break;
                 string control           = Convert.ToInt32(xi.ControllerThumbRightX) + "," + Convert.ToInt32(xi.ControllerThumbRightY) + "," + Convert.ToInt32(xi.ControllerThumbLeftX) + "," + Convert.ToInt32(xi.ControllerThumbLeftY) + "," + xi.ControllerButtonUpPressed + "," + xi.ControllerButtonLeftPressed + "," + xi.ControllerButtonDownPressed + "," + xi.ControllerButtonRightPressed + "," + xi.ControllerButtonBackPressed + "," + xi.ControllerButtonStartPressed + "," + xi.ControllerThumbpadLeftPressed + "," + xi.ControllerButtonShoulderLeftPressed + "," + xi.ControllerButtonShoulderRightPressed + "," + xi.ControllerButtonAPressed + "," + xi.ControllerButtonBPressed + "," + xi.ControllerButtonXPressed + "," + xi.ControllerButtonYPressed + "," + xi.ControllerThumbpadRightPressed + "," + Convert.ToInt32(xi.ControllerTriggerLeftPosition) + "," + Convert.ToInt32(xi.ControllerTriggerRightPosition) + ",end";
-                Network.rawdataavailable = control;
+                network.rawdataavailable = control;
                 /*Network.ViewData();*/
                 /*xi.ViewData();*/
                 Thread.Sleep(sleeptime);
