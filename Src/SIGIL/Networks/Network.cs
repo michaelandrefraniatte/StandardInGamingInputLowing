@@ -101,7 +101,7 @@ namespace Networks
             GC.WaitForPendingFinalizers();
             GC.SuppressFinalize(this);
         }
-        public class Control : WebSocketBehavior
+        private class Control : WebSocketBehavior
         {
             private Network network = new Network();
             protected override void OnMessage(MessageEventArgs e)
