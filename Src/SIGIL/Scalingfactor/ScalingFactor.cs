@@ -211,6 +211,7 @@ namespace ScalingFactorAPI
         public void Dispose()
         {
             GC.Collect();
+            GC.WaitForPendingFinalizers();
             GC.SuppressFinalize(this);
         }
     }

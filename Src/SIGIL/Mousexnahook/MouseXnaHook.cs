@@ -194,6 +194,7 @@ namespace MouseXnaHookAPI
         public void Dispose()
         {
             GC.Collect();
+            GC.WaitForPendingFinalizers();
             GC.SuppressFinalize(this);
         }
     }

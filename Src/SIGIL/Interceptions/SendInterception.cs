@@ -1409,6 +1409,7 @@ namespace Interceptions
         public void Dispose()
         {
             GC.Collect();
+            GC.WaitForPendingFinalizers();
             GC.SuppressFinalize(this);
         }
     }

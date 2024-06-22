@@ -1051,6 +1051,7 @@ namespace KeyboardRawHooksAPI
         public void Dispose()
         {
             GC.Collect();
+            GC.WaitForPendingFinalizers();
             GC.SuppressFinalize(this);
         }
         private const int VK_LBUTTON = (int)0x01;

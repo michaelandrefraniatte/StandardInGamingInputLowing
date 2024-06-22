@@ -566,6 +566,7 @@ namespace DualSensesAPI
         public void Dispose()
         {
             GC.Collect();
+            GC.WaitForPendingFinalizers();
             GC.SuppressFinalize(this);
         }
     }

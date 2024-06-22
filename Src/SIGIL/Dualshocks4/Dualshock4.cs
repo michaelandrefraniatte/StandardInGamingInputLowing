@@ -542,6 +542,7 @@ namespace DualShocks4API
         public void Dispose()
         {
             GC.Collect();
+            GC.WaitForPendingFinalizers();
             GC.SuppressFinalize(this);
         }
     }

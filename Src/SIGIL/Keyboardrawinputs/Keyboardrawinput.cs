@@ -1397,6 +1397,7 @@ namespace KeyboardRawInputsAPI
         public void Dispose()
         {
             GC.Collect();
+            GC.WaitForPendingFinalizers();
             GC.SuppressFinalize(this);
         }
     }

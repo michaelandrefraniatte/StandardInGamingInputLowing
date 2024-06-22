@@ -1523,6 +1523,7 @@ namespace keyboardsmouses
         public void Dispose()
         {
             GC.Collect();
+            GC.WaitForPendingFinalizers();
             GC.SuppressFinalize(this);
         }
     }
