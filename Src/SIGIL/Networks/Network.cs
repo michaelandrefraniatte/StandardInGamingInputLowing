@@ -101,70 +101,70 @@ namespace Networks
             GC.WaitForPendingFinalizers();
             GC.SuppressFinalize(this);
         }
-    }
-    public class Control : WebSocketBehavior
-    {
-        private Network network = new Network();
-        protected override void OnMessage(MessageEventArgs e)
+        public class Control : WebSocketBehavior
         {
-            base.OnMessage(e);
-            while (network.running)
+            private Network network = new Network();
+            protected override void OnMessage(MessageEventArgs e)
             {
-                try
+                base.OnMessage(e);
+                while (network.running)
                 {
-                    Send(network.rawdataavailable);
-                    if (network.formvisible)
+                    try
                     {
-                        network.pollingratedisplay++;
-                        network.pollingratetemp = network.pollingrateperm;
-                        network.pollingrateperm = (double)network.PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
-                        if (network.pollingratedisplay > 300)
+                        Send(network.rawdataavailable);
+                        if (network.formvisible)
                         {
-                            network.pollingrate = network.pollingrateperm - network.pollingratetemp;
-                            network.pollingratedisplay = 0;
-                        }
-                        string str = "rawdataavailable : " + network.rawdataavailable + Environment.NewLine;
-                        str += "PollingRate : " + network.pollingrate + " ms" + Environment.NewLine;
-                        string txt = str;
-                        string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-                        foreach (string line in lines)
-                            if (line.Contains(network.inputdelaybutton + " : "))
+                            network.pollingratedisplay++;
+                            network.pollingratetemp = network.pollingrateperm;
+                            network.pollingrateperm = (double)network.PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                            if (network.pollingratedisplay > 300)
                             {
-                                network.inputdelaytemp = network.inputdelay;
-                                network.inputdelay = line;
+                                network.pollingrate = network.pollingrateperm - network.pollingratetemp;
+                                network.pollingratedisplay = 0;
                             }
-                        network.valchanged(0, network.inputdelay != network.inputdelaytemp);
-                        if (network.wd[0])
-                        {
-                            network.getstate = true;
+                            string str = "rawdataavailable : " + network.rawdataavailable + Environment.NewLine;
+                            str += "PollingRate : " + network.pollingrate + " ms" + Environment.NewLine;
+                            string txt = str;
+                            string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                            foreach (string line in lines)
+                                if (line.Contains(network.inputdelaybutton + " : "))
+                                {
+                                    network.inputdelaytemp = network.inputdelay;
+                                    network.inputdelay = line;
+                                }
+                            network.valchanged(0, network.inputdelay != network.inputdelaytemp);
+                            if (network.wd[0])
+                            {
+                                network.getstate = true;
+                            }
+                            if (network.inputdelay == network.inputdelaytemp)
+                                network.getstate = false;
+                            if (network.getstate)
+                            {
+                                network.elapseddown = (double)network.PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                                network.elapsed = 0;
+                            }
+                            if (network.wu[0])
+                            {
+                                network.elapsedup = (double)network.PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                                network.elapsed = network.elapsedup - network.elapseddown;
+                            }
+                            network.ValueChange[0] = network.inputdelay == network.inputdelaytemp ? network.elapsed : 0;
+                            if (network.ValueChange._ValueChange[0] > 0)
+                            {
+                                network.delay = network.ValueChange._ValueChange[0];
+                            }
+                            str += "InputDelay : " + network.delay + " ms" + Environment.NewLine;
+                            str += Environment.NewLine;
+                            network.form1.SetLabel1(str);
                         }
-                        if (network.inputdelay == network.inputdelaytemp)
-                            network.getstate = false;
-                        if (network.getstate)
-                        {
-                            network.elapseddown = (double)network.PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
-                            network.elapsed = 0;
-                        }
-                        if (network.wu[0])
-                        {
-                            network.elapsedup = (double)network.PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
-                            network.elapsed = network.elapsedup - network.elapseddown;
-                        }
-                        network.ValueChange[0] = network.inputdelay == network.inputdelaytemp ? network.elapsed : 0;
-                        if (network.ValueChange._ValueChange[0] > 0)
-                        {
-                            network.delay = network.ValueChange._ValueChange[0];
-                        }
-                        str += "InputDelay : " + network.delay + " ms" + Environment.NewLine;
-                        str += Environment.NewLine;
-                        network.form1.SetLabel1(str);
                     }
-                }
-                catch
-                {
+                    catch
+                    {
+                        System.Threading.Thread.Sleep(1);
+                    }
                     System.Threading.Thread.Sleep(1);
                 }
-                System.Threading.Thread.Sleep(1);
             }
         }
     }
