@@ -155,30 +155,30 @@ namespace DualShocks4API
         {
             LeftAnalogStick = ReadAnalogStick(ds4data[1], ds4data[2]);
             RightAnalogStick = ReadAnalogStick(ds4data[3], ds4data[4]);
-            L2 = ds4data[8].ToUnsignedFloat();
-            R2 = ds4data[9].ToUnsignedFloat();
+            L2 = ToUnsignedFloat(ds4data[8]);
+            R2 = ToUnsignedFloat(ds4data[9]);
             btnBlock1 = ds4data[5];
             btnBlock2 = ds4data[6];
             btnBlock3 = ds4data[7];
-            SquareButton = btnBlock1.HasFlag(0x10);
-            CrossButton = btnBlock1.HasFlag(0x20);
-            CircleButton = btnBlock1.HasFlag(0x40);
-            TriangleButton = btnBlock1.HasFlag(0x80);
+            SquareButton = HasFlag(btnBlock1, 0x10);
+            CrossButton = HasFlag(btnBlock1, 0x20);
+            CircleButton = HasFlag(btnBlock1, 0x40);
+            TriangleButton = HasFlag(btnBlock1, 0x80);
             DPadUpButton = ReadDPadButton(btnBlock1, 0, 1, 7);
             DPadRightButton = ReadDPadButton(btnBlock1, 1, 2, 3);
             DPadDownButton = ReadDPadButton(btnBlock1, 3, 4, 5);
             DPadLeftButton = ReadDPadButton(btnBlock1, 5, 6, 7);
-            L1Button = btnBlock2.HasFlag(0x01);
-            R1Button = btnBlock2.HasFlag(0x02);
-            L2Button = btnBlock2.HasFlag(0x04);
-            R2Button = btnBlock2.HasFlag(0x08);
-            CreateButton = btnBlock2.HasFlag(0x10);
-            MenuButton = btnBlock2.HasFlag(0x20);
-            L3Button = btnBlock2.HasFlag(0x40);
-            R3Button = btnBlock2.HasFlag(0x80);
-            LogoButton = btnBlock3.HasFlag(0x01);
-            TouchpadButton = btnBlock3.HasFlag(0x02);
-            MicButton = ds4data[10].HasFlag(0x04);
+            L1Button = HasFlag(btnBlock2, 0x01);
+            R1Button = HasFlag(btnBlock2, 0x02);
+            L2Button = HasFlag(btnBlock2, 0x04);
+            R2Button = HasFlag(btnBlock2, 0x08);
+            CreateButton = HasFlag(btnBlock2, 0x10);
+            MenuButton = HasFlag(btnBlock2, 0x20);
+            L3Button = HasFlag(btnBlock2, 0x40);
+            R3Button = HasFlag(btnBlock2, 0x80);
+            LogoButton = HasFlag(btnBlock3, 0x01);
+            TouchpadButton = HasFlag(btnBlock3, 0x02);
+            MicButton = HasFlag(ds4data[10], 0x04);
             Touchpad1 = ReadTouchpad(new byte[] { ds4data[35], ds4data[36], ds4data[37], ds4data[38] });
             Touchpad2 = ReadTouchpad(new byte[] { ds4data[39], ds4data[40], ds4data[41], ds4data[42] });
             Gyro = -ReadAccelAxes(
@@ -192,7 +192,7 @@ namespace DualShocks4API
                 new byte[] { ds4data[23], ds4data[24] }
             );
             miscByte = ds4data[30];
-            IsHeadphoneConnected = miscByte.HasFlag(0x01);
+            IsHeadphoneConnected = HasFlag(miscByte, 0x01);
             PS4ControllerLeftStickX = LeftAnalogStick.X;
             PS4ControllerLeftStickY = LeftAnalogStick.Y;
             PS4ControllerRightStickX = -RightAnalogStick.X;
@@ -343,11 +343,11 @@ namespace DualShocks4API
             Task.Run(() => taskD());
             Task.Run(() => taskP());
         }
-        private Vec2 ReadAnalogStick(byte x, byte y)
+        private Vector2 ReadAnalogStick(byte x, byte y)
         {
-            float x1 = x.ToSignedFloat();
-            float y1 = -y.ToSignedFloat();
-            return new Vec2
+            float x1 = ToSignedFloat(x);
+            float y1 = -ToSignedFloat(y);
+            return new Vector2
             {
                 X = Math.Abs(x1) >= 0f ? x1 : 0,
                 Y = Math.Abs(y1) >= 0f ? y1 : 0
@@ -373,7 +373,7 @@ namespace DualShocks4API
                 Id = bytes[0]
             };
         }
-        private Vec3 ReadAccelAxes(byte[] x, byte[] y, byte[] z)
+        private Vector3 ReadAccelAxes(byte[] x, byte[] y, byte[] z)
         {
             if (!littleendian)
             {
@@ -381,15 +381,15 @@ namespace DualShocks4API
                 y = y.Reverse().ToArray();
                 z = z.Reverse().ToArray();
             }
-            return new Vec3
+            return new Vector3
             {
                 X = -BitConverter.ToInt16(x, 0),
                 Y = BitConverter.ToInt16(y, 0),
                 Z = BitConverter.ToInt16(z, 0)
             };
         }
-        private Vec2 LeftAnalogStick { get; set; }
-        private Vec2 RightAnalogStick { get; set; }
+        private Vector2 LeftAnalogStick { get; set; }
+        private Vector2 RightAnalogStick { get; set; }
         private float L2 { get; set; }
         private float R2 { get; set; }
         private bool SquareButton { get; set; }
@@ -413,8 +413,8 @@ namespace DualShocks4API
         private bool MicButton { get; set; }
         private DualShock4Touch Touchpad1 { get; set; }
         private DualShock4Touch Touchpad2 { get; set; }
-        private Vec3 Gyro { get; set; }
-        private Vec3 Accelerometer { get; set; }
+        private Vector3 Gyro { get; set; }
+        private Vector3 Accelerometer { get; set; }
         private bool IsHeadphoneConnected { get; set; }
         private void Reconnection()
         {
@@ -545,64 +545,24 @@ namespace DualShocks4API
             GC.WaitForPendingFinalizers();
             GC.SuppressFinalize(this);
         }
-    }
-    internal static class DualShock4ByteConverterExtensions
-    {
-        public static float ToSignedFloat(this byte b)
+        private float ToSignedFloat(byte b)
         {
             return (b / 255.0f - 0.5f) * 2.0f;
         }
-        public static float ToUnsignedFloat(this byte b)
+        private float ToUnsignedFloat(byte b)
         {
             return b / 255.0f;
         }
-        public static bool HasFlag(this byte b, byte flag)
+        private bool HasFlag(byte b, byte flag)
         {
             return (b & flag) == flag;
         }
-    }
-    public struct DualShock4Touch
-    {
-        public uint X;
-        public uint Y;
-        public bool IsDown;
-        public byte Id;
-    }
-    public struct Vec2
-    {
-        public float X, Y;
-
-        public float Magnitude()
+        private struct DualShock4Touch
         {
-            return (float)Math.Sqrt(X * X + Y * Y);
-        }
-
-        public Vec2 Normalize()
-        {
-            float m = Magnitude();
-            return new Vec2 { X = X / m, Y = Y / m };
-        }
-
-        public static Vec2 operator -(Vec2 v)
-        {
-            return new Vec2 { X = -v.X, Y = -v.Y };
-        }
-    }
-    public struct Vec3
-    {
-        public float X, Y, Z;
-        public float Magnitude()
-        {
-            return (float)Math.Sqrt(X * X + Y * Y + Z * Z);
-        }
-        public Vec3 Normalize()
-        {
-            float m = Magnitude();
-            return new Vec3 { X = X / m, Y = Y / m, Z = Z / m };
-        }
-        public static Vec3 operator -(Vec3 v)
-        {
-            return new Vec3 { X = -v.X, Y = -v.Y, Z = -v.Z };
+            public uint X;
+            public uint Y;
+            public bool IsDown;
+            public byte Id;
         }
     }
 }

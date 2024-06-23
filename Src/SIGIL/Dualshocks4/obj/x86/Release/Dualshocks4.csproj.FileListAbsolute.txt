@@ -13,6 +13,7 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGaming
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4\bin\x86\Release\Dualshocks4.dll.config
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4\bin\x86\Release\Dualshocks4.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4\bin\x86\Release\Dualshocks4.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4\bin\x86\Release\System.Numerics.Vectors.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4\bin\x86\Release\Valuechanges.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4\bin\x86\Release\Valuechanges.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4\obj\x86\Release\Dualshocks4.csproj.AssemblyReference.cache

@@ -30,8 +30,6 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawin
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawinputs\bin\x86\Release\Mouserawinputs.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawinputs\bin\x86\Release\Valuechanges.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawinputs\bin\x86\Release\Valuechanges.pdb
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawinputs\bin\x86\Release\SharpDX.xml
-C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawinputs\bin\x86\Release\SharpDX.RawInput.xml
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawinputs\obj\x86\Release\Mouserawinputs.csproj.AssemblyReference.cache
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawinputs\obj\x86\Release\Mouserawinputs.Form1.resources
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Mouserawinputs\obj\x86\Release\Mouserawinputs.csproj.GenerateResource.cache
