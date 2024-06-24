@@ -208,7 +208,7 @@ namespace JoyconsRightAPI
                     {
                         getstate = true;
                     }
-                    
+                    if (inputdelay == inputdelaytemp)
                         getstate = false;
                     if (getstate)
                     {

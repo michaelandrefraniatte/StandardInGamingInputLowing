@@ -307,7 +307,7 @@ namespace DualShocks4API
                     {
                         getstate = true;
                     }
-                    
+                    if (inputdelay == inputdelaytemp)
                         getstate = false;
                     if (getstate)
                     {

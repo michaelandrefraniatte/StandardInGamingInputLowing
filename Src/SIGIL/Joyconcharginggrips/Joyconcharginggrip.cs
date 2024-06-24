@@ -234,12 +234,12 @@ namespace JoyconChargingGripsAPI
                             leftinputdelaytemp = leftinputdelay;
                             leftinputdelay = line;
                         }
-                    valchanged(0, leftinputdelay.Contains("True") | (!leftinputdelay.Contains("True") & !leftinputdelay.Contains("False") & leftinputdelay != leftinputdelaytemp));
+                    valchanged(0, leftinputdelay != leftinputdelaytemp);
                     if (wd[0])
                     {
                         leftgetstate = true;
                     }
-                    if (leftinputdelay.Contains("False") | (!leftinputdelay.Contains("True") & !leftinputdelay.Contains("False") & leftinputdelay == leftinputdelaytemp))
+                    if (leftinputdelay == leftinputdelaytemp)
                         leftgetstate = false;
                     if (leftgetstate)
                     {
@@ -251,7 +251,7 @@ namespace JoyconChargingGripsAPI
                         leftelapsedup = (double)LeftPollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
                         leftelapsed = leftelapsedup - leftelapseddown;
                     }
-                    LeftValueChange[0] = leftinputdelay.Contains("False") | (!leftinputdelay.Contains("True") & !leftinputdelay.Contains("False") & leftinputdelay == leftinputdelaytemp) ? leftelapsed : 0;
+                    LeftValueChange[0] = leftinputdelay == leftinputdelaytemp ? leftelapsed : 0;
                     if (LeftValueChange._ValueChange[0] > 0)
                     {
                         leftdelay = LeftValueChange._ValueChange[0];
@@ -314,12 +314,12 @@ namespace JoyconChargingGripsAPI
                             rightinputdelaytemp = rightinputdelay;
                             rightinputdelay = line;
                         }
-                    valchanged(1, rightinputdelay.Contains("True") | (!rightinputdelay.Contains("True") & !rightinputdelay.Contains("False") & rightinputdelay != rightinputdelaytemp));
+                    valchanged(1, rightinputdelay != rightinputdelaytemp);
                     if (wd[1])
                     {
                         rightgetstate = true;
                     }
-                    if (rightinputdelay.Contains("False") | (!rightinputdelay.Contains("True") & !rightinputdelay.Contains("False") & rightinputdelay == rightinputdelaytemp))
+                    if (rightinputdelay == rightinputdelaytemp)
                         rightgetstate = false;
                     if (rightgetstate)
                     {
@@ -331,7 +331,7 @@ namespace JoyconChargingGripsAPI
                         rightelapsedup = (double)RightPollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
                         rightelapsed = rightelapsedup - rightelapseddown;
                     }
-                    RightValueChange[0] = rightinputdelay.Contains("False") | (!rightinputdelay.Contains("True") & !rightinputdelay.Contains("False") & rightinputdelay == rightinputdelaytemp) ? rightelapsed : 0;
+                    RightValueChange[0] = rightinputdelay == rightinputdelaytemp ? rightelapsed : 0;
                     if (RightValueChange._ValueChange[0] > 0)
                     {
                         rightdelay = RightValueChange._ValueChange[0];

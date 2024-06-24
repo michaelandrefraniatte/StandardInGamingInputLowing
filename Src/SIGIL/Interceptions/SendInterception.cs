@@ -1339,7 +1339,7 @@ namespace Interceptions
                 {
                     getstate = true;
                 }
-                
+                if (inputdelay == inputdelaytemp)
                     getstate = false;
                 if (getstate)
                 {

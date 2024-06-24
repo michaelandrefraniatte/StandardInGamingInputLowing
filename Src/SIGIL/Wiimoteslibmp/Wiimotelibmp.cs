@@ -248,7 +248,7 @@ namespace WiiMotesLibMPAPI
                     {
                         getstate = true;
                     }
-                    
+                    if (inputdelay == inputdelaytemp)
                         getstate = false;
                     if (getstate)
                     {

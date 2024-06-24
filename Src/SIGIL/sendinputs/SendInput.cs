@@ -1354,7 +1354,7 @@ namespace SendInputs
                 {
                     getstate = true;
                 }
-                
+                if (inputdelay == inputdelaytemp)
                     getstate = false;
                 if (getstate)
                 {

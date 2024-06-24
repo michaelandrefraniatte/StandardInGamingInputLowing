@@ -305,7 +305,7 @@ namespace KeyboardRawHooksAPI
                     {
                         getstate = true;
                     }
-                    
+                    if (inputdelay == inputdelaytemp)
                         getstate = false;
                     if (getstate)
                     {

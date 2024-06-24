@@ -129,54 +129,50 @@ namespace CameraAPI
                 ProcessStateLogic();
                 if (formvisible)
                 {
-                    try
+                    pollingratedisplay++;
+                    pollingratetemp = pollingrateperm;
+                    pollingrateperm = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                    if (pollingratedisplay > 300)
                     {
-                        pollingratedisplay++;
-                        pollingratetemp = pollingrateperm;
-                        pollingrateperm = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
-                        if (pollingratedisplay > 300)
-                        {
-                            pollingrate = pollingrateperm - pollingratetemp;
-                            pollingratedisplay = 0;
-                        }
-                        string str = "camx : " + camx + Environment.NewLine;
-                        str += "camy : " + camy + Environment.NewLine;
-                        str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
-                        string txt = str;
-                        string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-                        foreach (string line in lines)
-                            if (line.Contains(inputdelaybutton + " : "))
-                            {
-                                inputdelaytemp = inputdelay;
-                                inputdelay = line;
-                            }
-                        valchanged(0, inputdelay != inputdelaytemp);
-                        if (wd[0])
-                        {
-                            getstate = true;
-                        }
-                        
-                            getstate = false;
-                        if (getstate)
-                        {
-                            elapseddown = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
-                            elapsed = 0;
-                        }
-                        if (wu[0])
-                        {
-                            elapsedup = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
-                            elapsed = elapsedup - elapseddown;
-                        }
-                        ValueChange[0] = inputdelay == inputdelaytemp ? elapsed : 0;
-                        if (ValueChange._ValueChange[0] > 0)
-                        {
-                            delay = ValueChange._ValueChange[0];
-                        }
-                        str += "InputDelay : " + delay + " ms" + Environment.NewLine;
-                        str += Environment.NewLine;
-                        form1.SetLabel1(str);
+                        pollingrate = pollingrateperm - pollingratetemp;
+                        pollingratedisplay = 0;
                     }
-                    catch { }
+                    string str = "camx : " + camx + Environment.NewLine;
+                    str += "camy : " + camy + Environment.NewLine;
+                    str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
+                    string txt = str;
+                    string[] lines = txt.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                    foreach (string line in lines)
+                        if (line.Contains(inputdelaybutton + " : "))
+                        {
+                            inputdelaytemp = inputdelay;
+                            inputdelay = line;
+                        }
+                    valchanged(0, inputdelay != inputdelaytemp);
+                    if (wd[0])
+                    {
+                        getstate = true;
+                    }
+                    if (inputdelay == inputdelaytemp)
+                        getstate = false;
+                    if (getstate)
+                    {
+                        elapseddown = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                        elapsed = 0;
+                    }
+                    if (wu[0])
+                    {
+                        elapsedup = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
+                        elapsed = elapsedup - elapseddown;
+                    }
+                    ValueChange[0] = inputdelay == inputdelaytemp ? elapsed : 0;
+                    if (ValueChange._ValueChange[0] > 0)
+                    {
+                        delay = ValueChange._ValueChange[0];
+                    }
+                    str += "InputDelay : " + delay + " ms" + Environment.NewLine;
+                    str += Environment.NewLine;
+                    form1.SetLabel1(str);
                 }
             }
         }

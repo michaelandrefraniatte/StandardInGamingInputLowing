@@ -288,7 +288,7 @@ namespace DirectInputsAPI
                     {
                         getstate = true;
                     }
-                    
+                    if (inputdelay == inputdelaytemp)
                         getstate = false;
                     if (getstate)
                     {
