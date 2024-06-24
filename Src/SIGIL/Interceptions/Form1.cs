@@ -24,15 +24,6 @@ namespace Interceptions
         {
             this.ShowDialog();
         }
-        public void SetUnvisible()
-        {
-            this.Hide();
-        }
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            this.Hide();
-            e.Cancel = true;
-        }
         private void Form1_Load(object sender, System.EventArgs e)
         {
             TimeBeginPeriod(1);

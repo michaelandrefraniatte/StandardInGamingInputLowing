@@ -28,10 +28,6 @@ namespace Wiimotes
         {
             this.ShowDialog();
         }
-        public void SetUnvisible()
-        {
-            this.Hide();
-        }
         private async void Form2_Load(object sender, EventArgs e)
         {
             TimeBeginPeriod(1);
@@ -88,11 +84,6 @@ namespace Wiimotes
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             closed = true;
-        }
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            this.Hide();
-            e.Cancel = true;
         }
     }
 }

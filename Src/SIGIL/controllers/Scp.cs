@@ -127,6 +127,9 @@ namespace controllers
         }
         public void Disconnect()
         {
+            if (formvisible)
+                if (form1.Visible)
+                    form1.Close();
             Set(false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0, 0, false);
             Unplug(inc);
         }

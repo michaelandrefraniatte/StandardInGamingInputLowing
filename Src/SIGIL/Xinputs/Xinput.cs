@@ -86,6 +86,9 @@ namespace XInputsAPI
         }
         public void Close()
         {
+            if (formvisible)
+                if (form1.Visible)
+                    form1.Close();
             running = false;
         }
         private void taskD()

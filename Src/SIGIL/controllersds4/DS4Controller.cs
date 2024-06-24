@@ -89,6 +89,9 @@ namespace controllersds4
         }
         public void Disconnect()
         {
+            if (formvisible)
+                if (form1.Visible)
+                    form1.Close();
             Set(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 0, 0, 0, 0, false, false, 0, 0);
             Controller.Disconnect();
             client.Dispose();

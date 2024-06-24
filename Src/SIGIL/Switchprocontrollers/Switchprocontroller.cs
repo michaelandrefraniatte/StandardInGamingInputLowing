@@ -137,6 +137,9 @@ namespace SwitchProControllersAPI
         }
         public void Close()
         {
+            if (formvisible)
+                if (form1.Visible)
+                    form1.Close();
             running = false;
             Thread.Sleep(100);
             Subcommand3ProController(0x06, new byte[] { 0x01 }, 1);

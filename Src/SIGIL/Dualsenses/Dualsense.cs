@@ -146,6 +146,9 @@ namespace DualSensesAPI
         }
         public void Close()
         {
+            if (formvisible)
+                if (form1.Visible)
+                    form1.Close();
             running = false;
             Thread.Sleep(100);
             handleunshared.Close();

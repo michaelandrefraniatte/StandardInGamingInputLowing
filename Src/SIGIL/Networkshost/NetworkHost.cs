@@ -105,6 +105,9 @@ namespace Networkshost
         }
         public void Disconnect()
         {
+            if (formvisible)
+                if (form1.Visible)
+                    form1.Close();
             running = false;
             try
             {

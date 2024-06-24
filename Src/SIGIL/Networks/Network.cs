@@ -78,6 +78,9 @@ namespace Networks
         }
         public void Disconnect()
         {
+            if (formvisible)
+                if (form1.Visible)
+                    form1.Close();
             running = false;
             wss.RemoveWebSocketService("/Control");
             wss.Stop();

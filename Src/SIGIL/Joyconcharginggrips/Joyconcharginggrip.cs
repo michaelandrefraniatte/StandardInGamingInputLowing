@@ -166,6 +166,9 @@ namespace JoyconChargingGripsAPI
         }
         public void Close()
         {
+            if (formvisible)
+                if (form1.Visible)
+                    form1.Close();
             running = false;
             Thread.Sleep(100);
             SubcommandGripLeftController(0x06, new byte[] { 0x80, 0x05 });

@@ -88,6 +88,9 @@ namespace MouseRawInputsAPI
         }
         public void Close()
         {
+            if (formvisible)
+                if (form1.Visible)
+                    form1.Close();
             running = false;
             System.Threading.Thread.Sleep(100);
             Device.MouseInput -= Device_MouseInput;
