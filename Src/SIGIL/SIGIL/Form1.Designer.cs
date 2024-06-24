@@ -76,6 +76,7 @@
             this.virtualKeyboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playAndReplayKMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playAndReplayControllerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.songCaptureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,7 +86,6 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.autocompleteMenu1 = new AutocompleteMenuNS.AutocompleteMenu();
             this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
-            this.songCaptureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
             this.SuspendLayout();
@@ -474,6 +474,13 @@
             this.playAndReplayControllerToolStripMenuItem.Text = "Play and replay controller";
             this.playAndReplayControllerToolStripMenuItem.Click += new System.EventHandler(this.playAndReplayControllerToolStripMenuItem_Click);
             // 
+            // songCaptureToolStripMenuItem
+            // 
+            this.songCaptureToolStripMenuItem.Name = "songCaptureToolStripMenuItem";
+            this.songCaptureToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
+            this.songCaptureToolStripMenuItem.Text = "Song capture";
+            this.songCaptureToolStripMenuItem.Click += new System.EventHandler(this.songCaptureToolStripMenuItem_Click);
+            // 
             // processToolStripMenuItem
             // 
             this.processToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -565,7 +572,6 @@
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.CSharp;
             this.fastColoredTextBox1.LeftBracket = '(';
@@ -583,13 +589,6 @@
             this.fastColoredTextBox1.Zoom = 100;
             this.fastColoredTextBox1.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.fastColoredTextBox1_TextChanged);
             // 
-            // songCaptureToolStripMenuItem
-            // 
-            this.songCaptureToolStripMenuItem.Name = "songCaptureToolStripMenuItem";
-            this.songCaptureToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
-            this.songCaptureToolStripMenuItem.Text = "Song capture";
-            this.songCaptureToolStripMenuItem.Click += new System.EventHandler(this.songCaptureToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -602,6 +601,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StandardInGamingInputLowing";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.menuStrip1.ResumeLayout(false);

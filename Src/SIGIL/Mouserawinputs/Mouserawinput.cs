@@ -140,12 +140,12 @@ namespace MouseRawInputsAPI
                             inputdelaytemp = inputdelay;
                             inputdelay = line;
                         }
-                    valchanged(0, inputdelay.Contains("True") | (!inputdelay.Contains("True") & !inputdelay.Contains("False") & inputdelay != inputdelaytemp));
+                    valchanged(0, inputdelay != inputdelaytemp);
                     if (wd[0])
                     {
                         getstate = true;
                     }
-                    if (inputdelay.Contains("False") | (!inputdelay.Contains("True") & !inputdelay.Contains("False") & inputdelay == inputdelaytemp))
+                    
                         getstate = false;
                     if (getstate)
                     {
@@ -157,7 +157,7 @@ namespace MouseRawInputsAPI
                         elapsedup = (double)PollingRate.ElapsedTicks / (Stopwatch.Frequency / 1000L);
                         elapsed = elapsedup - elapseddown;
                     }
-                    ValueChange[0] = inputdelay.Contains("False") | (!inputdelay.Contains("True") & !inputdelay.Contains("False") & inputdelay == inputdelaytemp) ? elapsed : 0;
+                    ValueChange[0] = inputdelay == inputdelaytemp ? elapsed : 0;
                     if (ValueChange._ValueChange[0] > 0)
                     {
                         delay = ValueChange._ValueChange[0];

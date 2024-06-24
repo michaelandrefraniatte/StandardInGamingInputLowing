@@ -3559,8 +3559,6 @@ namespace SIGIL
             }
             if (runstopbool)
                 StopProcess();
-            Thread.Sleep(100);
-            DisconnectControllers();
             if (!justSaved)
             {
                 result = MessageBox.Show("Content will be lost! Are you sure?", "Exit", MessageBoxButtons.OKCancel);
@@ -3570,6 +3568,10 @@ namespace SIGIL
                     return;
                 }
             }
+        }
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DisconnectControllers();
             if (capturing)
             {
                 capturing = false;
