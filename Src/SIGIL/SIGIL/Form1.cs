@@ -27,6 +27,18 @@ namespace SIGIL
 {
     public partial class Form1 : Form
     {
+        [DllImport("MotionInputPairing.dll", EntryPoint = "joyconrightconnect")]
+        public static extern bool joyconrightconnect();
+        [DllImport("MotionInputPairing.dll", EntryPoint = "joyconleftconnect")]
+        public static extern bool joyconleftconnect();
+        [DllImport("MotionInputPairing.dll", EntryPoint = "wiimoteconnect")]
+        public static extern bool wiimoteconnect();
+        [DllImport("MotionInputPairing.dll", EntryPoint = "joyconrightdisconnect")]
+        public static extern bool joyconrightdisconnect();
+        [DllImport("MotionInputPairing.dll", EntryPoint = "joyconleftdisconnect")]
+        public static extern bool joyconleftdisconnect();
+        [DllImport("MotionInputPairing.dll", EntryPoint = "wiimotedisconnect")]
+        public static extern bool wiimotedisconnect();
         [DllImport("stopitkills.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode, EntryPoint = "killProcessByNames")]
         [return: MarshalAs(UnmanagedType.BStr)]
         public static extern string killProcessByNames(string processnames);
@@ -3903,86 +3915,24 @@ namespace SIGIL
         [STAThread]
         private void DisconnectControllers()
         {
-            Thread newThread = new Thread(new ThreadStart(disconnectControllers));
-            newThread.SetApartmentState(ApartmentState.STA);
-            newThread.Start();
+            Thread thread = new Thread(new ThreadStart(ThreadDisconnectControllers));
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
-        private void disconnectControllers()
+        private void ThreadDisconnectControllers()
         {
-            string finalcode = @"
-                using System;
-                using System.Globalization;
-                using System.IO;
-                using System.Runtime.InteropServices;
-                using System.Threading;
-                using Tasks;
-                using System.Reflection;
-                namespace StringToCode
-                {
-                    public class FooClass 
-                    { 
-                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""joyconrightconnect"")]
-                        public static extern bool joyconrightconnect();
-                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""joyconleftconnect"")]
-                        public static extern bool joyconleftconnect();
-                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""wiimoteconnect"")]
-                        public static extern bool wiimoteconnect();
-                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""joyconrightdisconnect"")]
-                        public static extern bool joyconrightdisconnect();
-                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""joyconleftdisconnect"")]
-                        public static extern bool joyconleftdisconnect();
-                        [DllImport(""MotionInputPairing.dll"", EntryPoint = ""wiimotedisconnect"")]
-                        public static extern bool wiimotedisconnect();
-                        public void Disconnect()
-                        {
-                            try
-                            {
-                                wiimoteconnect();
-                                wiimotedisconnect();
-                            }
-                            catch { }
-                            try
-                            {
-                                joyconrightconnect();
-                                joyconrightdisconnect();
-                            }
-                            catch { }
-                            try
-                            {
-                                joyconleftconnect();
-                                joyconleftdisconnect();
-                            }
-                            catch { }
-                            try
-                            {
-                                wiimoteconnect();
-                                wiimotedisconnect();
-                            }
-                            catch { }
-                            try
-                            {
-                                joyconrightconnect();
-                                joyconrightdisconnect();
-                            }
-                            catch { }
-                            try
-                            {
-                                joyconleftconnect();
-                                joyconleftdisconnect();
-                            }
-                            catch { }
-                        }
-                    }
-                }";
-            parameters = new System.CodeDom.Compiler.CompilerParameters();
-            parameters.GenerateExecutable = false;
-            parameters.GenerateInMemory = true;
-            provider = new Microsoft.CSharp.CSharpCodeProvider();
-            results = provider.CompileAssemblyFromSource(parameters, finalcode);
-            assembly = results.CompiledAssembly;
-            program = assembly.GetType("StringToCode.FooClass");
-            obj = Activator.CreateInstance(program);
-            program.InvokeMember("Disconnect", BindingFlags.Default | BindingFlags.InvokeMethod, null, obj, new object[] { });
+            wiimoteconnect();
+            wiimotedisconnect();
+            joyconrightconnect();
+            joyconrightdisconnect();
+            joyconleftconnect();
+            joyconleftdisconnect();
+            wiimoteconnect();
+            wiimotedisconnect();
+            joyconrightconnect();
+            joyconrightdisconnect();
+            joyconleftconnect();
+            joyconleftdisconnect();
         }
         private void startProgramAtBootToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
