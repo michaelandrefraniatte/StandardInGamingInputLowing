@@ -256,7 +256,7 @@ namespace JoyconChargingGripsAPI
                     {
                         leftdelay = LeftValueChange._ValueChange[0];
                     }
-                    str += "InputDelay : " + leftdelay + " ms" + Environment.NewLine;
+                    str += "InputDelay : " + leftdelay / 2f + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }
@@ -336,7 +336,7 @@ namespace JoyconChargingGripsAPI
                     {
                         rightdelay = RightValueChange._ValueChange[0];
                     }
-                    str += "InputDelay : " + rightdelay + " ms" + Environment.NewLine;
+                    str += "InputDelay : " + rightdelay / 2f + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel2(str);
                 }

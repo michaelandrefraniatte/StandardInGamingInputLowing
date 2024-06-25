@@ -170,7 +170,7 @@ namespace CameraAPI
                     {
                         delay = ValueChange._ValueChange[0];
                     }
-                    str += "InputDelay : " + delay + " ms" + Environment.NewLine;
+                    str += "InputDelay : " + delay / 2f + " ms" + Environment.NewLine;
                     str += Environment.NewLine;
                     form1.SetLabel1(str);
                 }
