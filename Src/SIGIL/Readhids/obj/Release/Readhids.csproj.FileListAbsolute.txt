@@ -1,0 +1,11 @@
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readhids\obj\Release\Readhids.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readhids\obj\Release\Readhids.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readhids\obj\Release\Readhids.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readhids\obj\Release\Readhids.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readhids\bin\Release\Readhids.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readhids\bin\Release\Readhids.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readhids\bin\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readhids\bin\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readhids\obj\Release\Readhids.csproj.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readhids\obj\Release\Readhids.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readhids\obj\Release\Readhids.pdb

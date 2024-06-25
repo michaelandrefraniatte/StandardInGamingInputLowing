@@ -585,6 +585,14 @@
       <Project>{a9cd3113-f7ac-4584-9d53-c80229df6f6b}</Project>
       <Name>Networks</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Readdevices\Readdevices.csproj">
+      <Project>{125b10b5-3a46-4a1b-b7f5-b1c93f29efe4}</Project>
+      <Name>Readdevices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Readhids\Readhids.csproj">
+      <Project>{67feac37-9495-4825-a39e-32b8d61a1bc9}</Project>
+      <Name>Readhids</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Scalingfactor\Scalingfactor.csproj">
       <Project>{3754dda2-f2a0-41ba-9551-50542499ffff}</Project>
       <Name>Scalingfactor</Name>

@@ -68,7 +68,7 @@ namespace WiiMotesAPI
         private static List<string> paths = new List<string>();
         private static List<FileStream> mStreams = new List<FileStream>();
         private Form1 form1;
-        private Form2 form2 = new Form2();
+        private Form2 form2;
         private Stopwatch PollingRate;
         private double pollingrateperm = 0, pollingratetemp = 0, pollingratedisplay = 0, pollingrate;
         private string inputdelaybutton = "", inputdelay = "", inputdelaytemp = "";

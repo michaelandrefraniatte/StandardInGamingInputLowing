@@ -1718,6 +1718,12 @@ namespace SIGIL
                 range.SetStyle(StyleInput, new Regex(@"\bdelay\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bMessageBox.Show\b"));
                 range.SetStyle(StyleExtra, new Regex(@"\bToString\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bReaddevices\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bReadDevice\b"));
+                range.SetStyle(StyleObject, new Regex(@"\brd\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bReadhids\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bReadHid\b"));
+                range.SetStyle(StyleObject, new Regex(@"\brh\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2569,7 +2575,13 @@ namespace SIGIL
                 "tempsound11",
                 "tempsound12",
                 "MessageBox.Show",
-                "delay"
+                "delay",
+                "Readdevices",
+                "ReadDevice",
+                "rd",
+                "Readhids",
+                "ReadHid",
+                "rh"
             };
             string[] methods = {
                 "ToInt32",
@@ -3841,6 +3853,10 @@ namespace SIGIL
                 AddAssembly("Sound");
             if (code.Contains("using TimersAPI;"))
                 AddAssembly("Timers");
+            if (code.Contains("using Readdevices;"))
+                AddAssembly("Readdevices");
+            if (code.Contains("using Readhids;"))
+                AddAssembly("Readhids");
         }
         private void AddAssembly(string dllName)
         {
