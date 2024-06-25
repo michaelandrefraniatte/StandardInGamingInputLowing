@@ -128,7 +128,7 @@ namespace Readhids
             handle.Close();
             handle.Dispose();
         }
-        private void taskDLeft()
+        private void taskD()
         {
             for (; ; )
             {
@@ -151,9 +151,9 @@ namespace Readhids
                         pollingratedisplay = 0;
                     }
                     string str = "";
-                    for (int i = 0; i < report_len; i++)
+                    for (int i = 0; i < (int)report_len; i++)
                     {
-                        str += "line " + i + 1 + " : " + report_buf[i] + Environment.NewLine;
+                        str += "Line" + i + " : " + report_buf[i] + Environment.NewLine;
                     }
                     str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     string txt = str;
@@ -192,7 +192,7 @@ namespace Readhids
                 }
             }
         }
-        private void taskPLeft()
+        private void taskP()
         {
             for (; ; )
             {
@@ -204,8 +204,8 @@ namespace Readhids
         }
         public void BeginPolling()
         {
-            Task.Run(() => taskDLeft());
-            Task.Run(() => taskPLeft());
+            Task.Run(() => taskD());
+            Task.Run(() => taskP());
         }
         private void Reconnection()
         {
@@ -216,7 +216,7 @@ namespace Readhids
             {
                 if (reconnectingbool)
                 {
-                    AttachJoyLeft(path);
+                    Found(path);
                     reconnectingcount = -150f;
                 }
                 else
@@ -265,7 +265,7 @@ namespace Readhids
                         if (diDetail.DevicePath.Contains(vendor_id) & diDetail.DevicePath.Contains(product_id))
                         {
                             path = diDetail.DevicePath;
-                            isvalidhandle = AttachJoyLeft(diDetail.DevicePath);
+                            isvalidhandle = Found(diDetail.DevicePath);
                             handleptrunshared = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.None, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                             if (isvalidhandle)
                             {
@@ -280,7 +280,7 @@ namespace Readhids
             path = paths[number < 2 ? 0 : number - 1];
             handle = handles[number < 2 ? 0 : number - 1];
         }
-        private bool AttachJoyLeft(string path)
+        private bool Found(string path)
         {
             try
             {

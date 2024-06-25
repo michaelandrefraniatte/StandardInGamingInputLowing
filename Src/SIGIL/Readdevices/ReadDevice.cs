@@ -41,8 +41,8 @@ namespace Readdevices
         private int length;
         private static FileStream mStream;
         private static SafeFileHandle handle = null, handleunshared = null;
-        private bool reconnectingwiimotebool;
-        private double reconnectingwiimotecount;
+        private bool reconnectingbool;
+        private double reconnectingcount;
         private bool running, formvisible;
         private bool isvalidhandle = false;
         private int number;
@@ -138,7 +138,7 @@ namespace Readdevices
                 try
                 {
                     mStream.Read(aBuffer, 0, length);
-                    reconnectingwiimotebool = false;
+                    reconnectingbool = false;
                 }
                 catch { Thread.Sleep(10); }
                 if (formvisible)
@@ -154,7 +154,7 @@ namespace Readdevices
                     string str = "";
                     for (int i = 0; i < length; i++)
                     {
-                        str += "line " + i + 1 + " : " + aBuffer[i] + Environment.NewLine;
+                        str += "Line" + i + " : " + aBuffer[i] + Environment.NewLine;
                     }
                     str += "PollingRate : " + pollingrate + " ms" + Environment.NewLine;
                     string txt = str;
@@ -205,18 +205,18 @@ namespace Readdevices
         }
         private void Reconnection()
         {
-            if (reconnectingwiimotecount == 0)
-                reconnectingwiimotebool = true;
-            reconnectingwiimotecount++;
-            if (reconnectingwiimotecount >= 150f)
+            if (reconnectingcount == 0)
+                reconnectingbool = true;
+            reconnectingcount++;
+            if (reconnectingcount >= 150f)
             {
-                if (reconnectingwiimotebool)
+                if (reconnectingbool)
                 {
-                    WiimoteFound(path);
-                    reconnectingwiimotecount = -150f;
+                    Found(path);
+                    reconnectingcount = -150f;
                 }
                 else
-                    reconnectingwiimotecount = 0;
+                    reconnectingcount = 0;
             }
         }
         private enum EFileAttributes : uint
@@ -259,7 +259,7 @@ namespace Readdevices
                     diDetail.cbSize = 5;
                     if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new IntPtr()))
                     {
-                        if (diDetail.DevicePath.Contains(vendor_id) & (diDetail.DevicePath.Contains(product_id) | diDetail.DevicePath.Contains(product_id)))
+                        if (diDetail.DevicePath.Contains(vendor_id) & diDetail.DevicePath.Contains(product_id))
                         {
                             if (handleunshared != null)
                             {
@@ -268,9 +268,7 @@ namespace Readdevices
                                 handleunshared = null;
                             }
                             path = diDetail.DevicePath;
-                            isvalidhandle = WiimoteFound(path);
-                            isvalidhandle = WiimoteFound(path);
-                            isvalidhandle = WiimoteFound(path);
+                            isvalidhandle = Found(path);
                             handleunshared = CreateFile(path, FileAccess.ReadWrite, FileShare.None, IntPtr.Zero, FileMode.Open, (uint)EFileAttributes.Overlapped, IntPtr.Zero);
                             if (isvalidhandle)
                             {
@@ -285,7 +283,7 @@ namespace Readdevices
             path = paths[number < 2 ? 0 : number - 1];
             mStream = mStreams[number < 2 ? 0 : number - 1];
         }
-        private bool WiimoteFound(string path)
+        private bool Found(string path)
         {
             try
             {

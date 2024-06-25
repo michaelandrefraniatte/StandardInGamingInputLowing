@@ -25,7 +25,7 @@ namespace StringToCode
         private static uint CurrentResolution = 0;
         private static bool running;
         private static int sleeptime = 1;
-        private static string vendor_ds_id = "54C", product_ds_id = "CE6";
+        private static string vendor_ds_id = "54c", product_ds_id = "ce6";
         private ReadDevice rd = new ReadDevice();
         public void Close()
         {
