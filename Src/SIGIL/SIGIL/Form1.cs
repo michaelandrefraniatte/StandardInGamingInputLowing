@@ -3937,18 +3937,30 @@ namespace SIGIL
         }
         private void ThreadDisconnectControllers()
         {
-            wiimoteconnect();
-            wiimotedisconnect();
-            joyconrightconnect();
-            joyconrightdisconnect();
-            joyconleftconnect();
-            joyconleftdisconnect();
-            wiimoteconnect();
-            wiimotedisconnect();
-            joyconrightconnect();
-            joyconrightdisconnect();
-            joyconleftconnect();
-            joyconleftdisconnect();
+            if (wiimoteconnect())
+            {
+                wiimotedisconnect();
+                if (wiimoteconnect())
+                {
+                    wiimotedisconnect();
+                }
+            }
+            if (joyconleftconnect())
+            {
+                joyconleftdisconnect();
+                if (joyconleftconnect())
+                {
+                    joyconleftdisconnect();
+                }
+            }
+            if (joyconrightconnect())
+            {
+                joyconrightdisconnect();
+                if (joyconrightconnect())
+                {
+                    joyconrightdisconnect();
+                }
+            }
         }
         private void startProgramAtBootToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
