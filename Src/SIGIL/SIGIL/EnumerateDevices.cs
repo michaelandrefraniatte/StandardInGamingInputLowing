@@ -1,14 +1,7 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using vJoy.Wrapper;
 
 namespace SIGIL
 {
@@ -68,6 +61,8 @@ namespace SIGIL
                 if (SetupDiGetDeviceInterfaceDetail(hDevInfo, ref diData, ref diDetail, size, out size, new IntPtr()))
                 {
                     path = diDetail.DevicePath;
+                    isvalidhandle = DeviceFound(path);
+                    isvalidhandle = DeviceFound(path);
                     isvalidhandle = DeviceFound(path);
                     if (isvalidhandle)
                     {
