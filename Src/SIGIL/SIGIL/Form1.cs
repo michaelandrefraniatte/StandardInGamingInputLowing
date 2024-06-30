@@ -1724,6 +1724,9 @@ namespace SIGIL
                 range.SetStyle(StyleLibrary, new Regex(@"\bReadhids\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bReadHid\b"));
                 range.SetStyle(StyleObject, new Regex(@"\brh\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bReadfiles\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bReadDeviceFile\b"));
+                range.SetStyle(StyleObject, new Regex(@"\brdf\b"));
                 range.SetStyle(StyleNone, new Regex(@"\w", RegexOptions.Singleline));
             }
             catch { }
@@ -2581,7 +2584,10 @@ namespace SIGIL
                 "rd",
                 "Readhids",
                 "ReadHid",
-                "rh"
+                "rh",
+                "Readfiles",
+                "ReadDeviceFile",
+                "rdf",
             };
             string[] methods = {
                 "ToInt32",
@@ -3857,6 +3863,8 @@ namespace SIGIL
                 AddAssembly("Readdevices");
             if (code.Contains("using Readhids;"))
                 AddAssembly("Readhids");
+            if (code.Contains("using Readfiles;"))
+                AddAssembly("Readfiles");
         }
         private void AddAssembly(string dllName)
         {

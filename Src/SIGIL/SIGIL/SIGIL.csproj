@@ -589,6 +589,10 @@
       <Project>{125b10b5-3a46-4a1b-b7f5-b1c93f29efe4}</Project>
       <Name>Readdevices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Readfiles\Readfiles.csproj">
+      <Project>{6a284902-8902-4eae-a122-98cc708ff2f9}</Project>
+      <Name>Readfiles</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Readhids\Readhids.csproj">
       <Project>{67feac37-9495-4825-a39e-32b8d61a1bc9}</Project>
       <Name>Readhids</Name>

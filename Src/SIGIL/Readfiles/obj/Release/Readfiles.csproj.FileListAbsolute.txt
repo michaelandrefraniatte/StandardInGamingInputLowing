@@ -1,0 +1,11 @@
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readfiles\bin\Release\Readfiles.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readfiles\bin\Release\Readfiles.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readfiles\bin\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readfiles\bin\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readfiles\obj\Release\Readfiles.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readfiles\obj\Release\Readfiles.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readfiles\obj\Release\Readfiles.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readfiles\obj\Release\Readfiles.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readfiles\obj\Release\Readfiles.csproj.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readfiles\obj\Release\Readfiles.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Readfiles\obj\Release\Readfiles.pdb

@@ -266,6 +266,8 @@ namespace Readhids
                         {
                             path = diDetail.DevicePath;
                             isvalidhandle = Found(diDetail.DevicePath);
+                            isvalidhandle = Found(diDetail.DevicePath);
+                            isvalidhandle = Found(diDetail.DevicePath);
                             handleptrunshared = CreateFile(path, System.IO.FileAccess.ReadWrite, System.IO.FileShare.None, new System.IntPtr(), System.IO.FileMode.Open, EFileAttributes.Normal, new System.IntPtr());
                             if (isvalidhandle)
                             {

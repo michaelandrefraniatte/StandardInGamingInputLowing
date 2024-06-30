@@ -678,3 +678,5 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Readhids.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Readdevices.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Readhids.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Readfiles.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Readfiles.pdb

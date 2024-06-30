@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -268,6 +267,8 @@ namespace Readdevices
                                 handleunshared = null;
                             }
                             path = diDetail.DevicePath;
+                            isvalidhandle = Found(path);
+                            isvalidhandle = Found(path);
                             isvalidhandle = Found(path);
                             handleunshared = CreateFile(path, FileAccess.ReadWrite, FileShare.None, IntPtr.Zero, FileMode.Open, (uint)EFileAttributes.Overlapped, IntPtr.Zero);
                             if (isvalidhandle)
