@@ -1,0 +1,11 @@
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4pro\bin\Release\Dualshocks4pro.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4pro\bin\Release\Dualshocks4pro.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4pro\bin\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4pro\bin\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4pro\obj\Release\Dualshocks4pro.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4pro\obj\Release\Dualshocks4pro.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4pro\obj\Release\Dualshocks4pro.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4pro\obj\Release\Dualshocks4pro.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4pro\obj\Release\Dualshoc.2F2CEBA9.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4pro\obj\Release\Dualshocks4pro.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualshocks4pro\obj\Release\Dualshocks4pro.pdb

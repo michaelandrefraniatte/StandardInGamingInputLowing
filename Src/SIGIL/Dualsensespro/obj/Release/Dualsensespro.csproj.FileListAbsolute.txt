@@ -1,0 +1,11 @@
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsensespro\bin\Release\Dualsensespro.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsensespro\bin\Release\Dualsensespro.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsensespro\bin\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsensespro\bin\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsensespro\obj\Release\Dualsensespro.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsensespro\obj\Release\Dualsensespro.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsensespro\obj\Release\Dualsensespro.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsensespro\obj\Release\Dualsensespro.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsensespro\obj\Release\Dualsens.B16333D6.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsensespro\obj\Release\Dualsensespro.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Dualsensespro\obj\Release\Dualsensespro.pdb

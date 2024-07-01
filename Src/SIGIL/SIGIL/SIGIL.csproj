@@ -497,9 +497,17 @@
       <Project>{6ba6817c-47bb-44de-a4ee-f23b04a29750}</Project>
       <Name>Directinputs</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dualsensespro\Dualsensespro.csproj">
+      <Project>{5ac8c863-430e-4f14-9537-26974da06f4f}</Project>
+      <Name>Dualsensespro</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dualsenses\Dualsenses.csproj">
       <Project>{159b77e8-23f3-4c3a-b144-6a5d99b1a538}</Project>
       <Name>Dualsenses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dualshocks4pro\Dualshocks4pro.csproj">
+      <Project>{c16268cd-4196-4156-9829-ad505a3f9dc2}</Project>
+      <Name>Dualshocks4pro</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dualshocks4\Dualshocks4.csproj">
       <Project>{5f2354d3-7620-4ffd-a578-9ba982848234}</Project>

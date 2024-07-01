@@ -302,12 +302,16 @@ namespace SIGIL
                 range.SetStyle(StyleObject, new Regex(@"\bdi2\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bDualSensesAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bDualSense\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bDualSensesProAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bDualSensePro\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bds\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bds1\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bds2\b"));
                 range.SetStyle(StyleMethod, new Regex(@"\bInit\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bDualShocks4API\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bDualShock4\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bDualShocks4ProAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bDualShock4Pro\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bds4\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bds41\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bds42\b"));
@@ -1997,8 +2001,12 @@ namespace SIGIL
                 "DirectInput",
                 "DualSensesAPI",
                 "DualSense",
+                "DualSensesProAPI",
+                "DualSensePro",
                 "DualShocks4API",
                 "DualShock4",
+                "DualShocks4ProAPI",
+                "DualShockPro4",
                 "SendInputs",
                 "Sendinput",
                 "sendinput",
@@ -3805,8 +3813,12 @@ namespace SIGIL
                 AddAssembly("Mouseinputs");
             if (code.Contains("using DualSensesAPI;"))
                 AddAssembly("Dualsenses");
+            if (code.Contains("using DualSensesProAPI;"))
+                AddAssembly("DualsensesPro");
             if (code.Contains("using DualShocks4API;"))
                 AddAssembly("Dualshocks4");
+            if (code.Contains("using DualShocks4ProAPI;"))
+                AddAssembly("Dualshocks4Pro");
             if (code.Contains("using DirectInputsAPI;"))
                 AddAssembly("Directinputs");
             if (code.Contains("using JoyconChargingGripsAPI;"))

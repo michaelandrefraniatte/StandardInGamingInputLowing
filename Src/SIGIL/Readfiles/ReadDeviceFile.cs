@@ -36,7 +36,7 @@ namespace Readfiles
         private static extern void NtSetTimerResolution(uint DesiredResolution, bool SetResolution, ref uint CurrentResolution);
         private static uint CurrentResolution = 0;
         private string path;
-        private static uint BytesRead = 0;
+        private uint BytesRead = 0;
         private uint report_len;
         private byte[] report_buf;
         private static SafeFileHandle handle = null, handleunshared = null;

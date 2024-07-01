@@ -49,10 +49,8 @@ namespace WiiMotesProAPI
         private string path;
         private byte[] mBuff = new byte[22], aBuffer = new byte[22];
         private const byte Type = 0x12, IR = 0x13, WriteMemory = 0x16, ReadMemory = 0x16, IRExtensionAccel = 0x37;
-        private static uint BytesRead = 0;
-        private uint report_len = 22;
-        private byte[] report_buf = new byte[22];
-        private static SafeFileHandle handle = null, handleunshared = null;
+        private uint BytesRead = 0;
+        private SafeFileHandle handle = null, handleunshared = null;
         private bool reconnectingwiimotebool;
         private double reconnectingwiimotecount;
         private bool running, formvisible;
@@ -164,7 +162,7 @@ namespace WiiMotesProAPI
                     break;
                 try
                 {
-                    ReadFile(handle, report_buf, report_len, out BytesRead, IntPtr.Zero);
+                    ReadFile(handle, aBuffer, 22, out BytesRead, IntPtr.Zero);
                     reconnectingwiimotebool = false;
                 }
                 catch { Thread.Sleep(10); }
