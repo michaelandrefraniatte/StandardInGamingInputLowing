@@ -680,3 +680,5 @@ C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Readhids.pdb
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Readfiles.dll
 C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Readfiles.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Wiimotespro.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\SIGIL\bin\x86\Release\Wiimotespro.pdb

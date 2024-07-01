@@ -1,0 +1,11 @@
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimotespro\bin\Release\Wiimotespro.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimotespro\bin\Release\Wiimotespro.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimotespro\bin\Release\Valuechanges.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimotespro\bin\Release\Valuechanges.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimotespro\obj\Release\Wiimotespro.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimotespro\obj\Release\Wiimotespro.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimotespro\obj\Release\Wiimotespro.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimotespro\obj\Release\Wiimotespro.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimotespro\obj\Release\Wiimotes.D6634AF8.Up2Date
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimotespro\obj\Release\Wiimotespro.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\SIGIL\Wiimotespro\obj\Release\Wiimotespro.pdb

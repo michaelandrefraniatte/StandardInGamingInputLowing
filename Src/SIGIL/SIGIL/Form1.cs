@@ -325,6 +325,8 @@ namespace SIGIL
                 range.SetStyle(StyleClass, new Regex(@"\bWiiMoteLib\b"));
                 range.SetStyle(StyleLibrary, new Regex(@"\bWiiMotesLibMPAPI\b"));
                 range.SetStyle(StyleClass, new Regex(@"\bWiiMoteLibMP\b"));
+                range.SetStyle(StyleLibrary, new Regex(@"\bWiiMotesProAPI\b"));
+                range.SetStyle(StyleClass, new Regex(@"\bWiiMotePro\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bwm\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bwm1\b"));
                 range.SetStyle(StyleObject, new Regex(@"\bwm2\b"));
@@ -2010,6 +2012,8 @@ namespace SIGIL
                 "WiiMoteLib",
                 "WiiMotesLibMPAPI",
                 "WiiMoteLibMP",
+                "WiiMotesProAPI",
+                "WiiMotePro",
                 "SwitchProControllersAPI",
                 "SwitchProController",
                 "JoyconChargingGripsAPI",
@@ -3815,6 +3819,8 @@ namespace SIGIL
                 AddAssembly("Switchprocontrollers");
             if (code.Contains("using WiiMotesAPI;"))
                 AddAssembly("Wiimotes");
+            if (code.Contains("using WiiMotesProAPI;"))
+                AddAssembly("Wiimotespro");
             if (code.Contains("using XInputsAPI;"))
                 AddAssembly("Xinputs");
             if (code.Contains("using CameraAPI;"))
