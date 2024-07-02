@@ -40,5 +40,9 @@ sppsvc
 MoUsoCoreWorker
 UserOOBEBroker
 SearchHost
+TPMProvisioningService
+OpenWith
+LMS
+conhost
 
 

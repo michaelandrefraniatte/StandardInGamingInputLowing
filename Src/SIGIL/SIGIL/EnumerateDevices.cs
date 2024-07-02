@@ -89,7 +89,15 @@ namespace SIGIL
                 }
                 catch
                 {
-                    return false;
+                    try
+                    {
+                        CreateFile(path, FileAccess.ReadWrite, FileShare.ReadWrite, IntPtr.Zero, FileMode.Open, (uint)EFileAttributes.Normal, IntPtr.Zero);
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
                 }
             }
         }
